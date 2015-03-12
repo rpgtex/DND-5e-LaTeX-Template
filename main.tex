@@ -1,0 +1,49 @@
+%%%%%%%%%%%%%%%%%%%%%%%%
+% DND 5e LaTeX Template
+% Created by Evan Bergeron
+% March 2015
+%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[10pt]{article}
+\usepackage{titlesec}       % Used to adjust (sub)section colors and fonts
+\usepackage{lipsum}         % Filler text
+\usepackage{multicol}       % Two cols
+\usepackage[cm]{fullpage}   % Small margins
+\usepackage{bookman}        % Closest built-in font I could find
+\usepackage[T1]{fontenc}
+\usepackage{mdframed}       % Used for green boxes
+\setlength{\columnsep}{1cm}
+
+% Define colors, sample from the books
+\usepackage{color}
+\definecolor{bgtan}{rgb}{0.97, 0.95, 0.9}
+\definecolor{titlered}{rgb}{0.38, 0.14, 0.09}
+\definecolor{undergold}{rgb}{0.81, 0.75, 0.53}
+\definecolor{commentgreen}{rgb}{0.88, 0.90, 0.75}
+\pagecolor{bgtan}
+
+% Green comment box definition
+\newenvironment{commentbox}[1]
+{\begin{mdframed}[frametitle={#1}, frametitlefont=\scshape\bfseries,  linecolor=commentgreen, backgroundcolor=commentgreen]}
+{\end{mdframed}}
+
+% Adjust section and subsection colors and font
+\titleformat{\section}
+{\color{titlered}\normalfont\scshape\Huge}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\color{titlered}\normalfont\scshape\Large}{\thesubsection}{1em}{}[{\color{undergold}\titlerule[1pt]\color{black}}]
+
+% Start document
+\begin{document}
+\begin{multicols}{2}
+% Your content goes here
+\section*{Test Section}
+\lipsum[1]
+\subsection*{Test Subsection}
+    \begin{commentbox}{Neat Green Box!}
+        \lipsum[1]
+    \end{commentbox}
+    \lipsum
+
+% End document
+\end{multicols}
+\end{document}
