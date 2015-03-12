@@ -6,8 +6,6 @@ An example of a table with alternating row colors is given. It's a bit gross, ho
 
 The template compiles with pdflatex.
 
-![Alt text](scrot.jpg)
-
 
 ### Installation
 
