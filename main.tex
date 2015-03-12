@@ -8,10 +8,12 @@
 \usepackage{lipsum}         % Filler text
 \usepackage{multicol}       % Two cols
 \usepackage[cm]{fullpage}   % Small margins
+\setlength{\columnsep}{1cm}
 \usepackage{bookman}        % Closest built-in font I could find
 \usepackage[T1]{fontenc}
 \usepackage{mdframed}       % Used for green boxes
-\setlength{\columnsep}{1cm}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
 
 % Define colors, sample from the books
 \usepackage{color}
@@ -23,8 +25,14 @@
 
 % Green comment box definition
 \newenvironment{commentbox}[1]
-{\begin{mdframed}[frametitle={#1}, frametitlefont=\scshape\bfseries,  linecolor=commentgreen, backgroundcolor=commentgreen]}
+{\fontfamily{lmss}\selectfont\begin{mdframed}[frametitle={#1},
+                                              frametitlefont=\scshape\bfseries,
+                                              linecolor=commentgreen,
+                                              backgroundcolor=commentgreen]}
 {\end{mdframed}}
+
+% Font environment
+\newenvironment{lmss}{\fontfamily{lmss}\selectfont}{}
 
 % Adjust section and subsection colors and font
 \titleformat{\section}
@@ -35,6 +43,7 @@
 % Start document
 \begin{document}
 \begin{multicols}{2}
+\fontfamily{ppl}\selectfont % Set text font
 % Your content goes here
 \section*{Test Section}
 \lipsum[1]
@@ -42,6 +51,19 @@
     \begin{commentbox}{Neat Green Box!}
         \lipsum[1]
     \end{commentbox}
+    \lipsum[3]
+
+    \noindent
+    \begin{lmss} % Switch font
+    \rowcolors{1}{bgtan}{commentgreen} % Alternate colors
+    \begin{tabularx}{\linewidth}{XX}
+        \textbf{Table head}  & \textbf{Table head} \\
+        Some value  & Some value \\
+        Some value  & Some value \\
+        Some value  & Some value
+    \end{tabularx}
+    \end{lmss}
+
     \lipsum
 
 % End document
