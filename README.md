@@ -6,8 +6,8 @@ An example of a table with alternating row colors is given. It's a bit gross, ho
 
 The template compiles with pdflatex.
 
-### Version
-0.1
+![Alt text](scrot.jpg)
+
 
 ### Installation
 
@@ -25,3 +25,5 @@ $ pdflatex main.tex
  - Export most of the preamble to a .cls file
  - Consider implementing more complex tables for monsters, etc.
 
+### Version
+0.1
