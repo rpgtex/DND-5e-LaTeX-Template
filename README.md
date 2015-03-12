@@ -6,6 +6,8 @@ An example of a table with alternating row colors is given. It's a bit gross, ho
 
 The template compiles with pdflatex.
 
+[![Preview](https://raw.githubusercontent.com/evanbergeron/DND-5e-LaTeX-Template/master/scrot.png)]
+
 
 ### Installation
 
