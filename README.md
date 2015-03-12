@@ -14,7 +14,7 @@ The template compiles with pdflatex.
 Just clone the repo. From terminal:
 
 ```sh
-$ git clone [git-repo-url] 5e-template
+$ git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git 5e-template
 $ cd 5e-template
 $ pdflatex main.tex
 ```
