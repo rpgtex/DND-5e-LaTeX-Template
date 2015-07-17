@@ -15,15 +15,15 @@
 \usepackage[table]{xcolor}
 \usepackage{tabularx}
 \usepackage{tikz}
-\usepackage{adjustbox}
 \usepackage{keycommand}
 
-% Define colors, sample from the books
+% Define colors, sampled from the books.
 \usepackage{color}
 \definecolor{bgtan}{rgb}{0.97, 0.95, 0.9}
 \definecolor{titlered}{rgb}{0.38, 0.14, 0.09}
 \definecolor{undergold}{rgb}{0.81, 0.75, 0.53}
 \definecolor{commentgreen}{rgb}{0.88, 0.90, 0.75}
+\definecolor{monsterbg}{rgb}{0.94, 0.86, 0.71}
 \pagecolor{bgtan}
 
 \newcommand{\fancyhrule}{
@@ -62,12 +62,13 @@
 {\begin{mdframed}[frametitle={#1},
   frametitlefont=\scshape\bfseries\color{titlered}\Large,
   linecolor=titlered,
-  backgroundcolor=undergold,
+  backgroundcolor=monsterbg,
   topline=true,
   bottomline=true,
   leftline=false,
   rightline=false,
-  linewidth=2.0pt,
+  linewidth=3.0pt,
+  innertopmargin=0.75pt,
 ]
 \textit{#2}\\
 \fancyhrule
@@ -85,6 +86,7 @@
 
 % Define Monster subsection header style
 \newcommand{\monstersection}[1]{\subsubsection*{#1}}
+\titlespacing*{\subsubsection}{0pt}{*0.5}{5pt}
 \titleformat{\subsubsection}
 {\color{titlered}\normalfont\scshape\Large}{\thesubsection}{1em}{}[{\color{titlered}\titlerule[0.5pt]\color{black}}]
 
@@ -141,11 +143,21 @@
         \lipsum[1]
     \end{commentbox}
     \lipsum[3]
+    \noindent
+    \begin{lmss} % Switch font
+    \rowcolors{1}{bgtan}{commentgreen} % Alternate colors
+    \begin{tabularx}{\linewidth}{XX}
+        \textbf{Table head}  & \textbf{Table head} \\
+        Some value  & Some value \\
+        Some value  & Some value \\
+        Some value  & Some value
+    \end{tabularx}
+    \end{lmss}
 
-    \begin{monster}{Foo}{Small metasyntatic variable (golbinoid), neutral evil}
+    \begin{monster}{Monster Foo}{Small metasyntatic variable (golbinoid), neutral evil}
       \basics[%
         armorclass = 12,
-        hitpoints  = 45,
+        hitpoints  = 16 (3d8 + 3),
         speed      = 50 ft
       ]
       \fancyhrule
@@ -159,22 +171,7 @@
       \monstersection{Actions}
       \lipsum[1]
     \end{monster}
-
-
-
-    \noindent
-    \begin{lmss} % Switch font
-    \rowcolors{1}{bgtan}{commentgreen} % Alternate colors
-    \begin{tabularx}{\linewidth}{XX}
-        \textbf{Table head}  & \textbf{Table head} \\
-        Some value  & Some value \\
-        Some value  & Some value \\
-        Some value  & Some value
-    \end{tabularx}
-    \end{lmss}
-
     \lipsum
-
 % End document
 \end{multicols}
 \end{document}
