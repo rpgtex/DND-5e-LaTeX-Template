@@ -1,0 +1,8 @@
+% Green comment box definition
+\newenvironment{commentbox}[1]
+{\fontfamily{lmss}\selectfont\begin{mdframed}[frametitle={#1},
+                                              frametitlefont=\scshape\bfseries,
+                                              linecolor=commentgreen,
+                                              backgroundcolor=commentgreen]}
+{\end{mdframed}}
+

@@ -1,0 +1,77 @@
+% Monster environment sty file
+
+\newenvironment{monster}[2]
+{\begin{mdframed}[frametitle={#1},
+  frametitlefont=\scshape\bfseries\color{titlered}\Large,
+  linecolor=titlered,
+  backgroundcolor=monsterbg,
+  topline=true,
+  bottomline=true,
+  leftline=false,
+  rightline=false,
+  linewidth=3.0pt,
+  innertopmargin=0.75pt,
+]
+\textit{#2}\\
+\hline
+}
+{\end{mdframed}}
+
+% Define Monster subsection header style
+\newcommand{\monstersection}[1]{\subsubsection*{#1}}
+\titlespacing*{\subsubsection}{0pt}{*0.5}{5pt}
+\titleformat{\subsubsection}
+{\color{titlered}\normalfont\scshape\Large}{\thesubsection}{1em}{}[{\color{titlered}\titlerule[0.5pt]\color{black}}]
+
+\newenvironment{monsteraction}[1][\unskip]{\emph{\textbf{#1.}}}{}
+
+%
+% Macros for use within the monster environment
+%
+\newkeycommand\basics[armorclass=0, hitpoints=0, speed=0]{%
+  \textbf{Armor Class} \commandkey{armorclass}\\
+  \textbf{Hit Points} \commandkey{hitpoints}\\
+  \textbf{Speed} \commandkey{speed}\\
+}
+
+% TODO: Fix spacing between the hlines
+\newkeycommand\stats[STR=10 (+0),
+                        DEX=10 (+0),
+                        CON=10 (+0),
+                        INT=10 (+0),
+                        WIS=10 (+0),
+                        CHA=10 (+0)]{
+    {\footnotesize
+    \begin{tabularx}{\linewidth}{cccccc}
+        \textbf{STR} & \textbf{DEX} & \textbf{CON} & \textbf{INT} & \textbf{WIS} & \textbf{CHA}\\
+        \commandkey{STR} & \commandkey{DEX} & \commandkey{CON} & \commandkey{INT} & \commandkey{WIS} & \commandkey{CHA}
+    \end{tabularx}
+    }
+}
+
+\newkeycommand\details[skills=,
+                      damageimmunities=,
+                      savingthrows=,
+                      conditionimmunities=,
+                      damageresistances=,
+                      damagevulnerabilities=,
+                      senses=-,
+                      languages=-,
+                      challenge=0]{%
+  \ifcommandkey{savingthrows}
+    {\textbf{Saving Throws} \commandkey{savingthrows}\\}{}
+  \ifcommandkey{skills}
+    {\textbf{Skills} \commandkey{skills}\\}{}
+  \ifcommandkey{damagevulnerabilities}
+    {\textbf{Damage Vulnerabilities} \commandkey{damagevulnerabilities}\\}{}
+  \ifcommandkey{damageresistances}
+    {\textbf{Damage Resistances} \commandkey{damageresistances}\\}{}
+  \ifcommandkey{damageimmunities}
+    {\textbf{Damage Immunities} \commandkey{damageimmunities}\\}{}
+  \ifcommandkey{conditionimmunities}
+    {\textbf{Condition Immunities} \commandkey{conditionimmunities}\\}{}
+  % These traits appear to always be present.
+  {\textbf{Senses} \commandkey{senses}\\}
+  {\textbf{Languages} \commandkey{languages}\\}
+  {\textbf{Challenge} \commandkey{challenge}\\}
+}
