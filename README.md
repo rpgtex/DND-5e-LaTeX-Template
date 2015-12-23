@@ -21,8 +21,6 @@ $ pdflatex main.tex
 
 ### Todo's
 
- - Wrap tables up in macros
- - Export most of the preamble to a .cls file
  - Consider implementing more complex tables for monsters, etc.
 
 ### Version

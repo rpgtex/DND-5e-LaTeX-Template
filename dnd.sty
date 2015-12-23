@@ -1,0 +1,70 @@
+% DND 5e LaTeX Style File
+% Created by Evan Bergeron
+% Modified by Christopher Liu
+% December 2015
+
+%
+% Prerequisite Packages
+%
+\usepackage{titlesec}       % Used to adjust (sub)section colors and fonts
+\usepackage{lipsum}         % Filler text
+\usepackage{multicol}       % Two cols
+\usepackage[cm]{fullpage}   % Small margins
+\usepackage{bookman}        % Closest built-in font I could find
+\usepackage[T1]{fontenc}
+\usepackage{mdframed}       % Used for green boxes
+\usepackage[table]{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{keycommand}
+
+
+% Modularization is a good thing.
+\usepackage{dndmonster}
+\usepackage{dndsections}
+\usepackage{dndcomment}
+\usepackage{dndtable}
+
+%
+% Style Parameters
+%
+% Font environment
+\newenvironment{lmss}{\fontfamily{lmss}\selectfont}{}
+
+\setlength{\columnsep}{1cm}
+% Define colors, sampled from the books.
+\usepackage{color}
+\definecolor{bgtan}{rgb}{0.97, 0.95, 0.9}
+\definecolor{titlered}{rgb}{0.38, 0.14, 0.09}
+\definecolor{undergold}{rgb}{0.81, 0.75, 0.53}
+\definecolor{commentgreen}{rgb}{0.88, 0.90, 0.75}
+\definecolor{monsterbg}{rgb}{0.94, 0.86, 0.71}
+\pagecolor{bgtan}
+
+
+
+% Fancy DnD 5e-style hline
+\renewcommand{\hline}{
+\noindent
+  \begin{tikzpicture}[]
+    \draw [titlered, fill=titlered] (0, 0) --(0,0.1) -- (\textwidth, 0.08);
+  \end{tikzpicture}
+}
+
+
+% Either hilariously, or infuriatingly, the \ifcommandkey
+% implementation is buggy. Here is a re-implementation
+% from tex.stackexchange.
+\begingroup
+  \makeatletter
+  \catcode`\/=8 %
+  \@firstofone
+    {
+      \endgroup
+      \renewcommand{\ifcommandkey}[1]{%
+        \csname @\expandafter \expandafter \expandafter
+        \expandafter \expandafter \expandafter  \expandafter
+        \kcmd@nbk \commandkey {#1}//{first}{second}//oftwo\endcsname
+      }
+   }
