@@ -1,48 +1,97 @@
-\documentclass[10pt]{article}
+\documentclass[10pt,twoside]{article}
 \usepackage{dnd}
+\usepackage[ngerman]{babel} %Trennungsregeln und autom. Überschriften in n. dt. RS
+\usepackage[utf8]{inputenc}
+
+
+
 % Start document
 \begin{document}
 \begin{multicols}{2}
 \fontfamily{ppl}\selectfont % Set text font
-% Your content goes here
-\section*{Test Section}
+
+% Your content goes here%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Main Section}
 \lipsum[1]
-\subsection*{Test Subsection}
-    \begin{commentbox}{Neat Green Box!}
-        \lipsum[1]
-    \end{commentbox}
-    \lipsum[3]
-    \begin{dndtable}
-        \textbf{Table head}  & \textbf{Table head} \\
-        Some value  & Some value \\
-        Some value  & Some value \\
-        Some value  & Some value
-    \end{dndtable}
-    \begin{monster}{Monster Foo}{Small metasyntatic variable (golbinoid), neutral evil}
-      \basics[%
-        armorclass = 12,
-        hitpoints  = 16 (3d8 + 3),
-        speed      = 50 ft
-      ]
-      \hline
-      \stats[
-            STR = 12 (+1),
-            DEX = 14 (+2)
-      ]
-      \hline
-      \details[%
-        % If you want to use commas in these sections, enclose the
-        % description in braces.
-        % I'm so sorry.
-        languages = {Common Lisp, Erlang},
-      ]
-      \hline
-      \monstersection{Actions}
-      \begin{monsteraction}[Generate Text]
-        \lipsum[1]
-      \end{monsteraction}
-    \end{monster}
-    \lipsum
+
+\subsection{Fun with boxes}
+\begin{commentbox}{Neat Green Box!}
+	\lipsum[1]
+\end{commentbox}
+
+\begin{dndtable}
+   	\textbf{Table head}  & \textbf{Table head} \\
+   	Some value  & Some value \\
+   	Some value  & Some value \\
+   	Some value  & Some value
+\end{dndtable}
+
+
+
+\begin{monsterbox}{Monster Foo}
+	\textit{Small metasyntatic variable (golbinoid), neutral evil}\\
+	\hline
+	\basics[%
+	armorclass = 12,
+	hitpoints  = 16 (3d8 + 3),
+	speed      = 50 ft
+	]
+	\hline
+	\stats[
+	STR = 12 (+1),
+	DEX = 14 (+2)
+	]
+	\hline
+	\details[%
+	% If you want to use commas in these sections, enclose the
+	% description in braces.
+	% I'm so sorry.
+	languages = {Common Lisp, Erlang},
+	]
+	\hline \\[1mm]
+	\begin{monsteraction}[Monster-super-powers]
+		This Monster has some serious superpowers!
+	\end{monsteraction}
+	\monstersection{Actions}
+	\begin{monsteraction}[Generate Text]
+		\lipsum[1]
+	\end{monsteraction}
+\end{monsterbox}
+
+\begin{quotebox}
+	\lipsum[1]
+\end{quotebox}
+
+\newpage
+\subsection{Alternative Monsterbox with an even longer title}
+\begin{monster}{Monster Foo}{Small metasyntatic variable (golbinoid), neutral evil}
+	\basics[%
+	armorclass = 12,
+	hitpoints  = 16 (3d8 + 3),
+	speed      = 50 ft
+	]
+	\hline
+	\stats[
+	STR = 12 (+1),
+	DEX = 14 (+2)
+	]
+	\hline
+	\details[%
+	% If you want to use commas in these sections, enclose the
+	% description in braces.
+	% I'm so sorry.
+	languages = {Common Lisp, Erlang},
+	]
+	\hline
+	\monstersection{Actions}
+	\begin{monsteraction}[Generate Text]
+		\lipsum[1]
+	\end{monsteraction}
+\end{monster}
+\lipsum
+    
 % End document
 \end{multicols}
 \end{document}
