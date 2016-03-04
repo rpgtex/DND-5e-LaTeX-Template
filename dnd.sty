@@ -38,16 +38,18 @@
 \newenvironment{lmss}{\fontfamily{lmss}\selectfont}{}
 
 \setlength{\columnsep}{1cm}
+
 % Define colors, sampled from the books.
 \usepackage{color}
-\definecolor{bgtan}{rgb}{0.97, 0.95, 0.9}
-\definecolor{titlered}{rgb}{0.38, 0.14, 0.09}
-\definecolor{undergold}{rgb}{0.81, 0.75, 0.53}
-\definecolor{uppergold}{HTML}{b89a67}
-\definecolor{puregold}{HTML}{e69a28}
-\definecolor{monstertan}{HTML}{FDF1DC}
-\definecolor{monsterbg}{rgb}{0.94, 0.86, 0.71}
-\definecolor{commentgreen}{rgb}{0.88, 0.90, 0.75}
+\definecolor{bgtan}{HTML}{F7F2E5}		% e.g. used for background and quotebox
+\definecolor{titlered}{HTML}{58180D}	% e.g. used for titles
+\definecolor{undergold}{HTML}{C9AD6A}	% e.g. used for titlerules
+\definecolor{uppergold}{HTML}{B89A67}	%e.g. used for pagenumbers and footer
+\definecolor{puregold}{HTML}{E69A28}	%e.g. used for top line in newer monsterbox
+\definecolor{monstertan}{HTML}{FDF1DC}	%e.g. used for newer monsterblock
+\definecolor{monstertandark}{HTML}{F0DBB5}	%e.g. used for older monsterbox
+\definecolor{commentgreen}{HTML}{E0E5C1} % e.g. used in table and green commentbox
+\definecolor{rulered}{HTML}{9C2B1B}		%e.g. used for triangular rule in statsblock
 
 
 \pagecolor{bgtan}
@@ -82,7 +84,7 @@
 \renewcommand{\hline}{
 \noindent
   \begin{tikzpicture}[]
-    \draw [titlered, fill=titlered] (0, 0) --(0,0.1) -- (\textwidth, 0.08);
+    \draw [rulered, fill=rulered] (0, 0) --(0,0.1) -- (\textwidth, 0.08);
   \end{tikzpicture}
 }
 
