@@ -1,8 +1,7 @@
 % DND 5e LaTeX Style File
 % Created by Evan Bergeron
-% Modified by Christopher Liu
+% Modified by Christopher Liu December 2015
 % Modified by Yannic Meyer Feb 2015
-% December 2015
 
 %
 % Prerequisite Packages
@@ -31,13 +30,17 @@
 \usepackage{dndbackgroundimg}
 \usepackage{dndquote}
 
+
 %
 % Style Parameters
 %
+
 % Font environment
 \newenvironment{lmss}{\fontfamily{lmss}\selectfont}{}
 
+%columns setup
 \setlength{\columnsep}{1cm}
+\raggedcolumns
 
 % Define colors, sampled from the books.
 \usepackage{color}
@@ -51,7 +54,7 @@
 \definecolor{commentgreen}{HTML}{E0E5C1} % e.g. used in table and green commentbox
 \definecolor{rulered}{HTML}{9C2B1B}		%e.g. used for triangular rule in statsblock
 
-
+%background fill
 \pagecolor{bgtan}
 
 % Setup for custom footer
