@@ -1,0 +1,14 @@
+% Setup for Background-images
+\backgroundsetup{
+scale=1,
+opacity=1.0,
+angle=0,
+color=black,
+contents={%
+ \ifodd\value{page}
+   \includegraphics[width=\paperwidth]{bg-odd.jpg}
+  \else
+   \includegraphics[width=\paperwidth]{bg-even.jpg}
+  \fi
+}
+}
