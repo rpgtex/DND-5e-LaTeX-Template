@@ -3,8 +3,6 @@
 \usepackage[ngerman]{babel} %Trennungsregeln und autom. Überschriften in n. dt. RS
 \usepackage[utf8]{inputenc}
 
-
-
 % Start document
 \begin{document}
 \begin{multicols}{2}
@@ -18,9 +16,17 @@
 
 \subsection{Fun with boxes}
 \subsubsection{Even more fun!}
+
 \begin{commentbox}{Neat Green Box!}
 	\lipsum[1]
 \end{commentbox}
+
+
+\lipsum[1]
+
+\begin{quotebox}
+	\lipsum[1]
+\end{quotebox}
 
 \begin{dndtable}
    	\textbf{Table head}  & \textbf{Table head} \\
@@ -29,8 +35,14 @@
    	Some value  & Some value
 \end{dndtable}
 
+\begin{paperbox}
+	\lipsum[1]
+\end{paperbox}
 
-
+\newpage
+\section{Monster-Boxes}
+\subsection{Monsterbox}
+This is some text I like that text that text is love, that text is life!
 \begin{monsterbox}{Monster Foo}
 	\textit{Small metasyntatic variable (golbinoid), neutral evil}\\
 	\hline
@@ -60,13 +72,11 @@
 		\lipsum[1]
 	\end{monsteraction}
 \end{monsterbox}
+This is some text I like that text that text is love
+\columnbreak
 
-\begin{quotebox}
-	\lipsum[1]
-\end{quotebox}
-
-\newpage
 \subsection{Alternative Monsterbox}
+This is some text I like that text that text is love
 \begin{monster}{Monster Foo}{Small metasyntatic variable (golbinoid), neutral evil}
 	\basics[%
 	armorclass = 12,
@@ -91,7 +101,7 @@
 		\lipsum[1]
 	\end{monsteraction}
 \end{monster}
-\lipsum
+This is some text I like that text that text is love, that text is life!
     
 % End document
 \end{multicols}

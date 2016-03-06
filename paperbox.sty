@@ -1,0 +1,21 @@
+\newtcolorbox{paperbox}[1][]{
+	enhanced jigsaw,
+	frame hidden,
+	boxrule=0pt,
+	breakable,
+	enhanced,
+	before skip=13pt plus2pt,
+	after skip=13pt plus2pt,
+	boxsep=0.25ex,
+	arc=0mm,
+	borderline north={1pt}{-0.5pt}{black},
+	borderline south={1pt}{-0.5pt}{black},
+	colback=monstertandark,
+	colframe=monstertandark,
+	fuzzy shadow={0mm}{-4pt}{0pt}{0.3mm}{black!50!white},
+	overlay={
+		\foreach \n in {north east,north west,south east,south west}
+		{\fill [fill=black] (0,0) -- (6pt,0) -- (6pt,-4pt) -- (0,0);}; 
+		}
+	#1
+}
