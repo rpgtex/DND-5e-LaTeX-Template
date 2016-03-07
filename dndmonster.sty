@@ -21,6 +21,7 @@
 	colbacktitle=monstertan,
 	colframe=titlered,
 	fonttitle=\scshape\bfseries\color{titlered}\Large,
+	fontupper=\fontfamily{lmss}\selectfont,
 	title=#2,
 	#1
 }
@@ -77,11 +78,14 @@
                         WIS=10 (+0),
                         CHA=10 (+0)]{
     {\footnotesize
-    \begin{tabularx}{\linewidth}{cccccc}
-		\rule{0pt}{3.7mm} %adds space between hline and table
-        \textbf{STR} & \textbf{DEX} & \textbf{CON} & \textbf{INT} & \textbf{WIS} & \textbf{CHA}\\
-		\commandkey{STR} & \commandkey{DEX} & \commandkey{CON} & \commandkey{INT} & \commandkey{WIS} & \commandkey{CHA}
-	\end{tabularx}
+	\hspace*{-3.5pt}
+	\resizebox{0.97\linewidth}{\height}{
+		\begin{tabularx}{\linewidth}{cccccc}
+			\rule{0pt}{3.7mm} %adds space between hline and table
+			\textbf{STR} & \textbf{DEX} & \textbf{CON} & \textbf{INT} & \textbf{WIS} & \textbf{CHA}\\
+			\commandkey{STR} & \commandkey{DEX} & \commandkey{CON} & \commandkey{INT} & \commandkey{WIS} & \commandkey{CHA}
+		\end{tabularx}
+	}
 	\\[0.4em] %adds space after table
     }
 }

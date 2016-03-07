@@ -16,7 +16,7 @@ Just clone the repo. From terminal:
 ```sh
 $ git clone https://github.com/anoderay/DND-5e-LaTeX-Template.git 5e-template
 $ cd 5e-template
-$ pdflatex main.tex
+$ pdflatex example.tex
 ```
 
 ### Todo's
@@ -24,6 +24,7 @@ $ pdflatex main.tex
  - Consider implementing more complex tables for monsters, etc.
 
 ### Image Credit
+
  - Credit for the background Image goes to http://lostandtaken.com/
  
 ### Version
