@@ -1,6 +1,6 @@
 # D&D 5e LaTeX Template
 
-This is a prelimary attempt at a D&D 5e LaTeX template. The color scheme is close to the original source books, as are the fonts. The fonts chosen are included by default in TeX Live.
+This is an attempt at a D&D 5e LaTeX template. The color scheme is close to the original source books, as are the fonts. The fonts chosen are included by default in TeX Live.
 
 An example of a table with alternating row colors is given. It's a bit gross, however, and a lot could be done to clean that up.
 
@@ -23,5 +23,8 @@ $ pdflatex main.tex
 
  - Consider implementing more complex tables for monsters, etc.
 
+### Image Credit
+ - Credit for the background Image goes to http://lostandtaken.com/
+ 
 ### Version
-0.1
+0.2
