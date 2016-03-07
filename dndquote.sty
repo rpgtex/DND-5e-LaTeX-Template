@@ -4,11 +4,14 @@
 	before skip=13pt plus2pt,
 	after skip=13pt plus2pt,
 	boxsep=0.25ex,
+	left=8pt,
+	right=8pt,
+	colback=bgtan,
+	colframe=bgtan,
 	arc=0mm,
 	borderline west={1pt}{-0.5pt}{titlered},
 	borderline east={1pt}{-0.5pt}{titlered},
-	colback=bgtan,
-	colframe=bgtan,
+	fontupper = \fontfamily{lmss}\selectfont,
 	overlay={
 		\foreach \n in {north east,north west,south east,south west}
 		{\draw [titlered, fill=titlered] (frame.\n) circle (2pt); }; }

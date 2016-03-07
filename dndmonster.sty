@@ -4,12 +4,14 @@
 \newtcolorbox{monsterbox}[2][]{
 	enhanced,
 	frame hidden,
-	before skip=9pt plus2pt,
-	after skip=9pt plus2pt,
+	before skip=7pt plus2pt,
+	after skip=8pt plus3pt,
 	boxrule=0pt,
 	breakable,
 	boxsep=0.25ex,
 	toptitle=3mm,
+	left=2.5mm,
+	right=2.15mm,
 	arc=0mm,
 	borderline north={4pt}{0pt}{titlered},
 	borderline north={2.5pt}{0.75pt}{puregold},
@@ -19,8 +21,6 @@
 	colbacktitle=monstertan,
 	colframe=titlered,
 	fonttitle=\scshape\bfseries\color{titlered}\Large,
-	left=2.5mm,
-	right=2.15mm,
 	title=#2,
 	#1
 }
@@ -45,13 +45,19 @@
 {\end{mdframed}}
 
 
-% Define Monster subsection header style%%%%%%%%%%%%%%%%%%%%
-\newcommand{\monstersection}[1]{\subsubsection*{#1}}
-\titlespacing*{\subsubsection}{0pt}{*0.5}{5pt}
-\titleformat{\subsubsection}
-{\color{titlered}\normalfont\scshape\Large}{\thesubsection}{1em}{}[{\color{titlered}\titlerule[0.5pt]\color{black}}]
+% Define Monster subsection header style
+%\newcommand{\monstersection}[1]{\subsubsection*{#1}}
+\newcommand{\monstersection}[1]{
+	{\par 
+	\color{titlered}\normalfont\scshape\Large #1 \vspace{3pt}
+	\titleline{\color{titlered}\titlerule[0.6pt]} 
+	\par\medskip}
+	}
+%\titlespacing*{\subsubsection}{0pt}{*0.5}{5pt}
+%\titleformat{\subsubsection}
+%{\color{titlered}\normalfont\scshape\Large}{\thesubsection}{1em}{}[{\color{titlered}\titlerule[0.5pt]\color{black}}]
 
-\newenvironment{monsteraction}[1][\unskip]{\emph{\textbf{#1.}}}{}
+\newenvironment{monsteraction}[1][\unskip]{\emph{\textbf{#1.}}}{\vspace{0.5em}}
 
 %
 % Macros for use within the monster environment

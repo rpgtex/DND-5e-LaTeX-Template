@@ -22,10 +22,8 @@
 \end{commentbox}
 
 
-\lipsum[1]
-
 \begin{quotebox}
-	\lipsum[1]
+	As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words. 
 \end{quotebox}
 
 \begin{dndtable}
@@ -35,14 +33,10 @@
    	Some value  & Some value
 \end{dndtable}
 
-\begin{paperbox}
+\begin{paperbox}{Do the Players need direction?}
 	\lipsum[1]
 \end{paperbox}
 
-\newpage
-\section{Monster-Boxes}
-\subsection{Monsterbox}
-This is some text I like that text that text is love, that text is life!
 \begin{monsterbox}{Monster Foo}
 	\textit{Small metasyntatic variable (golbinoid), neutral evil}\\
 	\hline
@@ -68,40 +62,14 @@ This is some text I like that text that text is love, that text is life!
 		This Monster has some serious superpowers!
 	\end{monsteraction}
 	\monstersection{Actions}
-	\begin{monsteraction}[Generate Text]
-		\lipsum[1]
+	\begin{monsteraction}[Generate text]
+		This one can generate tremendous amounts of text! Though only when it wants to.
+	\end{monsteraction}
+	
+	\begin{monsteraction}[Use alternative Monsterbox]
+		To use an alternative Monsterbox the Players can call "`monster"' instead of "`monsterbox"'.
 	\end{monsteraction}
 \end{monsterbox}
-This is some text I like that text that text is love
-\columnbreak
-
-\subsection{Alternative Monsterbox}
-This is some text I like that text that text is love
-\begin{monster}{Monster Foo}{Small metasyntatic variable (golbinoid), neutral evil}
-	\basics[%
-	armorclass = 12,
-	hitpoints  = 16 (3d8 + 3),
-	speed      = 50 ft
-	]
-	\hline
-	\stats[
-	STR = 12 (+1),
-	DEX = 14 (+2)
-	]
-	\hline
-	\details[%
-	% If you want to use commas in these sections, enclose the
-	% description in braces.
-	% I'm so sorry.
-	languages = {Common Lisp, Erlang},
-	]
-	\hline
-	\monstersection{Actions}
-	\begin{monsteraction}[Generate Text]
-		\lipsum[1]
-	\end{monsteraction}
-\end{monster}
-This is some text I like that text that text is love, that text is life!
     
 % End document
 \end{multicols}
