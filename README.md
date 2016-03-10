@@ -2,7 +2,7 @@
 
 This is an attempt at a D&D 5e LaTeX template. The color scheme is close to the original source books, as are the fonts. The fonts chosen are included by default in TeX Live.
 
-An example of a table with alternating row colors is given. It's a bit gross, however, and a lot could be done to clean that up.
+For a more printer-friendly version simply comment "\usepackage{dndbackgroundimg}" in dnd.sty. 
 
 The template compiles with pdflatex.
 
@@ -22,6 +22,7 @@ $ pdflatex example.tex
 ### Todo's
 
  - Consider implementing more complex tables for monsters, etc.
+ - Clean up the table-preset
 
 ### Image Credit
 

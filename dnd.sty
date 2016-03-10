@@ -3,36 +3,59 @@
 % Modified by Christopher Liu December 2015
 % Modified by Yannic Meyer Feb 2015
 
+\ProvidesPackage{dnd}[2016/03/10]
+
 %
 % Prerequisite Packages
 %
-\usepackage{titlesec}       % Used to adjust (sub)section colors and fonts
-\usepackage{lipsum}         % Filler text
-\usepackage{multicol}       % Two cols
-\usepackage[cm]{fullpage}   % Small margins
-\usepackage{bookman}        % Closest built-in font I could find
-\usepackage[T1]{fontenc}
-\usepackage{mdframed}       % Used for green boxes
-\usepackage[table]{xcolor}
-\usepackage{array}
-\usepackage{tabularx}
-\usepackage{tikz}
-\usepackage{keycommand}
-\usepackage[pages=all]{background} %background images with different backgrounds for even and odd pages
-\usepackage{fancyhdr} %adaptation of the footers
-\usepackage[most]{tcolorbox} %used for some boxes
+\RequirePackage{titlesec}       % Used to adjust (sub)section colors and fonts
+\RequirePackage{lipsum}         % Filler text
+\RequirePackage{multicol}       % Two cols
+\RequirePackage[cm]{fullpage}   % Small margins
+\RequirePackage{bookman}        % Closest built-in font I could find
+\RequirePackage[T1]{fontenc}
+\RequirePackage[table]{xcolor}
+\RequirePackage{array}
+\RequirePackage{tabularx}
+\RequirePackage{tikz}
+\RequirePackage{keycommand}
+\RequirePackage{fancyhdr} 			%adaptation of the footers
+\RequirePackage[most]{tcolorbox}	%used for some boxes
 
-% Modularization is a good thing.
+% Load other modules of this package
 \usepackage{dndmonster}
 \usepackage{dndsections}
 \usepackage{dndcomment}
 \usepackage{dndtable}
-\usepackage{dndbackgroundimg}
 \usepackage{dndquote}
 \usepackage{dndpaperbox}
+	
 
+%
+% Options
+%
 
+% 'bg-letter-img' and 'bg-letter-print' option
+\newif\if@bgimgletter
+\DeclareOption{bg-letter-img}{\@bgimglettertrue}
+\DeclareOption{bg-letter-print}{\@bgimgletterfalse}
 
+% 'bg-a4-img' and 'bg-a4-print'
+	%coming soon!
+
+%Default Settings
+\ExecuteOptions{bg-letter-img}
+
+\ProcessOptions\relax
+
+%execution of conditionals
+\if@bgimgletter
+	\RequirePackage[letter-img]{dndbackgroundimg}
+\else
+	\RequirePackage[letter-print]{dndbackgroundimg}
+\fi
+	
+	
 %
 % Style Parameters
 %
@@ -55,9 +78,6 @@
 \definecolor{monstertandark}{HTML}{F0DBB5}	%e.g. used for older monsterbox
 \definecolor{commentgreen}{HTML}{E0E5C1} % e.g. used in table and green commentbox
 \definecolor{rulered}{HTML}{9C2B1B}		%e.g. used for triangular rule in statsblock
-
-%background fill
-\pagecolor{bgtan}
 
 % Setup for custom footer
 \pagestyle{fancy}

@@ -1,14 +1,40 @@
-% Setup for Background-images
-\backgroundsetup{
-scale=1,
-opacity=1.0,
-angle=0,
-color=black,
-contents={%
- \ifodd\value{page}
-   \includegraphics[width=\paperwidth]{bg-odd.jpg}
-  \else
-   \includegraphics[width=\paperwidth]{bg-even.jpg}
-  \fi
-}
-}
+\ProvidesPackage{dndbackgroundimg}[2016/03/10]
+\usepackage[pages=all]{background} %background images with different backgrounds for even and odd pages
+
+% 'letter-img' option
+\DeclareOption{letter-img}{
+	\backgroundsetup{
+		scale=1,
+		opacity=1.0,
+		angle=0,
+		color=black,
+		contents={%
+			\ifodd\value{page}
+				\includegraphics[width=\paperwidth]{bg-odd.jpg}
+				\else
+				\includegraphics[width=\paperwidth]{bg-even.jpg}
+			\fi
+			}
+		}
+	}
+	
+% 'letter-print' option
+\DeclareOption{letter-print}{
+	\backgroundsetup{
+		scale=1,
+		opacity=1.0,
+		angle=0,
+		color=black,
+		contents={%
+			\ifodd\value{page}
+				\includegraphics[width=\paperwidth]{bg-odd-print.jpg}
+				\else
+				\includegraphics[width=\paperwidth]{bg-even-print.jpg}
+			\fi
+			}
+		}
+	}
+	
+\ExecuteOptions{letter-img}
+
+\ProcessOptions\relax
