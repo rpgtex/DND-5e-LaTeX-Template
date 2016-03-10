@@ -2,7 +2,7 @@
 
 This is an attempt at a D&D 5e LaTeX template. The color scheme is close to the original source books, as are the fonts. The fonts chosen are included by default in TeX Live.
 
-For a more printer-friendly version simply comment "\usepackage{dndbackgroundimg}" in dnd.sty. 
+For a more printer-friendly version load the dnd package with the option bg-letter-print. 
 
 The template compiles with pdflatex.
 
