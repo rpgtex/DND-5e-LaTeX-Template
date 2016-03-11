@@ -1,11 +1,10 @@
-\documentclass[10pt,twoside]{article}
+\documentclass[10pt,twoside,twocolumn]{article}
 \usepackage[bg-letter-img]{dnd}
 \usepackage[ngerman]{babel} %Trennungsregeln und autom. Überschriften in n. dt. RS
 \usepackage[utf8]{inputenc}
 
 % Start document
 \begin{document}
-\begin{multicols}{2}
 \fontfamily{ppl}\selectfont % Set text font
 
 % Your content goes here%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -38,6 +37,8 @@
    	Some value  & Some value \\
    	Some value  & Some value
 \end{dndtable}
+
+\newpage %acts as columbreak because of twocolumn option; for pagebreak use \clearpage
 
 \begin{paperbox}{Do the Players need direction?}
 	\lipsum[1]
@@ -81,5 +82,4 @@
     \lipsum
     \lipsum
 % End document
-\end{multicols}
 \end{document}
