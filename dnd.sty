@@ -35,9 +35,9 @@
 %
 
 % 'bg-letter-img' and 'bg-letter-print' option
-\newif\if@bgimgletter
-\DeclareOption{bg-letter-img}{\@bgimglettertrue}
-\DeclareOption{bg-letter-print}{\@bgimgletterfalse}
+\newtoggle{bgimgletter}
+\DeclareOption{bg-letter-img}{\toggletrue{bgimgletter}}
+\DeclareOption{bg-letter-print}{\togglefalse{bgimgletter}}
 
 % 'bg-a4-img' and 'bg-a4-print'
 	%coming soon!
@@ -48,11 +48,12 @@
 \ProcessOptions\relax
 
 %execution of conditionals
-\if@bgimgletter
+\iftoggle{bgimgletter}{%
 	\RequirePackage[letter-img]{dndbackgroundimg}
-\else
+	}{%
 	\RequirePackage[letter-print]{dndbackgroundimg}
-\fi
+	}
+
 	
 	
 %
