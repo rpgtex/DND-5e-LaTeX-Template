@@ -3,7 +3,7 @@
 % Modified by Christopher Liu December 2015
 % Modified by Yannic Meyer Feb 2015
 
-\ProvidesPackage{dnd}[2016/03/10]
+\ProvidesPackage{dnd}[2016/03/11]
 
 %
 % Prerequisite Packages
@@ -35,27 +35,32 @@
 %
 
 % 'bg-letter-img' and 'bg-letter-print' option
-\newtoggle{bgimgletter}
-\DeclareOption{bg-letter-img}{\toggletrue{bgimgletter}}
-\DeclareOption{bg-letter-print}{\togglefalse{bgimgletter}}
-
-% 'bg-a4-img' and 'bg-a4-print'
-	%coming soon!
+\newtoggle{bool-bg-a4}
+\newtoggle{bool-bg-print}
+\DeclareOption{bg-a4}{\toggletrue{bool-bg-a4}}
+\DeclareOption{bg-letter}{\togglefalse{bool-bg-a4}}
+\DeclareOption{bg-print}{\toggletrue{bool-bg-print}}
+\DeclareOption{bg-full}{\togglefalse{bool-bg-print}}
 
 %Default Settings
-\ExecuteOptions{bg-letter-img}
-
+\ExecuteOptions{bg-letter, bg-full}
 \ProcessOptions\relax
 
 %execution of conditionals
-\iftoggle{bgimgletter}{%
-	\RequirePackage[letter-img]{dndbackgroundimg}
+\iftoggle{bool-bg-a4}{%		%Check wether A4 option is selected
+	\iftoggle{bool-bg-print}{%	%Check wether print option is selected
+		\RequirePackage[a4,print]{dndbackgroundimg}
+		}{%
+		\RequirePackage[a4,full]{dndbackgroundimg}
+		}
 	}{%
-	\RequirePackage[letter-print]{dndbackgroundimg}
+	\iftoggle{bool-bg-print}{%	%Check wether print option is selected
+		\RequirePackage[letter,print]{dndbackgroundimg}
+		}{%
+		\RequirePackage[letter,full]{dndbackgroundimg}
+		}
 	}
 
-	
-	
 %
 % Style Parameters
 %
