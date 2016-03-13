@@ -29,8 +29,6 @@ Per default "bg-letter" and "bg-full" are loaded.
 
  - Consider implementing more complex tables for monsters, etc.
  - Clean up the table-preset
- - Add indentation within the boxes
- - Remove indentation after the boxes + fix space before and after the boxes
  - Reduce space after subsubsection
 
 ### Image Credit
