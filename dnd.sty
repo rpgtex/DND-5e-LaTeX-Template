@@ -3,34 +3,64 @@
 % Modified by Christopher Liu December 2015
 % Modified by Yannic Meyer Feb 2015
 
+\ProvidesPackage{dnd}[2016/03/13]
+
 %
 % Prerequisite Packages
 %
-\usepackage{titlesec}       % Used to adjust (sub)section colors and fonts
-\usepackage{lipsum}         % Filler text
-\usepackage[cm]{fullpage}   % Small margins
-\usepackage{bookman}        % Closest built-in font I could find
-\usepackage[T1]{fontenc}
-\usepackage{mdframed}       % Used for green boxes
-\usepackage[table]{xcolor}
-\usepackage{array}
-\usepackage{tabularx}
-\usepackage{tikz}
-\usepackage{keycommand}
-\usepackage[pages=all]{background} %background images with different backgrounds for even and odd pages
-\usepackage{fancyhdr} %adaptation of the footers
-\usepackage[most]{tcolorbox} %used for some boxes
 
-% Modularization is a good thing.
+\RequirePackage{titlesec}       % Used to adjust (sub)section colors and fonts
+\RequirePackage{lipsum}         % Filler text
+\RequirePackage[cm]{fullpage}   % Small margins
+\RequirePackage{bookman}        % Closest built-in font I could find
+\RequirePackage[T1]{fontenc}
+\RequirePackage[table]{xcolor}
+\RequirePackage{array}
+\RequirePackage{tabularx}
+\RequirePackage{tikz}
+\RequirePackage{keycommand}
+\RequirePackage{fancyhdr} 			%adaptation of the footers
+\RequirePackage[most]{tcolorbox}	%used for some boxes
+
+% Load other modules of this package
 \usepackage{dndmonster}
 \usepackage{dndsections}
 \usepackage{dndcomment}
 \usepackage{dndtable}
-\usepackage{dndbackgroundimg}
 \usepackage{dndquote}
 \usepackage{dndpaperbox}
+	
 
+%
+% Options
+%
 
+% 'bg-letter-img' and 'bg-letter-print' option
+\newtoggle{bool-bg-a4}
+\newtoggle{bool-bg-print}
+\DeclareOption{bg-a4}{\toggletrue{bool-bg-a4}}
+\DeclareOption{bg-letter}{\togglefalse{bool-bg-a4}}
+\DeclareOption{bg-print}{\toggletrue{bool-bg-print}}
+\DeclareOption{bg-full}{\togglefalse{bool-bg-print}}
+
+%Default Settings
+\ExecuteOptions{bg-letter, bg-full}
+\ProcessOptions\relax
+
+%execution of conditionals
+\iftoggle{bool-bg-a4}{%		%Check wether A4 option is selected
+	\iftoggle{bool-bg-print}{%	%Check wether print option is selected
+		\RequirePackage[a4,print]{dndbackgroundimg}
+		}{%
+		\RequirePackage[a4,full]{dndbackgroundimg}
+		}
+	}{%
+	\iftoggle{bool-bg-print}{%	%Check wether print option is selected
+		\RequirePackage[letter,print]{dndbackgroundimg}
+		}{%
+		\RequirePackage[letter,full]{dndbackgroundimg}
+		}
+	}
 
 %
 % Style Parameters
@@ -53,9 +83,6 @@
 \definecolor{monstertandark}{HTML}{F0DBB5}	%e.g. used for older monsterbox
 \definecolor{commentgreen}{HTML}{E0E5C1} % e.g. used in table and green commentbox
 \definecolor{rulered}{HTML}{9C2B1B}		%e.g. used for triangular rule in statsblock
-
-%background fill
-\pagecolor{bgtan}
 
 % Setup for custom footer
 \pagestyle{fancy}

@@ -1,5 +1,5 @@
 \documentclass[10pt,twoside,twocolumn]{article}
-\usepackage{dnd}
+\usepackage{dnd}	%options: bg-a4, bg-letter, bg-full, bg-print; default are bg-letter and bg-full
 \usepackage[ngerman]{babel} %Trennungsregeln und autom. Überschriften in n. dt. RS
 \usepackage[utf8]{inputenc}
 
@@ -7,8 +7,7 @@
 \begin{document}
 \fontfamily{ppl}\selectfont % Set text font
 
-% Your content goes here%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% Your content goes here
 
 \section{Main Section}
 \lipsum[1]
@@ -24,12 +23,15 @@
 	As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words. 
 \end{quotebox}
 
+\newpage %acts as columbreak because of twocolumn option; for pagebreak use \clearpage
+
 \begin{dndtable}
    	\textbf{Table head}  & \textbf{Table head} \\
    	Some value  & Some value \\
    	Some value  & Some value \\
    	Some value  & Some value
 \end{dndtable}
+
 
 \begin{paperbox}{Do the Players need direction?}
 	\lipsum[1]
@@ -68,6 +70,6 @@
 		To use an alternative Monsterbox the Players can call "`monster"' instead of "`monsterbox"'.
 	\end{monsteraction}
 \end{monsterbox}
-    
+
 % End document
 \end{document}
