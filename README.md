@@ -23,7 +23,7 @@ $ pdflatex example.tex
 - bg-print: Loads a printer-friendly background-image (only decal at the bottom)
 - bg-full: Loads the full background-image 
 
-As per default "bg-letter" and "bg-full" are loaded.
+Per default "bg-letter" and "bg-full" are loaded.
 
 ### Todo's
 
