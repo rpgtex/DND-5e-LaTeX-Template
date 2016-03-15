@@ -29,7 +29,8 @@ Per default "bg-letter" and "bg-full" are loaded.
 
  - Consider implementing more complex tables for monsters, etc.
  - Clean up the table-preset
- - Reduce space after subsubsection
+ - Create more elegant solution for spacing before and after boxes (using \vspace is rather rigid when two boxes follow in a row)
+ - Add subtitle option for boxes
 
 ### Image Credit
 
