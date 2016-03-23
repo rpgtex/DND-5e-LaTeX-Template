@@ -31,10 +31,12 @@ Per default "bg-letter" and "bg-full" are loaded.
  - Clean up the table-preset
  - Create more elegant solution for spacing before and after boxes (using \vspace is rather rigid when two boxes follow in a row)
  - Add subtitle option for boxes
+ - Sort out box-decals when boxes break column or page
 
+ 
 ### Image Credit
 
- - Credit for the background Image goes to http://lostandtaken.com/
+ - Credit for the background image goes to http://lostandtaken.com/
  
 ### Version
 0.2
