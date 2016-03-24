@@ -11,9 +11,10 @@ The template compiles with pdflatex.
 
 ### Installation
 
-Just clone the repo. From terminal:
+Just make sure you have LaTeX installed and clone the repo. From terminal:
 
 ```sh
+$ sudo apt-get install texlive-full
 $ git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git 5e-template
 $ cd 5e-template
 $ pdflatex main.tex
