@@ -1,12 +1,10 @@
 # D&D 5e LaTeX Template
 
-This is a prelimary attempt at a D&D 5e LaTeX template. The color scheme is close to the original source books, as are the fonts. The fonts chosen are included by default in TeX Live.
-
-An example of a table with alternating row colors is given. It's a bit gross, however, and a lot could be done to clean that up.
+This is an attempt at a D&D 5e LaTeX template. The color scheme is close to the original source books, as are the fonts. The fonts chosen are included by default in TeX Live.
 
 The template compiles with pdflatex.
 
-![Preview](https://github.com/evanbergeron/DND-5e-LaTeX-Template/raw/master/scrot.png)
+![Preview](https://github.com/anoderay/DND-5e-LaTeX-Template/raw/master/scrot.png)
 
 
 ### Installation
@@ -14,14 +12,31 @@ The template compiles with pdflatex.
 Just clone the repo. From terminal:
 
 ```sh
-$ git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git 5e-template
+$ git clone https://github.com/anoderay/DND-5e-LaTeX-Template.git 5e-template
 $ cd 5e-template
-$ pdflatex main.tex
+$ pdflatex example.tex
 ```
+
+### Package Options
+- bg-letter: Loads a letter-sized background-image
+- bg-a4: Loads an A4-sized background-image
+- bg-print: Loads a printer-friendly background-image (only decal at the bottom)
+- bg-full: Loads the full background-image 
+
+Per default "bg-letter" and "bg-full" are loaded.
 
 ### Todo's
 
  - Consider implementing more complex tables for monsters, etc.
+ - Clean up the table-preset
+ - Create more elegant solution for spacing before and after boxes (using \vspace is rather rigid when two boxes follow in a row)
+ - Add subtitle option for boxes
+ - Sort out box-decals when boxes break column or page
 
+ 
+### Image Credit
+
+ - Credit for the background image goes to http://lostandtaken.com/
+ 
 ### Version
-0.1
+0.2

@@ -1,54 +1,120 @@
 % DND 5e LaTeX Style File
 % Created by Evan Bergeron
-% Modified by Christopher Liu
-% December 2015
+% Modified by Christopher Liu December 2015
+% Modified by Yannic Meyer Feb 2015
+
+\ProvidesPackage{dnd}[2016/03/13]
 
 %
 % Prerequisite Packages
 %
-\usepackage{titlesec}       % Used to adjust (sub)section colors and fonts
-\usepackage{lipsum}         % Filler text
-\usepackage{multicol}       % Two cols
-\usepackage[cm]{fullpage}   % Small margins
-\usepackage{bookman}        % Closest built-in font I could find
-\usepackage[T1]{fontenc}
-\usepackage{mdframed}       % Used for green boxes
-\usepackage[table]{xcolor}
-\usepackage{array}
-\usepackage{tabularx}
-\usepackage{tikz}
-\usepackage{keycommand}
 
+\RequirePackage{titlesec}       % Used to adjust (sub)section colors and fonts
+\RequirePackage{lipsum}         % Filler text
+\RequirePackage[cm]{fullpage}   % Small margins
+\RequirePackage{bookman}        % Closest built-in font I could find
+\RequirePackage[T1]{fontenc}
+\RequirePackage[table]{xcolor}
+\RequirePackage{array}
+\RequirePackage{tabularx}
+\RequirePackage{tikz}
+\RequirePackage{keycommand}
+\RequirePackage{fancyhdr} 			%adaptation of the footers
+\RequirePackage[most]{tcolorbox}	%used for some boxes
 
-% Modularization is a good thing.
+% Load other modules of this package
 \usepackage{dndmonster}
 \usepackage{dndsections}
 \usepackage{dndcomment}
 \usepackage{dndtable}
+\usepackage{dndquote}
+\usepackage{dndpaperbox}
+	
+
+%
+% Options
+%
+
+% 'bg-letter-img' and 'bg-letter-print' option
+\newtoggle{bool-bg-a4}
+\newtoggle{bool-bg-print}
+\DeclareOption{bg-a4}{\toggletrue{bool-bg-a4}}
+\DeclareOption{bg-letter}{\togglefalse{bool-bg-a4}}
+\DeclareOption{bg-print}{\toggletrue{bool-bg-print}}
+\DeclareOption{bg-full}{\togglefalse{bool-bg-print}}
+
+%Default Settings
+\ExecuteOptions{bg-letter, bg-full}
+\ProcessOptions\relax
+
+%execution of conditionals
+\iftoggle{bool-bg-a4}{%		%Check wether A4 option is selected
+	\iftoggle{bool-bg-print}{%	%Check wether print option is selected
+		\RequirePackage[a4,print]{dndbackgroundimg}
+		}{%
+		\RequirePackage[a4,full]{dndbackgroundimg}
+		}
+	}{%
+	\iftoggle{bool-bg-print}{%	%Check wether print option is selected
+		\RequirePackage[letter,print]{dndbackgroundimg}
+		}{%
+		\RequirePackage[letter,full]{dndbackgroundimg}
+		}
+	}
 
 %
 % Style Parameters
 %
+
 % Font environment
 \newenvironment{lmss}{\fontfamily{lmss}\selectfont}{}
 
+%columns setup
 \setlength{\columnsep}{1cm}
+
 % Define colors, sampled from the books.
 \usepackage{color}
-\definecolor{bgtan}{rgb}{0.97, 0.95, 0.9}
-\definecolor{titlered}{rgb}{0.38, 0.14, 0.09}
-\definecolor{undergold}{rgb}{0.81, 0.75, 0.53}
-\definecolor{commentgreen}{rgb}{0.88, 0.90, 0.75}
-\definecolor{monsterbg}{rgb}{0.94, 0.86, 0.71}
-\pagecolor{bgtan}
+\definecolor{bgtan}{HTML}{F7F2E5}		% e.g. used for background and quotebox
+\definecolor{titlered}{HTML}{58180D}	% e.g. used for titles
+\definecolor{undergold}{HTML}{C9AD6A}	% e.g. used for titlerules
+\definecolor{uppergold}{HTML}{B89A67}	%e.g. used for pagenumbers and footer
+\definecolor{puregold}{HTML}{E69A28}	%e.g. used for top line in newer monsterbox
+\definecolor{monstertan}{HTML}{FDF1DC}	%e.g. used for newer monsterblock
+\definecolor{monstertandark}{HTML}{F0DBB5}	%e.g. used for older monsterbox
+\definecolor{commentgreen}{HTML}{E0E5C1} % e.g. used in table and green commentbox
+\definecolor{rulered}{HTML}{9C2B1B}		%e.g. used for triangular rule in statsblock
 
+% Setup for custom footer
+\pagestyle{fancy}
+
+\footskip = 50pt %push the footer down so it fits with the decal from the bg-img
+\fancyhfoffset[LE]{28pt} % push the footer left on even pages so it fits the decal
+\fancyhfoffset[RO]{30pt} % push the footer right on odd pages so it fits the decalbg-img
+\renewcommand{\headrulewidth}{0.0pt} %no rule for header
+\renewcommand{\footrulewidth}{0.0pt} %no rule for footer
+
+\fancyhead{} % clear all header fields
+\fancyfoot{} % clear all footer fields
+
+\fancyfoot[LE]{
+	\textcolor{uppergold}{\thepage}
+	\hspace*{0.8cm}
+	\raisebox{-10pt}{\textcolor{uppergold}{\leftmark}}
+	}
+
+\fancyfoot[RO]{
+	\raisebox{-10pt}{\textcolor{uppergold}{\rightmark}}
+	\hspace*{0.8cm}
+	\textcolor{uppergold}{\thepage}
+	}
+	
 
 
 % Fancy DnD 5e-style hline
 \renewcommand{\hline}{
 \noindent
   \begin{tikzpicture}[]
-    \draw [titlered, fill=titlered] (0, 0) --(0,0.1) -- (\textwidth, 0.08);
+    \draw [rulered, fill=rulered] (0, 0) --(0,0.1) -- (\textwidth, 0.08);
   \end{tikzpicture}
 }
 

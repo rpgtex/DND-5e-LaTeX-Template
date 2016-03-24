@@ -1,10 +1,38 @@
 % Monster environment sty file
 
+%new Monterbox
+\newtcolorbox{monsterbox}[2][]{
+	enhanced,
+	frame hidden,
+	before skip=7pt plus2pt,
+	boxrule=0pt,
+	breakable,
+	boxsep=0.25ex,
+	toptitle=3mm,
+	left=2.5mm,
+	right=2.15mm,
+	arc=0mm,
+	borderline north={4pt}{0pt}{titlered},
+	borderline north={2.5pt}{0.75pt}{puregold},
+	borderline south={4pt}{0pt}{titlered},
+	borderline south={2.5pt}{0.75pt}{puregold},
+	colback=monstertan,
+	colbacktitle=monstertan,
+	colframe=titlered,
+	fonttitle=\scshape\bfseries\color{titlered}\Large,
+	fontupper=\fontfamily{lmss}\selectfont,
+	title=#2,
+	after={\vspace{7pt plus 1pt}\noindent},
+	#1
+}
+
+
+%Alternative monsterbox
 \newenvironment{monster}[2]
 {\begin{mdframed}[frametitle={#1},
   frametitlefont=\scshape\bfseries\color{titlered}\Large,
   linecolor=titlered,
-  backgroundcolor=monsterbg,
+  backgroundcolor=monstertandark,
   topline=true,
   bottomline=true,
   leftline=false,
@@ -17,24 +45,32 @@
 }
 {\end{mdframed}}
 
-% Define Monster subsection header style
-\newcommand{\monstersection}[1]{\subsubsection*{#1}}
-\titlespacing*{\subsubsection}{0pt}{*0.5}{5pt}
-\titleformat{\subsubsection}
-{\color{titlered}\normalfont\scshape\Large}{\thesubsection}{1em}{}[{\color{titlered}\titlerule[0.5pt]\color{black}}]
 
-\newenvironment{monsteraction}[1][\unskip]{\emph{\textbf{#1.}}}{}
+% Define Monster subsection header style
+%\newcommand{\monstersection}[1]{\subsubsection*{#1}}
+\newcommand{\monstersection}[1]{
+	{\par 
+	\color{titlered}\normalfont\scshape\Large #1 \vspace{3pt}
+	\titleline{\color{titlered}\titlerule[0.6pt]} 
+	\par\medskip}
+	}
+%\titlespacing*{\subsubsection}{0pt}{*0.5}{5pt}
+%\titleformat{\subsubsection}
+%{\color{titlered}\normalfont\scshape\Large}{\thesubsection}{1em}{}[{\color{titlered}\titlerule[0.5pt]\color{black}}]
+
+\newenvironment{monsteraction}[1][\unskip]{\emph{\textbf{#1.}}}{\vspace{0.5em}}
 
 %
 % Macros for use within the monster environment
 %
 \newkeycommand\basics[armorclass=0, hitpoints=0, speed=0]{%
-  \textbf{Armor Class} \commandkey{armorclass}\\
-  \textbf{Hit Points} \commandkey{hitpoints}\\
-  \textbf{Speed} \commandkey{speed}\\
+	\color{titlered}
+	\textbf{Armor Class} \commandkey{armorclass}\\
+	\textbf{Hit Points} \commandkey{hitpoints}\\
+	\textbf{Speed} \commandkey{speed}\\
 }
 
-% TODO: Fix spacing between the hlines
+% Taubular enviornment for stats-block
 \newkeycommand\stats[STR=10 (+0),
                         DEX=10 (+0),
                         CON=10 (+0),
@@ -42,10 +78,15 @@
                         WIS=10 (+0),
                         CHA=10 (+0)]{
     {\footnotesize
-    \begin{tabularx}{\linewidth}{cccccc}
-        \textbf{STR} & \textbf{DEX} & \textbf{CON} & \textbf{INT} & \textbf{WIS} & \textbf{CHA}\\
-        \commandkey{STR} & \commandkey{DEX} & \commandkey{CON} & \commandkey{INT} & \commandkey{WIS} & \commandkey{CHA}
-    \end{tabularx}
+	\hspace*{-3.5pt}
+	\resizebox{0.97\linewidth}{\height}{
+		\begin{tabularx}{\linewidth}{cccccc}
+			\rule{0pt}{3.7mm} %adds space between hline and table
+			\textbf{STR} & \textbf{DEX} & \textbf{CON} & \textbf{INT} & \textbf{WIS} & \textbf{CHA}\\
+			\commandkey{STR} & \commandkey{DEX} & \commandkey{CON} & \commandkey{INT} & \commandkey{WIS} & \commandkey{CHA}
+		\end{tabularx}
+	}
+	\\[0.4em] %adds space after table
     }
 }
 
@@ -74,4 +115,5 @@
   {\textbf{Senses} \commandkey{senses}\\}
   {\textbf{Languages} \commandkey{languages}\\}
   {\textbf{Challenge} \commandkey{challenge}\\}
+\color{black}
 }

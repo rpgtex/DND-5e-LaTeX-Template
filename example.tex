@@ -1,48 +1,75 @@
-\documentclass[10pt]{article}
-\usepackage{dnd}
+\documentclass[10pt,twoside,twocolumn]{article}
+\usepackage{dnd}	%options: bg-a4, bg-letter, bg-full, bg-print; default are bg-letter and bg-full
+\usepackage[ngerman]{babel} %Trennungsregeln und autom. Überschriften in n. dt. RS
+\usepackage[utf8]{inputenc}
+
 % Start document
 \begin{document}
-\begin{multicols}{2}
 \fontfamily{ppl}\selectfont % Set text font
+
 % Your content goes here
-\section*{Test Section}
+
+\section{Main Section}
 \lipsum[1]
-\subsection*{Test Subsection}
-    \begin{commentbox}{Neat Green Box!}
-        \lipsum[1]
-    \end{commentbox}
-    \lipsum[3]
-    \begin{dndtable}
-        \textbf{Table head}  & \textbf{Table head} \\
-        Some value  & Some value \\
-        Some value  & Some value \\
-        Some value  & Some value
-    \end{dndtable}
-    \begin{monster}{Monster Foo}{Small metasyntatic variable (golbinoid), neutral evil}
-      \basics[%
-        armorclass = 12,
-        hitpoints  = 16 (3d8 + 3),
-        speed      = 50 ft
-      ]
-      \hline
-      \stats[
-            STR = 12 (+1),
-            DEX = 14 (+2)
-      ]
-      \hline
-      \details[%
-        % If you want to use commas in these sections, enclose the
-        % description in braces.
-        % I'm so sorry.
-        languages = {Common Lisp, Erlang},
-      ]
-      \hline
-      \monstersection{Actions}
-      \begin{monsteraction}[Generate Text]
-        \lipsum[1]
-      \end{monsteraction}
-    \end{monster}
-    \lipsum
+
+\subsection{Fun with boxes}
+\subsubsection{Even more fun!}
+
+\begin{commentbox}{Neat Green Box!}
+	\lipsum[1]
+\end{commentbox}
+
+\begin{quotebox}
+	As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words. 
+\end{quotebox}
+
+\newpage %acts as columbreak because of twocolumn option; for pagebreak use \clearpage
+
+\begin{dndtable}
+   	\textbf{Table head}  & \textbf{Table head} \\
+   	Some value  & Some value \\
+   	Some value  & Some value \\
+   	Some value  & Some value
+\end{dndtable}
+
+
+\begin{paperbox}{Do the Players need direction?}
+	\lipsum[1]
+\end{paperbox}
+
+\begin{monsterbox}{Monster Foo}
+	\textit{Small metasyntatic variable (golbinoid), neutral evil}\\
+	\hline
+	\basics[%
+	armorclass = 12,
+	hitpoints  = 16 (3d8 + 3),
+	speed      = 50 ft
+	]
+	\hline
+	\stats[
+	STR = 12 (+1),
+	DEX = 14 (+2)
+	]
+	\hline
+	\details[%
+	% If you want to use commas in these sections, enclose the
+	% description in braces.
+	% I'm so sorry.
+	languages = {Common Lisp, Erlang},
+	]
+	\hline \\[1mm]
+	\begin{monsteraction}[Monster-super-powers]
+		This Monster has some serious superpowers!
+	\end{monsteraction}
+	\monstersection{Actions}
+	\begin{monsteraction}[Generate text]
+		This one can generate tremendous amounts of text! Though only when it wants to.
+	\end{monsteraction}
+	
+	\begin{monsteraction}[Use alternative Monsterbox]
+		To use an alternative Monsterbox the Players can call "`monster"' instead of "`monsterbox"'.
+	\end{monsteraction}
+\end{monsterbox}
+
 % End document
-\end{multicols}
 \end{document}

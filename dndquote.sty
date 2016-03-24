@@ -1,0 +1,20 @@
+\newtcolorbox{quotebox}[1][]{enhanced jigsaw,frame hidden,boxrule=0pt,
+	breakable,
+	enhanced,
+	before skip=10pt plus 1pt,
+	boxsep=0.25ex,
+	left=8pt,
+	right=8pt,
+	colback=bgtan,
+	colframe=bgtan,
+	arc=0mm,
+	parbox = false,
+	borderline west={1pt}{-0.5pt}{titlered},
+	borderline east={1pt}{-0.5pt}{titlered},
+	fontupper = \fontfamily{lmss}\selectfont,
+	overlay={
+		\foreach \n in {north east,north west,south east,south west}
+		{\draw [titlered, fill=titlered] (frame.\n) circle (2pt); }; },
+	after={\vspace{7.5pt plus 1pt}\noindent},
+	#1
+}

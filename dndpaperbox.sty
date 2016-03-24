@@ -1,0 +1,30 @@
+\newtcolorbox{paperbox}[2][]{
+	frame hidden,
+	boxrule=0pt,
+	breakable,
+	enhanced,
+	before skip=11pt plus 1pt,
+	toptitle=3mm,
+	boxsep=0.25ex,
+	left=8pt,
+	right=8pt,
+	fonttitle=\fontfamily{fosj}\selectfont\scshape\bfseries\color{black},
+	fontupper=\fontfamily{lmss}\selectfont,
+	title=#2,
+	arc=0mm,
+	parbox = false,
+	borderline north={1pt}{-0.5pt}{black},
+	borderline south={1pt}{-0.5pt}{black},
+	colback=monstertandark,
+	colframe=monstertandark,
+	colbacktitle=monstertandark,
+	fuzzy shadow={0mm}{-3.5pt}{-0.5pt}{0.4mm}{black!60!white},
+	overlay={
+		\fill [fill=black] (frame.south west) -- ++(7pt,0) -- ++(0,-5pt) -- cycle;
+		\fill [fill=black] (frame.north west) -- ++(7pt,0) -- ++(0,5pt) -- cycle;
+		\fill [fill=black] (frame.north east) -- ++(-7pt,0) -- ++(0,5pt) -- cycle;
+		\fill [fill=black] (frame.south east) -- ++(-7pt,0) -- ++(0,-5pt) -- cycle;
+		},
+	after={\vspace{10pt plus 1pt}\noindent},
+	#1
+}
