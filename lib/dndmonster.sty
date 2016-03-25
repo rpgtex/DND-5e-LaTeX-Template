@@ -27,31 +27,12 @@
 }
 
 
-%Alternative monsterbox
-\newenvironment{monster}[2]
-{\begin{mdframed}[frametitle={#1},
-  frametitlefont=\scshape\bfseries\color{titlered}\Large,
-  linecolor=titlered,
-  backgroundcolor=monstertandark,
-  topline=true,
-  bottomline=true,
-  leftline=false,
-  rightline=false,
-  linewidth=3.0pt,
-  innertopmargin=0.75pt,
-]
-\textit{#2}\\
-\hline
-}
-{\end{mdframed}}
-
-
 % Define Monster subsection header style
 %\newcommand{\monstersection}[1]{\subsubsection*{#1}}
 \newcommand{\monstersection}[1]{
-	{\par 
+	{\par
 	\color{titlered}\normalfont\scshape\Large #1 \vspace{3pt}
-	\titleline{\color{titlered}\titlerule[0.6pt]} 
+	\titleline{\color{titlered}\titlerule[0.6pt]}
 	\par\medskip}
 	}
 %\titlespacing*{\subsubsection}{0pt}{*0.5}{5pt}
