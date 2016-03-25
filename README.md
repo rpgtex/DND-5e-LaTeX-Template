@@ -38,6 +38,7 @@ Per default "bg-letter" and "bg-full" are loaded.
  - Create more elegant solution for spacing before and after boxes (using \vspace is rather rigid when two boxes follow in a row)
  - Add subtitle option for boxes
  - Sort out box-decals when boxes break column or page
+ - Look into adding the ability to add large images to the document. There are some documents made with InDesign out there that accomplish this quite well.
 
 
 ### Image Credit
