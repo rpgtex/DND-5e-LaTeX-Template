@@ -14,21 +14,21 @@
 
 \iftoggle{bool-a4}{%
 	\iftoggle{bool-print}{%
-		\newcommand{\oddbackgroundimg}{bg-a4-odd-print.jpg}
-		\newcommand{\evenbackgroundimg}{bg-a4-even-print.jpg}
+		\newcommand{\oddbackgroundimg}{img/bg-a4-odd-print.jpg}
+		\newcommand{\evenbackgroundimg}{img/bg-a4-even-print.jpg}
 		}{
-		\newcommand{\oddbackgroundimg}{bg-a4-odd.jpg}
-		\newcommand{\evenbackgroundimg}{bg-a4-even.jpg}
+		\newcommand{\oddbackgroundimg}{img/bg-a4-odd.jpg}
+		\newcommand{\evenbackgroundimg}{img/bg-a4-even.jpg}
 		}
 	}{%
 	\iftoggle{bool-print}{%
-		\newcommand{\oddbackgroundimg}{bg-letter-odd-print.jpg}
-		\newcommand{\evenbackgroundimg}{bg-letter-even-print.jpg}
+		\newcommand{\oddbackgroundimg}{img/bg-letter-odd-print.jpg}
+		\newcommand{\evenbackgroundimg}{img/bg-letter-even-print.jpg}
 		}{%
-		\newcommand{\oddbackgroundimg}{bg-letter-odd.jpg}
-		\newcommand{\evenbackgroundimg}{bg-letter-even.jpg}
+		\newcommand{\oddbackgroundimg}{img/bg-letter-odd.jpg}
+		\newcommand{\evenbackgroundimg}{img/bg-letter-even.jpg}
 		}
-	}	
+	}
 
 
 \backgroundsetup{
@@ -44,5 +44,5 @@
 		\fi
 		}
 	}
-	
-	
+
+
