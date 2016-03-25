@@ -1,7 +1,7 @@
 % DND 5e LaTeX Style File
 % Created by Evan Bergeron
 % Modified by Christopher Liu December 2015
-% Modified by Yannic Meyer Feb 2015
+% Modified by Yannic Meyer Feb 2016
 
 \ProvidesPackage{dnd}[2016/03/13]
 
@@ -9,27 +9,27 @@
 % Prerequisite Packages
 %
 
-\RequirePackage{titlesec}       % Used to adjust (sub)section colors and fonts
-\RequirePackage{lipsum}         % Filler text
-\RequirePackage[cm]{fullpage}   % Small margins
-\RequirePackage{bookman}        % Closest built-in font I could find
+\RequirePackage{titlesec}         % Used to adjust (sub)section colors and fonts
+\RequirePackage{lipsum}           % Filler text
+\RequirePackage[cm]{fullpage}     % Small margins
+\RequirePackage{bookman}          % Closest built-in font I could find
 \RequirePackage[T1]{fontenc}
 \RequirePackage[table]{xcolor}
 \RequirePackage{array}
 \RequirePackage{tabularx}
 \RequirePackage{tikz}
 \RequirePackage{keycommand}
-\RequirePackage{fancyhdr} 			%adaptation of the footers
-\RequirePackage[most]{tcolorbox}	%used for some boxes
+\RequirePackage{fancyhdr} 			  % Adaptation of the footers
+\RequirePackage[most]{tcolorbox}  % used for some boxes
 
 % Load other modules of this package
-\usepackage{dndmonster}
-\usepackage{dndsections}
-\usepackage{dndcomment}
-\usepackage{dndtable}
-\usepackage{dndquote}
-\usepackage{dndpaperbox}
-	
+\usepackage{lib/dndmonster}
+\usepackage{lib/dndsections}
+\usepackage{lib/dndcomment}
+\usepackage{lib/dndtable}
+\usepackage{lib/dndquote}
+\usepackage{lib/dndpaperbox}
+
 
 %
 % Options
@@ -43,22 +43,22 @@
 \DeclareOption{bg-print}{\toggletrue{bool-bg-print}}
 \DeclareOption{bg-full}{\togglefalse{bool-bg-print}}
 
-%Default Settings
+% Default Settings
 \ExecuteOptions{bg-letter, bg-full}
 \ProcessOptions\relax
 
-%execution of conditionals
-\iftoggle{bool-bg-a4}{%		%Check wether A4 option is selected
-	\iftoggle{bool-bg-print}{%	%Check wether print option is selected
-		\RequirePackage[a4,print]{dndbackgroundimg}
+% Determine background image
+\iftoggle{bool-bg-a4}{%		% Check if A4 option is selected
+	\iftoggle{bool-bg-print}{%	% Check if print option is selected
+		\RequirePackage[a4,print]{lib/dndbackgroundimg}
 		}{%
-		\RequirePackage[a4,full]{dndbackgroundimg}
+		\RequirePackage[a4,full]{lib/dndbackgroundimg}
 		}
 	}{%
-	\iftoggle{bool-bg-print}{%	%Check wether print option is selected
-		\RequirePackage[letter,print]{dndbackgroundimg}
+	\iftoggle{bool-bg-print}{%	% Check if print option is selected
+		\RequirePackage[letter,print]{lib/dndbackgroundimg}
 		}{%
-		\RequirePackage[letter,full]{dndbackgroundimg}
+		\RequirePackage[letter,full]{lib/dndbackgroundimg}
 		}
 	}
 
@@ -69,7 +69,7 @@
 % Font environment
 \newenvironment{lmss}{\fontfamily{lmss}\selectfont}{}
 
-%columns setup
+% Columns setup
 \setlength{\columnsep}{1cm}
 
 % Define colors, sampled from the books.
@@ -107,7 +107,7 @@
 	\hspace*{0.8cm}
 	\textcolor{uppergold}{\thepage}
 	}
-	
+
 
 
 % Fancy DnD 5e-style hline

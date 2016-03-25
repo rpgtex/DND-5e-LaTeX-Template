@@ -1,6 +1,6 @@
 \documentclass[10pt,twoside,twocolumn]{article}
-\usepackage{dnd}	%options: bg-a4, bg-letter, bg-full, bg-print; default are bg-letter and bg-full
-\usepackage[ngerman]{babel} %Trennungsregeln und autom. Überschriften in n. dt. RS
+\usepackage[bg-letter]{dnd} % Options: bg-a4, bg-letter, bg-full, bg-print.
+\usepackage[ngerman]{babel} % Trennungsregeln und autom. Überschriften in n. dt. RS
 \usepackage[utf8]{inputenc}
 
 % Start document
@@ -10,7 +10,7 @@
 % Your content goes here
 
 \section{Main Section}
-\lipsum[1]
+\lipsum[1] % filler text
 
 \subsection{Fun with boxes}
 \subsubsection{Even more fun!}
@@ -20,10 +20,10 @@
 \end{commentbox}
 
 \begin{quotebox}
-	As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words. 
+	As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
 \end{quotebox}
 
-\newpage %acts as columbreak because of twocolumn option; for pagebreak use \clearpage
+\newpage % Acts as columbreak because of twocolumn option; for pagebreak use \clearpage
 
 \begin{dndtable}
    	\textbf{Table head}  & \textbf{Table head} \\
@@ -31,7 +31,6 @@
    	Some value  & Some value \\
    	Some value  & Some value
 \end{dndtable}
-
 
 \begin{paperbox}{Do the Players need direction?}
 	\lipsum[1]
@@ -65,9 +64,9 @@
 	\begin{monsteraction}[Generate text]
 		This one can generate tremendous amounts of text! Though only when it wants to.
 	\end{monsteraction}
-	
-	\begin{monsteraction}[Use alternative Monsterbox]
-		To use an alternative Monsterbox the Players can call "`monster"' instead of "`monsterbox"'.
+
+	\begin{monsteraction}[More actions]
+    See, here he goes again! Yet more text.
 	\end{monsteraction}
 \end{monsterbox}
 
