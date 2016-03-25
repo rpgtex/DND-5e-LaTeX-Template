@@ -17,11 +17,17 @@ $ cd 5e-template
 $ pdflatex example.tex
 ```
 
+This assumes you have latex already installed. If you're running Ubuntu and don't have the pdflatex command available,
+```sh
+sudo apt-get install texlive-full
+```
+seems to do the trick. It's unclear exactly what subset of features this module needs, we'd recommend installing one of larger ones.
+
 ### Package Options
 - bg-letter: Loads a letter-sized background-image
 - bg-a4: Loads an A4-sized background-image
 - bg-print: Loads a printer-friendly background-image (only decal at the bottom)
-- bg-full: Loads the full background-image 
+- bg-full: Loads the full background-image
 
 Per default "bg-letter" and "bg-full" are loaded.
 
@@ -33,10 +39,10 @@ Per default "bg-letter" and "bg-full" are loaded.
  - Add subtitle option for boxes
  - Sort out box-decals when boxes break column or page
 
- 
+
 ### Image Credit
 
  - Credit for the background image goes to http://lostandtaken.com/
- 
+
 ### Version
 0.2
