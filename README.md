@@ -45,7 +45,7 @@ Per default "bg-letter" and "bg-full" are loaded.
  - Credit for the background image goes to http://lostandtaken.com/
 
 ### Version
-0.2
+0.5
 
 ### License
 The MIT License (MIT)
