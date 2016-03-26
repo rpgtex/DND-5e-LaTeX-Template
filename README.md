@@ -17,11 +17,16 @@ $ cd 5e-template
 $ pdflatex example.tex
 ```
 
-This assumes you have latex already installed. If you're running Ubuntu and don't have the pdflatex command available,
+If you don't have LaTeX installed, the following should help you out:
+#### Ubuntu
 ```sh
 sudo apt-get install texlive-full
 ```
-seems to do the trick. It's unclear exactly what subset of features this module needs, we'd recommend installing one of larger ones.
+#### Arch
+```sh
+sudo pacman -S texlive-bin texlive-core texlive-latexextra
+```
+It's a bit unclear exactly what subset of features this module needs. As a general rule, we'd recommend installing one of larger ones.
 
 ### Package Options
 - bg-letter: Loads a letter-sized background-image
