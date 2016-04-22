@@ -1,0 +1,9 @@
+% Table Environment
+\newenvironment{dnditemtable}{
+	\par\vspace*{8pt}
+    \noindent
+    \fontfamily{lmss}\selectfont %Select font
+    \rowcolors{1}{bgtan}{itemtablepink} % Alternate colors
+    \tabularx{\linewidth}{XX}
+	}
+	{\vspace{8pt plus 1pt}\noindent\endtabularx}
