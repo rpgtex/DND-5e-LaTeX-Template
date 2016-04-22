@@ -35,9 +35,11 @@
 % Options
 %
 
-% 'bg-letter-img' and 'bg-letter-print' option
+% 'bg-letter-img','bg-letter-print' and 'bg-none' options
 \newtoggle{bool-bg-a4}
 \newtoggle{bool-bg-print}
+\newtoggle{bool-bg-none}
+\DeclareOption{bg-none}{\toggletrue{bool-bg-none}}
 \DeclareOption{bg-a4}{\toggletrue{bool-bg-a4}}
 \DeclareOption{bg-letter}{\togglefalse{bool-bg-a4}}
 \DeclareOption{bg-print}{\toggletrue{bool-bg-print}}
@@ -47,20 +49,22 @@
 \ExecuteOptions{bg-letter, bg-full}
 \ProcessOptions\relax
 
-% Determine background image
-\iftoggle{bool-bg-a4}{%		% Check if A4 option is selected
-	\iftoggle{bool-bg-print}{%	% Check if print option is selected
-		\RequirePackage[a4,print]{lib/dndbackgroundimg}
+\nottoggle{bool-bg-none}{
+  % Determine background image
+  \iftoggle{bool-bg-a4}{%		% Check if A4 option is selected
+    \iftoggle{bool-bg-print}{%	% Check if print option is selected
+      \RequirePackage[a4,print]{lib/dndbackgroundimg}
 		}{%
-		\RequirePackage[a4,full]{lib/dndbackgroundimg}
+      \RequirePackage[a4,full]{lib/dndbackgroundimg}
 		}
 	}{%
-	\iftoggle{bool-bg-print}{%	% Check if print option is selected
-		\RequirePackage[letter,print]{lib/dndbackgroundimg}
+    \iftoggle{bool-bg-print}{%	% Check if print option is selected
+      \RequirePackage[letter,print]{lib/dndbackgroundimg}
 		}{%
-		\RequirePackage[letter,full]{lib/dndbackgroundimg}
+      \RequirePackage[letter,full]{lib/dndbackgroundimg}
 		}
 	}
+}
 
 %
 % Style Parameters
