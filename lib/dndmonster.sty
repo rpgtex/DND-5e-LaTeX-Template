@@ -1,6 +1,39 @@
 % Monster environment sty file
+\usepackage{fp}
 
-%new Monterbox
+% Macro to print stats with autocomputed modifier
+% e.g. \stat{12} prints "12 (+1)"
+\newcommand{\stat}[1]{%
+   \FPeval{\mod}{(#1 - 10)/2}%
+   \FPifpos\mod%
+   \FPeval{\mod}{clip(trunc(mod,0))}#1 (+\mod)%
+   \else%
+   \FPeval{\mod}{clip(trunc(mod-0.5,0))}#1 (\mod)%
+   \fi%
+}
+
+%new Monterblock
+\newtcolorbox{monsterblock}[2][]{
+   enhanced,
+   frame hidden,
+   before skip=7pt plus2pt,
+   boxrule=0pt,
+   breakable,
+   boxsep=0.25ex,
+   toptitle=3mm,
+   left=2.5mm,
+   right=2.15mm,
+   arc=0mm,
+   opacityback=0,
+   colframe=titlered,
+   fonttitle=\scshape\bfseries\color{titlered}\Large,
+   fontupper=\fontfamily{lmss}\selectfont,
+   title=#2,
+   after={\vspace{7pt plus 1pt}\noindent},
+   #1
+}
+
+% new Monsterbox
 \newtcolorbox{monsterbox}[2][]{
 	enhanced,
 	frame hidden,
@@ -52,20 +85,20 @@
 }
 
 % Taubular enviornment for stats-block
-\newkeycommand\stats[STR=10 (+0),
-                        DEX=10 (+0),
-                        CON=10 (+0),
-                        INT=10 (+0),
-                        WIS=10 (+0),
-                        CHA=10 (+0)]{
+\newkeycommand\stats[STR=\stat{10},
+                        DEX=\stat{10},
+                        CON=\stat{10},
+                        INT=\stat{10},
+                        WIS=\stat{10},
+                        CHA=\stat{10}]{
     {\footnotesize
 	\hspace*{-3.5pt}
 	\resizebox{0.97\linewidth}{\height}{
-		\begin{tabularx}{\linewidth}{cccccc}
+		\begin{tabular}{cccccc}
 			\rule{0pt}{3.7mm} %adds space between hline and table
 			\textbf{STR} & \textbf{DEX} & \textbf{CON} & \textbf{INT} & \textbf{WIS} & \textbf{CHA}\\
 			\commandkey{STR} & \commandkey{DEX} & \commandkey{CON} & \commandkey{INT} & \commandkey{WIS} & \commandkey{CHA}
-		\end{tabularx}
+		\end{tabular}
 	}
 	\\[0.4em] %adds space after table
     }
