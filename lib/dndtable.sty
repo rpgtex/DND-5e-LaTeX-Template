@@ -1,9 +1,16 @@
+% Table Header
+\newcommand{\header}[1]{{
+    \par\vspace*{8pt}
+    \noindent
+    \sffamily\bfseries\scshape
+    #1}}
+
 % Table Environment
-\newenvironment{dndtable}[1]{
+\newenvironment{dndtable}[1][XX]{
 	\par\vspace*{8pt}
-	\noindent
-	\fontfamily{lmss}\selectfont %Select font
-	\rowcolors{1}{bgtan}{commentgreen} % Alternate colors
-	\tabularx{\linewidth}{#1}
+    \noindent
+    \fontfamily{lmss}\selectfont %Select font
+    \rowcolors{1}{bgtan}{commentgreen} % Alternate colors
+    \tabularx{\linewidth}{#1}
 	}
-	{\vspace{8pt plus 1pt}\noindent\endtabularx} 
+	{\endtabularx\vspace{8pt plus 1pt}\noindent} 
