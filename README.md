@@ -1,8 +1,8 @@
 # D&D 5e LaTeX Template
 
-This is an attempt at a D&D 5e LaTeX template. The color scheme is close to the original source books, as are the fonts. The fonts chosen are included by default in TeX Live.
+This is an attempt at a D&D 5e LaTeX template. The color scheme is close to the original source books, as are the fonts. The fonts chosen are included by default in TeX Live and custom fonts are included for use with XeLaTex.
 
-The template compiles with pdflatex.
+The template compiles with XeLaTeX or pdflatex, but XeLaTeX must be used to use u/Solbera's custom fonts.
 
 ![Preview](https://github.com/evanbergeron/DND-5e-LaTeX-Template/raw/master/scrot.png)
 
@@ -15,6 +15,12 @@ Just clone the repo. From terminal:
 $ git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git 5e-template
 $ cd 5e-template
 $ pdflatex example.tex
+```
+
+If you want to use the included custom fonts, use the `xelatex` command instead:
+
+```sh
+$ xelatex example.tex
 ```
 
 If you don't have LaTeX installed, the following should help you out:
@@ -46,9 +52,10 @@ Per default "bg-letter" and "bg-full" are loaded.
  - Look into adding the ability to add large images to the document. There are some documents made with InDesign out there that accomplish this quite well.
 
 
-### Image Credit
+### Credits
 
  - Credit for the background image goes to http://lostandtaken.com/
+ - Credit for the custom fonts goes to u/Solbera on Reddit, and those fonts are licensed under the [Creative Commons license](https://creativecommons.org/licenses/by-sa/4.0/legalcode) 
 
 ### Version
 0.5

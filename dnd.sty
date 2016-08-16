@@ -12,7 +12,7 @@
 \RequirePackage{titlesec}         % Used to adjust (sub)section colors and fonts
 \RequirePackage{lipsum}           % Filler text
 \RequirePackage[cm]{fullpage}     % Small margins
-\RequirePackage{bookman}          % Closest built-in font I could find
+%\RequirePackage{bookman}          % Closest built-in font I could find
 %\RequirePackage[T1]{fontenc}
 \RequirePackage[table]{xcolor}
 \RequirePackage{array}
@@ -21,7 +21,7 @@
 \RequirePackage{keycommand}
 \RequirePackage{fancyhdr} 			  % Adaptation of the footers
 \RequirePackage[most]{tcolorbox}  % used for some boxes
-\RequirePackage{fontspec}
+\RequirePackage{iftex}
 
 % Load other modules of this package
 \usepackage{lib/dndmonster}
@@ -74,6 +74,15 @@
 
 % Font environment
 %\newenvironment{lmss}{\fontfamily{lmss}\selectfont}{}
+\ifPDFTeX
+    \RequirePackage{bookman}
+    \RequirePackage[T1]{fontenc}
+    \newcommand\bookinsanity{\fontfamily{pbk}}
+    \newcommand\mreaves{\fontfamily{pbk}}
+    \newcommand\scalysans{\fontfamily{lmss}}
+    \newcommand\solbera{\fontfamily{pbk}}
+\else
+\RequirePackage{fontspec}
 \newfontfamily\bookinsanity{Bookinsanity}[
     Path = font/ ,
     Extension = .otf ,
@@ -81,7 +90,8 @@
     ItalicFont = *_Italic ,
     BoldItalicFont = *_Bold_Italic
 ]
-\newfontface\mreaves{Mr_Eaves_Small_Caps.otf}[Path=font/] % This font file can't be used yet
+%\newfontface\mreaves{Mr_Eaves_Small_Caps.otf}[Path=font/] % This font file can't be used yet
+\newcommand\mreaves{\fontfamily{lmr}}
 \newfontfamily\scalysans{Scaly_Sans}[
     Path = font/ ,
     Extension = .otf ,
@@ -94,6 +104,7 @@
     BoldItalicFeatures = {SmallCapsFont = *_Caps_Bold_Italic}
 ]
 \newfontface\solbera{Solbera_Imitation.otf}[Path=font/]
+\fi
 
 % Columns setup
 \setlength{\columnsep}{1cm}
