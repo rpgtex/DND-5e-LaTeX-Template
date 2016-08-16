@@ -4,7 +4,7 @@ This is an attempt at a D&D 5e LaTeX template. The color scheme is close to the 
 
 The template compiles with pdflatex.
 
-![Preview](https://github.com/anoderay/DND-5e-LaTeX-Template/raw/master/scrot.png)
+![Preview](https://github.com/evanbergeron/DND-5e-LaTeX-Template/raw/master/scrot.png)
 
 
 ### Installation
@@ -12,7 +12,7 @@ The template compiles with pdflatex.
 Just clone the repo. From terminal:
 
 ```sh
-$ git clone https://github.com/anoderay/DND-5e-LaTeX-Template.git 5e-template
+$ git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git 5e-template
 $ cd 5e-template
 $ pdflatex example.tex
 ```
