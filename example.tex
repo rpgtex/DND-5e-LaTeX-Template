@@ -36,6 +36,8 @@
 	\lipsum[1]
 \end{paperbox}
 
+% You can optionally not include the background by saying
+% begin{monsterboxnobg}
 \begin{monsterbox}{Monster Foo}
 	\textit{Small metasyntatic variable (golbinoid), neutral evil}\\
 	\hline
@@ -46,8 +48,8 @@
 	]
 	\hline
 	\stats[
-	STR = 12 (+1),
-	DEX = 14 (+2)
+    STR = \stat{12}, % This stat command will autocomplete the modifier for you
+    DEX = \stat{7}
 	]
 	\hline
 	\details[%
