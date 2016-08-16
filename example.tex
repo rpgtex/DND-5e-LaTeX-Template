@@ -1,16 +1,21 @@
 \documentclass[10pt,twoside,twocolumn]{article}
 \usepackage[bg-letter]{dnd} % Options: bg-a4, bg-letter, bg-full, bg-print, bg-none.
 \usepackage[ngerman]{babel} % Trennungsregeln und autom. Überschriften in n. dt. RS
-\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
+\usepackage{lettrine} % Fancy first letter of sections
+\usepackage[none]{hyphenat} % Remove hyphenation
+\raggedright % Remove full width justification
 
 % Start document
 \begin{document}
-\fontfamily{ppl}\selectfont % Set text font
+%\fontfamily{ppl}\selectfont % Set text font
+\bookinsanity\selectfont
+
 
 % Your content goes here
 
 \section{Main Section}
-\lipsum[1] % filler text
+\lettrine[lines=6,nindent=0em]{\solbera L}{}\lipsum[1] % filler text
 
 \subsection{Fun with boxes}
 \subsubsection{Even more fun!}

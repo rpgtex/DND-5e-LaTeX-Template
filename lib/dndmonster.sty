@@ -19,8 +19,8 @@
 	colback=monstertan,
 	colbacktitle=monstertan,
 	colframe=titlered,
-	fonttitle=\scshape\bfseries\color{titlered}\Large,
-	fontupper=\fontfamily{lmss}\selectfont,
+	fonttitle=\bookinsanity\selectfont\scshape\bfseries\color{titlered}\Large, % Using default font families and bold small caps doesn't work here for some reason, so this'll have to do until MrEaves font is fixed
+	fontupper=\scalysans\selectfont,
 	title=#2,
 	after={\vspace{7pt plus 1pt}\noindent},
 	#1
@@ -31,7 +31,7 @@
 %\newcommand{\monstersection}[1]{\subsubsection*{#1}}
 \newcommand{\monstersection}[1]{
 	{\par
-	\color{titlered}\normalfont\scshape\Large #1 \vspace{3pt}
+	\color{titlered}\scshape\Large #1 \vspace{3pt}
 	\titleline{\color{titlered}\titlerule[0.6pt]}
 	\par\medskip}
 	}
