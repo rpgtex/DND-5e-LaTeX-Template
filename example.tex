@@ -25,7 +25,12 @@
 
 \newpage % Acts as columbreak because of twocolumn option; for pagebreak use \clearpage
 
-\begin{dndtable}{XX} % XX defines there will be two columns, add more to get more columns
+% For more columns, you can say \begin{dndtable}[your options here}.
+% For instance, if you wanted three columns, you could say
+% \begin{dndtable}{XXX}. The usual host of tabular parameters are
+% aailable as well.
+\header{Nice table}
+\begin{dndtable}
    	\textbf{Table head}  & \textbf{Table head} \\
    	Some value  & Some value \\
    	Some value  & Some value \\
