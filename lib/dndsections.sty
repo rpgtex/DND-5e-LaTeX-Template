@@ -1,12 +1,18 @@
 %Remove Numbering from section (If you want Numbering on the sections comment the following three lines and change the "0em" separation-definitions in the lower part to 1em)
+\renewcommand\thechapter{}
 \renewcommand\thesection{}
 \renewcommand\thesubsection{}
 \renewcommand\thesubsubsection{}
 
+% Adjust chapter formatting
+\titleclass{\chapter}{top}
+\titleformat{\chapter}
+{\color{titlered}\normalfont\scshape\Huge}{\thechapter}{0em}{}
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}
 
 % Adjust section and subsection colors and font (change 0em to 1em if you commented the removal of section numbering)
 \titleformat{\section}
-{\color{titlered}\normalfont\scshape\Huge}{\thesection}{0em}{}
+{\color{titlered}\normalfont\scshape\LARGE}{\thesection}{0em}{}
 
 \titleformat{\subsection}
 {\color{titlered}\normalfont\scshape\Large}{\thesubsection}{0em}{}[{\titleline{\color{undergold}\titlerule[1pt]}}]
