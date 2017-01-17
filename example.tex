@@ -25,7 +25,12 @@
 
 \newpage % Acts as columbreak because of twocolumn option; for pagebreak use \clearpage
 
-\begin{dndtable}{XX} % XX defines there will be two columns, add more to get more columns
+% For more columns, you can say \begin{dndtable}[your options here}.
+% For instance, if you wanted three columns, you could say
+% \begin{dndtable}{XXX}. The usual host of tabular parameters are
+% aailable as well.
+\header{Nice table}
+\begin{dndtable}
    	\textbf{Table head}  & \textbf{Table head} \\
    	Some value  & Some value \\
    	Some value  & Some value \\
@@ -36,8 +41,10 @@
 	\lipsum[1]
 \end{paperbox}
 
+% You can optionally not include the background by saying
+% begin{monsterboxnobg}
 \begin{monsterbox}{Monster Foo}
-	\textit{Small metasyntatic variable (golbinoid), neutral evil}\\
+	\textit{Small metasyntactic variable (goblinoid), neutral evil}\\
 	\hline
 	\basics[%
 	armorclass = 12,
@@ -46,8 +53,8 @@
 	]
 	\hline
 	\stats[
-	STR = 12 (+1),
-	DEX = 14 (+2)
+    STR = \stat{12}, % This stat command will autocomplete the modifier for you
+    DEX = \stat{7}
 	]
 	\hline
 	\details[%
