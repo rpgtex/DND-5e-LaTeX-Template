@@ -27,7 +27,7 @@
 
 % Fancy table of contents
 %
-% Usage: \dndtoc[depth]
+% Usage: \dndtoc[depth] or \dndtoc*[depth] (for small-caps chapters)
 %
 % Depth:
 %	0: chapters
@@ -35,8 +35,15 @@
 %	2: subsections (default)
 %	3: subsubsections
 %
+\usepackage{xparse}
 \usepackage[toc]{multitoc}
-\newcommand{\dndtoc}[1][2]{
-	\setcounter{tocdepth}{#1}\tableofcontents
+\usepackage[titles]{tocloft}
+\NewDocumentCommand{\dndtoc}{sO{2}}{
+	\IfBooleanTF#1{
+		\renewcommand\cftchapfont{\color{titlered}\bfseries\scshape}
+	}
+	{
+		\renewcommand\cftchapfont{\color{titlered}\bfseries}
+	}
+	\setcounter{tocdepth}{#2}\tableofcontents
 }
-
