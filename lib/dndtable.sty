@@ -8,12 +8,16 @@
 % Centered Column
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 
+% So \rowcolors plays nicely with the tabularx environment (otherwise the table doesn't use the startrow varaible)
+\newcounter{tblerows}
+\expandafter\let\csname c@tblerows\endcsname\rownum
+
 % Table Environment
 \newenvironment{dndtable}[1][XX]{
 	\par\vspace*{8pt}
 	\noindent
 	\fontfamily{lmss}\selectfont %Select font
-	\rowcolors{1}{bgtan}{commentgreen} % Alternate colors
+	\rowcolors{2}{bgtan}{commentgreen} % Alternate colors - modified so top row is transparent
 	\tabularx{\linewidth}{#1}
 	}
 	{\endtabularx\vspace{8pt plus 1pt}\noindent} 
