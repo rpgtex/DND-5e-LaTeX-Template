@@ -23,13 +23,17 @@
 	\FPeval{\DiceAvg}{(\DiceSides+1)/2*\DiceNum}%	calculate avg roll	
 	\IfInteger{\DiceAddMod}{%
 		\FPadd{\DiceAvg}{\DiceAvg}{\DiceAddMod}%	add value
-		\def\DiceMod{+\ \DiceAddMod}%
+		\def\DiceMod{ + \DiceAddMod}%
 	}{%
-		\FPsub{\DiceAvg}{\DiceAvg}{\DiceSubMod}%	subtract value
-		\def\DiceMod{- \DiceSubMod}%
+		\IfInteger{\DiceSubMod}{%
+			\FPsub{\DiceAvg}{\DiceAvg}{\DiceSubMod}%	subtract value
+			\def\DiceMod{ - \DiceSubMod}%
+		}{%
+			\def\DiceMod{}%
+		}%
 	}%
 	\FPtrunc{\DiceAvg}{\DiceAvg}{0}%				round down
-	\FPprint{\DiceAvg\ (\DiceNum d\DiceSides\ \DiceMod)}%
+	\FPprint{\DiceAvg\ (\DiceNum d\DiceSides\DiceMod)}%
 }
 
 % Monster box made to look like the Monster Manual NPC definitions
