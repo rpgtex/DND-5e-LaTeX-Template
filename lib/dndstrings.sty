@@ -1,0 +1,32 @@
+% Define all strings as new macros instead of hardcoding them in the
+% TeX files. This then allows us to add captions for multilanguage support.
+\newcommand\armorclassname{Armor Class}
+\newcommand\hitpointsname{Hit Points}
+\newcommand\speedname{Speed}
+
+\newcommand\strstatname{STR}
+\newcommand\dexstatname{DEX}
+\newcommand\constatname{CON}
+\newcommand\intstatname{INT}
+\newcommand\wisstatname{WIS}
+\newcommand\chastatname{CHA}
+
+\newcommand\skillsname{Skills}
+\newcommand\dimmname{Damage Immunities}
+\newcommand\dvulname{Damage Vulnerabilities}
+\newcommand\dresname{Damage Resistances}
+\newcommand\cimmname{Condition Immunities}
+\newcommand\savesname{Saving Throws}
+\newcommand\sensesname{Senses}
+\newcommand\languagesname{Languages}
+\newcommand\challengename{Challenge}
+
+
+% Check if either babel or polyglossia have been loaded,
+% in which case load the string captions
+\@ifpackageloaded{babel}{
+  \usepackage{lib/dndstrings-captions}
+}{}
+\@ifpackageloaded{polyglossia}{
+  \usepackage{lib/dndstrings-captions}
+}{}
