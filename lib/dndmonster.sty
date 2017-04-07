@@ -79,9 +79,9 @@
 %
 \newkeycommand\basics[armorclass=0, hitpoints=0, speed=0]{%
 	\color{titlered}
-	\textbf{Armor Class} \commandkey{armorclass}\\
-	\textbf{Hit Points} \commandkey{hitpoints}\\
-	\textbf{Speed} \commandkey{speed}\\
+  \textbf{\armorclassname} \commandkey{armorclass}\\
+	\textbf{\hitpointsname} \commandkey{hitpoints}\\
+	\textbf{\speedname} \commandkey{speed}\\
 }
 
 % Taubular enviornment for stats-block
@@ -96,7 +96,7 @@
 	\resizebox{0.97\linewidth}{\height}{
 		\begin{tabular}{cccccc}
 			\rule{0pt}{3.7mm} %adds space between hline and table
-			\textbf{STR} & \textbf{DEX} & \textbf{CON} & \textbf{INT} & \textbf{WIS} & \textbf{CHA}\\
+      \textbf{\strstatname} & \textbf{\dexstatname} & \textbf{\constatname} & \textbf{\intstatname} & \textbf{\wisstatname} & \textbf{\chastatname}\\
 			\commandkey{STR} & \commandkey{DEX} & \commandkey{CON} & \commandkey{INT} & \commandkey{WIS} & \commandkey{CHA}
 		\end{tabular}
 	}
@@ -114,20 +114,20 @@
                       languages=-,
                       challenge=0]{%
   \ifcommandkey{savingthrows}
-    {\textbf{Saving Throws} \commandkey{savingthrows}\\}{}
+    {\textbf{\savesname} \commandkey{savingthrows}\\}{}
   \ifcommandkey{skills}
-    {\textbf{Skills} \commandkey{skills}\\}{}
+    {\textbf{\skillsname} \commandkey{skills}\\}{}
   \ifcommandkey{damagevulnerabilities}
-    {\textbf{Damage Vulnerabilities} \commandkey{damagevulnerabilities}\\}{}
+    {\textbf{\dvulname} \commandkey{damagevulnerabilities}\\}{}
   \ifcommandkey{damageresistances}
-    {\textbf{Damage Resistances} \commandkey{damageresistances}\\}{}
+    {\textbf{\dresname} \commandkey{damageresistances}\\}{}
   \ifcommandkey{damageimmunities}
-    {\textbf{Damage Immunities} \commandkey{damageimmunities}\\}{}
+    {\textbf{\dimmname} \commandkey{damageimmunities}\\}{}
   \ifcommandkey{conditionimmunities}
-    {\textbf{Condition Immunities} \commandkey{conditionimmunities}\\}{}
+    {\textbf{\cimmname} \commandkey{conditionimmunities}\\}{}
   % These traits appear to always be present.
-  {\textbf{Senses} \commandkey{senses}\\}
-  {\textbf{Languages} \commandkey{languages}\\}
-  {\textbf{Challenge} \commandkey{challenge}\\}
+  {\textbf{\sensesname} \commandkey{senses}\\}
+  {\textbf{\languagesname} \commandkey{languages}\\}
+  {\textbf{\challengename} \commandkey{challenge}\\}
 \color{black}
 }
