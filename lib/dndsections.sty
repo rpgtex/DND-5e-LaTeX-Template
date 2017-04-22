@@ -24,3 +24,26 @@
 	\subsubsection{#1}\vspace{-5pt}
 	\textit{#2}\vspace{5pt}\par
 	} 
+
+% Fancy table of contents
+%
+% Usage: \dndtoc[depth] or \dndtoc*[depth] (for small-caps chapters)
+%
+% Depth:
+%	0: chapters
+%	1: sections
+%	2: subsections (default)
+%	3: subsubsections
+%
+\usepackage{xparse}
+\usepackage[toc]{multitoc}
+\usepackage[titles]{tocloft}
+\NewDocumentCommand{\dndtoc}{sO{2}}{
+	\IfBooleanTF#1{
+		\renewcommand\cftchapfont{\color{titlered}\bfseries\scshape}
+	}
+	{
+		\renewcommand\cftchapfont{\color{titlered}\bfseries}
+	}
+	\setcounter{tocdepth}{#2}\tableofcontents
+}
