@@ -20,6 +20,16 @@
 \titleformat{\subsubsection}
 {\color{titlered}\normalfont\scshape\large}{\thesubsubsection}{0em}{}[]
 
+\titleformat{\paragraph}
+[runin]{\normalfont\bfseries\slshape\normalsize}{\theparagraph}{0em}{}[.]
+\titlespacing{\paragraph}
+{\parindent}{\parskip}{\wordsep}
+
+\titleformat{\subparagraph}
+[runin]{\normalfont\itshape\normalsize}{\thesubparagraph}{0em}{}[.]
+\titlespacing{\subparagraph}
+{\parindent}{\parskip}{\wordsep}
+
 \newcommand{\subtitlesection}[2]{
 	\subsubsection{#1}\vspace{-5pt}
 	\textit{#2}\vspace{5pt}\par
