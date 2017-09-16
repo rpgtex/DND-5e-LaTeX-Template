@@ -1,0 +1,24 @@
+% DND 5e spells LaTeX Style File
+% Created by Tim Segers
+
+% Spell definition
+\newkeycommand\spell[title=, type=, castingTime=, range=, components=, duration=, desc=]{%
+    \ifcommandkey{title}
+        {\color{titlered}\textsc{\commandkey{title}}\\}{}
+    \color{black}
+    \ifcommandkey{type}
+        {\textit{\commandkey{type}}\\}{}
+    \noindent\\
+    \ifcommandkey{castingTime}
+        {\textbf{Casting Time:} \commandkey{castingTime}\\}{}
+    \ifcommandkey{range}
+        {\textbf{Range:} \commandkey{range}\\}{}
+    \ifcommandkey{components}
+        {\textbf{Components:} \commandkey{components}\\}{}
+    \ifcommandkey{duration}
+        {\textbf{Duration:} \commandkey{duration}\\}{}
+    \noindent\\ 
+    \ifcommandkey{desc}
+        {\commandkey{desc}\\}{}
+}
+
