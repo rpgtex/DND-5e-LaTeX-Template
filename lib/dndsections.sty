@@ -21,14 +21,14 @@
 {\color{titlered}\normalfont\scshape\large}{\thesubsubsection}{0em}{}[]
 
 \titleformat{\paragraph}
-[runin]{\normalfont\bfseries\slshape\normalsize}{\theparagraph}{0em}{}[.]
-\titlespacing{\paragraph}
-{\parindent}{\parskip}{\wordsep}
+[runin]{\normalfont\normalsize\bfseries\slshape}{\theparagraph}{0em}{}[.]
+\titlespacing*{\paragraph}
+{0pt}{0pt}{\wordsep}
 
 \titleformat{\subparagraph}
-[runin]{\normalfont\itshape\normalsize}{\thesubparagraph}{0em}{}[.]
-\titlespacing{\subparagraph}
-{\parindent}{\parskip}{\wordsep}
+[runin]{\normalfont\normalsize\bfseries\slshape}{\thesubparagraph}{0em}{}[.]
+\titlespacing*{\subparagraph}
+{\parindent}{0pt}{\wordsep}
 
 \newcommand{\subtitlesection}[2]{
 	\subsubsection{#1}\vspace{-5pt}
