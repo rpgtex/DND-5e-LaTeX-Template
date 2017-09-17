@@ -50,8 +50,8 @@
    arc=0mm,
    opacityback=0,
    colframe=titlered,
-   fonttitle=\scshape\bfseries\color{titlered}\Large,
-   fontupper=\fontfamily{lmss}\selectfont,
+   fonttitle=\mreaves\selectfont\scshape\bfseries\color{titlered}\Large,
+   fontupper=\scalysans\selectfont,
    title=#2,
    after={\vspace{7pt plus 1pt}\noindent},
    #1
@@ -76,8 +76,8 @@
 	colback=monstertan,
 	colbacktitle=monstertan,
 	colframe=titlered,
-	fonttitle=\scshape\bfseries\color{titlered}\Large,
-	fontupper=\fontfamily{lmss}\selectfont,
+	fonttitle=\mreaves\selectfont\scshape\color{titlered}\Large, % Haven't found a serif font that supports bold small caps, so just small caps will have to do until MrEaves font is fixed
+	fontupper=\scalysans\selectfont,
 	title=#2,
 	after={\vspace{7pt plus 1pt}\noindent},
 	#1
@@ -88,7 +88,7 @@
 %\newcommand{\monstersection}[1]{\subsubsection*{#1}}
 \newcommand{\monstersection}[1]{
 	{\par
-	\color{titlered}\normalfont\scshape\Large #1 \vspace{3pt}
+	\color{titlered}\ifPDFTeX\fontfamily{fosj}\fi\scshape\Large #1 \vspace{3pt} % The font family used by the LaTeX (pdfTeX) version of \scalysans (inherited in this case) doesn't support small caps, so this substitutes a different font family that does. The custom XeLaTeX font works as normal.
 	\titleline{\color{titlered}\titlerule[0.6pt]}
 	\par\medskip}
 	}

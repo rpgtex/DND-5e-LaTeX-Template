@@ -8,8 +8,8 @@
 	boxsep=0.25ex,
 	left=8pt,
 	right=8pt,
-	fonttitle=\fontfamily{fosj}\selectfont\scshape\bfseries\color{black},
-	fontupper=\fontfamily{lmss}\selectfont,
+	fonttitle=\ifPDFTeX\fontfamily{fosj}\else\scalysans\fi\selectfont\scshape\bfseries\color{black}, % The font family used by the LaTeX (pdfTeX) version of \scalysans doesn't support bold small caps, so this substitutes a different font family that does. The custom XeLaTeX font works as normal.
+	fontupper=\scalysans\selectfont,
 	title=#2,
 	arc=0mm,
 	parbox = false,

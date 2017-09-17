@@ -5,11 +5,18 @@
 \documentclass[10pt,twoside,twocolumn,openany]{book}
 \usepackage[bg-letter]{dnd} % Options: bg-a4, bg-letter, bg-full, bg-print, bg-none.
 \usepackage[english]{babel}
-\usepackage[utf8]{inputenc}
+\ifPDFTeX
+    \usepackage[utf8]{inputenc}
+\fi
+\usepackage{lettrine} % Fancy first letter of sections
+\usepackage[none]{hyphenat} % Remove hyphenation
+\raggedright % Remove full width justification
 
 % Start document
 \begin{document}
-\fontfamily{ppl}\selectfont % Set text font
+%\fontfamily{ppl}\selectfont % Set text font
+\bookinsanity\selectfont
+
 
 % Your content goes here
 
@@ -17,7 +24,7 @@
 \chapter{Chapter 1: The Dark \LaTeX}
 
 \section{Main Section}
-\lipsum[1] % filler text
+\lettrine[lines=6,findent=0.5em,nindent=0em]{\solbera L}{}\lipsum[1] % filler text with fancy (duplicate) first letter. The value of findent may need to be adjusted depending on the letter and engine (pdfTeX, XeLaTeX, etc.) used.
 
 \subsection{Fun with boxes}
 \subsubsection{Even more fun!}
