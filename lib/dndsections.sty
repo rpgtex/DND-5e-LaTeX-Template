@@ -1,15 +1,29 @@
-%Remove Numbering from section (If you want Numbering on the sections comment the following three lines and change the "0em" separation-definitions in the lower part to 1em)
-\renewcommand\thesection{}
-\renewcommand\thesubsection{}
-\renewcommand\thesubsubsection{}
+\RequirePackage{titlesec}	% Used to adjust (sub)section formatting
 
+%Remove Numbering (If you want Numbering set secnumdepth to the appropriate depth)
+\setcounter{secnumdepth}{-1}
 
-% Adjust section and subsection colors and font (change 0em to 1em if you commented the removal of section numbering)
+% Chapter
+\titleformat{\chapter}
+{\color{titlered}\normalfont\scshape\Huge}{\thechapter\quad}{0pt}{}
+
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+
+% Section
 \titleformat{\section}
-{\color{titlered}\mreaves\scshape\Huge}{\thesection}{0em}{}
+{\color{titlered}\mreaves\scshape\Huge}{\thesection\quad}{0pt}{}
 
+% Subsection
 \titleformat{\subsection}
-{\color{titlered}\mreaves\scshape\Large}{\thesubsection}{0em}{}[{\titleline{\color{undergold}\titlerule[1pt]}}]
+{\color{titlered}\mreaves\scshape\Large}{\thesubsection\quad}{0pt}{}
+[\titleline{\color{undergold}\titlerule[1pt]}]
 
+% Subsubsection
 \titleformat{\subsubsection}
-{\color{titlered}\mreaves\scshape\large}{\thesubsubsection}{0em}{}[]
+{\color{titlered}\mreaves\scshape\large}{\thesubsubsection\quad}{0pt}{}[]
+
+% Special command for magic items, traps, and the like.
+\newcommand{\subtitlesection}[2]{
+	\subsubsection{#1}\vspace{-5pt}
+	\textit{#2}\vspace{5pt}\par
+	} 

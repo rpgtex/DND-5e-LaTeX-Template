@@ -1,5 +1,6 @@
 % Monster environment sty file
 \usepackage{fp}
+\usepackage{xstring}
 
 % Macro to print stats with autocomputed modifier
 % e.g. \stat{12} prints "12 (+1)"
@@ -10,6 +11,29 @@
    \else%
    \FPeval{\mod}{clip(trunc(mod-0.5,0))}#1 (\mod)%
    \fi%
+}
+
+% Macro to print avarage dice based value
+% e.g. \dice{2d6+3} prints "10 (2d6 + 3)"
+\newcommand{\dice}[1]{%
+	\StrSubstitute{#1}{ }{}[\DiceArg]%				strip whitespaces
+	\StrCut{\DiceArg}{d}\DiceNum\DiceSides%			split string
+	\StrCut{\DiceSides}{+}\DiceSides\DiceAddMod%
+	\StrCut{\DiceSides}{-}\DiceSides\DiceSubMod%
+	\FPeval{\DiceAvg}{(\DiceSides+1)/2*\DiceNum}%	calculate avg roll	
+	\IfInteger{\DiceAddMod}{%
+		\FPadd{\DiceAvg}{\DiceAvg}{\DiceAddMod}%	add value
+		\def\DiceMod{ + \DiceAddMod}%
+	}{%
+		\IfInteger{\DiceSubMod}{%
+			\FPsub{\DiceAvg}{\DiceAvg}{\DiceSubMod}%	subtract value
+			\def\DiceMod{ - \DiceSubMod}%
+		}{%
+			\def\DiceMod{}%
+		}%
+	}%
+	\FPtrunc{\DiceAvg}{\DiceAvg}{0}%				round down
+	\FPprint{\DiceAvg\ (\DiceNum d\DiceSides\DiceMod)}%
 }
 
 % Monster box made to look like the Monster Manual NPC definitions

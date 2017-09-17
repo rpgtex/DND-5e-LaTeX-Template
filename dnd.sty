@@ -9,7 +9,6 @@
 % Prerequisite Packages
 %
 
-\RequirePackage{titlesec}         % Used to adjust (sub)section colors and fonts
 \RequirePackage{lipsum}           % Filler text
 \RequirePackage[cm]{fullpage}     % Small margins
 %\RequirePackage{bookman}          % Closest built-in font I could find
@@ -125,7 +124,7 @@
 % Setup for custom footer
 \pagestyle{fancy}
 
-\footskip = 50pt %push the footer down so it fits with the decal from the bg-img
+\footskip = 48pt %push the footer down so it fits with the decal from the bg-img
 \fancyhfoffset[LE]{28pt} % push the footer left on even pages so it fits the decal
 \fancyhfoffset[RO]{30pt} % push the footer right on odd pages so it fits the decalbg-img
 \renewcommand{\headrulewidth}{0.0pt} %no rule for header
@@ -141,12 +140,14 @@
 	}
 
 \fancyfoot[RO]{
-	\raisebox{12pt}{\textsc{\textcolor{uppergold}{\nouppercase\rightmark}}}
+	\raisebox{12pt}{\textsc{\textcolor{uppergold}{\nouppercase\leftmark}}}
 	\hspace*{1cm}
 	\textcolor{uppergold}{\thepage}
 	}
 
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % Don not write word "chapter"
 
+\fancypagestyle{plain}{}
 
 % Fancy DnD 5e-style hline
 \renewcommand{\hline}{

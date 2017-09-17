@@ -1,6 +1,10 @@
-\documentclass[10pt,twoside,twocolumn]{article}
+% Changing book to article will make the footers match on each page,
+% rather than alternate every other.
+%
+% Note that the article class does not have chapters.
+\documentclass[10pt,twoside,twocolumn,openany]{book}
 \usepackage[bg-letter]{dnd} % Options: bg-a4, bg-letter, bg-full, bg-print, bg-none.
-\usepackage[ngerman]{babel} % Trennungsregeln und autom. Überschriften in n. dt. RS
+\usepackage[english]{babel}
 \ifPDFTeX
     \usepackage[utf8]{inputenc}
 \fi
@@ -16,15 +20,22 @@
 
 % Your content goes here
 
+% Comment this out if you're using the article class.
+\chapter{Chapter 1: The Dark \LaTeX}
+
 \section{Main Section}
 \lettrine[lines=6,findent=0.5em,nindent=0em]{\solbera L}{}\lipsum[1] % filler text with fancy (duplicate) first letter. The value of findent may need to be adjusted depending on the letter and engine (pdfTeX, XeLaTeX, etc.) used.
 
 \subsection{Fun with boxes}
 \subsubsection{Even more fun!}
 
+
 \begin{commentbox}{Neat Green Box!}
 	\lipsum[1]
 \end{commentbox}
+
+\subtitlesection{Weapon, +1, +2, or +3}
+{Weapon (any), uncommon (+1), rare (+2), or very rare (+3)}
 
 \begin{quotebox}
 	As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
@@ -32,10 +43,10 @@
 
 \newpage % Acts as columbreak because of twocolumn option; for pagebreak use \clearpage
 
-% For more columns, you can say \begin{dndtable}[your options here}.
+% For more columns, you can say \begin{dndtable}[your options here].
 % For instance, if you wanted three columns, you could say
-% \begin{dndtable}{XXX}. The usual host of tabular parameters are
-% aailable as well.
+% \begin{dndtable}[XXX]. The usual host of tabular parameters are
+% available as well.
 \header{Nice table}
 \begin{dndtable}
    	\textbf{Table head}  & \textbf{Table head} \\
@@ -51,11 +62,11 @@
 % You can optionally not include the background by saying
 % begin{monsterboxnobg}
 \begin{monsterbox}{Monster Foo}
-	\textit{Small metasyntatic variable (golbinoid), neutral evil}\\
+	\textit{Small metasyntactic variable (goblinoid), neutral evil}\\
 	\hline
 	\basics[%
 	armorclass = 12,
-	hitpoints  = 16 (3d8 + 3),
+	hitpoints  = \dice{3d8 + 3},
 	speed      = 50 ft
 	]
 	\hline
