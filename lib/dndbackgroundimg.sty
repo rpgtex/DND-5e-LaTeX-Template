@@ -1,4 +1,7 @@
 \ProvidesPackage{lib/dndbackgroundimg}[2016/03/13]
+
+\getabspath %Defined in ../dnd.sty
+
 \usepackage[pages=all]{background} %background images with different backgrounds for even and odd pages
 
 \newtoggle{bool-a4}
@@ -14,19 +17,19 @@
 
 \iftoggle{bool-a4}{%
 	\iftoggle{bool-print}{%
-		\newcommand{\oddbackgroundimg}{img/bg-a4-odd-print.jpg}
-		\newcommand{\evenbackgroundimg}{img/bg-a4-even-print.jpg}
+		\newcommand{\oddbackgroundimg}{\theabspath img/bg-a4-odd-print.jpg}
+		\newcommand{\evenbackgroundimg}{\theabspath img/bg-a4-even-print.jpg}
 		}{
-		\newcommand{\oddbackgroundimg}{img/bg-a4-odd.jpg}
-		\newcommand{\evenbackgroundimg}{img/bg-a4-even.jpg}
+		\newcommand{\oddbackgroundimg}{\theabspath img/bg-a4-odd.jpg}
+		\newcommand{\evenbackgroundimg}{\theabspath img/bg-a4-even.jpg}
 		}
 	}{%
 	\iftoggle{bool-print}{%
-		\newcommand{\oddbackgroundimg}{img/bg-letter-odd-print.jpg}
-		\newcommand{\evenbackgroundimg}{img/bg-letter-even-print.jpg}
+		\newcommand{\oddbackgroundimg}{\theabspath img/bg-letter-odd-print.jpg}
+		\newcommand{\evenbackgroundimg}{\theabspath img/bg-letter-even-print.jpg}
 		}{%
-		\newcommand{\oddbackgroundimg}{img/bg-letter-odd.jpg}
-		\newcommand{\evenbackgroundimg}{img/bg-letter-even.jpg}
+		\newcommand{\oddbackgroundimg}{\theabspath img/bg-letter-odd.jpg}
+		\newcommand{\evenbackgroundimg}{\theabspath img/bg-letter-even.jpg}
 		}
 	}
 
@@ -44,5 +47,3 @@
 		\fi
 		}
 	}
-
-
