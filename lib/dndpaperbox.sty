@@ -1,4 +1,5 @@
-\newtcolorbox{paperbox}[2][]{
+%Usage \begin{paperbox}[options]{title}[color]
+\DeclareTColorBox{paperbox}{O{} m O{monstertandark}}{
 	frame hidden,
 	boxrule=0pt,
 	breakable,
@@ -15,9 +16,9 @@
 	parbox = false,
 	borderline north={1pt}{-0.5pt}{black},
 	borderline south={1pt}{-0.5pt}{black},
-	colback=monstertandark,
-	colframe=monstertandark,
-	colbacktitle=monstertandark,
+	colback=#3,
+	colframe=#3,
+	colbacktitle=#3,
 	fuzzy shadow={0mm}{-3.5pt}{-0.5pt}{0.4mm}{black!60!white},
 	overlay={
 		\fill [fill=black] (frame.south west) -- ++(7pt,0) -- ++(0,-5pt) -- cycle;
