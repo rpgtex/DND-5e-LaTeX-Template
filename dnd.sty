@@ -92,7 +92,8 @@
 
 % Customize itemize environment.
 \setlist{leftmargin=1em}
-\renewcommand{\labelitemi}{\tiny{$\bullet$}}
+\setitemize{noitemsep,topsep=0.5ex}
+\renewcommand{\labelitemi}{\raisebox{0.25ex}{\tiny{$\bullet$}}}
 
 % Setup for custom footer
 \pagestyle{fancy}
