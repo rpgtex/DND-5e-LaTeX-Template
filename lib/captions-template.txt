@@ -1,0 +1,40 @@
+To add captions for a new language, say French:
+	1. Copy the template below into dndstrings-captions.sty
+	2. Substitute the <language> token with the 
+	   language name:
+
+		% French captions
+		\addto\captionsfrench{%
+		...
+
+	3. Fill out the ... fields with the appropriate
+	   translations, without quotes:
+		  ...
+	  	  \def\armorclassname{Translation here}%
+	    	  \def\hitpointsname{Sorry}%
+	  	  \def\speedname{I do not actually know French}%
+		  ...
+
+
+vv ------ TEMPLATE ------ vv
+
+\addto\captions<language>{%
+  \def\armorclassname{...}%
+  \def\hitpointsname{...}%
+  \def\speedname{...}%
+  \def\strstatname{...}%
+  \def\dexstatname{...}%
+  \def\constatname{...}%
+  \def\intstatname{...}%
+  \def\wisstatname{...}%
+  \def\chastatname{...}%
+  \def\skillsname{...}%
+  \def\dimmname{...}%
+  \def\dvulname{...}%
+  \def\dresname{...}%
+  \def\cimmname{...}%
+  \def\savesname{...}%
+  \def\sensesname{...}%
+  \def\languagesname{...}%
+  \def\challengename{...}%
+}
