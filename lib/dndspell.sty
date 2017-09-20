@@ -1,12 +1,11 @@
-\newkeycommand{\spell[name=, type=, castingtime=, range=, components=, duration=, description=]}{
-  \subtitlesection{\commandkey{name}}{\commandkey{type}}
+\newcommand{\spell}[7]{
+  \subtitlesection{#1}{#2}
   \vspace{-5pt} % subtitlesection artefact; topsep also changes bottom spacing.
   \begin{description}[font=\normalfont\textbf,noitemsep,topsep=1ex,leftmargin=1em]
-    \item[Casting Time:]\commandkey{castingtime}
-    \item[Range:]\commandkey{range}
-    \item[Components:]\commandkey{components}
-    \item[Duration:]\commandkey{duration}
+    \item[Casting Time:] #3
+    \item[Range:] #4
+    \item[Components:] #5
+    \item[Duration:] #6
   \end{description}
-  \noindent
-  \commandkey{description}
+  #7
 }
