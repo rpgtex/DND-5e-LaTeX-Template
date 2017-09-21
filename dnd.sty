@@ -23,16 +23,85 @@
 \RequirePackage{enumitem}
 \RequirePackage{ragged2e}
 
-% Load other modules of this package
-\usepackage{lib/dndmonster}
-\usepackage{lib/dndsections}
-\usepackage{lib/dndcomment}
-\usepackage{lib/dnditemtable}
-\usepackage{lib/dndtable}
-\usepackage{lib/dndquote}
-\usepackage{lib/dndpaperbox}
-\usepackage{lib/dndspell}
+% Get this file absolute path, from
+% https://tex.stackexchange.com/questions/42417/full-path-of-current-file
+\makeatletter
+\def\thepwd@default{./}
+\let\thepwd\thepwd@default
+\let\theabspath\@empty
+\newcommand\getabspath{%
+    \begingroup
+    \edef\filename{dnd.sty}%
+    \@onelevel@sanitize\filename%
+    \let\thepwd\thepwd@default
+    \let\theabspath\@empty
+    \IfFileExists{\jobname.fls}{%
+        \openin\@inputcheck=\jobname.fls\relax
+        \endlinechar\m@ne
+        \readline\@inputcheck to \line
+        \expandafter\getabspath@extr\line\relax\relax\relax\relax\relax
+        \expandafter\getabspath@defs\expandafter{\filename}%
+        \loop
+            \readline\@inputcheck to \line
+            \@onelevel@sanitize\line
+            \expandafter\getabspath@path\expandafter{\line}%
+            \ifeof\@inputcheck
+                \let\iterate\relax
+            \fi
+            \ifx\theabspath\@empty
+        \repeat
+        \closein\@inputcheck
+    }{%
+    }%
+    \ifx\theabspath\@empty
+        \let\theabspath\thepwd
+    \fi
+    \edef\@tempa{%
+        \def\noexpand\thepwd{\thepwd}%
+        \def\noexpand\theabspath{\theabspath}%
+    }%
+    \expandafter
+    \endgroup
+    \@tempa
+}
+\def\getabspath@extr#1#2#3#4#5\relax{%
+    \edef\@tempa{\detokenize{#1#2#3}}%
+    \edef\@tempb{\detokenize{PWD}}%
+    \ifx\@tempa\@tempb
+       \edef\thepwd{\detokenize{#4#5/}}%
+    \fi
+}
 
+\begingroup
+\catcode`I=12
+\catcode`N=12
+\catcode`P=12
+\catcode`U=12
+\catcode`T=12
+\gdef\getabspath@defs#1{%
+    \def\getabspath@@path ##1INPUT ##2#1\relax##3\relax##4\@nnil{%
+        \ifx\@empty##4\@empty\else
+            \def\theabspath{##2}%
+        \fi
+    }%
+    \def\getabspath@path##1{%
+        \getabspath@@path##1\relax INPUT \@empty#1\relax{}\relax\@nnil
+    }%
+}
+\endgroup
+\makeatother
+
+\getabspath
+
+% Load other modules of this package
+\usepackage{\theabspath lib/dndmonster}
+\usepackage{\theabspath lib/dndsections}
+\usepackage{\theabspath lib/dndcomment}
+\usepackage{\theabspath lib/dnditemtable}
+\usepackage{\theabspath lib/dndtable}
+\usepackage{\theabspath lib/dndquote}
+\usepackage{\theabspath lib/dndpaperbox}
+\usepackage{\theabspath lib/dndspell}
 
 %
 % Options
@@ -60,15 +129,15 @@
   % Determine background image
   \iftoggle{bool-bg-a4}{%		% Check if A4 option is selected
     \iftoggle{bool-bg-print}{%	% Check if print option is selected
-      \RequirePackage[a4,print]{lib/dndbackgroundimg}
+      \RequirePackage[a4,print]{\theabspath lib/dndbackgroundimg}
 		}{%
-      \RequirePackage[a4,full]{lib/dndbackgroundimg}
+      \RequirePackage[a4,full]{\theabspath lib/dndbackgroundimg}
 		}
 	}{%
     \iftoggle{bool-bg-print}{%	% Check if print option is selected
-      \RequirePackage[letter,print]{lib/dndbackgroundimg}
+      \RequirePackage[letter,print]{\theabspath lib/dndbackgroundimg}
 		}{%
-      \RequirePackage[letter,full]{lib/dndbackgroundimg}
+      \RequirePackage[letter,full]{\theabspath lib/dndbackgroundimg}
 		}
 	}
 }
