@@ -7,6 +7,15 @@
 \definecolor{puregold}{HTML}{E69A28}	%e.g. used for top line in newer monsterbox
 \definecolor{monstertan}{HTML}{FDF1DC}	%e.g. used for newer monsterblock
 \definecolor{monstertandark}{HTML}{F0DBB5}	%e.g. used for older monsterbox
-\definecolor{commentgreen}{HTML}{E0E5C1} % e.g. used in table and green commentbox
-\definecolor{itemtablepink}{HTML}{E9CDC2} % e.g. used in item tables instead of the green
 \definecolor{rulered}{HTML}{9C2B1B}		%e.g. used for triangular rule in statsblock
+
+% Accents (trim)
+\definecolor{phbcharactercolor}{HTML}{e0e5c1} % Part 1 of PHB (green)
+\definecolor{dmgadventurecolor}{HTML}{e9cdc2} % Part 2 of DMG (pink)
+
+% Set the default to Part 1 of the PHB.
+\colorlet{trimcolor}{phbcharactercolor}
+
+% Backwards-compatible aliases
+\colorlet{commentgreen}{phbcharactercolor}
+\colorlet{itemtablepink}{dmgadventurecolor}
