@@ -21,6 +21,7 @@
 \RequirePackage{fancyhdr} 			  % Adaptation of the footers
 \RequirePackage[most]{tcolorbox}  % used for some boxes
 \RequirePackage{enumitem}
+\RequirePackage{ragged2e}
 
 % Load other modules of this package
 \usepackage{lib/dndmonster}
@@ -47,6 +48,10 @@
 \DeclareOption{bg-print}{\toggletrue{bool-bg-print}}
 \DeclareOption{bg-full}{\togglefalse{bool-bg-print}}
 
+% Toggle justification (official books are flush left).
+\newtoggle{justified}
+\DeclareOption{justified}{\toggletrue{justified}}
+
 % Default Settings
 \ExecuteOptions{bg-letter, bg-full}
 \ProcessOptions\relax
@@ -68,9 +73,17 @@
 	}
 }
 
+\nottoggle{justified}{
+  \setlength{\RaggedRightParindent}{1em}
+  \RaggedRight
+}
+
 %
 % Style Parameters
 %
+
+% Disable space between paragraphs.
+\setlength{\parskip}{0pt}
 
 % Font environment
 \newenvironment{lmss}{\fontfamily{lmss}\selectfont}{}
