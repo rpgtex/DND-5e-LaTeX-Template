@@ -7,13 +7,20 @@
 \definecolor{puregold}{HTML}{E69A28}	%e.g. used for top line in newer monsterbox
 \definecolor{rulered}{HTML}{9C2B1B}		%e.g. used for triangular rule in statsblock
 
-% Accents (trim)
-\definecolor{phbcharactercolor}{HTML}{e0e5c1} % Part 1 of PHB (green)
-\definecolor{dmgadventurecolor}{HTML}{e9cdc2} % Part 2 of DMG (pink)
+% Trim (affects tables and paperboxes)
+\definecolor{phbcharactercolor}{HTML}{e0e5c1} % PHB Part 1 (green)
+\definecolor{phbrulescolor}{HTML}{b0d6b6}     % PHB Part 2 (teal)
+\definecolor{phbmagiccolor}{HTML}{d7c8c3}     % PHB Part 3 (purple)
+\definecolor{phbappendixcolor}{HTML}{d8c696}  % PHB appendix (brown)
+\definecolor{dmgworldcolor}{HTML}{f1e1ea}     % DMG Part 1 (pale purple)
+\definecolor{dmgadventurecolor}{HTML}{f3d7c1} % DMG Part 2 (pink)
+\definecolor{dmgrulescolor}{HTML}{ddeee1}     % DMG Part 3 (pale teal)
+\definecolor{dmgappendixcolor}{HTML}{e4e4e4}  % DMG appendix (grey)
 \definecolor{mmstatblockcolor}{HTML}{fdf1dc}  % MM stat block background (tan)
 
 % Set the default to Part 1 of the PHB.
-\colorlet{trimcolor}{phbcharactercolor}
+\newcommand{\resettrimcolor}{\colorlet{trimcolor}{phbcharactercolor}}
+\resettrimcolor
 
 % Backwards-compatible aliases and colours
 \colorlet{commentgreen}{phbcharactercolor}
