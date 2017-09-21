@@ -52,10 +52,6 @@
         \repeat
         \closein\@inputcheck
     }{%
-        \PackageWarning{getabspath}
-            {The required recorder file (.fls) was not found.\MessageBreak
-             Please compile with the '-recorder' option.\MessageBreak
-             Occurred}%
     }%
     \ifx\theabspath\@empty
         \let\theabspath\thepwd
