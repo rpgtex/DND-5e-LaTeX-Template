@@ -4,7 +4,6 @@
 \definecolor{titlered}{HTML}{58180D}	% e.g. used for titles
 \definecolor{undergold}{HTML}{C9AD6A}	% e.g. used for titlerules
 \definecolor{uppergold}{HTML}{B89A67}	%e.g. used for pagenumbers and footer
-\definecolor{puregold}{HTML}{E69A28}	%e.g. used for top line in newer monsterbox
 \definecolor{rulered}{HTML}{9C2B1B}		%e.g. used for triangular rule in statsblock
 
 % Trim (affects tables and paperboxes)
@@ -16,7 +15,10 @@
 \definecolor{dmgadventurecolor}{HTML}{f3d7c1} % DMG Part 2 (pink)
 \definecolor{dmgrulescolor}{HTML}{ddeee1}     % DMG Part 3 (pale teal)
 \definecolor{dmgappendixcolor}{HTML}{e4e4e4}  % DMG appendix (grey)
-\definecolor{mmstatblockcolor}{HTML}{fdf1dc}  % MM stat block background (tan)
+
+% Stat blocks
+\definecolor{statblockribbon}{HTML}{e69a28}	% top/bottom borders (gold)
+\definecolor{statblockbg}{HTML}{fdf1dc}     % stat block background (tan)
 
 % Set the default to Part 1 of the PHB.
 \newcommand{\resettrimcolor}{\colorlet{trimcolor}{phbcharactercolor}}
@@ -25,5 +27,5 @@
 % Backwards-compatible aliases and colours
 \colorlet{commentgreen}{phbcharactercolor}
 \colorlet{itemtablepink}{dmgadventurecolor}
-\colorlet{monstertan}{mmstatblockcolor}
+\colorlet{monstertan}{statblockbg}
 \definecolor{monstertandark}{HTML}{f0dbb5}
