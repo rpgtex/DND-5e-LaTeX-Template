@@ -25,7 +25,9 @@
 \definecolor{statblockbg}{HTML}{fdf1dc}     % stat block background (tan)
 
 % Set the default to Part 1 of the PHB.
-\newcommand{\resettrimcolor}{\colorlet{trimcolor}{phbcharactercolor}}
+\colorlet{trimcolor}{phbcharactercolor}
+\newcommand{\settrimcolor}[1]{\colorlet{trimcolor}{#1}}
+\newcommand{\resettrimcolor}{\settrimcolor{phbcharactercolor}}
 \resettrimcolor
 
 % Backwards-compatible aliases and colours
