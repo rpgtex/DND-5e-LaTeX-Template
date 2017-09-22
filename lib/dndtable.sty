@@ -9,11 +9,31 @@
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 
 % Table Environment
-\newenvironment{dndtable}[1][XX]{
-	\par\vspace*{8pt}
-	\noindent
-	\fontfamily{lmss}\selectfont %Select font
-	\rowcolors{1}{}{trimcolor} % Alternate colors
-	\tabularx{\linewidth}{#1}
-	}
-	{\endtabularx\vspace{8pt plus 1pt}\noindent} 
+
+% \tabularx expands to commands that directly hack the typesetting system. The
+% macro expects and end token, similar to a real environment.
+% Wrapping an environment that uses tabularx causes a runaway argument error
+% because tabularx cannot find the end token.
+% Instead, create two command that expand to the table header and footer.
+\newcommand{\dnd@starttable}[1]{%
+  \par\vspace*{8pt}
+  \noindent
+  \fontfamily{lmss}\selectfont
+  \rowcolors{1}{}{trimcolor}
+  \tabularx{\linewidth}{#1}
+}
+
+\newcommand{\dnd@endtable}{\endtabularx\vspace{8pt plus 1pt}\noindent}
+
+\newenvironment{dndtable}[1][XX]{\dnd@starttable{#1}}{\dnd@endtable}
+
+\newenvironment{dnditemtable}[1][XX]
+  {%
+    \colorlet{oldtrimcolor}{trimcolor}
+    \settrimcolor{dmgadventurecolor}
+    \dnd@starttable{#1}
+  }
+  {%
+    \dnd@endtable
+    \settrimcolor{oldtrimcolor}
+  }
