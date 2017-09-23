@@ -73,9 +73,13 @@
 	}
 }
 
+% Set paragraph indentation
+\setlength{\parindent}{1em}
+\setlength{\RaggedRightParindent}{\parindent}
+
+% Set left justification if not justified
 \nottoggle{justified}{
-  \setlength{\RaggedRightParindent}{1em}
-  \RaggedRight
+  \RaggedRight%
 }
 
 %

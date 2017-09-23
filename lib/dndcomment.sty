@@ -1,5 +1,10 @@
 % Green comment box definition
 \newtcolorbox{commentbox}[2][]{
+    before upper={%
+		\nottoggle{justified}{%
+			\RaggedRight%
+		  }
+        },
 	frame hidden,
 	boxrule=0pt,
 	breakable,

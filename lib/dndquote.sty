@@ -1,4 +1,12 @@
-\newtcolorbox{quotebox}[1][]{enhanced jigsaw,frame hidden,boxrule=0pt,
+\newtcolorbox{quotebox}[1][]{
+    before upper={%
+		\nottoggle{justified}{%
+			\RaggedRight%
+		  }
+        },
+	enhanced jigsaw,
+	frame hidden,
+	boxrule=0pt,
 	breakable,
 	enhanced,
 	before skip=10pt plus 1pt,

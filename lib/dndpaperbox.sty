@@ -1,5 +1,10 @@
 %Usage \begin{paperbox}[options]{title}[color]
 \DeclareTColorBox{paperbox}{O{} m O{monstertandark}}{
+    before upper={%
+		\nottoggle{justified}{%
+			\RaggedRight%
+		  }
+        },
 	frame hidden,
 	boxrule=0pt,
 	breakable,
