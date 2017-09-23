@@ -11,38 +11,30 @@
 \definecolor{rulered}{HTML}{9C2B1B}		% triangular rule in statsblock
 
 % Trim (affects tables and paperboxes)
-\definecolor{PHBCharacterColor}{HTML}{e0e5c1} % PHB Part 1 (light green)
-\definecolor{PHBRulesColor}{HTML}{b0d6b6}     % PHB Part 2 (light cyan)
-\definecolor{PHBMagicColor}{HTML}{d7c8c3}     % PHB Part 3 (mauve)
-\definecolor{PHBAppendixColor}{HTML}{d8c696}  % PHB appendix (tan)
-\definecolor{DMGWorldColor}{HTML}{f1e1ea}     % DMG Part 1 (lavender)
-\definecolor{DMGAdventureColor}{HTML}{f3d7c1} % DMG Part 2 (coral)
-\definecolor{DMGRulesColor}{HTML}{ddeee1}     % DMG Part 3 (slate grey)
-\definecolor{DMGAppendixColor}{HTML}{e4e4e4}  % DMG appendix (lilac)
+\definecolor{PhbLightGreen}{HTML}{E0E5C1} % PHB Part 1
+\definecolor{PhbLightCyan}{HTML}{B0D6B6}  % PHB Part 2
+\definecolor{PhbMauve}{HTML}{D7C8C3}      % PHB Part 3
+\definecolor{PhbTan}{HTML}{D8C696}        % PHB appendix
+\definecolor{DmgLavender}{HTML}{F1E1EA}   % DMG Part 1
+\definecolor{DmgCoral}{HTML}{F3D7C1}      % DMG Part 2
+\definecolor{DmgSlateGray}{HTML}{DDEEE1}  % DMG Part 3
+\definecolor{DmgLilac}{HTML}{E4E4E4}      % DMG appendix
 
 % Trim aliases
-\Colorlet{PHBLightGreen}{PHBCharacterColor}
-\Colorlet{PHBLightCyan}{PHBRulesColor}
-\Colorlet{PHBMauve}{PHBMagicColor}
-\Colorlet{PHBTan}{PHBAppendixColor}
-\Colorlet{DMGLavender}{DMGWorldColor}
-\Colorlet{DMGCoral}{DMGAdventureColor}
-\Colorlet{DMGSlateGray}{DMGRulesColor}
-\Colorlet{DMGSlateGray}{DMGRulesColor}
-\Colorlet{DMGLilac}{DMGAppendixColor}
+\colorlet{DmgSlateGrey}{DmgSlateGray}
 
 % Stat blocks
-\definecolor{statblockribbon}{HTML}{e69a28}	% top/bottom borders (gold)
-\definecolor{statblockbg}{HTML}{fdf1dc}     % stat block background (tan)
+\definecolor{statblockribbon}{HTML}{E69A28} % top/bottom borders (gold)
+\definecolor{statblockbg}{HTML}{FDF1DC}     % stat block background (tan)
 
 % Set the default to Part 1 of the PHB.
-\colorlet{trimcolor}{PHBCharacterColor}
+\colorlet{trimcolor}{PhbLightGreen}
 \newcommand{\settrimcolor}[1]{\colorlet{trimcolor}{#1}}
-\newcommand{\resettrimcolor}{\settrimcolor{PHBCharacterColor}}
+\newcommand{\resettrimcolor}{\settrimcolor{PhbLightGreen}}
 \resettrimcolor
 
 % Backwards-compatible aliases and colours
-\colorlet{commentgreen}{PHBCharacterColor}
-\colorlet{itemtablepink}{DMGAdventureColor}
+\colorlet{commentgreen}{PhbLightGreen}
+\colorlet{itemtablepink}{DmgCoral}
 \colorlet{monstertan}{statblockbg}
-\definecolor{monstertandark}{HTML}{f0dbb5}
+\definecolor{monstertandark}{HTML}{F0DBB5}

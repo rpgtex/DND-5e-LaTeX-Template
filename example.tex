@@ -105,19 +105,19 @@
 
 Use \verb=\settrimcolor= to change the color of \verb=commentbox=, \verb=quotebox=, and \verb=dndtable= environments. See Table \ref{tab:colors} for a list of colors.
 
-Reset the trim color to the default (\verb=PHBLightGreen=) using \verb=\resettrimcolor=.
+Reset the trim color to the default (\verb=PhBlightGreen=) using \verb=\resettrimcolor=.
 
 \begin{table*}
   \begin{dndtable}[XXX]
-    \textbf{Color}           & \textbf{Alias}                            & \textbf{Description} \\
-    \verb=PHBCharacterColor= & \verb=PHBLightGreen=                      & Light green used in PHB Part 1 \\
-    \verb=PHBRulesColor=     & \verb=PHBLightCyan=                       & Light cyan used in PHB Part 2 \\
-    \verb=PHBMagicColor=     & \verb=PHBMauve=                           & Pale purple used in PHB Part 3 \\
-    \verb=PHBAppendixColor=  & \verb=PHBTan=                             & Light brown used in PHB appendix \\
-    \verb=DMGWorldColor=     & \verb=DMGLavender=                        & Pale purple used in DMG Part 1 \\
-    \verb=DMGAdventureColor= & \verb=DMGCoral=                           & Orange-pink used in DMG Part 2 \\
-    \verb=DMGRulesColor=     & \verb=DMGSlateGray= (\verb=DMGSlateGrey=) & Blue-gray used in PHB Part 3 \\
-    \verb=DMGAppendixColor=  & \verb=DMGLilac=                           & Purple-gray used in DMG appendix \\
+    \textbf{Color}                            & \textbf{Description} \\
+    \verb=PhbLightGreen=                      & Light green used in PHB Part 1 \\
+    \verb=PhbLightCyan=                       & Light cyan used in PHB Part 2 \\
+    \verb=PhbMauve=                           & Pale purple used in PHB Part 3 \\
+    \verb=PhbTan=                             & Light brown used in PHB appendix \\
+    \verb=DmgLavender=                        & Pale purple used in DMG Part 1 \\
+    \verb=DmgCoral=                           & Orange-pink used in DMG Part 2 \\
+    \verb=DmgSlateGray= (\verb=DmgSlateGrey=) & Blue-gray used in PHB Part 3 \\
+    \verb=DmgLilac=                           & Purple-gray used in DMG appendix \\
   \end{dndtable}
   \caption{Colors supported by this package}
   \label{tab:colors}
@@ -126,7 +126,7 @@ Reset the trim color to the default (\verb=PHBLightGreen=) using \verb=\resettri
 \subsection{Example}
 
 \begin{verbatim}
-\settrimcolor{DMGAdventureColor}
+\settrimcolor{DmgCoral}
 \begin{dndtable}[cX]
   \textbf{d8} & \textbf{Item} \\
   1           & Small wooden button \\
@@ -140,7 +140,7 @@ Reset the trim color to the default (\verb=PHBLightGreen=) using \verb=\resettri
 \resettrimcolor
 \end{verbatim}
 
-\settrimcolor{DMGAdventureColor}
+\settrimcolor{DmgCoral}
 \begin{dndtable}[cX]
   \textbf{d8} & \textbf{Item} \\
   1           & Small wooden button \\
