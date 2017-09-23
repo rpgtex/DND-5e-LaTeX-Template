@@ -19,7 +19,7 @@
   \par\vspace*{8pt}
   \noindent
   \fontfamily{lmss}\selectfont
-  \rowcolors{1}{}{trimcolor}
+  \rowcolors{1}{}{tablecolor}
   \tabularx{\linewidth}{#1}
 }
 
@@ -29,11 +29,11 @@
 
 \newenvironment{dnditemtable}[1][XX]
   {%
-    \colorlet{oldtrimcolor}{trimcolor}
-    \settrimcolor{DmgCoral}
+    \colorlet{oldtablecolor}{tablecolor}
+    \colorlet{tablecolor}{DmgCoral}
     \dnd@starttable{#1}
   }
   {%
     \dnd@endtable
-    \settrimcolor{oldtrimcolor}
+    \colorlet{tablecolor}{oldtablecolor}
   }
