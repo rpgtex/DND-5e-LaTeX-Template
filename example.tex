@@ -103,12 +103,20 @@
 
 \section{Colors}
 
-Use \verb=\settrimcolor= to change the color of \verb=commentbox=, \verb=quotebox=, and \verb=dndtable= environments. See Table \ref{tab:colors} for a list of colors.
+This package provides several global color variables to style \verb=commentbox=, \verb=quotebox=, and \verb=dndtable= environments.
 
-Reset the trim color to the default (\verb=PhBlightGreen=) using \verb=\resettrimcolor=.
+\begin{dndtable}[lX]
+  \textbf{Color}         & \textbf{Description} \\
+  \verb=commentboxcolor= & Controls \verb=commentbox= background. \\
+  \verb=paperboxcolor=   & Controls \verb=paperbox= background. \\
+  \verb=tablecolor=      & Controls background of even \verb=dndtable= rows. \\
+  \verb=trimcolor=       & Use this to control the color of custom elements. \\
+\end{dndtable}
+
+See Table \ref{tab:colors} for a list of accent colors that match the core books.
 
 \begin{table*}
-  \begin{dndtable}[XXX]
+  \begin{dndtable}[XX]
     \textbf{Color}                            & \textbf{Description} \\
     \verb=PhbLightGreen=                      & Light green used in PHB Part 1 \\
     \verb=PhbLightCyan=                       & Light cyan used in PHB Part 2 \\
@@ -123,10 +131,16 @@ Reset the trim color to the default (\verb=PhBlightGreen=) using \verb=\resettri
   \label{tab:colors}
 \end{table*}
 
+\begin{itemize}
+  \item Use \verb=\setthemecolor[<color>]= to set \verb=commentcolor=, \verb=paperboxcolor=, \verb=themecolor=, and \verb=trimcolor= to a specific color.
+  \item Calling \verb=\setthemecolor= without an argument sets all colors to the current \verb=themecolor=.
+  \item Use \verb=\resetthemecolor= to reset all colors to the default color (\verb=PhbLightGreen=).
+\end{itemize}
+
 \subsection{Example}
 
 \begin{verbatim}
-\settrimcolor{DmgCoral}
+\setthemecolor[DmgCoral]
 \begin{dndtable}[cX]
   \textbf{d8} & \textbf{Item} \\
   1           & Small wooden button \\
@@ -137,10 +151,10 @@ Reset the trim color to the default (\verb=PhBlightGreen=) using \verb=\resettri
   7           & Broken axe handle \\
   8           & Tarnished silver locket \\
 \end{dndtable}
-\resettrimcolor
+\resetthemecolor
 \end{verbatim}
 
-\settrimcolor{DmgCoral}
+\setthemecolor[DmgCoral]
 \begin{dndtable}[cX]
   \textbf{d8} & \textbf{Item} \\
   1           & Small wooden button \\
@@ -151,7 +165,7 @@ Reset the trim color to the default (\verb=PhBlightGreen=) using \verb=\resettri
   7           & Broken axe handle \\
   8           & Tarnished silver locket \\
 \end{dndtable}
-\resettrimcolor
+\resetthemecolor
 
 % End document
 \end{document}

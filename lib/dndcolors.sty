@@ -27,16 +27,32 @@
 \definecolor{statblockribbon}{HTML}{E69A28} % top/bottom borders (gold)
 \definecolor{statblockbg}{HTML}{FDF1DC}     % stat block background (tan)
 
-% Set the default to Part 1 of the PHB.
-\colorlet{trimcolor}{PhbLightGreen}
-\newcommand{\settrimcolor}[1]{\colorlet{trimcolor}{#1}}
-\newcommand{\resettrimcolor}{\settrimcolor{PhbLightGreen}}
-\resettrimcolor
+% Global colour variables
+%
+%   commentboxcolor   commentbox background
+%   paperboxcolor     paperbox background
+%   trimcolor         colour of custom elements added by user
+%   tablecolor        table even row background
+%   themecolor        changing this with \setthemecolor sets all colours
+
+% Set the default theme to Part 1 of the PHB.
+\colorlet{themecolor}{PhbLightGreen}
 
 % Add element-specific colours.
-\colorlet{commentboxcolor}{trimcolor}
-\colorlet{paperboxcolor}{trimcolor}
-\colorlet{tablecolor}{trimcolor}
+\colorlet{commentboxcolor}{themecolor}
+\colorlet{paperboxcolor}{themecolor}
+\colorlet{tablecolor}{themecolor}
+\colorlet{trimcolor}{themecolor}
+
+% Offer commands to set all accent colours.
+\newcommand{\setthemecolor}[1][themecolor]{%
+  \colorlet{commentboxcolor}{#1}
+  \colorlet{paperboxcolor}{#1}
+  \colorlet{tablecolor}{#1}
+  \colorlet{themecolor}{#1}
+  \colorlet{trimcolor}{#1}
+}
+\newcommand{\resetthemecolor}{\setthemecolor[PhbLightGreen]}
 
 % Backwards-compatible aliases and colours
 \colorlet{commentgreen}{PhbLightGreen}
