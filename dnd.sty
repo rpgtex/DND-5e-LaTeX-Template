@@ -9,7 +9,6 @@
 % Prerequisite Packages
 %
 
-\RequirePackage{titlesec}         % Used to adjust (sub)section colors and fonts
 \RequirePackage{lipsum}           % Filler text
 \RequirePackage[cm]{fullpage}     % Small margins
 \RequirePackage{bookman}          % Closest built-in font I could find
@@ -21,6 +20,8 @@
 \RequirePackage{keycommand}
 \RequirePackage{fancyhdr} 			  % Adaptation of the footers
 \RequirePackage[most]{tcolorbox}  % used for some boxes
+\RequirePackage{enumitem}
+\RequirePackage{ragged2e}
 
 % Load other modules of this package
 \usepackage{lib/dndmonster}
@@ -30,6 +31,7 @@
 \usepackage{lib/dndtable}
 \usepackage{lib/dndquote}
 \usepackage{lib/dndpaperbox}
+\usepackage{lib/dndspell}
 
 
 %
@@ -45,6 +47,10 @@
 \DeclareOption{bg-letter}{\togglefalse{bool-bg-a4}}
 \DeclareOption{bg-print}{\toggletrue{bool-bg-print}}
 \DeclareOption{bg-full}{\togglefalse{bool-bg-print}}
+
+% Toggle justification (official books are flush left).
+\newtoggle{justified}
+\DeclareOption{justified}{\toggletrue{justified}}
 
 % Default Settings
 \ExecuteOptions{bg-letter, bg-full}
@@ -67,9 +73,17 @@
 	}
 }
 
+\nottoggle{justified}{
+  \setlength{\RaggedRightParindent}{1em}
+  \RaggedRight
+}
+
 %
 % Style Parameters
 %
+
+% Disable space between paragraphs.
+\setlength{\parskip}{0pt}
 
 % Font environment
 \newenvironment{lmss}{\fontfamily{lmss}\selectfont}{}
@@ -89,6 +103,11 @@
 \definecolor{commentgreen}{HTML}{E0E5C1} % e.g. used in table and green commentbox
 \definecolor{itemtablepink}{HTML}{E9CDC2} % e.g. used in item tables instead of the green
 \definecolor{rulered}{HTML}{9C2B1B}		%e.g. used for triangular rule in statsblock
+
+% Customize itemize environment.
+\setlist{leftmargin=1em}
+\setitemize{noitemsep,topsep=0.5ex}
+\renewcommand{\labelitemi}{\raisebox{0.25ex}{\tiny{$\bullet$}}}
 
 % Setup for custom footer
 \pagestyle{fancy}

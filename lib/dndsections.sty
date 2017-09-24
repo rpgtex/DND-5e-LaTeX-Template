@@ -1,31 +1,45 @@
 \RequirePackage[toc]{multitoc}
 \RequirePackage[titles]{tocloft}
+\RequirePackage{titlesec}	% Used to adjust (sub)section formatting
 
-%Remove Numbering from section (If you want Numbering on the sections comment the following three lines and change the "0em" separation-definitions in the lower part to 1em)
-\renewcommand\thechapter{}
-\renewcommand\thesection{}
-\renewcommand\thesubsection{}
-\renewcommand\thesubsubsection{}
+%Remove Numbering (If you want Numbering set secnumdepth to the appropriate depth)
+\setcounter{secnumdepth}{-1}
 
-% Adjust chapter formatting
-\titleclass{\chapter}{top}
+% Chapter
 \titleformat{\chapter}
-{\color{titlered}\normalfont\scshape\Huge}{\thechapter}{0em}{}
+{\color{titlered}\normalfont\scshape\Huge}{\thechapter\quad}{0pt}{}
+
 \titlespacing*{\chapter}{0pt}{0pt}{20pt}
 
 \renewcommand\cftchapfont{\color{titlered}\bfseries\scshape}
 
-% Adjust section and subsection colors and font (change 0em to 1em if you commented the removal of section numbering)
+% Section
 \titleformat{\section}
-{\color{titlered}\normalfont\scshape\LARGE}{\thesection}{0em}{}
+{\color{titlered}\normalfont\scshape\LARGE}{\thesection\quad}{0pt}{}
 
+% Subsection
 \titleformat{\subsection}
-{\color{titlered}\normalfont\scshape\Large}{\thesubsection}{0em}{}[{\titleline{\color{undergold}\titlerule[1pt]}}]
+{\color{titlered}\normalfont\scshape\Large}{\thesubsection\quad}{0pt}{}
+[\titleline{\color{undergold}\titlerule[1pt]}]
 
+% Subsubsection
 \titleformat{\subsubsection}
-{\color{titlered}\normalfont\scshape\large}{\thesubsubsection}{0em}{}[]
+{\color{titlered}\normalfont\scshape\large}{\thesubsubsection\quad}{0pt}{}[]
 
+% Paragraph
+\titleformat{\paragraph}[runin]
+{\normalfont\normalsize\bfseries\slshape}{\theparagraph\quad}{0em}{}[.]
+\titlespacing*{\paragraph}
+{0pt}{0pt}{\wordsep}
+
+% Subparagraph
+\titleformat{\subparagraph}[runin]
+{\normalfont\normalsize\bfseries\slshape}{\thesubparagraph\quad}{0em}{}[.]
+\titlespacing*{\subparagraph}
+{\parindent}{0pt}{\wordsep}
+
+% Special command for magic items, traps, and the like.
 \newcommand{\subtitlesection}[2]{
-	\subsubsection{#1}\vspace{-5pt}
-	\textit{#2}\vspace{5pt}\par
+	\subsubsection{#1}\vspace{-1ex}
+	\textit{#2}\vspace{1ex}\par
 	} 

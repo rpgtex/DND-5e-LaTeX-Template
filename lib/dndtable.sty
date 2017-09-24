@@ -5,12 +5,15 @@
 	\sffamily\bfseries\scshape
 	#1}}
 
+% Centered Column
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
 % Table Environment
 \newenvironment{dndtable}[1][XX]{
 	\par\vspace*{8pt}
 	\noindent
 	\fontfamily{lmss}\selectfont %Select font
-	\rowcolors{1}{bgtan}{commentgreen} % Alternate colors
+	\rowcolors{1}{}{commentgreen} % Alternate colors
 	\tabularx{\linewidth}{#1}
 	}
 	{\endtabularx\vspace{8pt plus 1pt}\noindent} 

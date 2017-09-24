@@ -1,16 +1,18 @@
 % Changing book to article will make the footers match on each page,
 % rather than alternate every other.
+%
+% Note that the article class does not have chapters.
 \documentclass[10pt,twoside,twocolumn,openany]{book}
-\usepackage[bg-letter]{dnd} % Options: bg-a4, bg-letter, bg-full, bg-print, bg-none.
+\usepackage[bg-letter]{dnd} % Options: bg-a4, bg-letter, bg-full, bg-print, bg-none, justified
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 
 % Start document
 \begin{document}
-\fontfamily{ppl}\selectfont % Set text font
 
 % Your content goes here
 
+% Comment this out if you're using the article class.
 \chapter{Chapter 1: The Dark \LaTeX}
 
 \section{Main Section}
@@ -19,20 +21,22 @@
 \subsection{Fun with boxes}
 \subsubsection{Even more fun!}
 
+
 \begin{commentbox}{Neat Green Box!}
 	\lipsum[1]
 \end{commentbox}
+
+\subtitlesection{Weapon, +1, +2, or +3}
+{Weapon (any), uncommon (+1), rare (+2), or very rare (+3)}
 
 \begin{quotebox}
 	As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
 \end{quotebox}
 
-\newpage % Acts as columbreak because of twocolumn option; for pagebreak use \clearpage
-
-% For more columns, you can say \begin{dndtable}[your options here}.
+% For more columns, you can say \begin{dndtable}[your options here].
 % For instance, if you wanted three columns, you could say
-% \begin{dndtable}{XXX}. The usual host of tabular parameters are
-% aailable as well.
+% \begin{dndtable}[XXX]. The usual host of tabular parameters are
+% available as well.
 \header{Nice table}
 \begin{dndtable}
    	\textbf{Table head}  & \textbf{Table head} \\
@@ -45,6 +49,8 @@
 	\lipsum[1]
 \end{paperbox}
 
+\newpage % don't break monsterbox across columns
+
 % You can optionally not include the background by saying
 % begin{monsterboxnobg}
 \begin{monsterbox}{Monster Foo}
@@ -52,7 +58,7 @@
 	\hline
 	\basics[%
 	armorclass = 12,
-	hitpoints  = 16 (3d8 + 3),
+	hitpoints  = \dice{3d8 + 3},
 	speed      = 50 ft
 	]
 	\hline
@@ -80,6 +86,20 @@
     See, here he goes again! Yet more text.
 	\end{monsteraction}
 \end{monsterbox}
+
+\section{Spells}
+
+\begin{spell}
+	{Beautiful Typesetting}
+	{4th-level illusion}
+	{1 action}
+	{5 feet}
+	{S, M (ink and parchment, which the spell consumes)}
+	{Until dispelled}
+	You are able to transform a written message of any length into a beautiful scroll. All creatures within range that can see the scroll must make a wisdom saving throw or be charmed by you until the spell ends.
+
+	While the creature is charmed by you, they cannot take their eyes off the scroll and cannot willingly move away from the scroll. Also, the targets can make a wisdom saving throw at the end of each of their turns. On a success, they are no longer charmed.
+\end{spell}
 
 % End document
 \end{document}
