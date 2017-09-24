@@ -1,3 +1,6 @@
+\RequirePackage[toc]{multitoc}
+\RequirePackage[titles]{tocloft}
+
 %Remove Numbering from section (If you want Numbering on the sections comment the following three lines and change the "0em" separation-definitions in the lower part to 1em)
 \renewcommand\thechapter{}
 \renewcommand\thesection{}
@@ -9,6 +12,8 @@
 \titleformat{\chapter}
 {\color{titlered}\normalfont\scshape\Huge}{\thechapter}{0em}{}
 \titlespacing*{\chapter}{0pt}{0pt}{20pt}
+
+\renewcommand\cftchapfont{\color{titlered}\bfseries\scshape}
 
 % Adjust section and subsection colors and font (change 0em to 1em if you commented the removal of section numbering)
 \titleformat{\section}
@@ -24,26 +29,3 @@
 	\subsubsection{#1}\vspace{-5pt}
 	\textit{#2}\vspace{5pt}\par
 	} 
-
-% Fancy table of contents
-%
-% Usage: \dndtoc[depth] or \dndtoc*[depth] (for small-caps chapters)
-%
-% Depth:
-%	0: chapters
-%	1: sections
-%	2: subsections (default)
-%	3: subsubsections
-%
-\usepackage{xparse}
-\usepackage[toc]{multitoc}
-\usepackage[titles]{tocloft}
-\NewDocumentCommand{\dndtoc}{sO{2}}{
-	\IfBooleanTF#1{
-		\renewcommand\cftchapfont{\color{titlered}\bfseries\scshape}
-	}
-	{
-		\renewcommand\cftchapfont{\color{titlered}\bfseries}
-	}
-	\setcounter{tocdepth}{#2}\tableofcontents
-}
