@@ -4,4 +4,5 @@
 *.blg
 *.bbl
 *.synctex.gz
+*.toc
 *.fdb_latexmk

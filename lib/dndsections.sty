@@ -1,3 +1,5 @@
+\RequirePackage[toc]{multitoc}
+\RequirePackage[titles]{tocloft}
 \RequirePackage{titlesec}	% Used to adjust (sub)section formatting
 
 %Remove Numbering (If you want Numbering set secnumdepth to the appropriate depth)
@@ -8,6 +10,8 @@
 {\color{titlered}\normalfont\scshape\Huge}{\thechapter\quad}{0pt}{}
 
 \titlespacing*{\chapter}{0pt}{0pt}{20pt}
+
+\renewcommand\cftchapfont{\color{titlered}\bfseries\scshape}
 
 % Section
 \titleformat{\section}
