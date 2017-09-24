@@ -1,6 +1,6 @@
 % Green comment box definition
-\newtcolorbox{commentbox}[2][]{%
-    before upper={\nottoggle{justified}{\RaggedRight}},
+\DeclareTColorBox{commentbox}{O{} m O{commentboxcolor}}{
+	before upper={\nottoggle{justified}{\RaggedRight}},
 	frame hidden,
 	boxrule=0pt,
 	breakable,
@@ -15,9 +15,9 @@
 	fontupper=\fontfamily{lmss}\selectfont,
 	title=#2,
 	parbox=false,
-	colback=commentgreen,
-	colframe=commentgreen,
-	colbacktitle=commentgreen,
+	colback=#3,
+	colframe=#3,
+	colbacktitle=#3,
 	after={\vspace{5pt plus 1pt}\noindent},
 	#1
 }
