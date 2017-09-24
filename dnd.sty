@@ -9,7 +9,6 @@
 % Prerequisite Packages
 %
 
-\RequirePackage{lipsum}           % Filler text
 \RequirePackage[cm]{fullpage}     % Small margins
 \RequirePackage{bookman}          % Closest built-in font I could find
 \RequirePackage[T1]{fontenc}
@@ -21,6 +20,7 @@
 \RequirePackage{fancyhdr} 			  % Adaptation of the footers
 \RequirePackage[most]{tcolorbox}  % used for some boxes
 \RequirePackage{enumitem}
+\RequirePackage{microtype}        % Improve ragged2e hyphenation and overfull boxes
 \RequirePackage{ragged2e}
 
 % Load other modules of this package
@@ -73,10 +73,13 @@
 	}
 }
 
-\nottoggle{justified}{
-  \setlength{\RaggedRightParindent}{1em}
-  \RaggedRight
-}
+% Set paragraph indentation
+\setlength{\parindent}{1em}
+\setlength{\RaggedRightParindent}{\parindent}
+\hyphenpenalty=500  % Fewer hyphens
+
+% Set left justification if not justified
+\nottoggle{justified}{\RaggedRight}
 
 %
 % Style Parameters
