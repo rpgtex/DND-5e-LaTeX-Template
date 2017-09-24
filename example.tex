@@ -140,13 +140,23 @@ See Table \ref{tab:colors} for a list of accent colors that match the core books
 \begin{itemize}
   \item Use \verb=\setthemecolor[<color>]= to set \verb=commentcolor=, \verb=paperboxcolor=, \verb=themecolor=, and \verb=trimcolor= to a specific color.
   \item Calling \verb=\setthemecolor= without an argument sets all colors to the current \verb=themecolor=.
-  \item Use \verb=\resetthemecolor= to reset all colors to the default color (\verb=PhbLightGreen=).
+  \item \verb=commentbox=, \verb=dndtable=, and \verb=paperbox= all accept an optional color argument to set the color for a single instance.
 \end{itemize}
 
-\subsection{Example}
+\subsection{Examples}
+
+\subsubsection{Using \texttt{themecolor}}
 
 \begin{verbatim}
-\setthemecolor[DmgCoral]
+\setthemecolor[PhbMauve]
+
+\begin{paperbox}{Example}
+  \lipsum[1]
+\end{paperbox}
+
+\setthemecolor[PhbLightCyan]
+
+\header{Example}
 \begin{dndtable}[cX]
   \textbf{d8} & \textbf{Item} \\
   1           & Small wooden button \\
@@ -157,10 +167,18 @@ See Table \ref{tab:colors} for a list of accent colors that match the core books
   7           & Broken axe handle \\
   8           & Tarnished silver locket \\
 \end{dndtable}
-\resetthemecolor
 \end{verbatim}
 
-\setthemecolor[DmgCoral]
+\begingroup
+\setthemecolor[PhbMauve]
+
+\begin{paperbox}{Example}
+  \lipsum[1]
+\end{paperbox}
+
+\setthemecolor[PhbLightCyan]
+
+\header{Example}
 \begin{dndtable}[cX]
   \textbf{d8} & \textbf{Item} \\
   1           & Small wooden button \\
@@ -171,7 +189,33 @@ See Table \ref{tab:colors} for a list of accent colors that match the core books
   7           & Broken axe handle \\
   8           & Tarnished silver locket \\
 \end{dndtable}
-\resetthemecolor
+\endgroup
+
+\subsubsection{Using element color arguments}
+
+\begin{verbatim}
+\begin{dndtable}[cX][DmgCoral]
+  \textbf{d8} & \textbf{Item} \\
+  1           & Small wooden button \\
+  2           & Red feather \\
+  3           & Human tooth \\
+  4           & Vial of green liquid \\
+  6           & Tasty biscuit \\
+  7           & Broken axe handle \\
+  8           & Tarnished silver locket \\
+\end{dndtable}
+\end{verbatim}
+
+\begin{dndtable}[cX][DmgCoral]
+  \textbf{d8} & \textbf{Item} \\
+  1           & Small wooden button \\
+  2           & Red feather \\
+  3           & Human tooth \\
+  4           & Vial of green liquid \\
+  6           & Tasty biscuit \\
+  7           & Broken axe handle \\
+  8           & Tarnished silver locket \\
+\end{dndtable}
 
 % End document
 \end{document}
