@@ -8,7 +8,6 @@
 %
 % Prerequisite Packages
 %
-
 \RequirePackage[cm]{fullpage}     % Small margins
 \RequirePackage{bookman}          % Closest built-in font I could find
 \RequirePackage[T1]{fontenc}
@@ -73,10 +72,12 @@
 	}
 }
 
-% Set paragraph indentation
+% Set paragraph and ling spacing
+\linespread{1.1}%
 \setlength{\parindent}{1em}
+\setlength{\RaggedRightRightskip}{0pt plus 1cm}
 \setlength{\RaggedRightParindent}{\parindent}
-\hyphenpenalty=500  % Fewer hyphens
+\hyphenpenalty=1000  % Fewer hyphens
 
 % Set left justification if not justified
 \nottoggle{justified}{\RaggedRight}
@@ -92,7 +93,7 @@
 \newenvironment{lmss}{\fontfamily{lmss}\selectfont}{}
 
 % Columns setup
-\setlength{\columnsep}{1cm}
+\setlength{\columnsep}{.8cm}
 
 % Define colors, sampled from the books.
 \usepackage{color}
