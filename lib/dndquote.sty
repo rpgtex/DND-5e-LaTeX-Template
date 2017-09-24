@@ -1,4 +1,8 @@
-\newtcolorbox{quotebox}[1][]{enhanced jigsaw,frame hidden,boxrule=0pt,
+\newtcolorbox{quotebox}[1][]{%
+    before upper={\nottoggle{justified}{\RaggedRight}},
+	enhanced jigsaw,
+	frame hidden,
+	boxrule=0pt,
 	breakable,
 	enhanced,
 	before skip=10pt plus 1pt,
@@ -8,11 +12,11 @@
 	colback=bgtan,
 	colframe=bgtan,
 	arc=0mm,
-	parbox = false,
+	parbox=false,
 	borderline west={1pt}{-0.5pt}{titlered},
 	borderline east={1pt}{-0.5pt}{titlered},
 	fontupper = \fontfamily{lmss}\selectfont,
-	overlay={
+	overlay={%
 		\foreach \n in {north east,north west,south east,south west}
 		{\draw [titlered, fill=titlered] (frame.\n) circle (2pt); }; },
 	after={\vspace{7.5pt plus 1pt}\noindent},
