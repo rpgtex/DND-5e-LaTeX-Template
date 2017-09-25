@@ -123,7 +123,7 @@
 
 \section{Colors}
 
-This package provides several global color variables to style \verb=commentbox=, \verb=quotebox=, and \verb=dndtable= environments.
+This package provides several global color variables to style \verb=commentbox=, \verb=quotebox=, \verb=paperbox=, and \verb=dndtable= environments.
 
 \begin{dndtable}[lX]
   \textbf{Color}         & \textbf{Description} \\
@@ -152,9 +152,9 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
 \end{table*}
 
 \begin{itemize}
-  \item Use \verb=\setthemecolor[<color>]= to set \verb=themecolor=, \verb=commentcolor=, \verb=paperboxcolor=, \verb=quoteboxcolor=, and \verb=tablecolor= to a specific color.
-  \item Calling \verb=\setthemecolor= without an argument sets all colors to the current \verb=themecolor=.
-  \item \verb=commentbox=, \verb=dndtable=, \verb=paperbox=, and \verb=quoteboxcolor= accept an optional color argument to set the color for a single instance.
+  \item Use \verb=\setthemecolor[<color>]= to set \verb=themecolor=, \verb=commentcolor=, \verb=paperboxcolor=, and \verb=tablecolor= to a specific color.
+  \item Calling \verb=\setthemecolor= without an argument sets those colors to the current \verb=themecolor=.
+  \item \verb=commentbox=, \verb=dndtable=, \verb=paperbox=, and \verb=quoteboxcolor= also accept an optional color argument to set the color for a single instance.
 \end{itemize}
 
 \subsection{Examples}
