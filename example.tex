@@ -3,10 +3,24 @@
 %
 % Note that the article class does not have chapters.
 \documentclass[10pt,twoside,twocolumn,openany]{book}
-\usepackage[bg-letter]{dnd} % Options: bg-a4, bg-letter, bg-full, bg-print, bg-none, justified
+
+% Use babel or polyglossia to automatically redefine macros for terms
+% Armor Class, Level, etc...
+% Default output is in English; captions are located in lib/dndstring-captions.sty.
+% If no captions exist for a language, English will be used.
+%1. To load a language with babel:
+%	\usepackage[<lang>]{babel}
+%2. To load a language with polyglossia:
+%	\usepackage{polyglossia}
+%	\setdefaultlanguage{<lang>}
 \usepackage[english]{babel}
+%usepackage[italian]{babel}
+% For further options (multilanguage documents, hypenations, language environments...)
+% please refer to babel/polyglossia's documentation.
+
 \usepackage[utf8]{inputenc}
 \usepackage{lipsum}
+\usepackage[bg-letter]{dnd} % Options: bg-a4, bg-letter, bg-full, bg-print, bg-none, justified
 
 % Start document
 \begin{document}
@@ -24,8 +38,10 @@
 
 \lipsum[1-2]
 
-\begin{commentbox}{Neat Green Box!}
-	\lipsum[1-2]
+\begin{commentbox}{This Is a Comment Box!}
+  A commentbox is a box for minimal highlighting of text. It lacks the ornamentation of paperbox, but it can handle being broken over a column.
+  
+  \lipsum[2]
 \end{commentbox}
 
 \subtitlesection{Weapon, +1, +2, or +3}
@@ -108,6 +124,116 @@
 \end{spell}
 
 \lipsum[1-2]
+
+\section{Colors}
+
+This package provides several global color variables to style \verb=commentbox=, \verb=quotebox=, \verb=paperbox=, and \verb=dndtable= environments.
+
+\begin{dndtable}[lX]
+  \textbf{Color}         & \textbf{Description} \\
+  \verb=commentboxcolor= & Controls \verb=commentbox= background. \\
+  \verb=paperboxcolor=   & Controls \verb=paperbox= background. \\
+  \verb=quoteboxcolor=   & Controls \verb=quotebox= background. \\
+  \verb=tablecolor=      & Controls background of even \verb=dndtable= rows. \\
+\end{dndtable}
+
+See Table~\ref{tab:colors} for a list of accent colors that match the core books.
+
+\begin{table*}
+  \begin{dndtable}[XX]
+    \textbf{Color}                            & \textbf{Description} \\
+    \verb=PhbLightGreen=                      & Light green used in PHB Part 1 \\
+    \verb=PhbLightCyan=                       & Light cyan used in PHB Part 2 \\
+    \verb=PhbMauve=                           & Pale purple used in PHB Part 3 \\
+    \verb=PhbTan=                             & Light brown used in PHB appendix \\
+    \verb=DmgLavender=                        & Pale purple used in DMG Part 1 \\
+    \verb=DmgCoral=                           & Orange-pink used in DMG Part 2 \\
+    \verb=DmgSlateGray= (\verb=DmgSlateGrey=) & Blue-gray used in PHB Part 3 \\
+    \verb=DmgLilac=                           & Purple-gray used in DMG appendix \\
+  \end{dndtable}
+  \caption{Colors supported by this package}%
+  \label{tab:colors}
+\end{table*}
+
+\begin{itemize}
+  \item Use \verb=\setthemecolor[<color>]= to set \verb=themecolor=, \verb=commentcolor=, \verb=paperboxcolor=, and \verb=tablecolor= to a specific color.
+  \item Calling \verb=\setthemecolor= without an argument sets those colors to the current \verb=themecolor=.
+  \item \verb=commentbox=, \verb=dndtable=, \verb=paperbox=, and \verb=quoteboxcolor= also accept an optional color argument to set the color for a single instance.
+\end{itemize}
+
+\subsection{Examples}
+
+\subsubsection{Using \texttt{themecolor}}
+
+\begin{verbatim}
+\setthemecolor[PhbMauve]
+
+\begin{paperbox}{Example}
+  \lipsum[1]
+\end{paperbox}
+
+\setthemecolor[PhbLightCyan]
+
+\header{Example}
+\begin{dndtable}[cX]
+  \textbf{d8} & \textbf{Item} \\
+  1           & Small wooden button \\
+  2           & Red feather \\
+  3           & Human tooth \\
+  4           & Vial of green liquid \\
+  6           & Tasty biscuit \\
+  7           & Broken axe handle \\
+  8           & Tarnished silver locket \\
+\end{dndtable}
+\end{verbatim}
+
+\begingroup
+\setthemecolor[PhbMauve]
+
+\begin{paperbox}{Example}
+  \lipsum[1]
+\end{paperbox}
+
+\setthemecolor[PhbLightCyan]
+
+\header{Example}
+\begin{dndtable}[cX]
+  \textbf{d8} & \textbf{Item} \\
+  1           & Small wooden button \\
+  2           & Red feather \\
+  3           & Human tooth \\
+  4           & Vial of green liquid \\
+  6           & Tasty biscuit \\
+  7           & Broken axe handle \\
+  8           & Tarnished silver locket \\
+\end{dndtable}
+\endgroup
+
+\subsubsection{Using element color arguments}
+
+\begin{verbatim}
+\begin{dndtable}[cX][DmgCoral]
+  \textbf{d8} & \textbf{Item} \\
+  1           & Small wooden button \\
+  2           & Red feather \\
+  3           & Human tooth \\
+  4           & Vial of green liquid \\
+  6           & Tasty biscuit \\
+  7           & Broken axe handle \\
+  8           & Tarnished silver locket \\
+\end{dndtable}
+\end{verbatim}
+
+\begin{dndtable}[cX][DmgCoral]
+  \textbf{d8} & \textbf{Item} \\
+  1           & Small wooden button \\
+  2           & Red feather \\
+  3           & Human tooth \\
+  4           & Vial of green liquid \\
+  6           & Tasty biscuit \\
+  7           & Broken axe handle \\
+  8           & Tarnished silver locket \\
+\end{dndtable}
 
 % End document
 \end{document}
