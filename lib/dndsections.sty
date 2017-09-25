@@ -28,15 +28,15 @@
 
 % Paragraph
 \titleformat{\paragraph}[runin]
-{\normalfont\normalsize\bfseries\slshape}{\theparagraph\quad}{0em}{}[.]
+{\normalfont\normalsize\bfseries\slshape}{\theparagraph\quad}{0pt}{}[.]
 \titlespacing*{\paragraph}
-{0pt}{0pt}{\wordsep}
+{0pt}{\parskip}{\wordsep}
 
 % Subparagraph
 \titleformat{\subparagraph}[runin]
-{\normalfont\normalsize\bfseries\slshape}{\thesubparagraph\quad}{0em}{}[.]
+{\normalfont\normalsize\bfseries\slshape}{\thesubparagraph\quad}{0pt}{}[.]
 \titlespacing*{\subparagraph}
-{\parindent}{0pt}{\wordsep}
+{\parindent}{\parskip}{\wordsep}
 
 % Special command for magic items, traps, and the like.
 \newcommand{\subtitlesection}[2]{
