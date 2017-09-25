@@ -23,34 +23,26 @@
 % Trim aliases
 \colorlet{DmgSlateGrey}{DmgSlateGray}
 
-% Stat blocks
-\definecolor{statblockribbon}{HTML}{E69A28} % top/bottom borders (gold)
+% The color used in \setthemecolor when a new color is not set
+\colorlet{themecolor}{PhbLightGreen}    % Set the default theme to Part 1 of the PHB.
+
+% Element colors that change when \setthemecolor is used
+\colorlet{commentboxcolor}{themecolor}  % commentbox background
+\colorlet{paperboxcolor}{themecolor}    % paperbox background
+\colorlet{tablecolor}{themecolor}       % table even row background
+
+% Element colors that do not respond to \setthemecolor
+\colorlet{quoteboxcolor}{bgtan}             % quotebox background
+\definecolor{statblockribbon}{HTML}{E69A28} % stat block top/bottom borders (gold)
 \definecolor{statblockbg}{HTML}{FDF1DC}     % stat block background (tan)
 
-% Global colour variables
-%
-%   commentboxcolor   commentbox background
-%   paperboxcolor     paperbox background
-%   trimcolor         colour of custom elements added by user
-%   tablecolor        table even row background
-%   themecolor        changing this with \setthemecolor sets all colours
-
-% Set the default theme to Part 1 of the PHB.
-\colorlet{themecolor}{PhbLightGreen}
-
-% Add element-specific colours.
-\colorlet{commentboxcolor}{themecolor}
-\colorlet{paperboxcolor}{themecolor}
-\colorlet{tablecolor}{themecolor}
-\colorlet{trimcolor}{themecolor}
-
-% Offer commands to set all accent colours.
+% Sets the themecolor and colors for all themed elements
+% If called without the optional color, resets the color of all themed elements to the current themecolor
 \newcommand{\setthemecolor}[1][themecolor]{%
+  \colorlet{themecolor}{#1}
   \colorlet{commentboxcolor}{#1}
   \colorlet{paperboxcolor}{#1}
   \colorlet{tablecolor}{#1}
-  \colorlet{themecolor}{#1}
-  \colorlet{trimcolor}{#1}
 }
 
 % Backwards-compatible aliases and colours
