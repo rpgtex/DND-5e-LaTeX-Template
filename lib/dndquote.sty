@@ -1,5 +1,5 @@
-%Usage \begin{quotebox}[options]
-\newtcolorbox{quotebox}[1][]{%
+%Usage \begin{quotebox}[options][color]
+\DeclareTColorBox{quotebox}{O{} O{quoteboxcolor}}{%
     before upper={\nottoggle{justified}{\RaggedRight}},
 	enhanced jigsaw,
 	frame hidden,
@@ -10,7 +10,7 @@
 	boxsep=0.25ex,
 	left=8pt,
 	right=8pt,
-	colback=quoteboxcolor,
+	colback=#2,
 	arc=0mm,
 	parbox=false,
 	borderline west={1pt}{-0.5pt}{titlered},

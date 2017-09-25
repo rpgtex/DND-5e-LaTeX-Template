@@ -129,11 +129,11 @@ This package provides several global color variables to style \verb=commentbox=,
   \textbf{Color}         & \textbf{Description} \\
   \verb=commentboxcolor= & Controls \verb=commentbox= background. \\
   \verb=paperboxcolor=   & Controls \verb=paperbox= background. \\
+  \verb=quoteboxcolor=   & Controls \verb=quotebox= background. \\
   \verb=tablecolor=      & Controls background of even \verb=dndtable= rows. \\
-  \verb=trimcolor=       & Use this to control the color of custom elements. \\
 \end{dndtable}
 
-See Table \ref{tab:colors} for a list of accent colors that match the core books.
+See Table~\ref{tab:colors} for a list of accent colors that match the core books.
 
 \begin{table*}
   \begin{dndtable}[XX]
@@ -147,14 +147,14 @@ See Table \ref{tab:colors} for a list of accent colors that match the core books
     \verb=DmgSlateGray= (\verb=DmgSlateGrey=) & Blue-gray used in PHB Part 3 \\
     \verb=DmgLilac=                           & Purple-gray used in DMG appendix \\
   \end{dndtable}
-  \caption{Colors supported by this package}
+  \caption{Colors supported by this package}%
   \label{tab:colors}
 \end{table*}
 
 \begin{itemize}
-  \item Use \verb=\setthemecolor[<color>]= to set \verb=commentcolor=, \verb=paperboxcolor=, \verb=themecolor=, and \verb=trimcolor= to a specific color.
+  \item Use \verb=\setthemecolor[<color>]= to set \verb=themecolor=, \verb=commentcolor=, \verb=paperboxcolor=, \verb=quoteboxcolor=, and \verb=tablecolor= to a specific color.
   \item Calling \verb=\setthemecolor= without an argument sets all colors to the current \verb=themecolor=.
-  \item \verb=commentbox=, \verb=dndtable=, and \verb=paperbox= all accept an optional color argument to set the color for a single instance.
+  \item \verb=commentbox=, \verb=dndtable=, \verb=paperbox=, and \verb=quoteboxcolor= accept an optional color argument to set the color for a single instance.
 \end{itemize}
 
 \subsection{Examples}

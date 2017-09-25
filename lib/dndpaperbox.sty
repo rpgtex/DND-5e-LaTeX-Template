@@ -1,5 +1,5 @@
-%Usage \begin{paperbox}[options]{title}
-\newtcolorbox{paperbox}[2][]{%
+%Usage \begin{paperbox}[options]{title}[color]
+\DeclareTColorBox{paperbox}{O{} m O{paperboxcolor}}{%
 	before upper={\nottoggle{justified}{\RaggedRight}},
 	frame hidden,
 	boxrule=0pt,
@@ -16,8 +16,8 @@
 	parbox=false,
 	borderline north={1pt}{-0.5pt}{black},
 	borderline south={1pt}{-0.5pt}{black},
-	colback=paperboxcolor,
-	colbacktitle=paperboxcolor,
+	colback=#3,
+	colbacktitle=#3,
 	fuzzy shadow={0mm}{-3.5pt}{-0.5pt}{0.4mm}{black!60!white},
 	overlay={%
 		\fill[black] (frame.south west) -- ++ (7pt,0) -- ++ (0,-5pt) -- cycle;
