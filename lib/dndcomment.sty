@@ -1,5 +1,5 @@
-% Green comment box definition
-\DeclareTColorBox{commentbox}{O{} m O{commentboxcolor}}{
+%Usage \begin{commentbox}[options]{title}[color]
+\DeclareTColorBox{commentbox}{O{} m O{commentboxcolor}}{%
 	before upper={\nottoggle{justified}{\RaggedRight}},
 	frame hidden,
 	boxrule=0pt,
@@ -16,7 +16,6 @@
 	title=#2,
 	parbox=false,
 	colback=#3,
-	colframe=#3,
 	colbacktitle=#3,
 	after={\vspace{5pt plus 1pt}\noindent},
 	#1
