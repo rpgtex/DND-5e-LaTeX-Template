@@ -23,6 +23,12 @@
 \RequirePackage{ragged2e}
 \RequirePackage{xparse}
 
+
+% \dnd@deprecate{<command or environment>}{<version>}[<suggestion>]
+\DeclareDocumentCommand{\dnd@deprecate}{m m o}{%
+  \PackageWarning{dnd}{#1 is deprecated and will be removed in version #2.\IfNoValueF{#3}{ #3}}
+}
+
 % Load other modules of this package
 \usepackage{lib/dndcolors}
 \usepackage{lib/dndmonster}
