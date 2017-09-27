@@ -32,8 +32,8 @@ LaTeX will find the package automatically.
 2. Download the [latest release](https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/latest) and extract it in `$TEXMFHOME/tex/latex/`.
 
     ```sh
-    wget https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/download/v0.5/dnd-0.5.tar.gz
-    tar -xzvf dnd-0.5.tar.gz -C "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
+    wget https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/download/v0.5/dnd-0.5.zip
+    unzip -d "$(kpsewhich -var-value TEXMFHOME)/tex/latex/" dnd-0.5.zip
     ```
 
     Alternatively, clone the repo to the same location:
