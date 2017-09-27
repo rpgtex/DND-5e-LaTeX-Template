@@ -1,5 +1,7 @@
 # D&D 5e LaTeX Template
 
+[![Latest release](https://img.shields.io/github/release/evanbergeron/DND-5e-LaTeX-Template/all.svg)](https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/latest)
+
 This is LaTeX template for typesetting *Dungeons & Dragons* 5th Edition (D&D 5e) material.
 
 ## Features
