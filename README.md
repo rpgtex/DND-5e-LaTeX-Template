@@ -7,28 +7,66 @@ The template compiles with pdflatex.
 ![Preview](https://github.com/evanbergeron/DND-5e-LaTeX-Template/raw/master/scrot.png)
 
 
-### Installation
+## Installation
 
-Just clone the repo. From terminal:
+### User install using `TEXMFHOME` (recommended)
+
+This will install the template for your current user in one of the following locations:
+
+* Linux: `~/.texmf/tex/latex`
+* OS X / macOS: `~/Library/texmf/tex/latex`
+* Windows: `C:\Users\{username}\texmf\tex\latex`
+
+LaTeX will find the package automatically.
+
+1. Prepare your `TEXMFHOME` directory.
+
+    ```sh
+    mkdir "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
+    ```
+2. Download the [latest release](https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/latest) and extract it in `$TEXMFHOME/tex/latex/`.
+
+    ```sh
+    wget https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/download/v0.5/dnd-0.5.tar.gz
+    tar -xzvf dnd-0.5.tar.gz -C "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
+    ```
+
+    Alternatively, clone the repo to the same location:
+
+    ```sh
+    git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git "$(kpsewhich -var-value TEXMFHOME)/tex/latex/dnd"
+    ```
+
+### Project install using `TEXINPUTS`
+
+You can also clone a copy of the repository to each LaTeX project. For example, to clone the repository to a `lib/` directory in your project:
 
 ```sh
-$ git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git 5e-template
-$ cd 5e-template
-$ pdflatex example.tex
+mkdir lib/
+git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git lib/dnd
 ```
 
+LaTeX will not find the template automatically. Set `TEXINPUTS` when compiling your project to locate the package:
+
+```sh
+TEXINPUTS=./lib//: pdflatex project.tex
+```
+
+## Dependencies
+
 If you don't have LaTeX installed, the following should help you out:
-#### Ubuntu
+
+### Ubuntu
 ```sh
 sudo apt-get install texlive-full
 ```
-#### Arch
+### Arch
 ```sh
 sudo pacman -S texlive-bin texlive-core texlive-latexextra
 ```
 It's a bit unclear exactly what subset of features this module needs. As a general rule, we'd recommend installing one of larger ones.
 
-### Package Options
+## Package Options
 - bg-letter: Loads a letter-sized background-image
 - bg-a4: Loads an A4-sized background-image
 - bg-print: Loads a printer-friendly background-image (only decal at the bottom)
@@ -36,7 +74,7 @@ It's a bit unclear exactly what subset of features this module needs. As a gener
 
 Per default "bg-letter" and "bg-full" are loaded.
 
-### Todo's
+## Todo's
 
  - Consider implementing more complex tables for monsters, etc.
  - Clean up the table-preset
@@ -46,14 +84,14 @@ Per default "bg-letter" and "bg-full" are loaded.
  - Look into adding the ability to add large images to the document. There are some documents made with InDesign out there that accomplish this quite well.
 
 
-### Image Credit
+## Image Credit
 
  - Credit for the background image goes to http://lostandtaken.com/
 
-### Version
+## Version
 0.5
 
-### License
+## License
 The MIT License (MIT)
 
 Copyright (c) 2016 Evan Bergeron
