@@ -11,6 +11,7 @@ set -u
 
 die() {
   printf '%s: %s\n' "${PROGRAM}" "${@}" >&2
+  exit 1
 }
 
 info() {
@@ -70,7 +71,7 @@ main() {
 
   new_version="${1:-}"
   [[ -z "${new_version}" ]] && { usage; return 1; }
-  if ! [[ $new_version =~ [0-9]+.[0-9]+[0-9]+ ]]; then
+  if ! [[ $new_version =~ [0-9]+\.[0-9]+\.[0-9]+ ]]; then
     die 'version must be MAJOR.MINOR.PATCH'
   fi
 
