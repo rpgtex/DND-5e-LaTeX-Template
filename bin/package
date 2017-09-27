@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+EXAMPLE='example.tex'
+TEMPDIR="$(mktemp -d 2>/dev/null || mktemp -d -t tmp)"
+
+cleanup() {
+  rm -rf "${TEMPDIR}"
+}
+
+trap cleanup EXIT
+
+# Generate release filename.
+tree="${1:-HEAD}"
+release="$(git describe --dirty --match 'v[0-9]*' | tr -d 'v')"
+filename="${PWD}/dnd-${release}.zip"
+
+# Archive package code.
+git archive --format zip --output "${filename}" --prefix dnd/ "${tree}"
+printf '==> wrote archive to %s\n' "$(basename "${filename}")"
+
+# Add example PDF to zip file.
+latexmk -pdf "${EXAMPLE}"
+pdf="${EXAMPLE/.tex/.pdf}"
+mkdir "${TEMPDIR}/dnd"
+cp "${pdf}" "${TEMPDIR}/dnd"
+(cd "${TEMPDIR}" && zip -u "${filename}" "dnd/${pdf}")
+printf '==> added PDF to %s\n' "$(basename "${filename}")"

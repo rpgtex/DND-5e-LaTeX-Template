@@ -84,6 +84,29 @@ Per default "bg-letter" and "bg-full" are loaded.
  - Look into adding the ability to add large images to the document. There are some documents made with InDesign out there that accomplish this quite well.
 
 
+## Contributing
+
+### Preparing a new release
+
+1. Run `./bin/bump-version` to tag the new version.
+
+    ```sh
+    ./bin/bumpversion <version>
+    ```
+2. Run `./bin/package` to build the example PDF and zip file for distribution.
+
+    ```sh
+    ./bin/package
+    ```
+3. Push changes.
+
+    ```sh
+    git push && git push --tags
+    ```
+4. [Create a new release](https://help.github.com/articles/creating-releases/) and attach the zip file and PDF.
+
+    N.B. Attaching the PDF separately means users can link to it directly.
+
 ## Image Credit
 
  - Credit for the background image goes to http://lostandtaken.com/
