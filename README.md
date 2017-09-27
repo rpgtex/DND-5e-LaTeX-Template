@@ -113,12 +113,13 @@ sudo pacman -S texlive-bin texlive-core texlive-latexextra
     ./bin/package
     ```
     N.B. The `package` script requires `latexmk`.
-3. Push changes.
+3. Update the change log for the new release; commit your changes.
+4. Push changes.
 
     ```sh
     git push && git push --tags
     ```
-4. [Create a new release](https://help.github.com/articles/creating-releases/) and attach the zip file and PDF.
+5. [Create a new release](https://help.github.com/articles/creating-releases/) and attach the zip file and PDF.
 
     N.B. Attaching the PDF separately means users can link to it directly.
 
