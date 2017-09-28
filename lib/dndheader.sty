@@ -1,0 +1,28 @@
+\RequirePackage{fancyhdr} 			  % Adaptation of the footers
+
+% Setup for custom footer
+\pagestyle{fancy}
+
+\fancyhfoffset[LE]{28pt} % push the footer left on even pages so it fits the decal
+\fancyhfoffset[RO]{30pt} % push the footer right on odd pages so it fits the decalbg-img
+\renewcommand{\headrulewidth}{0.0pt} %no rule for header
+\renewcommand{\footrulewidth}{0.0pt} %no rule for footer
+
+\fancyhead{} % clear all header fields
+\fancyfoot{} % clear all footer fields
+
+\fancyfoot[LE]{
+	\textcolor{pagegold}{\thepage}
+	\hspace*{0.9cm}
+	\raisebox{12pt}{\textsc{\textcolor{pagegold}{\nouppercase\leftmark}}}
+	}
+
+\fancyfoot[RO]{
+	\raisebox{12pt}{\textsc{\textcolor{pagegold}{\nouppercase\leftmark}}}
+	\hspace*{1cm}
+	\textcolor{pagegold}{\thepage}
+	}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % Do not write word "chapter"
+
+\fancypagestyle{plain}{}
