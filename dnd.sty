@@ -10,11 +10,11 @@
 %
 % Set a different geometry with \newgeometry
 \usepackage[
-  bindingoffset=.5cm,
-  hmargin=1.75cm,
-  top=.5in,
-  bottom=.875in,
-  footskip=.6in,
+  bindingoffset=15pt, % .2in
+  hmargin=50pt,       % .7in
+  top=40pt,           % .55in
+  bottom=50pt,        % .7in
+  footskip=30pt,      % makes the footer text line up with the graphic
 ]{geometry}
 \RequirePackage{bookman}          % Closest built-in font I could find
 \RequirePackage[T1]{fontenc}
@@ -101,12 +101,12 @@
 \newenvironment{lmss}{\fontfamily{lmss}\selectfont}{}
 
 % Columns setup
-\setlength{\columnsep}{.8cm}
+\setlength{\columnsep}{25pt}  % .35in
 
 % Customize itemize environment.
 \setlist{leftmargin=1em}
 \setitemize{noitemsep,topsep=0.5ex}
-\renewcommand{\labelitemi}{\raisebox{0.25ex}{\tiny{$\bullet$}}}
+\renewcommand{\labelitemi}{\raisebox{0.25ex}{\tiny{\( \bullet \)}}}
 
 % Fancy DnD 5e-style hline
 \renewcommand{\hline}{
