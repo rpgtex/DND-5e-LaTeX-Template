@@ -8,7 +8,14 @@
 %
 % Prerequisite Packages
 %
-\RequirePackage[cm]{fullpage}     % Small margins
+% Set a different geometry with \newgeometry
+\usepackage[
+  bindingoffset=15pt, % .2in
+  hmargin=50pt,       % .7in
+  top=40pt,           % .55in
+  bottom=50pt,        % .7in
+  footskip=30pt,      % makes the footer text line up with the graphic
+]{geometry}
 \RequirePackage{bookman}          % Closest built-in font I could find
 \RequirePackage[T1]{fontenc}
 \RequirePackage[table]{xcolor}
@@ -94,17 +101,16 @@
 \newenvironment{lmss}{\fontfamily{lmss}\selectfont}{}
 
 % Columns setup
-\setlength{\columnsep}{.8cm}
+\setlength{\columnsep}{25pt}  % .35in
 
 % Customize itemize environment.
 \setlist{leftmargin=1em}
 \setitemize{noitemsep,topsep=0.5ex}
-\renewcommand{\labelitemi}{\raisebox{0.25ex}{\tiny{$\bullet$}}}
+\renewcommand{\labelitemi}{\raisebox{0.25ex}{\tiny{\( \bullet \)}}}
 
 % Setup for custom footer
 \pagestyle{fancy}
 
-\footskip = 48pt %push the footer down so it fits with the decal from the bg-img
 \fancyhfoffset[LE]{28pt} % push the footer left on even pages so it fits the decal
 \fancyhfoffset[RO]{30pt} % push the footer right on odd pages so it fits the decalbg-img
 \renewcommand{\headrulewidth}{0.0pt} %no rule for header
