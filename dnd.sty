@@ -8,7 +8,14 @@
 %
 % Prerequisite Packages
 %
-\RequirePackage[cm]{fullpage}     % Small margins
+% Set a different geometry with \newgeometry
+\usepackage[
+  bindingoffset=.5cm,
+  hmargin=1.75cm,
+  top=.5in,
+  bottom=.875in,
+  footskip=.6in,
+]{geometry}
 \RequirePackage{bookman}          % Closest built-in font I could find
 \RequirePackage[T1]{fontenc}
 \RequirePackage[table]{xcolor}
