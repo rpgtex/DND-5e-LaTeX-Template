@@ -2,7 +2,7 @@
 
 [![Latest release](https://img.shields.io/github/release/evanbergeron/DND-5e-LaTeX-Template/all.svg)](https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/latest)
 
-This is LaTeX template for typesetting *Dungeons & Dragons* 5th Edition (D&D 5e) material.
+This is a LaTeX template for typesetting documents in the style of the *Dungeons & Dragons* 5th Edition (D&D 5e) books.
 
 ## Features
 
@@ -10,7 +10,7 @@ This is LaTeX template for typesetting *Dungeons & Dragons* 5th Edition (D&D 5e)
 * TeX Live includes the default fonts.
 * Compiles with `pdflatex`.
 
-![Preview](https://github.com/evanbergeron/DND-5e-LaTeX-Template/raw/master/scrot.png)
+![Preview](scrot.jpg)
 
 ## Installation
 
@@ -75,7 +75,7 @@ Load the template in your preamble:
 ```
 
 ### Package options
-
+```
 | Option      | Description                                                       | Default |
 |-------------+-------------------------------------------------------------------+:-------:|
 | `bg-letter` | Loads a letter-sized background image                             |    ✓    |
@@ -83,7 +83,7 @@ Load the template in your preamble:
 | `bg-print`  | Loads a printer-friendly background-image (only the footer image) |         |
 | `bg-full`   | Loads the full background image                                   |    ✓    |
 | `justified` | Justifies column copy                                             |         |
-
+```
 ## Dependencies
 
 If you don't have LaTeX installed, we recommend installing a complete TeX Live distribution.
@@ -110,13 +110,14 @@ sudo pacman -S texlive-bin texlive-core texlive-latexextra
     ./bin/bumpversion <version>
     ```
 2. Compile the example PDF.
-3. Update the change log for the new release; commit your changes.
-4. Push changes.
+3. Save the first page of the PDF as scrot.jpg.
+4. Update the change log for the new release; commit your changes.
+5. Push changes.
 
     ```sh
     git push && git push --tags
     ```
-5. [Create a new release](https://help.github.com/articles/creating-releases/) and attach the PDF.
+6. [Create a new release](https://help.github.com/articles/creating-releases/) and attach the PDF and scrot.
 
 ## Credits
 

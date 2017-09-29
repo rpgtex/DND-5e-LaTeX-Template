@@ -1,4 +1,8 @@
 # Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
@@ -12,7 +16,8 @@
 * Customized `\tableofcontents`.
 * Added custom centred column type (`Y`) for `dndtable`.
 * Defined `\dice` macro to compute average dice roll.
-* Added Italian localization support for `monsterbox`.
+* Added localization support.
+* Added Italian localization.
 * Defined bold italic `\paragraph` and `\subparagraph` commands.
 * Customized `itemize` to match book style.
 * Added `themecolor` and customizable box colours.
@@ -21,6 +26,8 @@
 
 ### Changed
 
+* Separate fancyhdr code into separate file.
+* Switch layout package from fullpage to geometry.
 * `\stat` macro computes modifier automatically.
 * Modified `dndtable` to support multiple columns (default: 2).
 * Disable "Chapter" prefix for `\chapter`.
@@ -33,6 +40,7 @@
 * Fixed typos in example image.
 * Made odd rows transparent in `dndtable`.
 * Fixed paragraph and line spacing.
+* Remove `breakable` parameter from `paperbox`.
 
 ### Deprecated
 

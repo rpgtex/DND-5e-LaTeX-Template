@@ -20,7 +20,13 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{lipsum}
+\usepackage{listings}
 \usepackage[bg-letter]{dnd} % Options: bg-a4, bg-letter, bg-full, bg-print, bg-none, justified
+
+\lstset{%
+  basicstyle=\ttfamily,
+  language=[LaTeX]{TeX},
+}
 
 % Start document
 \begin{document}
@@ -31,29 +37,29 @@
 \chapter{Chapter 1: The Dark \LaTeX}
 
 \section{Main Section}
-\lipsum[1] % filler text
+\lipsum[2] % filler text
+
+\begin{quotebox}
+	As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
+\end{quotebox}
 
 \subsection{Fun with boxes}
 \subsubsection{Even more fun!}
 
-\lipsum[1-2]
-
 \begin{commentbox}{This Is a Comment Box!}
-  A commentbox is a box for minimal highlighting of text. It lacks the ornamentation of paperbox, but it can handle being broken over a column.
-  
-  \lipsum[2]
+  A \lstinline!commentbox! is a box for minimal highlighting of text. It lacks the ornamentation of \lstinline!paperbox!, but it can handle being broken over a column.
 \end{commentbox}
 
 \subtitlesection{Weapon, +1, +2, or +3}
 {Weapon (any), uncommon (+1), rare (+2), or very rare (+3)}
 
-\lipsum[2]
+\lipsum[3]
 
-\begin{quotebox}
-	As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
-
-	\lipsum[2]
-\end{quotebox}
+\begin{figure}[!t]
+	\begin{paperbox}{Behold\, the Paperbox!}
+		The \lstinline!paperbox! is used as a sidebar. It does not break over columns and is best used with a figure environment to float it to one corner of the page where the surrounding text can then flow around it.
+	\end{paperbox}
+\end{figure}
 
 % For more columns, you can say \begin{dndtable}[your options here].
 % For instance, if you wanted three columns, you could say
@@ -67,28 +73,22 @@
    	Some value  & Some value
 \end{dndtable}
 
-\begin{figure}[!t]
-	\begin{paperbox}{Do the Players need direction?}
-		\lipsum[1]
-	\end{paperbox}
-\end{figure}
-
 % You can optionally not include the background by saying
 % begin{monsterboxnobg}
 \begin{monsterbox}{Monster Foo}
 	\textit{Small metasyntactic variable (goblinoid), neutral evil}\\
-	\hline
+	\hline%
 	\basics[%
 	armorclass = 12,
 	hitpoints  = \dice{3d8 + 3},
 	speed      = 50 ft
 	]
-	\hline
+	\hline%
 	\stats[
     STR = \stat{12}, % This stat command will autocomplete the modifier for you
     DEX = \stat{7}
 	]
-	\hline
+	\hline%
 	\details[%
 	% If you want to use commas in these sections, enclose the
 	% description in braces.
@@ -123,18 +123,18 @@
 	While the creature is charmed by you, they cannot take their eyes off the scroll and cannot willingly move away from the scroll. Also, the targets can make a wisdom saving throw at the end of each of their turns. On a success, they are no longer charmed.
 \end{spell}
 
-\lipsum[1-2]
+\lipsum[2]
 
 \section{Colors}
 
-This package provides several global color variables to style \verb=commentbox=, \verb=quotebox=, \verb=paperbox=, and \verb=dndtable= environments.
+This package provides several global color variables to style \lstinline!commentbox!, \lstinline!quotebox!, \lstinline!paperbox!, and \lstinline!dndtable! environments.
 
 \begin{dndtable}[lX]
   \textbf{Color}         & \textbf{Description} \\
-  \verb=commentboxcolor= & Controls \verb=commentbox= background. \\
-  \verb=paperboxcolor=   & Controls \verb=paperbox= background. \\
-  \verb=quoteboxcolor=   & Controls \verb=quotebox= background. \\
-  \verb=tablecolor=      & Controls background of even \verb=dndtable= rows. \\
+  \lstinline!commentboxcolor! & Controls \lstinline!commentbox! background. \\
+  \lstinline!paperboxcolor!   & Controls \lstinline!paperbox! background. \\
+  \lstinline!quoteboxcolor!   & Controls \lstinline!quotebox! background. \\
+  \lstinline!tablecolor!      & Controls background of even \lstinline!dndtable! rows. \\
 \end{dndtable}
 
 See Table~\ref{tab:colors} for a list of accent colors that match the core books.
@@ -142,34 +142,34 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
 \begin{table*}
   \begin{dndtable}[XX]
     \textbf{Color}                            & \textbf{Description} \\
-    \verb=PhbLightGreen=                      & Light green used in PHB Part 1 \\
-    \verb=PhbLightCyan=                       & Light cyan used in PHB Part 2 \\
-    \verb=PhbMauve=                           & Pale purple used in PHB Part 3 \\
-    \verb=PhbTan=                             & Light brown used in PHB appendix \\
-    \verb=DmgLavender=                        & Pale purple used in DMG Part 1 \\
-    \verb=DmgCoral=                           & Orange-pink used in DMG Part 2 \\
-    \verb=DmgSlateGray= (\verb=DmgSlateGrey=) & Blue-gray used in PHB Part 3 \\
-    \verb=DmgLilac=                           & Purple-gray used in DMG appendix \\
+    \lstinline!PhbLightGreen!                      & Light green used in PHB Part 1 \\
+    \lstinline!PhbLightCyan!                       & Light cyan used in PHB Part 2 \\
+    \lstinline!PhbMauve!                           & Pale purple used in PHB Part 3 \\
+    \lstinline!PhbTan!                             & Light brown used in PHB appendix \\
+    \lstinline!DmgLavender!                        & Pale purple used in DMG Part 1 \\
+    \lstinline!DmgCoral!                           & Orange-pink used in DMG Part 2 \\
+    \lstinline!DmgSlateGray! (\lstinline!DmgSlateGrey!) & Blue-gray used in PHB Part 3 \\
+    \lstinline!DmgLilac!                           & Purple-gray used in DMG appendix \\
   \end{dndtable}
   \caption{Colors supported by this package}%
   \label{tab:colors}
 \end{table*}
 
 \begin{itemize}
-  \item Use \verb=\setthemecolor[<color>]= to set \verb=themecolor=, \verb=commentcolor=, \verb=paperboxcolor=, and \verb=tablecolor= to a specific color.
-  \item Calling \verb=\setthemecolor= without an argument sets those colors to the current \verb=themecolor=.
-  \item \verb=commentbox=, \verb=dndtable=, \verb=paperbox=, and \verb=quoteboxcolor= also accept an optional color argument to set the color for a single instance.
+  \item Use \lstinline!\setthemecolor[<color>]! to set \lstinline!themecolor!, \lstinline!commentcolor!, \lstinline!paperboxcolor!, and \lstinline!tablecolor! to a specific color.
+  \item Calling \lstinline!\setthemecolor! without an argument sets those colors to the current \lstinline!themecolor!.
+  \item \lstinline!commentbox!, \lstinline!dndtable!, \lstinline!paperbox!, and \lstinline!quoteboxcolor! also accept an optional color argument to set the color for a single instance.
 \end{itemize}
 
 \subsection{Examples}
 
-\subsubsection{Using \texttt{themecolor}}
+\subsubsection{Using \lstinline!themecolor!}
 
-\begin{verbatim}
+\begin{lstlisting}
 \setthemecolor[PhbMauve]
 
 \begin{paperbox}{Example}
-  \lipsum[1]
+  \lipsum[2]
 \end{paperbox}
 
 \setthemecolor[PhbLightCyan]
@@ -185,13 +185,13 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
   7           & Broken axe handle \\
   8           & Tarnished silver locket \\
 \end{dndtable}
-\end{verbatim}
+\end{lstlisting}
 
 \begingroup
 \setthemecolor[PhbMauve]
 
 \begin{paperbox}{Example}
-  \lipsum[1]
+  \lipsum[2]
 \end{paperbox}
 
 \setthemecolor[PhbLightCyan]
@@ -211,7 +211,7 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
 
 \subsubsection{Using element color arguments}
 
-\begin{verbatim}
+\begin{lstlisting}
 \begin{dndtable}[cX][DmgCoral]
   \textbf{d8} & \textbf{Item} \\
   1           & Small wooden button \\
@@ -222,7 +222,7 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
   7           & Broken axe handle \\
   8           & Tarnished silver locket \\
 \end{dndtable}
-\end{verbatim}
+\end{lstlisting}
 
 \begin{dndtable}[cX][DmgCoral]
   \textbf{d8} & \textbf{Item} \\
