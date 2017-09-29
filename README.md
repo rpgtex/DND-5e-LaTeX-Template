@@ -32,8 +32,10 @@ LaTeX will find the package automatically.
 2. Download the [latest release](https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/latest) and extract it in `$TEXMFHOME/tex/latex/`.
 
     ```sh
-    wget https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/download/v0.5/dnd-0.5.zip
-    unzip -d "$(kpsewhich -var-value TEXMFHOME)/tex/latex/" dnd-0.5.zip
+    wget https://github.com/evanbergeron/DND-5e-LaTeX-Template/archive/v0.5.zip
+    unzip -d "$(kpsewhich -var-value TEXMFHOME)/tex/latex/" v0.5.zip
+    cd "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
+    mv DND-5e-LaTeX-Template-0.5 dnd
     ```
 
     Alternatively, clone the repo to the same location:
@@ -107,21 +109,14 @@ sudo pacman -S texlive-bin texlive-core texlive-latexextra
     ```sh
     ./bin/bumpversion <version>
     ```
-2. Run `./bin/package` to build the example PDF and zip file for distribution.
-
-    ```sh
-    ./bin/package
-    ```
-    N.B. The `package` script requires `latexmk`.
+2. Compile the example PDF.
 3. Update the change log for the new release; commit your changes.
 4. Push changes.
 
     ```sh
     git push && git push --tags
     ```
-5. [Create a new release](https://help.github.com/articles/creating-releases/) and attach the zip file and PDF.
-
-    N.B. Attaching the PDF separately means users can link to it directly.
+5. [Create a new release](https://help.github.com/articles/creating-releases/) and attach the PDF.
 
 ## Credits
 
