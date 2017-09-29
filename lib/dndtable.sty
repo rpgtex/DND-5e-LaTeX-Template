@@ -22,7 +22,7 @@
   }
 
 \newenvironment{dnditemtable}[1][XX]{%
-    \PackageWarning{dnd}{dnditemtable is deprecated. Set tablecolor and use dndtable instead.}
+    \dnd@deprecate{dnditemtable}{0.7}[Set tablecolor and use dndtable instead.]
     \par\vspace*{8pt}
     \noindent
     \fontfamily{lmss}\selectfont

@@ -3,7 +3,7 @@
 % Modified by Christopher Liu December 2015
 % Modified by Yannic Meyer Feb 2016
 
-\ProvidesPackage{dnd}[2016/03/13]
+\ProvidesPackage{dnd}[2016/03/13 v0.5 Template for D&D 5e material]
 
 %
 % Prerequisite Packages
@@ -28,6 +28,12 @@
 \RequirePackage{microtype}        % Improve ragged2e hyphenation and overfull boxes
 \RequirePackage{ragged2e}
 \RequirePackage{xparse}
+
+
+% \dnd@deprecate{<command or environment>}{<version>}[<suggestion>]
+\DeclareDocumentCommand{\dnd@deprecate}{m m o}{%
+  \PackageWarning{dnd}{#1 is deprecated and will be removed in version #2.\IfNoValueF{#3}{ #3}}
+}
 
 % Load other modules of this package
 \RequirePackage{lib/dndcolors}    % color definitions
