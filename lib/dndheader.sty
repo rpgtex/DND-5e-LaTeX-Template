@@ -3,26 +3,56 @@
 % Setup for custom footer
 \pagestyle{fancy}
 
-\fancyhfoffset[LE]{28pt} % push the footer left on even pages so it fits the decal
-\fancyhfoffset[RO]{30pt} % push the footer right on odd pages so it fits the decalbg-img
+\newlength{\nobgfooterheight}
+\setlength{\nobgfooterheight}{\paperheight}
+\addtolength{\nobgfooterheight}{-1in}
+\addtolength{\nobgfooterheight}{-\topmargin}
+\addtolength{\nobgfooterheight}{-\headheight}
+\addtolength{\nobgfooterheight}{-\headsep}
+\addtolength{\nobgfooterheight}{-\textheight}
+\addtolength{\nobgfooterheight}{-\footskip}
+
 \renewcommand{\headrulewidth}{0.0pt} %no rule for header
 \renewcommand{\footrulewidth}{0.0pt} %no rule for footer
 
-\fancyhead{} % clear all header fields
-\fancyfoot{} % clear all footer fields
+\fancyhf{} % clear all headers and footers
+
+\fancyhead{
+	\iftoggle{bool-bg}{
+		\begin{tikzpicture}[remember picture,overlay]
+			\node[inner sep=0pt] at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight]{img/paper}};
+		\end{tikzpicture}
+	}{}
+}
 
 \fancyfoot[LE]{
-	\textcolor{pagegold}{\thepage}
-	\hspace*{0.9cm}
-	\raisebox{12pt}{\textsc{\textcolor{pagegold}{\nouppercase\leftmark}}}
+	\iftoggle{bool-footer-scroll}{
+		\begin{tikzpicture}[remember picture,overlay]
+			\node[xscale=-1,inner sep=0pt,anchor=south] at (current page.south) {\includegraphics[width=\paperwidth,height=.6in]{img/footerscroll}};
+			\node[xshift=20pt,yshift=30pt] at (current page.south west) {\textcolor{pagegold}{\thepage}};
+			\node[anchor=south west,xshift=\marginparwidth+\marginparpush,yshift=27pt] at (current page.south west) {\textsc{\textcolor{pagegold}{\nouppercase\leftmark}}};
+		\end{tikzpicture}
+	}{
+		\begin{tikzpicture}[remember picture,overlay]
+			\node[anchor=south west,xshift=\marginparwidth-\marginparpush,yshift=\nobgfooterheight+2pt] at (current page.south west) {\textbf{\thepage}};
+			\node[anchor=south west,xshift=\marginparwidth+\marginparpush,yshift=\nobgfooterheight] at (current page.south west) {\leftmark};
+		\end{tikzpicture}
 	}
+}
 
 \fancyfoot[RO]{
-	\raisebox{12pt}{\textsc{\textcolor{pagegold}{\nouppercase\leftmark}}}
-	\hspace*{1cm}
-	\textcolor{pagegold}{\thepage}
+	\iftoggle{bool-footer-scroll}{
+		\begin{tikzpicture}[remember picture,overlay]
+			\node[inner sep=0pt,anchor=south] at (current page.south) {\includegraphics[width=\paperwidth,height=.6in]{img/footerscroll}};
+			\node[xshift=-20pt,yshift=30pt] at (current page.south east) {\textcolor{pagegold}{\thepage}};
+			\node[anchor=south east,xshift=-\marginparwidth-\marginparpush,yshift=27pt] at (current page.south east) {\textsc{\textcolor{pagegold}{\nouppercase\leftmark}}};
+		\end{tikzpicture}
+	}{
+		\begin{tikzpicture}[remember picture,overlay]
+			\node[anchor=south east,xshift=-\marginparwidth+2\marginparpush,yshift=\nobgfooterheight+2pt] at (current page.south east) {\textbf{\thepage}};
+			\node[anchor=south east,xshift=-\marginparwidth,yshift=\nobgfooterheight] at (current page.south east) {\leftmark};
+		\end{tikzpicture}
 	}
-
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % Do not write word "chapter"
+}
 
 \fancypagestyle{plain}{}
