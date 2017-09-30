@@ -41,6 +41,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Made odd rows transparent in `dndtable`.
 * Fixed paragraph and line spacing.
 * Remove `breakable` parameter from `paperbox`.
+* Allow commas in newtcolorbox titles.
 
 ### Deprecated
 
