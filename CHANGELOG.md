@@ -18,6 +18,7 @@
 * Added `themecolor` and customizable box colours.
 * Defined additional colours matching core books.
 * Defined `spell` environment to format spells.
+* Added plain footer style for `bg-none` package option.
 
 ### Changed
 
@@ -26,6 +27,7 @@
 * Disable "Chapter" prefix for `\chapter`.
 * Changed suggested class from `article` to `book`.
 * Enabled ragged alignment by default (disable with `justified` package option).
+* Separated the footer scroll from the background image.
 
 ### Fixed
 
@@ -37,6 +39,7 @@
 ### Deprecated
 
 * Deprecated `dnditemtable`.
+* Deprecated `bg-a4` and `bg-letter` package options.
 
 ## [0.5] - 2016-03-24
 
