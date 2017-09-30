@@ -4,6 +4,6 @@
 *.fdb_latexmk
 *.fls
 *.log
-*.pdf
+example.pdf
 *.synctex.gz
 *.toc
