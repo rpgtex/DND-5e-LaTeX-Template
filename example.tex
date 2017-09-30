@@ -2,7 +2,7 @@
 % rather than alternate every other.
 %
 % Note that the article class does not have chapters.
-\documentclass[10pt,twoside,twocolumn,openany]{book}
+\documentclass[letterpaper,10pt,twoside,twocolumn,openany]{book}
 
 % Use babel or polyglossia to automatically redefine macros for terms
 % Armor Class, Level, etc...
@@ -21,7 +21,12 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lipsum}
 \usepackage{listings}
-\usepackage[bg-letter]{dnd} % Options: bg-a4, bg-letter, bg-full, bg-print, bg-none, justified
+% dnd package options 
+% bg-full   : Default option. Use paper background and fancy footer.
+% bg-print  : Use fancy footer but not background.
+% bg-none   : No paper background and plain footer.
+% justified : Use full justification for text layout instead of ragged right.
+\usepackage{dnd} % Options: bg-full, bg-print, bg-none, justified
 
 \lstset{%
   basicstyle=\ttfamily,
