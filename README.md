@@ -75,15 +75,15 @@ Load the template in your preamble:
 ```
 
 ### Package options
-```
+
 | Option      | Description                                                       | Default |
-|-------------+-------------------------------------------------------------------+:-------:|
+|-------------|-------------------------------------------------------------------|:-------:|
 | `bg-letter` | Loads a letter-sized background image                             |    ✓    |
 | `bg-a4`     | Loads an A4-sized background image                                |         |
 | `bg-print`  | Loads a printer-friendly background-image (only the footer image) |         |
 | `bg-full`   | Loads the full background image                                   |    ✓    |
 | `justified` | Justifies column copy                                             |         |
-```
+
 ## Dependencies
 
 If you don't have LaTeX installed, we recommend installing a complete TeX Live distribution.
