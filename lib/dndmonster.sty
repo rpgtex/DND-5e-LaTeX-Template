@@ -50,8 +50,8 @@
    arc=0mm,
    opacityback=0,
    colframe=titlered,
-   fonttitle=\scshape\bfseries\color{titlered}\Large,
-   fontupper=\fontfamily{lmss}\selectfont,
+   fonttitle=\dnd@StatBlockTitleFont\color{titlered}\Large,
+   fontupper=\dnd@StatBlockBodyFont,
    title=#2,
    after={\vspace{7pt plus 1pt}\noindent},
    #1
@@ -76,8 +76,8 @@
 	colback=statblockbg,
 	colbacktitle=statblockbg,
 	colframe=titlered,
-	fonttitle=\scshape\bfseries\color{titlered}\Large,
-	fontupper=\fontfamily{lmss}\selectfont,
+	fonttitle=\dnd@StatBlockTitleFont\color{titlered}\Large,
+	fontupper=\dnd@StatBlockBodyFont,
 	title=#2,
 	after={\vspace{7pt plus 1pt}\noindent},
 	#1
@@ -88,13 +88,10 @@
 %\newcommand{\monstersection}[1]{\subsubsection*{#1}}
 \newcommand{\monstersection}[1]{
 	{\par
-	\color{titlered}\normalfont\scshape\Large #1 \vspace{3pt}
+	\color{titlered}\dnd@StatBlockSubtitleFont\large #1 \vspace{3pt}
 	\titleline{\color{titlered}\titlerule[0.6pt]}
 	\par\medskip}
 	}
-%\titlespacing*{\subsubsection}{0pt}{*0.5}{5pt}
-%\titleformat{\subsubsection}
-%{\color{titlered}\normalfont\scshape\Large}{\thesubsection}{1em}{}[{\color{titlered}\titlerule[0.5pt]\color{black}}]
 
 \newenvironment{monsteraction}[1][\unskip]{\emph{\textbf{#1.}}}{\vspace{0.5em}}
 
