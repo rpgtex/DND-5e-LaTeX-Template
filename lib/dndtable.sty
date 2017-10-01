@@ -2,7 +2,7 @@
 \newcommand{\header}[1]{{
 	\par\vspace*{8pt}
 	\noindent
-	\sffamily\bfseries\scshape
+	\dnd@TableTitleFont
 	#1}}
 
 % Centered Column
@@ -12,7 +12,7 @@
 \NewDocumentEnvironment{dndtable}{O{XX} O{tablecolor}}{%
     \par\vspace*{8pt}
     \noindent
-    \fontfamily{lmss}\selectfont
+    \dnd@TableBodyFont
     \rowcolors{1}{}{#2}
     \tabularx{\linewidth}{#1}
   }{%
@@ -25,7 +25,7 @@
     \dnd@deprecate{dnditemtable}{0.7}[Set tablecolor and use dndtable instead.]
     \par\vspace*{8pt}
     \noindent
-    \fontfamily{lmss}\selectfont
+    \dnd@TableBodyFont
     \rowcolors{1}{}{DmgCoral}
     \tabularx{\linewidth}{#1}
   }{%
