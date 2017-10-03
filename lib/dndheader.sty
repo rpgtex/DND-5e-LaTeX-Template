@@ -28,7 +28,7 @@
 \fancyfoot[LE]{
 	\iftoggle{bool-footer-scroll}{
 		\begin{tikzpicture}[remember picture,overlay]
-			\node[xscale=-1,inner sep=0pt,anchor=south] at (current page.south) {\includegraphics[width=\paperwidth,height=43pt]{img/footerscroll}};
+			\node[xscale=-1,inner sep=0pt,anchor=south,nearly opaque] at (current page.south) {\includegraphics[width=\paperwidth,height=43pt]{img/footerscroll}};
 			\node[xshift=20pt,yshift=30pt] at (current page.south west) {\textcolor{pagegold}{\thepage}};
 			\node[anchor=south west,xshift=\marginparwidth+\marginparpush,yshift=27pt] at (current page.south west) {\textsc{\textcolor{pagegold}{\nouppercase\leftmark}}};
 		\end{tikzpicture}
@@ -43,7 +43,7 @@
 \fancyfoot[RO]{
 	\iftoggle{bool-footer-scroll}{
 		\begin{tikzpicture}[remember picture,overlay]
-			\node[inner sep=0pt,anchor=south] at (current page.south) {\includegraphics[width=\paperwidth,height=43pt]{img/footerscroll}};
+			\node[inner sep=0pt,anchor=south,nearly opaque] at (current page.south) {\includegraphics[width=\paperwidth,height=43pt]{img/footerscroll}};
 			\node[xshift=-20pt,yshift=30pt] at (current page.south east) {\textcolor{pagegold}{\thepage}};
 			\node[anchor=south east,xshift=-\marginparwidth-\marginparpush,yshift=27pt] at (current page.south east) {\textsc{\textcolor{pagegold}{\nouppercase\leftmark}}};
 		\end{tikzpicture}
