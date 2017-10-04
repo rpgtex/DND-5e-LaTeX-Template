@@ -85,7 +85,10 @@
 \setlength{\parskip}{0pt}
 
 % Font environment
-\newenvironment{lmss}{\fontfamily{lmss}\selectfont}{}
+\newenvironment{lmss}{%
+  \dnd@deprecate{lmss}{0.7}
+  \fontfamily{lmss}\selectfont
+  }{}
 
 % Columns setup
 \setlength{\columnsep}{25pt}  % .35in
