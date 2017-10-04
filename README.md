@@ -76,13 +76,12 @@ Load the template in your preamble:
 
 ### Package options
 
-| Option                   | Description                                                       | Default |
-|--------------------------|-------------------------------------------------------------------|:-------:|
-| `bg-a4` (deprecated)     | Loads an A4-sized background image                                |         |
-| `bg-full`                | Loads the full background image                                   |    ✓    |
-| `bg-letter` (deprecated) | Loads a letter-sized background image                             |         |
-| `bg-print`               | Loads a printer-friendly background-image (only the footer image) |         |
-| `justified`              | Justifies column copy                                             |         |
+| Option      | Description                               | Default |
+|-------------|-------------------------------------------|:-------:|
+| `bg-full`   | Loads both background and footer images   |    ✓    |
+| `bg-none`   | Removes both background and footer images |         |
+| `bg-print`  | Loads only the footer image               |         |
+| `justified` | Justifies column copy                     |         |
 
 ## Dependencies
 
