@@ -7,9 +7,9 @@
 \newcommand{\stat}[1]{%
    \FPeval{\mod}{(#1 - 10)/2}%
    \FPifpos\mod%
-   \FPeval{\mod}{clip(trunc(mod,0))}#1 (+\mod)%
+   \FPeval{\mod}{clip(trunc(mod,0))}$\mathsf{#1\ (+\mod)}$%
    \else%
-   \FPeval{\mod}{clip(trunc(mod-0.5,0))}#1 (\mod)%
+   \FPeval{\mod}{clip(trunc(mod-0.5,0))}$\mathsf{#1\ (\mod)}$%
    \fi%
 }
 
@@ -33,7 +33,7 @@
 		}%
 	}%
 	\FPtrunc{\DiceAvg}{\DiceAvg}{0}%				round down
-	\FPprint{\DiceAvg\ (\DiceNum d\DiceSides\DiceMod)}%
+	$\mathsf{\FPprint{\DiceAvg\ (\DiceNum d\DiceSides\DiceMod)}}$
 }
 
 % Monster box made to look like the Monster Manual NPC definitions
