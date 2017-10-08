@@ -7,9 +7,9 @@
 \newcommand{\stat}[1]{%
    \FPeval{\mod}{(#1 - 10)/2}%
    \FPifpos\mod%
-   \FPeval{\mod}{clip(trunc(mod,0))}#1 (+\mod)%
+   \FPeval{\mod}{clip(trunc(mod,0))}#1\ (+\mod)%
    \else%
-   \FPeval{\mod}{clip(trunc(mod-0.5,0))}#1 (\mod)%
+   \FPeval{\mod}{clip(abs(trunc(mod-0.5,0)))}#1\ (\(-\)\mod)%
    \fi%
 }
 
@@ -27,13 +27,13 @@
 	}{%
 		\IfInteger{\DiceSubMod}{%
 			\FPsub{\DiceAvg}{\DiceAvg}{\DiceSubMod}%	subtract value
-			\def\DiceMod{ - \DiceSubMod}%
+			\def\DiceMod{ \(-\) \DiceSubMod}%
 		}{%
 			\def\DiceMod{}%
 		}%
 	}%
 	\FPtrunc{\DiceAvg}{\DiceAvg}{0}%				round down
-	\FPprint{\DiceAvg\ (\DiceNum d\DiceSides\DiceMod)}%
+	\FPprint{\DiceAvg\ (\DiceNum d\DiceSides\DiceMod)}
 }
 
 % Monster box made to look like the Monster Manual NPC definitions
@@ -134,8 +134,8 @@
                       conditionimmunities=,
                       damageresistances=,
                       damagevulnerabilities=,
-                      senses=-,
-                      languages=-,
+                      senses=---,
+                      languages=---,
                       challenge=0]{%
   \ifcommandkey{savingthrows}
     {\textbf{\savesname} \commandkey{savingthrows}\\}{}
