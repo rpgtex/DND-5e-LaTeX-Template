@@ -1,49 +1,45 @@
-%Remove Numbering from section (If you want Numbering on the sections comment the following three lines and change the "0em" separation-definitions in the lower part to 1em)
-\renewcommand\thechapter{}
-\renewcommand\thesection{}
-\renewcommand\thesubsection{}
-\renewcommand\thesubsubsection{}
+\RequirePackage[titles]{tocloft}
+\RequirePackage[toc]{multitoc}
+\RequirePackage{titlesec}	% Used to adjust (sub)section formatting
 
-% Adjust chapter formatting
-\titleclass{\chapter}{top}
+%Remove Numbering (If you want Numbering set secnumdepth to the appropriate depth)
+\setcounter{secnumdepth}{-1}
+
+% Chapter
 \titleformat{\chapter}
-{\color{titlered}\normalfont\scshape\Huge}{\thechapter}{0em}{}
+{\color{titlered}\normalfont\scshape\Huge}{\thechapter\quad}{0pt}{}
+
 \titlespacing*{\chapter}{0pt}{0pt}{20pt}
 
-% Adjust section and subsection colors and font (change 0em to 1em if you commented the removal of section numbering)
+\renewcommand\cftchapfont{\color{titlered}\bfseries\scshape}
+
+% Section
 \titleformat{\section}
-{\color{titlered}\normalfont\scshape\LARGE}{\thesection}{0em}{}
+{\color{titlered}\normalfont\scshape\LARGE}{\thesection\quad}{0pt}{}
 
+% Subsection
 \titleformat{\subsection}
-{\color{titlered}\normalfont\scshape\Large}{\thesubsection}{0em}{}[{\titleline{\color{undergold}\titlerule[1pt]}}]
+{\color{titlered}\normalfont\scshape\Large}{\thesubsection\quad}{0pt}{}
+[\titleline{\color{titlegold}\titlerule[1pt]}]
 
+% Subsubsection
 \titleformat{\subsubsection}
-{\color{titlered}\normalfont\scshape\large}{\thesubsubsection}{0em}{}[]
+{\color{titlered}\normalfont\scshape\large}{\thesubsubsection\quad}{0pt}{}[]
 
+% Paragraph
+\titleformat{\paragraph}[runin]
+{\normalfont\normalsize\bfseries\slshape}{\theparagraph\quad}{0pt}{}[.]
+\titlespacing*{\paragraph}
+{0pt}{\parskip}{\wordsep}
+
+% Subparagraph
+\titleformat{\subparagraph}[runin]
+{\normalfont\normalsize\bfseries\slshape}{\thesubparagraph\quad}{0pt}{}[.]
+\titlespacing*{\subparagraph}
+{\parindent}{\parskip}{\wordsep}
+
+% Special command for magic items, traps, and the like.
 \newcommand{\subtitlesection}[2]{
-	\subsubsection{#1}\vspace{-5pt}
-	\textit{#2}\vspace{5pt}\par
+	\subsubsection{#1}\vspace{-1ex}
+	\textit{#2}\vspace{1ex}\par
 	} 
-
-% Fancy table of contents
-%
-% Usage: \dndtoc[depth] or \dndtoc*[depth] (for small-caps chapters)
-%
-% Depth:
-%	0: chapters
-%	1: sections
-%	2: subsections (default)
-%	3: subsubsections
-%
-\usepackage{xparse}
-\usepackage[toc]{multitoc}
-\usepackage[titles]{tocloft}
-\NewDocumentCommand{\dndtoc}{sO{2}}{
-	\IfBooleanTF#1{
-		\renewcommand\cftchapfont{\color{titlered}\bfseries\scshape}
-	}
-	{
-		\renewcommand\cftchapfont{\color{titlered}\bfseries}
-	}
-	\setcounter{tocdepth}{#2}\tableofcontents
-}

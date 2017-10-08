@@ -1,5 +1,6 @@
-% Green comment box definition
-\newtcolorbox{commentbox}[2][]{
+%Usage \begin{commentbox}[options]{title}[color]
+\DeclareTColorBox{commentbox}{O{} m O{commentboxcolor}}{%
+	before upper={\nottoggle{justified}{\RaggedRight}},
 	frame hidden,
 	boxrule=0pt,
 	breakable,
@@ -12,21 +13,10 @@
 	arc=0mm,
 	fonttitle=\fontfamily{fosj}\selectfont\scshape\bfseries\color{black},
 	fontupper=\fontfamily{lmss}\selectfont,
-	title=#2,
-	parbox = false,
-	colback=commentgreen,
-	colframe=commentgreen,
-	colbacktitle=commentgreen,
+	title={#2},
+	parbox=false,
+	colback={#3},
+	colbacktitle={#3},
 	after={\vspace{5pt plus 1pt}\noindent},
 	#1
 }
-
-%
-% Old implementation using mdframed
-%
-%\newenvironment{commentbox}[1]
-%{\fontfamily{lmss}\selectfont\begin{mdframed}[frametitle={#1},
-%                                          frametitlefont=\fontfamily{fosj}\selectfont\scshape\bfseries\color{black},
-%                                              linecolor=commentgreen,
-%                                              backgroundcolor=commentgreen]}
-%{\end{mdframed}}

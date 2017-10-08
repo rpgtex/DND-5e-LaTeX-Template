@@ -1,5 +1,6 @@
 % Monster environment sty file
-\usepackage{fp}
+\RequirePackage{fp}
+\RequirePackage{xstring}
 
 % Macro to print stats with autocomputed modifier
 % e.g. \stat{12} prints "12 (+1)"
@@ -10,6 +11,29 @@
    \else%
    \FPeval{\mod}{clip(trunc(mod-0.5,0))}#1 (\mod)%
    \fi%
+}
+
+% Macro to print avarage dice based value
+% e.g. \dice{2d6+3} prints "10 (2d6 + 3)"
+\newcommand{\dice}[1]{%
+	\StrSubstitute{#1}{ }{}[\DiceArg]%				strip whitespaces
+	\StrCut{\DiceArg}{d}\DiceNum\DiceSides%			split string
+	\StrCut{\DiceSides}{+}\DiceSides\DiceAddMod%
+	\StrCut{\DiceSides}{-}\DiceSides\DiceSubMod%
+	\FPeval{\DiceAvg}{(\DiceSides+1)/2*\DiceNum}%	calculate avg roll	
+	\IfInteger{\DiceAddMod}{%
+		\FPadd{\DiceAvg}{\DiceAvg}{\DiceAddMod}%	add value
+		\def\DiceMod{ + \DiceAddMod}%
+	}{%
+		\IfInteger{\DiceSubMod}{%
+			\FPsub{\DiceAvg}{\DiceAvg}{\DiceSubMod}%	subtract value
+			\def\DiceMod{ - \DiceSubMod}%
+		}{%
+			\def\DiceMod{}%
+		}%
+	}%
+	\FPtrunc{\DiceAvg}{\DiceAvg}{0}%				round down
+	\FPprint{\DiceAvg\ (\DiceNum d\DiceSides\DiceMod)}%
 }
 
 % Monster box made to look like the Monster Manual NPC definitions
@@ -46,11 +70,11 @@
 	right=2.15mm,
 	arc=0mm,
 	borderline north={4pt}{0pt}{titlered},
-	borderline north={2.5pt}{0.75pt}{puregold},
+	borderline north={2.5pt}{0.75pt}{statblockribbon},
 	borderline south={4pt}{0pt}{titlered},
-	borderline south={2.5pt}{0.75pt}{puregold},
-	colback=monstertan,
-	colbacktitle=monstertan,
+	borderline south={2.5pt}{0.75pt}{statblockribbon},
+	colback=statblockbg,
+	colbacktitle=statblockbg,
 	colframe=titlered,
 	fonttitle=\scshape\bfseries\color{titlered}\Large,
 	fontupper=\fontfamily{lmss}\selectfont,
@@ -79,9 +103,9 @@
 %
 \newkeycommand\basics[armorclass=0, hitpoints=0, speed=0]{%
 	\color{titlered}
-	\textbf{Armor Class} \commandkey{armorclass}\\
-	\textbf{Hit Points} \commandkey{hitpoints}\\
-	\textbf{Speed} \commandkey{speed}\\
+  \textbf{\armorclassname} \commandkey{armorclass}\\
+	\textbf{\hitpointsname} \commandkey{hitpoints}\\
+	\textbf{\speedname} \commandkey{speed}\\
 }
 
 % Taubular enviornment for stats-block
@@ -96,7 +120,7 @@
 	\resizebox{0.97\linewidth}{\height}{
 		\begin{tabular}{cccccc}
 			\rule{0pt}{3.7mm} %adds space between hline and table
-			\textbf{STR} & \textbf{DEX} & \textbf{CON} & \textbf{INT} & \textbf{WIS} & \textbf{CHA}\\
+      \textbf{\strstatname} & \textbf{\dexstatname} & \textbf{\constatname} & \textbf{\intstatname} & \textbf{\wisstatname} & \textbf{\chastatname}\\
 			\commandkey{STR} & \commandkey{DEX} & \commandkey{CON} & \commandkey{INT} & \commandkey{WIS} & \commandkey{CHA}
 		\end{tabular}
 	}
@@ -114,20 +138,20 @@
                       languages=-,
                       challenge=0]{%
   \ifcommandkey{savingthrows}
-    {\textbf{Saving Throws} \commandkey{savingthrows}\\}{}
+    {\textbf{\savesname} \commandkey{savingthrows}\\}{}
   \ifcommandkey{skills}
-    {\textbf{Skills} \commandkey{skills}\\}{}
+    {\textbf{\skillsname} \commandkey{skills}\\}{}
   \ifcommandkey{damagevulnerabilities}
-    {\textbf{Damage Vulnerabilities} \commandkey{damagevulnerabilities}\\}{}
+    {\textbf{\dvulname} \commandkey{damagevulnerabilities}\\}{}
   \ifcommandkey{damageresistances}
-    {\textbf{Damage Resistances} \commandkey{damageresistances}\\}{}
+    {\textbf{\dresname} \commandkey{damageresistances}\\}{}
   \ifcommandkey{damageimmunities}
-    {\textbf{Damage Immunities} \commandkey{damageimmunities}\\}{}
+    {\textbf{\dimmname} \commandkey{damageimmunities}\\}{}
   \ifcommandkey{conditionimmunities}
-    {\textbf{Condition Immunities} \commandkey{conditionimmunities}\\}{}
+    {\textbf{\cimmname} \commandkey{conditionimmunities}\\}{}
   % These traits appear to always be present.
-  {\textbf{Senses} \commandkey{senses}\\}
-  {\textbf{Languages} \commandkey{languages}\\}
-  {\textbf{Challenge} \commandkey{challenge}\\}
+  {\textbf{\sensesname} \commandkey{senses}\\}
+  {\textbf{\languagesname} \commandkey{languages}\\}
+  {\textbf{\challengename} \commandkey{challenge}\\}
 \color{black}
 }

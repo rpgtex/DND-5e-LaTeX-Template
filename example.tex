@@ -2,14 +2,40 @@
 % rather than alternate every other.
 %
 % Note that the article class does not have chapters.
-\documentclass[10pt,twoside,twocolumn,openany]{book}
-\usepackage[bg-letter]{dnd} % Options: bg-a4, bg-letter, bg-full, bg-print, bg-none.
+\documentclass[letterpaper,10pt,twoside,twocolumn,openany]{book}
+
+% Use babel or polyglossia to automatically redefine macros for terms
+% Armor Class, Level, etc...
+% Default output is in English; captions are located in lib/dndstring-captions.sty.
+% If no captions exist for a language, English will be used.
+%1. To load a language with babel:
+%	\usepackage[<lang>]{babel}
+%2. To load a language with polyglossia:
+%	\usepackage{polyglossia}
+%	\setdefaultlanguage{<lang>}
 \usepackage[english]{babel}
+%usepackage[italian]{babel}
+% For further options (multilanguage documents, hypenations, language environments...)
+% please refer to babel/polyglossia's documentation.
+
 \usepackage[utf8]{inputenc}
+\usepackage{lipsum}
+\usepackage{listings}
+
+% dnd package options 
+% bg-full   : Default option. Use paper background and fancy footer.
+% bg-print  : Use fancy footer but not background.
+% bg-none   : No paper background and plain footer.
+% justified : Use full justification for text layout instead of ragged right.
+\usepackage{dnd}
+
+\lstset{%
+  basicstyle=\ttfamily,
+  language=[LaTeX]{TeX},
+}
 
 % Start document
 \begin{document}
-\fontfamily{ppl}\selectfont % Set text font
 
 % Your content goes here
 
@@ -17,29 +43,34 @@
 \chapter{Chapter 1: The Dark \LaTeX}
 
 \section{Main Section}
-\lipsum[1] % filler text
-
-\subsection{Fun with boxes}
-\subsubsection{Even more fun!}
-
-
-\begin{commentbox}{Neat Green Box!}
-	\lipsum[1]
-\end{commentbox}
-
-\subtitlesection{Weapon, +1, +2, or +3}
-{Weapon (any), uncommon (+1), rare (+2), or very rare (+3)}
+\lipsum[2] % filler text
 
 \begin{quotebox}
 	As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
 \end{quotebox}
 
-\newpage % Acts as columbreak because of twocolumn option; for pagebreak use \clearpage
+\subsection{Fun with boxes}
+\subsubsection{Even more fun!}
 
-% For more columns, you can say \begin{dndtable}[your options here}.
+\begin{commentbox}{This Is a Comment Box!}
+  A \lstinline!commentbox! is a box for minimal highlighting of text. It lacks the ornamentation of \lstinline!paperbox!, but it can handle being broken over a column.
+\end{commentbox}
+
+\subtitlesection{Weapon, +1, +2, or +3}
+{Weapon (any), uncommon (+1), rare (+2), or very rare (+3)}
+
+\lipsum[3]
+
+\begin{figure}[!t]
+	\begin{paperbox}{Behold, the Paperbox!}
+		The \lstinline!paperbox! is used as a sidebar. It does not break over columns and is best used with a figure environment to float it to one corner of the page where the surrounding text can then flow around it.
+	\end{paperbox}
+\end{figure}
+
+% For more columns, you can say \begin{dndtable}[your options here].
 % For instance, if you wanted three columns, you could say
-% \begin{dndtable}{XXX}. The usual host of tabular parameters are
-% aailable as well.
+% \begin{dndtable}[XXX]. The usual host of tabular parameters are
+% available as well.
 \header{Nice table}
 \begin{dndtable}
    	\textbf{Table head}  & \textbf{Table head} \\
@@ -48,26 +79,22 @@
    	Some value  & Some value
 \end{dndtable}
 
-\begin{paperbox}{Do the Players need direction?}
-	\lipsum[1]
-\end{paperbox}
-
 % You can optionally not include the background by saying
 % begin{monsterboxnobg}
 \begin{monsterbox}{Monster Foo}
 	\textit{Small metasyntactic variable (goblinoid), neutral evil}\\
-	\hline
+	\hline%
 	\basics[%
 	armorclass = 12,
-	hitpoints  = 16 (3d8 + 3),
+	hitpoints  = \dice{3d8 + 3},
 	speed      = 50 ft
 	]
-	\hline
+	\hline%
 	\stats[
     STR = \stat{12}, % This stat command will autocomplete the modifier for you
     DEX = \stat{7}
 	]
-	\hline
+	\hline%
 	\details[%
 	% If you want to use commas in these sections, enclose the
 	% description in braces.
@@ -87,6 +114,132 @@
     See, here he goes again! Yet more text.
 	\end{monsteraction}
 \end{monsterbox}
+
+\section{Spells}
+
+\begin{spell}
+	{Beautiful Typesetting}
+	{4th-level illusion}
+	{1 action}
+	{5 feet}
+	{S, M (ink and parchment, which the spell consumes)}
+	{Until dispelled}
+	You are able to transform a written message of any length into a beautiful scroll. All creatures within range that can see the scroll must make a wisdom saving throw or be charmed by you until the spell ends.
+
+	While the creature is charmed by you, they cannot take their eyes off the scroll and cannot willingly move away from the scroll. Also, the targets can make a wisdom saving throw at the end of each of their turns. On a success, they are no longer charmed.
+\end{spell}
+
+\lipsum[2]
+
+\section{Colors}
+
+This package provides several global color variables to style \lstinline!commentbox!, \lstinline!quotebox!, \lstinline!paperbox!, and \lstinline!dndtable! environments.
+
+\begin{dndtable}[lX]
+  \textbf{Color}         & \textbf{Description} \\
+  \lstinline!commentboxcolor! & Controls \lstinline!commentbox! background. \\
+  \lstinline!paperboxcolor!   & Controls \lstinline!paperbox! background. \\
+  \lstinline!quoteboxcolor!   & Controls \lstinline!quotebox! background. \\
+  \lstinline!tablecolor!      & Controls background of even \lstinline!dndtable! rows. \\
+\end{dndtable}
+
+See Table~\ref{tab:colors} for a list of accent colors that match the core books.
+
+\begin{table*}
+  \begin{dndtable}[XX]
+    \textbf{Color}                            & \textbf{Description} \\
+    \lstinline!PhbLightGreen!                      & Light green used in PHB Part 1 \\
+    \lstinline!PhbLightCyan!                       & Light cyan used in PHB Part 2 \\
+    \lstinline!PhbMauve!                           & Pale purple used in PHB Part 3 \\
+    \lstinline!PhbTan!                             & Light brown used in PHB appendix \\
+    \lstinline!DmgLavender!                        & Pale purple used in DMG Part 1 \\
+    \lstinline!DmgCoral!                           & Orange-pink used in DMG Part 2 \\
+    \lstinline!DmgSlateGray! (\lstinline!DmgSlateGrey!) & Blue-gray used in PHB Part 3 \\
+    \lstinline!DmgLilac!                           & Purple-gray used in DMG appendix \\
+  \end{dndtable}
+  \caption{Colors supported by this package}%
+  \label{tab:colors}
+\end{table*}
+
+\begin{itemize}
+  \item Use \lstinline!\setthemecolor[<color>]! to set \lstinline!themecolor!, \lstinline!commentcolor!, \lstinline!paperboxcolor!, and \lstinline!tablecolor! to a specific color.
+  \item Calling \lstinline!\setthemecolor! without an argument sets those colors to the current \lstinline!themecolor!.
+  \item \lstinline!commentbox!, \lstinline!dndtable!, \lstinline!paperbox!, and \lstinline!quoteboxcolor! also accept an optional color argument to set the color for a single instance.
+\end{itemize}
+
+\subsection{Examples}
+
+\subsubsection{Using \lstinline!themecolor!}
+
+\begin{lstlisting}
+\setthemecolor[PhbMauve]
+
+\begin{paperbox}{Example}
+  \lipsum[2]
+\end{paperbox}
+
+\setthemecolor[PhbLightCyan]
+
+\header{Example}
+\begin{dndtable}[cX]
+  \textbf{d8} & \textbf{Item} \\
+  1           & Small wooden button \\
+  2           & Red feather \\
+  3           & Human tooth \\
+  4           & Vial of green liquid \\
+  6           & Tasty biscuit \\
+  7           & Broken axe handle \\
+  8           & Tarnished silver locket \\
+\end{dndtable}
+\end{lstlisting}
+
+\begingroup
+\setthemecolor[PhbMauve]
+
+\begin{paperbox}{Example}
+  \lipsum[2]
+\end{paperbox}
+
+\setthemecolor[PhbLightCyan]
+
+\header{Example}
+\begin{dndtable}[cX]
+  \textbf{d8} & \textbf{Item} \\
+  1           & Small wooden button \\
+  2           & Red feather \\
+  3           & Human tooth \\
+  4           & Vial of green liquid \\
+  6           & Tasty biscuit \\
+  7           & Broken axe handle \\
+  8           & Tarnished silver locket \\
+\end{dndtable}
+\endgroup
+
+\subsubsection{Using element color arguments}
+
+\begin{lstlisting}
+\begin{dndtable}[cX][DmgCoral]
+  \textbf{d8} & \textbf{Item} \\
+  1           & Small wooden button \\
+  2           & Red feather \\
+  3           & Human tooth \\
+  4           & Vial of green liquid \\
+  6           & Tasty biscuit \\
+  7           & Broken axe handle \\
+  8           & Tarnished silver locket \\
+\end{dndtable}
+\end{lstlisting}
+
+\begin{dndtable}[cX][DmgCoral]
+  \textbf{d8} & \textbf{Item} \\
+  1           & Small wooden button \\
+  2           & Red feather \\
+  3           & Human tooth \\
+  4           & Vial of green liquid \\
+  6           & Tasty biscuit \\
+  7           & Broken axe handle \\
+  8           & Tarnished silver locket \\
+\end{dndtable}
 
 % End document
 \end{document}

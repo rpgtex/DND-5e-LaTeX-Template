@@ -1,65 +1,128 @@
 # D&D 5e LaTeX Template
 
-This is an attempt at a D&D 5e LaTeX template. The color scheme is close to the original source books, as are the fonts. The fonts chosen are included by default in TeX Live.
+[![Latest release](https://img.shields.io/github/release/evanbergeron/DND-5e-LaTeX-Template/all.svg)](https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/latest)
 
-The template compiles with pdflatex.
+This is a LaTeX template for typesetting documents in the style of the *Dungeons & Dragons* 5th Edition (D&D 5e) books.
 
-![Preview](https://github.com/evanbergeron/DND-5e-LaTeX-Template/raw/master/scrot.png)
+## Features
 
+* Color schemes and fonts are close to the core books.
+* TeX Live includes the default fonts.
+* Compiles with `pdflatex`.
 
-### Installation
+![Preview](scrot.jpg)
 
-Just clone the repo. From terminal:
+## Installation
+
+### User install using `TEXMFHOME` (recommended)
+
+This will install the template for your current user in one of the following locations:
+
+* Linux: `~/.texmf/tex/latex`
+* OS X / macOS: `~/Library/texmf/tex/latex`
+* Windows: `C:\Users\{username}\texmf\tex\latex`
+
+LaTeX will find the package automatically.
+
+1. Prepare your `TEXMFHOME` directory.
+
+    ```sh
+    mkdir "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
+    ```
+2. Download the [latest release](https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/latest) and extract it in `$TEXMFHOME/tex/latex/`.
+
+    ```sh
+    wget https://github.com/evanbergeron/DND-5e-LaTeX-Template/archive/v0.5.zip
+    unzip -d "$(kpsewhich -var-value TEXMFHOME)/tex/latex/" v0.5.zip
+    cd "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
+    mv DND-5e-LaTeX-Template-0.5 dnd
+    ```
+
+    Alternatively, clone the repo to the same location:
+
+    ```sh
+    git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git "$(kpsewhich -var-value TEXMFHOME)/tex/latex/dnd"
+    ```
+
+### Project install using `TEXINPUTS`
+
+You can also clone a copy of the repository to each LaTeX project. For example, to clone the repository to a `lib/` directory in your project:
 
 ```sh
-$ git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git 5e-template
-$ cd 5e-template
-$ pdflatex example.tex
+mkdir lib/
+git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git lib/dnd
 ```
 
-If you don't have LaTeX installed, the following should help you out:
-#### Ubuntu
+LaTeX will not find the template automatically. Set `TEXINPUTS` when compiling your project to locate the package:
+
+```sh
+TEXINPUTS=./lib//: pdflatex project.tex
+```
+
+## Usage
+
+Load the template in your preamble:
+
+```tex
+\documentclass[10pt,twoside,twocolumn,openany]{book}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{dnd}
+
+\begin{document}
+% ...
+```
+
+### Package options
+
+| Option      | Description                                                       | Default |
+|-------------|-------------------------------------------------------------------|:-------:|
+| `bg-letter` | Loads a letter-sized background image                             |    ✓    |
+| `bg-a4`     | Loads an A4-sized background image                                |         |
+| `bg-print`  | Loads a printer-friendly background-image (only the footer image) |         |
+| `bg-full`   | Loads the full background image                                   |    ✓    |
+| `justified` | Justifies column copy                                             |         |
+
+## Dependencies
+
+If you don't have LaTeX installed, we recommend installing a complete TeX Live distribution.
+
+### Ubuntu
+
 ```sh
 sudo apt-get install texlive-full
 ```
-#### Arch
+
+### Arch
+
 ```sh
 sudo pacman -S texlive-bin texlive-core texlive-latexextra
 ```
-It's a bit unclear exactly what subset of features this module needs. As a general rule, we'd recommend installing one of larger ones.
 
-### Package Options
-- bg-letter: Loads a letter-sized background-image
-- bg-a4: Loads an A4-sized background-image
-- bg-print: Loads a printer-friendly background-image (only decal at the bottom)
-- bg-full: Loads the full background-image
+## Contributing
 
-Per default "bg-letter" and "bg-full" are loaded.
+### Preparing a new release
 
-### Todo's
+1. Run `./bin/bump-version` to tag the new version.
 
- - Consider implementing more complex tables for monsters, etc.
- - Clean up the table-preset
- - Create more elegant solution for spacing before and after boxes (using \vspace is rather rigid when two boxes follow in a row)
- - Add subtitle option for boxes
- - Sort out box-decals when boxes break column or page
- - Look into adding the ability to add large images to the document. There are some documents made with InDesign out there that accomplish this quite well.
+    ```sh
+    ./bin/bumpversion <version>
+    ```
+2. Compile the example PDF.
+3. Save the first page of the PDF as scrot.jpg.
+4. Update the change log for the new release; commit your changes.
+5. Push changes.
 
+    ```sh
+    git push && git push --tags
+    ```
+6. [Create a new release](https://help.github.com/articles/creating-releases/) and attach the PDF and scrot.
 
-### Image Credit
+## Credits
 
- - Credit for the background image goes to http://lostandtaken.com/
+* Background image from [Lost and Taken](https://lostandtaken.com/)
 
-### Version
-0.5
+## License
 
-### License
-The MIT License (MIT)
-
-Copyright (c) 2016 Evan Bergeron
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+MIT
