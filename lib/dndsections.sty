@@ -7,24 +7,24 @@
 
 % Chapter
 \titleformat{\chapter}
-{\color{titlered}\normalfont\scshape\Huge}{\thechapter\quad}{0pt}{}
+{\color{titlered}\dnd@TitleFont\Huge}{\thechapter\quad}{0pt}{}
 
 \titlespacing*{\chapter}{0pt}{0pt}{20pt}
 
-\renewcommand\cftchapfont{\color{titlered}\bfseries\scshape}
+\renewcommand\cftchapfont{\color{titlered}\dnd@TitleFont\bfseries}
 
 % Section
 \titleformat{\section}
-{\color{titlered}\normalfont\scshape\LARGE}{\thesection\quad}{0pt}{}
+{\color{titlered}\dnd@TitleFont\LARGE}{\thesection\quad}{0pt}{}
 
 % Subsection
 \titleformat{\subsection}
-{\color{titlered}\normalfont\scshape\Large}{\thesubsection\quad}{0pt}{}
+{\color{titlered}\dnd@TitleFont\Large}{\thesubsection\quad}{0pt}{}
 [\titleline{\color{titlegold}\titlerule[1pt]}]
 
 % Subsubsection
 \titleformat{\subsubsection}
-{\color{titlered}\normalfont\scshape\large}{\thesubsubsection\quad}{0pt}{}[]
+{\color{titlered}\dnd@TitleFont\large}{\thesubsubsection\quad}{0pt}{}[]
 
 % Paragraph
 \titleformat{\paragraph}[runin]

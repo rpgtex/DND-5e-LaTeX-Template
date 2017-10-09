@@ -16,8 +16,6 @@
   bottom=50pt,        % .7in
   footskip=30pt,      % makes the footer text line up with the graphic
 ]{geometry}
-\RequirePackage{bookman}          % Closest built-in font I could find
-\RequirePackage[T1]{fontenc}
 \RequirePackage[table]{xcolor}
 \RequirePackage{array}
 \RequirePackage{tabularx}
@@ -37,6 +35,7 @@
 
 % Load other modules of this package
 \RequirePackage{lib/dndcolors}    % color definitions
+\RequirePackage{lib/dndfonts}     % font definitions
 \RequirePackage{lib/dndcomment}   % \commentbox definition
 \RequirePackage{lib/dndheader}    % fancy headers and footers
 \RequirePackage{lib/dndmonster}   % \monsterbox definition
@@ -86,7 +85,10 @@
 \setlength{\parskip}{0pt}
 
 % Font environment
-\newenvironment{lmss}{\fontfamily{lmss}\selectfont}{}
+\newenvironment{lmss}{%
+  \dnd@deprecate{lmss}{0.7}
+  \fontfamily{lmss}\selectfont
+  }{}
 
 % Columns setup
 \setlength{\columnsep}{25pt}  % .35in

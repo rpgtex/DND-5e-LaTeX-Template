@@ -49,6 +49,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 * Deprecated `dnditemtable`.
 * Deprecated `bg-a4` and `bg-letter` package options.
+* Deprecated `lmss` environment.
 
 ## [0.5] - 2016-03-24
 
