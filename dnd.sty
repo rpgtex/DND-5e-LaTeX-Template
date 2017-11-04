@@ -25,6 +25,7 @@
 \RequirePackage{enumitem}
 \RequirePackage{microtype}        % Improve ragged2e hyphenation and overfull boxes
 \RequirePackage{ragged2e}
+\RequirePackage{xkeyval}
 \RequirePackage{xparse}
 
 
@@ -53,19 +54,19 @@
 % 'bg-letter-img','bg-letter-print' and 'bg-none' options
 \newtoggle{bool-bg}
 \newtoggle{bool-footer-scroll}
-\DeclareOption{bg-none} {\togglefalse{bool-bg}\togglefalse{bool-footer-scroll}}
-\DeclareOption{bg-print}{\togglefalse{bool-bg}\toggletrue{bool-footer-scroll}}
-\DeclareOption{bg-full} {\toggletrue{bool-bg}\toggletrue{bool-footer-scroll}}
-\DeclareOption{bg-a4}{\dnd@deprecate{bg-a4}{0.7}[Remove call to this package option.]}
-\DeclareOption{bg-letter}{\dnd@deprecate{bg-letter}{0.7}[Remove call to this package option.]}
+\DeclareOptionX{bg-none} {\togglefalse{bool-bg}\togglefalse{bool-footer-scroll}}
+\DeclareOptionX{bg-print}{\togglefalse{bool-bg}\toggletrue{bool-footer-scroll}}
+\DeclareOptionX{bg-full} {\toggletrue{bool-bg}\toggletrue{bool-footer-scroll}}
+\DeclareOptionX{bg-a4}{\dnd@deprecate{bg-a4}{0.7}[Remove call to this package option.]}
+\DeclareOptionX{bg-letter}{\dnd@deprecate{bg-letter}{0.7}[Remove call to this package option.]}
 
 % Toggle justification (official books are flush left).
 \newtoggle{justified}
-\DeclareOption{justified}{\toggletrue{justified}}
+\DeclareOptionX{justified}{\toggletrue{justified}}
 
 % Default Settings
-\ExecuteOptions{bg-full}
-\ProcessOptions\relax
+\ExecuteOptionsX{bg-full}
+\ProcessOptionsX\relax
 
 % Set paragraph and line spacing
 \linespread{1.1}%
