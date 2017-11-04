@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* None
+* Added `bg` package option with `full`, `print`, and `none` as possible values.
 
 ### Changed
 
@@ -20,7 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Deprecated
 
-* None
+* Deprecated `bg-full`, `bg-none`, and `bg-print` package options.
 
 ### Removed
 
