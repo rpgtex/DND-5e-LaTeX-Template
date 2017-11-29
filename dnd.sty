@@ -33,19 +33,6 @@
   \PackageWarning{dnd}{#1 is deprecated and will be removed in version #2.\IfNoValueF{#3}{ #3}}
 }
 
-% Load other modules of this package
-\RequirePackage{lib/dndcolors}    % color definitions
-\RequirePackage{lib/dndfonts}     % font definitions
-\RequirePackage{lib/dndcomment}   % \commentbox definition
-\RequirePackage{lib/dndheader}    % fancy headers and footers
-\RequirePackage{lib/dndmonster}   % \monsterbox definition
-\RequirePackage{lib/dndpaperbox}  % \paperbox definition
-\RequirePackage{lib/dndquote}     % \quotebox definition
-\RequirePackage{lib/dndsections}  % section styling
-\RequirePackage{lib/dndspell}     % \spell definition
-\RequirePackage{lib/dndstrings}   % Load document strings
-\RequirePackage{lib/dndtable}     % \dndtable definition
-
 %
 % Options
 %
@@ -66,6 +53,20 @@
 % Default Settings
 \ExecuteOptions{bg-full}
 \ProcessOptions\relax
+
+% Load other modules of this package
+\RequirePackage{lib/dndcolors}    % color definitions
+\RequirePackage{lib/dndfonts}     % font definitions
+\RequirePackage{lib/dndcomment}   % \commentbox definition
+\RequirePackage{lib/dndheader}    % fancy headers and footers
+\RequirePackage{lib/dndmonster}   % \monsterbox definition
+\RequirePackage{lib/dndpaperbox}  % \paperbox definition
+\RequirePackage{lib/dndquote}     % \quotebox definition
+\RequirePackage{lib/dndsections}  % section styling
+\RequirePackage{lib/dndspell}     % \spell definition
+\RequirePackage{lib/dndstrings}   % Load document strings
+\RequirePackage{lib/dndtable}     % \dndtable definition
+
 
 % Set paragraph and line spacing
 \linespread{1.1}%
