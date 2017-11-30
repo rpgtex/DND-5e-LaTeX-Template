@@ -57,30 +57,36 @@
    #1
 }
 
+
 % new Monsterbox
-\newtcolorbox{monsterbox}[2][]{
-	enhanced,
-	frame hidden,
-	before skip=7pt plus2pt,
-	boxrule=0pt,
-	breakable,
-	boxsep=0.25ex,
-	toptitle=3mm,
-	left=2.5mm,
-	right=2.15mm,
-	arc=0mm,
-	borderline north={4pt}{0pt}{titlered},
-	borderline north={2.5pt}{0.75pt}{statblockribbon},
-	borderline south={4pt}{0pt}{titlered},
-	borderline south={2.5pt}{0.75pt}{statblockribbon},
-	colback=statblockbg,
-	colbacktitle=statblockbg,
-	colframe=titlered,
-	fonttitle=\dnd@StatBlockTitleFont\color{titlered}\Large,
-	fontupper=\dnd@StatBlockBodyFont,
-	title=#2,
-	after={\vspace{7pt plus 1pt}\noindent},
-	#1
+\iftoggle{bool-bg}{
+	\newtcolorbox{monsterbox}[2][]{
+		enhanced,
+		frame hidden,
+		before skip=7pt plus2pt,
+		boxrule=0pt,
+		breakable,
+		boxsep=0.25ex,
+		toptitle=3mm,
+		left=2.5mm,
+		right=2.15mm,
+		arc=0mm,
+		borderline north={4pt}{0pt}{titlered},
+		borderline north={2.5pt}{0.75pt}{statblockribbon},
+		borderline south={4pt}{0pt}{titlered},
+		borderline south={2.5pt}{0.75pt}{statblockribbon},
+		colback=statblockbg,
+		colbacktitle=statblockbg,
+		colframe=titlered,
+		fonttitle=\dnd@StatBlockTitleFont\color{titlered}\Large,
+		fontupper=\dnd@StatBlockBodyFont,
+		title=#2,
+		after={\vspace{7pt plus 1pt}\noindent},
+		#1
+	}
+}{
+	\let\monsterbox\monsterboxnobg
+	\let\endmonsterbox\endmonsterboxnobg
 }
 
 
