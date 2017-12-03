@@ -5,12 +5,12 @@
 % Macro to print stats with autocomputed modifier
 % e.g. \stat{12} prints "12 (+1)"
 \newcommand{\stat}[1]{%
-   \FPeval{\mod}{(#1 - 10)/2}%
-   \FPifpos\mod%
-   \FPeval{\mod}{clip(trunc(mod,0))}#1\ (+\mod)%
-   \else%
-   \FPeval{\mod}{clip(abs(trunc(mod-0.5,0)))}#1\ (\(-\)\mod)%
-   \fi%
+	\FPeval{\mod}{(#1 - 10)/2}%
+	\FPifpos\mod%
+	\FPeval{\mod}{clip(trunc(mod,0))}#1\ (+\mod)%
+	\else%
+	\FPeval{\mod}{clip(abs(trunc(mod-0.5,0)))}#1\ (\(-\)\mod)%
+	\fi%
 }
 
 % Macro to print avarage dice based value
@@ -23,37 +23,37 @@
 	\FPeval{\DiceAvg}{(\DiceSides+1)/2*\DiceNum}%	calculate avg roll	
 	\IfInteger{\DiceAddMod}{%
 		\FPadd{\DiceAvg}{\DiceAvg}{\DiceAddMod}%	add value
-		\def\DiceMod{ + \DiceAddMod}%
+		\def\DiceMod{~+~\DiceAddMod}%
 	}{%
 		\IfInteger{\DiceSubMod}{%
 			\FPsub{\DiceAvg}{\DiceAvg}{\DiceSubMod}%	subtract value
-			\def\DiceMod{ \(-\) \DiceSubMod}%
+			\def\DiceMod{~\(-\)~\DiceSubMod}%
 		}{%
 			\def\DiceMod{}%
 		}%
 	}%
 	\FPtrunc{\DiceAvg}{\DiceAvg}{0}%				round down
-	\FPprint{\DiceAvg\ (\DiceNum d\DiceSides\DiceMod)}
+	\FPprint{\DiceAvg~(\DiceNum d\DiceSides\DiceMod)}
 }
 
 % Monster box made to look like the Monster Manual NPC definitions
 \newtcolorbox{monsterboxnobg}[2][]{
-   enhanced,
-   frame hidden,
-   boxrule=0pt,
-   breakable,
-   boxsep=0pt,
-   toptitle=3mm,
-   left=0pt,
-   right=0pt,
-   arc=0mm,
-   opacityback=0,
-   colframe=titlered,
-   fonttitle=\dnd@StatBlockTitleFont\Large,
-   fontupper=\dnd@StatBlockBodyFont,
-   title=#2,
-   coltitle=titlered,
-  #1
+	enhanced,
+	frame hidden,
+	boxrule=0pt,
+	breakable,
+	boxsep=0pt,
+	toptitle=3mm,
+	left=0pt,
+	right=0pt,
+	arc=0mm,
+	opacityback=0,
+	colframe=titlered,
+	fonttitle=\dnd@StatBlockTitleFont\Large,
+	fontupper=\dnd@StatBlockBodyFont,
+	title=#2,
+	coltitle=titlered,
+	#1
 }
 
 % new Monsterbox
@@ -228,5 +228,5 @@
 		{28}{#1 (120,000 XP)}%
 		{29}{#1 (135,000 XP)}%
 		{30}{#1 (155,000 XP)}%
-		}[#1]%
+	}[#1]%
 }
