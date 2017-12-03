@@ -5,12 +5,12 @@
 % Macro to print stats with autocomputed modifier
 % e.g. \stat{12} prints "12 (+1)"
 \newcommand{\stat}[1]{%
-   \FPeval{\mod}{(#1 - 10)/2}%
-   \FPifpos\mod%
-   \FPeval{\mod}{clip(trunc(mod,0))}#1\ (+\mod)%
-   \else%
-   \FPeval{\mod}{clip(abs(trunc(mod-0.5,0)))}#1\ (\(-\)\mod)%
-   \fi%
+	\FPeval{\mod}{(#1 - 10)/2}%
+	\FPifpos\mod%
+	\FPeval{\mod}{clip(trunc(mod,0))}#1\ (+\mod)%
+	\else%
+	\FPeval{\mod}{clip(abs(trunc(mod-0.5,0)))}#1\ (\(-\)\mod)%
+	\fi%
 }
 
 % Macro to print avarage dice based value
@@ -38,23 +38,24 @@
 
 % Monster box made to look like the Monster Manual NPC definitions
 \newtcolorbox{monsterboxnobg}[2][]{
-   enhanced,
-   frame hidden,
-   before skip=7pt plus2pt,
-   boxrule=0pt,
-   breakable,
-   boxsep=0.25ex,
-   toptitle=3mm,
-   left=2.5mm,
-   right=2.15mm,
-   arc=0mm,
-   opacityback=0,
-   colframe=titlered,
-   fonttitle=\dnd@StatBlockTitleFont\color{titlered}\Large,
-   fontupper=\dnd@StatBlockBodyFont,
-   title=#2,
-   after={\vspace{7pt plus 1pt}\noindent},
-   #1
+	enhanced,
+	frame hidden,
+	before skip=7pt plus2pt,
+	boxrule=0pt,
+	breakable,
+	boxsep=0.25ex,
+	toptitle=3mm,
+	left=2.5mm,
+	right=2.15mm,
+	arc=0mm,
+	opacityback=0,
+	colframe=titlered,
+	fonttitle=\dnd@StatBlockTitleFont\Large,
+	fontupper=\dnd@StatBlockBodyFont,
+	title=#2,
+	coltitle=titlered,
+	after={\vspace{7pt plus 1pt}\noindent},
+	#1
 }
 
 % new Monsterbox
@@ -76,9 +77,10 @@
 	colback=statblockbg,
 	colbacktitle=statblockbg,
 	colframe=titlered,
-	fonttitle=\dnd@StatBlockTitleFont\color{titlered}\Large,
+	fonttitle=\dnd@StatBlockTitleFont\Large,
 	fontupper=\dnd@StatBlockBodyFont,
 	title=#2,
+	coltitle=titlered,
 	after={\vspace{7pt plus 1pt}\noindent},
 	#1
 }
@@ -91,7 +93,7 @@
 	\color{titlered}\dnd@StatBlockSubtitleFont\large #1 \vspace{3pt}
 	\titleline{\color{titlered}\titlerule[0.6pt]}
 	\par\medskip}
-	}
+}
 
 \newenvironment{monsteraction}[1][\unskip]{\emph{\textbf{#1.}}}{\vspace{0.5em}}
 
@@ -100,7 +102,7 @@
 %
 \newkeycommand\basics[armorclass=0, hitpoints=0, speed=0]{%
 	\color{titlered}
-  \textbf{\armorclassname} \commandkey{armorclass}\\
+	\textbf{\armorclassname} \commandkey{armorclass}\\
 	\textbf{\hitpointsname} \commandkey{hitpoints}\\
 	\textbf{\speedname} \commandkey{speed}\\
 }
