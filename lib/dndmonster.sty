@@ -102,9 +102,15 @@
 %
 \newkeycommand\basics[armorclass=0, hitpoints=0, speed=0]{%
 	\color{titlered}
-	\textbf{\armorclassname} \commandkey{armorclass}\\
-	\textbf{\hitpointsname} \commandkey{hitpoints}\\
-	\textbf{\speedname} \commandkey{speed}\\
+	\begin{hangingpar}
+		\textbf{\armorclassname} \commandkey{armorclass}
+	\end{hangingpar}
+	\begin{hangingpar}
+		\textbf{\hitpointsname} \commandkey{hitpoints}
+	\end{hangingpar}
+	\begin{hangingpar}
+		\textbf{\speedname} \commandkey{speed}
+	\end{hangingpar}
 }
 
 % Taubular enviornment for stats-block
@@ -136,21 +142,39 @@
                       senses=---,
                       languages=---,
                       challenge=0]{%
-  \ifcommandkey{savingthrows}
-    {\textbf{\savesname} \commandkey{savingthrows}\\}{}
-  \ifcommandkey{skills}
-    {\textbf{\skillsname} \commandkey{skills}\\}{}
-  \ifcommandkey{damagevulnerabilities}
-    {\textbf{\dvulname} \commandkey{damagevulnerabilities}\\}{}
-  \ifcommandkey{damageresistances}
-    {\textbf{\dresname} \commandkey{damageresistances}\\}{}
-  \ifcommandkey{damageimmunities}
-    {\textbf{\dimmname} \commandkey{damageimmunities}\\}{}
-  \ifcommandkey{conditionimmunities}
-    {\textbf{\cimmname} \commandkey{conditionimmunities}\\}{}
-  % These traits appear to always be present.
-  {\textbf{\sensesname} \commandkey{senses}\\}
-  {\textbf{\languagesname} \commandkey{languages}\\}
-  {\textbf{\challengename} \commandkey{challenge}\\}
-\color{black}
+	\ifcommandkey{savingthrows}{%
+		\begin{hangingpar}
+			\textbf{\savesname} \commandkey{savingthrows}
+		\end{hangingpar}}{}
+	\ifcommandkey{skills}{%
+		\begin{hangingpar}
+			\textbf{\skillsname} \commandkey{skills}
+		\end{hangingpar}}{}
+	\ifcommandkey{damagevulnerabilities}{%
+		\begin{hangingpar}
+			\textbf{\dvulname} \commandkey{damagevulnerabilities}
+		\end{hangingpar}}{}
+	\ifcommandkey{damageresistances}{%
+		\begin{hangingpar}
+			\textbf{\dresname} \commandkey{damageresistances}
+		\end{hangingpar}}{}
+	\ifcommandkey{damageimmunities}{%
+		\begin{hangingpar}
+			\textbf{\dimmname} \commandkey{damageimmunities}
+		\end{hangingpar}}{}
+	\ifcommandkey{conditionimmunities}{%
+		\begin{hangingpar}
+			\textbf{\cimmname} \commandkey{conditionimmunities}
+		\end{hangingpar}}{}
+	% These traits appear to always be present.
+	\begin{hangingpar}
+		\textbf{\sensesname} \commandkey{senses}
+	\end{hangingpar}
+	\begin{hangingpar}
+		\textbf{\languagesname} \commandkey{languages}
+	\end{hangingpar}
+	\begin{hangingpar}
+		\textbf{\challengename} \commandkey{challenge}
+	\end{hangingpar}
+	\color{black}
 }
