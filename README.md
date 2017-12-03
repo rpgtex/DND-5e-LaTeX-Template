@@ -90,7 +90,7 @@ Justify column copy.
 
 ## Dependencies
 
-If you don't have LaTeX installed, we recommend installing a complete TeX Live distribution.
+If you don't have LaTeX installed, we recommend installing a complete TeX Live distribution. https://www.tug.org/texlive/
 
 ### Ubuntu
 
