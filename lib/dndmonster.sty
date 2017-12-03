@@ -5,12 +5,12 @@
 % Macro to print stats with autocomputed modifier
 % e.g. \stat{12} prints "12 (+1)"
 \newcommand{\stat}[1]{%
-	\FPeval{\mod}{(#1 - 10)/2}%
-	\FPifpos\mod%
-	\FPeval{\mod}{clip(trunc(mod,0))}#1\ (+\mod)%
-	\else%
-	\FPeval{\mod}{clip(abs(trunc(mod-0.5,0)))}#1\ (\(-\)\mod)%
-	\fi%
+   \FPeval{\mod}{(#1 - 10)/2}%
+   \FPifpos\mod%
+   \FPeval{\mod}{clip(trunc(mod,0))}#1\ (+\mod)%
+   \else%
+   \FPeval{\mod}{clip(abs(trunc(mod-0.5,0)))}#1\ (\(-\)\mod)%
+   \fi%
 }
 
 % Macro to print avarage dice based value
@@ -38,40 +38,39 @@
 
 % Monster box made to look like the Monster Manual NPC definitions
 \newtcolorbox{monsterboxnobg}[2][]{
-	enhanced,
-	frame hidden,
-	before skip=7pt plus2pt,
-	boxrule=0pt,
-	breakable,
-	boxsep=0.25ex,
-	toptitle=3mm,
-	left=2.5mm,
-	right=2.15mm,
-	arc=0mm,
-	opacityback=0,
-	colframe=titlered,
-	fonttitle=\dnd@StatBlockTitleFont\Large,
-	fontupper=\dnd@StatBlockBodyFont,
-	title=#2,
-	coltitle=titlered,
-	after={\vspace{7pt plus 1pt}\noindent},
-	#1
+   enhanced,
+   frame hidden,
+   boxrule=0pt,
+   breakable,
+   boxsep=0pt,
+   toptitle=3mm,
+   left=0pt,
+   right=0pt,
+   arc=0mm,
+   opacityback=0,
+   colframe=titlered,
+   fonttitle=\dnd@StatBlockTitleFont\Large,
+   fontupper=\dnd@StatBlockBodyFont,
+   title=#2,
+   coltitle=titlered,
+  #1
 }
-
 
 % new Monsterbox
 \iftoggle{bool-bg}{
 	\newtcolorbox{monsterbox}[2][]{
 		enhanced,
 		frame hidden,
-		before skip=7pt plus2pt,
+		before skip=7pt plus 2pt,
 		boxrule=0pt,
 		breakable,
-		boxsep=0.25ex,
-		toptitle=3mm,
-		left=2.5mm,
-		right=2.15mm,
+		boxsep=0pt,
+		toptitle=11pt,
+		left=7pt,
+		right=7pt,
+		bottom=11pt,
 		arc=0mm,
+		oversize=0pt,
 		borderline north={4pt}{0pt}{titlered},
 		borderline north={2.5pt}{0.75pt}{statblockribbon},
 		borderline south={4pt}{0pt}{titlered},
@@ -79,43 +78,49 @@
 		colback=statblockbg,
 		colbacktitle=statblockbg,
 		colframe=titlered,
-		fonttitle=\dnd@StatBlockTitleFont\color{titlered}\Large,
+		fonttitle=\dnd@StatBlockTitleFont\Large,
+		coltitle=titlered,
 		fontupper=\dnd@StatBlockBodyFont,
 		title=#2,
-		after={\vspace{7pt plus 1pt}\noindent},
 		#1
 	}
 }{
-	\let\monsterbox\monsterboxnobg
-	\let\endmonsterbox\endmonsterboxnobg
+	\let\monsterbox\monsterboxnobg%
+	\let\endmonsterbox\endmonsterboxnobg%
 }
 
 
 % Define Monster subsection header style
 %\newcommand{\monstersection}[1]{\subsubsection*{#1}}
 \newcommand{\monstersection}[1]{
-	{\par
-	\color{titlered}\dnd@StatBlockSubtitleFont\large #1 \vspace{3pt}
-	\titleline{\color{titlered}\titlerule[0.6pt]}
-	\par\medskip}
+	\begingroup
+		\par\medskip\color{titlered}
+		\dnd@StatBlockSubtitleFont\large #1 \vspace{3pt}
+		\titleline{\titlerule[0.6pt]}
+		\vspace{3pt}
+	\endgroup
 }
 
-\newenvironment{monsteraction}[1][\unskip]{\emph{\textbf{#1.}}}{\vspace{0.5em}}
+\newenvironment{monsteraction}[1][\unskip]{
+	\smallskip\emph{\textbf{#1.}}
+}{}
 
 %
 % Macros for use within the monster environment
 %
 \newkeycommand\basics[armorclass=0, hitpoints=0, speed=0]{%
-	\color{titlered}
-	\begin{hangingpar}
-		\textbf{\armorclassname} \commandkey{armorclass}
-	\end{hangingpar}
-	\begin{hangingpar}
-		\textbf{\hitpointsname} \commandkey{hitpoints}
-	\end{hangingpar}
-	\begin{hangingpar}
-		\textbf{\speedname} \commandkey{speed}
-	\end{hangingpar}
+	\begingroup
+		\unskip\color{titlered}
+		\begin{hangingpar}
+			\textbf{\armorclassname} \commandkey{armorclass}
+		\end{hangingpar}
+		\begin{hangingpar}
+			\textbf{\hitpointsname} \commandkey{hitpoints}
+		\end{hangingpar}
+		\begin{hangingpar}
+			\textbf{\speedname} \commandkey{speed}
+		\end{hangingpar}%
+	\endgroup%
 }
 
 % Taubular enviornment for stats-block
@@ -124,62 +129,104 @@
                         CON=\stat{10},
                         INT=\stat{10},
                         WIS=\stat{10},
-                        CHA=\stat{10}]{
-    {\footnotesize
-	\hspace*{-3.5pt}
-	\resizebox{0.97\linewidth}{\height}{
-		\begin{tabular}{cccccc}
-			\rule{0pt}{3.7mm} %adds space between hline and table
-      \textbf{\strstatname} & \textbf{\dexstatname} & \textbf{\constatname} & \textbf{\intstatname} & \textbf{\wisstatname} & \textbf{\chastatname}\\
-			\commandkey{STR} & \commandkey{DEX} & \commandkey{CON} & \commandkey{INT} & \commandkey{WIS} & \commandkey{CHA}
-		\end{tabular}
-	}
-	\\[0.4em] %adds space after table
-    }
+                        CHA=\stat{10}]{%
+    \begingroup
+		\small\centering\color{titlered}
+		\resizebox{\linewidth}{\height}{%
+			\begin{tabular}{cccccc}
+				\rule{0pt}{3.7mm} %adds space between hline and table
+				\textbf{\strstatname} & \textbf{\dexstatname} & \textbf{\constatname} & \textbf{\intstatname} & \textbf{\wisstatname} & \textbf{\chastatname}\\
+				\commandkey{STR} & \commandkey{DEX} & \commandkey{CON} & \commandkey{INT} & \commandkey{WIS} & \commandkey{CHA}
+			\end{tabular}
+		}%
+		\\[0.4em] %adds space after table
+    \endgroup
 }
 
 \newkeycommand\details[skills=,
-                      damageimmunities=,
-                      savingthrows=,
-                      conditionimmunities=,
-                      damageresistances=,
-                      damagevulnerabilities=,
-                      senses=---,
-                      languages=---,
-                      challenge=0]{%
-	\ifcommandkey{savingthrows}{%
-		\begin{hangingpar}
+						damageimmunities=,
+						savingthrows=,
+						conditionimmunities=,
+						damageresistances=,
+						damagevulnerabilities=,
+						senses=---,
+						languages=---,
+						challenge=0]{%
+	\begingroup
+		\unskip\color{titlered}
+		\ifcommandkey{savingthrows}{%
+			\begin{hangingpar}
 			\textbf{\savesname} \commandkey{savingthrows}
-		\end{hangingpar}}{}
-	\ifcommandkey{skills}{%
+			\end{hangingpar}}{}%
+		\ifcommandkey{skills}{%
+			\begin{hangingpar}
+				\textbf{\skillsname} \commandkey{skills}
+			\end{hangingpar}}{}%
+		\ifcommandkey{damagevulnerabilities}{%
+			\begin{hangingpar}
+				\textbf{\dvulname} \commandkey{damagevulnerabilities}
+			\end{hangingpar}}{}%
+		\ifcommandkey{damageresistances}{%
+			\begin{hangingpar}
+				\textbf{\dresname} \commandkey{damageresistances}
+			\end{hangingpar}}{}%
+		\ifcommandkey{damageimmunities}{%
+			\begin{hangingpar}
+				\textbf{\dimmname} \commandkey{damageimmunities}
+			\end{hangingpar}}{}%
+		\ifcommandkey{conditionimmunities}{%
+			\begin{hangingpar}
+				\textbf{\cimmname} \commandkey{conditionimmunities}
+			\end{hangingpar}}{}%
+		% These traits appear to always be present.
 		\begin{hangingpar}
-			\textbf{\skillsname} \commandkey{skills}
-		\end{hangingpar}}{}
-	\ifcommandkey{damagevulnerabilities}{%
+			\textbf{\sensesname} \commandkey{senses}
+		\end{hangingpar}
 		\begin{hangingpar}
-			\textbf{\dvulname} \commandkey{damagevulnerabilities}
-		\end{hangingpar}}{}
-	\ifcommandkey{damageresistances}{%
+			\textbf{\languagesname} \commandkey{languages}
+		\end{hangingpar}
 		\begin{hangingpar}
-			\textbf{\dresname} \commandkey{damageresistances}
-		\end{hangingpar}}{}
-	\ifcommandkey{damageimmunities}{%
-		\begin{hangingpar}
-			\textbf{\dimmname} \commandkey{damageimmunities}
-		\end{hangingpar}}{}
-	\ifcommandkey{conditionimmunities}{%
-		\begin{hangingpar}
-			\textbf{\cimmname} \commandkey{conditionimmunities}
-		\end{hangingpar}}{}
-	% These traits appear to always be present.
-	\begin{hangingpar}
-		\textbf{\sensesname} \commandkey{senses}
-	\end{hangingpar}
-	\begin{hangingpar}
-		\textbf{\languagesname} \commandkey{languages}
-	\end{hangingpar}
-	\begin{hangingpar}
-		\textbf{\challengename} \commandkey{challenge}
-	\end{hangingpar}
-	\color{black}
+			\textbf{\challengename} \crexp{\commandkey{challenge}}
+		\end{hangingpar}%
+	\endgroup%
+}
+
+\newcommand\crexp[1]{%
+	\IfStrEqCase{#1}{%
+		{0}{#1 (0 XP)}%
+		{1/10}{0 (10 XP)}%
+		{1/8}{#1 (25 XP)}%
+		{1/4}{#1 (50 XP)}%
+		{1/2}{#1 (100 XP)}%
+		{1}{#1 (200 XP)}%
+		{2}{#1 (450 XP)}%
+		{3}{#1 (700 XP)}%
+		{4}{#1 (1,100 XP)}%
+		{5}{#1 (1,800 XP)}%
+		{6}{#1 (2,300 XP)}%
+		{7}{#1 (2,900 XP)}%
+		{8}{#1 (3,900 XP)}%
+		{9}{#1 (5,000 XP)}%
+		{10}{#1 (5,900 XP)}%
+		{11}{#1 (7,200 XP)}%
+		{12}{#1 (8,400 XP)}%
+		{13}{#1 (10,000 XP)}%
+		{14}{#1 (11,500 XP)}%
+		{15}{#1 (13,000 XP)}%
+		{16}{#1 (15,000 XP)}%
+		{17}{#1 (18,000 XP)}%
+		{18}{#1 (20,000 XP)}%
+		{19}{#1 (22,000 XP)}%
+		{20}{#1 (25,000 XP)}%
+		{21}{#1 (33,000 XP)}%
+		{22}{#1 (41,000 XP)}%
+		{23}{#1 (50,000 XP)}%
+		{24}{#1 (62,000 XP)}%
+		{25}{#1 (75,000 XP)}%
+		{26}{#1 (90,000 XP)}%
+		{27}{#1 (105,000 XP)}%
+		{28}{#1 (120,000 XP)}%
+		{29}{#1 (135,000 XP)}%
+		{30}{#1 (155,000 XP)}%
+		}[#1]%
 }
