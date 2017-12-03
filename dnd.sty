@@ -17,6 +17,7 @@
   footskip=30pt,      % makes the footer text line up with the graphic
 ]{geometry}
 \RequirePackage[table]{xcolor}
+\RequirePackage{hang}
 \RequirePackage{array}
 \RequirePackage{tabularx}
 \RequirePackage{tikz}
@@ -25,6 +26,7 @@
 \RequirePackage{enumitem}
 \RequirePackage{microtype}        % Improve ragged2e hyphenation and overfull boxes
 \RequirePackage{ragged2e}
+\RequirePackage{xkeyval}
 \RequirePackage{xparse}
 
 
@@ -37,22 +39,56 @@
 % Options
 %
 
-% 'bg-letter-img','bg-letter-print' and 'bg-none' options
 \newtoggle{bool-bg}
 \newtoggle{bool-footer-scroll}
-\DeclareOption{bg-none} {\togglefalse{bool-bg}\togglefalse{bool-footer-scroll}}
-\DeclareOption{bg-print}{\togglefalse{bool-bg}\toggletrue{bool-footer-scroll}}
-\DeclareOption{bg-full} {\toggletrue{bool-bg}\toggletrue{bool-footer-scroll}}
-\DeclareOption{bg-a4}{\dnd@deprecate{bg-a4}{0.7}[Remove call to this package option.]}
-\DeclareOption{bg-letter}{\dnd@deprecate{bg-letter}{0.7}[Remove call to this package option.]}
+\DeclareOptionX{bg}[full]{%
+  % This macro call looks complicated, but simply sets up a case environment
+  % to process choices. Refer to the xkeyval documentation for details.
+  \XKV@cc*+[\val\index]{#1}{full,none,print}{%
+    \ifcase\index\relax
+    % full
+    \toggletrue{bool-bg}
+    \toggletrue{bool-footer-scroll}
+    \or
+    % none
+    \togglefalse{bool-bg}
+    \togglefalse{bool-footer-scroll}
+    \or
+    % print
+    \togglefalse{bool-bg}
+    \toggletrue{bool-footer-scroll}
+    \fi
+  }{%
+    \PackageWarning{dnd}{\val\ is not a valid choice for bg and was ignored}
+  }
+}
+
+% Legacy bg option variants.
+\DeclareOptionX{bg-full}{%
+  \dnd@deprecate{bg-full}{0.7}[Use bg=full instead.]
+  \toggletrue{bool-bg}
+  \toggletrue{bool-footer-scroll}
+}
+\DeclareOptionX{bg-none}{%
+  \dnd@deprecate{bg-none}{0.7}[Use bg=none instead.]
+  \togglefalse{bool-bg}
+  \togglefalse{bool-footer-scroll}
+}
+\DeclareOptionX{bg-print}{%
+  \dnd@deprecate{bg-print}{0.7}[Use bg=print instead.]
+  \togglefalse{bool-bg}
+  \toggletrue{bool-footer-scroll}
+}
+\DeclareOptionX{bg-a4}{\dnd@deprecate{bg-a4}{0.7}[Remove call to this package option.]}
+\DeclareOptionX{bg-letter}{\dnd@deprecate{bg-letter}{0.7}[Remove call to this package option.]}
 
 % Toggle justification (official books are flush left).
 \newtoggle{justified}
-\DeclareOption{justified}{\toggletrue{justified}}
+\DeclareOptionX{justified}{\toggletrue{justified}}
 
 % Default Settings
-\ExecuteOptions{bg-full}
-\ProcessOptions\relax
+\ExecuteOptionsX{bg=full}
+\ProcessOptionsX\relax
 
 % Load other modules of this package
 \RequirePackage{lib/dndcolors}    % color definitions

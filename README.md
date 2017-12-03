@@ -76,16 +76,21 @@ Load the template in your preamble:
 
 ### Package options
 
-| Option      | Description                               | Default |
-|-------------|-------------------------------------------|:-------:|
-| `bg-full`   | Loads both background and footer images   |    ✓    |
-| `bg-none`   | Removes both background and footer images |         |
-| `bg-print`  | Loads only the footer image               |         |
-| `justified` | Justifies column copy                     |         |
+#### `bg`
+
+Declare how to load background and footer images. This is a key-value option with the following possible values:
+
+* `full`: Load both background and footer images. (**default**)
+* `none`: Removes both background and footer images.
+* `print`: Loads only the footer images.
+
+#### `justified`
+
+Justify column copy.
 
 ## Dependencies
 
-If you don't have LaTeX installed, we recommend installing a complete TeX Live distribution.
+If you don't have LaTeX installed, we recommend installing a complete TeX Live distribution. https://www.tug.org/texlive/
 
 ### Ubuntu
 
