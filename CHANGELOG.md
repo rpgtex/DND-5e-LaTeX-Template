@@ -12,10 +12,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-* Made `monsterbox` text is width and the background spill into margin and column separator.
+* Made `monsterbox` text the width of the column and the background spills into margin and column separator.
 * Removed excess space before and after `monsterbox`.
 * Challenge rating on `monsterbox` now only needs the CR number.
-* Added non-breaking spaces to `\dice` macro.
 
 ### Fixed
 
