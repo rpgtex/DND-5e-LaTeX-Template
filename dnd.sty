@@ -16,17 +16,20 @@
   bottom=50pt,        % .7in
   footskip=30pt,      % makes the footer text line up with the graphic
 ]{geometry}
+
+% Loaded before tikz to avoid package option conflict with pgf.
 \RequirePackage[table]{xcolor}
-\RequirePackage{hang}
+
 \RequirePackage{array}
-\RequirePackage{ifluatex}
-\RequirePackage{tabularx}
-\RequirePackage{tikz}
-\RequirePackage{keycommand}
-\RequirePackage[most]{tcolorbox}  % used for some boxes
+\RequirePackage{calc}
 \RequirePackage{enumitem}
+\RequirePackage{ifluatex}
+\RequirePackage{keycommand}
 \RequirePackage{microtype}        % Improve ragged2e hyphenation and overfull boxes
 \RequirePackage{ragged2e}
+\RequirePackage{tabularx}
+\RequirePackage[most]{tcolorbox}  % used for some boxes
+\RequirePackage{tikz}
 \RequirePackage{xkeyval}
 \RequirePackage{xparse}
 
