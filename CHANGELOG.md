@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-* None
+* Allow `\monstersection` before sectioning command(s).
 
 ### Deprecated
 

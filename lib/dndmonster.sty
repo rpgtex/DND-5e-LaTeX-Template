@@ -91,14 +91,16 @@
 
 
 % Define Monster subsection header style
-%\newcommand{\monstersection}[1]{\subsubsection*{#1}}
 \newcommand{\monstersection}[1]{
-	\begingroup
-		\par\medskip\color{titlered}
-		\dnd@StatBlockSubtitleFont\large #1 \vspace{3pt}
-		\titleline{\titlerule[0.6pt]}
-		\vspace{3pt}
-	\endgroup
+  \begingroup
+    \par\medskip\color{titlered}
+    \dnd@StatBlockSubtitleFont\large #1
+    % \rule is a horizontal command, so placing it under the title incurs extra
+    % line spacing. Use \hrule (a vertical command) instead.
+    \vspace{3pt}
+    \hrule height 0.6pt
+    \vspace{3pt}
+  \endgroup
 }
 
 \newenvironment{monsteraction}[1][\unskip]{
