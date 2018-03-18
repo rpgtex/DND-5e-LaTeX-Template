@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Fixed
 
 * Allow `\monstersection` before sectioning command(s).
+* Removed excess space after `\dice`.
 
 ### Deprecated
 
