@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 * Allow `\monstersection` before sectioning command(s).
 * Removed excess space after `\dice`.
+* `monsteraction`: Only add a period to the action name if provided one.
 
 ### Deprecated
 

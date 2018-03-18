@@ -103,8 +103,11 @@
   \endgroup
 }
 
-\newenvironment{monsteraction}[1][\unskip]{
-	\smallskip\emph{\textbf{#1.}}}{\\}
+\NewDocumentEnvironment{monsteraction}{o}{%
+  \IfValueTF{#1}{%
+    \smallskip\emph{\textbf{#1.}}%
+  }{\unskip}%
+}{\\}
 
 %
 % Macros for use within the monster environment
