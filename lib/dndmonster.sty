@@ -94,7 +94,7 @@
 
 
 % Define Monster subsection header style
-\newcommand{\monstersection}[1]{
+\newcommand{\monstersection}[1]{%
   \begingroup
     \par\medskip\color{titlered}
     \dnd@StatBlockSubtitleFont\large #1
@@ -103,14 +103,14 @@
     \vspace{3pt}
     \hrule height 0.6pt
     \vspace{3pt}
-  \endgroup
+  \endgroup%
 }
 
 \NewDocumentEnvironment{monsteraction}{o}{%
   \IfValueTF{#1}{%
     \smallskip\emph{\textbf{#1.}}%
   }{\unskip}%
-}{\\}
+}{\par}
 
 %
 % Macros for use within the monster environment

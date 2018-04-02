@@ -141,12 +141,12 @@
 \renewcommand{\labelitemi}{\raisebox{0.25ex}{\tiny{\( \bullet \)}}}
 
 % Fancy DnD 5e-style hline
-\renewcommand{\hline}{
+\renewcommand{\hline}{%
   \noindent
   \begin{tikzpicture}[]
     \draw [rulered, fill=rulered] (0, 0) --(0,0.1) -- (\textwidth, 0.05);
-  \end{tikzpicture}
-  \\
+  \end{tikzpicture}%
+  \par%
 }
 
 
