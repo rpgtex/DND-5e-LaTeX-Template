@@ -118,6 +118,26 @@ You can use LuaTeX to compile the document.
 lualatex main.tex
 ```
 
+### Wrapping `monsterbox` in float disrupts spacing inside stat block
+
+Wrapping a `monsterbox` (or `monsterboxnobg`) in a floating figure adds extra space between stat block elements:
+
+```latex
+\begin{figure}[b]
+  \begin{monsterbox}{Orc Warden}
+    % ...
+  \end{monsterbox}
+\end{figure}
+```
+
+Instead, use the `tcolorbox` `float` parameters:
+
+```latex
+\begin{monsterbox}[float, floatplacement=b]{Orc Warden}
+  % ...
+\end{monsterbox}
+```
+
 ## Contributing
 
 ### Preparing a new release
