@@ -104,6 +104,20 @@ sudo apt-get install texlive-full
 sudo pacman -S texlive-bin texlive-core texlive-latexextra
 ```
 
+## Known issues and solutions
+
+### Stat block text color does not survive page breaks
+
+This is a known issue in `tcolorbox`. According to the `tcolorbox` 4.12 manual (p. 363):
+
+> If your text content contains some text color changing commands, your color will not survive the break to the next box.
+
+You can use LuaTeX to compile the document.
+
+```sh
+lualatex main.tex
+```
+
 ## Contributing
 
 ### Preparing a new release

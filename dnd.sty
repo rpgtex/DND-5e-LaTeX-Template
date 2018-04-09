@@ -19,6 +19,7 @@
 \RequirePackage[table]{xcolor}
 \RequirePackage{hang}
 \RequirePackage{array}
+\RequirePackage{ifluatex}
 \RequirePackage{tabularx}
 \RequirePackage{tikz}
 \RequirePackage{keycommand}
@@ -28,6 +29,10 @@
 \RequirePackage{ragged2e}
 \RequirePackage{xkeyval}
 \RequirePackage{xparse}
+
+\ifluatex
+  \RequirePackage{luacolor}
+\fi
 
 
 % \dnd@deprecate{<command or environment>}{<version>}[<suggestion>]
