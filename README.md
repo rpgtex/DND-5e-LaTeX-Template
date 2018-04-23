@@ -130,13 +130,15 @@ Wrapping a `monsterbox` (or `monsterboxnobg`) in a floating figure adds extra sp
 \end{figure}
 ```
 
-Instead, use the `tcolorbox` `float` parameters:
+Instead, use the `tcolorbox` `float` parameter:
 
 ```latex
-\begin{monsterbox}[float, floatplacement=b]{Orc Warden}
+\begin{monsterbox}[float=b]{Orc Warden}
   % ...
 \end{monsterbox}
 ```
+
+Refer to the `tcolorbox` documentation (section 4.13) for more float parameters.
 
 ## Contributing
 
