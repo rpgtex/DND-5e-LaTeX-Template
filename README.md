@@ -104,6 +104,42 @@ sudo apt-get install texlive-full
 sudo pacman -S texlive-bin texlive-core texlive-latexextra
 ```
 
+## Known issues and solutions
+
+### Stat block text color does not survive page breaks
+
+This is a known issue in `tcolorbox`. According to the `tcolorbox` 4.12 manual (p. 363):
+
+> If your text content contains some text color changing commands, your color will not survive the break to the next box.
+
+You can use LuaTeX to compile the document.
+
+```sh
+lualatex main.tex
+```
+
+### Wrapping `monsterbox` in float disrupts spacing inside stat block
+
+Wrapping a `monsterbox` (or `monsterboxnobg`) in a floating figure adds extra space between stat block elements:
+
+```latex
+\begin{figure}[b]
+  \begin{monsterbox}{Orc Warden}
+    % ...
+  \end{monsterbox}
+\end{figure}
+```
+
+Instead, use the `tcolorbox` `float` parameter:
+
+```latex
+\begin{monsterbox}[float=b]{Orc Warden}
+  % ...
+\end{monsterbox}
+```
+
+Refer to the `tcolorbox` documentation (section 4.13) for more float parameters.
+
 ## Contributing
 
 ### Preparing a new release
