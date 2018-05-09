@@ -91,6 +91,11 @@
 \newtoggle{justified}
 \DeclareOptionX{justified}{\toggletrue{justified}}
 
+% Toggle multitoc.
+\newtoggle{multitoc}
+\settoggle{multitoc}{true}
+\DeclareOptionX{nomultitoc}{\togglefalse{multitoc}}
+
 % Default Settings
 \ExecuteOptionsX{bg=full}
 \ProcessOptionsX\relax

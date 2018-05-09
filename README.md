@@ -88,6 +88,10 @@ Declare how to load background and footer images. This is a key-value option wit
 
 Justify column copy.
 
+#### `nomultitoc`
+
+Disable multi-column table of contents.
+
 ## Dependencies
 
 If you don't have LaTeX installed, we recommend installing a complete TeX Live distribution. https://www.tug.org/texlive/

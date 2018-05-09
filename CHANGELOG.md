@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 * Added `bg` package option with `full`, `print`, and `none` as possible values.
+* Added `nomultitoc` package option to toggle multi-column table of contents.
 
 ### Changed
 

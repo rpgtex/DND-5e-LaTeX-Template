@@ -1,6 +1,9 @@
 \RequirePackage[titles]{tocloft}
-\RequirePackage[toc]{multitoc}
 \RequirePackage{titlesec}	% Used to adjust (sub)section formatting
+
+\iftoggle{multitoc}{%
+  \RequirePackage[toc]{multitoc}
+}{}
 
 %Remove Numbering (If you want Numbering set secnumdepth to the appropriate depth)
 \setcounter{secnumdepth}{-1}
