@@ -112,22 +112,38 @@
   }{\unskip}%
 }{\par}
 
+% A description variant used to list creature attributes.
+\newlist{dnd@monsterattrs}{description}{1}
+\setlist[dnd@monsterattrs]{
+    before=\color{titlered},
+    font=\dnd@StatBlockBodyFont\textbf,
+    labelsep=\widthof{ },
+    noitemsep,
+    nosep,
+}
+
+% A dnd@monsterattrs helper macro that always displays an attribute.
+\newcommand{\dnd@monsterattr}[2]{%
+  \item[#2] \commandkey{#1}
+}
+
+% A dnd@monsterattrs helper macro that displays an attribute if the user defined
+% it.
+\newcommand{\dnd@ifmonsterattr}[2]{%
+  \ifcommandkey{#1}{%
+    \item[#2] \commandkey{#1}
+  }{}%
+}
+
 %
 % Macros for use within the monster environment
 %
 \newkeycommand\basics[armorclass=0, hitpoints=0, speed=0]{%
-	\begingroup
-		\unskip\color{titlered}
-		\begin{hangingpar}
-			\textbf{\armorclassname} \commandkey{armorclass}
-		\end{hangingpar}
-		\begin{hangingpar}
-			\textbf{\hitpointsname} \commandkey{hitpoints}
-		\end{hangingpar}
-		\begin{hangingpar}
-			\textbf{\speedname} \commandkey{speed}
-		\end{hangingpar}%
-	\endgroup%
+  \begin{dnd@monsterattrs}
+    \dnd@monsterattr{armorclass}{\armorclassname}
+    \dnd@monsterattr{hitpoints}{\hitpointsname}
+    \dnd@monsterattr{speed}{\speedname}
+  \end{dnd@monsterattrs}%
 }
 
 % Taubular enviornment for stats-block
@@ -150,52 +166,28 @@
     \endgroup
 }
 
-\newkeycommand\details[skills=,
-						damageimmunities=,
-						savingthrows=,
-						conditionimmunities=,
-						damageresistances=,
-						damagevulnerabilities=,
-						senses=---,
-						languages=---,
-						challenge=0]{%
-	\begingroup
-		\unskip\color{titlered}
-		\ifcommandkey{savingthrows}{%
-			\begin{hangingpar}
-			\textbf{\savesname} \commandkey{savingthrows}
-			\end{hangingpar}}{}%
-		\ifcommandkey{skills}{%
-			\begin{hangingpar}
-				\textbf{\skillsname} \commandkey{skills}
-			\end{hangingpar}}{}%
-		\ifcommandkey{damagevulnerabilities}{%
-			\begin{hangingpar}
-				\textbf{\dvulname} \commandkey{damagevulnerabilities}
-			\end{hangingpar}}{}%
-		\ifcommandkey{damageresistances}{%
-			\begin{hangingpar}
-				\textbf{\dresname} \commandkey{damageresistances}
-			\end{hangingpar}}{}%
-		\ifcommandkey{damageimmunities}{%
-			\begin{hangingpar}
-				\textbf{\dimmname} \commandkey{damageimmunities}
-			\end{hangingpar}}{}%
-		\ifcommandkey{conditionimmunities}{%
-			\begin{hangingpar}
-				\textbf{\cimmname} \commandkey{conditionimmunities}
-			\end{hangingpar}}{}%
-		% These traits appear to always be present.
-		\begin{hangingpar}
-			\textbf{\sensesname} \commandkey{senses}
-		\end{hangingpar}
-		\begin{hangingpar}
-			\textbf{\languagesname} \commandkey{languages}
-		\end{hangingpar}
-		\begin{hangingpar}
-			\textbf{\challengename} \crexp{\commandkey{challenge}}
-		\end{hangingpar}%
-	\endgroup%
+\newkeycommand\details[
+  skills=,
+  damageimmunities=,
+  savingthrows=,
+  conditionimmunities=,
+  damageresistances=,
+  damagevulnerabilities=,
+  senses=---,
+  languages=---,
+  challenge=1,
+  ]{%
+  \begin{dnd@monsterattrs}
+    \dnd@ifmonsterattr{savingthrows}{\savesname}
+    \dnd@ifmonsterattr{skills}{\skillsname}
+    \dnd@ifmonsterattr{damagevulnerabilities}{\dvulname}
+    \dnd@ifmonsterattr{damageresistances}{\dresname}
+    \dnd@ifmonsterattr{damageimmunities}{\dimmname}
+    \dnd@ifmonsterattr{conditionimmunities}{\cimmname}
+    \dnd@monsterattr{senses}{\sensesname}
+    \dnd@monsterattr{languages}{\languagesname}
+    \item[\challengename] \crexp{\commandkey{challenge}}
+  \end{dnd@monsterattrs}%
 }
 
 \newcommand\crexp[1]{%
