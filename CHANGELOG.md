@@ -15,10 +15,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Made `monsterbox` text the width of the column and the background spills into margin and column separator.
 * Removed excess space before and after `monsterbox`.
 * Challenge rating on `monsterbox` now only needs the CR number.
+* `monsterbox` renamed `monsterboxbg`. `monsterbox` is now an alias that maps to `monsterboxbg` or `monsterboxnobg`, depending on the value of the `bg` package option.
 
 ### Fixed
 
-* None
+* Allow `\monstersection` before sectioning command(s).
+* Removed excess space after `\dice`.
+* `monsteraction`: Only add a period to the action name if provided one.
 
 ### Deprecated
 
