@@ -61,20 +61,48 @@ TEXINPUTS=./lib//: pdflatex project.tex
 
 ## Usage
 
-Load the template in your preamble:
+### Class (recommended)
+
+Load the `dndbook` class in your preamble:
+
+```tex
+\documentclass[10pt,twoside,twocolumn,openany]{dndbook}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+% ...
+```
+
+### Package
+
+You can also load the `dnd` package directly to use it with another class.
+Note that the package has only been tested with the `book` class.
 
 ```tex
 \documentclass[10pt,twoside,twocolumn,openany]{book}
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage{dnd}
+
+\usepackage[layout=true]{dnd}
 
 \begin{document}
 % ...
 ```
 
-### Package options
+### Options
+
+| Option         | Package `dnd`   | Class `dndbook`   |
+| -------------- | :-------------: | :---------------: |
+| `bg`           | ✓               | ✓                 |
+| `justified`    | ✓               | ✓                 |
+| `layout`       | ✓               |                   |
+| `nomultitoc`   | ✓               | ✓                 |
+
+
+The `dndbook` class also supports all the options of the `book` class.
 
 #### `bg`
 
@@ -87,6 +115,17 @@ Declare how to load background and footer images. This is a key-value option wit
 #### `justified`
 
 Justify column copy.
+
+#### `layout`
+
+Controls whether loading the `dnd` package also modifies the document layout (geometry, colors, typography, etc.).
+This is a boolean option with the following possible values:
+
+* `true`: Modify the document layout.
+* `false`: Do not modify the document layout.
+
+The default value is `true` for backwards compatibility with early releases.
+This will change in a future release.
 
 #### `nomultitoc`
 
