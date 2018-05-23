@@ -1,6 +1,10 @@
 %Usage \begin{commentbox}[options]{title}[color]
 \DeclareTColorBox{commentbox}{O{} m O{commentboxcolor}}{%
-	before upper={\nottoggle{justified}{\RaggedRight}},
+	before upper={%
+		\ifpkglayout%
+			\nottoggle{justified}{\RaggedRight}%
+		\fi%
+	},
 	frame hidden,
 	boxrule=0pt,
 	breakable,
