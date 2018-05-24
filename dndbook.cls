@@ -1,16 +1,15 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{dndbook}[2017/10/13 v0.6.0 Template for D&D 5e material]
 
-\RequirePackage{pgffor}
 \RequirePackage{xkeyval}
 \RequirePackage{xstring}
 
 % Pass these class options to the core dnd package.
-\newcommand{\dnd@packageoptions}{bg=, justified, nomultitoc}
+\newcommand{\dnd@packageoptions}{bg=,justified,nomultitoc}
 
 % Pass package options to dnd package; pass all other options to book class.
 \DeclareOptionX*{
-  \foreach \option in \dnd@packageoptions {
+  \@for \option:=\dnd@packageoptions \do{
     \IfBeginWith{\CurrentOption}{\option}{
       \PassOptionsToPackage{\CurrentOption}{dnd}
     }{
