@@ -30,7 +30,7 @@
 		\begin{tikzpicture}[remember picture,overlay]
 			\node[xscale=-1,inner sep=0pt,anchor=south,nearly opaque] at (current page.south) {\includegraphics[width=\paperwidth,height=43pt]{img/footerscroll}};
 			\node[xshift=20pt,yshift=30pt] at (current page.south west) {\dnd@PageNumberFont\textcolor{pagegold}{\thepage}};
-			\node[anchor=south west,xshift=\marginparwidth+\marginparpush,yshift=27pt] at (current page.south west) {\dnd@FooterFont{\textcolor{pagegold}{\nouppercase\leftmark}}};
+			\node[anchor=base west, xshift=\marginparwidth+\marginparpush, yshift=33pt] at (current page.south west) {\dnd@FooterFont{\textcolor{pagegold}{\nouppercase\leftmark}}};
 		\end{tikzpicture}
 	}{
 		\begin{tikzpicture}[remember picture,overlay]
@@ -45,7 +45,7 @@
 		\begin{tikzpicture}[remember picture,overlay]
 			\node[inner sep=0pt,anchor=south,nearly opaque] at (current page.south) {\includegraphics[width=\paperwidth,height=43pt]{img/footerscroll}};
 			\node[xshift=-20pt,yshift=30pt] at (current page.south east) {\dnd@PageNumberFont\textcolor{pagegold}{\thepage}};
-			\node[anchor=south east,xshift=-\marginparwidth-\marginparpush,yshift=27pt] at (current page.south east) {\dnd@FooterFont{\textcolor{pagegold}{\nouppercase\leftmark}}};
+			\node[anchor=base east, xshift=-\marginparwidth-\marginparpush, yshift=33pt] at (current page.south east) {\dnd@FooterFont{\textcolor{pagegold}{\nouppercase\leftmark}}};
 		\end{tikzpicture}
 	}{
 		\begin{tikzpicture}[remember picture,overlay]
