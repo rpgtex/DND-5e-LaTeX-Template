@@ -73,17 +73,17 @@
 
 % Legacy bg option variants.
 \DeclareOptionX{bg-full}{%
-  \dnd@deprecate{bg-full}{0.7}[Use bg=full instead.]
+  \dnd@deprecate{bg-full}{0.8}[Use bg=full instead.]
   \toggletrue{bool-bg}
   \toggletrue{bool-footer-scroll}
 }
 \DeclareOptionX{bg-none}{%
-  \dnd@deprecate{bg-none}{0.7}[Use bg=none instead.]
+  \dnd@deprecate{bg-none}{0.8}[Use bg=none instead.]
   \togglefalse{bool-bg}
   \togglefalse{bool-footer-scroll}
 }
 \DeclareOptionX{bg-print}{%
-  \dnd@deprecate{bg-print}{0.7}[Use bg=print instead.]
+  \dnd@deprecate{bg-print}{0.8}[Use bg=print instead.]
   \togglefalse{bool-bg}
   \toggletrue{bool-footer-scroll}
 }
@@ -157,7 +157,7 @@
   \par%
 }
 \renewcommand{\hline}{%
-  \dnd@deprecate{redefined hline}{0.7}[Use dndline for stat block rules.]%
+  \dnd@deprecate{redefined \noexpand\hline}{0.8}[Use \noexpand\dndline for stat block rules.]%
   \dndline%
 }
 

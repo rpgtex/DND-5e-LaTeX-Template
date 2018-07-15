@@ -26,7 +26,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Deprecated
 
-* Deprecated `bg-full`, `bg-none`, and `bg-print` package options.
+* Deprecated `bg-full`, `bg-none`, and `bg-print` package options. Use `bg` package option instead.
+* Deprecated custom `\hline` in stat blocks. Use `\dndline` instead.
 
 ### Removed
 
