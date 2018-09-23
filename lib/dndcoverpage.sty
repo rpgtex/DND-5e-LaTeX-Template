@@ -1,0 +1,39 @@
+\RequirePackage{xcolor}
+\RequirePackage{pdfrender}
+\RequirePackage{pgfkeys}
+
+\definecolor{CharFillColor}{rgb}{1,1,1}
+
+% commands:
+%	required: background image, text
+%	optional: text width, offsetx, offset y, fontsize, baselinestretch, outline width
+
+\pgfkeys{
+	/dndcoverpage/.is family, /dndcoverpage,
+	default/.style = {width = 0.7\paperwidth, offsetX=0, offsetY=0, fontsize=50, outlineWidth=2}, %height = \baselineskip?
+	width/.store in = \dndWidth,
+	offsetX/.store in = \dndOffsetX,
+	offsetY/.store in = \dndOffsetY,
+	fontsize/.store in = \dndFontsize,
+	outlineWidth/.store in = \dndOutlineWidth,
+}
+
+\newcommand{\dndcoverpage}[3][]{
+	\pgfkeys{/dndcoverpage, default, #1}
+	
+	\thispagestyle{empty} % prevents the footer from appearing on the cover page
+	\begin{tikzpicture}[remember picture,overlay,shift={(current page.center)}]
+		\node[inner sep=0pt] at (current page.center) {
+			\includegraphics[width=\paperwidth,height=\paperheight]{#3} %file ending is only necessary if it's not a .png
+		};
+		\node[text width=\dndWidth, align=center] at (\dndOffsetX,\dndOffsetY) {
+			\textpdfrender{
+				TextRenderingMode=FillStroke,
+				LineWidth=\dndOutlineWidth pt,
+				FillColor=CharFillColor,
+			}{
+				\fontsize{\dndFontsize}{1}\selectfont \bfseries \scshape \dnd@CoverFont #2
+			}
+		};
+	\end{tikzpicture}
+}

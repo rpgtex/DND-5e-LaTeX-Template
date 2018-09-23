@@ -1,5 +1,7 @@
 \RequirePackage{bookman}
 \RequirePackage[T1]{fontenc}
+\RequirePackage{fontspec}
+\RequirePackage{noto}
 
 \renewcommand{\sfdefault}{lmss}
 
@@ -17,3 +19,12 @@
 
 \newcommand{\dnd@FooterFont}{\normalfont\scshape}
 \newcommand{\dnd@PageNumberFont}{\normalfont}
+
+\newcommand{\dnd@CoverFont}{
+	\IfFontExistsTF{AndadaSC-Bold}{
+		\newfontfamily\coverFont{AndadaSC-Bold}
+	}{
+		\newfontfamily\coverFont{NotoSerif}
+	}
+	\coverFont
+}
