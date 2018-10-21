@@ -15,7 +15,6 @@ export PATH="/tmp/texlive/bin/x86_64-linux:${PATH}"
 tlmgr install dvips graphics graphics-def latex latex-bin latexmk
 
 # Package dependencies
-#   amsmath: required by tcolorbox[theorems]
 #   environ: required by tcolorbox
 #   etex-pkg: provides e-TeX, transitive dependency
 #   l3kernel: required by xparse
@@ -26,7 +25,6 @@ tlmgr install dvips graphics graphics-def latex latex-bin latexmk
 #   tools: array, calc, tabularx
 #   trimspaces: required by environ?
 tlmgr install \
-  amsmath \
   babel \
   colortbl \
   enumitem \
