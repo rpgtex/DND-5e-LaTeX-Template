@@ -16,10 +16,8 @@ tlmgr install dvips graphics graphics-def latex latex-bin latexmk
 
 # Package dependencies
 #   amsmath: required by tcolorbox[theorems]
-#   colortbl: provides \rowcolors, loaded by some dependency
 #   environ: required by tcolorbox
 #   etex-pkg: provides e-TeX, transitive dependency
-#   etoolbox: required by tcolorbox
 #   l3kernel: required by xparse
 #   l3packages: xparse
 #   ms: multitoc, ragged2e
