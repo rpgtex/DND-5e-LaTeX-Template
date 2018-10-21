@@ -14,6 +14,22 @@ This is a LaTeX template for typesetting documents in the style of the *Dungeons
 
 ## Installation
 
+There are three options for using this project; choose the one that's
+right for you.
+
+### Using Overleaf
+
+[Overleaf](https://overleaf.com) is an online TeX editor -- think
+about it like Google Docs for TeX documents.  This option does not
+require a local TeX installation and is an ideal approach for one-off
+projects.
+
+1. Download this GitHub repository as a ZIP archive using the *Clone
+   or download* link above.
+2. On Overleaf, click the *New Project* button and select *Upload
+   Project*.  Upload the ZIP archive you downloaded from this
+   repository.
+
 ### User install using `TEXMFHOME` (recommended)
 
 This will install the template for your current user in one of the following locations:
