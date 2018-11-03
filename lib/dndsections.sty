@@ -14,7 +14,9 @@
 
 \titlespacing*{\chapter}{0pt}{0pt}{20pt}
 
-\renewcommand\cftchapfont{\color{titlered}\dnd@TitleFont\bfseries}
+\ifdef{\cftchapfont}{%
+  \renewcommand\cftchapfont{\color{titlered}\dnd@TitleFont\bfseries}
+}{}
 
 % Section
 \titleformat{\section}
