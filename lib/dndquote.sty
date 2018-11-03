@@ -1,6 +1,10 @@
 %Usage \begin{quotebox}[options][color]
 \DeclareTColorBox{quotebox}{O{} O{quoteboxcolor}}{%
-  before upper={\nottoggle{justified}{\RaggedRight}},
+	before upper={%
+		\ifpkglayout%
+			\nottoggle{justified}{\RaggedRight}%
+		\fi%
+	},
 	code={\linespread{1.25}},
 	enhanced jigsaw,
 	frame hidden,
