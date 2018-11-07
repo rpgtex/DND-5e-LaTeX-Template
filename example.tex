@@ -109,6 +109,60 @@
 	\begin{monsteraction}[More actions]
     See, here he goes again! Yet more text.
 	\end{monsteraction}
+	
+	\monstersection{Melee}
+	\begin{monsteraction}[Basic]
+	  \melee[mod=+2,dmg=\dice{1d6 + 1}]
+	\end{monsteraction}
+	\begin{monsteraction}[Alternate]
+	  \melee[
+	    mod=+2,
+	    dmg=\dice{1d6 + 1},
+	    ordmg=\dice{1d8 + 1},
+	    ordmgwhen=when wielded two-handed,
+	  ]
+	\end{monsteraction}
+	\begin{monsteraction}[Extra]
+	  \melee[
+	    mod=+2,
+	    dmg=\dice{1d6 + 1},
+	    plusdmg=\dice{2d8},
+	    plusdmgtype=fire,
+	  ]
+	\end{monsteraction}
+	
+	\monstersection{Ranged}
+	\begin{monsteraction}[Basic]
+	  \ranged[mod=+2,dmg=\dice{1d6 + 1},range=80/320 ft.]
+	\end{monsteraction}
+	\begin{monsteraction}[Alternate]
+	  \ranged[
+	    mod=+2,
+	    range=80/320 ft.,
+	    dmg=\dice{1d6 + 1},
+	    ordmg=\dice{1d8 + 1},
+	    ordmgwhen=when trying really hard,
+	  ]
+	\end{monsteraction}
+	\begin{monsteraction}[Extra]
+	  \ranged[
+	    mod=+2,
+	    range=80/320 ft.,
+	    dmg=\dice{1d6 + 1},
+	    plusdmg=\dice{2d8},
+	    plusdmgtype=fire,
+	  ]
+	\end{monsteraction}
+	
+	\monstersection{Melee or Ranged}
+	\begin{monsteraction}[Dagger]
+	  \meleeorranged[
+	    mod=+2,
+	    dmg=\dice{1d6+1},
+	    dmgtype=piercing,
+	    range=40/120 ft.,
+	  ]
+	\end{monsteraction}
 \end{monsterbox}
 
 \section{Spells}
@@ -236,6 +290,35 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
   7           & Broken axe handle \\
   8           & Tarnished silver locket \\
 \end{dndtable}
+
+\newpage
+\section{Map Regions}
+
+\begin{lstlisting}
+  \area{Village of Hommlet}
+
+  This is the village of hommlet.
+
+  \subarea{Inn of the Welcome Wench}
+
+  Inside the village is the inn of the Welcome Wench.
+
+  \subarea{Blacksmith's Forge}
+
+  There's a blacksmith in town, too.
+\end{lstlisting}
+
+\area{Village of Hommlet}
+
+This is the village of hommlet.
+
+\subarea{Inn of the Welcome Wench}
+
+Inside the village is the inn of the Welcome Wench.
+
+\subarea{Blacksmith's Forge}
+
+There's a blacksmith in town, too.
 
 % End document
 \end{document}

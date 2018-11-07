@@ -190,6 +190,78 @@
   \end{dnd@monsterattrs}%
 }
 
+\newcommand{\dnd@hit}[1]{%
+  \commandkey{#1}\ \tohitname%
+}
+\newcommand{\dnd@damage}[2]{%
+  \commandkey{#1}\ \commandkey{#2}\ \damagename%
+}
+
+\newcommand{\dnd@ifplusdmg}[2]{%
+  \ifcommandkey{#1}{%
+    , plus \commandkey{#1}\ \commandkey{#2}\ \damagename%
+  }{}%
+}
+\newcommand{\dnd@ifordmg}[3]{%
+  \ifcommandkey{#1}{%
+    , or \commandkey{#1}\ \commandkey{#2}\ \damagename\ \commandkey{#3}%
+  }{}%
+}
+
+\newkeycommand\melee[
+    mod=+0,
+    reach=5 ft.,
+    targets=one target,
+    dmg=\dice{1d6},
+    dmgtype=slashing,
+    plusdmg=,
+    plusdmgtype=,
+    ordmg=,
+    ordmgtype=,
+    ordmgwhen=,
+  ]{%
+  \textit{\meleeattackname:} \dnd@hit{mod},
+  \reachname\ \commandkey{reach},
+  \commandkey{targets}.
+  \textit{\hitname:} \dnd@damage{dmg}{dmgtype}\dnd@ifordmg{ordmg}{ordmgtype}{ordmgwhen}\dnd@ifplusdmg{plusdmg}{plusdmgtype}.
+}
+\newkeycommand\ranged[
+    mod=+0,
+    range=30 ft.,
+    targets=one target,
+    dmg=\dice{1d6},
+    dmgtype=piercing,
+    plusdmg=,
+    plusdmgtype=,
+    ordmg=,
+    ordmgtype=,
+    ordmgwhen=,
+  ]{%
+  \textit{\rangedattackname:} \dnd@hit{mod},
+  \rangename\ \commandkey{range},
+  \commandkey{targets}.
+  \textit{\hitname:} \dnd@damage{dmg}{dmgtype}\dnd@ifplusdmg{plusdmg}{plusdmgtype}\dnd@ifordmg{ordmg}{ordmgtype}{ordmgwhen}.
+}
+\newkeycommand\meleeorranged[
+    mod=+0,
+    reach=5 ft.,
+    range=30 ft.,
+    targets=one target,
+    dmg=\dice{1d6},
+    dmgtype=piercing,
+    plusdmg=,
+    plusdmgtype=,
+    ordmg=,
+    ordmgtype=,
+    ordmgwhen=,
+    extra=,
+  ]{%
+  \textit{\meleeorrangedattackname:} \dnd@hit{mod},
+  \reachname\ \commandkey{reach} or \rangename\ \commandkey{range},
+  \commandkey{targets}.
+  \textit{\hitname:} \dnd@damage{dmg}{dmgtype}\dnd@ifplusdmg{plusdmg}{plusdmgtype}\dnd@ifordmg{ordmg}{ordmgtype}{ordmgwhen}\ifcommandkey{extra}{ \commandkey{extra}}{}.
+}
+
 \newcommand\crexp[1]{%
 	\IfStrEqCase{#1}{%
 		{0}{#1 (0 XP)}%
