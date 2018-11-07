@@ -9,7 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 * Added `bg` package option with `full`, `print`, and `none` as possible values.
+* Added boolean `layout` package option to control whether the package formats the document on load.
 * Added `nomultitoc` package option to toggle multi-column table of contents.
+* Added `dndbook` document class.
 
 ### Changed
 
