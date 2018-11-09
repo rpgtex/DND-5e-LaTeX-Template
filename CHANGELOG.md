@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Removed excess space before and after `monsterbox`.
 * Challenge rating on `monsterbox` now only needs the CR number.
 * `monsterbox` renamed `monsterboxbg`. `monsterbox` is now an alias that maps to `monsterboxbg` or `monsterboxnobg`, depending on the value of the `bg` package option.
+* Limited set of pre-loaded `tcolorbox` libraries to `breakable`, `skins`, and `xparse`.
 
 ### Fixed
 
