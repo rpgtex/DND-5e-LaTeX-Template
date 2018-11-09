@@ -1,0 +1,23 @@
+---
+sudo: false
+language: generic
+
+cache:
+  directories:
+    - /tmp/texlive
+    - $HOME/.texlive
+
+env:
+  global:
+    - PATH=/tmp/texlive/bin/x86_64-linux:$PATH
+
+matrix:
+  include:
+    - env: LATEX=pdflatex
+    - env: LATEX=lualatex
+
+install:
+  - ./bin/install-texlive
+
+script:
+  - make

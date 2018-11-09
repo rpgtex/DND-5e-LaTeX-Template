@@ -5,15 +5,6 @@
 % Setup for custom footer
 \pagestyle{fancy}
 
-\newlength{\nobgfooterheight}
-\setlength{\nobgfooterheight}{\paperheight}
-\addtolength{\nobgfooterheight}{-1in}
-\addtolength{\nobgfooterheight}{-\topmargin}
-\addtolength{\nobgfooterheight}{-\headheight}
-\addtolength{\nobgfooterheight}{-\headsep}
-\addtolength{\nobgfooterheight}{-\textheight}
-\addtolength{\nobgfooterheight}{-\footskip}
-
 \renewcommand{\headrulewidth}{0.0pt} %no rule for header
 \renewcommand{\footrulewidth}{0.0pt} %no rule for footer
 
@@ -28,33 +19,23 @@
 }
 
 \fancyfoot[LE]{
-	\iftoggle{bool-footer-scroll}{
 		\begin{tikzpicture}[remember picture,overlay]
-			\node[xscale=-1,inner sep=0pt,anchor=south,nearly opaque] at (current page.south) {\includegraphics[width=\paperwidth,height=43pt]{img/footerscroll}};
+			\iftoggle{bool-footer-scroll}{%
+				\node[xscale=-1,inner sep=0pt,anchor=south,nearly opaque] at (current page.south) {\includegraphics[width=\paperwidth,height=43pt]{img/footerscroll}};
+			}{}
 			\node[xshift=20pt,yshift=30pt] at (current page.south west) {\dnd@PageNumberFont\textcolor{pagegold}{\thepage}};
-			\node[anchor=south west,xshift=\marginparwidth+\marginparpush,yshift=27pt] at (current page.south west) {\dnd@FooterFont{\textcolor{pagegold}{\nouppercase\leftmark}}};
+			\node[anchor=base west, xshift=\marginparwidth+\marginparpush, yshift=33pt] at (current page.south west) {\dnd@FooterFont{\textcolor{pagegold}{\nouppercase\leftmark}}};
 		\end{tikzpicture}
-	}{
-		\begin{tikzpicture}[remember picture,overlay]
-      \node[anchor=south west,xshift=\marginparwidth-\marginparpush,yshift=\nobgfooterheight+2pt] at (current page.south west) {\dnd@PageNumberFont{\thepage}};
-			\node[anchor=south west,xshift=\marginparwidth+\marginparpush,yshift=\nobgfooterheight] at (current page.south west) {\leftmark};
-		\end{tikzpicture}
-	}
 }
 
 \fancyfoot[RO]{
-	\iftoggle{bool-footer-scroll}{
 		\begin{tikzpicture}[remember picture,overlay]
-			\node[inner sep=0pt,anchor=south,nearly opaque] at (current page.south) {\includegraphics[width=\paperwidth,height=43pt]{img/footerscroll}};
+			\iftoggle{bool-footer-scroll}{%
+				\node[inner sep=0pt,anchor=south,nearly opaque] at (current page.south) {\includegraphics[width=\paperwidth,height=43pt]{img/footerscroll}};
+			}{}
 			\node[xshift=-20pt,yshift=30pt] at (current page.south east) {\dnd@PageNumberFont\textcolor{pagegold}{\thepage}};
-			\node[anchor=south east,xshift=-\marginparwidth-\marginparpush,yshift=27pt] at (current page.south east) {\dnd@FooterFont{\textcolor{pagegold}{\nouppercase\leftmark}}};
+			\node[anchor=base east, xshift=-\marginparwidth-\marginparpush, yshift=33pt] at (current page.south east) {\dnd@FooterFont{\textcolor{pagegold}{\nouppercase\leftmark}}};
 		\end{tikzpicture}
-	}{
-		\begin{tikzpicture}[remember picture,overlay]
-      \node[anchor=south east,xshift=-\marginparwidth+2\marginparpush,yshift=\nobgfooterheight+2pt] at (current page.south east) {\dnd@PageNumberFont{\thepage}};
-			\node[anchor=south east,xshift=-\marginparwidth,yshift=\nobgfooterheight] at (current page.south east) {\leftmark};
-		\end{tikzpicture}
-	}
 }
 
 \fancypagestyle{plain}{}
