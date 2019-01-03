@@ -99,68 +99,50 @@
 	\begin{monsteraction}[Monster-super-powers]
 		This Monster has some serious superpowers!
 	\end{monsteraction}
-	\monstersection{Actions}
-	\begin{monsteraction}[Generate text]
-		This one can generate tremendous amounts of text! Though only when it wants to.
-	\end{monsteraction}
 
-	\begin{monsteraction}[More actions]
-    See, here he goes again! Yet more text.
-	\end{monsteraction}
-	
-	\monstersection{Melee}
-	\begin{monsteraction}[Basic]
-	  \melee[mod=+2,dmg=\dice{1d6 + 1}]
-	\end{monsteraction}
-	\begin{monsteraction}[Alternate]
-	  \melee[
-	    mod=+2,
-	    dmg=\dice{1d6 + 1},
-	    ordmg=\dice{1d8 + 1},
-	    ordmgwhen=when wielded two-handed,
-	  ]
-	\end{monsteraction}
-	\begin{monsteraction}[Extra]
-	  \melee[
-	    mod=+2,
-	    dmg=\dice{1d6 + 1},
-	    plusdmg=\dice{2d8},
-	    plusdmgtype=fire,
-	  ]
-	\end{monsteraction}
-	
-	\monstersection{Ranged}
-	\begin{monsteraction}[Basic]
-	  \ranged[mod=+2,dmg=\dice{1d6 + 1},range=80/320 ft.]
-	\end{monsteraction}
-	\begin{monsteraction}[Alternate]
-	  \ranged[
-	    mod=+2,
-	    range=80/320 ft.,
-	    dmg=\dice{1d6 + 1},
-	    ordmg=\dice{1d8 + 1},
-	    ordmgwhen=when trying really hard,
-	  ]
-	\end{monsteraction}
-	\begin{monsteraction}[Extra]
-	  \ranged[
-	    mod=+2,
-	    range=80/320 ft.,
-	    dmg=\dice{1d6 + 1},
-	    plusdmg=\dice{2d8},
-	    plusdmgtype=fire,
-	  ]
-	\end{monsteraction}
-	
-	\monstersection{Melee or Ranged}
-	\begin{monsteraction}[Dagger]
-	  \meleeorranged[
-	    mod=+2,
-	    dmg=\dice{1d6+1},
-	    dmgtype=piercing,
-	    range=40/120 ft.,
-	  ]
-	\end{monsteraction}
+	\monstersection{Actions}
+	\begin{monsteraction}[Multiattack]
+		The foo makes two melee attacks.
+  \end{monsteraction}
+
+  %Default values are shown commented out
+	\monsterattack[
+		%name=Dagger,
+		%enum* type={both,melee,ranged},
+		mod=+3,%mod=+0,
+		%reach=5,
+		%range=20/60,
+		%targets=one target,
+		dmg=\dice{1d4+1},%dmg=\dice{1d4},
+		%dmgtype=piercing,
+		%plusdmg=,
+		%plusdmgtype=,
+		%ordmg=,
+		%ordmgwhen=,
+		%extra=,
+	]
+
+  %\monstermelee calls \monsterattack with the melee option
+	\monstermelee[
+		name=Flame Tongue Longsword,
+		mod=+3,
+		dmg=\dice{1d8},
+		dmgtype=slashing,
+		ordmg=\dice{1d10},
+		ordmgwhen=if used with two hands,
+		plusdmg=\dice{2d6},
+		plusdmgtype=fire
+	]
+
+  %\monsterranged calls \monsterattack with the ranged option
+	\monsterranged[
+		name=Assassin's Light Crossbow,
+		mod=+0,
+		range=80/320,
+		dmg=\dice{1d8},
+		dmgtype=piercing,
+		extra={, and the target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one}
+	]
 \end{monsterbox}
 
 \section{Spells}
@@ -264,7 +246,6 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
 \endgroup
 
 \subsubsection{Using element color arguments}
-
 \begin{lstlisting}
 \begin{dndtable}[cX][DmgCoral]
   \textbf{d8} & \textbf{Item} \\
@@ -289,34 +270,51 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
   8           & Tarnished silver locket \\
 \end{dndtable}
 
-\newpage
 \section{Map Regions}
+The map region commands provide automatic numbering of areas.
 
+\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}
-  \area{Village of Hommlet}
-
-  This is the village of hommlet.
-
-  \subarea{Inn of the Welcome Wench}
-
-  Inside the village is the inn of the Welcome Wench.
-
-  \subarea{Blacksmith's Forge}
-
-  There's a blacksmith in town, too.
-\end{lstlisting}
-
 \area{Village of Hommlet}
-
 This is the village of hommlet.
 
 \subarea{Inn of the Welcome Wench}
+Inside the village is the inn of the
+Welcome Wench.
 
+\subarea{Blacksmith's Forge}
+There's a blacksmith in town, too.
+
+\area{Foo's Castle}
+This is foo's home, a hovel of mud and
+sticks.
+
+\subarea{Moat}
+This ditch has a board spanning it.
+
+\subarea{Entrance}
+A five-foot hole reveals the dirt floor
+illuminated by a hole in the roof.
+\end{lstlisting}
+\end{minipage}
+
+\area{Village of Hommlet}
+This is the village of hommlet.
+
+\subarea{Inn of the Welcome Wench}
 Inside the village is the inn of the Welcome Wench.
 
 \subarea{Blacksmith's Forge}
-
 There's a blacksmith in town, too.
+
+\area{Foo's Castle}
+This is foo's home, a hovel of mud and sticks.
+
+\subarea{Moat}
+This ditch has a board spanning it.
+
+\subarea{Entrance}
+A five-foot hole reveals the dirt floor illuminated by a hole in the roof.
 
 % End document
 \end{document}
