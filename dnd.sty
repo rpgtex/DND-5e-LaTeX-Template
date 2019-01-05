@@ -8,27 +8,20 @@
 %
 % Prerequisite Packages
 %
-% Set a different geometry with \newgeometry
-\usepackage[
-  bindingoffset=15pt, % .2in
-  hmargin=50pt,       % .7in
-  top=40pt,           % .55in
-  bottom=50pt,        % .7in
-  footskip=30pt,      % makes the footer text line up with the graphic
-]{geometry}
 
 % Loaded before tikz to avoid package option conflict with pgf.
 \RequirePackage[table]{xcolor}
 
 \RequirePackage{array}
 \RequirePackage{calc}
+\RequirePackage{colortbl}
 \RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage{geometry}
 \RequirePackage{ifluatex}
 \RequirePackage{keycommand}
-\RequirePackage{microtype}        % Improve ragged2e hyphenation and overfull boxes
-\RequirePackage{ragged2e}
 \RequirePackage{tabularx}
-\RequirePackage[most]{tcolorbox}  % used for some boxes
+\RequirePackage[breakable,skins,xparse]{tcolorbox}
 \RequirePackage{tikz}
 \RequirePackage{xkeyval}
 \RequirePackage{xparse}
@@ -73,17 +66,17 @@
 
 % Legacy bg option variants.
 \DeclareOptionX{bg-full}{%
-  \dnd@deprecate{bg-full}{0.7}[Use bg=full instead.]
+  \dnd@deprecate{bg-full}{0.8}[Use bg=full instead.]
   \toggletrue{bool-bg}
   \toggletrue{bool-footer-scroll}
 }
 \DeclareOptionX{bg-none}{%
-  \dnd@deprecate{bg-none}{0.7}[Use bg=none instead.]
+  \dnd@deprecate{bg-none}{0.8}[Use bg=none instead.]
   \togglefalse{bool-bg}
   \togglefalse{bool-footer-scroll}
 }
 \DeclareOptionX{bg-print}{%
-  \dnd@deprecate{bg-print}{0.7}[Use bg=print instead.]
+  \dnd@deprecate{bg-print}{0.8}[Use bg=print instead.]
   \togglefalse{bool-bg}
   \toggletrue{bool-footer-scroll}
 }
@@ -99,23 +92,26 @@
 \settoggle{multitoc}{true}
 \DeclareOptionX{nomultitoc}{\togglefalse{multitoc}}
 
+% Adds boolean `layout` package option and \ifpkglayout if command.
+\define@boolkey{dnd.sty}[pkg]{layout}[true]{}
+
 % Default Settings
-\ExecuteOptionsX{bg=full}
+\ExecuteOptionsX{bg=full, layout=true}
 \ProcessOptionsX\relax
 
-% Load other modules of this package
-\RequirePackage{lib/dndcolors}    % color definitions
-\RequirePackage{lib/dndfonts}     % font definitions
-\RequirePackage{lib/dndcomment}   % \commentbox definition
-\RequirePackage{lib/dndheader}    % fancy headers and footers
-\RequirePackage{lib/dndmonster}   % \monsterbox definition
-\RequirePackage{lib/dndpaperbox}  % \paperbox definition
-\RequirePackage{lib/dndquote}     % \quotebox definition
-\RequirePackage{lib/dndsections}  % section styling
-\RequirePackage{lib/dndspell}     % \spell definition
-\RequirePackage{lib/dndstrings}   % Load document strings
-\RequirePackage{lib/dndtable}     % \dndtable definition
+\ifpkglayout
 
+\RequirePackage{microtype}        % Improve ragged2e hyphenation and overfull boxes
+\RequirePackage{ragged2e}
+
+% Set page geometry.
+\geometry{%
+  bindingoffset=15pt, % .2in
+  hmargin=50pt,       % .7in
+  top=40pt,           % .55in
+  bottom=50pt,        % .7in
+  footskip=30pt,      % makes the footer text line up with the graphic
+}
 
 % Set paragraph and line spacing
 \linespread{1.1}%
@@ -134,12 +130,6 @@
 % Disable space between paragraphs.
 \setlength{\parskip}{0pt}
 
-% Font environment
-\newenvironment{lmss}{%
-  \dnd@deprecate{lmss}{0.7}
-  \fontfamily{lmss}\selectfont
-  }{}
-
 % Columns setup
 \setlength{\columnsep}{25pt}  % .35in
 
@@ -147,6 +137,8 @@
 \setlist{leftmargin=1em}
 \setitemize{noitemsep,topsep=0.5ex}
 \renewcommand{\labelitemi}{\raisebox{0.25ex}{\tiny{\( \bullet \)}}}
+
+\fi % \ifpkglayout
 
 % Fancy DnD 5e stat block rule
 \newcommand{\dndline}{%
@@ -157,7 +149,7 @@
   \par%
 }
 \renewcommand{\hline}{%
-  \dnd@deprecate{redefined hline}{0.7}[Use dndline for stat block rules.]%
+  \dnd@deprecate{redefined \noexpand\hline}{0.8}[Use \noexpand\dndline for stat block rules.]%
   \dndline%
 }
 
@@ -177,3 +169,25 @@
         \kcmd@nbk \commandkey {#1}//{first}{second}//oftwo\endcsname
       }
    }
+
+
+% Font environment
+\newenvironment{lmss}{%
+  \dnd@deprecate{lmss}{0.7}
+  \fontfamily{lmss}\selectfont
+  }{}
+
+
+% Load other modules of this package after all dependencies to avoid load order
+% conflicts (e.g., package options).
+\RequirePackage{lib/dndcolors}    % color definitions
+\RequirePackage{lib/dndfonts}     % font definitions
+\RequirePackage{lib/dndcomment}   % \commentbox definition
+\RequirePackage{lib/dndheader}    % fancy headers and footers
+\RequirePackage{lib/dndmonster}   % \monsterbox definition
+\RequirePackage{lib/dndpaperbox}  % \paperbox definition
+\RequirePackage{lib/dndquote}     % \quotebox definition
+\RequirePackage{lib/dndsections}  % section styling
+\RequirePackage{lib/dndspell}     % \spell definition
+\RequirePackage{lib/dndstrings}   % Load document strings
+\RequirePackage{lib/dndtable}     % \dndtable definition

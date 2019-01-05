@@ -9,7 +9,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 * Added `bg` package option with `full`, `print`, and `none` as possible values.
+* Added boolean `layout` package option to control whether the package formats the document on load.
 * Added `nomultitoc` package option to toggle multi-column table of contents.
+* Added `dndbook` document class.
 
 ### Changed
 
@@ -17,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Removed excess space before and after `monsterbox`.
 * Challenge rating on `monsterbox` now only needs the CR number.
 * `monsterbox` renamed `monsterboxbg`. `monsterbox` is now an alias that maps to `monsterboxbg` or `monsterboxnobg`, depending on the value of the `bg` package option.
+* Limited set of pre-loaded `tcolorbox` libraries to `breakable`, `skins`, and `xparse`.
 
 ### Fixed
 
@@ -26,7 +29,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Deprecated
 
-* Deprecated `bg-full`, `bg-none`, and `bg-print` package options.
+* Deprecated `bg-full`, `bg-none`, and `bg-print` package options. Use `bg` package option instead.
+* Deprecated custom `\hline` in stat blocks. Use `\dndline` instead.
 
 ### Removed
 

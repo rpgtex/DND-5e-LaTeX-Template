@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS='$\n\t'
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+tar -xf install-tl-unx.tar.gz
+cd install-tl-*
+./install-tl --profile="${DIR}/texlive.profile"
+
+export PATH="/tmp/texlive/bin/x86_64-linux:${PATH}"
+
+# Core packages
+tlmgr install dvips graphics graphics-def latex latex-bin latexmk
+
+# Package dependencies
+#   environ: required by tcolorbox
+#   etex-pkg: provides e-TeX, transitive dependency
+#   l3kernel: required by xparse
+#   l3packages: xparse
+#   ms: multitoc, ragged2e
+#   oberdiek: luacolor
+#   pgf: tikz
+#   tools: array, calc, tabularx
+#   trimspaces: required by environ?
+tlmgr install \
+  babel \
+  colortbl \
+  enumitem \
+  environ \
+  etex-pkg \
+  etoolbox \
+  fancyhdr \
+  fp \
+  geometry \
+  ifluatex \
+  ifxetex \
+  keycommand \
+  l3kernel \
+  l3packages \
+  microtype \
+  ms \
+  oberdiek \
+  pgf \
+  tcolorbox \
+  titlesec \
+  tocloft \
+  tools \
+  trimspaces \
+  xcolor \
+  xkeyval \
+  xstring
+
+# Fonts required by package or dependencies
+tlmgr install \
+  amsfonts \
+  bookman \
+  cm \
+  courier \
+  ec \
+  latex-fonts \
+  lm \
+  opensans \
+  psnfss
+
+# Document dependencies
+tlmgr install \
+  babel-english \
+  hang \
+  lipsum \
+  listings

@@ -1,6 +1,7 @@
 # D&D 5e LaTeX Template
 
 [![Latest release](https://img.shields.io/github/release/evanbergeron/DND-5e-LaTeX-Template/all.svg)](https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/latest)
+[![Build Status](https://travis-ci.org/evanbergeron/DND-5e-LaTeX-Template.svg?branch=master)](https://travis-ci.org/evanbergeron/DND-5e-LaTeX-Template)
 
 This is a LaTeX template for typesetting documents in the style of the *Dungeons & Dragons* 5th Edition (D&D 5e) books.
 
@@ -13,6 +14,22 @@ This is a LaTeX template for typesetting documents in the style of the *Dungeons
 ![Preview](scrot.jpg)
 
 ## Installation
+
+There are three options for using this project; choose the one that's
+right for you.
+
+### Using Overleaf
+
+[Overleaf](https://overleaf.com) is an online TeX editor -- think
+about it like Google Docs for TeX documents.  This option does not
+require a local TeX installation and is an ideal approach for one-off
+projects.
+
+1. Download this GitHub repository as a ZIP archive using the *Clone
+   or download* link above.
+2. On Overleaf, click the *New Project* button and select *Upload
+   Project*.  Upload the ZIP archive you downloaded from this
+   repository.
 
 ### User install using `TEXMFHOME` (recommended)
 
@@ -61,20 +78,48 @@ TEXINPUTS=./lib//: pdflatex project.tex
 
 ## Usage
 
-Load the template in your preamble:
+### Class (recommended)
+
+Load the `dndbook` class in your preamble:
+
+```tex
+\documentclass[10pt,twoside,twocolumn,openany]{dndbook}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+% ...
+```
+
+### Package
+
+You can also load the `dnd` package directly to use it with another class.
+Note that the package has only been tested with the `book` class.
 
 ```tex
 \documentclass[10pt,twoside,twocolumn,openany]{book}
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage{dnd}
+
+\usepackage[layout=true]{dnd}
 
 \begin{document}
 % ...
 ```
 
-### Package options
+### Options
+
+| Option         | Package `dnd`   | Class `dndbook`   |
+| -------------- | :-------------: | :---------------: |
+| `bg`           | ✓               | ✓                 |
+| `justified`    | ✓               | ✓                 |
+| `layout`       | ✓               |                   |
+| `nomultitoc`   | ✓               | ✓                 |
+
+
+The `dndbook` class also supports all the options of the `book` class.
 
 #### `bg`
 
@@ -87,6 +132,17 @@ Declare how to load background and footer images. This is a key-value option wit
 #### `justified`
 
 Justify column copy.
+
+#### `layout`
+
+Controls whether loading the `dnd` package also modifies the document layout (geometry, colors, typography, etc.).
+This is a boolean option with the following possible values:
+
+* `true`: Modify the document layout.
+* `false`: Do not modify the document layout.
+
+The default value is `true` for backwards compatibility with early releases.
+This will change in a future release.
 
 #### `nomultitoc`
 

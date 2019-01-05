@@ -1,6 +1,10 @@
 %Usage \begin{paperbox}[options]{title}[color]
 \DeclareTColorBox{paperbox}{O{} m O{paperboxcolor}}{%
-	before upper={\nottoggle{justified}{\RaggedRight}},
+	before upper={%
+		\ifpkglayout%
+			\nottoggle{justified}{\RaggedRight}%
+		\fi%
+	},
 	frame hidden,
 	boxrule=0pt,
 	enhanced,
@@ -11,6 +15,7 @@
 	right=8pt,
 	fonttitle=\dnd@BoxTitleFont,
 	fontupper=\dnd@BoxBodyFont,
+	fontlower=\dnd@BoxBodyFont,
 	title={#2},
 	arc=0mm,
 	parbox=false,

@@ -90,7 +90,7 @@ main() {
   if [[ -z $dry_run ]]; then
     sed -e '/ProvidesPackage/ s#'"${current_date}"'#'"${new_date}"'#' \
         -e '/ProvidesPackage/ s#'"v${current_version}"'#'"v${new_version}"'#' \
-        -i dnd.sty
+        -i dnd.sty dndbook.cls
     sed 's/'"${current_version}"'/'"${new_version}"'/g' -i README.md
 
     git add README.md dnd.sty
