@@ -1,5 +1,3 @@
-\ifpkglayout
-
 \RequirePackage[titles]{tocloft}
 \RequirePackage{titlesec}	% Used to adjust (sub)section formatting
 
@@ -16,9 +14,7 @@
 
 \titlespacing*{\chapter}{0pt}{0pt}{20pt}
 
-\ifdef{\cftchapfont}{%
-  \renewcommand\cftchapfont{\color{titlered}\dnd@TitleFont\bfseries}
-}{}
+\renewcommand\cftchapfont{\color{titlered}\dnd@TitleFont\bfseries}
 
 % Section
 \titleformat{\section}
@@ -45,10 +41,8 @@
 \titlespacing*{\subparagraph}
 {\parindent}{\parskip}{\wordsep}
 
-\fi % \ifpkglayout
-
 % Special command for magic items, traps, and the like.
 \newcommand{\subtitlesection}[2]{
 	\subsubsection{#1}\vspace{-1ex}
 	\textit{#2}\vspace{1ex}\par
-	}
+	} 

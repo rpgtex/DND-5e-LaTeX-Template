@@ -1,10 +1,6 @@
 %Usage \begin{commentbox}[options]{title}[color]
 \DeclareTColorBox{commentbox}{O{} m O{commentboxcolor}}{%
-	before upper={%
-		\ifpkglayout%
-			\nottoggle{justified}{\RaggedRight}%
-		\fi%
-	},
+	before upper={\nottoggle{justified}{\RaggedRight}},
 	frame hidden,
 	boxrule=0pt,
 	breakable,
@@ -17,7 +13,6 @@
 	arc=0mm,
 	fonttitle=\dnd@BoxTitleFont,
 	fontupper=\dnd@BoxBodyFont,
-	fontlower=\dnd@BoxBodyFont,
 	title={#2},
 	parbox=false,
 	colback={#3},
