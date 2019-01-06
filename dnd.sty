@@ -9,9 +9,9 @@
 % Prerequisite Packages
 %
 
-% Loaded before tikz to avoid package option conflict with pgf.
-\RequirePackage[table]{xcolor}
+\PassOptionsToPackage{table}{xcolor} % Helps prevent option clash with other packages that include xcolor
 
+\RequirePackage{xcolor}
 \RequirePackage{array}
 \RequirePackage{calc}
 \RequirePackage{colortbl}
