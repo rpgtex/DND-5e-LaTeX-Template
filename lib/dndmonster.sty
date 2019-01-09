@@ -46,7 +46,7 @@
 	toptitle=3mm,
 	left=0pt,
 	right=0pt,
-	arc=0mm,
+	sharp corners,
 	opacityback=0,
 	colframe=titlered,
 	fonttitle=\dnd@StatBlockTitleFont\Large,
@@ -69,7 +69,7 @@
 	left=7pt,
 	right=7pt,
 	bottom=11pt,
-	arc=0mm,
+	sharp corners,
 	oversize=0pt,
 	borderline north={4pt}{0pt}{titlered},
 	borderline north={2.5pt}{0.75pt}{statblockribbon},
@@ -117,11 +117,11 @@
 % A description variant used to list creature attributes.
 \newlist{dnd@monsterattrs}{description}{1}
 \setlist[dnd@monsterattrs]{
-		before=\color{titlered},
-		font=\dnd@StatBlockBodyFont\textbf,
-		labelsep=\widthof{ },
-		noitemsep,
-		nosep,
+	before=\color{titlered},
+	font=\dnd@StatBlockBodyFont\textbf,
+	labelsep=\widthof{ },
+	noitemsep,
+	nosep,
 }
 
 % A dnd@monsterattrs helper macro that always displays an attribute.
@@ -150,22 +150,22 @@
 
 % Taubular enviornment for stats-block
 \newkeycommand\stats[STR=\stat{10},
-												DEX=\stat{10},
-												CON=\stat{10},
-												INT=\stat{10},
-												WIS=\stat{10},
-												CHA=\stat{10}]{%
-		\begingroup
-		\small\centering\color{titlered}
-		\resizebox{\linewidth}{\height}{%
-			\begin{tabular}{cccccc}
-				\rule{0pt}{3.7mm} %adds space between hline and table
-				\textbf{\strstatname} & \textbf{\dexstatname} & \textbf{\constatname} & \textbf{\intstatname} & \textbf{\wisstatname} & \textbf{\chastatname}\\
-				\commandkey{STR} & \commandkey{DEX} & \commandkey{CON} & \commandkey{INT} & \commandkey{WIS} & \commandkey{CHA}
-			\end{tabular}
-		}%
-		\\[0.4em] %adds space after table
-		\endgroup
+	DEX=\stat{10},
+	CON=\stat{10},
+	INT=\stat{10},
+	WIS=\stat{10},
+	CHA=\stat{10}]{%
+	\begingroup
+	\small\centering\color{titlered}
+	\resizebox{\linewidth}{\height}{%
+		\begin{tabular}{cccccc}
+			\rule{0pt}{3.7mm} %adds space between hline and table
+			\textbf{\strstatname} & \textbf{\dexstatname} & \textbf{\constatname} & \textbf{\intstatname} & \textbf{\wisstatname} & \textbf{\chastatname}\\
+			\commandkey{STR} & \commandkey{DEX} & \commandkey{CON} & \commandkey{INT} & \commandkey{WIS} & \commandkey{CHA}
+		\end{tabular}
+	}%
+	\\[0.4em] %adds space after table
+	\endgroup
 }
 
 \newkeycommand\details[
