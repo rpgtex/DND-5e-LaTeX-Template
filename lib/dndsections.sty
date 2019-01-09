@@ -2,6 +2,7 @@
 
 \RequirePackage[titles]{tocloft}
 \RequirePackage{titlesec}	% Used to adjust (sub)section formatting
+\RequirePackage{xparse}     % for LaTeX3 \NewDocumentCommand
 
 \iftoggle{multitoc}{%
   \RequirePackage[toc]{multitoc}
@@ -53,18 +54,36 @@
 	\textit{#2}\vspace{1ex}\par
 	} 
 
-% Areas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Map Areas and their References
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Labelling helpers
+\newcommand{\AreaLabel@Prefix}{area}
+\newcommand{\SetAreaLabelPrefix}[1]{%
+  \renewcommand{\AreaLabel@Prefix}{#1}}
+
 \newcounter{Area}
-\newcommand{\area}[1]{%
-  \refstepcounter{Area}\label{area:#1}
-  \subsection{\arabic{Area}. #1}
+\newcommand\ResetAreas{%
+  \setcounter{Area}{0}}
+
+\NewDocumentCommand\area{mo}{%
+  \refstepcounter{Area}%
+  \IfNoValueTF{#2}%
+    {\label{\AreaLabel@Prefix:#1}}%
+    {\label{\AreaLabel@Prefix:#2}}%
+  \subsection{\arabic{Area}. #1}%
 }
 
 % defines sub-areas, like '5a', '5b'
 \newcounter{SubArea}[Area]
-\newcommand{\subarea}[1]{%
-  \refstepcounter{SubArea}\label{area:#1}
-  \subsubsection{\arabic{Area}\alph{SubArea}. #1}
+
+\NewDocumentCommand\subarea{mo}{%
+  \refstepcounter{SubArea}%
+  \IfNoValueTF{#2}%
+    {\label{\AreaLabel@Prefix:#1}}%
+    {\label{\AreaLabel@Prefix:#2}}%
+  \subsubsection{\arabic{Area}\alph{SubArea}. #1}%
 }
 
 % sub area references should be '5a', '5b', not '1', '2'
