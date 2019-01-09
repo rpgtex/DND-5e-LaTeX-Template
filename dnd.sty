@@ -9,8 +9,7 @@
 % Prerequisite Packages
 %
 
-% Loaded before tikz to avoid package option conflict with pgf.
-\RequirePackage[table]{xcolor}
+\PassOptionsToPackage{table}{xcolor} % Helps prevent option clash with other packages that include xcolor
 
 \RequirePackage{array}
 \RequirePackage{calc}
@@ -23,6 +22,7 @@
 \RequirePackage{tabularx}
 \RequirePackage[breakable,skins,xparse]{tcolorbox}
 \RequirePackage{tikz}
+\RequirePackage{xcolor}
 \RequirePackage{xkeyval}
 \RequirePackage{xparse}
 
