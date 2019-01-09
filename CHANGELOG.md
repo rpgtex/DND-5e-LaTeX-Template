@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Added boolean `layout` package option to control whether the package formats the document on load.
 * Added `nomultitoc` package option to toggle multi-column table of contents.
 * Added `dndbook` document class.
+* Added keycommands to generate text for melee, ranged, and hybrid (melee or ranged) attacks within monsterboxes. Includes localization support for the various phrases used.
+* Added commands to generate titled sections for map areas and sub-areas, with associated counters and automatic reference labelling (as `area:<title>`).
 
 ### Changed
 
@@ -20,6 +22,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Challenge rating on `monsterbox` now only needs the CR number.
 * `monsterbox` renamed `monsterboxbg`. `monsterbox` is now an alias that maps to `monsterboxbg` or `monsterboxnobg`, depending on the value of the `bg` package option.
 * Limited set of pre-loaded `tcolorbox` libraries to `breakable`, `skins`, and `xparse`.
+* Title formats for sections now explicitly use `\RaggedRight` to avoid poor layout appearance when using justified output.
+* Prevents page breaks immediately following section/subsection/subsubsection titles.
 
 ### Fixed
 

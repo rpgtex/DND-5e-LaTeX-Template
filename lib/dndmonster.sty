@@ -59,103 +59,103 @@
 
 % Stat block made to look like stat blocks in the PHB.
 \newtcolorbox{monsterboxbg}[2][]{
-  enhanced,
-  frame hidden,
-  before skip=7pt plus 2pt,
-  boxrule=0pt,
-  breakable,
-  boxsep=0pt,
-  toptitle=11pt,
-  left=7pt,
-  right=7pt,
-  bottom=11pt,
-  arc=0mm,
-  oversize=0pt,
-  borderline north={4pt}{0pt}{titlered},
-  borderline north={2.5pt}{0.75pt}{statblockribbon},
-  borderline south={4pt}{0pt}{titlered},
-  borderline south={2.5pt}{0.75pt}{statblockribbon},
-  colback=statblockbg,
-  colbacktitle=statblockbg,
-  colframe=titlered,
-  fonttitle=\dnd@StatBlockTitleFont\Large,
-  coltitle=titlered,
-  fontupper=\dnd@StatBlockBodyFont,
-  fontlower=\dnd@StatBlockBodyFont,
-  title=#2,
-  #1
+	enhanced,
+	frame hidden,
+	before skip=7pt plus 2pt,
+	boxrule=0pt,
+	breakable,
+	boxsep=0pt,
+	toptitle=11pt,
+	left=7pt,
+	right=7pt,
+	bottom=11pt,
+	arc=0mm,
+	oversize=0pt,
+	borderline north={4pt}{0pt}{titlered},
+	borderline north={2.5pt}{0.75pt}{statblockribbon},
+	borderline south={4pt}{0pt}{titlered},
+	borderline south={2.5pt}{0.75pt}{statblockribbon},
+	colback=statblockbg,
+	colbacktitle=statblockbg,
+	colframe=titlered,
+	fonttitle=\dnd@StatBlockTitleFont\Large,
+	coltitle=titlered,
+	fontupper=\dnd@StatBlockBodyFont,
+	fontlower=\dnd@StatBlockBodyFont,
+	title=#2,
+	#1
 }
 
 \iftoggle{bool-bg}{
-  \let\monsterbox\monsterboxbg%
-  \let\endmonsterbox\endmonsterboxbg%
+	\let\monsterbox\monsterboxbg%
+	\let\endmonsterbox\endmonsterboxbg%
 }{
-  \let\monsterbox\monsterboxnobg%
-  \let\endmonsterbox\endmonsterboxnobg%
+	\let\monsterbox\monsterboxnobg%
+	\let\endmonsterbox\endmonsterboxnobg%
 }
 
 
 % Define Monster subsection header style
 \newcommand{\monstersection}[1]{%
-  \begingroup
-    \par\medskip\color{titlered}
-    \dnd@StatBlockSubtitleFont\large #1
-    % \rule is a horizontal command, so placing it under the title incurs extra
-    % line spacing. Use \hrule (a vertical command) instead.
-    \vspace{3pt}
-    \hrule height 0.6pt
-    \vspace{3pt}
-  \endgroup%
+	\begingroup
+		\par\medskip\color{titlered}
+		\dnd@StatBlockSubtitleFont\large #1
+		% \rule is a horizontal command, so placing it under the title incurs extra
+		% line spacing. Use \hrule (a vertical command) instead.
+		\vspace{3pt}
+		\hrule height 0.6pt
+		\vspace{3pt}
+	\endgroup%
 }
 
 \NewDocumentEnvironment{monsteraction}{o}{%
-  \IfValueTF{#1}{%
-    \smallskip\emph{\textbf{#1.}}%
-  }{\unskip}%
+	\IfValueTF{#1}{%
+		\smallskip\emph{\textbf{#1.}}%
+	}{\unskip}%
 }{\par}
 
 % A description variant used to list creature attributes.
 \newlist{dnd@monsterattrs}{description}{1}
 \setlist[dnd@monsterattrs]{
-    before=\color{titlered},
-    font=\dnd@StatBlockBodyFont\textbf,
-    labelsep=\widthof{ },
-    noitemsep,
-    nosep,
+		before=\color{titlered},
+		font=\dnd@StatBlockBodyFont\textbf,
+		labelsep=\widthof{ },
+		noitemsep,
+		nosep,
 }
 
 % A dnd@monsterattrs helper macro that always displays an attribute.
 \newcommand{\dnd@monsterattr}[2]{%
-  \item[#2] \commandkey{#1}
+	\item[#2] \commandkey{#1}
 }
 
 % A dnd@monsterattrs helper macro that displays an attribute if the user defined
 % it.
 \newcommand{\dnd@ifmonsterattr}[2]{%
-  \ifcommandkey{#1}{%
-    \item[#2] \commandkey{#1}
-  }{}%
+	\ifcommandkey{#1}{%
+		\item[#2] \commandkey{#1}
+	}{}%
 }
 
 %
 % Macros for use within the monster environment
 %
 \newkeycommand\basics[armorclass=0, hitpoints=0, speed=0]{%
-  \begin{dnd@monsterattrs}
-    \dnd@monsterattr{armorclass}{\armorclassname}
-    \dnd@monsterattr{hitpoints}{\hitpointsname}
-    \dnd@monsterattr{speed}{\speedname}
-  \end{dnd@monsterattrs}%
+	\begin{dnd@monsterattrs}
+		\dnd@monsterattr{armorclass}{\armorclassname}
+		\dnd@monsterattr{hitpoints}{\hitpointsname}
+		\dnd@monsterattr{speed}{\speedname}
+	\end{dnd@monsterattrs}%
 }
 
 % Taubular enviornment for stats-block
 \newkeycommand\stats[STR=\stat{10},
-                        DEX=\stat{10},
-                        CON=\stat{10},
-                        INT=\stat{10},
-                        WIS=\stat{10},
-                        CHA=\stat{10}]{%
-    \begingroup
+												DEX=\stat{10},
+												CON=\stat{10},
+												INT=\stat{10},
+												WIS=\stat{10},
+												CHA=\stat{10}]{%
+		\begingroup
 		\small\centering\color{titlered}
 		\resizebox{\linewidth}{\height}{%
 			\begin{tabular}{cccccc}
@@ -165,31 +165,135 @@
 			\end{tabular}
 		}%
 		\\[0.4em] %adds space after table
-    \endgroup
+		\endgroup
 }
 
 \newkeycommand\details[
-  skills=,
-  damageimmunities=,
-  savingthrows=,
-  conditionimmunities=,
-  damageresistances=,
-  damagevulnerabilities=,
-  senses=---,
-  languages=---,
-  challenge=1,
-  ]{%
-  \begin{dnd@monsterattrs}
-    \dnd@ifmonsterattr{savingthrows}{\savesname}
-    \dnd@ifmonsterattr{skills}{\skillsname}
-    \dnd@ifmonsterattr{damagevulnerabilities}{\dvulname}
-    \dnd@ifmonsterattr{damageresistances}{\dresname}
-    \dnd@ifmonsterattr{damageimmunities}{\dimmname}
-    \dnd@ifmonsterattr{conditionimmunities}{\cimmname}
-    \dnd@monsterattr{senses}{\sensesname}
-    \dnd@monsterattr{languages}{\languagesname}
-    \item[\challengename] \crexp{\commandkey{challenge}}
-  \end{dnd@monsterattrs}%
+	skills=,
+	damageimmunities=,
+	savingthrows=,
+	conditionimmunities=,
+	damageresistances=,
+	damagevulnerabilities=,
+	senses=---,
+	languages=---,
+	challenge=1,
+	]{%
+	\begin{dnd@monsterattrs}
+		\dnd@ifmonsterattr{savingthrows}{\savesname}
+		\dnd@ifmonsterattr{skills}{\skillsname}
+		\dnd@ifmonsterattr{damagevulnerabilities}{\dvulname}
+		\dnd@ifmonsterattr{damageresistances}{\dresname}
+		\dnd@ifmonsterattr{damageimmunities}{\dimmname}
+		\dnd@ifmonsterattr{conditionimmunities}{\cimmname}
+		\dnd@monsterattr{senses}{\sensesname}
+		\dnd@monsterattr{languages}{\languagesname}
+		\item[\challengename] \crexp{\commandkey{challenge}}
+	\end{dnd@monsterattrs}%
+}
+
+\newcommand{\dnd@hit}[1]{%
+	\commandkey{#1}\ \tohitname%
+}
+\newcommand{\dnd@damage}[2]{%
+	\commandkey{#1}\ \commandkey{#2}\ \damagename%
+}
+
+\newcommand{\dnd@ifplusdmg}[2]{%
+	\ifcommandkey{#1}{%
+		{ }plus \commandkey{#1}\ \commandkey{#2}\ \damagename%
+	}{}%
+}
+\newcommand{\dnd@ifordmg}[5]{%
+	\ifcommandkey{#1}{%
+		, or \commandkey{#1}\ \commandkey{#2}\ \damagename\dnd@ifplusdmg{#4}{#5}\ \commandkey{#3}%
+	}{}%
+}
+
+\newkeycommand+[\|]\monstermelee[
+		name=Club,
+		mod=+0,
+		reach=5,
+		targets=one target,
+		dmg=\dice{1d4},
+		dmgtype=bludgeoning,
+		plusdmg=,
+		plusdmgtype=,
+		ordmg=,
+		ordmgwhen=,
+		extra=,
+	]{%
+	|\monsterattack|[
+		name={\commandkey{name}},
+		type=melee,
+		mod={\commandkey{mod}},
+		reach={\commandkey{reach}},
+		targets={\commandkey{targets}},
+		dmg={\commandkey{dmg}},
+		dmgtype={\commandkey{dmgtype}},
+		plusdmg={\commandkey{plusdmg}},
+		plusdmgtype={\commandkey{plusdmgtype}},
+		ordmg={\commandkey{ordmg}},
+		ordmgwhen={\commandkey{ordmgwhen}},
+		extra={\commandkey{extra}},
+	]
+}
+\newkeycommand+[\|]\monsterranged[
+		name=Shortbow,
+		mod=+0,
+		range=80/320,
+		targets=one target,
+		dmg=\dice{1d6},
+		dmgtype=piercing,
+		plusdmg=,
+		plusdmgtype=,
+		ordmg=,
+		ordmgwhen=,
+		extra=,
+	]{%
+	|\monsterattack|[
+		name={\commandkey{name}},
+		type=ranged,
+		mod={\commandkey{mod}},
+		range={\commandkey{range}},
+		targets={\commandkey{targets}},
+		dmg={\commandkey{dmg}},
+		dmgtype={\commandkey{dmgtype}},
+		plusdmg={\commandkey{plusdmg}},
+		plusdmgtype={\commandkey{plusdmgtype}},
+		ordmg={\commandkey{ordmg}},
+		ordmgwhen={\commandkey{ordmgwhen}},
+		extra={\commandkey{extra}},
+	]
+}
+
+\newkeycommand\monsterattack[
+		name=Dagger,
+		enum* type={both,melee,ranged},
+		mod=+0,
+		reach=5,
+		range=20/60,
+		targets=one target,
+		dmg=\dice{1d4},
+		dmgtype=piercing,
+		plusdmg=,
+		plusdmgtype=,
+		ordmg=,
+		ordmgwhen=,
+		extra=,
+	]{%
+	\begin{monsteraction}[\commandkey{name}]
+		\IfStrEqCase{\commandkey{type}}{%
+			{melee}{\textit{\meleeattackname:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \ftname}%
+			{ranged}{\textit{\rangedattackname:} \dnd@hit{mod}, \rangename\ \commandkey{range} \ftname}%
+			{both}{\textit{\meleeorrangedattackname:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \ftname or \rangename\ \commandkey{range} \ftname}%
+		}[]%
+		, \commandkey{targets}.
+		\textit{\hitname:} \dnd@damage{dmg}{dmgtype}%
+		\dnd@ifplusdmg{plusdmg}{plusdmgtype}%
+		\dnd@ifordmg{ordmg}{dmgtype}{ordmgwhen}{plusdmg}{plusdmgtype}%
+		\ifcommandkey{extra}{\commandkey{extra}}{}.
+	\end{monsteraction}
 }
 
 \newcommand\crexp[1]{%
