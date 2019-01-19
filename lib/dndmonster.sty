@@ -296,6 +296,54 @@
 	\end{monsteraction}
 }
 
+\ExplSyntaxOn
+\NewDocumentCommand {\DndMonsterSpellLevel} { O{Cantrips} O{at\ will} m}
+  {
+		\smallskip
+		\begin{hangingpar}
+    \str_case:nnTF {#1}
+    {
+      {1} {1st}
+      {2} {2nd}
+      {3} {3rd}
+      {4} {4th}
+      {5} {5th}
+      {6} {6th}
+      {7} {7th}
+      {8} {8th}
+      {9} {9th}
+    }
+    {\ level}
+    {#1}
+    \ (
+    \str_case:nnF {#2}
+    {
+      {1} {1\ slot}
+      {2} {2\ slots}
+      {3} {3\ slots}
+      {4} {4\ slots}
+    }
+    {#2}
+    ):\ \DndEmphSpellString{#3}
+    \end{hangingpar}
+  }
+
+\NewDocumentCommand {\DndEmphSpellString}{>{\SplitList{,}}m}
+  {
+    \int_zero_new:N \l_spellstring_int
+	  \tl_map_function:nN {#1} \spell_list_mapping:n
+  }
+
+\cs_new:Nn \spell_list_mapping:n
+  {
+    \int_compare:nNnTF
+      {\l_spellstring_int} = {0}
+      {\int_incr:N \l_spellstring_int} {,\ }
+    
+    \emph {#1}
+  }
+\ExplSyntaxOff
+
 \newcommand\crexp[1]{%
 	\IfStrEqCase{#1}{%
 		{0}{#1 (0 XP)}%

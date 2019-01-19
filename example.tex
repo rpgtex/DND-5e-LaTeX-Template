@@ -40,7 +40,7 @@
 \lipsum[2] % filler text
 
 \begin{quotebox}
-	As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
+  As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
 \end{quotebox}
 
 \subsection{Fun with boxes}
@@ -65,98 +65,114 @@
 % available as well.
 \header{Nice table}
 \begin{dndtable}
-   	\textbf{Table head}  & \textbf{Table head} \\
-   	Some value  & Some value \\
-   	Some value  & Some value \\
-   	Some value  & Some value
+     \textbf{Table head}  & \textbf{Table head} \\
+     Some value  & Some value \\
+     Some value  & Some value \\
+     Some value  & Some value
 \end{dndtable}
 
 % You can optionally not include the background by saying
 % begin{monsterboxnobg}
 \begin{monsterbox}{Monster Foo}
   \begin{hangingpar}
-    \textit{Small metasyntactic variable (goblinoid), neutral evil}
+    \textit{Medium metasyntactic variable (goblinoid), neutral evil}
   \end{hangingpar}
-	\dndline%
-	\basics[%
-	armorclass = 12,
-	hitpoints  = \dice{3d8 + 3},
-	speed      = 50 ft
-	]
-	\dndline%
-	\stats[
+  \dndline%
+  \basics[%
+  armorclass = 9 (12 with \emph{mage armor}),
+  hitpoints  = \dice{3d8 + 3},
+  speed      = {30 ft., fly 30 ft.},
+  ]
+  \dndline%
+  \stats[
     STR = \stat{12}, % This stat command will autocomplete the modifier for you
-    DEX = \stat{7}
-	]
-	\dndline%
-	\details[%
-	% If you want to use commas in these sections, enclose the
-	% description in braces.
-	% I'm so sorry.
-	languages = {Common Lisp, Erlang},
-	]
-	\dndline%
-	\begin{monsteraction}[Monster-super-powers]
-		This Monster has some serious superpowers!
-	\end{monsteraction}
+    DEX = \stat{8},
+    CON = \stat{13},
+    INT = \stat{10},
+    WIS = \stat{14},
+    CHA = \stat{15},
+  ]
+  \dndline%
+  \details[% If you want to use commas in these sections, enclose the description in braces.
+    %savingthrows = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+    %skills = {Acrobatics +0, Animal Handling +0, Arcana +0, Athletics +0, Deception +0, History +0, Insight +0, Intimidation +0, Investigation +0, Medicine +0, Nature +0, Perception +0, Performance +0, Persuasion +0, Religion +0, Sleight of Hand +0, Stealth +0, Survival +0},
+    %damagevulnerabilities = {},
+    %damageresistances = {},
+    %damageimmunities = {},
+    %conditionimmunities = {},
+    senses = {darkvision 60 ft., passive Perception 10},
+    languages = {Common, Goblin},
+    challenge = {1}
+  ]
+  \dndline%
 
-	\monstersection{Actions}
-	\begin{monsteraction}[Multiattack]
-		The foo makes two melee attacks.
+	% Traits
+  \begin{monsteraction}[Spellcasting]
+    Foo is a 3rd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has the following sorcerer spells prepared:
+    \DndMonsterSpellLevel{blade ward, fire bolt, light, shocking grasp}
+    \DndMonsterSpellLevel[1][4]{burning hands, mage armor}
+    \DndMonsterSpellLevel[2][2]{misty step, scorching ray}
+  \end{monsteraction}
+
+  \monstersection{Actions}
+  \begin{monsteraction}[Multiattack]
+    The foo makes two melee attacks.
   \end{monsteraction}
 
   %Default values are shown commented out
-	\monsterattack[
-		%name=Dagger,
-		%enum* type={both,melee,ranged},
-		mod=+3,%mod=+0,
-		%reach=5,
-		%range=20/60,
-		%targets=one target,
-		dmg=\dice{1d4+1},%dmg=\dice{1d4},
-		%dmgtype=piercing,
-		%plusdmg=,
-		%plusdmgtype=,
-		%ordmg=,
-		%ordmgwhen=,
-		%extra=,
-	]
+  \monsterattack[
+    %name=Dagger,
+    %enum* type={both,melee,ranged},
+    mod=+3,%mod=+0,
+    %reach=5,
+    %range=20/60,
+    %targets=one target,
+    dmg=\dice{1d4+1},%dmg=\dice{1d4},
+    %dmgtype=piercing,
+    %plusdmg=,
+    %plusdmgtype=,
+    %ordmg=,
+    %ordmgwhen=,
+    %extra=,
+  ]
 
   %\monstermelee calls \monsterattack with the melee option
-	\monstermelee[
-		name=Flame Tongue Longsword,
-		mod=+3,
-		dmg=\dice{1d8},
-		dmgtype=slashing,
-		ordmg=\dice{1d10},
-		ordmgwhen=if used with two hands,
-		plusdmg=\dice{2d6},
-		plusdmgtype=fire
-	]
+  \monstermelee[
+    name=Flame Tongue Longsword,
+    mod=+3,
+    %reach=5,
+    %targets=one target,
+    dmg=\dice{1d8+1},
+    dmgtype=slashing,
+    ordmg=\dice{1d10+1},
+    ordmgwhen=if used with two hands,
+    plusdmg=\dice{2d6},
+    plusdmgtype=fire
+  ]
 
   %\monsterranged calls \monsterattack with the ranged option
-	\monsterranged[
-		name=Assassin's Light Crossbow,
-		mod=+0,
-		range=80/320,
-		dmg=\dice{1d8},
-		dmgtype=piercing,
-		extra={, and the target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one}
-	]
+  \monsterranged[
+    name=Assassin's Light Crossbow,
+    %mod=+0,
+    range=80/320,
+    dmg=\dice{1d8},
+    dmgtype=piercing,
+    extra={, and the target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one}
+  ]
 \end{monsterbox}
 
 \section{Spells}
 
 \begin{spell}
-	{Beautiful Typesetting}
-	{4th-level illusion}
-	{1 action}
-	{5 feet}
-	{S, M (ink and parchment, which the spell consumes)}
-	{Until dispelled}
-	You are able to transform a written message of any length into a beautiful scroll. All creatures within range that can see the scroll must make a wisdom saving throw or be charmed by you until the spell ends.
+  {Beautiful Typesetting}
+  {4th-level illusion}
+  {1 action}
+  {5 feet}
+  {S, M (ink and parchment, which the spell consumes)}
+  {Until dispelled}
+  You are able to transform a written message of any length into a beautiful scroll. All creatures within range that can see the scroll must make a wisdom saving throw or be charmed by you until the spell ends.
 
-	While the creature is charmed by you, they cannot take their eyes off the scroll and cannot willingly move away from the scroll. Also, the targets can make a wisdom saving throw at the end of each of their turns. On a success, they are no longer charmed.
+  While the creature is charmed by you, they cannot take their eyes off the scroll and cannot willingly move away from the scroll. Also, the targets can make a wisdom saving throw at the end of each of their turns. On a success, they are no longer charmed.
 \end{spell}
 
 \lipsum[2]
