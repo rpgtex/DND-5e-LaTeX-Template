@@ -297,10 +297,24 @@
 }
 
 \ExplSyntaxOn
+\NewDocumentCommand {\DndInnateSpellLevel} { O{At\ will} m}
+  {
+		\smallskip
+    \begin{hangingpar}
+      \IfInteger{#1}
+      {
+        #1/day
+        \str_if_in:NnTF {#2} {,} {\ each}{}
+      }
+      {#1}
+      :\ \DndEmphSpellString{#2}
+    \end{hangingpar}
+  }
+
 \NewDocumentCommand {\DndMonsterSpellLevel} { O{Cantrips} O{at\ will} m}
   {
 		\smallskip
-		\begin{hangingpar}
+    \begin{hangingpar}
     \str_case:nnTF {#1}
     {
       {1} {1st}
@@ -330,17 +344,17 @@
 
 \NewDocumentCommand {\DndEmphSpellString}{>{\SplitList{,}}m}
   {
-    \int_zero_new:N \l_spellstring_int
+	\int_zero_new:N \l_spellstring_int
 	  \tl_map_function:nN {#1} \spell_list_mapping:n
   }
 
 \cs_new:Nn \spell_list_mapping:n
   {
-    \int_compare:nNnTF
-      {\l_spellstring_int} = {0}
-      {\int_incr:N \l_spellstring_int} {,\ }
-    
-    \emph {#1}
+	\int_compare:nNnTF
+	  {\l_spellstring_int} = {0}
+	  {\int_incr:N \l_spellstring_int} {,\ }
+	
+	\emph {#1}
   }
 \ExplSyntaxOff
 

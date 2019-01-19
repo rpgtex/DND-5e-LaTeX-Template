@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Added `dndbook` document class.
 * Added keycommands to generate text for melee, ranged, and hybrid (melee or ranged) attacks within monsterboxes. Includes localization support for the various phrases used.
 * Added commands to generate titled sections for map areas and sub-areas, with associated counters and automatic reference labelling (as `area:<title>`).
+* Added commands to help generate spell lists.
 
 ### Changed
 

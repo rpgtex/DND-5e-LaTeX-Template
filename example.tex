@@ -71,6 +71,22 @@
      Some value  & Some value
 \end{dndtable}
 
+\section{Spells}
+
+\begin{spell}
+  {Beautiful Typesetting}
+  {4th-level illusion}
+  {1 action}
+  {5 feet}
+  {S, M (ink and parchment, which the spell consumes)}
+  {Until dispelled}
+  You are able to transform a written message of any length into a beautiful scroll. All creatures within range that can see the scroll must make a wisdom saving throw or be charmed by you until the spell ends.
+
+  While the creature is charmed by you, they cannot take their eyes off the scroll and cannot willingly move away from the scroll. Also, the targets can make a wisdom saving throw at the end of each of their turns. On a success, they are no longer charmed.
+\end{spell}
+
+\lipsum[2]
+
 % You can optionally not include the background by saying
 % begin{monsterboxnobg}
 \begin{monsterbox}{Monster Foo}
@@ -107,11 +123,19 @@
   \dndline%
 
 	% Traits
+	
+	\begin{monsteraction}[Innate Spellcasting]
+		Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
+    \DndInnateSpellLevel{misty step}
+    \DndInnateSpellLevel[3]{fog cloud, rope trick}
+    \DndInnateSpellLevel[1]{identify}
+  \end{monsteraction}
+  
   \begin{monsteraction}[Spellcasting]
     Foo is a 3rd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has the following sorcerer spells prepared:
     \DndMonsterSpellLevel{blade ward, fire bolt, light, shocking grasp}
     \DndMonsterSpellLevel[1][4]{burning hands, mage armor}
-    \DndMonsterSpellLevel[2][2]{misty step, scorching ray}
+    \DndMonsterSpellLevel[2][2]{scorching ray}
   \end{monsteraction}
 
   \monstersection{Actions}
@@ -160,22 +184,6 @@
     extra={, and the target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one}
   ]
 \end{monsterbox}
-
-\section{Spells}
-
-\begin{spell}
-  {Beautiful Typesetting}
-  {4th-level illusion}
-  {1 action}
-  {5 feet}
-  {S, M (ink and parchment, which the spell consumes)}
-  {Until dispelled}
-  You are able to transform a written message of any length into a beautiful scroll. All creatures within range that can see the scroll must make a wisdom saving throw or be charmed by you until the spell ends.
-
-  While the creature is charmed by you, they cannot take their eyes off the scroll and cannot willingly move away from the scroll. Also, the targets can make a wisdom saving throw at the end of each of their turns. On a success, they are no longer charmed.
-\end{spell}
-
-\lipsum[2]
 
 \section{Colors}
 
