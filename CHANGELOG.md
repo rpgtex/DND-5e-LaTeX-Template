@@ -1,4 +1,5 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
@@ -30,6 +31,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Allow `\monstersection` before sectioning command(s).
 * Removed excess space after `\dice`.
 * `monsteraction`: Only add a period to the action name if provided one.
+* Added `\xpname` to localization support.
+* Added localization to XP number
 
 ### Deprecated
 
@@ -129,7 +132,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Matched colours against published PDFs.
 * Removed numbering from section titles.
 * Set `\raggedcolumns` to flush content to top of column.
-`
+
 ## 0.1 - 2015-05-12
 
 ### Added
