@@ -303,8 +303,9 @@
     \begin{hangingpar}
       \IfInteger{#1}
       {
-        #1/day
-        \str_if_in:NnTF {#2} {,} {\ each}{}
+        \str_if_in:NnTF {#2} {,}
+        {\numberperdayeachname{#1}}
+        {\numberperdayname{#1}}
       }
       {#1}
       :\ \DndEmphSpellString{#2}
@@ -315,46 +316,46 @@
   {
     \smallskip
     \begin{hangingpar}
-    \str_case:nnTF {#1}
-    {
-      {1} {1st}
-      {2} {2nd}
-      {3} {3rd}
-      {4} {4th}
-      {5} {5th}
-      {6} {6th}
-      {7} {7th}
-      {8} {8th}
-      {9} {9th}
-    }
-    {\ level}
-    {#1}
+    \str_case:nnF {#1}
+      {
+        {1} {\spellfirstlevelname}
+        {2} {\spellsecondlevelname}
+        {3} {\spellthirdlevelname}
+        {4} {\spellfourthlevelname}
+        {5} {\spellfifthlevelname}
+        {6} {\spellsixthlevelname}
+        {7} {\spellseventhlevelname}
+        {8} {\spelleighthlevelname}
+        {9} {\spellninthlevelname}
+      }
+      {#1}
     \ (
     \str_case:nnF {#2}
-    {
-      {1} {1\ slot}
-      {2} {2\ slots}
-      {3} {3\ slots}
-      {4} {4\ slots}
-    }
-    {#2}
+      {
+        {1} {\spelloneslotname}
+        {2} {\spelltwoslotsname}
+        {3} {\spellthreeslotsname}
+        {4} {\spellfourslotsname}
+      }
+      {#2}
     ):\ \DndEmphSpellString{#3}
     \end{hangingpar}
   }
 
 \NewDocumentCommand {\DndEmphSpellString}{>{\SplitList{,}}m}
   {
-  \int_zero_new:N \l_spellstring_int
-    \tl_map_function:nN {#1} \spell_list_mapping:n
+    \int_zero_new:N \l_spellstring_int
+    \tl_map_function:nN {#1} \dnd_spell_list_mapping:n
   }
 
-\cs_new:Nn \spell_list_mapping:n
+\cs_new:Nn \dnd_spell_list_mapping:n
   {
-  \int_compare:nNnTF
-    {\l_spellstring_int} = {0}
-    {\int_incr:N \l_spellstring_int} {,\ }
-  
-  \emph {#1}
+    \int_compare:nNnTF
+      {\l_spellstring_int} = {0}
+      {\int_incr:N \l_spellstring_int}
+      {,\ }
+    
+    \emph {#1}
   }
 \ExplSyntaxOff
 
