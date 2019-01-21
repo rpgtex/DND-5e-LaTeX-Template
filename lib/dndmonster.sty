@@ -308,7 +308,7 @@
         {\numberperdayname{#1}}
       }
       {#1}
-      :\ \DndEmphSpellString{#2}
+      :~\DndEmphSpellString{#2}
     \end{hangingpar}
   }
 
@@ -329,7 +329,7 @@
         {9} {\spellninthlevelname}
       }
       {#1}
-    \ (
+    {~}(
     \str_case:nnF {#2}
       {
         {1} {\spelloneslotname}
@@ -338,7 +338,7 @@
         {4} {\spellfourslotsname}
       }
       {#2}
-    ):\ \DndEmphSpellString{#3}
+    ):~\DndEmphSpellString{#3}
     \end{hangingpar}
   }
 
@@ -353,7 +353,7 @@
     \int_compare:nNnTF
       {\l_spellstring_int} = {0}
       {\int_incr:N \l_spellstring_int}
-      {,\ }
+      {,~}
     
     \emph {#1}
   }
