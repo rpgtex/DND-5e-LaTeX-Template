@@ -1,7 +1,9 @@
+\ExplSyntaxOn % Use tilde (~) for spaces.
+
 % Define all strings as new macros instead of hardcoding them in the
 % TeX files. This then allows us to add captions for multilanguage support.
-\newcommand\armorclassname{Armor Class}
-\newcommand\hitpointsname{Hit Points}
+\newcommand\armorclassname{Armor~Class}
+\newcommand\hitpointsname{Hit~Points}
 \newcommand\speedname{Speed}
 
 \newcommand\strstatname{STR}
@@ -12,20 +14,20 @@
 \newcommand\chastatname{CHA}
 
 \newcommand\skillsname{Skills}
-\newcommand\dimmname{Damage Immunities}
-\newcommand\dvulname{Damage Vulnerabilities}
-\newcommand\dresname{Damage Resistances}
-\newcommand\cimmname{Condition Immunities}
-\newcommand\savesname{Saving Throws}
+\newcommand\dimmname{Damage~Immunities}
+\newcommand\dvulname{Damage~Vulnerabilities}
+\newcommand\dresname{Damage~Resistances}
+\newcommand\cimmname{Condition~Immunities}
+\newcommand\savesname{Saving~Throws}
 \newcommand\sensesname{Senses}
 \newcommand\languagesname{Languages}
 \newcommand\challengename{Challenge}
 \newcommand\xpname{XP}
 
 \newcommand\ftname{ft.}
-\newcommand\meleeattackname{Melee Weapon Attack}
-\newcommand\rangedattackname{Ranged Weapon Attack}
-\newcommand\meleeorrangedattackname{Melee or Ranged Weapon Attack}
+\newcommand\meleeattackname{Melee~Weapon~Attack}
+\newcommand\rangedattackname{Ranged~Weapon~Attack}
+\newcommand\meleeorrangedattackname{Melee~or~Ranged~Weapon~Attack}
 \newcommand\tohitname{to hit}
 \newcommand\reachname{reach}
 \newcommand\rangename{range}
@@ -34,27 +36,27 @@
 
 % Spell Levels
 \newcommand\spellcantripsname{Cantrips}
-\newcommand\spellfirstlevelname{1st level}
-\newcommand\spellsecondlevelname{2nd level}
-\newcommand\spellthirdlevelname{3rd level}
-\newcommand\spellfourthlevelname{4th level}
-\newcommand\spellfifthlevelname{5th level}
-\newcommand\spellsixthlevelname{6th level}
-\newcommand\spellseventhlevelname{7th level}
-\newcommand\spelleighthlevelname{8th level}
-\newcommand\spellninthlevelname{9th level}
+\newcommand\spellfirstlevelname{1st~level}
+\newcommand\spellsecondlevelname{2nd~level}
+\newcommand\spellthirdlevelname{3rd~level}
+\newcommand\spellfourthlevelname{4th~level}
+\newcommand\spellfifthlevelname{5th~level}
+\newcommand\spellsixthlevelname{6th~level}
+\newcommand\spellseventhlevelname{7th~level}
+\newcommand\spelleighthlevelname{8th~level}
+\newcommand\spellninthlevelname{9th~level}
 
 % Spell Slots
-\newcommand\spellatwillname{at will}
-\newcommand\spelloneslotname{1 slot}
-\newcommand\spelltwoslotsname{2 slots}
-\newcommand\spellthreeslotsname{3 slots}
-\newcommand\spellfourslotsname{4 slots}
+\newcommand\spellatwillname{at~will}
+\newcommand\spelloneslotname{1~slot}
+\newcommand\spelltwoslotsname{2~slots}
+\newcommand\spellthreeslotsname{3~slots}
+\newcommand\spellfourslotsname{4~slots}
 
 % Innate spellcasting
-\newcommand\innateatwillname{At will}
+\newcommand\innateatwillname{At~will}
 \newcommand\numberperdayname[1]{#1/day}
-\newcommand\numberperdayeachname[1]{#1/day each}
+\newcommand\numberperdayeachname[1]{#1/day~each}
 
 % Delay loading captions until after the user has imported a language package.
 % Enables using babel/polyglossia with the dndbook document class as well as the
@@ -62,13 +64,15 @@
 %
 % Both language packages use \AtBeginDocument. Use \AtEndPreamble (etoolbox)
 % instead to side-step load order issues.
-\AtEndPreamble{%
+\AtEndPreamble{
   % Check if either babel or polyglossia have been loaded,
   % in which case load the string captions
   \@ifpackageloaded{babel}{
-    \usepackage{lib/dndstrings-captions}
+    \RequirePackage{lib/dndstrings-captions}
   }{}
   \@ifpackageloaded{polyglossia}{
-    \usepackage{lib/dndstrings-captions}
+    \RequirePackage{lib/dndstrings-captions}
   }{}
 }
+
+\ExplSyntaxOff
