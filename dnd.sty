@@ -16,6 +16,7 @@
 \RequirePackage{colortbl}
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
+\RequirePackage{fp}
 \RequirePackage{geometry}
 \RequirePackage{hang}
 \RequirePackage{ifluatex}
@@ -27,6 +28,7 @@
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}
 \RequirePackage{xparse}
+\RequirePackage{xstring}
 
 \ifluatex
   \RequirePackage{luacolor}
@@ -141,20 +143,6 @@
 \renewcommand{\labelitemi}{\raisebox{0.25ex}{\tiny{\( \bullet \)}}}
 
 \fi % \ifpkglayout
-
-% Fancy DnD 5e stat block rule
-\newcommand{\dndline}{%
-  \noindent
-  \begin{tikzpicture}[]
-    \draw [rulered, fill=rulered] (0, 0) --(0,0.1) -- (\textwidth, 0.05);
-  \end{tikzpicture}%
-  \par%
-}
-\renewcommand{\hline}{%
-  \dnd@deprecate{redefined \noexpand\hline}{0.8}[Use \noexpand\dndline for stat block rules.]%
-  \dndline%
-}
-
 
 % Either hilariously, or infuriatingly, the \ifcommandkey
 % implementation is buggy. Here is a re-implementation

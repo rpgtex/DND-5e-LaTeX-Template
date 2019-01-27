@@ -18,6 +18,7 @@
 \newcommand\cimmname{Condition Immunities}
 \newcommand\savesname{Saving Throws}
 \newcommand\sensesname{Senses}
+\newcommand\defaultsensesname{passive Perception 10}
 \newcommand\languagesname{Languages}
 \newcommand\challengename{Challenge}
 \newcommand\xpname{XP}
@@ -26,11 +27,14 @@
 \newcommand\meleeattackname{Melee Weapon Attack}
 \newcommand\rangedattackname{Ranged Weapon Attack}
 \newcommand\meleeorrangedattackname{Melee or Ranged Weapon Attack}
+\newcommand\orname{or}
 \newcommand\tohitname{to hit}
+\newcommand\defaulttargetsname{one target}
 \newcommand\reachname{reach}
 \newcommand\rangename{range}
 \newcommand\hitname{Hit}
 \newcommand\damagename{damage}
+\newcommand\plusname{plus}
 
 % Spell Levels
 \newcommand\spellcantripsname{Cantrips}
@@ -62,13 +66,13 @@
 %
 % Both language packages use \AtBeginDocument. Use \AtEndPreamble (etoolbox)
 % instead to side-step load order issues.
-\AtEndPreamble{%
+\AtEndPreamble{
   % Check if either babel or polyglossia have been loaded,
   % in which case load the string captions
   \@ifpackageloaded{babel}{
-    \usepackage{lib/dndstrings-captions}
+    \RequirePackage{lib/dndstrings-captions}
   }{}
   \@ifpackageloaded{polyglossia}{
-    \usepackage{lib/dndstrings-captions}
+    \RequirePackage{lib/dndstrings-captions}
   }{}
 }

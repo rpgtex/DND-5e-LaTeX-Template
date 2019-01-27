@@ -86,103 +86,103 @@
 
 \lipsum[2]
 
-% You can optionally not include the background by saying
-% begin{monsterboxnobg}
-\begin{monsterbox}{Monster Foo}
-  \begin{hangingpar}
-    \textit{Medium metasyntactic variable (goblinoid), neutral evil}
-  \end{hangingpar}
-  \dndline%
-  \basics[%
-  armorclass = 9 (12 with \emph{mage armor}),
-  hitpoints  = \dice{3d8 + 3},
-  speed      = {30 ft., fly 30 ft.},
-  ]
-  \dndline%
-  \stats[
-    STR = \stat{12}, % This stat command will autocomplete the modifier for you
-    DEX = \stat{8},
-    CON = \stat{13},
-    INT = \stat{10},
-    WIS = \stat{14},
-    CHA = \stat{15},
-  ]
-  \dndline%
-  \details[% If you want to use commas in these sections, enclose the description in braces.
-    %savingthrows = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
-    %skills = {Acrobatics +0, Animal Handling +0, Arcana +0, Athletics +0, Deception +0, History +0, Insight +0, Intimidation +0, Investigation +0, Medicine +0, Nature +0, Perception +0, Performance +0, Persuasion +0, Religion +0, Sleight of Hand +0, Stealth +0, Survival +0},
-    %damagevulnerabilities = {},
-    %damageresistances = {},
-    %damageimmunities = {},
-    %conditionimmunities = {},
-    senses = {darkvision 60 ft., passive Perception 10},
-    languages = {Common, Goblin},
-    challenge = {1}
-  ]
-  \dndline%
+% Monster stat block
+\begin{DndMonster}{Monster Foo}
+  \DndMonsterType{Medium metasyntactic variable (goblinoid), neutral evil}
 
+  % If you want to use commas in the key values, enclose the values in braces.
+  \DndMonsterBasics[
+      armor-class = {9 (12 with \emph{mage armor})},
+      hit-points  = {\DndDice{3d8 + 3}},
+      speed       = {30 ft., fly 30 ft.},
+    ]
+
+  \DndMonsterAbilityScores[
+      str = 12,
+      dex = 8,
+      con = 13,
+      int = 10,
+      wis = 14,
+      cha = 15,
+    ]
+    
+  \DndMonsterDetails[
+      %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+      %skills = {Acrobatics +0, Animal Handling +0, Arcana +0, Athletics +0, Deception +0, History +0, Insight +0, Intimidation +0, Investigation +0, Medicine +0, Nature +0, Perception +0, Performance +0, Persuasion +0, Religion +0, Sleight of Hand +0, Stealth +0, Survival +0},
+      %damage-vulnerabilities = {cold},
+      %damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
+      %damage-immunities = {poison},
+      %condition-immunities = {poisoned},
+      senses = {darkvision 60 ft., passive Perception 10},
+      languages = {Common, Goblin},
+      challenge = 1,
+    ]
 	% Traits
-	
-	\begin{monsteraction}[Innate Spellcasting]
+	\begin{DndMonsterAction} {Innate Spellcasting}
 		Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
     \DndInnateSpellLevel{misty step}
     \DndInnateSpellLevel[3]{fog cloud, rope trick}
     \DndInnateSpellLevel[1]{identify}
-  \end{monsteraction}
+  \end{DndMonsterAction}
   
-  \begin{monsteraction}[Spellcasting]
+  \begin{DndMonsterAction} {Spellcasting}
     Foo is a 3rd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has the following sorcerer spells prepared:
     \DndMonsterSpellLevel{blade ward, fire bolt, light, shocking grasp}
     \DndMonsterSpellLevel[1][4]{burning hands, mage armor}
     \DndMonsterSpellLevel[2][2]{scorching ray}
-  \end{monsteraction}
+  \end{DndMonsterAction}
 
-  \monstersection{Actions}
-  \begin{monsteraction}[Multiattack]
+  \DndMonsterSection{Actions}
+  \begin{DndMonsterAction} {Multiattack}
     The foo makes two melee attacks.
-  \end{monsteraction}
+  \end{DndMonsterAction}
 
   %Default values are shown commented out
-  \monsterattack[
+  \DndMonsterAttack[
     %name=Dagger,
     %enum* type={both,melee,ranged},
     mod=+3,%mod=+0,
     %reach=5,
     %range=20/60,
     %targets=one target,
-    dmg=\dice{1d4+1},%dmg=\dice{1d4},
-    %dmgtype=piercing,
-    %plusdmg=,
-    %plusdmgtype=,
-    %ordmg=,
-    %ordmgwhen=,
+    dmg=\DndDice{1d4+1},%dmg=\dice{1d4},
+    %dmg-type=piercing,
+    %plus-dmg=,
+    %plus-dmg-type=,
+    %or-dmg=,
+    %or-dmg-when=,
     %extra=,
   ]
 
-  %\monstermelee calls \monsterattack with the melee option
-  \monstermelee[
+  %\DndMonsterMelee calls \DndMonsterAttack with the melee option
+  \DndMonsterMelee[
     name=Flame Tongue Longsword,
     mod=+3,
     %reach=5,
     %targets=one target,
-    dmg=\dice{1d8+1},
-    dmgtype=slashing,
-    ordmg=\dice{1d10+1},
-    ordmgwhen=if used with two hands,
-    plusdmg=\dice{2d6},
-    plusdmgtype=fire
+    dmg=\DndDice{1d8+1},
+    dmg-type=slashing,
+    plus-dmg=\DndDice{2d6},
+    plus-dmg-type=fire,
+    or-dmg=\DndDice{1d10+1},
+    or-dmg-when=if used with two hands,
+    %extra=,
   ]
 
-  %\monsterranged calls \monsterattack with the ranged option
-  \monsterranged[
+  %\DndMonsterRanged calls \DndMonsterAttack with the ranged option
+  \DndMonsterRanged[
     name=Assassin's Light Crossbow,
     %mod=+0,
     range=80/320,
-    dmg=\dice{1d8},
-    dmgtype=piercing,
+    dmg=\DndDice{1d8},
+    dmg-type=piercing,
+    %plus-dmg=,
+    %plus-dmg-type=,
+    %or-dmg=,
+    %or-dmg-when=,
     extra={, and the target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one}
   ]
-\end{monsterbox}
+\end{DndMonster}
 
 \section{Colors}
 
@@ -190,6 +190,7 @@ This package provides several global color variables to style \lstinline!comment
 
 \begin{dndtable}[lX]
   \textbf{Color}         & \textbf{Description} \\
+  
   \lstinline!commentboxcolor! & Controls \lstinline!commentbox! background. \\
   \lstinline!paperboxcolor!   & Controls \lstinline!paperbox! background. \\
   \lstinline!quoteboxcolor!   & Controls \lstinline!quotebox! background. \\
