@@ -351,11 +351,11 @@
     \end{hangingpar}
   }
 
-\NewDocumentCommand {\DndMonsterSpellLevel} { O{\spellcantripsname} O{\spellatwillname} m}
+\NewDocumentCommand {\DndMonsterSpellLevel} { O{\spellcantripsname} O{\spellatwillname} m }
   {
     \smallskip
     \begin{hangingpar}
-    \str_case:nnF {#1}
+    \str_case_e:nnF {#1}
       {
         { 1 } { \spellfirstlevelname }
         { 2 } { \spellsecondlevelname }
@@ -369,7 +369,7 @@
       }
       { #1 }
     {~}(
-    \str_case:nnF {#2}
+    \str_case_e:nnF {#2}
       {
         { 1 } { \spelloneslotname }
         { 2 } { \spelltwoslotsname }
@@ -381,7 +381,7 @@
     \end{hangingpar}
   }
 
-\NewDocumentCommand {\DndEmphSpellString}{>{\SplitList{,}}m}
+\NewDocumentCommand {\DndEmphSpellString} { >{\SplitList{,}}m }
   {
     \int_zero_new:N \l_spellstring_int
     \tl_map_function:nN {#1} \__dnd_spell_list_mapping:n
@@ -500,7 +500,7 @@
 %% Monster CR/XP helper
 \cs_new_protected_nopar:Npn \__dnd_cr_xp:N #1
   {
-    \str_case_e:nnF {#1}
+    \str_case_e:nnF { #1 }
       {
         { 0 }   { #1~(0~\xpname) }
         { 1/10 }{ 0~(10~\xpname) }
