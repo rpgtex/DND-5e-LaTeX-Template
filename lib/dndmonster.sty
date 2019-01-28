@@ -117,7 +117,7 @@
 \NewDocumentCommand { \DndMonsterLine } {}
   {
     \begin{tikzpicture}
-      \draw [ rulered, fill=rulered ] (0, 0) -- (0,0.1) -- (\textwidth, 0.05);
+      \draw [ rulered, fill=rulered ] (0, 0) -- (0,0.1) -- (\linewidth, 0.05);
     \end{tikzpicture}
     \par
   }
@@ -331,7 +331,7 @@
       % line spacing. Use \hrule (a vertical command) instead.
       \vspace{3pt}
       \hrule height 0.6pt
-      \vspace{3pt}
+      \vspace{3pt plus 3 pt}
     \group_end:
   }
 
@@ -540,6 +540,18 @@
       }
       { #1 }
 }
+
+\NewDocumentCommand { \DndMonsterLegendaryAction } { m m }
+  {
+    \smallskip
+    \begin{hangingpar}
+      \textbf{#1.}~#2
+    \end{hangingpar}
+  }
+
+\NewDocumentEnvironment { DndMonsterDescription } {}
+  { \bigskip\noindent\ignorespaces }
+  {}
 
 % Deprecated
 \NewDocumentCommand { \dice } { m }

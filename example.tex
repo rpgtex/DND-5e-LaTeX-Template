@@ -70,6 +70,116 @@
      Some value  & Some value
 \end{dndtable}
 
+% Monster stat block
+\begin{DndMonster}[float*=t, width=\textwidth]{Monster Foo}
+  \begin{multicols}{2}
+    \DndMonsterType{Medium aberration (metasyntactic variable), neutral evil}
+
+    % If you want to use commas in the key values, enclose the values in braces.
+    \DndMonsterBasics[
+        armor-class = {9 (12 with \emph{mage armor})},
+        hit-points  = {\DndDice{3d8 + 3}},
+        speed       = {30 ft., fly 30 ft.},
+      ]
+
+    \DndMonsterAbilityScores[
+        str = 12,
+        dex = 8,
+        con = 13,
+        int = 10,
+        wis = 14,
+        cha = 15,
+      ]
+      
+    \DndMonsterDetails[
+        %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+        %skills = {Acrobatics +0, Animal Handling +0, Arcana +0, Athletics +0, Deception +0, History +0, Insight +0, Intimidation +0, Investigation +0, Medicine +0, Nature +0, Perception +0, Performance +0, Persuasion +0, Religion +0, Sleight of Hand +0, Stealth +0, Survival +0},
+        %damage-vulnerabilities = {cold},
+        %damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
+        %damage-immunities = {poison},
+        %condition-immunities = {poisoned},
+        senses = {darkvision 60 ft., passive Perception 10},
+        languages = {Common, Goblin, Undercommon},
+        challenge = 1,
+      ]
+    % Traits
+    \begin{DndMonsterAction} {Innate Spellcasting}
+      Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
+      \DndInnateSpellLevel{misty step}
+      \DndInnateSpellLevel[3]{fog cloud, rope trick}
+      \DndInnateSpellLevel[1]{identify}
+    \end{DndMonsterAction}
+    
+    \begin{DndMonsterAction} {Spellcasting}
+      Foo is a 2nd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has the following sorcerer spells prepared:
+      \DndMonsterSpellLevel{blade ward, fire bolt, light, shocking grasp}
+      \DndMonsterSpellLevel[1][3]{burning hands, mage armor, shield}
+    \end{DndMonsterAction}
+
+    \DndMonsterSection{Actions}
+    \begin{DndMonsterAction} {Multiattack}
+      The foo makes two melee attacks.
+    \end{DndMonsterAction}
+
+    %Default values are shown commented out
+    \DndMonsterAttack[
+      %name=Dagger,
+      %enum* type={both,melee,ranged},
+      mod=+3,%mod=+0,
+      %reach=5,
+      %range=20/60,
+      %targets=one target,
+      dmg=\DndDice{1d4+1},%dmg=\dice{1d4},
+      %dmg-type=piercing,
+      %plus-dmg=,
+      %plus-dmg-type=,
+      %or-dmg=,
+      %or-dmg-when=,
+      %extra=,
+    ]
+
+    %\DndMonsterMelee calls \DndMonsterAttack with the melee option
+    \DndMonsterMelee[
+      name=Flame Tongue Longsword,
+      mod=+3,
+      %reach=5,
+      %targets=one target,
+      dmg=\DndDice{1d8+1},
+      dmg-type=slashing,
+      plus-dmg=\DndDice{2d6},
+      plus-dmg-type=fire,
+      or-dmg=\DndDice{1d10+1},
+      or-dmg-when=if used with two hands,
+      %extra=,
+    ]
+
+    %\DndMonsterRanged calls \DndMonsterAttack with the ranged option
+    \DndMonsterRanged[
+      name=Assassin's Light Crossbow,
+      %mod=+0,
+      range=80/320,
+      dmg=\DndDice{1d8},
+      dmg-type=piercing,
+      %plus-dmg=,
+      %plus-dmg-type=,
+      %or-dmg=,
+      %or-dmg-when=,
+      extra={, and the target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one}
+    ]
+    
+    % Legendary Actions
+    \DndMonsterSection{Legendary Actions}
+    The foo can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The foo regains spent legendary actions at the start of its turn.
+    \DndMonsterLegendaryAction{Move}{The foo moves up to his speed.}
+    \DndMonsterLegendaryAction{Attack}{The foo makes a melee attack.}
+    \DndMonsterLegendaryAction{Create Contract (Costs 3 Actions)}{The foo presents a contract in a language it knows and waves it in the face of a creature within 10 feet. The creatue must make a DC 10 Intelligence saving throw. On a failure, the creature is incapacitated until the start of the foo's next turn. A creature who cannot read the contract's language has advantage on this saving throw.}
+
+    \begin{DndMonsterDescription}
+      \textbf{Foos} accumulate great wealth and magic, holding on to it through their speed and excessively complicated contracts.
+    \end{DndMonsterDescription}
+  \end{multicols}
+\end{DndMonster}
+
 \section{Spells}
 
 \begin{spell}
@@ -83,106 +193,6 @@
 
   While the creature is charmed by you, they cannot take their eyes off the scroll and cannot willingly move away from the scroll. Also, the targets can make a wisdom saving throw at the end of each of their turns. On a success, they are no longer charmed.
 \end{spell}
-
-\lipsum[2]
-
-% Monster stat block
-\begin{DndMonster}{Monster Foo}
-  \DndMonsterType{Medium metasyntactic variable (goblinoid), neutral evil}
-
-  % If you want to use commas in the key values, enclose the values in braces.
-  \DndMonsterBasics[
-      armor-class = {9 (12 with \emph{mage armor})},
-      hit-points  = {\DndDice{3d8 + 3}},
-      speed       = {30 ft., fly 30 ft.},
-    ]
-
-  \DndMonsterAbilityScores[
-      str = 12,
-      dex = 8,
-      con = 13,
-      int = 10,
-      wis = 14,
-      cha = 15,
-    ]
-    
-  \DndMonsterDetails[
-      %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
-      %skills = {Acrobatics +0, Animal Handling +0, Arcana +0, Athletics +0, Deception +0, History +0, Insight +0, Intimidation +0, Investigation +0, Medicine +0, Nature +0, Perception +0, Performance +0, Persuasion +0, Religion +0, Sleight of Hand +0, Stealth +0, Survival +0},
-      %damage-vulnerabilities = {cold},
-      %damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
-      %damage-immunities = {poison},
-      %condition-immunities = {poisoned},
-      senses = {darkvision 60 ft., passive Perception 10},
-      languages = {Common, Goblin},
-      challenge = 1,
-    ]
-	% Traits
-	\begin{DndMonsterAction} {Innate Spellcasting}
-		Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
-    \DndInnateSpellLevel{misty step}
-    \DndInnateSpellLevel[3]{fog cloud, rope trick}
-    \DndInnateSpellLevel[1]{identify}
-  \end{DndMonsterAction}
-  
-  \begin{DndMonsterAction} {Spellcasting}
-    Foo is a 3rd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has the following sorcerer spells prepared:
-    \DndMonsterSpellLevel{blade ward, fire bolt, light, shocking grasp}
-    \DndMonsterSpellLevel[1][4]{burning hands, mage armor}
-    \DndMonsterSpellLevel[2][2]{scorching ray}
-  \end{DndMonsterAction}
-
-  \DndMonsterSection{Actions}
-  \begin{DndMonsterAction} {Multiattack}
-    The foo makes two melee attacks.
-  \end{DndMonsterAction}
-
-  %Default values are shown commented out
-  \DndMonsterAttack[
-    %name=Dagger,
-    %enum* type={both,melee,ranged},
-    mod=+3,%mod=+0,
-    %reach=5,
-    %range=20/60,
-    %targets=one target,
-    dmg=\DndDice{1d4+1},%dmg=\dice{1d4},
-    %dmg-type=piercing,
-    %plus-dmg=,
-    %plus-dmg-type=,
-    %or-dmg=,
-    %or-dmg-when=,
-    %extra=,
-  ]
-
-  %\DndMonsterMelee calls \DndMonsterAttack with the melee option
-  \DndMonsterMelee[
-    name=Flame Tongue Longsword,
-    mod=+3,
-    %reach=5,
-    %targets=one target,
-    dmg=\DndDice{1d8+1},
-    dmg-type=slashing,
-    plus-dmg=\DndDice{2d6},
-    plus-dmg-type=fire,
-    or-dmg=\DndDice{1d10+1},
-    or-dmg-when=if used with two hands,
-    %extra=,
-  ]
-
-  %\DndMonsterRanged calls \DndMonsterAttack with the ranged option
-  \DndMonsterRanged[
-    name=Assassin's Light Crossbow,
-    %mod=+0,
-    range=80/320,
-    dmg=\DndDice{1d8},
-    dmg-type=piercing,
-    %plus-dmg=,
-    %plus-dmg-type=,
-    %or-dmg=,
-    %or-dmg-when=,
-    extra={, and the target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one}
-  ]
-\end{DndMonster}
 
 \section{Colors}
 
