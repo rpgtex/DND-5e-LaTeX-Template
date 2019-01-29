@@ -1,0 +1,43 @@
+\ifpkglayout
+
+\RequirePackage{fancyhdr} 			  % Adaptation of the footers
+
+% Setup for custom footer
+\pagestyle{fancy}
+
+\renewcommand{\headrulewidth}{0.0pt} %no rule for header
+\renewcommand{\footrulewidth}{0.0pt} %no rule for footer
+
+\fancyhf{} % clear all headers and footers
+
+\fancyhead{
+	\iftoggle{bool-bg}{
+		\begin{tikzpicture}[remember picture,overlay]
+			\node[inner sep=0pt] at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight]{img/paper}};
+		\end{tikzpicture}
+	}{}
+}
+
+\fancyfoot[LE]{
+		\begin{tikzpicture}[remember picture,overlay]
+			\iftoggle{bool-footer-scroll}{%
+				\node[xscale=-1,inner sep=0pt,anchor=south,nearly opaque] at (current page.south) {\includegraphics[width=\paperwidth,height=43pt]{img/footerscroll}};
+			}{}
+			\node[xshift=20pt,yshift=30pt] at (current page.south west) {\dnd@PageNumberFont\textcolor{pagegold}{\thepage}};
+			\node[anchor=base west, xshift=\marginparwidth+\marginparpush, yshift=33pt] at (current page.south west) {\dnd@FooterFont{\textcolor{pagegold}{\nouppercase\leftmark}}};
+		\end{tikzpicture}
+}
+
+\fancyfoot[RO]{
+		\begin{tikzpicture}[remember picture,overlay]
+			\iftoggle{bool-footer-scroll}{%
+				\node[inner sep=0pt,anchor=south,nearly opaque] at (current page.south) {\includegraphics[width=\paperwidth,height=43pt]{img/footerscroll}};
+			}{}
+			\node[xshift=-20pt,yshift=30pt] at (current page.south east) {\dnd@PageNumberFont\textcolor{pagegold}{\thepage}};
+			\node[anchor=base east, xshift=-\marginparwidth-\marginparpush, yshift=33pt] at (current page.south east) {\dnd@FooterFont{\textcolor{pagegold}{\nouppercase\leftmark}}};
+		\end{tikzpicture}
+}
+
+\fancypagestyle{plain}{}
+
+\fi % \ifpkglayout

@@ -2,7 +2,7 @@
 % rather than alternate every other.
 %
 % Note that the article class does not have chapters.
-\documentclass[10pt,twoside,twocolumn,openany]{book}
+\documentclass[letterpaper,10pt,twoside,twocolumn,openany]{dndbook}
 
 % Use babel or polyglossia to automatically redefine macros for terms
 % Armor Class, Level, etc...
@@ -14,13 +14,18 @@
 %	\usepackage{polyglossia}
 %	\setdefaultlanguage{<lang>}
 \usepackage[english]{babel}
-%usepackage[italian]{babel}
+%\usepackage[italian]{babel}
 % For further options (multilanguage documents, hypenations, language environments...)
 % please refer to babel/polyglossia's documentation.
 
 \usepackage[utf8]{inputenc}
 \usepackage{lipsum}
-\usepackage[bg-letter]{dnd} % Options: bg-a4, bg-letter, bg-full, bg-print, bg-none, justified
+\usepackage{listings}
+
+\lstset{%
+  basicstyle=\ttfamily,
+  language=[LaTeX]{TeX},
+}
 
 % Start document
 \begin{document}
@@ -31,27 +36,27 @@
 \chapter{Chapter 1: The Dark \LaTeX}
 
 \section{Main Section}
-\lipsum[1] % filler text
+\lipsum[2] % filler text
+
+\begin{quotebox}
+  As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
+\end{quotebox}
 
 \subsection{Fun with boxes}
 \subsubsection{Even more fun!}
 
-\lipsum[1-2]
-
-\begin{commentbox}{Neat Green Box!}
-	\lipsum[1-2]
+\begin{commentbox}{This Is a Comment Box!}
+  A \lstinline!commentbox! is a box for minimal highlighting of text. It lacks the ornamentation of \lstinline!paperbox!, but it can handle being broken over a column.
 \end{commentbox}
 
 \subtitlesection{Weapon, +1, +2, or +3}
 {Weapon (any), uncommon (+1), rare (+2), or very rare (+3)}
 
-\lipsum[2]
+\lipsum[3]
 
-\begin{quotebox}
-	As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
-
-	\lipsum[2]
-\end{quotebox}
+\begin{paperbox}[float=!t]{Behold, the Paperbox!}
+  The \lstinline!paperbox! is used as a sidebar. It does not break over columns and is best used with a figure environment to float it to one corner of the page where the surrounding text can then flow around it.
+\end{paperbox}
 
 % For more columns, you can say \begin{dndtable}[your options here].
 % For instance, if you wanted three columns, you could say
@@ -59,67 +64,280 @@
 % available as well.
 \header{Nice table}
 \begin{dndtable}
-   	\textbf{Table head}  & \textbf{Table head} \\
-   	Some value  & Some value \\
-   	Some value  & Some value \\
-   	Some value  & Some value
+     \textbf{Table head}  & \textbf{Table head} \\
+     Some value  & Some value \\
+     Some value  & Some value \\
+     Some value  & Some value
 \end{dndtable}
-
-\begin{paperbox}{Do the Players need direction?}
-	\lipsum[1]
-\end{paperbox}
-
-% You can optionally not include the background by saying
-% begin{monsterboxnobg}
-\begin{monsterbox}{Monster Foo}
-	\textit{Small metasyntactic variable (goblinoid), neutral evil}\\
-	\hline
-	\basics[%
-	armorclass = 12,
-	hitpoints  = \dice{3d8 + 3},
-	speed      = 50 ft
-	]
-	\hline
-	\stats[
-    STR = \stat{12}, % This stat command will autocomplete the modifier for you
-    DEX = \stat{7}
-	]
-	\hline
-	\details[%
-	% If you want to use commas in these sections, enclose the
-	% description in braces.
-	% I'm so sorry.
-	languages = {Common Lisp, Erlang},
-	]
-	\hline \\[1mm]
-	\begin{monsteraction}[Monster-super-powers]
-		This Monster has some serious superpowers!
-	\end{monsteraction}
-	\monstersection{Actions}
-	\begin{monsteraction}[Generate text]
-		This one can generate tremendous amounts of text! Though only when it wants to.
-	\end{monsteraction}
-
-	\begin{monsteraction}[More actions]
-    See, here he goes again! Yet more text.
-	\end{monsteraction}
-\end{monsterbox}
 
 \section{Spells}
 
 \begin{spell}
-	{Beautiful Typesetting}
-	{4th-level illusion}
-	{1 action}
-	{5 feet}
-	{S, M (ink and parchment, which the spell consumes)}
-	{Until dispelled}
-	You are able to transform a written message of any length into a beautiful scroll. All creatures within range that can see the scroll must make a wisdom saving throw or be charmed by you until the spell ends.
+  {Beautiful Typesetting}
+  {4th-level illusion}
+  {1 action}
+  {5 feet}
+  {S, M (ink and parchment, which the spell consumes)}
+  {Until dispelled}
+  You are able to transform a written message of any length into a beautiful scroll. All creatures within range that can see the scroll must make a wisdom saving throw or be charmed by you until the spell ends.
 
-	While the creature is charmed by you, they cannot take their eyes off the scroll and cannot willingly move away from the scroll. Also, the targets can make a wisdom saving throw at the end of each of their turns. On a success, they are no longer charmed.
+  While the creature is charmed by you, they cannot take their eyes off the scroll and cannot willingly move away from the scroll. Also, the targets can make a wisdom saving throw at the end of each of their turns. On a success, they are no longer charmed.
 \end{spell}
 
-\lipsum[1-2]
+\lipsum[2]
+
+% You can optionally not include the background by saying
+% begin{monsterboxnobg}
+\begin{monsterbox}{Monster Foo}
+  \begin{hangingpar}
+    \textit{Medium metasyntactic variable (goblinoid), neutral evil}
+  \end{hangingpar}
+  \dndline%
+  \basics[%
+  armorclass = 9 (12 with \emph{mage armor}),
+  hitpoints  = \dice{3d8 + 3},
+  speed      = {30 ft., fly 30 ft.},
+  ]
+  \dndline%
+  \stats[
+    STR = \stat{12}, % This stat command will autocomplete the modifier for you
+    DEX = \stat{8},
+    CON = \stat{13},
+    INT = \stat{10},
+    WIS = \stat{14},
+    CHA = \stat{15},
+  ]
+  \dndline%
+  \details[% If you want to use commas in these sections, enclose the description in braces.
+    %savingthrows = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+    %skills = {Acrobatics +0, Animal Handling +0, Arcana +0, Athletics +0, Deception +0, History +0, Insight +0, Intimidation +0, Investigation +0, Medicine +0, Nature +0, Perception +0, Performance +0, Persuasion +0, Religion +0, Sleight of Hand +0, Stealth +0, Survival +0},
+    %damagevulnerabilities = {},
+    %damageresistances = {},
+    %damageimmunities = {},
+    %conditionimmunities = {},
+    senses = {darkvision 60 ft., passive Perception 10},
+    languages = {Common, Goblin},
+    challenge = {1},
+  ]
+  \dndline%
+
+	% Traits
+	
+	\begin{monsteraction}[Innate Spellcasting]
+		Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
+    \DndInnateSpellLevel{misty step}
+    \DndInnateSpellLevel[3]{fog cloud, rope trick}
+    \DndInnateSpellLevel[1]{identify}
+  \end{monsteraction}
+  
+  \begin{monsteraction}[Spellcasting]
+    Foo is a 3rd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has the following sorcerer spells prepared:
+    \DndMonsterSpellLevel{blade ward, fire bolt, light, shocking grasp}
+    \DndMonsterSpellLevel[1][4]{burning hands, mage armor}
+    \DndMonsterSpellLevel[2][2]{scorching ray}
+  \end{monsteraction}
+
+  \monstersection{Actions}
+  \begin{monsteraction}[Multiattack]
+    The foo makes two melee attacks.
+  \end{monsteraction}
+
+  %Default values are shown commented out
+  \monsterattack[
+    %name=Dagger,
+    %enum* type={both,melee,ranged},
+    mod=+3,%mod=+0,
+    %reach=5,
+    %range=20/60,
+    %targets=one target,
+    dmg=\dice{1d4+1},%dmg=\dice{1d4},
+    %dmgtype=piercing,
+    %plusdmg=,
+    %plusdmgtype=,
+    %ordmg=,
+    %ordmgwhen=,
+    %extra=,
+  ]
+
+  %\monstermelee calls \monsterattack with the melee option
+  \monstermelee[
+    name=Flame Tongue Longsword,
+    mod=+3,
+    %reach=5,
+    %targets=one target,
+    dmg=\dice{1d8+1},
+    dmgtype=slashing,
+    ordmg=\dice{1d10+1},
+    ordmgwhen=if used with two hands,
+    plusdmg=\dice{2d6},
+    plusdmgtype=fire
+  ]
+
+  %\monsterranged calls \monsterattack with the ranged option
+  \monsterranged[
+    name=Assassin's Light Crossbow,
+    %mod=+0,
+    range=80/320,
+    dmg=\dice{1d8},
+    dmgtype=piercing,
+    extra={, and the target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one}
+  ]
+\end{monsterbox}
+
+\section{Colors}
+
+This package provides several global color variables to style \lstinline!commentbox!, \lstinline!quotebox!, \lstinline!paperbox!, and \lstinline!dndtable! environments.
+
+\begin{dndtable}[lX]
+  \textbf{Color}         & \textbf{Description} \\
+  \lstinline!commentboxcolor! & Controls \lstinline!commentbox! background. \\
+  \lstinline!paperboxcolor!   & Controls \lstinline!paperbox! background. \\
+  \lstinline!quoteboxcolor!   & Controls \lstinline!quotebox! background. \\
+  \lstinline!tablecolor!      & Controls background of even \lstinline!dndtable! rows. \\
+\end{dndtable}
+
+See Table~\ref{tab:colors} for a list of accent colors that match the core books.
+
+\begin{table*}
+  \begin{dndtable}[XX]
+    \textbf{Color}                            & \textbf{Description} \\
+    \lstinline!PhbLightGreen!                      & Light green used in PHB Part 1 \\
+    \lstinline!PhbLightCyan!                       & Light cyan used in PHB Part 2 \\
+    \lstinline!PhbMauve!                           & Pale purple used in PHB Part 3 \\
+    \lstinline!PhbTan!                             & Light brown used in PHB appendix \\
+    \lstinline!DmgLavender!                        & Pale purple used in DMG Part 1 \\
+    \lstinline!DmgCoral!                           & Orange-pink used in DMG Part 2 \\
+    \lstinline!DmgSlateGray! (\lstinline!DmgSlateGrey!) & Blue-gray used in PHB Part 3 \\
+    \lstinline!DmgLilac!                           & Purple-gray used in DMG appendix \\
+  \end{dndtable}
+  \caption{Colors supported by this package}%
+  \label{tab:colors}
+\end{table*}
+
+\begin{itemize}
+  \item Use \lstinline!\setthemecolor[<color>]! to set \lstinline!themecolor!, \lstinline!commentcolor!, \lstinline!paperboxcolor!, and \lstinline!tablecolor! to a specific color.
+  \item Calling \lstinline!\setthemecolor! without an argument sets those colors to the current \lstinline!themecolor!.
+  \item \lstinline!commentbox!, \lstinline!dndtable!, \lstinline!paperbox!, and \lstinline!quoteboxcolor! also accept an optional color argument to set the color for a single instance.
+\end{itemize}
+
+\subsection{Examples}
+
+\subsubsection{Using \lstinline!themecolor!}
+
+\begin{lstlisting}
+\setthemecolor[PhbMauve]
+
+\begin{paperbox}{Example}
+  \lipsum[2]
+\end{paperbox}
+
+\setthemecolor[PhbLightCyan]
+
+\header{Example}
+\begin{dndtable}[cX]
+  \textbf{d8} & \textbf{Item} \\
+  1           & Small wooden button \\
+  2           & Red feather \\
+  3           & Human tooth \\
+  4           & Vial of green liquid \\
+  6           & Tasty biscuit \\
+  7           & Broken axe handle \\
+  8           & Tarnished silver locket \\
+\end{dndtable}
+\end{lstlisting}
+
+\begingroup
+\setthemecolor[PhbMauve]
+
+\begin{paperbox}{Example}
+  \lipsum[2]
+\end{paperbox}
+
+\setthemecolor[PhbLightCyan]
+
+\header{Example}
+\begin{dndtable}[cX]
+  \textbf{d8} & \textbf{Item} \\
+  1           & Small wooden button \\
+  2           & Red feather \\
+  3           & Human tooth \\
+  4           & Vial of green liquid \\
+  6           & Tasty biscuit \\
+  7           & Broken axe handle \\
+  8           & Tarnished silver locket \\
+\end{dndtable}
+\endgroup
+
+\subsubsection{Using element color arguments}
+\begin{lstlisting}
+\begin{dndtable}[cX][DmgCoral]
+  \textbf{d8} & \textbf{Item} \\
+  1           & Small wooden button \\
+  2           & Red feather \\
+  3           & Human tooth \\
+  4           & Vial of green liquid \\
+  6           & Tasty biscuit \\
+  7           & Broken axe handle \\
+  8           & Tarnished silver locket \\
+\end{dndtable}
+\end{lstlisting}
+
+\begin{dndtable}[cX][DmgCoral]
+  \textbf{d8} & \textbf{Item} \\
+  1           & Small wooden button \\
+  2           & Red feather \\
+  3           & Human tooth \\
+  4           & Vial of green liquid \\
+  6           & Tasty biscuit \\
+  7           & Broken axe handle \\
+  8           & Tarnished silver locket \\
+\end{dndtable}
+
+\section{Map Regions}
+The map region commands provide automatic numbering of areas.
+
+\noindent\begin{minipage}{\linewidth}
+\begin{lstlisting}
+\area{Village of Hommlet}
+This is the village of hommlet.
+
+\subarea{Inn of the Welcome Wench}
+Inside the village is the inn of the
+Welcome Wench.
+
+\subarea{Blacksmith's Forge}
+There's a blacksmith in town, too.
+
+\area{Foo's Castle}
+This is foo's home, a hovel of mud and
+sticks.
+
+\subarea{Moat}
+This ditch has a board spanning it.
+
+\subarea{Entrance}
+A five-foot hole reveals the dirt floor
+illuminated by a hole in the roof.
+\end{lstlisting}
+\end{minipage}
+
+\area{Village of Hommlet}
+This is the village of hommlet.
+
+\subarea{Inn of the Welcome Wench}
+Inside the village is the inn of the Welcome Wench.
+
+\subarea{Blacksmith's Forge}
+There's a blacksmith in town, too.
+
+\area{Foo's Castle}
+This is foo's home, a hovel of mud and sticks.
+
+\subarea{Moat}
+This ditch has a board spanning it.
+
+\subarea{Entrance}
+A five-foot hole reveals the dirt floor illuminated by a hole in the roof.
 
 % End document
 \end{document}

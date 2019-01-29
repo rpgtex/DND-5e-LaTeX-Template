@@ -1,65 +1,228 @@
 # D&D 5e LaTeX Template
 
-This is an attempt at a D&D 5e LaTeX template. The color scheme is close to the original source books, as are the fonts. The fonts chosen are included by default in TeX Live.
+[![Latest release](https://img.shields.io/github/release/evanbergeron/DND-5e-LaTeX-Template/all.svg)](https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/latest)
+[![Build Status](https://travis-ci.org/evanbergeron/DND-5e-LaTeX-Template.svg?branch=master)](https://travis-ci.org/evanbergeron/DND-5e-LaTeX-Template)
 
-The template compiles with pdflatex.
+This is a LaTeX template for typesetting documents in the style of the *Dungeons & Dragons* 5th Edition (D&D 5e) books.
 
-![Preview](https://github.com/evanbergeron/DND-5e-LaTeX-Template/raw/master/scrot.png)
+## Features
 
+* Color schemes and fonts are close to the core books.
+* TeX Live includes the default fonts.
+* Compiles with `pdflatex`.
 
-### Installation
+![Preview](scrot.jpg)
 
-Just clone the repo. From terminal:
+## Installation
+
+There are three options for using this project; choose the one that's
+right for you.
+
+### Using Overleaf
+
+[Overleaf](https://overleaf.com) is an online TeX editor -- think
+about it like Google Docs for TeX documents.  This option does not
+require a local TeX installation and is an ideal approach for one-off
+projects.
+
+1. Download this GitHub repository as a ZIP archive using the *Clone
+   or download* link above.
+2. On Overleaf, click the *New Project* button and select *Upload
+   Project*.  Upload the ZIP archive you downloaded from this
+   repository.
+
+### User install using `TEXMFHOME` (recommended)
+
+This will install the template for your current user in one of the following locations:
+
+* Linux: `~/.texmf/tex/latex`
+* OS X / macOS: `~/Library/texmf/tex/latex`
+* Windows: `C:\Users\{username}\texmf\tex\latex`
+
+LaTeX will find the package automatically.
+
+1. Prepare your `TEXMFHOME` directory.
+
+    ```sh
+    mkdir "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
+    ```
+2. Download the [latest release](https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/latest) and extract it in `$TEXMFHOME/tex/latex/`.
+
+    ```sh
+    wget https://github.com/evanbergeron/DND-5e-LaTeX-Template/archive/v0.6.0.zip
+    unzip -d "$(kpsewhich -var-value TEXMFHOME)/tex/latex/" v0.6.0.zip
+    cd "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
+    mv DND-5e-LaTeX-Template-0.6.0 dnd
+    ```
+
+    Alternatively, clone the repo to the same location:
+
+    ```sh
+    git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git "$(kpsewhich -var-value TEXMFHOME)/tex/latex/dnd"
+    ```
+
+### Project install using `TEXINPUTS`
+
+You can also clone a copy of the repository to each LaTeX project. For example, to clone the repository to a `lib/` directory in your project:
 
 ```sh
-$ git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git 5e-template
-$ cd 5e-template
-$ pdflatex example.tex
+mkdir lib/
+git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git lib/dnd
 ```
 
-If you don't have LaTeX installed, the following should help you out:
-#### Ubuntu
+LaTeX will not find the template automatically. Set `TEXINPUTS` when compiling your project to locate the package:
+
+```sh
+TEXINPUTS=./lib//: pdflatex project.tex
+```
+
+## Usage
+
+### Class (recommended)
+
+Load the `dndbook` class in your preamble:
+
+```tex
+\documentclass[10pt,twoside,twocolumn,openany]{dndbook}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+% ...
+```
+
+### Package
+
+You can also load the `dnd` package directly to use it with another class.
+Note that the package has only been tested with the `book` class.
+
+```tex
+\documentclass[10pt,twoside,twocolumn,openany]{book}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage[layout=true]{dnd}
+
+\begin{document}
+% ...
+```
+
+### Options
+
+| Option         | Package `dnd`   | Class `dndbook`   |
+| -------------- | :-------------: | :---------------: |
+| `bg`           | ✓               | ✓                 |
+| `justified`    | ✓               | ✓                 |
+| `layout`       | ✓               |                   |
+| `nomultitoc`   | ✓               | ✓                 |
+
+
+The `dndbook` class also supports all the options of the `book` class.
+
+#### `bg`
+
+Declare how to load background and footer images. This is a key-value option with the following possible values:
+
+* `full`: Load both background and footer images. (**default**)
+* `none`: Removes both background and footer images.
+* `print`: Loads only the footer images.
+
+#### `justified`
+
+Justify column copy.
+
+#### `layout`
+
+Controls whether loading the `dnd` package also modifies the document layout (geometry, colors, typography, etc.).
+This is a boolean option with the following possible values:
+
+* `true`: Modify the document layout.
+* `false`: Do not modify the document layout.
+
+The default value is `true` for backwards compatibility with early releases.
+This will change in a future release.
+
+#### `nomultitoc`
+
+Disable multi-column table of contents.
+
+## Dependencies
+
+If you don't have LaTeX installed, we recommend installing a complete TeX Live distribution. https://www.tug.org/texlive/
+
+### Ubuntu
+
 ```sh
 sudo apt-get install texlive-full
 ```
-#### Arch
+
+### Arch
+
 ```sh
 sudo pacman -S texlive-bin texlive-core texlive-latexextra
 ```
-It's a bit unclear exactly what subset of features this module needs. As a general rule, we'd recommend installing one of larger ones.
 
-### Package Options
-- bg-letter: Loads a letter-sized background-image
-- bg-a4: Loads an A4-sized background-image
-- bg-print: Loads a printer-friendly background-image (only decal at the bottom)
-- bg-full: Loads the full background-image
+## Known issues and solutions
 
-Per default "bg-letter" and "bg-full" are loaded.
+### Stat block text color does not survive page breaks
 
-### Todo's
+This is a known issue in `tcolorbox`. According to the `tcolorbox` 4.12 manual (p. 363):
 
- - Consider implementing more complex tables for monsters, etc.
- - Clean up the table-preset
- - Create more elegant solution for spacing before and after boxes (using \vspace is rather rigid when two boxes follow in a row)
- - Add subtitle option for boxes
- - Sort out box-decals when boxes break column or page
- - Look into adding the ability to add large images to the document. There are some documents made with InDesign out there that accomplish this quite well.
+> If your text content contains some text color changing commands, your color will not survive the break to the next box.
 
+You can use LuaTeX to compile the document.
 
-### Image Credit
+```sh
+lualatex main.tex
+```
 
- - Credit for the background image goes to http://lostandtaken.com/
+### Wrapping `monsterbox` in float disrupts spacing inside stat block
 
-### Version
-0.5
+Wrapping a `monsterbox` (or `monsterboxnobg`) in a floating figure adds extra space between stat block elements:
 
-### License
-The MIT License (MIT)
+```latex
+\begin{figure}[b]
+  \begin{monsterbox}{Orc Warden}
+    % ...
+  \end{monsterbox}
+\end{figure}
+```
 
-Copyright (c) 2016 Evan Bergeron
+Instead, use the `tcolorbox` `float` parameter:
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+```latex
+\begin{monsterbox}[float=b]{Orc Warden}
+  % ...
+\end{monsterbox}
+```
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+Refer to the `tcolorbox` documentation (section 4.13) for more float parameters.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+## Contributing
+
+### Preparing a new release
+
+1. Run `./bin/bump-version` to tag the new version.
+
+    ```sh
+    ./bin/bumpversion <version>
+    ```
+2. Compile the example PDF.
+3. Save the first page of the PDF as scrot.jpg.
+4. Update the change log for the new release; commit your changes.
+5. Push changes.
+
+    ```sh
+    git push && git push --tags
+    ```
+6. [Create a new release](https://help.github.com/articles/creating-releases/) and attach the PDF and scrot.
+
+## Credits
+
+* Background image from [Lost and Taken](https://lostandtaken.com/)
+
+## License
+
+MIT

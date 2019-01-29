@@ -1,0 +1,52 @@
+% Define colors, sampled from the books.
+\RequirePackage{color}
+
+% Page
+\definecolor{bgtan}{HTML}{F7F2E5}		  % background and quotebox
+\definecolor{pagegold}{HTML}{B89A67}  % pagenumbers and footer
+
+% Type
+\definecolor{titlered}{HTML}{58180D}	% titles
+\definecolor{titlegold}{HTML}{C9AD6A} % titlerules
+\definecolor{rulered}{HTML}{9C2B1B}		% triangular rule in statsblock
+
+% Trim (affects tables and paperboxes)
+\definecolor{PhbLightGreen}{HTML}{E0E5C1} % PHB Part 1
+\definecolor{PhbLightCyan}{HTML}{B5CEB8}  % PHB Part 2
+\definecolor{PhbMauve}{HTML}{DCCCC5}      % PHB Part 3
+\definecolor{PhbTan}{HTML}{E5D5AC}        % PHB appendix
+\definecolor{DmgLavender}{HTML}{E3CED3}   % DMG Part 1
+\definecolor{DmgCoral}{HTML}{F3D7C1}      % DMG Part 2
+\definecolor{DmgSlateGray}{HTML}{DBE4E4}  % DMG Part 3
+\definecolor{DmgLilac}{HTML}{D7D4D6}      % DMG appendix
+
+% Trim aliases
+\colorlet{DmgSlateGrey}{DmgSlateGray}
+
+% The color used in \setthemecolor when a new color is not set
+\colorlet{themecolor}{PhbLightGreen}    % Set the default theme to Part 1 of the PHB.
+
+% Element colors that change when \setthemecolor is used
+\colorlet{commentboxcolor}{themecolor}  % commentbox background
+\colorlet{paperboxcolor}{themecolor}    % paperbox background
+\colorlet{tablecolor}{themecolor}       % table even row background
+
+% Element colors that do not respond to \setthemecolor
+\colorlet{quoteboxcolor}{bgtan}             % quotebox background
+\definecolor{statblockribbon}{HTML}{E69A28} % stat block top/bottom borders (gold)
+\definecolor{statblockbg}{HTML}{FDF1DC}     % stat block background (tan)
+
+% Sets the themecolor and colors for all themed elements
+% If called without the optional color, resets the color of all themed elements to the current themecolor
+\newcommand{\setthemecolor}[1][themecolor]{%
+  \colorlet{themecolor}{#1}
+  \colorlet{commentboxcolor}{#1}
+  \colorlet{paperboxcolor}{#1}
+  \colorlet{tablecolor}{#1}
+}
+
+% Backwards-compatible aliases and colours
+\colorlet{commentgreen}{PhbLightGreen}
+\colorlet{itemtablepink}{DmgCoral}
+\colorlet{monstertan}{statblockbg}
+\definecolor{monstertandark}{HTML}{F0DBB5}

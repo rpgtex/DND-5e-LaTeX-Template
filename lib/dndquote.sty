@@ -1,5 +1,11 @@
-\newtcolorbox{quotebox}[1][]{%
-    before upper={\nottoggle{justified}{\RaggedRight}},
+%Usage \begin{quotebox}[options][color]
+\DeclareTColorBox{quotebox}{O{} O{quoteboxcolor}}{%
+	before upper={%
+		\ifpkglayout%
+			\nottoggle{justified}{\RaggedRight}%
+		\fi%
+	},
+	code={\linespread{1.25}},
 	enhanced jigsaw,
 	frame hidden,
 	boxrule=0pt,
@@ -9,16 +15,16 @@
 	boxsep=0.25ex,
 	left=8pt,
 	right=8pt,
-	colback=bgtan,
-	colframe=bgtan,
-	arc=0mm,
+	colback={#2},
+	sharp corners,
 	parbox=false,
 	borderline west={1pt}{-0.5pt}{titlered},
 	borderline east={1pt}{-0.5pt}{titlered},
-	fontupper = \fontfamily{lmss}\selectfont,
+	fontupper=\dnd@BoxBodyFont,
+	fontlower=\dnd@BoxBodyFont,
 	overlay={%
-		\foreach \n in {north east,north west,south east,south west}
-		{\draw [titlered, fill=titlered] (frame.\n) circle (2pt); }; },
+		\foreach\n in {north east,north west,south east,south west}
+		{\draw[titlered, fill=titlered] (frame.\n) circle (2pt); }; },
 	after={\vspace{7.5pt plus 1pt}\noindent},
 	#1
 }
