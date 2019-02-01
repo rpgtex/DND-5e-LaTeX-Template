@@ -322,10 +322,13 @@
   \end{monsteraction}
 }
 
+\newcommand{\DndSpellSection}{%
+  \medskip%
+}
+
 \ExplSyntaxOn
-\NewDocumentCommand {\DndInnateSpellLevel} { O{\innateatwillname} m}
+\NewDocumentCommand {\DndInnateSpells} { O{\innateatwillname} m}
   {
-    \smallskip
     \begin{hangingpar}
       \IfInteger{#1}
       {
@@ -334,13 +337,12 @@
         {\numberperdayname{#1}}
       }
       {#1}
-      :~\DndEmphSpellString{#2}
+      :~\DndEmphSpellString{#2}{\clist_count:n {#2}}
     \end{hangingpar}
   }
 
 \NewDocumentCommand {\DndMonsterSpellLevel} { O{\spellcantripsname} O{\spellatwillname} m }
   {
-    \smallskip
     \begin{hangingpar}
     \str_case_e:nnF {#1}
       {
@@ -364,24 +366,25 @@
         {4} {\spellfourslotsname}
       }
       {#2}
-    ):~\DndEmphSpellString{#3}
+    ):~\DndEmphSpellString{#3}{\clist_count:n {#3}}
     \end{hangingpar}
   }
 
-\NewDocumentCommand {\DndEmphSpellString} { >{\SplitList{,}}m }
+\NewDocumentCommand {\DndEmphSpellString} { >{\SplitList{,}}m m}
   {
     \int_zero_new:N \l_spellstring_int
+    \int_zero_new:N \l_numitems_int
+    \int_set:Nn \l_numitems_int { #2 }
     \tl_map_function:nN {#1} \dnd_spell_list_mapping:n
   }
 
 \cs_new:Nn \dnd_spell_list_mapping:n
   {
+    \int_incr:N \l_spellstring_int
     \int_compare:nNnTF
-      {\l_spellstring_int} = {0}
-      {\int_incr:N \l_spellstring_int}
-      {,~}
-    
-    \emph {#1}
+      {\l_spellstring_int} = {\l_numitems_int}
+      {\emph {#1}}
+      {\emph {#1},~}
   }
 
 \NewDocumentCommand {\DndCRExp} { m }
