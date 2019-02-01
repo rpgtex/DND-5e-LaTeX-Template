@@ -195,8 +195,16 @@
 \newcommand{\dnd@hit}[1]{%
   \commandkey{#1}\ \tohitname%
 }
-\newcommand{\dnd@damage}[2]{%
-  \commandkey{#1}\ \commandkey{#2}\ \damagename%
+\newcommand{\dnd@meleeattack}[2]{%
+  \dnd@hit{#1}, \reachname\ \commandkey{#2} \ftname%
+}
+\newcommand{\dnd@rangedattack}[3]{%
+  \dnd@hit{#1}, \rangename\ \commandkey{#2} \ftname\ifcommandkey{#3}{ %
+  (\commandkey{#3})%
+  }{}%
+}
+\newcommand{\dnd@meleeorrangedattack}[3]{%
+  \dnd@hit{#1}, \reachname\ \commandkey{#2} \ftname\ or \rangename\ \commandkey{#3} \ftname%
 }
 
 \newcommand{\dnd@ifplusdmg}[2]{%
@@ -204,9 +212,18 @@
     { }plus \commandkey{#1}\ \commandkey{#2}\ \damagename%
   }{}%
 }
-\newcommand{\dnd@ifordmg}[5]{%
+\newcommand{\dnd@damage}[9]{%
   \ifcommandkey{#1}{%
-    , or \commandkey{#1}\ \commandkey{#2}\ \damagename\dnd@ifplusdmg{#4}{#5}\ \commandkey{#3}%
+    { }\commandkey{#1}\ \commandkey{#2}\ \damagename \ifcommandkey{#3}{{ }\commandkey{#3}}{}%
+    \ifcommandkey{#4}{%
+      , or \commandkey{#4}\ \ifcommandkey{#5}{%
+        \commandkey{#5}%
+      }{\commandkey{#2}%
+      } \damagename\ \commandkey{#6}\ifcommandkey{#7}{,}{}%
+    }{}\dnd@ifplusdmg{#7}{#8}%
+    \ifcommandkey{#9}{%
+      , \commandkey{#9}%
+    }{.}%
   }{}%
 }
 
@@ -225,7 +242,7 @@
   ]{%
   |\monsterattack|[
     name={\commandkey{name}},
-    type=melee,
+    type=meleeweapon,
     mod={\commandkey{mod}},
     reach={\commandkey{reach}},
     targets={\commandkey{targets}},
@@ -253,7 +270,7 @@
   ]{%
   |\monsterattack|[
     name={\commandkey{name}},
-    type=ranged,
+    type=rangedweapon,
     mod={\commandkey{mod}},
     range={\commandkey{range}},
     targets={\commandkey{targets}},
@@ -269,30 +286,39 @@
 
 \newkeycommand\monsterattack[
     name=Dagger,
-    enum* type={both,melee,ranged},
+    enum* type={meleeorrangedweapon,meleeweapon,rangedweapon,meleeorrangedspell,meleespell,rangedspell},
     mod=+0,
     reach=5,
     range=20/60,
+    minrange=,
     targets=one target,
-    dmg=\dice{1d4},
-    dmgtype=piercing,
+    dmg=,
+    dmgtype=,
+    dmgwhen=,
     plusdmg=,
     plusdmgtype=,
     ordmg=,
+    ordmgtype=,
     ordmgwhen=,
+    hiteffect=,
     extra=,
+    miss=,
+    hitormiss=,
   ]{%
   \begin{monsteraction}[\commandkey{name}]
     \IfStrEqCase{\commandkey{type}}{%
-      {melee}{\textit{\meleeattackname:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \ftname}%
-      {ranged}{\textit{\rangedattackname:} \dnd@hit{mod}, \rangename\ \commandkey{range} \ftname}%
-      {both}{\textit{\meleeorrangedattackname:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \ftname or \rangename\ \commandkey{range} \ftname}%
+      {meleeweapon}{\textit{\meleeweaponattackname:} \dnd@meleeattack{mod}{reach}}%
+      {rangedweapon}{\textit{\rangedweaponattackname:} \dnd@rangedattack{mod}{range}{minrange}}%
+      {meleespell}{\textit{\meleespellattackname:} \dnd@meleeattack{mod}{reach}}%
+      {rangedspell}{\textit{\rangedspellattackname:} \dnd@rangedattack{mod}{range}{minrange}}%
+      {meleeorrangedweapon}{\textit{\meleeorrangedweaponattackname:} \dnd@meleeorrangedattack{mod}{reach}{range}}%
+      {meleeorrangedspell}{\textit{\meleeorrangedspellattackname:} \dnd@meleeorrangedattack{mod}{reach}{range}}%
     }[]%
     , \commandkey{targets}.
-    \textit{\hitname:} \dnd@damage{dmg}{dmgtype}%
-    \dnd@ifplusdmg{plusdmg}{plusdmgtype}%
-    \dnd@ifordmg{ordmg}{dmgtype}{ordmgwhen}{plusdmg}{plusdmgtype}%
-    \ifcommandkey{extra}{\commandkey{extra}}{}.
+    \textit{\hitname:}\dnd@damage{dmg}{dmgtype}{dmgwhen}{ordmg}{ordmgtype}{ordmgwhen}{plusdmg}{plusdmgtype}{hiteffect}%
+    \ifcommandkey{miss}{{ }\textit{\missname:} \commandkey{miss}}{}%
+    \ifcommandkey{hitormiss}{{ }\textit{\hitormissname:} \commandkey{hitormiss}}{}%
+    \ifcommandkey{extra}{{ }\commandkey{extra}}{}%
   \end{monsteraction}
 }
 
