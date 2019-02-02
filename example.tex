@@ -123,14 +123,15 @@
 
     %Default values are shown commented out
     \DndMonsterAttack[
-      %name=Dagger,
-      %enum* type={both,melee,ranged},
-      mod=+3,%mod=+0,
+      name=Dagger,
+      %distance=both, % valid options are in the set {both,melee,ranged},
+      %type=weapon, %valid options are in the set {weapon,spell}
+      mod=+3,
       %reach=5,
       %range=20/60,
       %targets=one target,
-      dmg=\DndDice{1d4+1},%dmg=\dice{1d4},
-      %dmg-type=piercing,
+      dmg=\DndDice{1d4+1},
+      dmg-type=piercing,
       %plus-dmg=,
       %plus-dmg-type=,
       %or-dmg=,
