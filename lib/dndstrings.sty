@@ -1,5 +1,20 @@
 \ExplSyntaxOn % Use tilde (~) for spaces.
 
+% \addto\captions<language> cannot handle macros with parameters
+% We need to make our own parameters
+%\str_const:Nn \c__dnd_p1_str { |1| } % parameter 1
+
+\cs_new_protected:Npn \__dnd_caption:nn #1#2
+  {
+    \group_begin:
+      \str_set:Nx \l_tmpa_str { #1 }
+      \str_set:Nx \l_tmpb_str { #2 }
+      %\str_replace_all:Nnn \l_tmpa_str { \c__dnd_p1_str } { #2 }
+      \exp_args:NNnx \str_replace_all:Nnn \l_tmpa_str { |1| } { #2 }
+      \str_use:N \l_tmpa_str
+    \group_end:
+  }
+
 % Define all strings as new macros instead of hardcoding them in the
 % TeX files. This then allows us to add captions for multilanguage support.
 \newcommand\armorclassname{Armor~Class}
@@ -28,9 +43,9 @@
 \newcommand\ftname{ft.}
 \newcommand\weaponname{Weapon}
 \newcommand\spellname{Spell}
-\newcommand\meleeattackname[1]{Melee~#1~Attack}
-\newcommand\rangedattackname[1]{Ranged~#1~Attack}
-\newcommand\meleeorrangedattackname[1]{Melee~or~Ranged~#1~Attack}
+\newcommand\meleeattackname{Melee~|1|~Attack}
+\newcommand\rangedattackname{Ranged~|1|~Attack}
+\newcommand\meleeorrangedattackname{Melee~or~Ranged~|1|~Attack}
 \newcommand\orname{or}
 \newcommand\tohitname{to~hit}
 \newcommand\defaulttargetsname{one~target}
@@ -61,8 +76,8 @@
 
 % Innate spellcasting
 \newcommand\innateatwillname{At~will}
-\newcommand\numberperdayname[1]{#1/day}
-\newcommand\numberperdayeachname[1]{#1/day~each}
+\newcommand\numberperdayname{|1|/day}
+\newcommand\numberperdayeachname{|1|/day~each}
 
 % Delay loading captions until after the user has imported a language package.
 % Enables using babel/polyglossia with the dndbook document class as well as the

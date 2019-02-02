@@ -1,5 +1,11 @@
 \ExplSyntaxOn
 
+% Font environment
+\newenvironment{lmss}{%
+  \dnd@deprecate{lmss}{0.7}
+  \fontfamily{lmss}\selectfont
+  }{}
+
 %% dndmonster.sty
 \NewDocumentCommand { \dice } { m }
   {

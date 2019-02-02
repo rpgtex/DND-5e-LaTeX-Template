@@ -1,8 +1,8 @@
 \ExplSyntaxOn
 
-% Dice macro
-\regex_new:N \l__valid_dice_regex
-\regex_set:Nn \l__valid_dice_regex { \A\s*(\d+)(?:[dD](\d+)\s*(?:([+-])\s*(\d+))?)?\s*\Z } % Matches { # | #d# | #d# + # | #d# - # } while ignoring spaces
+%% Dice macro
+% Matches { # | #d# | #d# + # | #d# - # } while ignoring spaces
+\regex_const:Nn \c__valid_dice_regex { \A\s*(\d+)(?:[dD](\d+)\s*(?:([+-])\s*(\d+))?)?\s*\Z } 
 \seq_new:N \l__dice_args_seq
 \tl_new:N \l__dice_number_tl
 \tl_new:N \l__dice_sides_tl
@@ -13,7 +13,7 @@
 \NewDocumentCommand { \DndDice } { m }
   {
     \group_begin:
-      \regex_extract_once:NnNTF { \l__valid_dice_regex } { #1 } \l__dice_args_seq
+      \regex_extract_once:NnNTF { \c__valid_dice_regex } { #1 } \l__dice_args_seq
         {          
           \seq_pop_left:NN \l__dice_args_seq \l_tmpa_str % Don't need the full match
           \seq_pop_left:NN \l__dice_args_seq \l__dice_number_tl % # of dice
@@ -154,7 +154,7 @@
     armor-class .value_required:n  = true,
     armorclass .meta:n = { armor-class = { #1 } },
     hit-points .tl_set:N         = \l__hit_points_tl,
-    hit-points .initial:n        = \dice{1d4},
+    hit-points .initial:n        = \DndDice{1d8},
     hit-points .value_required:n = true,
     hitpoints .meta:n = { hit-points = { #1 } },
     speed .tl_set:N         = \l__speed_tl,
@@ -238,8 +238,6 @@
 }
 
 %% Ability scores
-\int_new:N \l__ability_modifier_int
-
 % Print ability score stats with autocomputed modifier
 % e.g. \stat{12} prints "12 (+1)"
 \cs_new_protected_nopar:Npn \__dnd_ability_score_modifier:N #1
@@ -247,13 +245,13 @@
     \group_begin:
       \IfInteger { #1 }
         {
-          \int_set:Nn \l__ability_modifier_int { \fp_eval:n { floor ( (#1 - 10) / 2) } }
+          \int_set:Nn \l_tmpa_int { \fp_eval:n { floor ( (#1 - 10) / 2) } }
           
           #1 ~ (
-          \int_compare:nNnTF { \l__ability_modifier_int } < { 0 }
+          \int_compare:nNnTF { \l_tmpa_int } < { 0 }
           { \(-\) }
           { + }
-          \int_abs:n \l__ability_modifier_int )
+          \int_abs:n \l_tmpa_int )
         }
         { #1 }
     \group_end:
@@ -361,8 +359,8 @@
       \IfInteger { #1 }
       {
         \str_if_in:NnTF { #2 } { , }
-        { \numberperdayeachname{ #1 } }
-        { \numberperdayname { #1 } }
+        { \__dnd_caption:nn { \numberperdayeachname } { #1 } }
+        { \__dnd_caption:nn { \numberperdayname } { #1 } }
       }
       {#1}
       :~\DndEmphSpellString { #2 }
@@ -453,7 +451,7 @@
 
 \cs_new_protected:Npn \__dnd_monster_reach:
   {
-    \reachname\ \l__reach_tl ~ \ftname
+    \reachname\ \l__reach_tl\ \ftname
   }
 
 \cs_new_protected:Npn \__dnd_monster_range:
@@ -469,23 +467,35 @@
 
 \cs_new_protected_nopar:Npn \__dnd_if_or_dmg:
   {
-    \tl_if_empty:NF { \l__plus_dmg_tl }
-    { , ~ \orname\ \l__or_dmg_tl\ \l__dmg_type_tl\ \damagename\__dnd_if_plus_dmg:\ \l__or_dmg_when_tl }
+    \tl_if_empty:NF { \l__or_dmg_tl }
+    {
+      , ~ \orname\ \l__or_dmg_tl\ \l__dmg_type_tl\ \damagename\ \l__or_dmg_when_tl
+      
+      \tl_if_empty:NF { \l__plus_dmg_tl }
+        { , }
+    }
   }
 
 \cs_new_protected:Npn \__dnd_monster_attack:
-  {
+  {    
+    \__dnd_check_for_key:Nnn \l__name_tl { \DndMonsterAttack } { name }
+    \__dnd_check_for_key:Nnn \l__mod_tl { \DndMonsterAttack } { mod }
+
     \begin{DndMonsterAction} { \l__name_tl }~
       
       \str_case_e:nnF { \l__dnd_attack_distance_tl }
         {
           { melee }
-            { \textit{ \meleeattackname { \l__dnd_attack_type_tl } : } ~ \__dnd_monster_to_hit:, ~ \__dnd_monster_reach: }
+            {
+              \textit{ \__dnd_caption:nn { \meleeattackname } { \l__dnd_attack_type_tl } : } ~ \__dnd_monster_to_hit:, ~ \__dnd_monster_reach:
+            }
           { ranged }
-            { \textit{ \rangedattackname { \l__dnd_attack_type_tl } : } ~ \__dnd_monster_to_hit:, ~ \__dnd_monster_range: }
+            {
+              \textit{ \__dnd_caption:nn { \rangedattackname } { \l__dnd_attack_type_tl } : } ~ \__dnd_monster_to_hit:, ~ \__dnd_monster_range:
+            }
         }
         {% Melee and Ranged is the default
-          \textit{ \meleeorrangedattackname { \l__dnd_attack_type_tl } : } ~ \__dnd_monster_to_hit:, ~ \__dnd_monster_reach:\ \orname\ \__dnd_monster_range:
+          \textit{ \__dnd_caption:nn { \meleeorrangedattackname } { \l__dnd_attack_type_tl } : } ~ \__dnd_monster_to_hit:, ~ \__dnd_monster_reach:\ \orname\ \__dnd_monster_range:
         }
       , ~ \l__targets_tl. ~
       \textit { \hitname : } ~ 
@@ -493,8 +503,8 @@
       \str_if_empty:NF {\l__dmg_tl} % Don't show any damage if `dmg' is not set.
         {
           \l__dmg_tl\ \l__dmg_type_tl\ \damagename
-          \__dnd_if_plus_dmg:
           \__dnd_if_or_dmg:
+          \__dnd_if_plus_dmg:
         }
 
       % `extra' is any special text that goes after the final damage; do not

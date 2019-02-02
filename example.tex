@@ -157,7 +157,7 @@
     %\DndMonsterRanged calls \DndMonsterAttack with the ranged option
     \DndMonsterRanged[
       name=Assassin's Light Crossbow,
-      %mod=+0,
+      mod=+1,
       range=80/320,
       dmg=\DndDice{1d8},
       dmg-type=piercing,
@@ -173,7 +173,7 @@
     The foo can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The foo regains spent legendary actions at the start of its turn.
     \DndMonsterLegendaryAction{Move}{The foo moves up to his speed.}
     \DndMonsterLegendaryAction{Attack}{The foo makes a melee attack.}
-    \DndMonsterLegendaryAction{Create Contract (Costs 3 Actions)}{The foo presents a contract in a language it knows and waves it in the face of a creature within 10 feet. The creatue must make a DC 10 Intelligence saving throw. On a failure, the creature is incapacitated until the start of the foo's next turn. A creature who cannot read the contract's language has advantage on this saving throw.}
+    \DndMonsterLegendaryAction{Create Contract (Costs 3 Actions)}{The foo presents a contract in a language it knows and waves it in the face of a creature within 10 feet. The creature must make a DC 10 Intelligence saving throw. On a failure, the creature is incapacitated until the start of the foo's next turn. A creature who cannot read the contract's language has advantage on this saving throw.}
 
     \begin{DndMonsterDescription}
       \textbf{Foos} accumulate great wealth and magic, holding on to it through their speed and excessively complicated contracts.
@@ -208,8 +208,6 @@ This package provides several global color variables to style \lstinline!comment
   \lstinline!tablecolor!      & Controls background of even \lstinline!dndtable! rows. \\
 \end{dndtable}
 
-See Table~\ref{tab:colors} for a list of accent colors that match the core books.
-
 \begin{table*}
   \begin{dndtable}[XX]
     \textbf{Color}                            & \textbf{Description} \\
@@ -225,6 +223,8 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
   \caption{Colors supported by this package}%
   \label{tab:colors}
 \end{table*}
+
+See Table~\ref{tab:colors} for a list of accent colors that match the core books.
 
 \begin{itemize}
   \item Use \lstinline!\setthemecolor[<color>]! to set \lstinline!themecolor!, \lstinline!commentcolor!, \lstinline!paperboxcolor!, and \lstinline!tablecolor! to a specific color.

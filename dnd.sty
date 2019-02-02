@@ -15,18 +15,18 @@
 \RequirePackage{colortbl}
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
-\RequirePackage{geometry}
-\RequirePackage{hang}
+\RequirePackage{gensymb} % degree symbol for italian ordinals
+\RequirePackage{geometry} %page dimensions
+\RequirePackage{hang} % hanging paragraphs
 \RequirePackage{ifluatex}
 \RequirePackage{keycommand}
-\RequirePackage[autolanguage]{numprint}
-\RequirePackage{tabularx}
-\RequirePackage[breakable,skins,xparse]{tcolorbox}
-\RequirePackage{tikz}
+\RequirePackage[autolanguage]{numprint} % localization of thousands separator
+\RequirePackage{tabularx} % variable-width table columns
+\RequirePackage[breakable,skins,xparse]{tcolorbox} % styled text boxes
+\RequirePackage{tikz} % drawing ornaments and lines
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}
-\RequirePackage{xparse}
-\RequirePackage{xstring}
+\RequirePackage{xparse} % \NewDocumentCommand and expl3
 
 \ifluatex
   \RequirePackage{luacolor}
@@ -158,17 +158,11 @@
       }
    }
 
-
-% Font environment
-\newenvironment{lmss}{%
-  \dnd@deprecate{lmss}{0.7}
-  \fontfamily{lmss}\selectfont
-  }{}
-
-
 % Load other modules of this package after all dependencies to avoid load order
 % conflicts (e.g., package options).
 \RequirePackage{lib/compat}       % compatibility definitions
+\RequirePackage{lib/dndutility}   % utility functions
+\RequirePackage{lib/dndstrings}   % Load document strings
 \RequirePackage{lib/dndcolors}    % color definitions
 \RequirePackage{lib/dndfonts}     % font definitions
 \RequirePackage{lib/dndcomment}   % \commentbox definition
@@ -178,6 +172,5 @@
 \RequirePackage{lib/dndquote}     % \quotebox definition
 \RequirePackage{lib/dndsections}  % section styling
 \RequirePackage{lib/dndspell}     % \spell definition
-\RequirePackage{lib/dndstrings}   % Load document strings
 \RequirePackage{lib/dndtable}     % \dndtable definition
 \RequirePackage{lib/dndobsolete}  % deprecated macros

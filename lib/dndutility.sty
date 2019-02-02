@@ -1,0 +1,19 @@
+\ExplSyntaxOn
+
+% Some keys are required for proper execution of macros.
+\msg_new:nnn { dnd } { key_required } { #1~requires~key~``#2''~to~be~set. }
+
+% #1 - key value
+% #2 - macro name
+% #3 - key name
+\cs_new_protected:Npn \__dnd_check_for_key:Nnn #1#2#3
+  {
+    \group_begin:
+      \str_set:Nx \l_tmpa_str { #1 }
+
+      \str_if_empty:NT { \l_tmpa_str }
+        { \msg_error:nnnn { dnd } { key_required } { #2 } { #3 } }
+    \group_end:
+  }
+
+\ExplSyntaxOff
