@@ -2,14 +2,13 @@
 
 % \addto\captions<language> cannot handle macros with parameters
 % We need to make our own parameters
-%\str_const:Nn \c__dnd_p1_str { |1| } % parameter 1
+% |1| represents parameter 1
 
 \cs_new_protected:Npn \__dnd_caption:nn #1#2
   {
     \group_begin:
       \str_set:Nx \l_tmpa_str { #1 }
       \str_set:Nx \l_tmpb_str { #2 }
-      %\str_replace_all:Nnn \l_tmpa_str { \c__dnd_p1_str } { #2 }
       \exp_args:NNnx \str_replace_all:Nnn \l_tmpa_str { |1| } { #2 }
       \str_use:N \l_tmpa_str
     \group_end:

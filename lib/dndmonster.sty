@@ -129,8 +129,8 @@
 \dim_set:Nn \l__dnd_space_dim { \box_wd:N \l__dnd_space_box }
 
 % A description variant used to list creature attributes.
-\newlist { dnd@monsterattrs } { description } { 1 }
-\setlist [ dnd@monsterattrs ]
+\newlist { __dnd_monster_attributes } { description } { 1 }
+\setlist [ __dnd_monster_attributes ]
   {
     before   = \color{ titlered },
     font     = \dnd@StatBlockBodyFont\textbf,
@@ -164,11 +164,11 @@
 
 \cs_new_protected_nopar:Npn \__dnd_monster_basics:
   {
-      \begin{dnd@monsterattrs}
+      \begin { __dnd_monster_attributes }
         \item [ \armorclassname ] \l__armor_class_tl
         \item [ \hitpointsname ] \l__hit_points_tl
         \item [ \speedname ] \l__speed_tl
-      \end{dnd@monsterattrs}
+      \end { __dnd_monster_attributes }
   }
 
 \NewDocumentCommand {\DndMonsterBasics} { o }
@@ -214,7 +214,7 @@
 
 \cs_new_protected_nopar:Npn \__dnd_monster_details:
 {
-    \begin{dnd@monsterattrs}
+    \begin { __dnd_monster_attributes }
       \__dnd_if_monster_attribute:nn { \l__saving_throws_tl } { \savesname }
       \__dnd_if_monster_attribute:nn { \l__skills_tl } { \skillsname }
       \__dnd_if_monster_attribute:nn { \l__damage_vulnerabilities_tl } { \dvulname }
@@ -224,7 +224,7 @@
       \item [ \sensesname ] \l__senses_tl
       \item [ \languagesname ] \l__languages_tl
       \item [ \challengename ] \__dnd_cr_xp:N { \l__challenge_tl }
-    \end{dnd@monsterattrs}
+    \end { __dnd_monster_attributes }
 }
 
 \NewDocumentCommand {\DndMonsterDetails} { o }
@@ -339,6 +339,15 @@
   }
   
 % Spellcasting levels
+\newlist { DndMonsterSpells } { description } { 1 }
+\setlist [ DndMonsterSpells ]
+  {
+    before   = { \medskip },
+    font     = \normalfont\dnd@StatBlockBodyFont,
+    labelsep = \l__dnd_space_dim,
+    noitemsep,
+    nosep,
+  }
 
 \NewDocumentCommand {\DndEmphSpellString} { m }
   {
@@ -351,53 +360,49 @@
 
 \NewDocumentCommand { \DndInnateSpellLevel } { O { \innateatwillname } m }
   {
-    \iftoggle { bool-bg }
-      {}
-      { \smallskip }
-
-    \begin{hangingpar}
-      \IfInteger { #1 }
-      {
-        \str_if_in:NnTF { #2 } { , }
-        { \__dnd_caption:nn { \numberperdayeachname } { #1 } }
-        { \__dnd_caption:nn { \numberperdayname } { #1 } }
-      }
-      {#1}
-      :~\DndEmphSpellString { #2 }
-    \end{hangingpar}
+    \item
+      [    
+        \IfInteger { #1 }
+        {
+          \str_if_in:NnTF { #2 } { , }
+          { \__dnd_caption:nn { \numberperdayeachname } { #1 } }
+          { \__dnd_caption:nn { \numberperdayname } { #1 } }
+        }
+        { #1 }
+        :
+      ]
+      \DndEmphSpellString { #2 }
   }
 
 \NewDocumentCommand {\DndMonsterSpellLevel} { O{\spellcantripsname} O{\spellatwillname} m }
   {
-    \iftoggle { bool-bg }
-      {}
-      { \smallskip }
-    
-    \begin{hangingpar}
-    \str_case_e:nnF {#1}
-      {
-        { 1 } { \spellfirstlevelname }
-        { 2 } { \spellsecondlevelname }
-        { 3 } { \spellthirdlevelname }
-        { 4 } { \spellfourthlevelname }
-        { 5 } { \spellfifthlevelname }
-        { 6 } { \spellsixthlevelname }
-        { 7 } { \spellseventhlevelname }
-        { 8 } { \spelleighthlevelname }
-        { 9 } { \spellninthlevelname }
-      }
-      { #1 }
-    {~}(
-    \str_case_e:nnF {#2}
-      {
-        { 1 } { \spelloneslotname }
-        { 2 } { \spelltwoslotsname }
-        { 3 } { \spellthreeslotsname }
-        { 4 } { \spellfourslotsname }
-      }
-      { #2 }
-    ):~\DndEmphSpellString{ #3 }
-    \end{hangingpar}
+    \item
+      [
+        \str_case_e:nnF {#1}
+          {
+            { 1 } { \spellfirstlevelname }
+            { 2 } { \spellsecondlevelname }
+            { 3 } { \spellthirdlevelname }
+            { 4 } { \spellfourthlevelname }
+            { 5 } { \spellfifthlevelname }
+            { 6 } { \spellsixthlevelname }
+            { 7 } { \spellseventhlevelname }
+            { 8 } { \spelleighthlevelname }
+            { 9 } { \spellninthlevelname }
+          }
+          { #1 }
+        {~}(
+        \str_case_e:nnF {#2}
+          {
+            { 1 } { \spelloneslotname }
+            { 2 } { \spelltwoslotsname }
+            { 3 } { \spellthreeslotsname }
+            { 4 } { \spellfourslotsname }
+          }
+          { #2 }
+        ) :
+      ]
+    \DndEmphSpellString{ #3 }
   }
 
 %% Monster attacks
@@ -586,16 +591,26 @@
       { #1 }
 }
 
-\NewDocumentCommand { \DndMonsterLegendaryAction } { m m }
+%% Legendary Actions
+
+\newlist { DndMonsterLegendaryActions } { description } { 1 }
+\setlist [ DndMonsterLegendaryActions ]
   {
-    \smallskip
-    \begin{hangingpar}
-      \textbf{#1.}~#2
-    \end{hangingpar}
+    before   = { \medskip },
+    font     = \dnd@StatBlockBodyFont,
+    labelsep = \l__dnd_space_dim,
+    noitemsep,
+    nosep,
   }
 
+\NewDocumentCommand { \DndMonsterLegendaryAction } { m m }
+  {
+    \item [ #1 . ] #2
+  }
+
+%% Positions monster description text
 \NewDocumentEnvironment { DndMonsterDescription } {}
-  { \bigskip\noindent\ignorespaces }
+  { \medskip\noindent\ignorespaces }
   {}
 
 \ExplSyntaxOff
