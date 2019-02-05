@@ -2,14 +2,32 @@
 set -euo pipefail
 IFS='$\n\t'
 
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+#DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-tar -xf install-tl-unx.tar.gz
-cd install-tl-*
-./install-tl --profile="${DIR}/texlive.profile"
+# See if there is a cached version of TL available
+export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
+if ! command -v texlua > /dev/null; then
+  # Obtain TeX Live
+  wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+  tar -xzf install-tl-unx.tar.gz
+  cd install-tl-20*
 
-export PATH="/tmp/texlive/bin/x86_64-linux:${PATH}"
+  # Install a minimal system
+  ./install-tl --profile=../texlive/texlive.profile
+
+  cd ..
+fi
+
+# Just including texlua so the cache check above works
+# Needed for any use of texlua even if not testing LuaTeX
+tlmgr install luatex
+
+#wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+#tar -xf install-tl-unx.tar.gz
+#cd install-tl-*
+#./install-tl --profile="${DIR}/texlive.profile"
+
+#export PATH="/tmp/texlive/bin/x86_64-linux:${PATH}"
 
 # Core packages
 tlmgr install dvips graphics graphics-def latex latex-bin latexmk
@@ -55,7 +73,7 @@ tlmgr install \
   xkeyval 
 
 # Fonts required by package or dependencies
-tlmgr install \
+#tlmgr install \
   amsfonts \
   bookman \
   cm \
@@ -67,7 +85,13 @@ tlmgr install \
   psnfss
 
 # Document dependencies
-tlmgr install \
+#tlmgr install \
   babel-english \
   lipsum \
   listings
+
+# Keep no backups (not required, simply makes cache bigger)
+tlmgr option -- autobackup 0
+
+# Update the TL install but add nothing new
+tlmgr update --self --all --no-auto-install
