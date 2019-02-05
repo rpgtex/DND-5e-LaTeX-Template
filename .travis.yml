@@ -17,7 +17,9 @@ matrix:
     - env: LATEX=lualatex
 
 install:
-  - ./bin/install-texlive
+- source ./texlive_install.sh
 
 script:
-  - make
+- mkdir _build
+# Prefix command with travis_wait x so it times out after 3 mins
+- travis_wait 3 pdflatex -output-directory _build ./src/nameofmytexfile.tex
