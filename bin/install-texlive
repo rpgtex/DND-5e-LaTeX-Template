@@ -32,8 +32,9 @@ tlmgr install \
   etex-pkg \
   etoolbox \
   fancyhdr \
-  fp \
+  gensymb \
   geometry \
+  hang \
   ifluatex \
   ifxetex \
   keycommand \
@@ -41,16 +42,17 @@ tlmgr install \
   l3packages \
   microtype \
   ms \
+  numprint \
   oberdiek \
   pgf \
   tcolorbox \
+  textcomp \
   titlesec \
   tocloft \
   tools \
   trimspaces \
   xcolor \
-  xkeyval \
-  xstring
+  xkeyval 
 
 # Fonts required by package or dependencies
 tlmgr install \
@@ -67,6 +69,5 @@ tlmgr install \
 # Document dependencies
 tlmgr install \
   babel-english \
-  hang \
   lipsum \
   listings
