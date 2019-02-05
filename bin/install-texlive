@@ -50,7 +50,6 @@ tlmgr install \
   etex-pkg \
   etoolbox \
   fancyhdr \
-  gensymb \
   geometry \
   hang \
   ifluatex \
@@ -64,11 +63,11 @@ tlmgr install \
   oberdiek \
   pgf \
   tcolorbox \
-  textcomp \
   titlesec \
   tocloft \
   tools \
   trimspaces \
+  was \
   xcolor \
   xkeyval 
 
