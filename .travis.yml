@@ -17,7 +17,7 @@ matrix:
     - env: LATEX=lualatex
 
 install:
-- source ./texlive_install.sh
+  - ./bin/install-texlive
 
 script:
 - mkdir _build
