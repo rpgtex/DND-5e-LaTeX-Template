@@ -69,7 +69,7 @@ tlmgr install \
   trimspaces \
   was \
   xcolor \
-  xkeyval 
+  xkeyval \
 
 # Fonts required by package or dependencies
 #tlmgr install \
@@ -81,7 +81,7 @@ tlmgr install \
   latex-fonts \
   lm \
   opensans \
-  psnfss
+  psnfss \
 
 # Document dependencies
 #tlmgr install \
