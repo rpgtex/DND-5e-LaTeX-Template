@@ -50,6 +50,7 @@ tlmgr install \
   etex-pkg \
   etoolbox \
   fancyhdr \
+  fp \
   geometry \
   hang \
   ifluatex \
@@ -70,6 +71,7 @@ tlmgr install \
   was \
   xcolor \
   xkeyval \
+  xstring \
   amsfonts \
   bookman \
   cm \
