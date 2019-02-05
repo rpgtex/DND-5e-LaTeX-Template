@@ -11,13 +11,15 @@ env:
   global:
     - PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 
-matrix:
-  include:
-    - env: LATEX=pdflatex
-    - env: LATEX=lualatex
+#matrix:
+#  include:
+#    - env: LATEX=pdflatex
+#    - env: LATEX=lualatex
 
 install:
   - ./bin/install-texlive
 
 script:
-  - make
+- mkdir _build
+# Prefix command with travis_wait x so it times out after 3 mins
+- travis_wait 3 pdflatex -output-directory _build ./example.tex
