@@ -22,4 +22,4 @@ install:
 script:
 - mkdir _build
 # Prefix command with travis_wait x so it times out after 3 mins
-- travis_wait 3 pdflatex -output-directory _build ./src/nameofmytexfile.tex
+- travis_wait 3 pdflatex -output-directory _build ./example.tex
