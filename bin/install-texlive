@@ -70,9 +70,6 @@ tlmgr install \
   was \
   xcolor \
   xkeyval \
-
-# Fonts required by package or dependencies
-#tlmgr install \
   amsfonts \
   bookman \
   cm \
@@ -82,9 +79,6 @@ tlmgr install \
   lm \
   opensans \
   psnfss \
-
-# Document dependencies
-#tlmgr install \
   babel-english \
   lipsum \
   listings
