@@ -304,8 +304,8 @@
       \IfInteger{#1}
       {
         \str_if_in:NnTF {#2} {,}
-        {\numberperdayeachname{#1}}
-        {\numberperdayname{#1}}
+        { \__dnd_caption:nn { \numberperdayeachname } { #1 } }
+        { \__dnd_caption:nn { \numberperdayname } { #1 } }
       }
       {#1}
       :~\DndEmphSpellString{#2}
