@@ -1,15 +1,22 @@
-\newcommand{\spellheader}[6]{
-  \subtitlesection{#1}{#2}
-  \vspace{-1ex} % subtitlesection artefact; topsep also changes bottom spacing.
-  \begin{description}[font=\normalfont\textbf,noitemsep,topsep=1ex,leftmargin=1em]
-    \item[Casting Time:] #3
-    \item[Range:] #4
-    \item[Components:] #5
-    \item[Duration:] #6
-  \end{description}
-}
+\ExplSyntaxOn
 
-\newenvironment{spell}[6]
-  {\spellheader{#1}{#2}{#3}{#4}{#5}{#6}}
-  % Environment encloses description.
-{\vspace{\baselineskip}}
+\NewDocumentCommand { \DndSpellHeader } { m m m m m m }
+  {
+    \DndItemHeader { #1 } { #2 }
+
+    \begin{description}
+      [
+        font=\normalfont\textbf,
+        noitemsep,
+        nosep,
+        after=\smallskip,
+        leftmargin=1em
+      ]
+      \item[Casting Time:] #3
+      \item[Range:] #4
+      \item[Components:] #5
+      \item[Duration:] #6
+    \end{description}
+  }
+
+\ExplSyntaxOff

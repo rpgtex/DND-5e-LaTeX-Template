@@ -21,8 +21,11 @@
 \RequirePackage{ifluatex}
 \RequirePackage{keycommand}
 \RequirePackage[autolanguage]{numprint}
+\RequirePackage{setspace} % Easily set line spacing
 \RequirePackage{tabularx}
 \RequirePackage[breakable,skins,xparse]{tcolorbox}
+\RequirePackage[titles]{tocloft} % multi-column toc
+\RequirePackage{titlesec}	% Used to adjust (sub)section formatting
 \RequirePackage{tikz}
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}
@@ -105,6 +108,10 @@
 
 \RequirePackage{microtype}        % Improve ragged2e hyphenation and overfull boxes
 \RequirePackage{ragged2e}
+
+\iftoggle{multitoc}{%
+  \RequirePackage[toc]{multitoc}
+}{}
 
 % Set page geometry.
 \geometry{%
@@ -193,3 +200,4 @@
 \RequirePackage{lib/dndspell}     % \spell definition
 \RequirePackage{lib/dndstrings}   % Load document strings
 \RequirePackage{lib/dndtable}     % \dndtable definition
+\RequirePackage{lib/dndobsolete}  % deprecated macros
