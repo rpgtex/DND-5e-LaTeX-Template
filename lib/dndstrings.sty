@@ -5,14 +5,14 @@
 % |1| represents parameter 1
 
 \cs_new_protected:Npn \__dnd_caption:nn #1#2
-{
-  \group_begin:
-    \str_set:Nx \l_tmpa_str { #1 }
-    \str_set:Nx \l_tmpb_str { #2 }
-    \exp_args:NNnx \str_replace_all:Nnn \l_tmpa_str { |1| } { #2 }
-    \str_use:N \l_tmpa_str
-  \group_end:
-}
+  {
+    \group_begin:
+      \str_set:Nx \l_tmpa_str { #1 }
+      \str_set:Nx \l_tmpb_str { #2 }
+      \exp_args:NNnx \str_replace_all:Nnn \l_tmpa_str { |1| } { #2 }
+      \str_use:N \l_tmpa_str
+    \group_end:
+  }
 
 % Define all strings as new macros instead of hardcoding them in the
 % TeX files. This then allows us to add captions for multilanguage support.
@@ -48,7 +48,7 @@
 \newcommand\meleeattackname{Melee~Weapon~Attack}
 \newcommand\rangedattackname{Ranged~Weapon~Attack}
 \newcommand\meleeorrangedattackname{Melee~or~Ranged~Weapon~Attack}
-\newcommand\tohitname{to hit}
+\newcommand\tohitname{to~hit}
 \newcommand\reachname{reach}
 \newcommand\rangename{range}
 \newcommand\hitname{Hit}
