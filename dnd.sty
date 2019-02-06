@@ -181,16 +181,19 @@
 
 
 % Load other modules of this package after all dependencies to avoid load order
-% conflicts (e.g., package options).
-\RequirePackage{lib/compat}       % compatibility definitions
-\RequirePackage{lib/dndcolors}    % color definitions
-\RequirePackage{lib/dndfonts}     % font definitions
-\RequirePackage{lib/dndcomment}   % \commentbox definition
-\RequirePackage{lib/dndheader}    % fancy headers and footers
-\RequirePackage{lib/dndmonster}   % \monsterbox definition
-\RequirePackage{lib/dndpaperbox}  % \paperbox definition
-\RequirePackage{lib/dndquote}     % \quotebox definition
-\RequirePackage{lib/dndsections}  % section styling
-\RequirePackage{lib/dndspell}     % \spell definition
-\RequirePackage{lib/dndstrings}   % Load document strings
-\RequirePackage{lib/dndtable}     % \dndtable definition
+% conflicts (e.g., package options). Low-level modules first.
+\RequirePackage{lib/compat}      % compatibility definitions
+\RequirePackage{lib/dndcolors}   % color definitions
+\RequirePackage{lib/dndfonts}    % font definitions
+
+% Main modules in alphabetical order
+\RequirePackage{lib/dndboxes}    % comment, sidebar, and read-aloud environments
+\RequirePackage{lib/dndheader}   % fancy headers and footers
+\RequirePackage{lib/dndmonster}  % \monsterbox definition
+\RequirePackage{lib/dndsections} % section styling
+\RequirePackage{lib/dndspell}    % \spell definition
+\RequirePackage{lib/dndstrings}  % Load document strings
+\RequirePackage{lib/dndtable}    % \dndtable definition
+
+% Deprecated items go last
+\RequirePackage{lib/dndobsolete} % deprecated macros

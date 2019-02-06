@@ -38,25 +38,25 @@
 \section{Main Section}
 \lipsum[2] % filler text
 
-\begin{quotebox}
+\begin{DndReadAloud}
   As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
-\end{quotebox}
+\end{DndReadAloud}
 
 \subsection{Fun with boxes}
 \subsubsection{Even more fun!}
 
-\begin{commentbox}{This Is a Comment Box!}
-  A \lstinline!commentbox! is a box for minimal highlighting of text. It lacks the ornamentation of \lstinline!paperbox!, but it can handle being broken over a column.
-\end{commentbox}
+\begin{DndComment}{This Is a Comment Box!}
+  A \lstinline!DndComment! is a box for minimal highlighting of text. It lacks the ornamentation of \lstinline!DndSidebar!, but it can handle being broken over a column.
+\end{DndComment}
 
 \subtitlesection{Weapon, +1, +2, or +3}
 {Weapon (any), uncommon (+1), rare (+2), or very rare (+3)}
 
 \lipsum[3]
 
-\begin{paperbox}[float=!t]{Behold, the Paperbox!}
-  The \lstinline!paperbox! is used as a sidebar. It does not break over columns and is best used with a figure environment to float it to one corner of the page where the surrounding text can then flow around it.
-\end{paperbox}
+\begin{DndSidebar}[float=!t]{Behold, the Sidebar!}
+  The \lstinline!DndSidebar! is used as a sidebar. It does not break over columns and is best used with \lstinline!tcolorbox float! option float it to one corner of the page where the surrounding text can then flow around it.
+\end{DndSidebar}
 
 % For more columns, you can say \begin{dndtable}[your options here].
 % For instance, if you wanted three columns, you could say
@@ -186,13 +186,13 @@
 
 \section{Colors}
 
-This package provides several global color variables to style \lstinline!commentbox!, \lstinline!quotebox!, \lstinline!paperbox!, and \lstinline!dndtable! environments.
+This package provides several global color variables to style \lstinline!DndComment!, \lstinline!DndReadAloud!, \lstinline!DndSidebar!, and \lstinline!dndtable! environments.
 
 \begin{dndtable}[lX]
   \textbf{Color}         & \textbf{Description} \\
-  \lstinline!commentboxcolor! & Controls \lstinline!commentbox! background. \\
-  \lstinline!paperboxcolor!   & Controls \lstinline!paperbox! background. \\
-  \lstinline!quoteboxcolor!   & Controls \lstinline!quotebox! background. \\
+  \lstinline!commentcolor! & Controls \lstinline!DndComment! background. \\
+  \lstinline!sidebarcolor!   & Controls \lstinline!DndSidebar! background. \\
+  \lstinline!readaloudcolor!   & Controls \lstinline!DndReadAloud! background. \\
   \lstinline!tablecolor!      & Controls background of even \lstinline!dndtable! rows. \\
 \end{dndtable}
 
@@ -215,9 +215,9 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
 \end{table*}
 
 \begin{itemize}
-  \item Use \lstinline!\setthemecolor[<color>]! to set \lstinline!themecolor!, \lstinline!commentcolor!, \lstinline!paperboxcolor!, and \lstinline!tablecolor! to a specific color.
+  \item Use \lstinline!\setthemecolor[<color>]! to set \lstinline!themecolor!, \lstinline!commentcolor!, \lstinline!sidebarcolor!, and \lstinline!tablecolor! to a specific color.
   \item Calling \lstinline!\setthemecolor! without an argument sets those colors to the current \lstinline!themecolor!.
-  \item \lstinline!commentbox!, \lstinline!dndtable!, \lstinline!paperbox!, and \lstinline!quoteboxcolor! also accept an optional color argument to set the color for a single instance.
+  \item \lstinline!DndComment!, \lstinline!dndtable!, \lstinline!DndSidebar!, and \lstinline!DndReadAloud! also accept an optional color argument to set the color for a single instance.
 \end{itemize}
 
 \subsection{Examples}
@@ -227,9 +227,9 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
 \begin{lstlisting}
 \setthemecolor[PhbMauve]
 
-\begin{paperbox}{Example}
+\begin{DndSidebar}{Example}
   \lipsum[2]
-\end{paperbox}
+\end{DndSidebar}
 
 \setthemecolor[PhbLightCyan]
 
@@ -249,9 +249,9 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
 \begingroup
 \setthemecolor[PhbMauve]
 
-\begin{paperbox}{Example}
+\begin{DndSidebar}{Example}
   \lipsum[2]
-\end{paperbox}
+\end{DndSidebar}
 
 \setthemecolor[PhbLightCyan]
 

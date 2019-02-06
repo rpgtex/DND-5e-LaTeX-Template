@@ -2,7 +2,7 @@
 \RequirePackage{color}
 
 % Page
-\definecolor{bgtan}{HTML}{F7F2E5}		  % background and quotebox
+\definecolor{bgtan}{HTML}{F7F2E5}		  % DndReadAloud background
 \definecolor{pagegold}{HTML}{B89A67}  % pagenumbers and footer
 
 % Type
@@ -10,7 +10,7 @@
 \definecolor{titlegold}{HTML}{C9AD6A} % titlerules
 \definecolor{rulered}{HTML}{9C2B1B}		% triangular rule in statsblock
 
-% Trim (affects tables and paperboxes)
+% Trim
 \definecolor{PhbLightGreen}{HTML}{E0E5C1} % PHB Part 1
 \definecolor{PhbLightCyan}{HTML}{B5CEB8}  % PHB Part 2
 \definecolor{PhbMauve}{HTML}{DCCCC5}      % PHB Part 3
@@ -27,26 +27,22 @@
 \colorlet{themecolor}{PhbLightGreen}    % Set the default theme to Part 1 of the PHB.
 
 % Element colors that change when \setthemecolor is used
-\colorlet{commentboxcolor}{themecolor}  % commentbox background
-\colorlet{paperboxcolor}{themecolor}    % paperbox background
+\colorlet{commentcolor}{themecolor}  % DndComment background
+\colorlet{sidebarcolor}{themecolor}    % DndSidebar background
 \colorlet{tablecolor}{themecolor}       % table even row background
 
 % Element colors that do not respond to \setthemecolor
-\colorlet{quoteboxcolor}{bgtan}             % quotebox background
+\colorlet{readaloudcolor}{bgtan}             % DndReadAloud background
 \definecolor{statblockribbon}{HTML}{E69A28} % stat block top/bottom borders (gold)
 \definecolor{statblockbg}{HTML}{FDF1DC}     % stat block background (tan)
+
+
 
 % Sets the themecolor and colors for all themed elements
 % If called without the optional color, resets the color of all themed elements to the current themecolor
 \newcommand{\setthemecolor}[1][themecolor]{%
   \colorlet{themecolor}{#1}
-  \colorlet{commentboxcolor}{#1}
-  \colorlet{paperboxcolor}{#1}
+  \colorlet{commentcolor}{#1}
+  \colorlet{sidebarcolor}{#1}
   \colorlet{tablecolor}{#1}
 }
-
-% Backwards-compatible aliases and colours
-\colorlet{commentgreen}{PhbLightGreen}
-\colorlet{itemtablepink}{DmgCoral}
-\colorlet{monstertan}{statblockbg}
-\definecolor{monstertandark}{HTML}{F0DBB5}
