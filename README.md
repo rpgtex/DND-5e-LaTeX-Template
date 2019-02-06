@@ -1,6 +1,6 @@
 # D&D 5e LaTeX Template
 
-[![Latest release](https://img.shields.io/github/release/evanbergeron/DND-5e-LaTeX-Template/all.svg)](https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/latest)
+[![Latest release](https://img.shields.io/github/release/evanbergeron/DND-5e-LaTeX-Template/all.svg)](https://github.com/rpgtex/DND-5e-LaTeX-Template/releases/latest)
 [![Build Status](https://travis-ci.org/evanbergeron/DND-5e-LaTeX-Template.svg?branch=master)](https://travis-ci.org/evanbergeron/DND-5e-LaTeX-Template)
 
 This is a LaTeX template for typesetting documents in the style of the *Dungeons & Dragons* 5th Edition (D&D 5e) books.
@@ -46,10 +46,10 @@ LaTeX will find the package automatically.
     ```sh
     mkdir "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
     ```
-2. Download the [latest release](https://github.com/evanbergeron/DND-5e-LaTeX-Template/releases/latest) and extract it in `$TEXMFHOME/tex/latex/`.
+2. Download the [latest release](https://github.com/rpgtex/DND-5e-LaTeX-Template/releases/latest) and extract it in `$TEXMFHOME/tex/latex/`.
 
     ```sh
-    wget https://github.com/evanbergeron/DND-5e-LaTeX-Template/archive/v0.6.0.zip
+    wget https://github.com/rpgtex/DND-5e-LaTeX-Template/archive/v0.6.0.zip
     unzip -d "$(kpsewhich -var-value TEXMFHOME)/tex/latex/" v0.6.0.zip
     cd "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
     mv DND-5e-LaTeX-Template-0.6.0 dnd
@@ -58,7 +58,7 @@ LaTeX will find the package automatically.
     Alternatively, clone the repo to the same location:
 
     ```sh
-    git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git "$(kpsewhich -var-value TEXMFHOME)/tex/latex/dnd"
+    git clone https://github.com/rpgtex/DND-5e-LaTeX-Template.git "$(kpsewhich -var-value TEXMFHOME)/tex/latex/dnd"
     ```
 
 ### Project install using `TEXINPUTS`
@@ -67,7 +67,7 @@ You can also clone a copy of the repository to each LaTeX project. For example, 
 
 ```sh
 mkdir lib/
-git clone https://github.com/evanbergeron/DND-5e-LaTeX-Template.git lib/dnd
+git clone https://github.com/rpgtex/DND-5e-LaTeX-Template.git lib/dnd
 ```
 
 LaTeX will not find the template automatically. Set `TEXINPUTS` when compiling your project to locate the package:
@@ -164,6 +164,28 @@ sudo apt-get install texlive-full
 sudo pacman -S texlive-bin texlive-core texlive-latexextra
 ```
 
+### OSX
+MacTex has its own [installer](https://www.tug.org/mactex/), but you can install it through brew cask:
+
+#### Full version
+```sh
+brew cask install mactex
+```
+#### Slightly smaller version without GUI
+```sh
+brew cask install mactex-no-gui
+```
+#### Minimal version
+Use `tlmgr` to install packages as needed, see this [answer](https://tex.stackexchange.com/a/470285) for more information
+```sh
+brew cask install basictex
+brew cask install tex-live-utility
+```
+After any of this, use the following such that the texlive directory doesn't require admin rights.
+```sh
+sudo chown -R myuser:mygroup /usr/local/texlive
+```
+For more information about MacTex permissions, see the following StackExchange [post](https://tex.stackexchange.com/questions/3744/how-do-i-set-up-mactex-so-admin-rights-arent-necessary)
 ## Known issues and solutions
 
 ### Stat block text color does not survive page breaks
