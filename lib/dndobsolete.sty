@@ -1,0 +1,10 @@
+\ExplSyntaxOn
+
+%% Setting theme color
+\NewDocumentCommand { \setthemecolor } { O { themecolor } }
+  {
+    \dnd@deprecate{\noexpand\setthemecolor}{0.8}[Use~\noexpand\DndSetThemeColor~to~set~the~theme~color.]
+    \DndSetThemeColor { #1 }
+  }
+
+\ExplSyntaxOff
