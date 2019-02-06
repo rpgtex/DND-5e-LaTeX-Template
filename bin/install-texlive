@@ -43,6 +43,7 @@ tlmgr install \
   ms \
   oberdiek \
   pgf \
+  setspace \
   tcolorbox \
   titlesec \
   tocloft \
