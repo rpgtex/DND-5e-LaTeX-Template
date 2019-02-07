@@ -4,21 +4,35 @@
 \NewDocumentEnvironment { commentbox } { o m o }
   {
     \dnd@deprecate { commentbox } { 0.8 } [ Use~DndComment~for~inline~comment~boxes. ]
-    \begin { DndComment } [ #1 ] { #2 } [ #3 ] }
-  { \end { DndComment } }
+
+    \tl_if_novalue:nTF { #3 }
+      { \begin { DndComment } [ #1 ] { #2 } }
+      { \begin { DndComment } [ #1, color = #3 ] { #2 } }
+  }
+  {
+    \end { DndComment }
+  }
 
 %% Environment for read-aloud text
 \NewDocumentEnvironment { quotebox } { o o }
 {
   \dnd@deprecate { quotebox } { 0.8 } [ Use~DndReadAloud~for~read-aloud~text. ]
-  \begin { DndReadAloud } [ #1 ] [ #2 ] }
+
+  \tl_if_novalue:nTF { #2 }
+    { \begin { DndReadAloud } [ #1 ] }
+    { \begin { DndReadAloud } [ #1, color = #2 ] }
+}
 { \end { DndReadAloud} }
   
 %% Environment for sidebars
 \NewDocumentEnvironment { paperbox } { o m o }
 {
   \dnd@deprecate { paperbox } { 0.8 } [ Use~DndComment~for~inline~comment~boxes. ]
-  \begin { DndSidebar } [ #1 ] { #2 } [ #3 ] }
+
+  \tl_if_novalue:nTF { #3 }
+    { \begin { DndSidebar } [ #1 ] { #2 } }
+    { \begin { DndSidebar } [ #1, color = #3 ] { #2 } }
+}
 { \end { DndSidebar } }
 
 %% Backwards-compatible colour aliases
