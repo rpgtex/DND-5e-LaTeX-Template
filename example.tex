@@ -308,10 +308,10 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
 \section{Map Regions}
 The map region commands provide automatic numbering of areas.
 
-%\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}
+\DndSetAreaOptions[region=H]
 \subsection{\DndArea{Village of Hommlet}}
-This is the village of hommlet. \DndAreaRef{Foo's Castle} lies on the other side.
+This is the village of Hommlet. \DndAreaRef[region=F]{Foo's Castle} lies on the other side.
 
 \subsubsection{\DndSubArea{Inn of the Welcome Wench}}
 Inside the village is the inn of the Welcome Wench.
@@ -319,6 +319,7 @@ Inside the village is the inn of the Welcome Wench.
 \subsubsection{\DndSubArea{Blacksmith's Forge}}
 There's a blacksmith in town, too.
 
+\DndSetAreaOptions[region=F]
 \subsection{\DndArea{Foo's Castle}}
 This is Foo's home, a hovel of mud and sticks.
 
@@ -328,10 +329,10 @@ This ditch has a board spanning it.
 \subsubsection{\DndSubArea{Entrance}}
 A five-foot hole reveals the dirt floor illuminated by a hole in the roof.
 \end{lstlisting}
-%\end{minipage}
 
+\DndSetAreaOptions[region=H]
 \subsection{\DndArea{Village of Hommlet}}
-This is the village of hommlet. \DndAreaRef{Foo's Castle} lies on the other side.
+This is the village of Hommlet. \DndAreaRef[region=F]{Foo's Castle} lies on the other side.
 
 \subsubsection{\DndSubArea{Inn of the Welcome Wench}}
 Inside the village is the inn of the Welcome Wench.
@@ -339,6 +340,7 @@ Inside the village is the inn of the Welcome Wench.
 \subsubsection{\DndSubArea{Blacksmith's Forge}}
 There's a blacksmith in town, too.
 
+\DndSetAreaOptions[region=F]
 \subsection{\DndArea{Foo's Castle}}
 This is Foo's home, a hovel of mud and sticks.
 

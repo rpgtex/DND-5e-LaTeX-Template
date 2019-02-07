@@ -107,12 +107,14 @@
 % Options
 \keys_define:nn { dnd / areas }
   {
-    area-label-prefix .tl_set:N          = \l__dnd_area_label_prefix_tl,
-    area-label-prefix .initial:n         = area,
-    area-label-prefix .value_required:n  = true,
-    sub-area-label-prefix .tl_set:N          = \l__dnd_sub_area_label_prefix_tl,
-    sub-area-label-prefix .initial:n         = subarea,
-    sub-area-label-prefix .value_required:n  = true,
+    area-label .tl_set:N          = \l__dnd_area_label_tl,
+    area-label .initial:n         = area,
+    area-label .value_required:n  = true,
+    sub-area-label .tl_set:N          = \l__dnd_sub_area_label_tl,
+    sub-area-label .initial:n         = subarea,
+    sub-area-label .value_required:n  = true,
+    region .tl_set:N          = \l__dnd_region_tl,
+    region .value_required:n  = true,
   }
 
 \NewDocumentCommand { \DndSetAreaOptions } { o }
@@ -138,31 +140,32 @@
 \NewDocumentCommand { \DndArea } { m }
   {
     \refstepcounter { DndAreaCounter }
-    \label { \l__dnd_area_label_prefix_tl :#1 }
-    \arabic{ DndAreaCounter } .~#1
+    \label { \l__dnd_region_tl \l__dnd_area_label_tl :#1 }
+    \l__dnd_region_tl \arabic{ DndAreaCounter } .~#1
   }
 
 \NewDocumentCommand { \DndSubArea } { m }
   {
     \refstepcounter { DndSubAreaCounter }
-    \label { \l__dnd_sub_area_label_prefix_tl :#1 }
-    \arabic { DndAreaCounter } \alph { DndSubAreaCounter } .~#1
+    \label { \l__dnd_region_tl \l__dnd_sub_area_label_tl :#1 }
+    \l__dnd_region_tl \arabic { DndAreaCounter } \alph { DndSubAreaCounter } .~#1
   }
 
 % Functions to reference a label
-\NewDocumentCommand { \DndAreaRef } { m }
+\NewDocumentCommand { \DndAreaRef } { o m }
   {
-    #1~(\pageabbreviationname\ \pageref { \l__dnd_area_label_prefix_tl :#1 })
+    \group_begin:
+      \keys_set:nn { dnd / areas } { #1 } % Temp set keys to reference other regions
+      #2~(\pageabbreviationname\ \pageref { \l__dnd_region_tl \l__dnd_area_label_tl :#2 })
+    \group_end:
   }
 
-\NewDocumentCommand { \DndSubAreaRef } { m }
+\NewDocumentCommand { \DndSubAreaRef } { o m }
   {
-    #1~(\pageabbreviationname\ \pageref { \l__dnd_sub_area_label_prefix_tl :#1 })
+    \group_begin:
+      \keys_set:nn { dnd / areas } { #1 } % Temp set keys to reference other regions
+      #2~(\pageabbreviationname\ \pageref { \l__dnd_region_tl \l__dnd_sub_area_label_tl :#2 })
+    \group_end:
   }
-
-%\newcounter { DndDetailAreaCounter } [ subsection ]
-%\newcommand { \DetailArea@Prefix } {}
-%\newcommand { \SetDetailAreaPrefix } [ 1 ] { \renewcommand { \DetailArea@Prefix }
-%      { #1 -- \arabic { DndDetailAreaCounter } \par \expandafter \ignorespaces \noindent } }
 
 \ExplSyntaxOff
