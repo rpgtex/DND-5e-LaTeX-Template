@@ -104,6 +104,8 @@
 % Map Areas and their References
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\tl_new:N \l__dnd_area_num_depth_tl
+
 % Options
 \keys_define:nn { dnd / areas }
   {
@@ -115,6 +117,11 @@
     sub-area-label .value_required:n  = true,
     region .tl_set:N          = \l__dnd_region_tl,
     region .value_required:n  = true,
+    area-num-depth .choice:,
+    area-num-depth .choices:nn  =
+      { 1, 2, 3, 4 }
+      { \tl_set:Nn \l__dnd_area_num_depth_tl { \l_keys_choice_tl } },
+    area-num-depth .initial:n = 2, % subsection
   }
 
 \NewDocumentCommand { \DndSetAreaOptions } { o }
@@ -141,14 +148,33 @@
   {
     \refstepcounter { DndAreaCounter }
     \label { \l__dnd_region_tl \l__dnd_area_label_tl :#1 }
-    \l__dnd_region_tl \arabic{ DndAreaCounter } .~#1
+
+    \tl_set:Nn \l_tmpa_tl { \l__dnd_region_tl \arabic{ DndAreaCounter } .~#1 }
+
+    \str_case_e:nn { \l__dnd_area_num_depth_tl }
+      {
+        { 1 } { \section { \l_tmpa_tl } }
+        { 2 } { \subsection { \l_tmpa_tl } }
+        { 3 } { \subsubsection { \l_tmpa_tl } }
+        { 4 } { \paragraph { \l_tmpa_tl } }
+      }
   }
 
 \NewDocumentCommand { \DndSubArea } { m }
   {
     \refstepcounter { DndSubAreaCounter }
     \label { \l__dnd_region_tl \l__dnd_sub_area_label_tl :#1 }
-    \l__dnd_region_tl \arabic { DndAreaCounter } \alph { DndSubAreaCounter } .~#1
+
+    \tl_set:Nn \l_tmpa_tl { \l__dnd_region_tl \arabic { DndAreaCounter } \alph { DndSubAreaCounter } .~#1 }
+
+    \str_case_e:nn { \l__dnd_area_num_depth_tl }
+      {
+        { 1 } { \subsection { \l_tmpa_tl } }
+        { 2 } { \subsubsection { \l_tmpa_tl } }
+        { 3 } { \paragraph { \l_tmpa_tl } }
+        { 4 } { \subparagraph { \l_tmpa_tl } }
+      }
+    
   }
 
 % Functions to reference a label
