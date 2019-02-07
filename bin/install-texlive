@@ -16,6 +16,8 @@ if ! command -v texlua > /dev/null; then
   ./install-tl --profile="${DIR}/texlive.profile"
 
   cd ..
+else
+  tlmgr update --self
 fi
 
 # Just including texlua so the cache check above works
