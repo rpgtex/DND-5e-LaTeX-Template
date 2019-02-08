@@ -1,12 +1,16 @@
 \ExplSyntaxOn
 
-% Font environment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newenvironment{lmss}{%
   \dnd@deprecate{lmss}{0.7}
   \fontfamily{lmss}\selectfont
   }{}
 
-%% dndmonster.sty
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Utility functions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NewDocumentCommand { \dice } { m }
   {
     \dnd@deprecate{\noexpand\dice}{0.8}[Use~\noexpand\DndDice.]
@@ -21,22 +25,25 @@
     \DndMonsterLine
   }
 
-  \let\dndline\hline
+\let\dndline\hline
 
-\NewDocumentEnvironment { monsterbox } { O { enhanced } m }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Monsters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NewDocumentEnvironment { monsterbox } { O {} m }
   {
     \dnd@deprecate{\noexpand\monsterbox}{0.8}[Use \noexpand\DndMonster.]
     \begin{DndMonster} [ #1 ] { #2 }
   }
   { \end{DndMonster} }
 
-\NewDocumentEnvironment { monsterboxbg } { O { enhanced } m }
+\NewDocumentEnvironment { monsterboxbg } { O {} m }
   {
     \dnd@deprecate{\noexpand\monsterbox}{0.8}[Use \noexpand\DndMonsterBg.]
     \begin{DndMonsterBg} [ #1 ] { #2 } }
   { \end{DndMonsterBg} }
 
-\NewDocumentEnvironment { monsterboxnobg } { O { enhanced } m }
+\NewDocumentEnvironment { monsterboxnobg } { O {} m }
   {
     \dnd@deprecate{\noexpand\monsterbox}{0.8}[Use \noexpand\DndMonsterNoBg.]
     \begin{DndMonsterNoBg} [ #1 ] { #2 } }
