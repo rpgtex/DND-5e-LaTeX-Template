@@ -96,8 +96,37 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NewDocumentCommand { \DndItemHeader } { m m }
   {
-    \subsubsection{#1}
-    \textit{#2} \par \smallskip \noindent \ignorespaces
+    \subsubsection { #1 }
+    \textit { #2 }
+    \par \smallskip \noindent \ignorespaces
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Special command for magic items, traps, and the like.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% #1 - Name
+% #2 - Level and school
+% #3 - Casting time
+% #4 - Range
+% #5 - Components
+% #6 - Duration
+\NewDocumentCommand { \DndSpellHeader } { m m m m m m }
+  {
+    \DndItemHeader { #1 } { #2 }
+
+    \begin{description}
+      [
+        noitemsep,
+        nosep,
+        font       = \normalfont \textbf,
+        after      = \smallskip,
+        leftmargin = 1em
+      ]
+      \item [Casting Time: ] #3
+      \item [ Range: ]       #4
+      \item [ Components: ]  #5
+      \item [ Duration: ]    #6
+    \end{description}
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
