@@ -21,8 +21,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-* Changed footer scroll to vector drawing.
-* Extracted font definitions to variables.
 * Made `monsterbox` text the width of the column and the background spills into margin and column separator.
 * Removed excess space before and after `monsterbox`.
 * Challenge rating on `monsterbox` now only needs the CR number.
@@ -30,11 +28,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Limited set of pre-loaded `tcolorbox` libraries to `breakable`, `skins`, and `xparse`.
 * Title formats for sections now explicitly use `\RaggedRight` to avoid poor layout appearance when using justified output.
 * Prevents page breaks immediately following section/subsection/subsubsection titles.
+* Removed deprecated `dnditemtable`.
+* Removed deprecated `bg-a4` and `bg-letter` package options.
+* Removed deprecated `lmss` environment.
 
 ### Fixed
 
-* Allow commas in box titles
-* Display correct minus sign in dice expressions.
 * Display monster elements with hanging indents.
 * Allow `\monstersection` before sectioning command(s).
 * Removed excess space after `\dice`.
@@ -48,10 +47,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 * Deprecated `bg-full`, `bg-none`, and `bg-print` package options. Use `bg` package option instead.
 * Deprecated custom `\hline` in stat blocks. Use `\dndline` instead.
-
-### Removed
-
-* Removed dependency on package `hang`.
 
 ## [0.6.0] - 2017-10-12
 
