@@ -249,7 +249,7 @@ Refer to the `tcolorbox` documentation (section 4.13) for more float parameters.
     ```sh
     git push && git push --tags
     ```
-6. [Create a new release](https://help.github.com/articles/creating-releases/) and attach the PDF and scrot.
+6. [Create a new release](https://help.github.com/articles/creating-releases/) and attach the scrot.
 
 ## Credits
 
