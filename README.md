@@ -49,10 +49,10 @@ LaTeX will find the package automatically.
 2. Download the [latest release](https://github.com/rpgtex/DND-5e-LaTeX-Template/releases/latest) and extract it in `$TEXMFHOME/tex/latex/`.
 
     ```sh
-    wget https://github.com/rpgtex/DND-5e-LaTeX-Template/archive/v0.6.0.zip
-    unzip -d "$(kpsewhich -var-value TEXMFHOME)/tex/latex/" v0.6.0.zip
+    wget https://github.com/rpgtex/DND-5e-LaTeX-Template/archive/v0.7.0.zip
+    unzip -d "$(kpsewhich -var-value TEXMFHOME)/tex/latex/" v0.7.0.zip
     cd "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
-    mv DND-5e-LaTeX-Template-0.6.0 dnd
+    mv DND-5e-LaTeX-Template-0.7.0 dnd
     ```
 
     Alternatively, clone the repo to the same location:
