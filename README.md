@@ -118,7 +118,6 @@ Note that the package has only been tested with the `book` class.
 | `layout`       | ✓               |                   |
 | `nomultitoc`   | ✓               | ✓                 |
 
-
 The `dndbook` class also supports all the options of the `book` class.
 
 #### `bg`
@@ -150,7 +149,7 @@ Disable multi-column table of contents.
 
 ## Dependencies
 
-If you don't have LaTeX installed, we recommend installing a complete TeX Live distribution. https://www.tug.org/texlive/
+If you don't have LaTeX installed, we recommend installing a complete [TeX Live distribution](https://www.tug.org/texlive/).
 
 ### Ubuntu
 
@@ -165,27 +164,38 @@ sudo pacman -S texlive-bin texlive-core texlive-latexextra
 ```
 
 ### OSX
+
 MacTex has its own [installer](https://www.tug.org/mactex/), but you can install it through brew cask:
 
 #### Full version
+
 ```sh
 brew cask install mactex
 ```
+
 #### Slightly smaller version without GUI
+
 ```sh
 brew cask install mactex-no-gui
 ```
+
 #### Minimal version
+
 Use `tlmgr` to install packages as needed, see this [answer](https://tex.stackexchange.com/a/470285) for more information
+
 ```sh
 brew cask install basictex
 brew cask install tex-live-utility
 ```
+
 After any of this, use the following such that the texlive directory doesn't require admin rights.
+
 ```sh
 sudo chown -R myuser:mygroup /usr/local/texlive
 ```
+
 For more information about MacTex permissions, see the following StackExchange [post](https://tex.stackexchange.com/questions/3744/how-do-i-set-up-mactex-so-admin-rights-arent-necessary)
+
 ## Known issues and solutions
 
 ### Stat block text color does not survive page breaks
