@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## 0.7.0 - 2019-02-09
 
 ### Added
 
@@ -13,12 +13,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Added boolean `layout` package option to control whether the package formats the document on load.
 * Added `nomultitoc` package option to toggle multi-column table of contents.
 * Added `dndbook` document class.
+* Added low-resolution background file as an option.
+* Added Russian localization support.
 * Added keycommands to generate text for melee, ranged, and hybrid (melee or ranged) attacks within monsterboxes. Includes localization support for the various phrases used.
 * Added commands to generate titled sections for map areas and sub-areas, with associated counters and automatic reference labelling (as `area:<title>`).
 * Added commands to help generate spell lists.
 
 ### Changed
 
+* Changed footer scroll to vector drawing.
+* Extracted font definitions to variables.
 * Made `monsterbox` text the width of the column and the background spills into margin and column separator.
 * Removed excess space before and after `monsterbox`.
 * Challenge rating on `monsterbox` now only needs the CR number.
@@ -29,9 +33,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
+* Allow commas in box titles
+* Display correct minus sign in dice expressions.
+* Display monster elements with hanging indents.
 * Allow `\monstersection` before sectioning command(s).
 * Removed excess space after `\dice`.
 * `monsteraction`: Only add a period to the action name if provided one.
+* Set fontlower on all tcolorbox environments.
+* Fixed footer scroll and text alignment.
 * Added `\xpname` to localization support.
 * Added localization to XP number
 
