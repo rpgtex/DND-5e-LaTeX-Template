@@ -1,0 +1,55 @@
+# Package dependencies
+#
+#   environ: required by tcolorbox
+#   etex-pkg: provides e-TeX, transitive dependency
+#   l3kernel: required by xparse
+#   l3packages: xparse
+#   ms: multitoc, ragged2e
+#   oberdiek: luacolor
+#   pgf: tikz
+#   tools: array, calc, tabularx
+#   trimspaces: required by environ?
+#
+amsfonts
+babel
+babel-english
+bookman
+cm
+colortbl
+courier
+ec
+enumitem
+environ
+etex-pkg
+etoolbox
+fancyhdr
+fp
+geometry
+hang
+ifluatex
+ifxetex
+keycommand
+l3kernel
+l3packages
+latex-fonts
+lm
+microtype
+ms
+numprint
+oberdiek
+opensans
+pgf
+psnfss
+tcolorbox
+titlesec
+tocloft
+tools
+trimspaces
+was
+xcolor
+xkeyval
+xstring
+
+# Document dependencies
+lipsum
+listings
