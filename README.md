@@ -1,7 +1,7 @@
 # DnD 5e LaTeX Template
 
-[![Latest release](https://img.shields.io/github/release/evanbergeron/DND-5e-LaTeX-Template/all.svg)](https://github.com/rpgtex/DND-5e-LaTeX-Template/releases/latest)
-[![Build Status](https://travis-ci.org/evanbergeron/DND-5e-LaTeX-Template.svg?branch=master)](https://travis-ci.org/evanbergeron/DND-5e-LaTeX-Template)
+[![Latest release](https://img.shields.io/github/release/rpgtex/DND-5e-LaTeX-Template/all.svg)](https://github.com/rpgtex/DND-5e-LaTeX-Template/releases/latest)
+[![Build Status](https://travis-ci.org/rpgtex/DND-5e-LaTeX-Template.svg?branch=master)](https://travis-ci.org/rpgtex/DND-5e-LaTeX-Template)
 
 This is a LaTeX template for typesetting documents in the style of the fifth edition of the "world's greatest roleplaying game".
 
