@@ -20,16 +20,3 @@
     \vspace{8pt plus 1pt}
     \noindent
   }
-
-\newenvironment{dnditemtable}[1][XX]{%
-    \dnd@deprecate{dnditemtable}{0.7}[Set tablecolor and use dndtable instead.]
-    \par\vspace*{8pt}
-    \noindent
-    \dnd@TableBodyFont
-    \rowcolors{1}{}{DmgCoral}
-    \tabularx{\linewidth}{#1}
-  }{%
-    \endtabularx
-    \vspace{8pt plus 1pt}
-    \noindent
-  }
