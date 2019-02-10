@@ -3,7 +3,7 @@
 % Modified by Christopher Liu December 2015
 % Modified by Yannic Meyer Feb 2016
 
-\ProvidesPackage{dnd}[2017/10/13 v0.6.0 Template for D&D 5e material]
+\ProvidesPackage{dnd}[2019/02/09 v0.7.0 Template for DnD 5e material]
 
 %
 % Prerequisite Packages
@@ -82,8 +82,6 @@
   \togglefalse{bool-bg}
   \toggletrue{bool-footer-scroll}
 }
-\DeclareOptionX{bg-a4}{\dnd@deprecate{bg-a4}{0.7}[Remove call to this package option.]}
-\DeclareOptionX{bg-letter}{\dnd@deprecate{bg-letter}{0.7}[Remove call to this package option.]}
 
 % Toggle justification (official books are flush left).
 \newtoggle{justified}
@@ -155,7 +153,6 @@
   \dndline%
 }
 
-
 % Either hilariously, or infuriatingly, the \ifcommandkey
 % implementation is buggy. Here is a re-implementation
 % from tex.stackexchange.
@@ -171,14 +168,6 @@
         \kcmd@nbk \commandkey {#1}//{first}{second}//oftwo\endcsname
       }
    }
-
-
-% Font environment
-\newenvironment{lmss}{%
-  \dnd@deprecate{lmss}{0.7}
-  \fontfamily{lmss}\selectfont
-  }{}
-
 
 % Load other modules of this package after all dependencies to avoid load order
 % conflicts (e.g., package options). Low-level modules first.

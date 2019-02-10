@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.7.0] - 2019-02-09
 
 ### Added
 
@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Added boolean `layout` package option to control whether the package formats the document on load.
 * Added `nomultitoc` package option to toggle multi-column table of contents.
 * Added `dndbook` document class.
+* Added low-resolution background file as an option.
+* Added Russian localization support.
 * Added keycommands to generate text for melee, ranged, and hybrid (melee or ranged) attacks within monsterboxes. Includes localization support for the various phrases used.
 * Added commands to generate titled sections for map areas and sub-areas, with associated counters and automatic reference labelling (as `area:<title>`).
 * Added commands to help generate spell lists.
@@ -26,12 +28,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Limited set of pre-loaded `tcolorbox` libraries to `breakable`, `skins`, and `xparse`.
 * Title formats for sections now explicitly use `\RaggedRight` to avoid poor layout appearance when using justified output.
 * Prevents page breaks immediately following section/subsection/subsubsection titles.
+* Removed deprecated `dnditemtable`.
+* Removed deprecated `bg-a4` and `bg-letter` package options.
+* Removed deprecated `lmss` environment.
 
 ### Fixed
 
+* Display monster elements with hanging indents.
 * Allow `\monstersection` before sectioning command(s).
 * Removed excess space after `\dice`.
 * `monsteraction`: Only add a period to the action name if provided one.
+* Set fontlower on all tcolorbox environments.
+* Fixed footer scroll and text alignment.
 * Added `\xpname` to localization support.
 * Added localization to XP number
 
@@ -39,10 +47,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 * Deprecated `bg-full`, `bg-none`, and `bg-print` package options. Use `bg` package option instead.
 * Deprecated custom `\hline` in stat blocks. Use `\dndline` instead.
-
-### Removed
-
-* Removed dependency on package `hang`.
 
 ## [0.6.0] - 2017-10-12
 
@@ -141,7 +145,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Defined green `commentbox` environment.
 * Section and subsection titles.
 
-[Unreleased]: https://github.com/evanbergeron/DND-5e-LaTeX-Template/compare/v0.6.0...HEAD
-[0.6.0]: https://github.com/evanbergeron/DND-5e-LaTeX-Template/compare/v0.5...v0.6.0
-[0.5]: https://github.com/evanbergeron/DND-5e-LaTeX-Template/compare/v0.2...v0.5
-[0.2]: https://github.com/evanbergeron/DND-5e-LaTeX-Template/compare/v0.1...v0.2
+[0.7.0]: https://github.com/rpgtex/DND-5e-LaTeX-Template/compare/v0.6.0...v0.7.0
+[0.6.0]: https://github.com/rpgtex/DND-5e-LaTeX-Template/compare/v0.5...v0.6.0
+[0.5]: https://github.com/rpgtex/DND-5e-LaTeX-Template/compare/v0.2...v0.5
+[0.2]: https://github.com/rpgtex/DND-5e-LaTeX-Template/compare/v0.1...v0.2
