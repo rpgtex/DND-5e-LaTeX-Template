@@ -1,0 +1,105 @@
+\ExplSyntaxOn
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Package Dependencies
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Helps prevent option clash with other packages that include xcolor
+\PassOptionsToPackage { table } { xcolor } 
+
+\RequirePackage { array }
+\RequirePackage { calc }
+\RequirePackage { colortbl }
+\RequirePackage { enumitem }
+\RequirePackage { etoolbox }
+\RequirePackage { hang }
+\RequirePackage { keycommand }
+\RequirePackage [ autolanguage ] { numprint }
+\RequirePackage { tabularx }
+\RequirePackage [ breakable, skins, xparse ] { tcolorbox }
+\RequirePackage { tikz }
+\RequirePackage { xcolor }
+\RequirePackage { xkeyval }
+\RequirePackage { xparse }
+
+\sys_if_engine_luatex:T
+  {
+    \RequirePackage{luacolor}
+  }
+
+\bool_if:NT \l__dnd_layout_bool
+  {
+    \RequirePackage { fancyhdr } 	% Adaptation of the footers
+    \RequirePackage { geometry }
+    \RequirePackage { microtype } % Improve ragged2e hyphenation and overfull boxes
+    \RequirePackage { ragged2e }
+
+    % Set page geometry.
+    \geometry
+      {
+        bindingoffset = 15pt, % .2in
+        hmargin       = 50pt, % .7in
+        top           = 40pt, % .55in
+        bottom        = 50pt, % .7in
+        footskip      = 30pt, % makes the footer text line up with the graphic
+      }
+
+    % Set paragraph and line spacing
+    \linespread { 1.1 }
+    \setlength { \parindent } { 1em }
+    \setlength { \RaggedRightRightskip } { 0pt plus 1cm }
+    \setlength { \RaggedRightParindent } { \parindent }
+    \hyphenpenalty = 1000  % Fewer hyphens
+
+    % Set left justification if not justified
+		\bool_if:NF \l__dnd_justified_bool
+      { \RaggedRight }
+
+    % Disable space between paragraphs.
+    \setlength { \parskip } { 0pt }
+
+    % Columns setup
+    \setlength { \columnsep } { 25pt }  % .35in
+
+    % Customize itemize environment.
+    \setlist { leftmargin = 1em }
+    \setitemize
+      {
+        noitemsep,
+        topsep = 0.5ex
+      }
+
+    % Adjust bullet point placement
+    \RenewDocumentCommand { \labelitemi } {}
+      {
+        \raisebox { 0.25ex } { \tiny { \( \bullet \) } }
+      }
+  }
+
+% Fancy DnD 5e stat block rule
+\newcommand{\dndline}{%
+  \noindent
+  \begin{tikzpicture}[]
+    \draw [rulered, fill=rulered] (0, 0) --(0,0.1) -- (\textwidth, 0.05);
+  \end{tikzpicture}%
+  \par%
+}
+\renewcommand{\hline}{%
+  \dnd@deprecate{redefined \noexpand\hline}{0.8}[Use \noexpand\dndline for stat block rules.]%
+  \dndline%
+}
+
+% Load other modules of this package after all dependencies to avoid load order
+% conflicts (e.g., package options).
+\RequirePackage{lib/compat}       % compatibility definitions
+\RequirePackage{lib/dndcolors}    % color definitions
+\RequirePackage{lib/dndfonts}     % font definitions
+\RequirePackage{lib/dndcomment}   % \commentbox definition
+\RequirePackage{lib/dndheader}    % fancy headers and footers
+\RequirePackage{lib/dndmonster}   % \monsterbox definition
+\RequirePackage{lib/dndpaperbox}  % \paperbox definition
+\RequirePackage{lib/dndquote}     % \quotebox definition
+\RequirePackage{lib/dndsections}  % section styling
+\RequirePackage{lib/dndspell}     % \spell definition
+\RequirePackage{lib/dndstrings}   % Load document strings
+\RequirePackage{lib/dndtable}     % \dndtable definition

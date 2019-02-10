@@ -1,52 +1,53 @@
-\ifpkglayout
+\ExplSyntaxOn
+\bool_if:NT \l__dnd_layout_bool
+  {
+    \RequirePackage[titles]{tocloft}
+    \RequirePackage{titlesec}	% Used to adjust (sub)section formatting
 
-\RequirePackage[titles]{tocloft}
-\RequirePackage{titlesec}	% Used to adjust (sub)section formatting
+    \bool_if:NT \l__dnd_multitoc_bool
+      {
+        \RequirePackage[toc]{multitoc}
+      }
 
-\iftoggle{multitoc}{%
-  \RequirePackage[toc]{multitoc}
-}{}
+    %Remove Numbering (If you want Numbering set secnumdepth to the appropriate depth)
+    \setcounter{secnumdepth}{-1}
 
-%Remove Numbering (If you want Numbering set secnumdepth to the appropriate depth)
-\setcounter{secnumdepth}{-1}
+    % Chapter
+    \titleformat{\chapter}
+    {\color{titlered}\dnd@TitleFont\Huge}{\thechapter\quad}{0pt}{}
 
-% Chapter
-\titleformat{\chapter}
-{\color{titlered}\dnd@TitleFont\Huge}{\thechapter\quad}{0pt}{}
+    \titlespacing*{\chapter}{0pt}{0pt}{20pt}
 
-\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+    \ifdef{\cftchapfont}{%
+      \renewcommand\cftchapfont{\color{titlered}\dnd@TitleFont\bfseries}
+    }{}
 
-\ifdef{\cftchapfont}{%
-  \renewcommand\cftchapfont{\color{titlered}\dnd@TitleFont\bfseries}
-}{}
+    % Section
+    \titleformat{\section}
+    {\color{titlered}\dnd@TitleFont\LARGE\RaggedRight}{\thesection\quad}{0pt}{\nopagebreak}
 
-% Section
-\titleformat{\section}
-{\color{titlered}\dnd@TitleFont\LARGE\RaggedRight}{\thesection\quad}{0pt}{\nopagebreak}
+    % Subsection
+    \titleformat{\subsection}
+    {\color{titlered}\dnd@TitleFont\Large\RaggedRight}{\thesubsection\quad}{0pt}{\nopagebreak}
+    [\titleline{\color{titlegold}\titlerule[1pt]}]
 
-% Subsection
-\titleformat{\subsection}
-{\color{titlered}\dnd@TitleFont\Large\RaggedRight}{\thesubsection\quad}{0pt}{\nopagebreak}
-[\titleline{\color{titlegold}\titlerule[1pt]}]
+    % Subsubsection
+    \titleformat{\subsubsection}
+    {\color{titlered}\dnd@TitleFont\large\RaggedRight}{\thesubsubsection\quad}{0pt}{\nopagebreak}[]
 
-% Subsubsection
-\titleformat{\subsubsection}
-{\color{titlered}\dnd@TitleFont\large\RaggedRight}{\thesubsubsection\quad}{0pt}{\nopagebreak}[]
+    % Paragraph
+    \titleformat{\paragraph}[runin]
+    {\normalfont\normalsize\bfseries\slshape}{\theparagraph\quad}{0pt}{}[.]
+    \titlespacing*{\paragraph}
+    {0pt}{\parskip}{\wordsep}
 
-% Paragraph
-\titleformat{\paragraph}[runin]
-{\normalfont\normalsize\bfseries\slshape}{\theparagraph\quad}{0pt}{}[.]
-\titlespacing*{\paragraph}
-{0pt}{\parskip}{\wordsep}
-
-% Subparagraph
-\titleformat{\subparagraph}[runin]
-{\normalfont\normalsize\bfseries\slshape}{\thesubparagraph\quad}{0pt}{}[.]
-\titlespacing*{\subparagraph}
-{\parindent}{\parskip}{\wordsep}
-
-\fi % \ifpkglayout
-
+    % Subparagraph
+    \titleformat{\subparagraph}[runin]
+    {\normalfont\normalsize\bfseries\slshape}{\thesubparagraph\quad}{0pt}{}[.]
+    \titlespacing*{\subparagraph}
+    {\parindent}{\parskip}{\wordsep}
+  }
+\ExplSyntaxOff
 % Special command for magic items, traps, and the like.
 \newcommand{\subtitlesection}[2]{
 	\subsubsection{#1}\vspace{-1ex}

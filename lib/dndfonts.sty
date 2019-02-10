@@ -1,8 +1,15 @@
-\ifpkglayout
-  \RequirePackage{bookman}
-  \RequirePackage[T1]{fontenc}
-  \renewcommand{\sfdefault}{lmss}
-\fi
+\ExplSyntaxOn
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Font definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bool_if:NT \l__dnd_layout_bool
+  {
+    \RequirePackage{bookman}
+    \RequirePackage[T1]{fontenc}
+    \renewcommand{\sfdefault}{lmss}
+  }
 
 \newcommand{\dnd@TitleFont}{\normalfont\scshape}
 
@@ -18,3 +25,5 @@
 
 \newcommand{\dnd@FooterFont}{\normalfont\scshape}
 \newcommand{\dnd@PageNumberFont}{\normalfont}
+
+\ExplSyntaxOff

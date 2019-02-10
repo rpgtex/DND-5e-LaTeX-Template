@@ -1,0 +1,82 @@
+\ExplSyntaxOn
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Class / Package options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Provides class / package option processing in of l3keys in LaTeX2e
+\RequirePackage { l3keys2e }
+
+% deprecate warning used in options and throughout the collection
+\msg_new:nnn { dnd } { deprecated } { #1~is~deprecated~and~will~be~removed~in~version~#2.~#3 }
+
+\cs_new_protected:Npn { \__dnd_deprecated:nnn } #1#2#3
+  {
+    \msg_warning:nnnnn { dnd } { deprecated } {#1} {#2} {#3}
+  }
+
+\cs_new_protected:Npn { \__dnd_deprecated:nn } #1#2
+  {
+    \msg_warning:nnnnn { dnd } { deprecated } {#1} {#2} {}
+  }
+
+% These booleans are not set directly by an option (i.e. instead set by .code)
+\bool_new:N \l__dnd_show_background_bool
+\bool_new:N \l__dnd_show_footer_scroll_bool
+\bool_new:N \l__dnd_justified_bool
+\bool_new:N \l__dnd_multitoc_bool
+\bool_new:N \l__dnd_layout_bool
+
+\bool_set_true:N \l__dnd_multitoc_bool
+\bool_set_eq:NN \l__dnd_layout_bool \c__dnd_isclass_bool
+
+\keys_define:nn { dnd / options }
+  {
+    bg .choice:,
+    bg / full .code:n =
+      {
+        \bool_set_true:N \l__dnd_show_background_bool
+        \bool_set_true:N \l__dnd_show_footer_scroll_bool
+      },
+    bg / print .code:n =
+      {
+        \bool_set_true:N \l__dnd_show_footer_scroll_bool
+      },
+    bg / none .code:n = {},
+    bg .initial:n = full,
+    justified .code:n =
+      {
+        \bool_set_true:N \l__dnd_justified_bool,
+      },
+    justified .value_forbidden:n = true,
+    nomultitoc .code:n =
+      {
+        \bool_set_false:N \l__dnd_multitoc_bool
+      },
+    nomultitoc .value_forbidden:n = true,
+    layout .bool_set:N       = \l__dnd_layout_bool,
+    layout .value_required:n = true,
+
+    % Deprecated options
+    bg-full .code:n =
+      {
+        \__dnd_deprecated:nnn { Option `bg-full' } {0.8} { Use~bg=full~instead. }
+        \bool_set_true:N \l__dnd_show_background_bool
+        \bool_set_true:N \l__dnd_show_footer_scroll_bool
+      },
+    bg-full .value_forbidden:n = true,
+    bg-none .code:n =
+      {
+        \__dnd_deprecated:nnn { Option `bg-none' } {0.8} { Use~bg=none~instead. }
+      },
+    bg-none .value_forbidden:n = true,
+    bg-print .code:n =
+      {
+        \__dnd_deprecated:nnn { Option `bg-print' } {0.8} { Use~bg=print~instead. }
+        \bool_set_true:N \l__dnd_show_footer_scroll_bool
+      },
+    bg-print .value_forbidden:n = true,
+  }
+
+\ProcessKeysOptions { dnd / options }
+
+\ExplSyntaxOff

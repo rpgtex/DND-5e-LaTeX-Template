@@ -1,43 +1,100 @@
-\ifpkglayout
+\ExplSyntaxOn
+\bool_if:NT \l__dnd_layout_bool
+	{
+		% Setup for custom footer
+		\pagestyle { fancy }
 
-\RequirePackage{fancyhdr} 			  % Adaptation of the footers
+		\renewcommand { \headrulewidth } { 0.0pt } %no rule for header
+		\renewcommand { \footrulewidth } { 0.0pt } %no rule for footer
 
-% Setup for custom footer
-\pagestyle{fancy}
+		\fancyhf {} % clear all headers and footers
 
-\renewcommand{\headrulewidth}{0.0pt} %no rule for header
-\renewcommand{\footrulewidth}{0.0pt} %no rule for footer
+		% Header is used to include the page background
+		\fancyhead
+			{
+				\bool_if:NT \l__dnd_show_background_bool
+					{
+						\begin { tikzpicture } [ remember~picture, overlay ]
+							\node [ inner~sep=0pt ] at ( current~page.center )
+								{
+									\includegraphics
+										[
+											width  = \paperwidth,
+											height = \paperheight
+										]
+										{ img/paper }
+								};
+						\end{ tikzpicture }
+					}
+			}
 
-\fancyhf{} % clear all headers and footers
+		% Left-even page footer
+		\fancyfoot [ LE ]
+			{
+				\begin{tikzpicture} [ remember~picture, overlay ]
+					\bool_if:NT \l__dnd_show_footer_scroll_bool
+						{
+							\node
+								[
+									xscale    = -1,
+									inner~sep = 0pt,
+									anchor    = south,
+									nearly~opaque
+								] at ( current~page.south )
+								{
+									\includegraphics
+										[
+											width  = \paperwidth,
+											height = 43pt
+										]
+										{ img/footerscroll }
+								};
+						}
+					\node [ xshift = 20pt, yshift = 30pt ] at ( current~page.south~west )
+						{ \dnd@PageNumberFont \textcolor { pagegold } { \thepage } };
+					\node
+						[
+							anchor = base~west,
+							xshift = \marginparwidth+\marginparpush,
+							yshift = 33pt
+						] at ( current~page.south~west )
+						{ \dnd@FooterFont { \textcolor { pagegold } { \nouppercase \leftmark } } };
+				\end{tikzpicture}
+			}
 
-\fancyhead{
-	\iftoggle{bool-bg}{
-		\begin{tikzpicture}[remember picture,overlay]
-			\node[inner sep=0pt] at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight]{img/paper}};
-		\end{tikzpicture}
-	}{}
-}
+		% Right-odd page footer
+		\fancyfoot [ RO ]
+			{
+				\begin { tikzpicture } [ remember~picture, overlay ]
+				\bool_if:NT \l__dnd_show_footer_scroll_bool
+					{
+						\node
+							[
+								inner~sep = 0pt,
+								anchor    = south,
+								nearly~opaque
+							] at (current~page.south)
+							{
+								\includegraphics
+									[
+										width  = \paperwidth,
+										height = 43pt
+										]
+										{ img/footerscroll }
+							};
+					}
+					\node [ xshift = -20pt, yshift = 30pt ] at ( current~page.south~east )
+						{ \dnd@PageNumberFont \textcolor { pagegold } { \thepage } };
+					\node
+						[
+							anchor = base~east,
+							xshift = -\marginparwidth-\marginparpush,
+							yshift = 33pt
+						] at ( current~page.south~east )
+						{ \dnd@FooterFont { \textcolor { pagegold } { \nouppercase \leftmark } } };
+				\end{tikzpicture}
+			}
 
-\fancyfoot[LE]{
-		\begin{tikzpicture}[remember picture,overlay]
-			\iftoggle{bool-footer-scroll}{%
-				\node[xscale=-1,inner sep=0pt,anchor=south,nearly opaque] at (current page.south) {\includegraphics[width=\paperwidth,height=43pt]{img/footerscroll}};
-			}{}
-			\node[xshift=20pt,yshift=30pt] at (current page.south west) {\dnd@PageNumberFont\textcolor{pagegold}{\thepage}};
-			\node[anchor=base west, xshift=\marginparwidth+\marginparpush, yshift=33pt] at (current page.south west) {\dnd@FooterFont{\textcolor{pagegold}{\nouppercase\leftmark}}};
-		\end{tikzpicture}
-}
-
-\fancyfoot[RO]{
-		\begin{tikzpicture}[remember picture,overlay]
-			\iftoggle{bool-footer-scroll}{%
-				\node[inner sep=0pt,anchor=south,nearly opaque] at (current page.south) {\includegraphics[width=\paperwidth,height=43pt]{img/footerscroll}};
-			}{}
-			\node[xshift=-20pt,yshift=30pt] at (current page.south east) {\dnd@PageNumberFont\textcolor{pagegold}{\thepage}};
-			\node[anchor=base east, xshift=-\marginparwidth-\marginparpush, yshift=33pt] at (current page.south east) {\dnd@FooterFont{\textcolor{pagegold}{\nouppercase\leftmark}}};
-		\end{tikzpicture}
-}
-
-\fancypagestyle{plain}{}
-
-\fi % \ifpkglayout
+		\fancypagestyle { plain } {}
+	}
+\ExplSyntaxOff
