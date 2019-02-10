@@ -18,6 +18,7 @@ if ! command -v texlua > /dev/null; then
   cd ..
 fi
 
+# Ensure tlmgr is updated
 tlmgr update --self
 
 # Just including texlua so the cache check above works
