@@ -13,7 +13,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NewDocumentCommand { \dice } { m }
   {
-    \dnd@deprecate{\noexpand\dice}{0.8}[Use~\noexpand\DndDice.]
+    \dnd@deprecate{\noexpand\dice}{1.0}[Use~\noexpand\DndDice.]
     \DndDice { #1 }
   }
 
@@ -30,28 +30,40 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Monsters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Environments
 \NewDocumentEnvironment { monsterbox } { O {} m }
   {
-    \dnd@deprecate{\noexpand\monsterbox}{0.8}[Use \noexpand\DndMonster.]
+    \dnd@deprecate{\noexpand\monsterbox}{1.0}[Use \noexpand\DndMonster.]
     \begin{DndMonster} [ #1 ] { #2 }
   }
   { \end{DndMonster} }
 
 \NewDocumentEnvironment { monsterboxbg } { O {} m }
   {
-    \dnd@deprecate{\noexpand\monsterbox}{0.8}[Use \noexpand\DndMonsterBg.]
+    \dnd@deprecate{\noexpand\monsterbox}{1.0}[Use \noexpand\DndMonsterBg.]
     \begin{DndMonsterBg} [ #1 ] { #2 } }
   { \end{DndMonsterBg} }
 
 \NewDocumentEnvironment { monsterboxnobg } { O {} m }
   {
-    \dnd@deprecate{\noexpand\monsterbox}{0.8}[Use \noexpand\DndMonsterNoBg.]
+    \dnd@deprecate{\noexpand\monsterbox}{1.0}[Use \noexpand\DndMonsterNoBg.]
     \begin{DndMonsterNoBg} [ #1 ] { #2 } }
   { \end{DndMonsterNoBg} }
 
+% Alias DndMonster to correct background type
+\iftoggle { bool-bg }
+  {
+    \let\monsterbox\monsterboxbg
+    \let\endmonsterbox\endmonsterboxbg
+  }{
+    \let\monsterbox\monsterboxnobg
+    \let\endmonsterbox\endmonsterboxnobg
+  }
+
+% Stat block elements
 \NewDocumentCommand { \basics } { o }
   {
-    \dnd@deprecate {\noexpand\basics} {0.8} [Use \noexpand\DndMonsterBasics]
+    \dnd@deprecate {\noexpand\basics} {1.0} [Use \noexpand\DndMonsterBasics]
     \group_begin:
       \keys_set:nn { dnd / monster / basics } { #1 }
       \__dnd_monster_basics:
@@ -60,7 +72,7 @@
 
 \NewDocumentCommand { \details } { o }
   {
-    \dnd@deprecate {\noexpand\details} {0.8} [Use \noexpand\DndMonsterDetails]
+    \dnd@deprecate {\noexpand\details} {1.0} [Use \noexpand\DndMonsterDetails]
     \group_begin:
       \keys_set:nn { dnd / monster / details } { #1 }
       \__dnd_monster_details:
@@ -69,7 +81,7 @@
 
 \NewDocumentCommand { \stat } { m }
   {
-    \dnd@deprecate{\noexpand\stat}{0.8}[Use \noexpand\DndMonsterAbilityScores~with~ ~just~the~numbers~instead.]
+    \dnd@deprecate{\noexpand\stat}{1.0}[Use \noexpand\DndMonsterAbilityScores~with~ ~just~the~numbers~instead.]
     \__dnd_ability_score_modifier:N { #1 }
   }
 
@@ -82,7 +94,7 @@
     WIS=\stat{10},
     CHA=\stat{10}
   ]{
-    \dnd@deprecate{\noexpand\stats}{0.8}[Use \noexpand\DndMonsterAbilityScores~with~ ~just~the~numbers~instead.]
+    \dnd@deprecate{\noexpand\stats}{1.0}[Use \noexpand\DndMonsterAbilityScores~with~ ~just~the~numbers~instead.]
     \DndMonsterAbilityScores
       [
         str = \commandkey{STR},
@@ -94,18 +106,18 @@
       ]
 }
 
-\NewDocumentEnvironment {monsteraction }{ o }
+\NewDocumentEnvironment { monsteraction }{ o }
   {
-    \dnd@deprecate {\noexpand\monsteraction [action]} {0.8} [Use~\noexpand\DndMonsterAction {action}]%
+    \dnd@deprecate { monsteraction environment } { 1.0 } [Use ~ \noexpand \DndMonsterAction { action } ]%
     \IfValueTF{#1}
-      { \smallskip\emph{ \textbf{ #1. } } }
+      { \smallskip \emph { \textbf { #1. } } }
       { \unskip }
   }
-  {\par}
+  { \par }
 
 \NewDocumentCommand { \monstersection } { m }
   {    
-    \dnd@deprecate {\noexpand\monstersection} {0.8} [Use~\noexpand\DndMonsterSection]%
+    \dnd@deprecate { \noexpand \monstersection } { 1.0 } [Use ~ \noexpand \DndMonsterSection ]
     \begingroup
     \par\medskip\color{titlered}
     \dnd@StatBlockSubtitleFont\large #1
