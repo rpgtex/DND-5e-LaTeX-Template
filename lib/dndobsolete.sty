@@ -3,7 +3,7 @@
 %% Environment inline comments
 \NewDocumentEnvironment { commentbox } { o m o }
   {
-    \dnd@deprecate { commentbox } { 0.8 } [ Use~DndComment~for~inline~comment~boxes. ]
+    \dnd@deprecate { commentbox } { 1.0 } [ Use~DndComment~for~inline~comment~boxes. ]
 
     \tl_if_novalue:nTF { #3 }
       { \begin { DndComment } [ #1 ] { #2 } }
@@ -16,7 +16,7 @@
 %% Environment for read-aloud text
 \NewDocumentEnvironment { quotebox } { o o }
 {
-  \dnd@deprecate { quotebox } { 0.8 } [ Use~DndReadAloud~for~read-aloud~text. ]
+  \dnd@deprecate { quotebox } { 1.0 } [ Use~DndReadAloud~for~read-aloud~text. ]
 
   \tl_if_novalue:nTF { #2 }
     { \begin { DndReadAloud } [ #1 ] }
@@ -27,7 +27,7 @@
 %% Environment for sidebars
 \NewDocumentEnvironment { paperbox } { o m o }
 {
-  \dnd@deprecate { paperbox } { 0.8 } [ Use~DndComment~for~inline~comment~boxes. ]
+  \dnd@deprecate { paperbox } { 1.0 } [ Use~DndComment~for~inline~comment~boxes. ]
 
   \tl_if_novalue:nTF { #3 }
     { \begin { DndSidebar } [ #1 ] { #2 } }
@@ -35,7 +35,7 @@
 }
 { \end { DndSidebar } }
 
-%% Backwards-compatible colour aliases
+%% Backwards-compatible colour aliases to be removed in 1.0.0
 \colorlet{commentboxcolor}{commentcolor}
 \colorlet{paperboxcolor}{sidebarcolor}
 \colorlet{quoteboxcolor}{readaloudcolor}

@@ -18,7 +18,7 @@
     boxrule         = 0pt,
     breakable,
     enhanced,
-    before~skip     = 12pt plus 4pt minus 4pt,
+    before~skip     = 10pt plus 1pt,
     boxsep          = 0.25ex,
     left            = 8pt,
     right           = 8pt,
@@ -33,7 +33,7 @@
         \foreach\n~in~{north~east,north~west,south~east,south~west}
         {\draw[titlered, fill=titlered] (frame.\n) circle (2pt); };
       },
-    after~skip      = 12pt plus 4pt minus 4pt,
+    after~skip      = 7.5pt plus 1pt,
     #1,
   }
   
@@ -49,7 +49,7 @@
 % passed to the environment by the user before it invokes the tcolorbox
 \cs_new_protected:Nn \__dnd_start_read_aloud:nn
   {
-    \begin { __dnd_read_aloud } [ #1,#2 ]
+    \begin { __dnd_read_aloud } [ #1, #2 ]
   }
 
 \cs_generate_variant:Nn \__dnd_start_read_aloud:nn { nV }

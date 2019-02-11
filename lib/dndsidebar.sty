@@ -15,7 +15,7 @@
 		frame~hidden,
 		boxrule          = 0pt,
 		enhanced,
-		before~skip      = 14pt plus 3pt minus 3pt,
+		before~skip      = 11pt plus 1pt,
 		toptitle         = 3mm,
 		boxsep           = 0.25ex,
 		left             = 8pt,
@@ -31,12 +31,12 @@
 		fuzzy~shadow     = {0mm}{-3.5pt}{-0.5pt}{0.4mm}{black!60!white},
     overlay          =
       {
-        \fill[black] (frame.south~west) -- ++ (7pt,0) -- ++ (0,-5pt) -- cycle;
-        \fill[black] (frame.north~west) -- ++ (7pt,0) -- ++ (0,5pt) -- cycle;
-        \fill[black] (frame.north~east) -- ++ (-7pt,0) -- ++ (0,5pt) -- cycle;
-        \fill[black] (frame.south~east) -- ++ (-7pt,0) -- ++ (0,-5pt) -- cycle;
+        \fill [ black ] ( frame.south~west ) -- ++ (  7pt, 0 ) -- ++ ( 0, -5pt ) -- cycle;
+        \fill [ black ] ( frame.north~west ) -- ++ (  7pt, 0 ) -- ++ ( 0,  5pt ) -- cycle;
+        \fill [ black ] ( frame.north~east ) -- ++ ( -7pt, 0 ) -- ++ ( 0,  5pt ) -- cycle;
+        \fill [ black ] ( frame.south~east ) -- ++ ( -7pt, 0 ) -- ++ ( 0, -5pt ) -- cycle;
 			},
-		after~skip=14pt plus 3pt minus 3pt,
+		after~skip=10pt plus 1pt,
     #1,
   }
   
