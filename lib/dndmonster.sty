@@ -36,22 +36,24 @@
   \FPprint{\DiceAvg\ (\DiceNum d\DiceSides\DiceMod)}%
 }
 
+\ExplSyntaxOn
+
 % Stat block without the background
 \newtcolorbox{monsterboxnobg}[2][]{
   enhanced,
-  frame hidden,
+  frame~hidden,
   boxrule=0pt,
   breakable,
   boxsep=0pt,
   toptitle=3mm,
   left=0pt,
   right=0pt,
-  sharp corners,
+  sharp~corners,
   opacityback=0,
   colframe=titlered,
-  fonttitle=\dnd@StatBlockTitleFont\Large,
-  fontupper=\dnd@StatBlockBodyFont,
-  fontlower=\dnd@StatBlockBodyFont,
+  fonttitle=\l__dnd_font_stat_block_title_tl\Large,
+  fontupper=\l__dnd_font_stat_block_body_tl,
+  fontlower=\l__dnd_font_stat_block_body_tl,
   title=#2,
   coltitle=titlered,
   #1
@@ -60,8 +62,8 @@
 % Stat block with background
 \newtcolorbox{monsterboxbg}[2][]{
   enhanced,
-  frame hidden,
-  before skip=7pt plus 2pt,
+  frame~hidden,
+  before~skip=7pt plus 2pt,
   boxrule=0pt,
   breakable,
   boxsep=0pt,
@@ -69,22 +71,24 @@
   left=7pt,
   right=7pt,
   bottom=11pt,
-  sharp corners,
+  sharp~corners,
   oversize=0pt,
-  borderline north={4pt}{0pt}{titlered},
-  borderline north={2.5pt}{0.75pt}{statblockribbon},
-  borderline south={4pt}{0pt}{titlered},
-  borderline south={2.5pt}{0.75pt}{statblockribbon},
+  borderline~north={4pt}{0pt}{titlered},
+  borderline~north={2.5pt}{0.75pt}{statblockribbon},
+  borderline~south={4pt}{0pt}{titlered},
+  borderline~south={2.5pt}{0.75pt}{statblockribbon},
   colback=statblockbg,
   colbacktitle=statblockbg,
   colframe=titlered,
-  fonttitle=\dnd@StatBlockTitleFont\Large,
+  fonttitle=\l__dnd_font_stat_block_title_tl\Large,
   coltitle=titlered,
-  fontupper=\dnd@StatBlockBodyFont,
-  fontlower=\dnd@StatBlockBodyFont,
+  fontupper=\l__dnd_font_stat_block_body_tl,
+  fontlower=\l__dnd_font_stat_block_body_tl,
   title=#2,
   #1
 }
+
+\ExplSyntaxOff
 
 \iftoggle{bool-bg}{
   \let\monsterbox\monsterboxbg%
@@ -94,12 +98,13 @@
   \let\endmonsterbox\endmonsterboxnobg%
 }
 
+\ExplSyntaxOn
 
 % Define Monster subsection header style
 \newcommand{\monstersection}[1]{%
   \begingroup
     \par\medskip\color{titlered}
-    \dnd@StatBlockSubtitleFont\large #1
+    \l__dnd_font_stat_block_section_tl\large #1
     % \rule is a horizontal command, so placing it under the title incurs extra
     % line spacing. Use \hrule (a vertical command) instead.
     \vspace{3pt}
@@ -107,6 +112,8 @@
     \vspace{3pt}
   \endgroup%
 }
+
+\ExplSyntaxOff
 
 \NewDocumentEnvironment{monsteraction}{o}{%
   \IfValueTF{#1}{%
@@ -116,13 +123,18 @@
 
 % A description variant used to list creature attributes.
 \newlist{dnd@monsterattrs}{description}{1}
+
+\ExplSyntaxOn
+
 \setlist[dnd@monsterattrs]{
   before=\color{titlered},
-  font=\dnd@StatBlockBodyFont\textbf,
-  labelsep=\widthof{ },
+  font=\l__dnd_font_stat_block_body_tl\textbf,
+  labelsep=\widthof{~},
   noitemsep,
   nosep,
 }
+
+\ExplSyntaxOff
 
 % A dnd@monsterattrs helper macro that always displays an attribute.
 \newcommand{\dnd@monsterattr}[2]{%

@@ -1,3 +1,5 @@
+\ExplSyntaxOn
+
 \ifpkglayout
 
 \RequirePackage[titles]{tocloft}
@@ -12,26 +14,26 @@
 
 % Chapter
 \titleformat{\chapter}
-{\color{titlered}\dnd@TitleFont\Huge}{\thechapter\quad}{0pt}{}
+{\color{titlered}\l__dnd_font_title_tl\Huge}{\thechapter\quad}{0pt}{}
 
 \titlespacing*{\chapter}{0pt}{0pt}{20pt}
 
 \ifdef{\cftchapfont}{%
-  \renewcommand\cftchapfont{\color{titlered}\dnd@TitleFont\bfseries}
+  \renewcommand\cftchapfont{\color{titlered}\l__dnd_font_title_tl\bfseries}
 }{}
 
 % Section
 \titleformat{\section}
-{\color{titlered}\dnd@TitleFont\LARGE\RaggedRight}{\thesection\quad}{0pt}{\nopagebreak}
+{\color{titlered}\l__dnd_font_title_tl\LARGE\RaggedRight}{\thesection\quad}{0pt}{\nopagebreak}
 
 % Subsection
 \titleformat{\subsection}
-{\color{titlered}\dnd@TitleFont\Large\RaggedRight}{\thesubsection\quad}{0pt}{\nopagebreak}
+{\color{titlered}\l__dnd_font_title_tl\Large\RaggedRight}{\thesubsection\quad}{0pt}{\nopagebreak}
 [\titleline{\color{titlegold}\titlerule[1pt]}]
 
 % Subsubsection
 \titleformat{\subsubsection}
-{\color{titlered}\dnd@TitleFont\large\RaggedRight}{\thesubsubsection\quad}{0pt}{\nopagebreak}[]
+{\color{titlered}\l__dnd_font_title_tl\large\RaggedRight}{\thesubsubsection\quad}{0pt}{\nopagebreak}[]
 
 % Paragraph
 \titleformat{\paragraph}[runin]
@@ -46,7 +48,7 @@
 {\parindent}{\parskip}{\wordsep}
 
 \fi % \ifpkglayout
-
+\ExplSyntaxOff
 % Special command for magic items, traps, and the like.
 \newcommand{\subtitlesection}[2]{
 	\subsubsection{#1}\vspace{-1ex}
@@ -93,3 +95,4 @@
 \newcommand{\DetailArea@Prefix}{}
 \newcommand{\SetDetailAreaPrefix}[1]{\renewcommand{\DetailArea@Prefix}
       {#1--\arabic{DetailArea}\par\expandafter\ignorespaces\noindent}}
+

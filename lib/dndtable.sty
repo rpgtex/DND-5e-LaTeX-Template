@@ -1,8 +1,10 @@
+\ExplSyntaxOn
+
 % Table Header
 \newcommand{\header}[1]{{
 	\par\vspace*{8pt}
 	\noindent
-	\dnd@TableTitleFont
+	\l__dnd_font_table_title_tl
 	#1}}
 
 % Centered Column
@@ -12,7 +14,7 @@
 \NewDocumentEnvironment{dndtable}{O{XX} O{tablecolor}}{%
     \par\vspace*{8pt}
     \noindent
-    \dnd@TableBodyFont
+    \l__dnd_font_table_body_tl
     \rowcolors{1}{}{#2}
     \tabularx{\linewidth}{#1}
   }{%
@@ -20,3 +22,5 @@
     \vspace{8pt plus 1pt}
     \noindent
   }
+
+\ExplSyntaxOff
