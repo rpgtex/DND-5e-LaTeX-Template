@@ -3,7 +3,7 @@
 % Old table environments and macros
 \NewDocumentCommand { \header } { m }
   {
-    \dnd@deprecate { \noexpand\header } { 0.8 } [ Use~the~header~key~on~DndTable~instead. ]
+    \dnd@deprecate { \noexpand\header } { 1.0 } [ Use~the~header~key~on~DndTable~instead. ]
     \group_begin:
       \par\vspace*{8pt}
       \noindent
@@ -14,7 +14,7 @@
   
 \NewDocumentEnvironment { dndtable } { O { XX } O { tablecolor } }
   {
-    \dnd@deprecate { dndtable } { 0.8 } [ Use~DndTable~instead. ]
+    \dnd@deprecate { dndtable } { 1.0 } [ Use~DndTable~instead. ]
     \par \vspace*{8pt}
     \noindent
     \dnd@TableBodyFont
@@ -22,21 +22,6 @@
     \tabularx { \linewidth } { #1 }
   }
   {
-    \vspace{8pt plus 1pt}
-    \noindent
-  }
-
-\NewDocumentEnvironment { dnditemtable } { O { XX } }
-  {
-    \dnd@deprecate { dnditemtable } { 0.7 } [ Set~tablecolor~and~use~DndTable~instead. ]
-    \par\vspace*{8pt}
-    \noindent
-    \dnd@TableBodyFont
-    \rowcolors{1}{}{DmgCoral}
-    \tabularx{\linewidth}{#1}
-  }
-  {
-    \endtabularx
     \vspace{8pt plus 1pt}
     \noindent
   }
