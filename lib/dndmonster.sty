@@ -337,9 +337,8 @@
   }
 
 % Wrapper for monster actions  
-\NewDocumentEnvironment { DndMonsterAction } { m }
-  { \smallskip \emph { \textbf { #1.} } }
-  { \par }
+\NewDocumentCommand { \DndMonsterAction } { m }
+  { \smallskip \textsl { \textbf { #1.} } }
 
 
 % Monster subsection header style

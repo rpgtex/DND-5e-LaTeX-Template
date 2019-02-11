@@ -103,28 +103,25 @@
         challenge = 1,
       ]
     % Traits
-    \begin{DndMonsterAction} {Innate Spellcasting}
-      Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
-      \begin{DndMonsterSpells}
-        \DndInnateSpellLevel{misty step}
-        \DndInnateSpellLevel[3]{fog cloud, rope trick}
-        \DndInnateSpellLevel[1]{identify}
-      \end{DndMonsterSpells}
-    \end{DndMonsterAction}
+    \DndMonsterAction{Innate Spellcasting}
+    Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
+    \begin{DndMonsterSpells}
+      \DndInnateSpellLevel{misty step}
+      \DndInnateSpellLevel[3]{fog cloud, rope trick}
+      \DndInnateSpellLevel[1]{identify}
+    \end{DndMonsterSpells}
     
-    \begin{DndMonsterAction} {Spellcasting}
-      Foo is a 2nd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has the following sorcerer spells prepared:
-      \begin{DndMonsterSpells}
-        \DndMonsterSpellLevel{blade ward, fire bolt, light, shocking grasp}
-        \DndMonsterSpellLevel[1][3]{burning hands, mage armor, shield}
-      \end{DndMonsterSpells}
-    \end{DndMonsterAction}
+    \DndMonsterAction{Spellcasting}
+    Foo is a 2nd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has the following sorcerer spells prepared:
+    \begin{DndMonsterSpells}
+      \DndMonsterSpellLevel{blade ward, fire bolt, light, shocking grasp}
+      \DndMonsterSpellLevel[1][3]{burning hands, mage armor, shield}
+    \end{DndMonsterSpells}
 
     \DndMonsterSection{Actions}
-    \begin{DndMonsterAction} {Multiattack}
-      The foo makes two melee attacks.
-    \end{DndMonsterAction}
-
+    \DndMonsterAction{Multiattack}
+    The foo makes two melee attacks.
+    
     %Default values are shown commented out
     \DndMonsterAttack[
       name=Dagger,
