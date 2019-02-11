@@ -3,21 +3,21 @@
 %% Item Header
 \NewDocumentCommand { \subtitlesection} { m m }
   {
-    \dnd@deprecate{\noexpand\subtitlesection}{0.8}[Use~\noexpand\DndItemHeader.]
+    \dnd@deprecate { \noexpand \subtitlesection } { 1.0 } [ Use ~ \noexpand \DndItemHeader . ]
     \DndItemHeader { #1 } { #2 }
   }
 
 %% Spells
 \NewDocumentCommand { \spellheader } { m m m m m m }
   {
-    \dnd@deprecate{\noexpand\spellheader}{0.8}[Use~\noexpand\DndSpellHeader.]
-    \DndSpellHeader { #1 } { #2 } { #3 } { #4 } { #5 } { #6 }
+    \dnd@deprecate { \noexpand \spellheader } { 1.0 } [ Use ~ \noexpand \DndSpellHeader ~ for ~ spells. ]
+    \DndSpellHeader {#1} {#2} {#3} {#4} {#5} {#6}
   }
 
 \NewDocumentEnvironment { spell } { m m m m m m }
   {
-    \dnd@deprecate{spell~environment}{0.8}
-    \DndSpellHeader{#1}{#2}{#3}{#4}{#5}{#6}
+    \dnd@deprecate { spell ~ environment } { 1.0 } [ Use ~ \noexpand \DndSpellHeader ~ for ~ spells. ]
+    \DndSpellHeader {#1} {#2} {#3} {#4} {#5} {#6}
   }
     % Environment encloses description.
   {\vspace{\baselineskip}}

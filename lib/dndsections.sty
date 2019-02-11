@@ -19,7 +19,7 @@
 \titlespacing* { \chapter }
   { 0pt } % left
   { 0pt } % before-sep
-  { 1.5ex } % after-sep
+  { 20pt } % after-sep
 
 %\ifdef{\cftchapfont}{%
 %  \renewcommand \cftchapfont { \color { titlered } \dnd@TitleFont \bfseries }
@@ -30,38 +30,37 @@
   { \dnd@TitleFont \LARGE \color { titlered } } % format
   { \thesection \quad } % label
   { 0pt } % sep
-  { \RaggedRight \setstretch{.8} \nopagebreak  } % before-code
-  [ \smallskip ] % after-code
+  { \RaggedRight \nopagebreak  } % before-code
 
-\titlespacing* { \section }
-  { 0pt } % left
-  { 1.5ex plus .2ex minus .2ex } % before-sep
-  { 0pt } % after-sep
+% \titlespacing* { \section }
+%   { 0pt } % left
+%   { 1.5ex plus .2ex minus .2ex } % before-sep
+%   { 0pt } % after-sep
 
 % Subsection
 \titleformat{\subsection}
   { \dnd@TitleFont \Large \color { titlered } } % format
   { \thesubsection \quad } % label
   { 0pt } % sep
-  { \RaggedRight \setstretch{.8} \nopagebreak } % before-code
-  [ \vspace { -.3ex } \titleline { \color { titlegold } \titlerule [ 1pt ] } ] % after-code
+  { \RaggedRight \nopagebreak } % before-code
+  [ \titleline { \color { titlegold } \titlerule [ 1pt ] } ] % after-code
 
-\titlespacing*{ \subsection }
-  { 0pt } % left
-  { 1.6ex } % before-sep
-  { .75ex } % after-sep
+% \titlespacing*{ \subsection }
+%   { 0pt } % left
+%   { 1.6ex } % before-sep
+%   { .75ex } % after-sep
 
 % Subsubsection
 \titleformat{\subsubsection}
   { \dnd@TitleFont \large \color { titlered } } % format
   { \thesubsubsection \quad } % label
   { 0pt } % sep
-  { \RaggedRight \setstretch{.8} \nopagebreak } % before-code
+  { \RaggedRight \nopagebreak } % before-code
 
-\titlespacing* { \subsubsection }
-  { 0pt } % left
-  { 1.7ex plus .2ex minus .2ex } % before-sep
-  { 0pt } % after-sep
+% \titlespacing* { \subsubsection }
+%   { 0pt } % left
+%   { 1.7ex plus .2ex minus .2ex } % before-sep
+%   { 0pt } % after-sep
 
 % Paragraph
 \titleformat{\paragraph}[runin]
@@ -98,11 +97,11 @@
   {
     \subsubsection { #1 }
     \textit { #2 }
-    \par \smallskip \noindent \ignorespaces
+    \par \vspace{1ex} \noindent \ignorespaces
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Special command for magic items, traps, and the like.
+% Special command for spells.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % #1 - Name
 % #2 - Level and school
@@ -119,7 +118,7 @@
         noitemsep,
         nosep,
         font       = \normalfont \textbf,
-        after      = \smallskip,
+        after      = \vspace { 1ex },
         leftmargin = 1em
       ]
       \item [Casting Time: ] #3
