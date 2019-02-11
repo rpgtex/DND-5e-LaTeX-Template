@@ -9,7 +9,7 @@ This is a LaTeX template for typesetting documents in the style of the fifth edi
 
 * Color schemes and fonts are close to the core books.
 * TeX Live includes the default fonts.
-* Compiles with `pdflatex`.
+* Works with pdfTeX, LuaTeX, and XeTeX.
 
 ![Preview](scrot.jpg)
 
