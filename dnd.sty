@@ -103,6 +103,12 @@
 
 \RequirePackage{microtype}        % Improve ragged2e hyphenation and overfull boxes
 \RequirePackage{ragged2e}
+\RequirePackage[titles]{tocloft} % multi-column toc
+\RequirePackage{titlesec}	% Used to adjust (sub)section formatting
+
+\iftoggle{multitoc}{%
+  \RequirePackage[toc]{multitoc}
+}{}
 
 % Set page geometry.
 \geometry{%
@@ -179,7 +185,7 @@
 \RequirePackage{lib/dndmonster}   % \monsterbox definition
 \RequirePackage{lib/dndpaperbox}  % \paperbox definition
 \RequirePackage{lib/dndquote}     % \quotebox definition
-\RequirePackage{lib/dndsections}  % section styling
+\RequirePackage{lib/dndsections}  % section styling & special sections
 \RequirePackage{lib/dndspell}     % \spell definition
 \RequirePackage{lib/dndstrings}   % Load document strings
 \RequirePackage{lib/dndtable}     % \dndtable definition
