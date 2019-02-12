@@ -32,8 +32,13 @@
     \RequirePackage { fancyhdr } 	% Adaptation of the footers
     \RequirePackage { geometry }
     \RequirePackage { microtype } % Improve ragged2e hyphenation and overfull boxes
-    \RequirePackage { ragged2e }
-
+    \RequirePackage { ragged2e }	
+    \RequirePackage[titles]{tocloft} % multi-column toc	
+    \RequirePackage{titlesec}	% Used to adjust (sub)section formatting	
+    
+    \bool_if:NT \l__dnd_multitoc_bool
+      { \RequirePackage[toc]{multitoc} }
+    
     % Set page geometry.
     \geometry
       {
@@ -80,12 +85,12 @@
 \newcommand{\dndline}{%
   \noindent
   \begin{tikzpicture}[]
-    \draw [rulered, fill=rulered] (0, 0) --(0,0.1) -- (\textwidth, 0.05);
+    \draw [ rulered, fill = rulered ] ( 0, 0 ) -- ( 0, 0.1 ) -- ( \textwidth, 0.05 );
   \end{tikzpicture}%
   \par%
 }
 \renewcommand{\hline}{%
-  \dnd@deprecate{redefined \noexpand\hline}{0.8}[Use \noexpand\dndline for stat block rules.]%
+  \__dnd_deprecated:nnn { \noexpand \hline } {1.0} { Use ~ \noexpand \dndline ~ for ~ stat ~ block ~ rules. }
   \dndline%
 }
 
@@ -103,3 +108,5 @@
 \RequirePackage{lib/dndspell}     % \spell definition
 \RequirePackage{lib/dndstrings}   % Load document strings
 \RequirePackage{lib/dndtable}     % \dndtable definition
+
+\ExplSyntaxOff
