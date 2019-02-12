@@ -24,44 +24,63 @@
 
 \lstset{%
   basicstyle=\ttfamily,
-  language=[LaTeX]{TeX},
+  language=[LaTeX]TeX,
+  breaklines=true,
 }
 
-% Start document
 \begin{document}
-
-% Your content goes here
 
 % Comment this out if you're using the article class.
 \chapter{Chapter 1: The Dark \LaTeX}
 
-\section{Main Section}
-\lipsum[2] % filler text
+This package is designed to aid you in writing beautifully typeset documents for the fifth edition of the world's greatest roleplaying game.
 
 \begin{quotebox}
   As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
 \end{quotebox}
 
-\subsection{Fun with boxes}
-\subsubsection{Even more fun!}
+\section{Fun with boxes}
+The package has three environments for setting text apart so that it is drawn to the reader's attention. The \lstinline!quotebox! is shown above. It is used for text that a game master would read aloud.
+
+The other two boxes are the \lstinline!commentbox! and the \lstinline!paperbox!. The \lstinline!paperbox! is not breakable and is best used floated toward a page corner while the \lstinline!commentbox! is breakable and can safely be used inline in the text.
 
 \begin{commentbox}{This Is a Comment Box!}
   A \lstinline!commentbox! is a box for minimal highlighting of text. It lacks the ornamentation of \lstinline!paperbox!, but it can handle being broken over a column.
 \end{commentbox}
 
-\subtitlesection{Weapon, +1, +2, or +3}
-{Weapon (any), uncommon (+1), rare (+2), or very rare (+3)}
+\section{Headers}
 
-\lipsum[3]
+The \lstinline!\DndItemHeader! is used for things like magic items and traps. Do not include a blank line after calling the function, or you will get a paragraph indent on the following paragraph. The \lstinline!\DndSpellHeader! is used at the top of spells. In both cases, you normally follow the text with a new item, spell, or some level of \lstinline!\section!. If you need to follow it with plain text instead, try inserting a \lstinline!\smallskip! to denote the end of the item.
+
+\DndItemHeader%
+  {Foo's Quill}
+  {Wondrous item, rare}
+This quill has 3 charges. While holding it, you can use an action to expend 1 of its charges. The quill leaps from your hand and writes a contract applicable to your situation.
+
+The quill regains 1d3 expended charges daily at dawn.
 
 \begin{paperbox}[float=!t]{Behold, the Paperbox!}
-  The \lstinline!paperbox! is used as a sidebar. It does not break over columns and is best used with a figure environment to float it to one corner of the page where the surrounding text can then flow around it.
+  The \lstinline!paperbox! is used as a sidebar. It does not break over columns and is best used by floating it to one corner of the page where the surrounding text can then flow around it.
 \end{paperbox}
 
+\DndSpellHeader%
+  {Beautiful Typesetting}
+  {4th-level illusion}
+  {1 action}
+  {5 feet}
+  {S, M (ink and parchment, which the spell consumes)}
+  {Until dispelled}
+You are able to transform a written message of any length into a beautiful scroll. All creatures within range that can see the scroll must make a wisdom saving throw or be charmed by you until the spell ends.
+
+While the creature is charmed by you, they cannot take their eyes off the scroll and cannot willingly move away from the scroll. Also, the targets can make a wisdom saving throw at the end of each of their turns. On a success, they are no longer charmed.
+
+\section{Tables}
 % For more columns, you can say \begin{dndtable}[your options here].
 % For instance, if you wanted three columns, you could say
 % \begin{dndtable}[XXX]. The usual host of tabular parameters are
 % available as well.
+Tables are set to have alternate rows be colored.
+
 \header{Nice table}
 \begin{dndtable}
      \textbf{Table head}  & \textbf{Table head} \\
@@ -70,21 +89,10 @@
      Some value  & Some value
 \end{dndtable}
 
-\section{Spells}
+\newpage
 
-\begin{spell}
-  {Beautiful Typesetting}
-  {4th-level illusion}
-  {1 action}
-  {5 feet}
-  {S, M (ink and parchment, which the spell consumes)}
-  {Until dispelled}
-  You are able to transform a written message of any length into a beautiful scroll. All creatures within range that can see the scroll must make a wisdom saving throw or be charmed by you until the spell ends.
-
-  While the creature is charmed by you, they cannot take their eyes off the scroll and cannot willingly move away from the scroll. Also, the targets can make a wisdom saving throw at the end of each of their turns. On a success, they are no longer charmed.
-\end{spell}
-
-\lipsum[2]
+\section{Monsters and NPCs}
+The \lstinline!monsterbox! environment is used to typeset monsters and NPCs.
 
 % You can optionally not include the background by saying
 % begin{monsterboxnobg}
@@ -293,51 +301,51 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
   8           & Tarnished silver locket \\
 \end{dndtable}
 
+\newpage
+
 \section{Map Regions}
 The map region commands provide automatic numbering of areas.
 
-\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}
-\area{Village of Hommlet}
-This is the village of hommlet.
+\DndSetAreaOptions[region=H]
+\DndArea{Village of Hommlet}
+This is the village of Hommlet. \DndAreaRef[region=F]{Foo's Castle} lies on the other side.
 
-\subarea{Inn of the Welcome Wench}
-Inside the village is the inn of the
-Welcome Wench.
-
-\subarea{Blacksmith's Forge}
-There's a blacksmith in town, too.
-
-\area{Foo's Castle}
-This is foo's home, a hovel of mud and
-sticks.
-
-\subarea{Moat}
-This ditch has a board spanning it.
-
-\subarea{Entrance}
-A five-foot hole reveals the dirt floor
-illuminated by a hole in the roof.
-\end{lstlisting}
-\end{minipage}
-
-\area{Village of Hommlet}
-This is the village of hommlet.
-
-\subarea{Inn of the Welcome Wench}
+\DndSubArea{Inn of the Welcome Wench}
 Inside the village is the inn of the Welcome Wench.
 
-\subarea{Blacksmith's Forge}
+\DndSubArea{Blacksmith's Forge}
 There's a blacksmith in town, too.
 
-\area{Foo's Castle}
-This is foo's home, a hovel of mud and sticks.
+\DndSetAreaOptions[region=F]
+\DndArea{Foo's Castle}
+This is Foo's home, a hovel of mud and sticks.
 
-\subarea{Moat}
+\DndSubArea{Moat}
 This ditch has a board spanning it.
 
-\subarea{Entrance}
+\DndSubArea{Entrance}
+A five-foot hole reveals the dirt floor illuminated by a hole in the roof.
+\end{lstlisting}
+
+\DndSetAreaOptions[region=H]
+\DndArea{Village of Hommlet}
+This is the village of Hommlet. \DndAreaRef[region=F]{Foo's Castle} lies on the other side.
+
+\DndSubArea{Inn of the Welcome Wench}
+Inside the village is the inn of the Welcome Wench.
+
+\DndSubArea{Blacksmith's Forge}
+There's a blacksmith in town, too.
+
+\DndSetAreaOptions[region=F]
+\DndArea{Foo's Castle}
+This is Foo's home, a hovel of mud and sticks.
+
+\DndSubArea{Moat}
+This ditch has a board spanning it.
+
+\DndSubArea{Entrance}
 A five-foot hole reveals the dirt floor illuminated by a hole in the roof.
 
-% End document
 \end{document}
