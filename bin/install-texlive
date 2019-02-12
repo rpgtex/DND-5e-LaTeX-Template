@@ -4,92 +4,33 @@ IFS='$\n\t'
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# See if there is a cached version of TL available
-export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
-if ! command -v texlua > /dev/null; then
-  # Obtain TeX Live
+export PATH=/srv/texlive/bin/x86_64-linux:$PATH
+
+# Download and install TeXLive if it is not installed.
+if ! command -v tex > /dev/null; then
   wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
   tar -xzf install-tl-unx.tar.gz
-  cd install-tl-20*
-
-  # Install a minimal system
-  ./install-tl --profile="${DIR}/texlive.profile"
-
-  cd ..
+  (
+    cd install-tl-20*
+    ./install-tl --profile="${DIR}/texlive.profile"
+  )
 fi
 
 # Ensure tlmgr is updated
 tlmgr update --self
-
-# Just including texlua so the cache check above works
-# Needed for any use of texlua even if not testing LuaTeX
-tlmgr install luatex
-
-#wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-#tar -xf install-tl-unx.tar.gz
-#cd install-tl-*
-#./install-tl --profile="${DIR}/texlive.profile"
-
-#export PATH="/tmp/texlive/bin/x86_64-linux:${PATH}"
-
-# Core packages
-tlmgr install dvips graphics graphics-def latex latex-bin latexmk
-
-# Package dependencies
-#   environ: required by tcolorbox
-#   etex-pkg: provides e-TeX, transitive dependency
-#   l3kernel: required by xparse
-#   l3packages: xparse
-#   ms: multitoc, ragged2e
-#   oberdiek: luacolor
-#   pgf: tikz
-#   tools: array, calc, tabularx
-#   trimspaces: required by environ?
-tlmgr install \
-  babel \
-  colortbl \
-  enumitem \
-  environ \
-  etex-pkg \
-  etoolbox \
-  fancyhdr \
-  fp \
-  geometry \
-  hang \
-  ifluatex \
-  ifxetex \
-  keycommand \
-  l3kernel \
-  l3packages \
-  microtype \
-  ms \
-  numprint \
-  oberdiek \
-  pgf \
-  tcolorbox \
-  titlesec \
-  tocloft \
-  tools \
-  trimspaces \
-  was \
-  xcolor \
-  xkeyval \
-  xstring \
-  amsfonts \
-  bookman \
-  cm \
-  courier \
-  ec \
-  latex-fonts \
-  lm \
-  opensans \
-  psnfss \
-  babel-english \
-  lipsum \
-  listings
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
 
 # Update the TL install but add nothing new
 tlmgr update --self --all --no-auto-install
+
+# Install core packages.
+tlmgr install \
+  dvips \
+  graphics \
+  graphics-def \
+  latex \
+  latex-bin \
+  latexmk \
+  xetex
