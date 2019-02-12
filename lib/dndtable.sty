@@ -1,9 +1,31 @@
-\ExplSyntaxOn
+% Old interface
+% Table Header	\ExplSyntaxOn
+\newcommand{\header}[1]{{	
+	\par\vspace*{8pt}	
+	\noindent	
+	\dnd@TableTitleFont	
+  #1}}
 
 % Centered Column
 \newcolumntype { Y }
   { > { \centering \arraybackslash } X }
+  
+% Table Environment	
+\NewDocumentEnvironment{dndtable}{O{XX} O{tablecolor}}{%	
+    \par\vspace*{8pt}	
+    \noindent	
+    \dnd@TableBodyFont
+    \rowcolors{1}{}{#2}
+    \tabularx{\linewidth}{#1}
+  }{%
+    \endtabularx
+    \vspace{8pt plus 1pt}
+    \noindent
+  }
 
+\ExplSyntaxOn
+
+% New interface
 \keys_define:nn { dnd / table }
   {
     color .tl_set:N         = \l__dnd_table_color_tl,
