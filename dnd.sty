@@ -23,8 +23,6 @@
 \RequirePackage[autolanguage]{numprint}
 \RequirePackage{tabularx}
 \RequirePackage[breakable,skins,xparse]{tcolorbox}
-\RequirePackage[titles]{tocloft} % multi-column toc
-\RequirePackage{titlesec}	% Used to adjust (sub)section formatting
 \RequirePackage{tikz}
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}
@@ -105,6 +103,8 @@
 
 \RequirePackage{microtype}        % Improve ragged2e hyphenation and overfull boxes
 \RequirePackage{ragged2e}
+\RequirePackage[titles]{tocloft} % multi-column toc
+\RequirePackage{titlesec}	% Used to adjust (sub)section formatting
 
 \iftoggle{multitoc}{%
   \RequirePackage[toc]{multitoc}
@@ -186,8 +186,6 @@
 \RequirePackage{lib/dndpaperbox}  % \paperbox definition
 \RequirePackage{lib/dndquote}     % \quotebox definition
 \RequirePackage{lib/dndsections}  % section styling & special sections
+\RequirePackage{lib/dndspell}     % \spell definition
 \RequirePackage{lib/dndstrings}   % Load document strings
 \RequirePackage{lib/dndtable}     % \dndtable definition
-
-% Deprecated items go last
-\RequirePackage{lib/dndobsolete} % deprecated macros
