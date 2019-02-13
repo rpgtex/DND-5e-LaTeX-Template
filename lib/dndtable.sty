@@ -1,3 +1,5 @@
+\ExplSyntaxOn
+
 % Old interface
 % Table Header	\ExplSyntaxOn
 \newcommand{\header}[1]{{	
@@ -23,8 +25,6 @@
     \noindent
   }
 
-\ExplSyntaxOn
-
 % New interface
 \keys_define:nn { dnd / table }
   {
@@ -38,14 +38,14 @@
     width .value_required:n = true,
   }
 
-\NewDocumentEnvironment { DndTable } { o m }
+\NewDocumentEnvironment {DndTable} { o m }
   {
     \group_begin:
     
-    \tl_if_novalue:nF { #1 }
-      { \keys_set:nn { dnd / table } { #1 } }
+    \tl_if_novalue:nF {#1}
+      { \keys_set:nn { dnd / table } {#1} }
     
-    \par \vspace { 8pt } \noindent
+    \par \vspace {8pt} \noindent
 
     \tl_if_empty:NF \l__dnd_table_header_tl
       {
@@ -57,9 +57,9 @@
 
     \dnd@TableBodyFont
     
-    \rowcolors { 1 } {} { \l__dnd_table_color_tl }
+    \rowcolors {1} {} {\l__dnd_table_color_tl}
     
-    \tabularx { \l__dnd_table_width_dim } { #2 }
+    \tabularx {\l__dnd_table_width_dim} {#2}
   }
   {
     \endtabularx \vspace { 8pt plus 1pt }
