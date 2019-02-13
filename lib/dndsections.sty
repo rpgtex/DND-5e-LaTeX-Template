@@ -1,3 +1,5 @@
+\ExplSyntaxOn
+
 \bool_if:NT \l__dnd_layout_bool
   {
 %Remove Numbering (If you want Numbering set secnumdepth to the appropriate depth)
@@ -39,6 +41,8 @@
 {\parindent}{\parskip}{\wordsep}
 
 }
+
+\ExplSyntaxOff
 
 % Special command for magic items, traps, and the like.
 \newcommand{\subtitlesection}[2]{
