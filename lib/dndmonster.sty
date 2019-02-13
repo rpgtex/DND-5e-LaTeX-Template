@@ -1,10 +1,367 @@
+% Monster environment sty file
+% Old interface
+
+% Fancy DnD 5e stat block rule	
+\newcommand{\dndline}{%	
+  \noindent	
+  \begin{tikzpicture}[]	
+    \draw [rulered, fill=rulered] (0, 0) --(0,0.1) -- (\textwidth, 0.05);	
+  \end{tikzpicture}%	
+  \par%	
+}	
+\renewcommand{\hline}{%	
+  \dnd@deprecate{redefined \noexpand\hline}{0.8}[Use \noexpand\dndline for stat block rules.]%	
+  \dndline%	
+}
+
+\RequirePackage{fp}
+\RequirePackage{xstring}
+
+% Macro to print stats with autocomputed modifier
+% e.g. \stat{12} prints "12 (+1)"
+\newcommand{\stat}[1]{%
+  \FPeval{\mod}{(#1 - 10)/2}%
+  \FPifpos\mod%
+  \FPeval{\mod}{clip(trunc(mod,0))}#1\ (+\mod)%
+  \else%
+  \FPeval{\mod}{clip(abs(trunc(mod-0.5,0)))}#1\ (\(-\)\mod)%
+  \fi%
+}
+
+% Macro to print avarage dice based value
+% e.g. \dice{2d6+3} prints "10 (2d6 + 3)"
+\newcommand{\dice}[1]{%
+  \StrSubstitute{#1}{ }{}[\DiceArg]%				strip whitespaces
+  \StrCut{\DiceArg}{d}\DiceNum\DiceSides%			split string
+  \StrCut{\DiceSides}{+}\DiceSides\DiceAddMod%
+  \StrCut{\DiceSides}{-}\DiceSides\DiceSubMod%
+  \FPeval{\DiceAvg}{(\DiceSides+1)/2*\DiceNum}%	calculate avg roll	
+  \IfInteger{\DiceAddMod}{%
+    \FPadd{\DiceAvg}{\DiceAvg}{\DiceAddMod}%	add value
+    \def\DiceMod{ + \DiceAddMod}%
+  }{%
+    \IfInteger{\DiceSubMod}{%
+      \FPsub{\DiceAvg}{\DiceAvg}{\DiceSubMod}%	subtract value
+      \def\DiceMod{ \(-\) \DiceSubMod}%
+    }{%
+      \def\DiceMod{}%
+    }%
+  }%
+  \FPtrunc{\DiceAvg}{\DiceAvg}{0}%				round down
+  \FPprint{\DiceAvg\ (\DiceNum d\DiceSides\DiceMod)}%
+}
+
+% Stat block without the background
+\newtcolorbox{monsterboxnobg}[2][]{
+  enhanced,
+  frame hidden,
+  boxrule=0pt,
+  breakable,
+  boxsep=0pt,
+  toptitle=3mm,
+  left=0pt,
+  right=0pt,
+  sharp corners,
+  opacityback=0,
+  colframe=titlered,
+  fonttitle=\dnd@StatBlockTitleFont\Large,
+  fontupper=\dnd@StatBlockBodyFont,
+  fontlower=\dnd@StatBlockBodyFont,
+  title=#2,
+  coltitle=titlered,
+  #1
+}
+
+% Stat block with background
+\newtcolorbox{monsterboxbg}[2][]{
+  enhanced,
+  frame hidden,
+  before skip=7pt plus 2pt,
+  boxrule=0pt,
+  breakable,
+  boxsep=0pt,
+  toptitle=11pt,
+  left=7pt,
+  right=7pt,
+  bottom=11pt,
+  sharp corners,
+  oversize=0pt,
+  borderline north={4pt}{0pt}{titlered},
+  borderline north={2.5pt}{0.75pt}{statblockribbon},
+  borderline south={4pt}{0pt}{titlered},
+  borderline south={2.5pt}{0.75pt}{statblockribbon},
+  colback=statblockbg,
+  colbacktitle=statblockbg,
+  colframe=titlered,
+  fonttitle=\dnd@StatBlockTitleFont\Large,
+  coltitle=titlered,
+  fontupper=\dnd@StatBlockBodyFont,
+  fontlower=\dnd@StatBlockBodyFont,
+  title=#2,
+  #1
+}
+
+\iftoggle{bool-bg}{
+  \let\monsterbox\monsterboxbg%
+  \let\endmonsterbox\endmonsterboxbg%
+}{
+  \let\monsterbox\monsterboxnobg%
+  \let\endmonsterbox\endmonsterboxnobg%
+}
+
+
+% Define Monster subsection header style
+\newcommand{\monstersection}[1]{%
+  \begingroup
+    \par\medskip\color{titlered}
+    \dnd@StatBlockSubtitleFont\large #1
+    % \rule is a horizontal command, so placing it under the title incurs extra
+    % line spacing. Use \hrule (a vertical command) instead.
+    \vspace{3pt}
+    \hrule height 0.6pt
+    \vspace{3pt}
+  \endgroup%
+}
+
+\NewDocumentEnvironment{monsteraction}{o}{%
+  \IfValueTF{#1}{%
+    \smallskip\emph{\textbf{#1.}}%
+  }{\unskip}%
+}{\par}
+
+% A description variant used to list creature attributes.
+\newlist{dnd@monsterattrs}{description}{1}
+\setlist[dnd@monsterattrs]{
+  before=\color{titlered},
+  font=\dnd@StatBlockBodyFont\textbf,
+  labelsep=\widthof{ },
+  noitemsep,
+  nosep,
+}
+
+% A dnd@monsterattrs helper macro that always displays an attribute.
+\newcommand{\dnd@monsterattr}[2]{%
+  \item[#2] \commandkey{#1}
+}
+
+% A dnd@monsterattrs helper macro that displays an attribute if the user defined
+% it.
+\newcommand{\dnd@ifmonsterattr}[2]{%
+  \ifcommandkey{#1}{%
+    \item[#2] \commandkey{#1}
+  }{}%
+}
+
+%
+% Macros for use within the monster environment
+%
+\newkeycommand\basics[armorclass=0, hitpoints=0, speed=0]{%
+  \begin{dnd@monsterattrs}
+    \dnd@monsterattr{armorclass}{\armorclassname}
+    \dnd@monsterattr{hitpoints}{\hitpointsname}
+    \dnd@monsterattr{speed}{\speedname}
+  \end{dnd@monsterattrs}%
+}
+
+% Taubular enviornment for stats-block
+\newkeycommand\stats[STR=\stat{10},
+  DEX=\stat{10},
+  CON=\stat{10},
+  INT=\stat{10},
+  WIS=\stat{10},
+  CHA=\stat{10}]{%
+  \begingroup
+  \small\centering\color{titlered}
+  \resizebox{\linewidth}{\height}{%
+    \begin{tabular}{cccccc}
+      \rule{0pt}{3.7mm} %adds space between hline and table
+      \textbf{\strstatname} & \textbf{\dexstatname} & \textbf{\constatname} & \textbf{\intstatname} & \textbf{\wisstatname} & \textbf{\chastatname}\\
+      \commandkey{STR} & \commandkey{DEX} & \commandkey{CON} & \commandkey{INT} & \commandkey{WIS} & \commandkey{CHA}
+    \end{tabular}
+  }%
+  \\[0.4em] %adds space after table
+  \endgroup
+}
+
+\newkeycommand\details[
+  skills=,
+  damageimmunities=,
+  savingthrows=,
+  conditionimmunities=,
+  damageresistances=,
+  damagevulnerabilities=,
+  senses=---,
+  languages=---,
+  challenge=1,
+  ]{%
+  \begin{dnd@monsterattrs}
+    \dnd@ifmonsterattr{savingthrows}{\savesname}
+    \dnd@ifmonsterattr{skills}{\skillsname}
+    \dnd@ifmonsterattr{damagevulnerabilities}{\dvulname}
+    \dnd@ifmonsterattr{damageresistances}{\dresname}
+    \dnd@ifmonsterattr{damageimmunities}{\dimmname}
+    \dnd@ifmonsterattr{conditionimmunities}{\cimmname}
+    \dnd@monsterattr{senses}{\sensesname}
+    \dnd@monsterattr{languages}{\languagesname}
+    \item[\challengename] \DndCRExp{\commandkey{challenge}}
+  \end{dnd@monsterattrs}%
+}
+
+\newcommand{\dnd@hit}[1]{%
+  \commandkey{#1}\ \tohitname%
+}
+\newcommand{\dnd@damage}[2]{%
+  \commandkey{#1}\ \commandkey{#2}\ \damagename%
+}
+
+\newcommand{\dnd@ifplusdmg}[2]{%
+  \ifcommandkey{#1}{%
+    { }plus \commandkey{#1}\ \commandkey{#2}\ \damagename%
+  }{}%
+}
+\newcommand{\dnd@ifordmg}[5]{%
+  \ifcommandkey{#1}{%
+    , or \commandkey{#1}\ \commandkey{#2}\ \damagename\dnd@ifplusdmg{#4}{#5}\ \commandkey{#3}%
+  }{}%
+}
+
+\newkeycommand+[\|]\monstermelee[
+    name=Club,
+    mod=+0,
+    reach=5,
+    targets=one target,
+    dmg=\dice{1d4},
+    dmgtype=bludgeoning,
+    plusdmg=,
+    plusdmgtype=,
+    ordmg=,
+    ordmgwhen=,
+    extra=,
+  ]{%
+  |\monsterattack|[
+    name={\commandkey{name}},
+    type=melee,
+    mod={\commandkey{mod}},
+    reach={\commandkey{reach}},
+    targets={\commandkey{targets}},
+    dmg={\commandkey{dmg}},
+    dmgtype={\commandkey{dmgtype}},
+    plusdmg={\commandkey{plusdmg}},
+    plusdmgtype={\commandkey{plusdmgtype}},
+    ordmg={\commandkey{ordmg}},
+    ordmgwhen={\commandkey{ordmgwhen}},
+    extra={\commandkey{extra}},
+  ]
+}
+\newkeycommand+[\|]\monsterranged[
+    name=Shortbow,
+    mod=+0,
+    range=80/320,
+    targets=one target,
+    dmg=\dice{1d6},
+    dmgtype=piercing,
+    plusdmg=,
+    plusdmgtype=,
+    ordmg=,
+    ordmgwhen=,
+    extra=,
+  ]{%
+  |\monsterattack|[
+    name={\commandkey{name}},
+    type=ranged,
+    mod={\commandkey{mod}},
+    range={\commandkey{range}},
+    targets={\commandkey{targets}},
+    dmg={\commandkey{dmg}},
+    dmgtype={\commandkey{dmgtype}},
+    plusdmg={\commandkey{plusdmg}},
+    plusdmgtype={\commandkey{plusdmgtype}},
+    ordmg={\commandkey{ordmg}},
+    ordmgwhen={\commandkey{ordmgwhen}},
+    extra={\commandkey{extra}},
+  ]
+}
+
+\newkeycommand\monsterattack[
+    name=Dagger,
+    enum* type={both,melee,ranged},
+    mod=+0,
+    reach=5,
+    range=20/60,
+    targets=one target,
+    dmg=\dice{1d4},
+    dmgtype=piercing,
+    plusdmg=,
+    plusdmgtype=,
+    ordmg=,
+    ordmgwhen=,
+    extra=,
+  ]{%
+  \begin{monsteraction}[\commandkey{name}]
+    \IfStrEqCase{\commandkey{type}}{%
+      {melee}{\textit{\meleeattackname:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \ftname}%
+      {ranged}{\textit{\rangedattackname:} \dnd@hit{mod}, \rangename\ \commandkey{range} \ftname}%
+      {both}{\textit{\meleeorrangedattackname:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \ftname or \rangename\ \commandkey{range} \ftname}%
+    }[]%
+    , \commandkey{targets}.
+    \textit{\hitname:} \dnd@damage{dmg}{dmgtype}%
+    \dnd@ifplusdmg{plusdmg}{plusdmgtype}%
+    \dnd@ifordmg{ordmg}{dmgtype}{ordmgwhen}{plusdmg}{plusdmgtype}%
+    \ifcommandkey{extra}{\commandkey{extra}}{}.
+  \end{monsteraction}
+}
+
+\NewDocumentCommand {\DndCRExp} { m }
+  {
+    \str_case_e:nnF {#1}
+      {
+        {0} {#1~(0~\xpname)}
+        {1/10} {0~(10~\xpname)}
+        {1/8} {#1~(25~\xpname)}
+        {1/4} {#1~(50~\xpname)}
+        {1/2} {#1~(100~\xpname)}
+        {1} {#1~(200~\xpname)}
+        {2} {#1~(450~\xpname)}
+        {3} {#1~(700~\xpname)}
+        {4} {#1~(\numprint{1100}~\xpname)}
+        {5} {#1~(\numprint{1800}~\xpname)}
+        {6} {#1~(\numprint{2300}~\xpname)}
+        {7} {#1~(\numprint{2900}~\xpname)}
+        {8} {#1~(\numprint{3900}~\xpname)}
+        {9} {#1~(\numprint{5000}~\xpname)}
+        {10} {#1~(\numprint{5900}~\xpname)}
+        {11} {#1~(\numprint{7200}~\xpname)}
+        {12} {#1~(\numprint{8400}~\xpname)}
+        {13} {#1~(\numprint{10000}~\xpname)}
+        {14} {#1~(\numprint{11500}~\xpname)}
+        {15} {#1~(\numprint{13000}~\xpname)}
+        {16} {#1~(\numprint{15000}~\xpname)}
+        {17} {#1~(\numprint{18000}~\xpname)}
+        {18} {#1~(\numprint{20000}~\xpname)}
+        {19} {#1~(\numprint{22000}~\xpname)}
+        {20} {#1~(\numprint{25000}~\xpname)}
+        {21} {#1~(\numprint{33000}~\xpname)}
+        {22} {#1~(\numprint{41000}~\xpname)}
+        {23} {#1~(\numprint{50000}~\xpname)}
+        {24} {#1~(\numprint{62000}~\xpname)}
+        {25} {#1~(\numprint{75000}~\xpname)}
+        {26} {#1~(\numprint{90000}~\xpname)}
+        {27} {#1~(\numprint{105000}~\xpname)}
+        {28} {#1~(\numprint{120000}~\xpname)}
+        {29} {#1~(\numprint{135000}~\xpname)}
+        {30} {#1~(\numprint{155000}~\xpname)}
+      }
+      {#1}
+  }
+
+% New interface
 \ExplSyntaxOn
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Monster environments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Stat block made to look like the Monster Manual NPC definitions 
-\DeclareTColorBox{ DndMonsterNoBg } { o m }
+\DeclareTColorBox {DndMonsterNoBg} { o m }
   {
     enhanced,
     frame~hidden,
@@ -17,7 +374,7 @@
     sharp~corners,
     opacityback = 0,
     colframe    = titlered,
-    fonttitle   = \dnd@StatBlockTitleFont\Large,
+    fonttitle   = \dnd@StatBlockTitleFont \Large,
     fontupper   = \dnd@StatBlockBodyFont,
     fontlower   = \dnd@StatBlockBodyFont,
     title       = {#2},
@@ -26,7 +383,7 @@
   }
 
 % Stat block made to look like stat blocks in the PHB.
-\DeclareTColorBox{ DndMonsterBg } { o m }
+\DeclareTColorBox {DndMonsterBg} { o m }
   {
     enhanced,
     frame~hidden,
@@ -40,10 +397,10 @@
     bottom           = 11pt,
     sharp~corners,
     oversize         = 0pt,
-    borderline~north = { 4pt }   { 0pt }    { titlered },
-    borderline~north = { 2.5pt } { 0.75pt } {statblockribbon },
-    borderline~south = { 4pt }   { 0pt }    { titlered },
-    borderline~south = { 2.5pt } { 0.75pt } { statblockribbon },
+    borderline~north = {4pt}    {0pt}    {titlered},
+    borderline~north = {2.5pt } {0.75pt} {statblockribbon},
+    borderline~south = {4pt}    {0pt}    {titlered},
+    borderline~south = {2.5pt}  {0.75pt} {statblockribbon},
     colback          = statblockbg,
     colbacktitle     = statblockbg,
     colframe         = titlered,
@@ -66,33 +423,33 @@
   }
 
 % Italicized text appearing immediately after monster's name
-\NewDocumentCommand { \DndMonsterType } { m }
+\NewDocumentCommand {\DndMonsterType} {m}
   {
-    \begin{hangingpar}
-      \textit{ #1 }
-    \end{hangingpar}
+    \begin {hangingpar}
+      \textit {#1}
+    \end {hangingpar}
   }
 
 % Fancy DnD 5e stat block rule
-\NewDocumentCommand { \DndMonsterLine } {}
+\NewDocumentCommand {\DndMonsterLine} {}
   {
-    \begin{tikzpicture}
-      \draw [ rulered, fill=rulered ] (0, 0) -- (0,0.1) -- (\linewidth, 0.05);
-    \end{tikzpicture}
+    \begin {tikzpicture}
+      \draw [ rulered, fill = rulered ] ( 0, 0 ) -- ( 0, 0.1 ) -- ( \linewidth, 0.05 );
+    \end {tikzpicture}
     \par
   }
 
 %% Monster list helpers
 \box_new:N \l__dnd_space_box
-\hbox_set:Nn \l__dnd_space_box { ~ }
+\hbox_set:Nn \l__dnd_space_box {~}
 \dim_new:N \l__dnd_space_dim
 \dim_set:Nn \l__dnd_space_dim { \box_wd:N \l__dnd_space_box }
 
 % A description variant used to list creature attributes.
-\newlist { __dnd_monster_attributes } { description } { 1 }
-\setlist [ __dnd_monster_attributes ]
+\newlist {__dnd_monster_attributes} {description} {1}
+\setlist [__dnd_monster_attributes]
   {
-    before   = \color{ titlered },
+    before   = \color {titlered},
     font     = \dnd@StatBlockBodyFont \textbf,
     labelsep = \l__dnd_space_dim,
     noitemsep,
@@ -102,8 +459,8 @@
 % Only prints the item label if the value was supplied
 \cs_new_protected_nopar:Npn \__dnd_if_monster_attribute:nn #1#2
   {
-    \tl_if_empty:NF { #1 }
-      { \item [ #2 ] #1 }
+    \tl_if_empty:NF {#1}
+      { \item [#2] #1 }
   }
 
 %% Monster basics
@@ -112,29 +469,29 @@
     armor-class .tl_set:N          = \l__armor_class_tl,
     armor-class .initial:n         = 10,
     armor-class .value_required:n  = true,
-    armorclass .meta:n = { armor-class = { #1 } },
+    armorclass .meta:n = { armor-class = {#1} },
     hit-points .tl_set:N         = \l__hit_points_tl,
-    hit-points .initial:n        = \DndDice{1d8},
+    hit-points .initial:n        = \DndDice {1d8},
     hit-points .value_required:n = true,
-    hitpoints .meta:n = { hit-points = { #1 } },
+    hitpoints .meta:n = { hit-points = {#1} },
     speed .tl_set:N         = \l__speed_tl,
-    speed .initial:n        = 30~\ftname,
+    speed .initial:n        = 30 ~ \ftname,
     speed .value_required:n = true,
   }
 
 \cs_new_protected_nopar:Npn \__dnd_monster_basics:
   {
-      \begin { __dnd_monster_attributes }
-        \item [ \armorclassname ] \l__armor_class_tl
-        \item [ \hitpointsname ] \l__hit_points_tl
-        \item [ \speedname ] \l__speed_tl
-      \end { __dnd_monster_attributes }
+      \begin {__dnd_monster_attributes}
+        \item [\armorclassname] \l__armor_class_tl
+        \item [\hitpointsname]  \l__hit_points_tl
+        \item [\speedname]      \l__speed_tl
+      \end {__dnd_monster_attributes}
   }
 
-\NewDocumentCommand {\DndMonsterBasics} { o }
+\NewDocumentCommand {\DndMonsterBasics} {o}
   {
     \group_begin:
-      \keys_set:nn { dnd / monster / basics } { #1 }
+      \keys_set:nn { dnd / monster / basics } {#1}
       \DndMonsterLine
       \__dnd_monster_basics:
       \DndMonsterLine
@@ -146,56 +503,56 @@
 % \l_tmpb_tl - XP
 \cs_new_protected_nopar:Npn \__dnd_cr_xp:N #1
   {
-    \tl_set:Nn \l_tmpa_tl { #1 }
-    \str_case_e:nnTF { #1 }
+    \tl_set:Nn \l_tmpa_tl {#1}
+    \str_case_e:nnTF {#1}
       {
-        { 0 }   { \tl_set:Nn \l_tmpb_tl { 0 } }
-        { 0/10 }
+        {0}   { \tl_set:Nn \l_tmpb_tl {0} }
+        {0/10}
           {
-            \tl_set:Nn \l_tmpa_tl { 0 }
-            \tl_set:Nn \l_tmpb_tl { 10 }
+            \tl_set:Nn \l_tmpa_tl {0}
+            \tl_set:Nn \l_tmpb_tl {10}
           }
-        { 1/10 }
+        {1/10}
           {
-            \dnd@deprecate{Challenge~1/10}{0.8}[Use~challenge~0/10~instead.]
-            \tl_set:Nn \l_tmpa_tl { 0 }
-            \tl_set:Nn \l_tmpb_tl { 10 }
+            \dnd@deprecate{ Challenge ~ 1/10 } {0.8} [ Use ~ challenge ~ 0/10 ~ instead. ]
+            \tl_set:Nn \l_tmpa_tl {0}
+            \tl_set:Nn \l_tmpb_tl {10}
           }
-        { 1/8 } { \tl_set:Nn \l_tmpb_tl { 25 } }
-        { 1/4 } { \tl_set:Nn \l_tmpb_tl { 50 } }
-        { 1/2 } { \tl_set:Nn \l_tmpb_tl { 100 } }
-        { 1 }   { \tl_set:Nn \l_tmpb_tl { 200 } }
-        { 2 }   { \tl_set:Nn \l_tmpb_tl { 450 } }
-        { 3 }   { \tl_set:Nn \l_tmpb_tl { 700 } }
-        { 4 }   { \tl_set:Nn \l_tmpb_tl { 1100 } }
-        { 5 }   { \tl_set:Nn \l_tmpb_tl { 1800 } }
-        { 6 }   { \tl_set:Nn \l_tmpb_tl { 2300 } }
-        { 7 }   { \tl_set:Nn \l_tmpb_tl { 2900 } }
-        { 8 }   { \tl_set:Nn \l_tmpb_tl { 3900 } }
-        { 9 }   { \tl_set:Nn \l_tmpb_tl { 5000 } }
-        { 10 }  { \tl_set:Nn \l_tmpb_tl { 5900 } }
-        { 11 }  { \tl_set:Nn \l_tmpb_tl { 7200 } }
-        { 12 }  { \tl_set:Nn \l_tmpb_tl { 8400 } }
-        { 13 }  { \tl_set:Nn \l_tmpb_tl { 10000 } }
-        { 14 }  { \tl_set:Nn \l_tmpb_tl { 11500 } }
-        { 15 }  { \tl_set:Nn \l_tmpb_tl { 13000 } }
-        { 16 }  { \tl_set:Nn \l_tmpb_tl { 15000 } }
-        { 17 }  { \tl_set:Nn \l_tmpb_tl { 18000 } }
-        { 18 }  { \tl_set:Nn \l_tmpb_tl { 20000 } }
-        { 19 }  { \tl_set:Nn \l_tmpb_tl { 22000 } }
-        { 20 }  { \tl_set:Nn \l_tmpb_tl { 25000 } }
-        { 21 }  { \tl_set:Nn \l_tmpb_tl { 33000 } }
-        { 22 }  { \tl_set:Nn \l_tmpb_tl { 41000 } }
-        { 23 }  { \tl_set:Nn \l_tmpb_tl { 50000 } }
-        { 24 }  { \tl_set:Nn \l_tmpb_tl { 62000 } }
-        { 25 }  { \tl_set:Nn \l_tmpb_tl { 75000 } }
-        { 26 }  { \tl_set:Nn \l_tmpb_tl { 90000 } }
-        { 27 }  { \tl_set:Nn \l_tmpb_tl { 105000 } }
-        { 28 }  { \tl_set:Nn \l_tmpb_tl { 120000 } }
-        { 29 }  { \tl_set:Nn \l_tmpb_tl { 135000 } }
-        { 30 }  { \tl_set:Nn \l_tmpb_tl { 155000 } }
+        {1/8} { \tl_set:Nn \l_tmpb_tl {25} }
+        {1/4} { \tl_set:Nn \l_tmpb_tl {50} }
+        {1/2} { \tl_set:Nn \l_tmpb_tl {100} }
+        {1}   { \tl_set:Nn \l_tmpb_tl {200} }
+        {2}   { \tl_set:Nn \l_tmpb_tl {450} }
+        {3}   { \tl_set:Nn \l_tmpb_tl {700} }
+        {4}   { \tl_set:Nn \l_tmpb_tl {1100} }
+        {5}   { \tl_set:Nn \l_tmpb_tl {1800} }
+        {6}   { \tl_set:Nn \l_tmpb_tl {2300} }
+        {7}   { \tl_set:Nn \l_tmpb_tl {2900} }
+        {8}   { \tl_set:Nn \l_tmpb_tl {3900} }
+        {9}   { \tl_set:Nn \l_tmpb_tl {5000} }
+        {10}  { \tl_set:Nn \l_tmpb_tl {5900} }
+        {11}  { \tl_set:Nn \l_tmpb_tl {7200} }
+        {12}  { \tl_set:Nn \l_tmpb_tl {8400} }
+        {13}  { \tl_set:Nn \l_tmpb_tl {10000} }
+        {14}  { \tl_set:Nn \l_tmpb_tl {11500} }
+        {15}  { \tl_set:Nn \l_tmpb_tl {13000} }
+        {16}  { \tl_set:Nn \l_tmpb_tl {15000} }
+        {17}  { \tl_set:Nn \l_tmpb_tl {18000} }
+        {18}  { \tl_set:Nn \l_tmpb_tl {20000} }
+        {19}  { \tl_set:Nn \l_tmpb_tl {22000} }
+        {20}  { \tl_set:Nn \l_tmpb_tl {25000} }
+        {21}  { \tl_set:Nn \l_tmpb_tl {33000} }
+        {22}  { \tl_set:Nn \l_tmpb_tl {41000} }
+        {23}  { \tl_set:Nn \l_tmpb_tl {50000} }
+        {24}  { \tl_set:Nn \l_tmpb_tl {62000} }
+        {25}  { \tl_set:Nn \l_tmpb_tl {75000} }
+        {26}  { \tl_set:Nn \l_tmpb_tl {90000} }
+        {27}  { \tl_set:Nn \l_tmpb_tl {105000} }
+        {28}  { \tl_set:Nn \l_tmpb_tl {120000} }
+        {29}  { \tl_set:Nn \l_tmpb_tl {135000} }
+        {30}  { \tl_set:Nn \l_tmpb_tl {155000} }
       }
-      { \l_tmpa_tl\ ( \numprint { \l_tmpb_tl } ~ \xpname ) }
+      { \l_tmpa_tl\ ( \numprint {\l_tmpb_tl} ~ \xpname ) }
       { #1 }
 }
 
@@ -204,21 +561,21 @@
 {
   saving-throws .tl_set:N         = \l__saving_throws_tl,
   saving-throws .value_required:n = true,
-  savingthrows .meta:n = { saving-throws = { #1 } },
+  savingthrows .meta:n = { saving-throws = {#1} },
   skills .tl_set:N         = \l__skills_tl,
   skills .value_required:n = true,
   damage-vulnerabilities .tl_set:N         = \l__damage_vulnerabilities_tl,
   damage-vulnerabilities .value_required:n = true,
-  damagevulnerabilities .meta:n = { damage-vulnerabilities = { #1 } },
+  damagevulnerabilities .meta:n = { damage-vulnerabilities = {#1} },
   damage-resistances .tl_set:N         = \l__damage_resistances_tl,
   damage-resistances .value_required:n = true,
-  damageresistances .meta:n = { damage-resistances = { #1 } },
+  damageresistances .meta:n = { damage-resistances = {#1} },
   damage-immunities .tl_set:N         = \l__damage_immunities_tl,
   damage-immunities .value_required:n = true,
-  damageimmunities .meta:n = { damage-immunities = { #1 } },
+  damageimmunities .meta:n = { damage-immunities = {#1} },
   condition-immunities .tl_set:N         = \l__condition_immunities_tl,
   condition-immunities .value_required:n = true,
-  conditionimmunities .meta:n = { condition-immunities = { #1 } },
+  conditionimmunities .meta:n = { condition-immunities = {#1} },
   senses .tl_set:N         = \l__senses_tl,
   senses .initial:n        = \defaultsensesname,
   senses .value_required:n = true,
@@ -232,23 +589,23 @@
 
 \cs_new_protected_nopar:Npn \__dnd_monster_details:
 {
-    \begin { __dnd_monster_attributes }
-      \__dnd_if_monster_attribute:nn { \l__saving_throws_tl } { \savesname }
-      \__dnd_if_monster_attribute:nn { \l__skills_tl } { \skillsname }
-      \__dnd_if_monster_attribute:nn { \l__damage_vulnerabilities_tl } { \dvulname }
-      \__dnd_if_monster_attribute:nn { \l__damage_resistances_tl } { \dresname }
-      \__dnd_if_monster_attribute:nn { \l__damage_immunities_tl } { \dimmname }
-      \__dnd_if_monster_attribute:nn { \l__condition_immunities_tl } { \cimmname }
-      \item [ \sensesname ] \l__senses_tl
-      \item [ \languagesname ] \l__languages_tl
-      \item [ \challengename ] \__dnd_cr_xp:N { \l__challenge_tl }
-    \end { __dnd_monster_attributes }
+    \begin {__dnd_monster_attributes}
+      \__dnd_if_monster_attribute:nn {\l__saving_throws_tl}          {\savesname}
+      \__dnd_if_monster_attribute:nn {\l__skills_tl}                 {\skillsname}
+      \__dnd_if_monster_attribute:nn {\l__damage_vulnerabilities_tl} {\dvulname}
+      \__dnd_if_monster_attribute:nn {\l__damage_resistances_tl}     {\dresname}
+      \__dnd_if_monster_attribute:nn {\l__damage_immunities_tl}      {\dimmname}
+      \__dnd_if_monster_attribute:nn {\l__condition_immunities_tl}   {\cimmname}
+      \item [\sensesname]    \l__senses_tl
+      \item [\languagesname] \l__languages_tl
+      \item [\challengename] \__dnd_cr_xp:N {\l__challenge_tl}
+    \end {__dnd_monster_attributes}
 }
 
-\NewDocumentCommand { \DndMonsterDetails } { o }
+\NewDocumentCommand {\DndMonsterDetails} {o}
 {
   \group_begin:
-    \keys_set:nn { dnd / monster / details } { #1 }
+    \keys_set:nn { dnd / monster / details } {#1}
     \DndMonsterLine{}
     \__dnd_monster_details:
     \DndMonsterLine{}
@@ -261,17 +618,17 @@
 \cs_new_protected_nopar:Npn \__dnd_ability_score_modifier:N #1
   {
     \group_begin:
-      \IfInteger { #1 }
+      \IfInteger {#1}
         {
-          \int_set:Nn \l_tmpa_int { \fp_eval:n { floor ( (#1 - 10) / 2) } }
+          \int_set:Nn \l_tmpa_int { \fp_eval:n { floor ( ( #1 - 10 ) / 2 ) } }
           
           #1 ~ (
-          \int_compare:nNnTF { \l_tmpa_int } < { 0 }
+          \int_compare:nNnTF {\l_tmpa_int} < {0}
           { \(-\) }
-          { + }
+          {+}
           \int_abs:n \l_tmpa_int )
         }
-        { #1 }
+        {#1}
     \group_end:
   }
 
@@ -306,89 +663,89 @@
 % Ability scores in a table
 \cs_new_protected_nopar:Npn \__dnd_monster_ability_scores:
   {
-    \small \centering \color { titlered }
-    \resizebox { \linewidth } { \height }
+    \small \centering \color {titlered}
+    \resizebox {\linewidth} {\height}
       {
-        \begin { tabular } { cccccc }
-          \rule { 0pt } { 3.7mm } % adds space between hline and table
-          \textbf { \strstatname } &
-          \textbf { \dexstatname } &
-          \textbf { \constatname } &
-          \textbf { \intstatname } &
-          \textbf { \wisstatname } &
-          \textbf { \chastatname } \\
-          \__dnd_ability_score_modifier:N { \l__str_tl } &
-          \__dnd_ability_score_modifier:N { \l__dex_tl } &
-          \__dnd_ability_score_modifier:N { \l__con_tl } &
-          \__dnd_ability_score_modifier:N { \l__int_tl } &
-          \__dnd_ability_score_modifier:N { \l__wis_tl } &
-          \__dnd_ability_score_modifier:N { \l__cha_tl }
-        \end { tabular }
+        \begin {tabular} {cccccc}
+          \rule {0pt} {3.7mm} % adds space between hline and table
+          \textbf {\strstatname} &
+          \textbf {\dexstatname} &
+          \textbf {\constatname} &
+          \textbf {\intstatname} &
+          \textbf {\wisstatname} &
+          \textbf {\chastatname} \\
+          \__dnd_ability_score_modifier:N {\l__str_tl} &
+          \__dnd_ability_score_modifier:N {\l__dex_tl} &
+          \__dnd_ability_score_modifier:N {\l__con_tl} &
+          \__dnd_ability_score_modifier:N {\l__int_tl} &
+          \__dnd_ability_score_modifier:N {\l__wis_tl} &
+          \__dnd_ability_score_modifier:N {\l__cha_tl}
+        \end {tabular}
       }
     \\[0.4em] %adds space after table
 }
 
-\NewDocumentCommand { \DndMonsterAbilityScores } { o }
+\NewDocumentCommand {\DndMonsterAbilityScores} {o}
   {
     \group_begin:
-      \keys_set:nn { dnd / monster / ability_scores } { #1 }
+      \keys_set:nn { dnd / monster / ability_scores } {#1}
       \__dnd_monster_ability_scores:
     \group_end:
   }
 
 % Wrapper for monster actions  
-\NewDocumentCommand { \DndMonsterAction } { m }
-  { \smallskip \textsl { \textbf { #1.} } }
+\NewDocumentCommand {\DndMonsterAction} {m}
+  { \smallskip \textsl { \textbf {#1.} } }
 
 
 % Monster subsection header style
-\NewDocumentCommand { \DndMonsterSection } { m }
+\NewDocumentCommand {\DndMonsterSection} {m}
   {
     \group_begin:
       \medskip
-      \color { titlered } \dnd@StatBlockSubtitleFont \large #1
+      \color {titlered} \dnd@StatBlockSubtitleFont \large #1
       % \rule is a horizontal command, so placing it under the title incurs extra
       % line spacing. Use \hrule (a vertical command) instead.
-      \vspace { 3pt }
+      \vspace {3pt}
       \hrule height 0.6pt
-      \vspace { 3pt}
+      \vspace {3pt}
     \group_end:
   }
   
 % Spellcasting levels
-\newlist { DndMonsterSpells } { description } { 1 }
-\setlist [ DndMonsterSpells ]
+\newlist {DndMonsterSpells} {description} {1}
+\setlist [DndMonsterSpells]
   {
-    before   = { \medskip },
-    font     = \normalfont\dnd@StatBlockBodyFont,
+    before   = {\medskip},
+    font     = \normalfont \dnd@StatBlockBodyFont,
     labelsep = \l__dnd_space_dim,
     noitemsep,
     nosep,
   }
 
-\NewDocumentCommand {\DndEmphSpellString} { m }
+\NewDocumentCommand {\DndEmphSpellString} {m}
   {
     \group_begin:
-      \seq_set_from_clist:Nn \l_tmpa_seq { #1 }
-      \seq_set_map:NNn \l_tmpb_seq \l_tmpa_seq { \exp_not:n { \emph { ##1 } } }
+      \seq_set_from_clist:Nn \l_tmpa_seq {#1}
+      \seq_set_map:NNn \l_tmpb_seq \l_tmpa_seq { \exp_not:n { \emph {##1} } }
       \seq_use:Nn \l_tmpb_seq { ,~ }
     \group_end:
   }
 
-\NewDocumentCommand { \DndInnateSpellLevel } { O { \innateatwillname } m }
+\NewDocumentCommand {\DndInnateSpellLevel} { O {\innateatwillname} m }
   {
     \item
       [    
-        \IfInteger { #1 }
+        \IfInteger {#1}
         {
-          \str_if_in:NnTF { #2 } { , }
-          { \__dnd_caption:nn { \numberperdayeachname } { #1 } }
-          { \__dnd_caption:nn { \numberperdayname } { #1 } }
+          \str_if_in:NnTF {#2} {,}
+          { \__dnd_caption:nn {\numberperdayeachname} {#1} }
+          { \__dnd_caption:nn {\numberperdayname} {#1} }
         }
         { #1 }
         :
       ]
-      \DndEmphSpellString { #2 }
+      \DndEmphSpellString {#2}
   }
 
 \NewDocumentCommand {\DndMonsterSpellLevel} { O{\spellcantripsname} O{\spellatwillname} m }
@@ -397,29 +754,29 @@
       [
         \str_case_e:nnF {#1}
           {
-            { 1 } { \spellfirstlevelname }
-            { 2 } { \spellsecondlevelname }
-            { 3 } { \spellthirdlevelname }
-            { 4 } { \spellfourthlevelname }
-            { 5 } { \spellfifthlevelname }
-            { 6 } { \spellsixthlevelname }
-            { 7 } { \spellseventhlevelname }
-            { 8 } { \spelleighthlevelname }
-            { 9 } { \spellninthlevelname }
+            {1} {\spellfirstlevelname}
+            {2} {\spellsecondlevelname}
+            {3} {\spellthirdlevelname}
+            {4} {\spellfourthlevelname}
+            {5} {\spellfifthlevelname}
+            {6} {\spellsixthlevelname}
+            {7} {\spellseventhlevelname}
+            {8} {\spelleighthlevelname}
+            {9} {\spellninthlevelname}
           }
-          { #1 }
+          {#1}
         {~}(
         \str_case_e:nnF {#2}
           {
-            { 1 } { \spelloneslotname }
-            { 2 } { \spelltwoslotsname }
-            { 3 } { \spellthreeslotsname }
-            { 4 } { \spellfourslotsname }
+            {1} {\spelloneslotname}
+            {2} {\spelltwoslotsname}
+            {3} {\spellthreeslotsname}
+            {4} {\spellfourslotsname}
           }
-          { #2 }
+          {#2}
         ) :
       ]
-    \DndEmphSpellString{ #3 }
+    \DndEmphSpellString{#3}
   }
 
 %% Monster attacks
@@ -433,11 +790,11 @@
     distance .choice:,
     distance .choices:nn =
       { both, melee, ranged }
-      { \tl_set:Nn \l__dnd_attack_distance_tl { \l_keys_choice_tl } },
+      { \tl_set:Nn \l__dnd_attack_distance_tl {\l_keys_choice_tl} },
     distance .initial:n  = both,
     type .choice:,
-    type / weapon .code:n = { \tl_set:Nn \l__dnd_attack_type_tl { \weaponname } },
-    type / spell .code:n = { \tl_set:Nn \l__dnd_attack_type_tl { \spellname } },
+    type / weapon .code:n = { \tl_set:Nn \l__dnd_attack_type_tl {\weaponname} },
+    type / spell .code:n = { \tl_set:Nn \l__dnd_attack_type_tl {\spellname} },
     type .initial:n  = weapon,
     mod .tl_set:N         = \l__mod_tl,
     mod .value_required:n = true,
@@ -483,46 +840,46 @@
 
 \cs_new_protected:Npn \__dnd_if_plus_dmg:
   {    
-    \tl_if_empty:NF { \l__plus_dmg_tl }
+    \tl_if_empty:NF {\l__plus_dmg_tl}
     { ~ \plusname\ \l__plus_dmg_tl\ \l__plus_dmg_type_tl\ \damagename }
   }
 
 \cs_new_protected_nopar:Npn \__dnd_if_or_dmg:
   {
-    \tl_if_empty:NF { \l__or_dmg_tl }
+    \tl_if_empty:NF {\l__or_dmg_tl}
     {
       , ~ \orname\ \l__or_dmg_tl\ \l__dmg_type_tl\ \damagename\ \l__or_dmg_when_tl
       
-      \tl_if_empty:NF { \l__plus_dmg_tl }
-        { , }
+      \tl_if_empty:NF {\l__plus_dmg_tl}
+        {,}
     }
   }
 
 \cs_new_protected:Npn \__dnd_monster_attack:
   {    
-    \__dnd_check_for_key:Nnn \l__name_tl { \DndMonsterAttack } { name }
-    \__dnd_check_for_key:Nnn \l__mod_tl { \DndMonsterAttack } { mod }
+    \__dnd_check_for_key:Nnn \l__name_tl {\DndMonsterAttack} {name}
+    \__dnd_check_for_key:Nnn \l__mod_tl {\DndMonsterAttack} {mod}
 
-    \begin{DndMonsterAction} { \l__name_tl }~
+    \begin{DndMonsterAction} {\l__name_tl}~
       
-      \str_case_e:nnF { \l__dnd_attack_distance_tl }
+      \str_case_e:nnF {\l__dnd_attack_distance_tl}
         {
           { melee }
             {
-              \textit{ \__dnd_caption:nn { \meleeattackname } { \l__dnd_attack_type_tl } : } ~ \__dnd_monster_to_hit:, ~ \__dnd_monster_reach:
+              \textit{ \__dnd_caption:nn {\meleeattackname} {\l__dnd_attack_type_tl} : } ~ \__dnd_monster_to_hit:, ~ \__dnd_monster_reach:
             }
           { ranged }
             {
-              \textit{ \__dnd_caption:nn { \rangedattackname } { \l__dnd_attack_type_tl } : } ~ \__dnd_monster_to_hit:, ~ \__dnd_monster_range:
+              \textit{ \__dnd_caption:nn {\rangedattackname} {\l__dnd_attack_type_tl} : } ~ \__dnd_monster_to_hit:, ~ \__dnd_monster_range:
             }
         }
         {% Melee and Ranged is the default
-          \textit{ \__dnd_caption:nn { \meleeorrangedattackname } { \l__dnd_attack_type_tl } : } ~ \__dnd_monster_to_hit:, ~ \__dnd_monster_reach:\ \orname\ \__dnd_monster_range:
+          \textit{ \__dnd_caption:nn {\meleeorrangedattackname} {\l__dnd_attack_type_tl} : } ~ \__dnd_monster_to_hit:, ~ \__dnd_monster_reach:\ \orname\ \__dnd_monster_range:
         }
       , ~ \l__targets_tl. ~
       \textit { \hitname : } ~ 
       
-      \str_if_empty:NF { \l__dmg_tl } % Don't show any damage if `dmg' is not set.
+      \str_if_empty:NF {\l__dmg_tl} % Don't show any damage if `dmg' is not set.
         {
           \l__dmg_tl\ \l__dmg_type_tl\ \damagename
           \__dnd_if_or_dmg:
@@ -535,15 +892,15 @@
     \end{DndMonsterAction}
   }
 
-\NewDocumentCommand { \DndMonsterAttack } { o }
+\NewDocumentCommand {\DndMonsterAttack} {o}
   {
     \group_begin:
-      \keys_set:nn { dnd / monster / attack } { #1 }
+      \keys_set:nn { dnd / monster / attack } {#1}
       \__dnd_monster_attack:
     \group_end:
   }
 
-\NewDocumentCommand { \DndMonsterMelee } { o }
+\NewDocumentCommand {\DndMonsterMelee} {o}
   {
     \group_begin:
       \keys_set:nn { dnd / monster / attack } { #1, distance = melee }
@@ -551,7 +908,7 @@
     \group_end:
   }
 
-\NewDocumentCommand { \DndMonsterRanged } { o }
+\NewDocumentCommand {\DndMonsterRanged} {o}
   {
     \group_begin:
       \keys_set:nn { dnd / monster / attack } { #1, distance = ranged }
@@ -561,24 +918,24 @@
 
 %% Legendary Actions
 
-\newlist { DndMonsterLegendaryActions } { description } { 1 }
-\setlist [ DndMonsterLegendaryActions ]
+\newlist {DndMonsterLegendaryActions} {description} {1}
+\setlist [DndMonsterLegendaryActions]
   {
-    before   = { \medskip },
+    before   = {\medskip},
     font     = \dnd@StatBlockBodyFont,
     labelsep = \l__dnd_space_dim,
     noitemsep,
     nosep,
   }
 
-\NewDocumentCommand { \DndMonsterLegendaryAction } { m m }
+\NewDocumentCommand {\DndMonsterLegendaryAction} { m m }
   {
     \item [ #1 . ] #2
   }
 
 %% Positions monster description text
-\NewDocumentEnvironment { DndMonsterDescription } {}
-  { \medskip\noindent\ignorespaces }
+\NewDocumentEnvironment {DndMonsterDescription} {}
+  { \medskip \noindent \ignorespaces }
   {}
 
 \ExplSyntaxOff
