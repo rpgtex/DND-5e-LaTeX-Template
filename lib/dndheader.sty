@@ -1,11 +1,15 @@
 \ExplSyntaxOn
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom headers and footers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bool_if:NT \l__dnd_layout_bool
 	{
 		% Setup for custom footer
-		\pagestyle { fancy }
+		\pagestyle {fancy}
 
-		\renewcommand { \headrulewidth } { 0.0pt } %no rule for header
-		\renewcommand { \footrulewidth } { 0.0pt } %no rule for footer
+		\renewcommand {\headrulewidth} {0.0pt} % no rule for header
+		\renewcommand {\footrulewidth} {0.0pt} % no rule for footer
 
 		\fancyhf {} % clear all headers and footers
 
@@ -14,8 +18,8 @@
 			{
 				\bool_if:NT \l__dnd_show_background_bool
 					{
-						\begin { tikzpicture } [ remember~picture, overlay ]
-							\node [ inner~sep=0pt ] at ( current~page.center )
+						\begin {tikzpicture} [ remember~picture, overlay ]
+							\node [ inner~sep = 0pt ] at ( current~page.center )
 								{
 									\includegraphics
 										[
@@ -24,12 +28,12 @@
 										]
 										{ img/paper }
 								};
-						\end{ tikzpicture }
+						\end{tikzpicture}
 					}
 			}
 
 		% Left-even page footer
-		\fancyfoot [ LE ]
+		\fancyfoot [LE]
 			{
 				\begin{tikzpicture} [ remember~picture, overlay ]
 					\bool_if:NT \l__dnd_show_footer_scroll_bool
@@ -51,21 +55,21 @@
 								};
 						}
 					\node [ xshift = 20pt, yshift = 30pt ] at ( current~page.south~west )
-						{ \dnd@PageNumberFont \textcolor { pagegold } { \thepage } };
+						{ \dnd@PageNumberFont \textcolor {pagegold} {\thepage} };
 					\node
 						[
 							anchor = base~west,
 							xshift = \marginparwidth+\marginparpush,
 							yshift = 33pt
 						] at ( current~page.south~west )
-						{ \dnd@FooterFont { \textcolor { pagegold } { \nouppercase \leftmark } } };
+						{ \dnd@FooterFont { \textcolor {pagegold} { \nouppercase \leftmark } } };
 				\end{tikzpicture}
 			}
 
 		% Right-odd page footer
-		\fancyfoot [ RO ]
+		\fancyfoot [RO]
 			{
-				\begin { tikzpicture } [ remember~picture, overlay ]
+				\begin {tikzpicture} [ remember~picture, overlay ]
 				\bool_if:NT \l__dnd_show_footer_scroll_bool
 					{
 						\node
@@ -73,7 +77,7 @@
 								inner~sep = 0pt,
 								anchor    = south,
 								nearly~opaque
-							] at (current~page.south)
+							] at ( current~page.south )
 							{
 								\includegraphics
 									[
@@ -84,17 +88,18 @@
 							};
 					}
 					\node [ xshift = -20pt, yshift = 30pt ] at ( current~page.south~east )
-						{ \dnd@PageNumberFont \textcolor { pagegold } { \thepage } };
+						{ \dnd@PageNumberFont \textcolor {pagegold} {\thepage} };
 					\node
 						[
 							anchor = base~east,
 							xshift = -\marginparwidth-\marginparpush,
 							yshift = 33pt
 						] at ( current~page.south~east )
-						{ \dnd@FooterFont { \textcolor { pagegold } { \nouppercase \leftmark } } };
+						{ \dnd@FooterFont { \textcolor {pagegold} { \nouppercase \leftmark } } };
 				\end{tikzpicture}
 			}
 
-		\fancypagestyle { plain } {}
-	}
+		\fancypagestyle {plain} {}
+  }
+
 \ExplSyntaxOff
