@@ -1,34 +1,32 @@
 \ExplSyntaxOn
 
 %Usage \begin{commentbox}[options]{title}[color]
-\DeclareTColorBox { commentbox } { O {} m O { commentboxcolor } }
-	{
-		before~upper =
-			{
-				\ifpkglayout
-					\nottoggle { justified } { \RaggedRight }
-				\fi
-			},
-		frame~hidden,
-		boxrule      = 0pt,
-		breakable,
-		enhanced,
-		before~skip  = 8pt plus 1pt,
-		toptitle     = 3mm,
-		boxsep       = 0.25ex,
-		left         = 8pt,
-		right        = 8pt,
-		sharp~corners,
-		fonttitle    = \l__dnd_font_box_title_tl,
-		fontupper    = \l__dnd_font_box_body_tl,
-		fontlower    = \l__dnd_font_box_body_tl,
-		title        = {#2},
-		parbox=false,
-		colback      = #3,
-		colbacktitle = #3,
-		coltitle     = black,
-		after        = { \vspace { 5pt plus 1pt } \noindent },
-		#1
-	}
+\DeclareTColorBox{commentbox}{O{} m O{commentboxcolor}}{%
+    before~upper={%
+      \ifpkglayout%
+        \nottoggle{justified}{\RaggedRight}%
+      \fi%
+      },
+    frame~hidden,
+    boxrule      = 0pt,
+    breakable,
+    enhanced,
+    before~skip  = 8pt plus 1pt,
+    toptitle     = 3mm,
+    boxsep       = 0.25ex,
+    left         = 8pt,
+    right        = 8pt,
+    sharp~corners,
+    fonttitle    = \l__dnd_font_box_title_tl,
+    fontupper    = \l__dnd_font_box_body_tl,
+    fontlower    = \l__dnd_font_box_body_tl,
+    title        = {#2},
+    parbox=false,
+    colback      = {#3},
+    colbacktitle = {#3},
+    coltitle     = black,
+    after        = { \vspace { 5pt plus 1pt } \noindent },
+    #1
+  }
 
 \ExplSyntaxOff

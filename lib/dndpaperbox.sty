@@ -3,11 +3,10 @@
 %Usage \begin{paperbox}[options]{title}[color]
 \DeclareTColorBox{paperbox}{O{} m O{paperboxcolor}}
 	{
-		before~upper     =
-			{
-				\ifpkglayout
-					\nottoggle { justified } { \RaggedRight }
-				\fi
+		before upper={%
+				\ifpkglayout%
+					\nottoggle{justified}{\RaggedRight}%
+				\fi%
 			},
 		frame~hidden,
 		boxrule          = 0pt,
