@@ -2,12 +2,15 @@
 
 \ifpkglayout
 
-% Remove Numbering (If you want Numbering set secnumdepth to the appropriate depth)
-\setcounter {secnumdepth} {-1}
+\RequirePackage[titles]{tocloft}
+\RequirePackage{titlesec}	% Used to adjust (sub)section formatting
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Section formatting
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\iftoggle{multitoc}{%
+  \RequirePackage[toc]{multitoc}
+}{}
+
+%Remove Numbering (If you want Numbering set secnumdepth to the appropriate depth)
+\setcounter{secnumdepth}{-1}
 
 % Chapter
 \titleformat {\chapter}
@@ -63,83 +66,32 @@
 %   { 0pt } % after-sep
 
 % Paragraph
-\titleformat {\paragraph} [runin]
-  { \normalfont \normalsize \bfseries \slshape } % format
-  { \theparagraph \quad } % label
-  { 0pt } % sep
-  {} % before-code
-  [.] % after-code
-
-\titlespacing* {\paragraph}
-  { 0pt } % left
-  { \parskip } % before-sep
-  { \wordsep } % after-sep
+\titleformat{\paragraph}[runin]
+{\normalfont\normalsize\bfseries\slshape}{\theparagraph\quad}{0pt}{}[.]
+\titlespacing*{\paragraph}
+{0pt}{\parskip}{\wordsep}
 
 % Subparagraph
-\titleformat {\subparagraph} [runin]
-  { \normalfont \normalsize \bfseries \slshape } % format
-  { \thesubparagraph \quad } % label
-  { 0pt } % sep
-  {} % before-code
-  [.] % after-code
-
-\titlespacing* {\subparagraph}
-  { \parindent } % left
-  { \parskip } % before-sep
-  { \wordsep } % after-sep
+\titleformat{\subparagraph}[runin]
+{\normalfont\normalsize\bfseries\slshape}{\thesubparagraph\quad}{0pt}{}[.]
+\titlespacing*{\subparagraph}
+{\parindent}{\parskip}{\wordsep}
 
 \fi % \ifpkglayout
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ExplSyntaxOff
+
 % Special command for magic items, traps, and the like.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Old interface
 \newcommand{\subtitlesection}[2]{
   \subsubsection{#1}\vspace{-1ex}
   \textit{#2}\vspace{1ex}\par
 }
 
-% New interface
-\NewDocumentCommand {\DndItemHeader} { m m }
-  {
-    \subsubsection {#1}
-    \textit {#2}
-    \par \vspace {1ex} \noindent \ignorespaces
-  }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Special command for spells.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% #1 - Name
-% #2 - Level and school
-% #3 - Casting time
-% #4 - Range
-% #5 - Components
-% #6 - Duration
-\NewDocumentCommand { \DndSpellHeader } { m m m m m m }
-  {
-    \DndItemHeader {#1} {#2}
-
-    \begin {description}
-      [
-        noitemsep,
-        nosep,
-        font       = \normalfont \textbf,
-        after      = \vspace {1ex},
-        leftmargin = 1em
-      ]
-      \item [ \spellcastingtimename : ] #3
-      \item [ \spellrangename       : ] #4
-      \item [ \spellcomponentsname  : ] #5
-      \item [ \spelldurationname    : ] #6
-    \end{description}
-  }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Map Areas and their References
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Old Interface
+% Labelling helpers
 \newcommand{\AreaLabel@Prefix}{area}
 \newcommand{\SetAreaLabelPrefix}[1]{%
 \renewcommand{\AreaLabel@Prefix}{#1}}
@@ -176,94 +128,3 @@
 \newcommand{\SetDetailAreaPrefix}[1]{\renewcommand{\DetailArea@Prefix}
       {#1--\arabic{DetailArea}\par\expandafter\ignorespaces\noindent}}
       
-% New Interface
-\tl_new:N \l__dnd_area_num_depth_tl
-
-% Options
-\keys_define:nn { dnd / areas }
-  {
-    area-label .tl_set:N          = \l__dnd_area_label_tl,
-    area-label .initial:n         = area,
-    area-label .value_required:n  = true,
-    sub-area-label .tl_set:N          = \l__dnd_sub_area_label_tl,
-    sub-area-label .initial:n         = subarea,
-    sub-area-label .value_required:n  = true,
-    region .tl_set:N          = \l__dnd_region_tl,
-    region .value_required:n  = true,
-    area-num-depth .choice:,
-    area-num-depth .choices:nn =
-      { 1, 2, 3, 4 }
-      { \tl_set:Nn \l__dnd_area_num_depth_tl {\l_keys_choice_tl} },
-    area-num-depth .initial:n  = 2, % subsection
-  }
-
-\NewDocumentCommand {\DndSetAreaOptions} {o}
-  {    
-    \keys_set:nn { dnd / areas } {#1}
-  }
-
-% Counters
-\newcounter{DndAreaCounter}
-
-\NewDocumentCommand { \DndResetAreas } {}
-  {
-    \setcounter {DndAreaCounter} {0}
-  }
-
-\newcounter {DndSubAreaCounter} [DndAreaCounter]
-
-% sub area references should be '5a', '5b', not '51', '52'
-\renewcommand \p@DndSubAreaCounter { \arabic {DndAreaCounter} }
-\renewcommand \theDndSubAreaCounter { \alph {DndSubAreaCounter} }
-
-% Functions to create an area including text and label
-\NewDocumentCommand {\DndArea} {m}
-  {
-    \refstepcounter {DndAreaCounter}
-    \label { \l__dnd_region_tl \l__dnd_area_label_tl : #1 }
-
-    \tl_set:Nn \l_tmpa_tl { \l__dnd_region_tl \arabic{DndAreaCounter} . ~ #1 }
-
-    \str_case_e:nn {\l__dnd_area_num_depth_tl}
-      {
-        { 1 } { \section       { \l_tmpa_tl } }
-        { 2 } { \subsection    { \l_tmpa_tl } }
-        { 3 } { \subsubsection { \l_tmpa_tl } }
-        { 4 } { \paragraph     { \l_tmpa_tl } }
-      }
-  }
-
-\NewDocumentCommand {\DndSubArea} {m}
-  {
-    \refstepcounter {DndSubAreaCounter}
-    \label { \l__dnd_region_tl \l__dnd_sub_area_label_tl : #1 }
-
-    \tl_set:Nn \l_tmpa_tl { \l__dnd_region_tl \arabic {DndAreaCounter} \alph {DndSubAreaCounter} . ~ #1 }
-
-    \str_case_e:nn { \l__dnd_area_num_depth_tl }
-      {
-        { 1 } { \subsection    { \l_tmpa_tl } }
-        { 2 } { \subsubsection { \l_tmpa_tl } }
-        { 3 } { \paragraph     { \l_tmpa_tl } }
-        { 4 } { \subparagraph  { \l_tmpa_tl } }
-      }    
-  }
-
-% Functions to reference a label
-\NewDocumentCommand {\DndAreaRef} { o m }
-  {
-    \group_begin:
-      \keys_set:nn { dnd / areas } {#1} % Temp set keys to reference other regions
-      #2 ~ ( \pageabbreviationname\ \pageref { \l__dnd_region_tl \l__dnd_area_label_tl : #2 } )
-    \group_end:
-  }
-
-\NewDocumentCommand {\DndSubAreaRef} { o m }
-  {
-    \group_begin:
-      \keys_set:nn { dnd / areas } {#1} % Temp set keys to reference other regions
-      #2 ~ ( \pageabbreviationname\ \pageref { \l__dnd_region_tl \l__dnd_sub_area_label_tl :#2 } )
-    \group_end:
-  }
-
-\ExplSyntaxOff
