@@ -26,7 +26,6 @@ fancyhdr
 fp
 geometry
 hang
-ifluatex
 ifxetex
 keycommand
 l3kernel
@@ -47,7 +46,6 @@ tools
 trimspaces
 was
 xcolor
-xkeyval
 xstring
 
 # Document dependencies

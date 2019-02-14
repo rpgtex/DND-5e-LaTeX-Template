@@ -19,7 +19,6 @@
 \RequirePackage [ breakable, skins, xparse ] {tcolorbox}
 \RequirePackage {tikz}
 \RequirePackage {xcolor}
-\RequirePackage {xkeyval}
 \RequirePackage {xparse}
 
 \sys_if_engine_luatex:T

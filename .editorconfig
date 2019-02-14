@@ -6,6 +6,6 @@ end_of_file = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{cls,sty,tex}]
+[*.{clo,cls,def,sty,tex}]
 indent_style = space
 indent_size = 2

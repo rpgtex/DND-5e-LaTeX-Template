@@ -6,5 +6,5 @@
 \bool_new:N \c__dnd_isclass_bool
 \bool_set_true:N \c__dnd_isclass_bool
 
-\RequirePackage {dndoptions}
-\RequirePackage {dndcore}
+\input {dndoptions.clo}
+\input {dndcore.def}

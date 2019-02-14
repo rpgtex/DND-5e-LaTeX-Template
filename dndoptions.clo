@@ -4,7 +4,7 @@
 % Class / Package options
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Provides class / package option processing in of l3keys in LaTeX2e
+% Provides class / package option processing of l3keys in LaTeX2e
 \RequirePackage {l3keys2e}
 
 % deprecate warning used in options and throughout the collection
@@ -32,6 +32,7 @@
 
 \keys_define:nn { dnd / options }
   {
+    % Large-scale styling choice
     bg .choice:,
     bg / full .code:n =
       {
@@ -40,20 +41,31 @@
       },
     bg / print .code:n =
       {
+        \bool_set_false:N \l__dnd_show_background_bool
         \bool_set_true:N \l__dnd_show_footer_scroll_bool
       },
-    bg / none .code:n = {},
+    bg / none .code:n =
+      {
+        \bool_set_false:N \l__dnd_show_background_bool
+        \bool_set_false:N \l__dnd_show_footer_scroll_bool
+      },
     bg .initial:n = full,
+
+    % Justified text
     justified .code:n =
       {
-        \bool_set_true:N \l__dnd_justified_bool,
+        \bool_set_true:N \l__dnd_justified_bool
       },
     justified .value_forbidden:n = true,
+
+    % Avoid multi-column toc
     nomultitoc .code:n =
       {
         \bool_set_false:N \l__dnd_multitoc_bool
       },
     nomultitoc .value_forbidden:n = true,
+
+    % Apply layout formatting
     layout .bool_set:N       = \l__dnd_layout_bool,
     layout .value_required:n = true,
 
