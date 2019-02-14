@@ -5,7 +5,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Helps prevent option clash with other packages that include xcolor
-\PassOptionsToPackage {table} {xcolor} 
+\PassOptionsToPackage {table} {xcolor}
 
 \RequirePackage {array}
 \RequirePackage {calc}
@@ -29,16 +29,16 @@
 
 \bool_if:NT \l__dnd_layout_bool
   {
-    \RequirePackage {fancyhdr} 	% Adaptation of the footers
+    \RequirePackage {fancyhdr}   % Adaptation of the footers
     \RequirePackage {geometry}
     \RequirePackage {microtype} % Improve ragged2e hyphenation and overfull boxes
-    \RequirePackage {ragged2e}	
-    \RequirePackage [titles] {tocloft} % multi-column toc	
-    \RequirePackage {titlesec}	% Used to adjust (sub)section formatting	
-    
+    \RequirePackage {ragged2e}
+    \RequirePackage [titles] {tocloft} % multi-column toc
+    \RequirePackage {titlesec}  % Used to adjust (sub)section formatting
+
     \bool_if:NT \l__dnd_multitoc_bool
       { \RequirePackage [toc] {multitoc} }
-    
+
     % Set page geometry.
     \geometry
       {
@@ -57,7 +57,7 @@
     \hyphenpenalty = 1000  % Fewer hyphens
 
     % Set left justification if not justified
-		\bool_if:NF \l__dnd_justified_bool
+    \bool_if:NF \l__dnd_justified_bool
       { \RaggedRight }
 
     % Disable space between paragraphs.

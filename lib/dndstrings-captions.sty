@@ -1,4 +1,4 @@
-\ExplSyntaxOn % Use tilde (~) for spaces. 
+\ExplSyntaxOn % Use tilde (~) for spaces.
 
 % To add captions for other languages:
 % 1. Copy and paste the following code block.
@@ -126,10 +126,10 @@
     \renewcommand\numberperdayname{|1|/giorno}
     \renewcommand\numberperdayeachname{|1|/g.~ciascuno}
     % Spell header
-%    \renewcommand\spellcastingtimename{Casting~Time}
-%    \renewcommand\spellrangename{Range}
-%    \renewcommand\spellcomponentsname{Components}
-%    \renewcommand\spelldurationname{Duration}
+    \renewcommand\spellcastingtimename{Tempo~di~Lancio}
+    \renewcommand\spellrangename{Gittata}
+    \renewcommand\spellcomponentsname{Componenti}
+    \renewcommand\spelldurationname{Durata}
   }
 
 % Russian captions
@@ -194,5 +194,65 @@
 %    \renewcommand\spellcomponentsname{Components}
 %    \renewcommand\spelldurationname{Duration}
   }
+
+% German captions
+\addto\captionsngerman{%
+    \def\armorclassname{Rüstungsklasse}%
+    \def\hitpointsname{Trefferpunkte}%
+    \def\speedname{Bewegungsrate}%
+    \def\strstatname{STR}%
+    \def\dexstatname{GES}%
+    \def\constatname{KON}%
+    \def\intstatname{INT}%
+    \def\wisstatname{WEI}%
+    \def\chastatname{CHA}%
+    \def\skillsname{Fertigkeit}%
+    \def\dimmname{Immunitäten}%
+    \def\dvulname{Anfälligkeiten}%
+    \def\dresname{Wiederstandsschaden}%
+    \def\cimmname{Immunität}
+    \def\savesname{Rettung}%
+    \def\sensesname{Sinne}%
+    \def\languagesname{Sprachen}%
+    \def\challengename{Herausforderung}%
+    \newcommand\xpname{EP}
+    % Monster attack
+    \renewcommand\ftname{Fuß}
+    \renewcommand\meleeattackname{Nahkampfangriff}
+    \renewcommand\rangedattackname{Fernkampangriff}
+    \renewcommand\meleeorrangedattackname{Nah-~oder~Fernkampfangriff}
+    \renewcommand\tohitname{um~zu~treffen}
+    \renewcommand\reachname{Reichweite}
+    \renewcommand\rangename{Bereich}
+    \renewcommand\hitname{Treffer}
+    \renewcommand\damagename{Schaden}
+    % Spell levels
+    \renewcommand\spellcantripsname{Zaubertricks}
+    \renewcommand\spellfirstlevelname{1.~Stufe}
+    \renewcommand\spellsecondlevelname{2.~Stufe}
+    \renewcommand\spellthirdlevelname{3.~Stufe}
+    \renewcommand\spellfourthlevelname{4.~Stufe}
+    \renewcommand\spellfifthlevelname{5.~Stufe}
+    \renewcommand\spellsixthlevelname{6.~Stufe}
+    \renewcommand\spellseventhlevelname{7.~Stufe}
+    \renewcommand\spelleighthlevelname{8.~Stufe}
+    \renewcommand\spellninthlevelname{9.~Stufe}
+    % Spell slots
+    \renewcommand\spellatwillname{nach~belieben}
+    \renewcommand\spelloneslotname{1~Slot}
+    \renewcommand\spelltwoslotsname{2~Slots}
+    \renewcommand\spellthreeslotsname{3~Slots}
+    \renewcommand\spellfourslotsname{4~Slots}
+    % Innate spellcasting
+    \renewcommand\innateatwillname{Nach~belieben}
+    \renewcommand\numberperdayname{|1|/Tag}
+    \renewcommand\numberperdayeachname{|1|/Tag~pro}
+    % Spell header
+    \renewcommand\spellcastingtimename{Zauberzeit}
+    \renewcommand\spellrangename{Reichweite}
+    \renewcommand\spellcomponentsname{Komponenten}
+    \renewcommand\spelldurationname{Wirkungsdauer}
+}
+
 
 \ExplSyntaxOff
