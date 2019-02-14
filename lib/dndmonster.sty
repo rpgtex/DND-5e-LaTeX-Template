@@ -20,7 +20,7 @@
   \StrCut{\DiceArg}{d}\DiceNum\DiceSides%			split string
   \StrCut{\DiceSides}{+}\DiceSides\DiceAddMod%
   \StrCut{\DiceSides}{-}\DiceSides\DiceSubMod%
-  \FPeval{\DiceAvg}{(\DiceSides+1)/2*\DiceNum}%	calculate avg roll	
+  \FPeval{\DiceAvg}{(\DiceSides+1)/2*\DiceNum}%	calculate avg roll
   \IfInteger{\DiceAddMod}{%
     \FPadd{\DiceAvg}{\DiceAvg}{\DiceAddMod}%	add value
     \def\DiceMod{ + \DiceAddMod}%
@@ -354,7 +354,7 @@
       {\l_spellstring_int} = {0}
       {\int_incr:N \l_spellstring_int}
       {,~}
-    
+
     \emph {#1}
   }
 
