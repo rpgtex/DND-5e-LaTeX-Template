@@ -17,7 +17,7 @@
 % e.g. \dice{2d6+3} prints "10 (2d6 + 3)"
 \newcommand{\dice}[1]{%
   \StrSubstitute{#1}{ }{}[\DiceArg]%				strip whitespaces
-  \StrCut{\DiceArg}{\dname}\DiceNum\DiceSides%			split string
+  \StrCut{\DiceArg}{d}\DiceNum\DiceSides%			split string
   \StrCut{\DiceSides}{+}\DiceSides\DiceAddMod%
   \StrCut{\DiceSides}{-}\DiceSides\DiceSubMod%
   \FPeval{\DiceAvg}{(\DiceSides+1)/2*\DiceNum}%	calculate avg roll
