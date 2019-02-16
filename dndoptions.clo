@@ -30,6 +30,11 @@
 \bool_set_true:N \l__dnd_multitoc_bool
 \bool_set_eq:NN \l__dnd_layout_bool \c__dnd_isclass_bool
 
+% BEGIN section to remove in version 1.0.0
+\bool_set_true:N \l__dnd_layout_bool
+\bool_new:N \l__dnd_layout_set_bool
+% END section to remove in version 1.0.0
+
 \keys_define:nn { dnd / options }
   {
     % Large-scale styling choice
@@ -66,7 +71,14 @@
     nomultitoc .value_forbidden:n = true,
 
     % Apply layout formatting
-    layout .bool_set:N       = \l__dnd_layout_bool,
+    %layout .bool_set:N       = \l__dnd_layout_bool,
+    layout .code:n =
+      {
+        \tl_if_eq:nnTF {true} {#1}
+          { \bool_set_true:N \l__dnd_layout_bool }
+          { \bool_set_false:N \l__dnd_layout_bool }
+        \bool_set_true:N \l__dnd_layout_set_bool
+      }, % Remove and replace with .bool_set:N in 1.0.0
     layout .value_required:n = true,
 
     % Deprecated options
@@ -92,4 +104,13 @@
 
 \ProcessKeysOptions { dnd / options }
 
-\ExplSyntaxOff
+% BEGIN section to remove in version 1.0.0
+\bool_if:NF \c__dnd_isclass_bool
+  {
+    \bool_if:NF \l__dnd_layout_set_bool
+      {
+        \msg_new:nnn {dnd} { options / layout_false } { Package ~ option ~ "layout" ~ will ~ default ~ to ~ false ~ in ~ 1.0.0. }
+        \msg_warning:nn {dnd} { options / layout_false }
+      }
+  }
+% END section to remove in version 1.0.0
