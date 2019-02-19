@@ -5,14 +5,17 @@
       \nottoggle{justified}{\RaggedRight}%
     \fi%
   },
+  code={\linespread{.9}},
   frame hidden,
   boxrule=0pt,
   enhanced,
-  before skip=11pt plus 1pt,
-  toptitle=3mm,
-  boxsep=0.25ex,
-  left=8pt,
-  right=8pt,
+  before skip=13pt,
+  toptitle=2pt,
+  boxsep=3pt,
+  left=6pt,
+  right=6pt,
+  top=0pt,
+  bottom=3pt,
   fonttitle=\dnd@BoxTitleFont,
   fontupper=\dnd@BoxBodyFont,
   fontlower=\dnd@BoxBodyFont,
@@ -21,8 +24,8 @@
   parbox=false,
   borderline north={1pt}{-0.5pt}{black},
   borderline south={1pt}{-0.5pt}{black},
-  colback={#3},
-  colbacktitle={#3},
+  colback=#3,
+  colbacktitle=#3,
   coltitle=black,
   fuzzy shadow={0mm}{-3.5pt}{-0.5pt}{0.4mm}{black!60!white},
   overlay={%
@@ -31,6 +34,6 @@
     \fill[black] (frame.north east) -- ++ (-7pt,0) -- ++ (0,5pt) -- cycle;
     \fill[black] (frame.south east) -- ++ (-7pt,0) -- ++ (0,-5pt) -- cycle;
     },
-  after={\vspace{10pt plus 1pt}\noindent},
+  after skip=14pt,
   #1
 }
