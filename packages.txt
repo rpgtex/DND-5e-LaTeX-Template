@@ -14,6 +14,7 @@ amsfonts
 babel
 babel-english
 bookman
+captions
 cm
 colortbl
 courier
@@ -40,6 +41,7 @@ oberdiek
 opensans
 pgf
 psnfss
+stfloats
 tcolorbox
 titlesec
 tocloft
