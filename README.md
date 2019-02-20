@@ -1,7 +1,7 @@
 # DnD 5e LaTeX Template
 
 [![Latest release](https://img.shields.io/github/release/rpgtex/DND-5e-LaTeX-Template/all.svg)](https://github.com/rpgtex/DND-5e-LaTeX-Template/releases/latest)
-[![Build Status](https://travis-ci.org/rpgtex/DND-5e-LaTeX-Template.svg?branch=master)](https://travis-ci.org/rpgtex/DND-5e-LaTeX-Template)
+[![Build Status](https://img.shields.io/circleci/project/github/rpgtex/DND-5e-LaTeX-Template/master.svg?style=flat)](https://circleci.com/gh/rpgtex/DND-5e-LaTeX-Template)
 
 This is a LaTeX template for typesetting documents in the style of the fifth edition of the "world's greatest roleplaying game".
 
@@ -9,7 +9,7 @@ This is a LaTeX template for typesetting documents in the style of the fifth edi
 
 * Color schemes and fonts are close to the core books.
 * TeX Live includes the default fonts.
-* Compiles with `pdflatex`.
+* Works with pdfTeX, LuaTeX, and XeTeX.
 
 ![Preview](scrot.jpg)
 
@@ -233,6 +233,11 @@ Instead, use the `tcolorbox` `float` parameter:
 Refer to the `tcolorbox` documentation (section 4.13) for more float parameters.
 
 ## Contributing
+
+### Style
+
+We use [EditorConfig](https://editorconfig.org/) to enforce consistent formatting.
+Install the appropriate plugin for your editor.
 
 ### Preparing a new release
 
