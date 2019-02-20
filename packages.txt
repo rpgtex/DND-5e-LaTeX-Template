@@ -27,6 +27,7 @@ fp
 geometry
 hang
 ifxetex
+ifluatex
 keycommand
 l3kernel
 l3packages
