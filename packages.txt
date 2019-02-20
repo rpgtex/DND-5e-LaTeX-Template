@@ -54,5 +54,4 @@ xstring
 caption
 lipsum
 listings
-shortvrb
 sttools
