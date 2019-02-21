@@ -1,0 +1,11 @@
+root = true
+
+[*]
+charset = "utf-8"
+end_of_file = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{cls,sty,tex}]
+indent_style = space
+indent_size = 2

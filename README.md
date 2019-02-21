@@ -234,6 +234,11 @@ Refer to the `tcolorbox` documentation (section 4.13) for more float parameters.
 
 ## Contributing
 
+### Style
+
+We use [EditorConfig](https://editorconfig.org/) to enforce consistent formatting.
+Install the appropriate plugin for your editor.
+
 ### Preparing a new release
 
 1. Run `./bin/bump-version` to tag the new version.
