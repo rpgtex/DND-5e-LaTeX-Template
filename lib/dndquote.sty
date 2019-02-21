@@ -1,15 +1,15 @@
 \ExplSyntaxOn
 
 %Usage \begin{quotebox}[options][color]
-\DeclareTColorBox { quotebox } { O{} O { quoteboxcolor } }
+\DeclareTColorBox {quotebox} { O{} O {quoteboxcolor} }
   {
     before~upper    =
       {
         \ifpkglayout
-          \nottoggle { justified } { \RaggedRight }
+          \nottoggle {justified} {\RaggedRight}
         \fi
     },
-    code            = { \linespread { 1.25 } },
+    code            = { \linespread {1.25} },
     enhanced~jigsaw,
     frame~hidden,
     boxrule         = 0pt,
@@ -22,14 +22,14 @@
     colback         = #2,
     sharp~corners,
     parbox          = false,
-    borderline~west = { 1pt } { -0.5pt } { titlered },
-    borderline~east = { 1pt } { -0.5pt } { titlered },
+    borderline~west = {1pt} {-0.5pt} {titlered},
+    borderline~east = {1pt} {-0.5pt} {titlered},
     fontupper       = \l__dnd_font_box_body_tl,
     fontlower       = \l__dnd_font_box_body_tl,
     overlay         =
       {
         \foreach\n~in~{ north~east, north~west, south~east, south~west }
-          { \draw [ titlered, fill=titlered ] ( frame.\n ) circle ( 2pt ); };
+          { \draw [ titlered, fill=titlered ] (frame.\n) circle (2pt); };
       },
     after           = { \vspace { 7.5pt plus 1pt } \noindent },
     #1

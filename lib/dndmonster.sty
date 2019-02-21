@@ -20,7 +20,7 @@
   \StrCut{\DiceArg}{d}\DiceNum\DiceSides%			split string
   \StrCut{\DiceSides}{+}\DiceSides\DiceAddMod%
   \StrCut{\DiceSides}{-}\DiceSides\DiceSubMod%
-  \FPeval{\DiceAvg}{(\DiceSides+1)/2*\DiceNum}%	calculate avg roll	
+  \FPeval{\DiceAvg}{(\DiceSides+1)/2*\DiceNum}%	calculate avg roll
   \IfInteger{\DiceAddMod}{%
     \FPadd{\DiceAvg}{\DiceAvg}{\DiceAddMod}%	add value
     \def\DiceMod{ + \DiceAddMod}%
@@ -33,7 +33,7 @@
     }%
   }%
   \FPtrunc{\DiceAvg}{\DiceAvg}{0}%				round down
-  \FPprint{\DiceAvg\ (\DiceNum d\DiceSides\DiceMod)}%
+  \FPprint{\DiceAvg\ (\DiceNum \dname\DiceSides\DiceMod)}%
 }
 
 \ExplSyntaxOn
@@ -213,12 +213,12 @@
 
 \newcommand{\dnd@ifplusdmg}[2]{%
   \ifcommandkey{#1}{%
-    { }plus \commandkey{#1}\ \commandkey{#2}\ \damagename%
+    { }\plusname\ \commandkey{#1}\ \commandkey{#2}\ \damagename%
   }{}%
 }
 \newcommand{\dnd@ifordmg}[5]{%
   \ifcommandkey{#1}{%
-    , or \commandkey{#1}\ \commandkey{#2}\ \damagename\dnd@ifplusdmg{#4}{#5}\ \commandkey{#3}%
+    , \orname\ \commandkey{#1}\ \commandkey{#2}\ \damagename\dnd@ifplusdmg{#4}{#5}\ \commandkey{#3}%
   }{}%
 }
 
@@ -226,7 +226,7 @@
     name=Club,
     mod=+0,
     reach=5,
-    targets=one target,
+    targets=\defaulttargetsname,
     dmg=\dice{1d4},
     dmgtype=bludgeoning,
     plusdmg=,
@@ -254,7 +254,7 @@
     name=Shortbow,
     mod=+0,
     range=80/320,
-    targets=one target,
+    targets=\defaulttargetsname,
     dmg=\dice{1d6},
     dmgtype=piercing,
     plusdmg=,
@@ -285,7 +285,7 @@
     mod=+0,
     reach=5,
     range=20/60,
-    targets=one target,
+    targets=\defaulttargetsname,
     dmg=\dice{1d4},
     dmgtype=piercing,
     plusdmg=,
@@ -298,7 +298,7 @@
     \IfStrEqCase{\commandkey{type}}{%
       {melee}{\textit{\meleeattackname:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \ftname}%
       {ranged}{\textit{\rangedattackname:} \dnd@hit{mod}, \rangename\ \commandkey{range} \ftname}%
-      {both}{\textit{\meleeorrangedattackname:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \ftname or \rangename\ \commandkey{range} \ftname}%
+      {both}{\textit{\meleeorrangedattackname:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \ftname\ \orname\ \rangename\ \commandkey{range} \ftname}%
     }[]%
     , \commandkey{targets}.
     \textit{\hitname:} \dnd@damage{dmg}{dmgtype}%
@@ -366,7 +366,7 @@
       {\l_spellstring_int} = {0}
       {\int_incr:N \l_spellstring_int}
       {,~}
-    
+
     \emph {#1}
   }
 
