@@ -83,10 +83,10 @@ Tables are set to have alternate rows be colored.
 
 \header{Nice table}
 \begin{dndtable}
-     \textbf{Table head}  & \textbf{Table head} \\
-     Some value  & Some value \\
-     Some value  & Some value \\
-     Some value  & Some value
+    \textbf{Table head}  & \textbf{Table head} \\
+    Some value  & Some value \\
+    Some value  & Some value \\
+    Some value  & Some value
 \end{dndtable}
 
 \newpage
@@ -129,15 +129,15 @@ The \lstinline!monsterbox! environment is used to typeset monsters and NPCs.
   ]
   \dndline%
 
-	% Traits
-	
-	\begin{monsteraction}[Innate Spellcasting]
-		Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
+  % Traits
+
+  \begin{monsteraction}[Innate Spellcasting]
+    Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
     \DndInnateSpellLevel{misty step}
     \DndInnateSpellLevel[3]{fog cloud, rope trick}
     \DndInnateSpellLevel[1]{identify}
   \end{monsteraction}
-  
+
   \begin{monsteraction}[Spellcasting]
     Foo is a 3rd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has the following sorcerer spells prepared:
     \DndMonsterSpellLevel{blade ward, fire bolt, light, shocking grasp}
@@ -223,8 +223,8 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
 \end{table*}
 
 \begin{itemize}
-  \item Use \lstinline!\setthemecolor[<color>]! to set \lstinline!themecolor!, \lstinline!commentcolor!, \lstinline!paperboxcolor!, and \lstinline!tablecolor! to a specific color.
-  \item Calling \lstinline!\setthemecolor! without an argument sets those colors to the current \lstinline!themecolor!.
+  \item Use \lstinline!\DndSetThemeColor[<color>]! to set \lstinline!themecolor!, \lstinline!commentcolor!, \lstinline!paperboxcolor!, and \lstinline!tablecolor! to a specific color.
+  \item Calling \lstinline!\DndSetThemeColor! without an argument sets those colors to the current \lstinline!themecolor!.
   \item \lstinline!commentbox!, \lstinline!dndtable!, \lstinline!paperbox!, and \lstinline!quoteboxcolor! also accept an optional color argument to set the color for a single instance.
 \end{itemize}
 
@@ -233,13 +233,13 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
 \subsubsection{Using \lstinline!themecolor!}
 
 \begin{lstlisting}
-\setthemecolor[PhbMauve]
+\DndSetThemeColor[PhbMauve]
 
 \begin{paperbox}{Example}
   \lipsum[2]
 \end{paperbox}
 
-\setthemecolor[PhbLightCyan]
+\DndSetThemeColor[PhbLightCyan]
 
 \header{Example}
 \begin{dndtable}[cX]
@@ -255,13 +255,13 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
 \end{lstlisting}
 
 \begingroup
-\setthemecolor[PhbMauve]
+\DndSetThemeColor[PhbMauve]
 
 \begin{paperbox}{Example}
   \lipsum[2]
 \end{paperbox}
 
-\setthemecolor[PhbLightCyan]
+\DndSetThemeColor[PhbLightCyan]
 
 \header{Example}
 \begin{dndtable}[cX]
