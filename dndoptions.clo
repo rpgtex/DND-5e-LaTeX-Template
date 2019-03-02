@@ -20,6 +20,10 @@
     \msg_warning:nnnnn { dnd } { deprecated } {#1} {#2} {}
   }
 
+% Messages for unknown options
+\msg_new:nnn {dnd} { options / unknown_class } { Unknown ~ option ~ " #1 " ~ passed ~ to ~ book ~ class. }
+\msg_new:nnn {dnd} { options / unknown_package } { Unknown ~ option ~ " #1 ". }
+
 % These booleans are not set directly by an option (i.e. instead set by .code)
 \bool_new:N \l__dnd_show_background_bool
 \bool_new:N \l__dnd_show_footer_scroll_bool
@@ -80,6 +84,19 @@
         \bool_set_true:N \l__dnd_layout_set_bool
       }, % Remove and replace with .bool_set:N in 1.0.0
     layout .value_required:n = true,
+
+    % Unknown option handling
+    unknown .code:n =
+    {
+      \bool_if:NTF \c__dnd_isclass_bool
+        {
+          \msg_info:nnx { dnd } { options / unknown_class } {\l_keys_key_tl}
+          \PassOptionsToClass { \l_keys_key_tl } { book }
+        }
+        {
+          \msg_error:nnx { dnd } { options / unknown_package } {\l_keys_key_tl}
+        }
+    },
 
     % Deprecated options
     bg-full .code:n =
