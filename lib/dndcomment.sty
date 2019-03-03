@@ -36,30 +36,30 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Standard for every comment
 \DeclareTColorBox {__dnd_comment} {o}
-	{
+  {
     before~upper =
       {
         \ifpkglayout
           \nottoggle {justified} {\RaggedRight}
         \fi
       },
-		frame~hidden,
-		boxrule      = 0pt,
-		breakable,
-		enhanced,
-		before~skip  = 8pt plus 1pt,
-		toptitle     = 3mm,
-		boxsep       = 0.25ex,
-		left         = 8pt,
-		right        = 8pt,
-		sharp~corners,
-		fonttitle    = \dnd@BoxTitleFont,
-		fontupper    = \dnd@BoxBodyFont,
-		fontlower    = \dnd@BoxBodyFont,
-		parbox       = false,
-		coltitle     = black,
-		after~skip   = 5pt plus 1pt,
-		#1,
+    frame~hidden,
+    boxrule      = 0pt,
+    breakable,
+    enhanced,
+    before~skip  = 8pt plus 1pt,
+    toptitle     = 3mm,
+    boxsep       = 0.25ex,
+    left         = 8pt,
+    right        = 8pt,
+    sharp~corners,
+    fonttitle    = \dnd@BoxTitleFont,
+    fontupper    = \dnd@BoxBodyFont,
+    fontlower    = \dnd@BoxBodyFont,
+    parbox       = false,
+    coltitle     = black,
+    after~skip   = 5pt plus 1pt,
+    #1,
   }
 
 % Extra key for controlling the color of the title and the background
