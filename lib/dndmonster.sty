@@ -57,6 +57,7 @@
   frame hidden,
   boxrule=0pt,
   breakable,
+  parbox=false,
   boxsep=0pt,
   toptitle=3mm,
   left=0pt,
@@ -79,6 +80,7 @@
   before skip=7pt plus 2pt,
   boxrule=0pt,
   breakable,
+  parbox=false,
   boxsep=0pt,
   toptitle=11pt,
   left=7pt,
@@ -361,12 +363,13 @@
 % Monster environments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Stat block made to look like the Monster Manual NPC definitions 
-\DeclareTColorBox {DndMonsterNoBg} { o m }
+\DeclareTColorBox {DndMonsterNoBg} { O{} m }
   {
     enhanced,
     frame~hidden,
     boxrule     = 0pt,
     breakable,
+    parbox      = false,
     boxsep      = 0pt,
     toptitle    = 3mm,
     left        = 0pt,
@@ -383,13 +386,14 @@
   }
 
 % Stat block made to look like stat blocks in the PHB.
-\DeclareTColorBox {DndMonsterBg} { o m }
+\DeclareTColorBox {DndMonsterBg} { O{} m }
   {
     enhanced,
     frame~hidden,
     before~skip      = 7pt plus 2pt,
     boxrule          = 0pt,
     breakable,
+    parbox           = false,
     boxsep           = 0pt,
     toptitle         = 11pt,
     left             = 7pt,
@@ -397,10 +401,10 @@
     bottom           = 11pt,
     sharp~corners,
     oversize         = 0pt,
-    borderline~north = {4pt}    {0pt}    {titlered},
-    borderline~north = {2.5pt } {0.75pt} {statblockribbon},
-    borderline~south = {4pt}    {0pt}    {titlered},
-    borderline~south = {2.5pt}  {0.75pt} {statblockribbon},
+    borderline~north = {4pt}   {0pt}    {titlered},
+    borderline~north = {2.5pt} {0.75pt} {statblockribbon},
+    borderline~south = {4pt}   {0pt}    {titlered},
+    borderline~south = {2.5pt} {0.75pt} {statblockribbon},
     colback          = statblockbg,
     colbacktitle     = statblockbg,
     colframe         = titlered,
@@ -413,7 +417,7 @@
   }
 
 % Alias DndMonster to correct background type
-\iftoggle { bool-bg }
+\iftoggle {bool-bg}
   {
     \let\DndMonster\DndMonsterBg
     \let\endDndMonster\endDndMonsterBg
@@ -433,6 +437,7 @@
 % Fancy DnD 5e stat block rule
 \NewDocumentCommand {\DndMonsterLine} {}
   {
+    \par \noindent
     \begin {tikzpicture}
       \draw [ rulered, fill = rulered ] ( 0, 0 ) -- ( 0, 0.1 ) -- ( \linewidth, 0.05 );
     \end {tikzpicture}
@@ -693,16 +698,19 @@
     \group_end:
   }
 
-% Wrapper for monster actions  
+% Inline header for monster actions - similar to a paragraph
 \NewDocumentCommand {\DndMonsterAction} {m}
-  { \smallskip \textsl { \textbf {#1.} } }
+  { \par \smallskip \noindent \textsl { \textbf {#1.} } }
 
+% Inline header for monster sub actions - similar to a subparagraph
+\NewDocumentCommand {\DndMonsterSubAction} {m}
+  { \par \textsl { \textbf {#1.} } }
 
 % Monster subsection header style
 \NewDocumentCommand {\DndMonsterSection} {m}
   {
     \group_begin:
-      \medskip
+      \par \medskip \noindent
       \color {titlered} \dnd@StatBlockSubtitleFont \large #1
       % \rule is a horizontal command, so placing it under the title incurs extra
       % line spacing. Use \hrule (a vertical command) instead.
@@ -710,6 +718,7 @@
       \hrule height 0.6pt
       \vspace {3pt}
     \group_end:
+    \par \noindent \ignorespaces
   }
   
 % Spellcasting levels
@@ -932,10 +941,5 @@
   {
     \item [ #1 . ] #2
   }
-
-%% Positions monster description text
-\NewDocumentEnvironment {DndMonsterDescription} {}
-  { \medskip \noindent \ignorespaces }
-  {}
 
 \ExplSyntaxOff
