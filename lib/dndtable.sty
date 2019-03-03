@@ -2,20 +2,20 @@
 
 % Old interface
 % Table Header	\ExplSyntaxOn
-\newcommand{\header}[1]{{	
-	\par\vspace*{8pt}	
-	\noindent	
-	\dnd@TableTitleFont	
+\newcommand{\header}[1]{{
+  \par\vspace*{8pt}
+  \noindent
+  \dnd@TableTitleFont
   #1}}
 
 % Centered Column
 \newcolumntype { Y }
   { > { \centering \arraybackslash } X }
-  
-% Table Environment	
-\NewDocumentEnvironment{dndtable}{O{XX} O{tablecolor}}{%	
-    \par\vspace*{8pt}	
-    \noindent	
+
+% Table Environment
+\NewDocumentEnvironment{dndtable}{O{XX} O{tablecolor}}{%
+    \par\vspace*{8pt}
+    \noindent
     \dnd@TableBodyFont
     \rowcolors{1}{}{#2}
     \tabularx{\linewidth}{#1}
@@ -41,10 +41,10 @@
 \NewDocumentEnvironment {DndTable} { o m }
   {
     \group_begin:
-    
+
     \tl_if_novalue:nF {#1}
       { \keys_set:nn { dnd / table } {#1} }
-    
+
     \par \vspace {8pt} \noindent
 
     \tl_if_empty:NF \l__dnd_table_header_tl
@@ -56,14 +56,14 @@
       }
 
     \dnd@TableBodyFont
-    
+
     \rowcolors {1} {} {\l__dnd_table_color_tl}
-    
+
     \tabularx {\l__dnd_table_width_dim} {#2}
   }
   {
     \endtabularx \vspace { 8pt plus 1pt }
-    
+
     \group_end:
   }
 
