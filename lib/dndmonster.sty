@@ -56,6 +56,7 @@
   frame hidden,
   boxrule=0pt,
   breakable,
+  parbox=false,
   boxsep=0pt,
   toptitle=3mm,
   left=0pt,
@@ -78,6 +79,7 @@
   before skip=12pt,
   boxrule=0pt,
   breakable,
+  parbox=false,
   boxsep=2pt,
   toptitle=8pt,
   top=0pt,
@@ -113,7 +115,7 @@
 % Define Monster subsection header style
 \newcommand{\monstersection}[1]{%
   \begingroup
-    \par\medskip\color{titlered}
+    \par\medskip\noindent\color{titlered}
     \dnd@StatBlockSubtitleFont #1
     % \rule is a horizontal command, so placing it under the title incurs extra
     % line spacing. Use \hrule (a vertical command) instead.
@@ -125,7 +127,7 @@
 
 \NewDocumentEnvironment{monsteraction}{o}{%
   \IfValueTF{#1}{%
-    \medskip\emph{\textbf{#1.}}%
+    \par\medskip\noindent\emph{\textbf{#1.}}%
   }{\unskip}%
 }{\par}
 
