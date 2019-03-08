@@ -113,12 +113,17 @@ Note that the package has only been tested with the `book` class.
 
 | Option         | Package `dnd`   | Class `dndbook`   |
 | -------------- | :-------------: | :---------------: |
+| `altdropfont`  | ?               | ✓                 |
 | `bg`           | ✓               | ✓                 |
 | `justified`    | ✓               | ✓                 |
 | `layout`       | ✓               |                   |
 | `nomultitoc`   | ✓               | ✓                 |
 
 The `dndbook` class also supports all the options of the `book` class.
+
+#### `altdropfont`
+
+Use atlernate (gothic) font for drop capitals.
 
 #### `bg`
 
