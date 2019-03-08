@@ -159,17 +159,19 @@
 }
 
 % Fancy First line drop cap for beginning of chapters
-\iftoggle{altdropfont}{% use alternate
+\iftoggle{altdropfont}{% use alternate font
 \RequirePackage{tgothic}
 \newcommand\dndDropFont{\tgothfamily}
 }{% use default
 \input ArtNouvc.fd
 \newcommand*\dndDropFont{\usefont{U}{ArtNouvc}{xl}{n}}
 }
-% Usage: dndParStart{<first letter>}{<first line>}<rest of paragraph...>
+% Usage: dndParStart[<number of extender lines>]{<first letter>}{<first line>}<rest of paragraph...>
 %    It takes trial and error to get the 2nd argument to align with
 %    the linebreak. Lettrine package will not play nicely with \FirstLine
-\newcommand{\dndParStart}[2]{\lettrine[lines=4,findent=0.1em]{\dndDropFont #1}{}\textsc{#2}}
+%    The initial argument is optional and is used for letters with lower extenders (default is 0)
+%    For example a capital Y needs an extra line
+\newcommand{\dndParStart}[3][0]{\lettrine[lines=4,depth=#1,findent=0.2em]{\dndDropFont #2}{}\textsc{#3}}
 
 % Either hilariously, or infuriatingly, the \ifcommandkey
 % implementation is buggy. Here is a re-implementation
