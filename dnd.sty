@@ -27,6 +27,7 @@
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}
 \RequirePackage{xparse}
+\RequirePackage{lettrine}
 
 \ifluatex
   \RequirePackage{luacolor}
@@ -41,6 +42,10 @@
 %
 % Options
 %
+
+% Allow selecting alternate drop-cap font
+\newtoggle{altdropfont}
+\DeclareOptionX{altdropfont}{\toggletrue{altdropfont}}
 
 \newtoggle{bool-bg}
 \newtoggle{bool-footer-scroll}
@@ -152,6 +157,19 @@
   \dnd@deprecate{redefined \noexpand\hline}{0.8}[Use \noexpand\dndline for stat block rules.]%
   \dndline%
 }
+
+% Fancy First line drop cap for beginning of chapters
+\iftoggle{altdropfont}{% use alternate
+\RequirePackage{tgothic}
+\newcommand\dndDropFont{\tgothfamily}
+}{% use default
+\input ArtNouvc.fd
+\newcommand*\dndDropFont{\usefont{U}{ArtNouvc}{xl}{n}}
+}
+% Usage: dndParStart{<first letter>}{<first line>}<rest of paragraph...>
+%    It takes trial and error to get the 2nd argument to align with
+%    the linebreak. Lettrine package will not play nicely with \FirstLine
+\newcommand{\dndParStart}[2]{\lettrine[lines=4,findent=0.1em]{\dndDropFont #1}{}\textsc{#2}}
 
 % Either hilariously, or infuriatingly, the \ifcommandkey
 % implementation is buggy. Here is a re-implementation
