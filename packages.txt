@@ -1,5 +1,6 @@
 # Package dependencies
 #
+#   cfr-initials: provides ArtNouvc
 #   environ: required by tcolorbox
 #   etex-pkg: provides e-TeX, transitive dependency
 #   l3kernel: required by xparse
@@ -15,6 +16,7 @@ ArtNouvc
 babel
 babel-english
 bookman
+cfr-initials
 cm
 colortbl
 courier

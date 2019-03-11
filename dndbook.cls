@@ -5,7 +5,7 @@
 \RequirePackage{xstring}
 
 % Pass these class options to the core dnd package.
-\newcommand{\dnd@packageoptions}{bg=,justified,nomultitoc,altdropfont}
+\newcommand{\dnd@packageoptions}{bg=,justified,nomultitoc}
 
 % Pass package options to dnd package; pass all other options to book class.
 \DeclareOptionX*{
@@ -23,3 +23,4 @@
 
 \PassOptionsToPackage{layout=true}{dnd}
 \RequirePackage{dnd}
+\RequirePackage{dndfonts}

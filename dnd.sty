@@ -12,6 +12,7 @@
 \PassOptionsToPackage{table}{xcolor} % Helps prevent option clash with other packages that include xcolor
 
 \RequirePackage{array}
+%\RequirePackage{ArtNouvc} % installed from "cfr-initials"
 \RequirePackage{calc}
 \RequirePackage{colortbl}
 \RequirePackage{enumitem}
@@ -20,6 +21,7 @@
 \RequirePackage{hang}
 \RequirePackage{ifluatex}
 \RequirePackage{keycommand}
+\RequirePackage{lettrine}
 \RequirePackage[autolanguage]{numprint}
 \RequirePackage{tabularx}
 \RequirePackage[breakable,skins,xparse]{tcolorbox}
@@ -27,7 +29,6 @@
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}
 \RequirePackage{xparse}
-\RequirePackage{lettrine}
 
 \ifluatex
   \RequirePackage{luacolor}
@@ -42,11 +43,6 @@
 %
 % Options
 %
-
-% Allow selecting alternate drop-cap font
-\newtoggle{altdropfont}
-\DeclareOptionX{altdropfont}{\toggletrue{altdropfont}}
-
 \newtoggle{bool-bg}
 \newtoggle{bool-footer-scroll}
 \DeclareOptionX{bg}[full]{%
@@ -158,20 +154,14 @@
   \dndline%
 }
 
-% Fancy First line drop cap for beginning of chapters
-\iftoggle{altdropfont}{% use alternate font
-\RequirePackage{tgothic}
-\newcommand\dndDropFont{\tgothfamily}
-}{% use default
-\RequirePackage{ArtNouvc}
-\newcommand*\dndDropFont{\ArtNouvcfamily}
-}
-% Usage: dndParStart[<number of descender lines>]{<first letter>}{<first line>}<rest of paragraph...>
+\renewcommand{\LettrineFontHook}{\dnd@DropCapFont}
+% Usage: dndDropCapLine[<number of descender lines>]{<first letter>}{<first line>}<rest of paragraph...>
 %    It takes trial and error to get the 2nd argument to align with
 %    the linebreak. Lettrine package will not play nicely with \FirstLine
 %    The initial argument is optional and is used for letters with lower descender (default is 0)
 %    For example a capital Y needs an extra line
-\newcommand{\dndParStart}[3][0]{\lettrine[lines=4,depth=#1,findent=0.5em,nindent=0em]{\dndDropFont #2}{}\textsc{#3}}
+\NewDocumentCommand{\dndDropCapLine}{ O{0} m m }%
+{\lettrine[lines=4,depth=#1,findent=0.5em,nindent=0em]{#2}{}\textsc{#3}}
 
 % Either hilariously, or infuriatingly, the \ifcommandkey
 % implementation is buggy. Here is a re-implementation
