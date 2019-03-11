@@ -3,7 +3,7 @@
 #   cfr-initials: provides ArtNouvc
 #   environ: required by tcolorbox
 #   etex-pkg: provides e-TeX, transitive dependency
-#   keyval: required by lettrine (xkeyval replaces?)
+#   initials: required by cfr-initials
 #   l3kernel: required by xparse
 #   l3packages: xparse
 #   minifp: required by lettrine
@@ -32,8 +32,8 @@ geometry
 hang
 ifluatex
 ifxetex
+initials
 keycommand
-keyval
 l3kernel
 l3packages
 latex-fonts
