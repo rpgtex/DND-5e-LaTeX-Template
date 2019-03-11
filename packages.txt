@@ -12,7 +12,6 @@
 #   trimspaces: required by environ?
 #
 amsfonts
-ArtNouvc
 babel
 babel-english
 bookman
@@ -46,7 +45,6 @@ pgf
 psnfss
 tcolorbox
 titlesec
-tgothic
 tocloft
 tools
 trimspaces
