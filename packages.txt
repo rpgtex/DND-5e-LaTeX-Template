@@ -3,8 +3,10 @@
 #   cfr-initials: provides ArtNouvc
 #   environ: required by tcolorbox
 #   etex-pkg: provides e-TeX, transitive dependency
+#   keyval: required by lettrine (xkeyval replaces?)
 #   l3kernel: required by xparse
 #   l3packages: xparse
+#   minifp: required by lettrine
 #   ms: multitoc, ragged2e
 #   oberdiek: luacolor
 #   pgf: tikz
@@ -31,12 +33,14 @@ hang
 ifluatex
 ifxetex
 keycommand
+keyval
 l3kernel
 l3packages
 latex-fonts
 lettrine
 lm
 microtype
+minifp
 ms
 numprint
 oberdiek
