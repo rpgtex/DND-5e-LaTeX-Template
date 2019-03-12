@@ -23,4 +23,3 @@
 
 \PassOptionsToPackage{layout=true}{dnd}
 \RequirePackage{dnd}
-\RequirePackage{dndfonts}
