@@ -1,9 +1,10 @@
 # Package dependencies
 #
-#   cfr-initials: provides ArtNouvc
+#   cfr-initials: simplified drop cap font loading
 #   environ: required by tcolorbox
 #   etex-pkg: provides e-TeX, transitive dependency
-#   initials: required by cfr-initials
+#   initials: drop caps
+#   kpfonts: sans serif font
 #   l3kernel: required by xparse
 #   l3packages: xparse
 #   minifp: required by lettrine
@@ -34,6 +35,7 @@ ifluatex
 ifxetex
 initials
 keycommand
+kpfonts
 l3kernel
 l3packages
 latex-fonts
@@ -44,7 +46,6 @@ minifp
 ms
 numprint
 oberdiek
-opensans
 pgf
 psnfss
 tcolorbox
