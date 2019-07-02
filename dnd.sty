@@ -20,7 +20,6 @@
 \RequirePackage{hang}
 \RequirePackage{ifluatex}
 \RequirePackage{keycommand}
-\RequirePackage{lettrine}
 \RequirePackage[autolanguage]{numprint}
 \RequirePackage{tabularx}
 \RequirePackage[breakable,skins,xparse]{tcolorbox}
@@ -152,15 +151,6 @@
   \dnd@deprecate{redefined \noexpand\hline}{0.8}[Use \noexpand\dndline for stat block rules.]%
   \dndline%
 }
-
-\renewcommand{\LettrineFontHook}{\dnd@DropCapFont}
-% Usage: DndDropCapLine[<number of descender lines>]{<first letter>}{<first line>}<rest of paragraph...>
-%    It takes trial and error to get the 2nd argument to align with
-%    the linebreak. Lettrine package will not play nicely with \FirstLine
-%    The initial argument is optional and is used for letters with lower descender (default is 0)
-%    For example a capital Y needs an extra line
-\NewDocumentCommand{\DndDropCapLine}{ O{0} m m }%
-{\lettrine[lines=4,depth=#1,findent=0.5em,nindent=0em]{#2}{}\textsc{#3}}
 
 % Either hilariously, or infuriatingly, the \ifcommandkey
 % implementation is buggy. Here is a re-implementation

@@ -3,7 +3,6 @@
   \RequirePackage[T1]{fontenc}
   \renewcommand{\sfdefault}{lmss}
 \fi
-\RequirePackage{ArtNouvc} % installed from 'cfr-initials'
 
 \newcommand{\dnd@TitleFont}{\normalfont\scshape}
 
@@ -20,4 +19,19 @@
 \newcommand{\dnd@FooterFont}{\normalfont\scshape}
 \newcommand{\dnd@PageNumberFont}{\normalfont}
 
-\newcommand\dnd@DropCapFont{\ArtNouvcfamily}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Drop Caps
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{lettrine}
+\input RoyalIn.fd
+\newcommand*\RoyalInfamily{\usefont{U}{RoyalIn}{xl}{n}}
+\newcommand\dnd@DropCapFont{\RoyalInfamily}
+\renewcommand{\LettrineFontHook}{\dnd@DropCapFont}
+
+% Usage: DndDropCapLine[<lettrine options>]{<first letter>}{<small caps line>}
+%    It takes trial and error to get the 2nd argument to align with
+%    the linebreak. Lettrine package will not play nicely with \FirstLine
+%    The initial argument is optional and is used for letters with lower descender (default is 0)
+%    For example a capital Y needs an extra line
+\NewDocumentCommand{\DndDropCapLine}{ O{} m m }%
+{\lettrine[lines=4,depth=0,findent=0.5em,nindent=0pt,#1]{#2}{#3}}
