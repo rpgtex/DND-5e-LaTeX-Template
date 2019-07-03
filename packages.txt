@@ -2,6 +2,7 @@
 #
 #   environ: required by tcolorbox
 #   etex-pkg: provides e-TeX, transitive dependency
+#   l3backend: required by xparse
 #   l3kernel: required by xparse
 #   l3packages: xparse
 #   ms: multitoc, ragged2e
@@ -29,6 +30,7 @@ hang
 ifluatex
 ifxetex
 keycommand
+l3backend
 l3kernel
 l3packages
 latex-fonts
