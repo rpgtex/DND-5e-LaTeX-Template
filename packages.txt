@@ -5,7 +5,8 @@
 #   etex-pkg: provides e-TeX, transitive dependency
 #   initials: drop caps
 #   kpfonts: sans serif font
-#   l3kernel: required by xparse
+#   l3backend: xparse dependency
+#   l3kernel: xparse dependency
 #   l3packages: xparse
 #   minifp: required by lettrine
 #   ms: multitoc, ragged2e
@@ -36,6 +37,7 @@ ifxetex
 initials
 keycommand
 kpfonts
+l3backend
 l3kernel
 l3packages
 latex-fonts
