@@ -39,7 +39,6 @@ microtype
 ms
 numprint
 oberdiek
-opensans
 pgf
 psnfss
 tcolorbox
