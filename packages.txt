@@ -4,6 +4,7 @@
 #   etex-pkg: provides e-TeX, transitive dependency
 #   expl3: xparse and LaTeX3
 #   kpfonts: sans serif font
+#   l3backend
 #   ms: multitoc, ragged2e
 #   oberdiek: luacolor
 #   pgf: tikz
@@ -32,6 +33,7 @@ ifxetex
 keycommand
 kpfonts
 latex-fonts
+l3backend
 lm
 microtype
 ms
