@@ -32,10 +32,10 @@ ifluatex
 ifxetex
 keycommand
 kpfonts
-latex-fonts
 l3backend
 l3kernel
 l3packages
+latex-fonts
 lm
 microtype
 ms
