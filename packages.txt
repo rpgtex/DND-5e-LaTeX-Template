@@ -2,9 +2,10 @@
 #
 #   environ: required by tcolorbox
 #   etex-pkg: provides e-TeX, transitive dependency
-#   expl3: xparse and LaTeX3
 #   kpfonts: sans serif font
-#   l3backend
+#   l3backend: xparse dependency
+#   l3kernel: xparse dependency
+#   l3packages: xparse
 #   ms: multitoc, ragged2e
 #   oberdiek: luacolor
 #   pgf: tikz
@@ -23,7 +24,6 @@ enumitem
 environ
 etex-pkg
 etoolbox
-expl3
 fancyhdr
 fp
 geometry
@@ -34,6 +34,8 @@ keycommand
 kpfonts
 latex-fonts
 l3backend
+l3kernel
+l3packages
 lm
 microtype
 ms
