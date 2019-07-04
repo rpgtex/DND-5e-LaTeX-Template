@@ -2,7 +2,9 @@
 #
 #   environ: required by tcolorbox
 #   etex-pkg: provides e-TeX, transitive dependency
-#   l3kernel: required by xparse
+#   kpfonts: sans serif font
+#   l3backend: xparse dependency
+#   l3kernel: xparse dependency
 #   l3packages: xparse
 #   ms: multitoc, ragged2e
 #   oberdiek: luacolor
@@ -29,6 +31,8 @@ hang
 ifluatex
 ifxetex
 keycommand
+kpfonts
+l3backend
 l3kernel
 l3packages
 latex-fonts
@@ -37,7 +41,6 @@ microtype
 ms
 numprint
 oberdiek
-opensans
 pgf
 psnfss
 tcolorbox
