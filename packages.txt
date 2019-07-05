@@ -3,6 +3,7 @@
 #   environ: required by tcolorbox
 #   etex-pkg: provides e-TeX, transitive dependency
 #   fontaxes: gillius dependency
+#   fontspec: gillius dependency
 #   gillius: sans serif body font
 #   kpfonts: sans serif title font
 #   l3backend: xparse dependency
