@@ -56,10 +56,10 @@ Sections break up chapters into large groups of associated text.
 Subsections further break down the information for the reader.
 
 \subsubsection{Subsubsection}
-Subsubsections are the furthest division of information that still has a header. Below this level, headers are displayed inline.
+Subsubsections are the furthest division of text that still have a block header. Below this level, headers are displayed inline.
 
 \paragraph{Paragraph}
-The paragraph format is seldom used.
+The paragraph format is seldom used in the core books.
 
 \subparagraph{Subparagraph}
 The subparagraph format with the paragraph indent is likely going to be more familiar to the reader.
@@ -253,11 +253,12 @@ The |monsterbox| environment is used to typeset monster and NPC stat blocks. The
 \chapter{Colors}
 
 \begin{table*}[b]%
-  \caption{Colors supported by this package}\label{tab:colors}
+  \caption{}\label{tab:colors}
+  \header{Colors Supported by This Package}
 
   \begin{dndtable}[XX]
     \textbf{Color}                  & \textbf{Description} \\
-    |PhbLightGreen|                 & Light green used in PHB Part 1 \\
+    |PhbLightGreen|                 & Light green used in PHB Part 1 (Default) \\
     |PhbLightCyan|                  & Light cyan used in PHB Part 2 \\
     |PhbMauve|                      & Pale purple used in PHB Part 3 \\
     |PhbTan|                        & Light brown used in PHB appendix \\
@@ -272,16 +273,14 @@ This package provides several global color variables to style |commentbox|, |quo
 
 \header{Box Colors}
 \begin{dndtable}[lX]
-  \textbf{Color}              & \textbf{Description} \\
-  |commentboxcolor| & Controls |commentbox| background. \\
-  |paperboxcolor|   & Controls |paperbox| background. \\
-  |quoteboxcolor|   & Controls |quotebox| background. \\
-  |tablecolor|      & Controls background of even |dndtable| rows. \\
+  \textbf{Color}    & \textbf{Description} \\
+  |commentboxcolor| & |commentbox| background \\
+  |paperboxcolor|   & |paperbox| background \\
+  |quoteboxcolor|   & |quotebox| background \\
+  |tablecolor|      & background of even |dndtable| rows \\
 \end{dndtable}
 
-See Table~\ref{tab:colors} for a list of accent colors that match the core books.
-
-The |commentbox|, |dndtable|, |paperbox|, and |quoteboxcolor| accept an optional color argument to set the color for a single instance.
+They also accept an optional color argument to set the color for a single instance. See Table~\ref{tab:colors} for a list of core book accent colors.
 
 \begin{lstlisting}
 \begin{dndtable}[cX][PhbLightCyan]
