@@ -2,7 +2,8 @@
 #
 #   environ: required by tcolorbox
 #   etex-pkg: provides e-TeX, transitive dependency
-#   kpfonts: sans serif font
+#   gillius: sans serif body font
+#   kpfonts: sans serif title font
 #   l3backend: xparse dependency
 #   l3kernel: xparse dependency
 #   l3packages: xparse
@@ -27,6 +28,7 @@ etoolbox
 fancyhdr
 fp
 geometry
+gillius
 hang
 ifluatex
 ifxetex
