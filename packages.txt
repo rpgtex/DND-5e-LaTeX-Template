@@ -29,6 +29,7 @@ etex-pkg
 etoolbox
 fancyhdr
 fontaxes
+fontspec
 fp
 geometry
 gillius
