@@ -1,7 +1,7 @@
 % Table Header
 \newcommand{\header}[1]{%
   \begingroup%
-  \par\vspace{10pt}%
+  \par\vspace{10pt plus 3 pt minus 3pt}%
   \noindent%
   \dnd@TableTitleFont%
   #1%
@@ -13,7 +13,7 @@
 
 % Table Environment
 \NewDocumentEnvironment{dndtable}{O{XX} O{tablecolor}}{%
-    \par\vspace{2pt}%
+    \par\vspace{2pt plus 1pt minus 1pt}%
     \noindent%
     \dnd@TableBodyFont%
     \setlength{\extrarowheight}{3pt}%
@@ -21,5 +21,5 @@
     \tabularx{\linewidth}{#1}%
   }{%
     \endtabularx%
-    \par\vspace{10pt}%
+    \par\vspace{10pt plus 3 pt minus 3pt}%
   }

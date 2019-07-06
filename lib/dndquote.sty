@@ -11,7 +11,7 @@
   boxrule=0pt,
   breakable,
   enhanced,
-  before skip=13pt,
+  before skip=13pt plus 4pt minus 4pt,
   boxsep=8pt,
   top=0pt,
   left=0pt,
@@ -27,6 +27,6 @@
   overlay={%
     \foreach\n in {north east,north west,south east,south west}
     {\draw[titlered, fill=titlered] (frame.\n) circle (1.5pt); }; },
-  after skip=13pt,
+  after skip=13pt plus 4pt minus 4pt,
   #1
 }

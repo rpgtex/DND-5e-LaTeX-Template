@@ -2,28 +2,14 @@
 \RequirePackage{fp}
 \RequirePackage{xstring}
 
-\ExplSyntaxOn
-
-\NewDocumentCommand {\DndPlus} { O{} }
-  {
-    \raisebox {.175ex} { \scalebox {.7} { \textbf {+} } } #1
-  }
-
-\NewDocumentCommand {\DndMinus} { O{} }
-  {
-    \raisebox{.01ex} { \scalebox {.9} {--} } #1
-  }
-
-\ExplSyntaxOff
-
-% Macro to print stats with autocomputed modifier
+% Macro to print stats with auto-computed modifier
 % e.g. \stat{12} prints "12 (+1)"
 \newcommand{\stat}[1]{%
   \FPeval{\mod}{(#1 - 10)/2}%
   \FPifpos\mod%
-  \FPeval{\mod}{clip(trunc(mod,0))}#1\ (\DndPlus\mod)%
+  \FPeval{\mod}{clip(trunc(mod,0))}#1\ (+\mod)%
   \else%
-  \FPeval{\mod}{clip(abs(trunc(mod-0.5,0)))}#1\ (\DndMinus\mod)%
+  \FPeval{\mod}{clip(abs(trunc(mod-0.5,0)))}#1\ (--\mod)%
   \fi%
 }
 
@@ -37,11 +23,11 @@
   \FPeval{\DiceAvg}{(\DiceSides+1)/2*\DiceNum}%	calculate avg roll
   \IfInteger{\DiceAddMod}{%
     \FPadd{\DiceAvg}{\DiceAvg}{\DiceAddMod}%	add value
-    \def\DiceMod{ \DndPlus\ \DiceAddMod}%
+    \def\DiceMod{ + \DiceAddMod}%
   }{%
     \IfInteger{\DiceSubMod}{%
       \FPsub{\DiceAvg}{\DiceAvg}{\DiceSubMod}%	subtract value
-      \def\DiceMod{ \DndMinus\ \DiceSubMod}%
+      \def\DiceMod{ -- \DiceSubMod}%
     }{%
       \def\DiceMod{}%
     }%
@@ -76,7 +62,7 @@
 \newtcolorbox{monsterboxbg}[2][]{
   enhanced,
   frame hidden,
-  before skip=12pt,
+  before skip=12pt plus 3pt minus 3pt,
   boxrule=0pt,
   breakable,
   parbox=false,
@@ -173,11 +159,21 @@
   WIS=\stat{10},
   CHA=\stat{10}]{%
   \begingroup%
-  \footnotesize\centering\color{titlered}%
-  \par\vspace{5pt}%
-    \begin{tabularx}{\linewidth}{cccccc}
-      \textbf{\strstatname} & \textbf{\dexstatname} & \textbf{\constatname} & \textbf{\intstatname} & \textbf{\wisstatname} & \textbf{\chastatname} \\
-      \commandkey{STR} & \commandkey{DEX} & \commandkey{CON} & \commandkey{INT} & \commandkey{WIS} & \commandkey{CHA}
+    \color{titlered}%
+    \par\vspace{5pt}\noindent%
+    \begin{tabularx}{\linewidth}{YYYYYY}
+      \textbf{\strstatname} &
+      \textbf{\dexstatname} &
+      \textbf{\constatname} &
+      \textbf{\intstatname} &
+      \textbf{\wisstatname} &
+      \textbf{\chastatname} \\
+      \commandkey{STR} &
+      \commandkey{DEX} &
+      \commandkey{CON} &
+      \commandkey{INT} &
+      \commandkey{WIS} &
+      \commandkey{CHA}
     \end{tabularx}%
     \par\vspace{4pt}%
   \endgroup%
@@ -227,7 +223,7 @@
 
 \newkeycommand+[\|]\monstermelee[
     name=Club,
-    mod=\DndPlus{0},
+    mod=+0,
     reach=5,
     targets=\defaulttargetsname,
     dmg=\dice{1d4},
@@ -255,7 +251,7 @@
 }
 \newkeycommand+[\|]\monsterranged[
     name=Shortbow,
-    mod=\DndPlus{0},
+    mod=+0,
     range=80/320,
     targets=\defaulttargetsname,
     dmg=\dice{1d6},

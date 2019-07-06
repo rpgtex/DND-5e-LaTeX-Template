@@ -172,8 +172,8 @@ The |monsterbox| environment is used to typeset monster and NPC stat blocks. The
   \dndline%
 
   \details[% If you want to use commas in these sections, enclose the description in braces.
-    %savingthrows = {Str \DndPlus{0}, Dex \DndPlus{0}, Con \DndPlus{0}, Int \DndPlus{0}, Wis \DndPlus{0}, Cha \DndPlus{0}},
-    %skills = {Acrobatics \DndPlus{0}, Animal Handling \DndPlus{0}, Arcana \DndPlus{0}, Athletics \DndPlus{0}, Deception \DndPlus{0}, History \DndPlus{0}, Insight \DndPlus{0}, Intimidation \DndPlus{0}, Investigation \DndPlus{0}, Medicine \DndPlus{0}, Nature \DndPlus{0}, Perception \DndPlus{0}, Performance \DndPlus{0}, Persuasion \DndPlus{0}, Religion \DndPlus{0}, Sleight of Hand \DndPlus{0}, Stealth \DndPlus{0}, Survival \DndPlus{0}},
+    %savingthrows = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+    %skills = {Acrobatics +0, Animal Handling +0, Arcana +0, Athletics +0, Deception +0, History +0, Insight +0, Intimidation +0, Investigation +0, Medicine +0, Nature +0, Perception +0, Performance +0, Persuasion +0, Religion +0, Sleight of Hand +0, Stealth +0, Survival +0},
     %damagevulnerabilities = {},
     %damageresistances = {},
     %damageimmunities = {},
@@ -188,7 +188,7 @@ The |monsterbox| environment is used to typeset monster and NPC stat blocks. The
   % Traits
 
   \begin{monsteraction}[Innate Spellcasting]
-    Foo's spellcasting ability is Charisma (spell save DC 12, \DndPlus{4} to hit with spell attacks). It can innately cast the following spells, requiring no material components:
+    Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
     \medskip
     \DndInnateSpellLevel{misty step}
     \DndInnateSpellLevel[3]{fog cloud, rope trick}
@@ -196,7 +196,7 @@ The |monsterbox| environment is used to typeset monster and NPC stat blocks. The
   \end{monsteraction}
 
   \begin{monsteraction}[Spellcasting]
-    Foo is a 3rd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, \DndPlus{4} to hit with spell attacks). It has the following sorcerer spells prepared:
+    Foo is a 3rd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has the following sorcerer spells prepared:
     \medskip
     \DndMonsterSpellLevel{blade ward, fire bolt, light, shocking grasp}
     \DndMonsterSpellLevel[1][4]{burning hands, mage armor}
@@ -212,7 +212,7 @@ The |monsterbox| environment is used to typeset monster and NPC stat blocks. The
   \monsterattack[
     %name=Dagger,
     %enum* type={both,melee,ranged},
-    mod=\DndPlus{3},%mod=\DndPlus{0},
+    mod=+3,%mod=+0,
     %reach=5,
     %range=20/60,
     %targets=one target,
@@ -228,7 +228,7 @@ The |monsterbox| environment is used to typeset monster and NPC stat blocks. The
   %\monstermelee calls \monsterattack with the melee option
   \monstermelee[
     name=Flame Tongue Longsword,
-    mod=\DndPlus{3},%mod=\DndPlus{0},
+    mod=+3,%mod=+0,
     %reach=5,
     %targets=one target,
     dmg=\dice{1d8+1},
@@ -242,7 +242,7 @@ The |monsterbox| environment is used to typeset monster and NPC stat blocks. The
   %\monsterranged calls \monsterattack with the ranged option
   \monsterranged[
     name=Assassin's Light Crossbow,
-    %mod=\DndPlus{0},
+    %mod=+0,
     range=80/320,
     dmg=\dice{1d8},
     dmgtype=piercing,
