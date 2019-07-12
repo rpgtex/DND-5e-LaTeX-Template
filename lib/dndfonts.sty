@@ -1,5 +1,6 @@
 \ifpkglayout
   \RequirePackage{bookman}
+  \RequirePackage[notext,nomath,nosf,nott]{kpfonts}
   \RequirePackage[T1]{fontenc}
   \renewcommand{\sfdefault}{lmss}
 \fi
@@ -7,15 +8,31 @@
 \RequirePackage[notext,nomath,nosf,nott]{kpfonts}
 \newcommand{\dnd@TitleFont}{\normalfont\scshape}
 
-\newcommand{\dnd@TableTitleFont}{\fontfamily{jkpss}\selectfont\large\bfseries\scshape}
+\newcommand{\dnd@TableTitleFont}{\fontfamily{jkpss}\selectfont\bfseries\scshape}
 \newcommand{\dnd@TableBodyFont}{\sffamily}
 
-\newcommand{\dnd@BoxTitleFont}{\fontfamily{jkpss}\selectfont\large\bfseries\scshape}
+\newcommand{\dnd@BoxTitleFont}{\fontfamily{jkpss}\selectfont\bfseries\scshape}
 \newcommand{\dnd@BoxBodyFont}{\sffamily}
 
 \newcommand{\dnd@StatBlockTitleFont}{\normalfont\bfseries\scshape}
-\newcommand{\dnd@StatBlockSubtitleFont}{\fontfamily{jkpss}\selectfont\large\scshape}
+\newcommand{\dnd@StatBlockSubtitleFont}{\fontfamily{jkpss}\selectfont\scshape}
 \newcommand{\dnd@StatBlockBodyFont}{\sffamily}
 
 \newcommand{\dnd@FooterFont}{\normalfont\scshape}
 \newcommand{\dnd@PageNumberFont}{\normalfont}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Drop Caps
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{lettrine}
+\RequirePackage{Royal}
+
+\newcommand\dnd@DropCapFont{\Royal}
+\renewcommand{\LettrineFontHook}{\dnd@DropCapFont}
+
+% Usage: DndDropCapLine[<lettrine options>]{<first letter>}{<small caps line>}
+%    It takes trial and error to get the 2nd argument to align with
+%    the linebreak. Lettrine package will not play nicely with \FirstLine. See
+%    the lettrine package for options.
+\NewDocumentCommand{\DndDropCapLine}{ O{} m m }%
+{\lettrine[lines=4,depth=0,findent=0.5em,nindent=0pt,#1]{#2}{#3}}

@@ -1,11 +1,14 @@
 # Package dependencies
 #
+#   cfr-initials: simplified drop cap font loading
 #   environ: required by tcolorbox
 #   etex-pkg: provides e-TeX, transitive dependency
+#   initials: drop caps
 #   kpfonts: sans serif font
 #   l3backend: xparse dependency
 #   l3kernel: xparse dependency
 #   l3packages: xparse
+#   minifp: required by lettrine
 #   ms: multitoc, ragged2e
 #   oberdiek: luacolor
 #   pgf: tikz
@@ -16,6 +19,7 @@ amsfonts
 babel
 babel-english
 bookman
+cfr-initials
 cm
 colortbl
 courier
@@ -30,14 +34,17 @@ geometry
 hang
 ifluatex
 ifxetex
+initials
 keycommand
 kpfonts
 l3backend
 l3kernel
 l3packages
 latex-fonts
+lettrine
 lm
 microtype
+minifp
 ms
 numprint
 oberdiek
