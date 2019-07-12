@@ -3,8 +3,10 @@
 #   cfr-initials: simplified drop cap font loading
 #   environ: required by tcolorbox
 #   etex-pkg: provides e-TeX, transitive dependency
+#   fontaxes: gillius dependency
+#   gillius: sans serif body font
 #   initials: drop caps
-#   kpfonts: sans serif font
+#   kpfonts: sans serif title font
 #   l3backend: xparse dependency
 #   l3kernel: xparse dependency
 #   l3packages: xparse
@@ -15,6 +17,7 @@
 #   tools: array, calc, tabularx
 #   trimspaces: required by environ?
 #
+
 amsfonts
 babel
 babel-english
@@ -29,8 +32,10 @@ environ
 etex-pkg
 etoolbox
 fancyhdr
+fontaxes
 fp
 geometry
+gillius
 hang
 ifluatex
 ifxetex
@@ -61,5 +66,7 @@ xkeyval
 xstring
 
 # Document dependencies
+caption
 lipsum
 listings
+sttools

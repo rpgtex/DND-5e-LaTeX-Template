@@ -1,25 +1,30 @@
 \ifpkglayout
   \RequirePackage{bookman}
-  \RequirePackage[notext,nomath,nosf,nott]{kpfonts}
+  \RequirePackage[type1]{gillius2}
+  \RequirePackage[notext,nomath,nott]{kpfonts}
   \RequirePackage[T1]{fontenc}
-  \renewcommand{\sfdefault}{lmss}
+  \renewcommand{\sfdefault}{jkpss}
+
+  \newcommand{\dnd@TableBodyFont}{\gilliustwo}
+  \newcommand{\dnd@BoxBodyFont}{\gilliustwo}
+  \newcommand{\dnd@StatBlockBodyFont}{\gilliustwo}
+\else
+  \newcommand{\dnd@TableBodyFont}{\sffamily}
+  \newcommand{\dnd@BoxBodyFont}{\sffamily}
+  \newcommand{\dnd@StatBlockBodyFont}{\sffamily}
 \fi
 
-\RequirePackage[notext,nomath,nosf,nott]{kpfonts}
 \newcommand{\dnd@TitleFont}{\normalfont\scshape}
 
-\newcommand{\dnd@TableTitleFont}{\fontfamily{jkpss}\selectfont\bfseries\scshape}
-\newcommand{\dnd@TableBodyFont}{\sffamily}
+\newcommand{\dnd@TableTitleFont}{\sffamily\bfseries\scshape\large}
 
-\newcommand{\dnd@BoxTitleFont}{\fontfamily{jkpss}\selectfont\bfseries\scshape}
-\newcommand{\dnd@BoxBodyFont}{\sffamily}
+\newcommand{\dnd@BoxTitleFont}{\sffamily\bfseries\scshape}
 
-\newcommand{\dnd@StatBlockTitleFont}{\normalfont\bfseries\scshape}
-\newcommand{\dnd@StatBlockSubtitleFont}{\fontfamily{jkpss}\selectfont\scshape}
-\newcommand{\dnd@StatBlockBodyFont}{\sffamily}
+\newcommand{\dnd@StatBlockTitleFont}{\normalfont\bfseries\scshape\LARGE}
+\newcommand{\dnd@StatBlockSubtitleFont}{\sffamily\scshape\large}
 
-\newcommand{\dnd@FooterFont}{\normalfont\scshape}
-\newcommand{\dnd@PageNumberFont}{\normalfont}
+\newcommand{\dnd@FooterFont}{\normalfont\scriptsize}
+\newcommand{\dnd@PageNumberFont}{\normalfont\scriptsize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Drop Caps

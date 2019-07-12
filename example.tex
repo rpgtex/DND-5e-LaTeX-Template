@@ -1,8 +1,4 @@
-% Changing book to article will make the footers match on each page,
-% rather than alternate every other.
-%
-% Note that the article class does not have chapters.
-\documentclass[letterpaper,10pt,twoside,twocolumn,openany]{dndbook}
+\documentclass[letterpaper,twocolumn,openany]{dndbook}
 
 % Use babel or polyglossia to automatically redefine macros for terms
 % Armor Class, Level, etc...
@@ -19,48 +15,119 @@
 % please refer to babel/polyglossia's documentation.
 
 \usepackage[utf8]{inputenc}
+\usepackage[singlelinecheck=false]{caption}
 \usepackage{lipsum}
 \usepackage{listings}
+\usepackage{shortvrb}
+\usepackage{stfloats}
+
+\captionsetup[table]{labelformat=empty,font={sf,sc,bf,},skip=0pt}
+\MakeShortVerb{|}
 
 \lstset{%
   basicstyle=\ttfamily,
   language=[LaTeX]{TeX},
+  breaklines=true,
 }
 
-% Start document
+\title{The Dark \LaTeX{} \\
+\large An Example of the dndbook Class}
+\author{The rpgTeX Team}
+\date{2019/02/09}
+
 \begin{document}
 
-% Your content goes here
+\frontmatter
 
-\chapter{Chapter 1: The Dark \LaTeX}
+\maketitle
 
-%\section{Main Section}
-\DndDropCapLine{L}{eave all your typesetting woes} behind you as you begin your journey. \lipsum[2] % filler text
+\tableofcontents
+
+\mainmatter%
+
+\chapter{Sections}
+
+This package is designed to aid you in writing beautifully typeset documents for the fifth edition of the world's greatest roleplaying game. It starts by adjusting the section formatting from the defaults in \LaTeX{} to something a bit more familiar to the reader. The chapter formatting is displayed above
+
+\section{Section}
+Sections break up chapters into large groups of associated text.
+
+\subsection{Subsection}
+Subsections further break down the information for the reader.
+
+\subsubsection{Subsubsection}
+Subsubsections are the furthest division of text that still have a block header. Below this level, headers are displayed inline.
+
+\paragraph{Paragraph}
+The paragraph format is seldom used in the core books.
+
+\subparagraph{Subparagraph}
+The subparagraph format with the paragraph indent is likely going to be more familiar to the reader.
+
+\section{Items and Spells}
+The module also includes the functions |\subtitlesection| and |\spellheader| to aid in the proper typesetting of items (including magic items and traps) and spells.
+
+\subtitlesection{Foo's Quill}{Wondrous item, rare}
+This quill has 3 charges. While holding it, you can use an action to expend 1 of its charges. The quill leaps from your hand and writes a contract applicable to your situation.
+
+The quill regains 1d3 expended charges daily at dawn.
+
+\spellheader%
+  {Beautiful Typesetting}
+  {4th-level illusion}
+  {1 action}
+  {5 feet}
+  {S, M (ink and parchment, which the spell consumes)}
+  {Until dispelled}
+You are able to transform a written message of any length into a beautiful scroll. All creatures within range that can see the scroll must make a wisdom saving throw or be charmed by you until the spell ends.
+
+While the creature is charmed by you, they cannot take their eyes off the scroll and cannot willingly move away from the scroll. Also, the targets can make a wisdom saving throw at the end of each of their turns. On a success, they are no longer charmed.
+
+\section{Map Regions}
+The map region functions |\area| and |\subarea| provide automatic numbering of areas.
+
+\area{Village of Hommlet}
+This is the village of hommlet.
+
+\subarea{Inn of the Welcome Wench}
+Inside the village is the inn of the Welcome Wench.
+
+\subarea{Blacksmith's Forge}
+There's a blacksmith in town, too.
+
+\area{Foo's Castle}
+This is foo's home, a hovel of mud and sticks.
+
+\subarea{Moat}
+This ditch has a board spanning it.
+
+\subarea{Entrance}
+A five-foot hole reveals the dirt floor illuminated by a hole in the roof.
+
+\chapter{Text Boxes}
+
+The module has three environments for setting text apart so that it is drawn to the reader's attention. The |quotebox| is used for text that a game master would read aloud.
 
 \begin{quotebox}
-  As you approach this template you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
+  As you approach this module you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
 \end{quotebox}
 
-\subsection{Fun with boxes}
-\subsubsection{Even more fun!}
+\section{As an Aside}
+The other two environments are the |commentbox| and the |paperbox|. The |commentbox| is breakable and can safely be used inline in the text.
 
 \begin{commentbox}{This Is a Comment Box!}
-  A \lstinline!commentbox! is a box for minimal highlighting of text. It lacks the ornamentation of \lstinline!paperbox!, but it can handle being broken over a column.
+  A |commentbox| is a box for minimal highlighting of text. It lacks the ornamentation of |paperbox|, but it can handle being broken over a column.
 \end{commentbox}
 
-\subtitlesection{Weapon, +1, +2, or +3}
-{Weapon (any), uncommon (+1), rare (+2), or very rare (+3)}
+The |paperbox| is not breakable and is best used floated toward a page corner as it is below.
 
-\lipsum[3]
-
-\begin{paperbox}[float=!t]{Behold, the Paperbox!}
-  The \lstinline!paperbox! is used as a sidebar. It does not break over columns and is best used with a figure environment to float it to one corner of the page where the surrounding text can then flow around it.
-\end{paperbox}
-
+\section{Tables}
+The |dndtable| colors the even rows and is set to the width of a line by default.
 % For more columns, you can say \begin{dndtable}[your options here].
 % For instance, if you wanted three columns, you could say
 % \begin{dndtable}[XXX]. The usual host of tabular parameters are
 % available as well.
+
 \header{Nice table}
 \begin{dndtable}
     \textbf{Table head}  & \textbf{Table head} \\
@@ -69,21 +136,12 @@
     Some value  & Some value
 \end{dndtable}
 
-\section{Spells}
+\begin{paperbox}[float=!b]{Behold the Paperbox!}
+  The |paperbox| is used as a sidebar. It does not break over columns and is best used with a figure environment to float it to one corner of the page where the surrounding text can then flow around it.
+\end{paperbox}
 
-\begin{spell}
-  {Beautiful Typesetting}
-  {4th-level illusion}
-  {1 action}
-  {5 feet}
-  {S, M (ink and parchment, which the spell consumes)}
-  {Until dispelled}
-  You are able to transform a written message of any length into a beautiful scroll. All creatures within range that can see the scroll must make a wisdom saving throw or be charmed by you until the spell ends.
-
-  While the creature is charmed by you, they cannot take their eyes off the scroll and cannot willingly move away from the scroll. Also, the targets can make a wisdom saving throw at the end of each of their turns. On a success, they are no longer charmed.
-\end{spell}
-
-\lipsum[2]
+\chapter{Monsters and NPCs}
+The |monsterbox| environment is used to typeset monster and NPC stat blocks. The module supplies many functions to easily typeset the contents of the stat block
 
 % You can optionally not include the background by saying
 % begin{monsterboxnobg}
@@ -91,13 +149,17 @@
   \begin{hangingpar}
     \textit{Medium metasyntactic variable (goblinoid), neutral evil}
   \end{hangingpar}
+
   \dndline%
+
   \basics[%
   armorclass = 9 (12 with \emph{mage armor}),
-  hitpoints  = \dice{3d8 + 3},
+  hitpoints  = \dice{3d8+3},
   speed      = {30 ft., fly 30 ft.},
   ]
+
   \dndline%
+
   \stats[
     STR = \stat{12}, % This stat command will autocomplete the modifier for you
     DEX = \stat{8},
@@ -106,7 +168,9 @@
     WIS = \stat{14},
     CHA = \stat{15},
   ]
+
   \dndline%
+
   \details[% If you want to use commas in these sections, enclose the description in braces.
     %savingthrows = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
     %skills = {Acrobatics +0, Animal Handling +0, Arcana +0, Athletics +0, Deception +0, History +0, Insight +0, Intimidation +0, Investigation +0, Medicine +0, Nature +0, Perception +0, Performance +0, Persuasion +0, Religion +0, Sleight of Hand +0, Stealth +0, Survival +0},
@@ -118,12 +182,14 @@
     languages = {Common, Goblin},
     challenge = {1},
   ]
+
   \dndline%
 
   % Traits
 
   \begin{monsteraction}[Innate Spellcasting]
     Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
+    \medskip
     \DndInnateSpellLevel{misty step}
     \DndInnateSpellLevel[3]{fog cloud, rope trick}
     \DndInnateSpellLevel[1]{identify}
@@ -131,6 +197,7 @@
 
   \begin{monsteraction}[Spellcasting]
     Foo is a 3rd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has the following sorcerer spells prepared:
+    \medskip
     \DndMonsterSpellLevel{blade ward, fire bolt, light, shocking grasp}
     \DndMonsterSpellLevel[1][4]{burning hands, mage armor}
     \DndMonsterSpellLevel[2][2]{scorching ray}
@@ -161,7 +228,7 @@
   %\monstermelee calls \monsterattack with the melee option
   \monstermelee[
     name=Flame Tongue Longsword,
-    mod=+3,
+    mod=+3,%mod=+0,
     %reach=5,
     %targets=one target,
     dmg=\dice{1d8+1},
@@ -183,57 +250,40 @@
   ]
 \end{monsterbox}
 
-\section{Colors}
+\chapter{Colors}
 
-This package provides several global color variables to style \lstinline!commentbox!, \lstinline!quotebox!, \lstinline!paperbox!, and \lstinline!dndtable! environments.
+\begin{table*}[b]%
+  \caption{}\label{tab:colors}
+  \header{Colors Supported by This Package}
 
-\begin{dndtable}[lX]
-  \textbf{Color}         & \textbf{Description} \\
-  \lstinline!commentboxcolor! & Controls \lstinline!commentbox! background. \\
-  \lstinline!paperboxcolor!   & Controls \lstinline!paperbox! background. \\
-  \lstinline!quoteboxcolor!   & Controls \lstinline!quotebox! background. \\
-  \lstinline!tablecolor!      & Controls background of even \lstinline!dndtable! rows. \\
-\end{dndtable}
-
-See Table~\ref{tab:colors} for a list of accent colors that match the core books.
-
-\begin{table*}
   \begin{dndtable}[XX]
-    \textbf{Color}                            & \textbf{Description} \\
-    \lstinline!PhbLightGreen!                      & Light green used in PHB Part 1 \\
-    \lstinline!PhbLightCyan!                       & Light cyan used in PHB Part 2 \\
-    \lstinline!PhbMauve!                           & Pale purple used in PHB Part 3 \\
-    \lstinline!PhbTan!                             & Light brown used in PHB appendix \\
-    \lstinline!DmgLavender!                        & Pale purple used in DMG Part 1 \\
-    \lstinline!DmgCoral!                           & Orange-pink used in DMG Part 2 \\
-    \lstinline!DmgSlateGray! (\lstinline!DmgSlateGrey!) & Blue-gray used in PHB Part 3 \\
-    \lstinline!DmgLilac!                           & Purple-gray used in DMG appendix \\
+    \textbf{Color}                  & \textbf{Description} \\
+    |PhbLightGreen|                 & Light green used in PHB Part 1 (Default) \\
+    |PhbLightCyan|                  & Light cyan used in PHB Part 2 \\
+    |PhbMauve|                      & Pale purple used in PHB Part 3 \\
+    |PhbTan|                        & Light brown used in PHB appendix \\
+    |DmgLavender|                   & Pale purple used in DMG Part 1 \\
+    |DmgCoral|                      & Orange-pink used in DMG Part 2 \\
+    |DmgSlateGray| (|DmgSlateGrey|) & Blue-gray used in PHB Part 3 \\
+    |DmgLilac|                      & Purple-gray used in DMG appendix \\
   \end{dndtable}
-  \caption{Colors supported by this package}%
-  \label{tab:colors}
 \end{table*}
 
-\begin{itemize}
-  \item Use \lstinline!\setthemecolor[<color>]! to set \lstinline!themecolor!, \lstinline!commentcolor!, \lstinline!paperboxcolor!, and \lstinline!tablecolor! to a specific color.
-  \item Calling \lstinline!\setthemecolor! without an argument sets those colors to the current \lstinline!themecolor!.
-  \item \lstinline!commentbox!, \lstinline!dndtable!, \lstinline!paperbox!, and \lstinline!quoteboxcolor! also accept an optional color argument to set the color for a single instance.
-\end{itemize}
+This package provides several global color variables to style |commentbox|, |quotebox|, |paperbox|, and |dndtable| environments.
 
-\subsection{Examples}
+\header{Box Colors}
+\begin{dndtable}[lX]
+  \textbf{Color}    & \textbf{Description} \\
+  |commentboxcolor| & |commentbox| background \\
+  |paperboxcolor|   & |paperbox| background \\
+  |quoteboxcolor|   & |quotebox| background \\
+  |tablecolor|      & background of even |dndtable| rows \\
+\end{dndtable}
 
-\subsubsection{Using \lstinline!themecolor!}
+They also accept an optional color argument to set the color for a single instance. See Table~\ref{tab:colors} for a list of core book accent colors.
 
 \begin{lstlisting}
-\setthemecolor[PhbMauve]
-
-\begin{paperbox}{Example}
-  \lipsum[2]
-\end{paperbox}
-
-\setthemecolor[PhbLightCyan]
-
-\header{Example}
-\begin{dndtable}[cX]
+\begin{dndtable}[cX][PhbLightCyan]
   \textbf{d8} & \textbf{Item} \\
   1           & Small wooden button \\
   2           & Red feather \\
@@ -243,100 +293,47 @@ See Table~\ref{tab:colors} for a list of accent colors that match the core books
   7           & Broken axe handle \\
   8           & Tarnished silver locket \\
 \end{dndtable}
+\end{lstlisting}
+
+\begin{dndtable}[cX][PhbLightCyan]
+  \textbf{d8} & \textbf{Item} \\
+  1           & Small wooden button \\
+  2           & Red feather \\
+  3           & Human tooth \\
+  4           & Vial of green liquid \\
+  6           & Tasty biscuit \\
+  7           & Broken axe handle \\
+  8           & Tarnished silver locket \\
+\end{dndtable}
+
+\section{Themed Colors}
+Use |\setthemecolor[<color>]| to set |themecolor|, |commentcolor|, |paperboxcolor|, and |tablecolor| to a specific color. Calling |\setthemecolor| without an argument sets those colors to the current |themecolor|. In the following example the group limits the change to just a few boxes; after the group finishes, the colors are reverted to what they were before the group started.
+
+\begin{lstlisting}
+\begingroup
+\setthemecolor[PhbMauve]
+
+\begin{commentbox}{This Comment Is in Mauve}
+  This comment is in the the new color.
+\end{commentbox}
+
+\begin{paperbox}{This Sidebar Is Also Mauve}
+  The sidebar is also using the new theme color.
+\end{paperbox}
+\endgroup
 \end{lstlisting}
 
 \begingroup
 \setthemecolor[PhbMauve]
 
-\begin{paperbox}{Example}
-  \lipsum[2]
+\begin{commentbox}{This Comment Is in Mauve}
+  This comment is in the the new color.
+\end{commentbox}
+
+\begin{paperbox}{This Sidebar Is Also Mauve}
+  The sidebar is also using the new theme color.
 \end{paperbox}
 
-\setthemecolor[PhbLightCyan]
-
-\header{Example}
-\begin{dndtable}[cX]
-  \textbf{d8} & \textbf{Item} \\
-  1           & Small wooden button \\
-  2           & Red feather \\
-  3           & Human tooth \\
-  4           & Vial of green liquid \\
-  6           & Tasty biscuit \\
-  7           & Broken axe handle \\
-  8           & Tarnished silver locket \\
-\end{dndtable}
 \endgroup
 
-\subsubsection{Using element color arguments}
-\begin{lstlisting}
-\begin{dndtable}[cX][DmgCoral]
-  \textbf{d8} & \textbf{Item} \\
-  1           & Small wooden button \\
-  2           & Red feather \\
-  3           & Human tooth \\
-  4           & Vial of green liquid \\
-  6           & Tasty biscuit \\
-  7           & Broken axe handle \\
-  8           & Tarnished silver locket \\
-\end{dndtable}
-\end{lstlisting}
-
-\begin{dndtable}[cX][DmgCoral]
-  \textbf{d8} & \textbf{Item} \\
-  1           & Small wooden button \\
-  2           & Red feather \\
-  3           & Human tooth \\
-  4           & Vial of green liquid \\
-  6           & Tasty biscuit \\
-  7           & Broken axe handle \\
-  8           & Tarnished silver locket \\
-\end{dndtable}
-
-\section{Map Regions}
-The map region commands provide automatic numbering of areas.
-
-\noindent\begin{minipage}{\linewidth}
-\begin{lstlisting}
-\area{Village of Hommlet}
-This is the village of hommlet.
-
-\subarea{Inn of the Welcome Wench}
-Inside the village is the inn of the
-Welcome Wench.
-
-\subarea{Blacksmith's Forge}
-There's a blacksmith in town, too.
-
-\area{Foo's Castle}
-This is foo's home, a hovel of mud and
-sticks.
-
-\subarea{Moat}
-This ditch has a board spanning it.
-
-\subarea{Entrance}
-A five-foot hole reveals the dirt floor
-illuminated by a hole in the roof.
-\end{lstlisting}
-\end{minipage}
-
-\area{Village of Hommlet}
-This is the village of hommlet.
-
-\subarea{Inn of the Welcome Wench}
-Inside the village is the inn of the Welcome Wench.
-
-\subarea{Blacksmith's Forge}
-There's a blacksmith in town, too.
-
-\area{Foo's Castle}
-This is foo's home, a hovel of mud and sticks.
-
-\subarea{Moat}
-This ditch has a board spanning it.
-
-\subarea{Entrance}
-A five-foot hole reveals the dirt floor illuminated by a hole in the roof.
-
-% End document
 \end{document}
