@@ -1,13 +1,16 @@
 # Package dependencies
 #
+#   cfr-initials: simplified drop cap font loading
 #   environ: required by tcolorbox
 #   etex-pkg: provides e-TeX, transitive dependency
 #   fontaxes: gillius dependency
 #   gillius: sans serif body font
+#   initials: drop caps
 #   kpfonts: sans serif title font
 #   l3backend: xparse dependency
 #   l3kernel: xparse dependency
 #   l3packages: xparse
+#   minifp: required by lettrine
 #   ms: multitoc, ragged2e
 #   oberdiek: luacolor
 #   pgf: tikz
@@ -19,6 +22,7 @@ amsfonts
 babel
 babel-english
 bookman
+cfr-initials
 cm
 colortbl
 courier
@@ -35,14 +39,17 @@ gillius
 hang
 ifluatex
 ifxetex
+initials
 keycommand
 kpfonts
 l3backend
 l3kernel
 l3packages
 latex-fonts
+lettrine
 lm
 microtype
+minifp
 ms
 numprint
 oberdiek

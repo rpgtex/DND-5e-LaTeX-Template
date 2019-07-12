@@ -25,3 +25,19 @@
 
 \newcommand{\dnd@FooterFont}{\normalfont\scriptsize}
 \newcommand{\dnd@PageNumberFont}{\normalfont\scriptsize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Drop Caps
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{lettrine}
+\RequirePackage{Royal}
+
+\newcommand\dnd@DropCapFont{\Royal}
+\renewcommand{\LettrineFontHook}{\dnd@DropCapFont}
+
+% Usage: DndDropCapLine[<lettrine options>]{<first letter>}{<small caps line>}
+%    It takes trial and error to get the 2nd argument to align with
+%    the linebreak. Lettrine package will not play nicely with \FirstLine. See
+%    the lettrine package for options.
+\NewDocumentCommand{\DndDropCapLine}{ O{} m m }%
+{\lettrine[lines=4,depth=0,findent=0.5em,nindent=0pt,#1]{#2}{#3}}
