@@ -41,7 +41,6 @@
 %
 % Options
 %
-
 \newtoggle{bool-bg}
 \newtoggle{bool-footer-scroll}
 \DeclareOptionX{bg}[full]{%
@@ -106,17 +105,16 @@
 
 % Set page geometry.
 \geometry{%
-  bindingoffset=15pt, % .2in
-  hmargin=50pt,       % .7in
-  top=40pt,           % .55in
-  bottom=50pt,        % .7in
-  footskip=30pt,      % makes the footer text line up with the graphic
+  hmargin=.75in,   % Left and right margins
+  top=.46in,       % Top of text area to top of page
+  bottom=.8in,     % Bottom of text area to bottom of page
+  footskip=.32in,  % Bottom of text area to bottom of footer text
+  columnsep=.33in, % Space between columns
 }
 
 % Set paragraph and line spacing
-\linespread{1.1}%
 \setlength{\parindent}{1em}
-\setlength{\RaggedRightRightskip}{0pt plus 1cm}
+\setlength{\RaggedRightRightskip}{0pt plus 1em}
 \setlength{\RaggedRightParindent}{\parindent}
 \hyphenpenalty=1000  % Fewer hyphens
 
@@ -126,12 +124,6 @@
 %
 % Style Parameters
 %
-
-% Disable space between paragraphs.
-\setlength{\parskip}{0pt}
-
-% Columns setup
-\setlength{\columnsep}{25pt}  % .35in
 
 % Customize itemize environment.
 \setlist{leftmargin=1em}

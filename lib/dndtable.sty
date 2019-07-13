@@ -1,12 +1,15 @@
 \ExplSyntaxOn
 
 % Old interface
-% Table Header	\ExplSyntaxOn
-\newcommand{\header}[1]{{
-  \par\vspace*{8pt}
-  \noindent
-  \dnd@TableTitleFont
-  #1}}
+% Table Header
+\newcommand{\header}[1]{%
+  \begingroup%
+  \par\vspace{10pt plus 3 pt minus 3pt}%
+  \noindent%
+  \dnd@TableTitleFont%
+  #1%
+  \endgroup%
+  }
 
 % Centered Column
 \newcolumntype { Y }
@@ -14,15 +17,15 @@
 
 % Table Environment
 \NewDocumentEnvironment{dndtable}{O{XX} O{tablecolor}}{%
-    \par\vspace*{8pt}
-    \noindent
-    \dnd@TableBodyFont
-    \rowcolors{1}{}{#2}
-    \tabularx{\linewidth}{#1}
+    \par\vspace{2pt plus 1pt minus 1pt}%
+    \noindent%
+    \dnd@TableBodyFont%
+    \setlength{\extrarowheight}{3pt}%
+    \rowcolors{1}{}{#2}%
+    \tabularx{\linewidth}{#1}%
   }{%
-    \endtabularx
-    \vspace{8pt plus 1pt}
-    \noindent
+    \endtabularx%
+    \par\vspace{10pt plus 3 pt minus 3pt}%
   }
 
 % New interface
@@ -45,13 +48,13 @@
     \tl_if_novalue:nF {#1}
       { \keys_set:nn { dnd / table } {#1} }
 
-    \par \vspace {8pt} \noindent
+    \par \vspace { 10pt plus 3 pt minus 3pt } \noindent
 
     \tl_if_empty:NF \l__dnd_table_header_tl
       {
         \group_begin:
           \dnd@TableTitleFont \l__dnd_table_header_tl
-          \par \smallskip \noindent
+          \par \vspace{2pt plus 1pt minus 1pt} \noindent
         \group_end:
       }
 
@@ -62,7 +65,7 @@
     \tabularx {\l__dnd_table_width_dim} {#2}
   }
   {
-    \endtabularx \vspace { 8pt plus 1pt }
+    \endtabularx \vspace { 10pt plus 3 pt minus 3pt }
 
     \group_end:
   }
