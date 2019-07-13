@@ -12,14 +12,17 @@
           \nottoggle {justified} {\RaggedRight}
         \fi
       },
+    code={\linespread{.9}},
     frame~hidden,
     boxrule          = 0pt,
     enhanced,
-    before~skip      = 11pt plus 1pt,
-    toptitle         = 3mm,
-    boxsep           = 0.25ex,
-    left             = 8pt,
-    right            = 8pt,
+    before~skip      = 13pt plus 4pt minus 4pt,
+    toptitle         = 2pt,
+    boxsep           = 3pt,
+    left             = 6pt,
+    right            = 6pt,
+    top              = 0pt,
+    bottom           = 2pt,
     fonttitle        = \dnd@BoxTitleFont,
     fontupper        = \dnd@BoxBodyFont,
     fontlower        = \dnd@BoxBodyFont,
@@ -36,7 +39,7 @@
         \fill [black] ( frame.north~east ) -- ++ ( -7pt, 0 ) -- ++ ( 0,  5pt ) -- cycle;
         \fill [black] ( frame.south~east ) -- ++ ( -7pt, 0 ) -- ++ ( 0, -5pt ) -- cycle;
       },
-    after~skip       = 10pt plus 1pt,
+    after~skip       = 14pt plus 4pt minus 4pt,
     #1,
   }
 
