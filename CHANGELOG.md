@@ -9,7 +9,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+* Added `DndDropCapLine` command to create drop capital letters at chapter beginnings
 * Configured CI to compile example document under pdfTeX, LuaTeX, and XeTeX.
+
+### Changed
+
+* Sans serif title font now provided by kp-fonts
+* Sans serif body font now provided by gillius
+* Overhaul of whitespace and styling
+* DndTable Rewrite
 
 ## [0.7.0] - 2019-02-09
 

@@ -7,31 +7,38 @@
   \RequirePackage[toc]{multitoc}
 }{}
 
-%Remove Numbering (If you want Numbering set secnumdepth to the appropriate depth)
-\setcounter{secnumdepth}{-1}
+% Set spacing around floats
+\setlength{\textfloatsep}{11pt plus 4pt minus 4pt}
+\setlength{\intextsep}{11pt plus 4pt minus 4pt}
+\setlength{\dbltextfloatsep}{11pt plus 4pt minus 4pt}
+
+% Remove Numbering (If you want Numbering set secnumdepth to the appropriate depth)
+\setcounter{secnumdepth}{0}
 
 % Chapter
 \titleformat{\chapter}
-{\color{titlered}\dnd@TitleFont\Huge}{\thechapter\quad}{0pt}{}
+{\linespread{.9}\color{titlered}\dnd@TitleFont\Huge}{\chaptertitlename\ \thechapter:}{\wordsep}{}
 
-\titlespacing*{\chapter}{0pt}{0pt}{20pt}
-
-\ifdef{\cftchapfont}{%
-  \renewcommand\cftchapfont{\color{titlered}\dnd@TitleFont\bfseries}
-}{}
+\titlespacing*{\chapter}{0pt}{.3ex}{2.8ex}
 
 % Section
 \titleformat{\section}
-{\color{titlered}\dnd@TitleFont\LARGE\RaggedRight}{\thesection\quad}{0pt}{\nopagebreak}
+{\linespread{.9}\color{titlered}\dnd@TitleFont\huge\RaggedRight}{\thesection}{1em}{\nopagebreak}
+
+\titlespacing*{\section}{0pt}{1.3ex}{0pt}
 
 % Subsection
 \titleformat{\subsection}
-{\color{titlered}\dnd@TitleFont\Large\RaggedRight}{\thesubsection\quad}{0pt}{\nopagebreak}
-[\titleline{\color{titlegold}\titlerule[1pt]}]
+{\linespread{.9}\color{titlered}\dnd@TitleFont\Large\RaggedRight}{\thesubsection}{1em}{\nopagebreak}
+[\vspace{-.3ex}\titleline{\color{titlegold}\titlerule[1pt]}]
+
+\titlespacing*{\subsection}{0pt}{1.4ex}{1.2ex}
 
 % Subsubsection
 \titleformat{\subsubsection}
-{\color{titlered}\dnd@TitleFont\large\RaggedRight}{\thesubsubsection\quad}{0pt}{\nopagebreak}[]
+{\linespread{.9}\color{titlered}\dnd@TitleFont\large\RaggedRight}{\thesubsubsection}{1em}{\nopagebreak}[]
+
+\titlespacing*{\subsubsection}{0pt}{2ex}{.2ex}
 
 % Paragraph
 \titleformat{\paragraph}[runin]
@@ -48,10 +55,10 @@
 \fi % \ifpkglayout
 
 % Special command for magic items, traps, and the like.
-\newcommand{\subtitlesection}[2]{
-  \subsubsection{#1}\vspace{-1ex}
-  \textit{#2}\vspace{1ex}\par
-  }
+\newcommand{\subtitlesection}[2]{%
+  \subsubsection{#1}%
+  \textit{#2}
+  \par\vspace{3pt plus 1pt minus 1pt}\noindent\ignorespaces}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Map Areas and their References
