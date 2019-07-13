@@ -162,16 +162,20 @@
   }
 
 % Load other modules of this package after all dependencies to avoid load order
-% conflicts (e.g., package options).
+% conflicts (e.g., package options). Low-level modules first.
 \RequirePackage{lib/compat}       % compatibility definitions
 \RequirePackage{lib/dndcolors}    % color definitions
 \RequirePackage{lib/dndfonts}     % font definitions
-\RequirePackage{lib/dndcomment}   % \commentbox definition
+
+% Main modules in alphabetical order
+\RequirePackage{lib/dndcomment}   % inline comment boxes
 \RequirePackage{lib/dndheader}    % fancy headers and footers
 \RequirePackage{lib/dndmonster}   % \monsterbox definition
 \RequirePackage{lib/dndpaperbox}  % \paperbox definition
 \RequirePackage{lib/dndquote}     % \quotebox definition
+\RequirePackage{lib/dndreadaloud} % read-aloud text
 \RequirePackage{lib/dndsections}  % section styling
+\RequirePackage{lib/dndsidebar}   % sidebars
 \RequirePackage{lib/dndspell}     % \spell definition
 \RequirePackage{lib/dndstrings}   % Load document strings
 \RequirePackage{lib/dndtable}     % \dndtable definition

@@ -107,24 +107,24 @@ A five-foot hole reveals the dirt floor illuminated by a hole in the roof.
 
 \chapter{Text Boxes}
 
-The module has three environments for setting text apart so that it is drawn to the reader's attention. The |quotebox| is used for text that a game master would read aloud.
+The module has three environments for setting text apart so that it is drawn to the reader's attention. The |DndReadAloud| is used for text that a game master would read aloud.
 
-\begin{quotebox}
+\begin{DndReadAloud}
   As you approach this module you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
-\end{quotebox}
+\end{DndReadAloud}
 
 \section{As an Aside}
-The other two environments are the |commentbox| and the |paperbox|. The |commentbox| is breakable and can safely be used inline in the text.
+The other two environments are the |DndComment| and the |DndSidebar|. The |DndComment| is breakable and can safely be used inline in the text.
 
-\begin{commentbox}{This Is a Comment Box!}
-  A |commentbox| is a box for minimal highlighting of text. It lacks the ornamentation of |paperbox|, but it can handle being broken over a column.
-\end{commentbox}
+\begin{DndComment}{This Is a Comment Box!}
+  A |DndComment| is a box for minimal highlighting of text. It lacks the ornamentation of |DndSidebar|, but it can handle being broken over a column.
+\end{DndComment}
 
-The |paperbox| is not breakable and is best used floated toward a page corner as it is below.
+The |DndSidebar| is not breakable and is best used floated toward a page corner as it is below.
 
-\begin{paperbox}[float=!b]{Behold the Paperbox!}
-  The |paperbox| is used as a sidebar. It does not break over columns and is best used with a figure environment to float it to one corner of the page where the surrounding text can then flow around it.
-\end{paperbox}
+\begin{DndSidebar}[float=!b]{Behold the DndSidebar!}
+  The |DndSidebar| is used as a sidebar. It does not break over columns and is best used with a figure environment to float it to one corner of the page where the surrounding text can then flow around it.
+\end{DndSidebar}
 
 \section{Tables}
 The |DndTable| colors the even rows and is set to the width of a line by default.
@@ -264,14 +264,14 @@ The |monsterbox| environment is used to typeset monster and NPC stat blocks. The
   \end{DndTable}
 \end{table*}
 
-This package provides several global color variables to style |commentbox|, |quotebox|, |paperbox|, and |DndTable| environments.
+This package provides several global color variables to style |DndComment|, |DndReadAloud|, |DndSidebar|, and |DndTable| environments.
 
 \begin{DndTable}[header=Box Colors]{lX}
-  \textbf{Color}    & \textbf{Description} \\
-  |commentboxcolor| & |commentbox| background \\
-  |paperboxcolor|   & |paperbox| background \\
-  |quoteboxcolor|   & |quotebox| background \\
-  |tablecolor|      & background of even |DndTable| rows \\
+  \textbf{Color}   & \textbf{Description} \\
+  |commentcolor|   & |DndComment| background \\
+  |readaloudcolor| & |DndReadAloud| background \\
+  |sidebarcolor|   & |DndSidebar| background \\
+  |tablecolor|     & background of even |DndTable| rows \\
 \end{DndTable}
 
 They also accept an optional color argument to set the color for a single instance. See Table~\ref{tab:colors} for a list of core book accent colors.
@@ -301,32 +301,32 @@ They also accept an optional color argument to set the color for a single instan
 \end{DndTable}
 
 \section{Themed Colors}
-Use |\DndSetThemeColor[<color>]| to set |themecolor|, |commentcolor|, |paperboxcolor|, and |tablecolor| to a specific color. Calling |\DndSetThemeColor| without an argument sets those colors to the current |themecolor|. In the following example the group limits the change to just a few boxes; after the group finishes, the colors are reverted to what they were before the group started.
+Use |\DndSetThemeColor[<color>]| to set |commentcolor|, |readaloudcolor|, |sidebarcolor|, and |tablecolor| to a specific color. Calling |\DndSetThemeColor| without an argument sets those colors to the current |themecolor|. In the following example the group limits the change to just a few boxes; after the group finishes, the colors are reverted to what they were before the group started.
 
 \begin{lstlisting}
 \begingroup
 \DndSetThemeColor[PhbMauve]
 
-\begin{commentbox}{This Comment Is in Mauve}
+\begin{DndComment}{This Comment Is in Mauve}
   This comment is in the the new color.
-\end{commentbox}
+\end{DndComment}
 
-\begin{paperbox}{This Sidebar Is Also Mauve}
+\begin{DndSidebar}{This Sidebar Is Also Mauve}
   The sidebar is also using the new theme color.
-\end{paperbox}
+\end{DndSidebar}
 \endgroup
 \end{lstlisting}
 
 \begingroup
 \DndSetThemeColor[PhbMauve]
 
-\begin{commentbox}{This Comment Is in Mauve}
+\begin{DndComment}{This Comment Is in Mauve}
   This comment is in the the new color.
-\end{commentbox}
+\end{DndComment}
 
-\begin{paperbox}{This Sidebar Is Also Mauve}
+\begin{DndSidebar}{This Sidebar Is Also Mauve}
   The sidebar is also using the new theme color.
-\end{paperbox}
+\end{DndSidebar}
 
 \endgroup
 
