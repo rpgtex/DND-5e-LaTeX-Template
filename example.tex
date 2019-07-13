@@ -307,11 +307,11 @@ They also accept an optional color argument to set the color for a single instan
 \end{dndtable}
 
 \section{Themed Colors}
-Use |\setthemecolor[<color>]| to set |themecolor|, |commentcolor|, |paperboxcolor|, and |tablecolor| to a specific color. Calling |\setthemecolor| without an argument sets those colors to the current |themecolor|. In the following example the group limits the change to just a few boxes; after the group finishes, the colors are reverted to what they were before the group started.
+Use |\DndSetThemeColor[<color>]| to set |themecolor|, |commentcolor|, |paperboxcolor|, and |tablecolor| to a specific color. Calling |\DndSetThemeColor| without an argument sets those colors to the current |themecolor|. In the following example the group limits the change to just a few boxes; after the group finishes, the colors are reverted to what they were before the group started.
 
 \begin{lstlisting}
 \begingroup
-\setthemecolor[PhbMauve]
+\DndSetThemeColor[PhbMauve]
 
 \begin{commentbox}{This Comment Is in Mauve}
   This comment is in the the new color.
@@ -324,7 +324,7 @@ Use |\setthemecolor[<color>]| to set |themecolor|, |commentcolor|, |paperboxcolo
 \end{lstlisting}
 
 \begingroup
-\setthemecolor[PhbMauve]
+\DndSetThemeColor[PhbMauve]
 
 \begin{commentbox}{This Comment Is in Mauve}
   This comment is in the the new color.
