@@ -121,6 +121,10 @@ The other two environments are the |commentbox| and the |paperbox|. The |comment
 
 The |paperbox| is not breakable and is best used floated toward a page corner as it is below.
 
+\begin{paperbox}[float=!b]{Behold the Paperbox!}
+  The |paperbox| is used as a sidebar. It does not break over columns and is best used with a figure environment to float it to one corner of the page where the surrounding text can then flow around it.
+\end{paperbox}
+
 \section{Tables}
 The |DndTable| colors the even rows and is set to the width of a line by default.
 
@@ -130,10 +134,6 @@ The |DndTable| colors the even rows and is set to the width of a line by default
     Some value  & Some value \\
     Some value  & Some value
 \end{DndTable}
-
-\begin{paperbox}[float=!b]{Behold the Paperbox!}
-  The |paperbox| is used as a sidebar. It does not break over columns and is best used with a figure environment to float it to one corner of the page where the surrounding text can then flow around it.
-\end{paperbox}
 
 \chapter{Monsters and NPCs}
 The |monsterbox| environment is used to typeset monster and NPC stat blocks. The module supplies many functions to easily typeset the contents of the stat block
