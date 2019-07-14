@@ -73,6 +73,9 @@
 %    \renewcommand\spellrangename{Range}
 %    \renewcommand\spellcomponentsname{Components}
 %    \renewcommand\spelldurationname{Duration}
+%    % Miscellaneous
+%    \renewcommand\pageabbreviationname{pg.}
+%    \renewcommand\dname{d}
 %  }
 
 % Italian captions
@@ -142,6 +145,10 @@
     \renewcommand\spellrangename{Gittata}
     \renewcommand\spellcomponentsname{Componenti}
     \renewcommand\spelldurationname{Durata}
+%    % Miscellaneous
+%    \renewcommand\pageabbreviationname{pg.}
+    % Miscellaneous
+%    \renewcommand\dname{d}
   }
 
 % Russian captions
@@ -211,65 +218,74 @@
 %    \renewcommand\spellrangename{Range}
 %    \renewcommand\spellcomponentsname{Components}
 %    \renewcommand\spelldurationname{Duration}
+%    % Miscellaneous
+%    \renewcommand\pageabbreviationname{pg.}
+%    \renewcommand\dname{d}
   }
 
 % German captions
-\addto\captionsngerman{%
-    \def\armorclassname{Rüstungsklasse}%
-    \def\hitpointsname{Trefferpunkte}%
-    \def\speedname{Bewegungsrate}%
-    \def\strstatname{STR}%
-    \def\dexstatname{GES}%
-    \def\constatname{KON}%
-    \def\intstatname{INT}%
-    \def\wisstatname{WEI}%
-    \def\chastatname{CHA}%
-    \def\skillsname{Fertigkeit}%
-    \def\dimmname{Immunitäten}%
-    \def\dvulname{Anfälligkeiten}%
-    \def\dresname{Wiederstandsschaden}%
-    \def\cimmname{Immunität}
-    \def\savesname{Rettung}%
-    \def\sensesname{Sinne}%
-    \def\languagesname{Sprachen}%
-    \def\challengename{Herausforderung}%
-    \newcommand\xpname{EP}
+\addto\captionsngerman{
+    \renewcommand\armorclassname{Rüstungsklasse}
+    \renewcommand\hitpointsname{Trefferpunkte}
+    \renewcommand\speedname{Bewegungsrate}
+    \renewcommand\strstatname{STR}
+    \renewcommand\dexstatname{GES}
+    \renewcommand\constatname{KON}
+    \renewcommand\intstatname{INT}
+    \renewcommand\wisstatname{WEI}
+    \renewcommand\chastatname{CHA}
+    \renewcommand\skillsname{Fertigkeiten}
+    \renewcommand\dimmname{Schadensimmunitäten}
+    \renewcommand\dvulname{Schadensanfälligkeiten}
+    \renewcommand\dresname{Schadensresistenzen}
+    \renewcommand\cimmname{Zustandsimmunitäten}
+    \renewcommand\savesname{Rettungswürfe}
+    \renewcommand\sensesname{Sinne}
+    \renewcommand\languagesname{Sprachen}
+    \renewcommand\challengename{Herausforderungsgrad}
+    \renewcommand\xpname{EP}
     % Monster attack
-    \renewcommand\ftname{Fuß}
-    \renewcommand\meleeattackname{Nahkampfangriff}
-    \renewcommand\rangedattackname{Fernkampangriff}
-    \renewcommand\meleeorrangedattackname{Nah-~oder~Fernkampfangriff}
-    \renewcommand\tohitname{um~zu~treffen}
+    \renewcommand\ftname{m}
+    \renewcommand\meleeattackname{Nahkampf-Waffenangriff}
+    \renewcommand\rangedattackname{Fernkampf-Waffenangriff}
+    \renewcommand\meleeorrangedattackname{Nah-~oder~Fernkampf-Waffenangriff}
+    \renewcommand\orname{oder}
+    \renewcommand\tohitname{zum~Treffen}
+    \renewcommand\defaulttargetsname{ein~Ziel}
     \renewcommand\reachname{Reichweite}
-    \renewcommand\rangename{Bereich}
+    \renewcommand\rangename{Reichweite}
     \renewcommand\hitname{Treffer}
     \renewcommand\damagename{Schaden}
+    \renewcommand\plusname{plus}
     % Spell levels
     \renewcommand\spellcantripsname{Zaubertricks}
-    \renewcommand\spellfirstlevelname{1.~Stufe}
-    \renewcommand\spellsecondlevelname{2.~Stufe}
-    \renewcommand\spellthirdlevelname{3.~Stufe}
-    \renewcommand\spellfourthlevelname{4.~Stufe}
-    \renewcommand\spellfifthlevelname{5.~Stufe}
-    \renewcommand\spellsixthlevelname{6.~Stufe}
-    \renewcommand\spellseventhlevelname{7.~Stufe}
-    \renewcommand\spelleighthlevelname{8.~Stufe}
-    \renewcommand\spellninthlevelname{9.~Stufe}
+    \renewcommand\spellfirstlevelname{1.~Grad}
+    \renewcommand\spellsecondlevelname{2.~Grad}
+    \renewcommand\spellthirdlevelname{3.~Grad}
+    \renewcommand\spellfourthlevelname{4.~Grad}
+    \renewcommand\spellfifthlevelname{5.~Grad}
+    \renewcommand\spellsixthlevelname{6.~Grad}
+    \renewcommand\spellseventhlevelname{7.~Grad}
+    \renewcommand\spelleighthlevelname{8.~Grad}
+    \renewcommand\spellninthlevelname{9.~Grad}
     % Spell slots
-    \renewcommand\spellatwillname{nach~belieben}
-    \renewcommand\spelloneslotname{1~Slot}
-    \renewcommand\spelltwoslotsname{2~Slots}
-    \renewcommand\spellthreeslotsname{3~Slots}
-    \renewcommand\spellfourslotsname{4~Slots}
+    \renewcommand\spellatwillname{beliebig oft}
+    \renewcommand\spelloneslotname{1~Platz}
+    \renewcommand\spelltwoslotsname{2~Plätze}
+    \renewcommand\spellthreeslotsname{3~Plätze}
+    \renewcommand\spellfourslotsname{4~Plätze}
     % Innate spellcasting
-    \renewcommand\innateatwillname{Nach~belieben}
+    \renewcommand\innateatwillname{Willentlich}
     \renewcommand\numberperdayname{|1|/Tag}
-    \renewcommand\numberperdayeachname{|1|/Tag~pro}
+    \renewcommand\numberperdayeachname{jeweils~|1|/Tag}
     % Spell header
-    \renewcommand\spellcastingtimename{Zauberzeit}
+    \renewcommand\spellcastingtimename{Zeitaufwand}
     \renewcommand\spellrangename{Reichweite}
     \renewcommand\spellcomponentsname{Komponenten}
     \renewcommand\spelldurationname{Wirkungsdauer}
+    % Miscellaneous
+%    \renewcommand\pageabbreviationname{pg.}
+    \renewcommand\dname{W}
   }
 
 \ExplSyntaxOff

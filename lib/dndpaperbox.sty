@@ -1,36 +1,39 @@
 %Usage \begin{paperbox}[options]{title}[color]
 \DeclareTColorBox{paperbox}{O{} m O{paperboxcolor}}{%
-	before upper={%
-		\ifpkglayout%
-			\nottoggle{justified}{\RaggedRight}%
-		\fi%
-	},
-	frame hidden,
-	boxrule=0pt,
-	enhanced,
-	before skip=11pt plus 1pt,
-	toptitle=3mm,
-	boxsep=0.25ex,
-	left=8pt,
-	right=8pt,
-	fonttitle=\dnd@BoxTitleFont,
-	fontupper=\dnd@BoxBodyFont,
-	fontlower=\dnd@BoxBodyFont,
-	title={#2},
-	sharp corners,
-	parbox=false,
-	borderline north={1pt}{-0.5pt}{black},
-	borderline south={1pt}{-0.5pt}{black},
-	colback={#3},
-	colbacktitle={#3},
-	coltitle=black,
-	fuzzy shadow={0mm}{-3.5pt}{-0.5pt}{0.4mm}{black!60!white},
-	overlay={%
-		\fill[black] (frame.south west) -- ++ (7pt,0) -- ++ (0,-5pt) -- cycle;
-		\fill[black] (frame.north west) -- ++ (7pt,0) -- ++ (0,5pt) -- cycle;
-		\fill[black] (frame.north east) -- ++ (-7pt,0) -- ++ (0,5pt) -- cycle;
-		\fill[black] (frame.south east) -- ++ (-7pt,0) -- ++ (0,-5pt) -- cycle;
-		},
-	after={\vspace{10pt plus 1pt}\noindent},
-	#1
+  before upper={%
+    \ifpkglayout%
+      \nottoggle{justified}{\RaggedRight}%
+    \fi%
+  },
+  code={\linespread{.9}},
+  frame hidden,
+  boxrule=0pt,
+  enhanced,
+  before skip=13pt plus 4pt minus 4pt,
+  toptitle=2pt,
+  boxsep=3pt,
+  left=6pt,
+  right=6pt,
+  top=0pt,
+  bottom=3pt,
+  fonttitle=\dnd@BoxTitleFont,
+  fontupper=\dnd@BoxBodyFont,
+  fontlower=\dnd@BoxBodyFont,
+  title={#2},
+  sharp corners,
+  parbox=false,
+  borderline north={1pt}{-0.5pt}{black},
+  borderline south={1pt}{-0.5pt}{black},
+  colback=#3,
+  colbacktitle=#3,
+  coltitle=black,
+  fuzzy shadow={0mm}{-3.5pt}{-0.5pt}{0.4mm}{black!60!white},
+  overlay={%
+    \fill[black] (frame.south west) -- ++ (7pt,0) -- ++ (0,-5pt) -- cycle;
+    \fill[black] (frame.north west) -- ++ (7pt,0) -- ++ (0,5pt) -- cycle;
+    \fill[black] (frame.north east) -- ++ (-7pt,0) -- ++ (0,5pt) -- cycle;
+    \fill[black] (frame.south east) -- ++ (-7pt,0) -- ++ (0,-5pt) -- cycle;
+    },
+  after skip=14pt plus 4pt minus 4pt,
+  #1
 }
