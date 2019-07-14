@@ -1,28 +1,112 @@
+% Old interface
 %Usage \begin{commentbox}[options]{title}[color]
 \DeclareTColorBox{commentbox}{O{} m O{commentboxcolor}}{%
   before upper={%
     \ifpkglayout%
       \nottoggle{justified}{\RaggedRight}%
-    \fi%
+    \fi%\
   },
+  code={\linespread{.9}},
   frame hidden,
   boxrule=0pt,
   breakable,
   enhanced,
-  before skip=8pt plus 1pt,
-  toptitle=3mm,
-  boxsep=0.25ex,
-  left=8pt,
-  right=8pt,
+  before skip=13pt plus 4pt minus 4pt,
+  toptitle=2pt,
+  boxsep=3pt,
+  left=6pt,
+  right=6pt,
+  top=0pt,
+  bottom=2pt,
   sharp corners,
   fonttitle=\dnd@BoxTitleFont,
   fontupper=\dnd@BoxBodyFont,
   fontlower=\dnd@BoxBodyFont,
   title={#2},
   parbox=false,
-  colback={#3},
-  colbacktitle={#3},
+  colback=#3,
+  colbacktitle=#3,
   coltitle=black,
-  after={\vspace{5pt plus 1pt}\noindent},
+  after skip=13pt plus 4pt minus 4pt,
   #1
 }
+
+% New interface
+\ExplSyntaxOn
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Environment for comments.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Standard for every comment
+\DeclareTColorBox {__dnd_comment} {o}
+  {
+    before~upper =
+      {
+        \ifpkglayout
+          \nottoggle {justified} {\RaggedRight}
+        \fi
+      },
+    code         = {\linespread{.9}},
+    frame~hidden,
+    boxrule      = 0pt,
+    breakable,
+    enhanced,
+    before~skip  = 13pt plus 4pt minus 4pt,
+    toptitle     = 2pt,
+    boxsep       = 3pt,
+    left         = 6pt,
+    right        = 6pt,
+    top          = 0pt,
+    bottom       = 2pt,
+    sharp~corners,
+    fonttitle    = \dnd@BoxTitleFont,
+    fontupper    = \dnd@BoxBodyFont,
+    fontlower    = \dnd@BoxBodyFont,
+    parbox       = false,
+    coltitle     = black,
+    after~skip   = 13pt plus 4pt minus 4pt,
+    #1,
+  }
+
+% Extra key for controlling the color of the title and the background
+\keys_define:nn { dnd / comment }
+  {
+    color .tl_set:N         = \l__dnd_comment_color_tl,
+    color .initial:n        = commentcolor,
+    color .value_required:n = true,
+  }
+
+% This function, through its variant, forces the expansion of the tcb keys
+% passed to the environment by the user before it invokes the tcolorbox
+\cs_new_protected:Nn \__dnd_start_comment:nn
+  {
+    \begin {__dnd_comment} [ #1, #2 ]
+  }
+
+\cs_generate_variant:Nn \__dnd_start_comment:nn { nV }
+
+% The DndComment environment
+% #1 - keys. We handle the custom color key before passing other keys on
+% #2 - title.
+\NewDocumentEnvironment {DndComment} { o m }
+  {
+    \group_begin:
+    \keys_set_known:nnN { dnd / comment } {#1} \l_tmpa_tl
+
+    \str_if_eq:VnT \l_tmpa_tl { -NoValue- }
+      { \tl_set_eq:NN \l_tmpa_tl \c_empty_tl }
+
+    \__dnd_start_comment:nV
+      {
+          colback      = \l__dnd_comment_color_tl,
+          colbacktitle = \l__dnd_comment_color_tl,
+          title        = {#2},
+      }
+      { \l_tmpa_tl }
+  }
+  {
+    \end {__dnd_comment}
+    \group_end:
+  }
+
+\ExplSyntaxOff
