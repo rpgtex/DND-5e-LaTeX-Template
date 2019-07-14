@@ -1,17 +1,17 @@
 % Monster environment sty file
 % Old interface
 
-% Fancy DnD 5e stat block rule	
-\newcommand{\dndline}{%	
-  \noindent	
-  \begin{tikzpicture}[]	
-    \draw [rulered, fill=rulered] (0, 0) --(0,0.1) -- (\textwidth, 0.05);	
-  \end{tikzpicture}%	
-  \par%	
-}	
-\renewcommand{\hline}{%	
-  \dnd@deprecate{redefined \noexpand\hline}{0.8}[Use \noexpand\dndline for stat block rules.]%	
-  \dndline%	
+% Fancy DnD 5e stat block rule
+\newcommand{\dndline}{%
+  \noindent
+  \begin{tikzpicture}[]
+    \draw [rulered, fill=rulered] (0, 0) --(0,0.1) -- (\textwidth, 0.05);
+  \end{tikzpicture}%
+  \par%
+}
+\renewcommand{\hline}{%
+  \dnd@deprecate{redefined \noexpand\hline}{0.8}[Use \noexpand\dndline for stat block rules.]%
+  \dndline%
 }
 
 \RequirePackage{fp}
@@ -371,7 +371,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Monster environments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Stat block made to look like the Monster Manual NPC definitions 
+% Stat block made to look like the Monster Manual NPC definitions
 \DeclareTColorBox {DndMonsterNoBg} { O{} m }
   {
     enhanced,
@@ -636,10 +636,10 @@
       \IfInteger {#1}
         {
           \int_set:Nn \l_tmpa_int { \fp_eval:n { floor ( ( #1 - 10 ) / 2 ) } }
-          
+
           #1 ~ (
           \int_compare:nNnTF {\l_tmpa_int} < {0}
-          { \(-\) }
+          { -- }
           {+}
           \int_abs:n \l_tmpa_int )
         }
@@ -709,7 +709,7 @@
 
 % Inline header for monster actions - similar to a paragraph
 \NewDocumentCommand {\DndMonsterAction} {m}
-  { \par \medskip \noindent \textsl { \textbf {#1.} } }
+  { \par \vspace{ 4pt  plus 1pt minus 1pt } \noindent \textsl { \textbf {#1.} } }
 
 % Inline header for monster sub actions - similar to a subparagraph
 \NewDocumentCommand {\DndMonsterSubAction} {m}
@@ -719,15 +719,16 @@
 \NewDocumentCommand {\DndMonsterSection} {m}
   {
     \group_begin:
-      \par \medskip \noindent \color {titlered} \dnd@StatBlockSubtitleFont #1
+      \par \vspace{5pt} \noindent \color {titlered} \dnd@StatBlockSubtitleFont #1
       % \rule is a horizontal command, so placing it under the title incurs extra
       % line spacing. Use \hrule (a vertical command) instead.
-      \vspace {3pt}
-      \hrule height 0.6pt
       \vspace {2pt}
+      \hrule height 0.6pt
+      \par \vspace{5pt}
     \group_end:
+    \noindent \ignorespaces
   }
-  
+
 % Spellcasting levels
 \newlist {DndMonsterSpells} {description} {1}
 \setlist [DndMonsterSpells]
@@ -751,7 +752,7 @@
 \NewDocumentCommand {\DndInnateSpellLevel} { O {\innateatwillname} m }
   {
     \item
-      [    
+      [
         \IfInteger {#1}
         {
           \str_if_in:NnTF {#2} {,}
@@ -855,7 +856,7 @@
   }
 
 \cs_new_protected:Npn \__dnd_if_plus_dmg:
-  {    
+  {
     \tl_if_empty:NF {\l__plus_dmg_tl}
     { ~ \plusname\ \l__plus_dmg_tl\ \l__plus_dmg_type_tl\ \damagename }
   }
@@ -865,19 +866,19 @@
     \tl_if_empty:NF {\l__or_dmg_tl}
     {
       , ~ \orname\ \l__or_dmg_tl\ \l__dmg_type_tl\ \damagename\ \l__or_dmg_when_tl
-      
+
       \tl_if_empty:NF {\l__plus_dmg_tl}
         {,}
     }
   }
 
 \cs_new_protected:Npn \__dnd_monster_attack:
-  {    
+  {
     \__dnd_check_for_key:Nnn \l__name_tl {\DndMonsterAttack} {name}
     \__dnd_check_for_key:Nnn \l__mod_tl {\DndMonsterAttack} {mod}
 
     \begin{DndMonsterAction} {\l__name_tl}~
-      
+
       \str_case_e:nnF {\l__dnd_attack_distance_tl}
         {
           { melee }
@@ -893,8 +894,8 @@
           \textit{ \__dnd_caption:nn {\meleeorrangedattackname} {\l__dnd_attack_type_tl} : } ~ \__dnd_monster_to_hit:, ~ \__dnd_monster_reach:\ \orname\ \__dnd_monster_range:
         }
       , ~ \l__targets_tl. ~
-      \textit { \hitname : } ~ 
-      
+      \textit { \hitname : } ~
+
       \str_if_empty:NF {\l__dmg_tl} % Don't show any damage if `dmg' is not set.
         {
           \l__dmg_tl\ \l__dmg_type_tl\ \damagename

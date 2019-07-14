@@ -137,10 +137,9 @@ The |DndTable| colors the even rows and is set to the width of a line by default
 \end{DndTable}
 
 \chapter{Monsters and NPCs}
-The |monsterbox| environment is used to typeset monster and NPC stat blocks. The module supplies many functions to easily typeset the contents of the stat block
 
 % Monster stat block
-\begin{DndMonster}[float*=t, width=\textwidth]{Monster Foo}
+\begin{DndMonster}[float*=b, width=\textwidth]{Monster Foo}
   \begin{multicols}{2}
     \DndMonsterType{Medium aberration (metasyntactic variable), neutral evil}
 
@@ -159,7 +158,7 @@ The |monsterbox| environment is used to typeset monster and NPC stat blocks. The
         wis = 14,
         cha = 15,
       ]
-      
+
     \DndMonsterDetails[
         %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
         %skills = {Acrobatics +0, Animal Handling +0, Arcana +0, Athletics +0, Deception +0, History +0, Insight +0, Intimidation +0, Investigation +0, Medicine +0, Nature +0, Perception +0, Performance +0, Persuasion +0, Religion +0, Sleight of Hand +0, Stealth +0, Survival +0},
@@ -179,7 +178,7 @@ The |monsterbox| environment is used to typeset monster and NPC stat blocks. The
       \DndInnateSpellLevel[3]{fog cloud, rope trick}
       \DndInnateSpellLevel[1]{identify}
     \end{DndMonsterSpells}
-    
+
     \DndMonsterAction{Spellcasting}
     Foo is a 2nd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has the following sorcerer spells prepared:
     \begin{DndMonsterSpells}
@@ -190,7 +189,7 @@ The |monsterbox| environment is used to typeset monster and NPC stat blocks. The
     \DndMonsterSection{Actions}
     \DndMonsterAction{Multiattack}
     The foo makes two melee attacks.
-    
+
     %Default values are shown commented out
     \DndMonsterAttack[
       name=Dagger,
@@ -237,7 +236,7 @@ The |monsterbox| environment is used to typeset monster and NPC stat blocks. The
       %or-dmg-when=,
       extra={, and the target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one}
     ]
-    
+
     % Legendary Actions
     \DndMonsterSection{Legendary Actions}
     The foo can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The foo regains spent legendary actions at the start of its turn.
@@ -249,6 +248,8 @@ The |monsterbox| environment is used to typeset monster and NPC stat blocks. The
     \end{DndMonsterLegendaryActions}
   \end{multicols}
 \end{DndMonster}
+
+The |DndMonster| environment is used to typeset monster and NPC stat blocks. The module supplies many functions to easily typeset the contents of the stat block
 
 \chapter{Colors}
 
