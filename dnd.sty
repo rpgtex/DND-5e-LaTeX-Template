@@ -102,6 +102,12 @@
 
 \RequirePackage{microtype}        % Improve ragged2e hyphenation and overfull boxes
 \RequirePackage{ragged2e}
+\RequirePackage[titles]{tocloft} % multi-column toc
+\RequirePackage{titlesec}	% Used to adjust (sub)section formatting
+
+\iftoggle{multitoc}{%
+  \RequirePackage[toc]{multitoc}
+}{}
 
 % Set page geometry.
 \geometry{%
