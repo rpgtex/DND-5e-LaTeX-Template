@@ -17,7 +17,7 @@
 % Chapter
 \titleformat {\chapter}
   { \linespread{.9} \color{titlered} \dnd@TitleFont \Huge } % format
-  { \chaptertitlename\ \thechapter: } % label
+  { \chaptertitlename\ \thechapter : } % label
   { \wordsep } % sep
   {} % before-code
 
@@ -142,7 +142,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Map Areas and their References
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Old interface
+
+\ExplSyntaxOff % Old interface
+
 % Labelling helpers
 \newcommand{\AreaLabel@Prefix}{area}
 \newcommand{\SetAreaLabelPrefix}[1]{%
@@ -180,7 +182,7 @@
 \newcommand{\SetDetailAreaPrefix}[1]{\renewcommand{\DetailArea@Prefix}
       {#1--\arabic{DetailArea}\par\expandafter\ignorespaces\noindent}}
 
-% New interface
+\ExplSyntaxOn % New interface
 \tl_new:N \l__dnd_area_num_depth_tl
 
 % Options

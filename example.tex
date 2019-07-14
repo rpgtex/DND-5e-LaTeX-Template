@@ -66,14 +66,14 @@ The paragraph format is seldom used in the core books.
 The subparagraph format with the paragraph indent is likely going to be more familiar to the reader.
 
 \section{Items and Spells}
-The module also includes the functions |\subtitlesection| and |\spellheader| to aid in the proper typesetting of items (including magic items and traps) and spells.
+The module also includes the functions |\DndItemHeader| and |\DndSpellHeader| to aid in the proper typesetting of items (including magic items and traps) and spells.
 
-\subtitlesection{Foo's Quill}{Wondrous item, rare}
+\DndItemHeader{Foo's Quill}{Wondrous item, rare}
 This quill has 3 charges. While holding it, you can use an action to expend 1 of its charges. The quill leaps from your hand and writes a contract applicable to your situation.
 
 The quill regains 1d3 expended charges daily at dawn.
 
-\spellheader%
+\DndSpellHeader%
   {Beautiful Typesetting}
   {4th-level illusion}
   {1 action}
@@ -87,27 +87,27 @@ While the creature is charmed by you, they cannot take their eyes off the scroll
 \section{Map Regions}
 The map region functions |\area| and |\subarea| provide automatic numbering of areas.
 
-\area{Village of Hommlet}
+\DndArea{Village of Hommlet}
 This is the village of hommlet.
 
-\subarea{Inn of the Welcome Wench}
+\DndSubArea{Inn of the Welcome Wench}
 Inside the village is the inn of the Welcome Wench.
 
-\subarea{Blacksmith's Forge}
+\DndSubArea{Blacksmith's Forge}
 There's a blacksmith in town, too.
 
-\area{Foo's Castle}
+\DndArea{Foo's Castle}
 This is foo's home, a hovel of mud and sticks.
 
-\subarea{Moat}
+\DndSubArea{Moat}
 This ditch has a board spanning it.
 
-\subarea{Entrance}
+\DndSubArea{Entrance}
 A five-foot hole reveals the dirt floor illuminated by a hole in the roof.
 
 \chapter{Text Boxes}
 
-The module has three environments for setting text apart so that it is drawn to the reader's attention. The |DndReadAloud| is used for text that a game master would read aloud.
+The module has three environments for setting text apart so that it is drawn to the reader's attention. |DndReadAloud| is used for text that a game master would read aloud.
 
 \begin{DndReadAloud}
   As you approach this module you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
