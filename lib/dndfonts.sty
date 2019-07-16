@@ -11,6 +11,15 @@
   \renewcommand{\sfdefault}{jkpss}
 \fi
 
+\cs_new_protected:Npn \__dnd_font_box_initial:
+  {
+\ifpkglayout
+    \gilliustwo \small
+\else
+    \sffamily \small,
+\fi
+  }
+
 \keys_define:nn { dnd / fonts }
   {
     % Section titles
@@ -22,24 +31,14 @@
     table-title .initial:n        = \sffamily \bfseries \scshape \large,
     table-title .value_required:n = true,
     table-body .tl_set:N         = \l__dnd_font_table_body_tl,
-\ifpkglayout
-    table-body .initial:n        = \gilliustwo,
-\else
-    table-body .initial:n        = \sffamily,
-\fi
-    table-body .initial:n        = \sffamily,
+    table-body .initial:n        = \__dnd_font_box_initial:,
     table-body .value_required:n = true,
-    % Comment box
+    % Comment box / sidebar
     box-title .tl_set:N         = \l__dnd_font_box_title_tl,
     box-title .initial:n        = \sffamily \bfseries \scshape,
     box-title .value_required:n = true,
     box-body .tl_set:N         = \l__dnd_font_box_body_tl,
-\ifpkglayout
-    box-body .initial:n        = \gilliustwo,
-\else
-    box-body .initial:n        = \sffamily,
-\fi
-    box-body .initial:n        = \sffamily,
+    box-body .initial:n        = \__dnd_font_box_initial:,
     box-body .value_required:n = true,
     % Stat blocks
     stat-block-title .tl_set:N         = \l__dnd_font_stat_block_title_tl,
@@ -52,11 +51,7 @@
     stat-block-subtitle .initial:n        = \sffamily \scshape \large,
     stat-block-subtitle .value_required:n = true,
     stat-block-body .tl_set:N         = \l__dnd_font_stat_block_body_tl,
-\ifpkglayout
-    stat-block-body .initial:n        = \gilliustwo,
-\else
-    stat-block-body .initial:n        = \sffamily,
-\fi
+    stat-block-body .initial:n        = \__dnd_font_box_initial:,
     stat-block-body .value_required:n = true,
     % Footer
     footer .tl_set:N         = \l__dnd_font_footer_tl,

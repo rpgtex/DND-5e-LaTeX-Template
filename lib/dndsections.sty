@@ -102,6 +102,9 @@
   \textit{#2}
   \par\vspace{3pt plus 1pt minus 1pt}\noindent\ignorespaces}
 
+
+\ExplSyntaxOn
+
 % New interface
 \NewDocumentCommand {\DndItemHeader} { m m }
   {
@@ -125,10 +128,9 @@
 
     \begin{description}
       [
-        noitemsep,
         nosep,
-        after      = \smallskip,
-        leftmargin = 1em
+        labelsep = \l__dnd_space_dim,
+        after    = { \vspace{4pt plus 1pt minus 1pt} },
       ]
       \item [ \spellcastingtimename : ] #3
       \item [ \spellrangename       : ] #4
