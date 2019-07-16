@@ -22,6 +22,11 @@
     table-title .initial:n        = \sffamily \bfseries \scshape \large,
     table-title .value_required:n = true,
     table-body .tl_set:N         = \l__dnd_font_table_body_tl,
+\ifpkglayout
+    table-body .initial:n        = \gilliustwo,
+\else
+    table-body .initial:n        = \sffamily,
+\fi
     table-body .initial:n        = \sffamily,
     table-body .value_required:n = true,
     % Comment box
@@ -29,6 +34,11 @@
     box-title .initial:n        = \sffamily \bfseries \scshape,
     box-title .value_required:n = true,
     box-body .tl_set:N         = \l__dnd_font_box_body_tl,
+\ifpkglayout
+    box-body .initial:n        = \gilliustwo,
+\else
+    box-body .initial:n        = \sffamily,
+\fi
     box-body .initial:n        = \sffamily,
     box-body .value_required:n = true,
     % Stat blocks
@@ -38,8 +48,15 @@
     stat-block-section .tl_set:N         = \l__dnd_font_stat_block_section_tl,
     stat-block-section .initial:n        = \fontfamily{fosj} \selectfont \scshape,
     stat-block-section .value_required:n = true,
+    stat-block-subtitle .tl_set:N         = \l__dnd_font_stat_block_subtitle_tl,
+    stat-block-subtitle .initial:n        = \sffamily \scshape \large,
+    stat-block-subtitle .value_required:n = true,
     stat-block-body .tl_set:N         = \l__dnd_font_stat_block_body_tl,
+\ifpkglayout
+    stat-block-body .initial:n        = \gilliustwo,
+\else
     stat-block-body .initial:n        = \sffamily,
+\fi
     stat-block-body .value_required:n = true,
     % Footer
     footer .tl_set:N         = \l__dnd_font_footer_tl,
@@ -54,12 +71,6 @@
     drop-cap .initial:n        = \Royal,
     drop-cap .value_required:n = true,
   }
-
-\ifpkglayout
-  tl_set:Nn \l__dnd_font_table_body_tl      { \gilliustwo }
-  tl_set:Nn \l__dnd_font_box_body_tl        { \gilliustwo }
-  tl_set:Nn \l__dnd_font_stat_block_body_tl { \gilliustwo }
-\fi
 
 \NewDocumentCommand { \DndSetFonts } { o }
   {

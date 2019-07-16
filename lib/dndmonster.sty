@@ -477,7 +477,7 @@
 \setlist [__dnd_monster_attributes]
   {
     before   = \color {titlered},
-    font     = \dnd@StatBlockBodyFont,
+    font     = \l__dnd_font_stat_block_body_tl,
     labelsep = \l__dnd_space_dim,
     nosep,
   }
@@ -731,7 +731,7 @@
   {
     \addvspace{6pt plus 2pt minus 2pt} \noindent
     \group_begin:
-      \color {titlered} \dnd@StatBlockSubtitleFont #1
+      \color {titlered} \l__dnd_font_stat_block_subtitle_tl #1
       % \rule is a horizontal command, so placing it under the title incurs extra
       % line spacing. Use \hrule (a vertical command) instead.
       \vspace {2pt}
@@ -745,7 +745,7 @@
 \newlist {DndMonsterSpells} {description} {1}
 \setlist [DndMonsterSpells]
   {
-    font     = \normalfont \dnd@StatBlockBodyFont,
+    font     = \l__dnd_font_stat_block_body_tl,
     labelsep = \l__dnd_space_dim,
     noitemsep,
     topsep   = 6pt plus 2pt minus 2pt,
@@ -949,7 +949,7 @@
 \newlist {DndMonsterLegendaryActions} {description} {1}
 \setlist [DndMonsterLegendaryActions]
   {
-    font     = \dnd@StatBlockBodyFont,
+    font     = \l__dnd_font_stat_block_body_tl,
     labelsep = \l__dnd_space_dim,
     noitemsep,
     topsep   = 6pt plus 2pt minus 2pt,
