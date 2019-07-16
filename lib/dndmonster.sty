@@ -413,7 +413,7 @@
     oversize         = 0pt,
     borderline~north = {3pt} {0pt}   {titlered},
     borderline~north = {2pt} {0.5pt} {statblockribbon},
-    borderline~south = {4pt} {0pt}   {titlered},
+    borderline~south = {3pt} {0pt}   {titlered},
     borderline~south = {2pt} {0.5pt} {statblockribbon},
     colback          = statblockbg,
     colbacktitle     = statblockbg,
@@ -447,7 +447,7 @@
 % Fancy DnD 5e stat block rule
 \NewDocumentCommand {\DndMonsterLine} {}
   {
-    \par \noindent
+    \par \vspace{-2pt} \noindent
     \begin {tikzpicture}
       \draw [ rulered, fill = rulered ] ( 0, 0 ) -- ( 0, 0.1 ) -- ( \linewidth, 0.05 );
     \end {tikzpicture}
@@ -467,7 +467,6 @@
     before   = \color {titlered},
     font     = \dnd@StatBlockBodyFont,
     labelsep = \l__dnd_space_dim,
-    noitemsep,
     nosep,
   }
 
@@ -679,7 +678,7 @@
 \cs_new_protected_nopar:Npn \__dnd_monster_ability_scores:
   {
     \color {titlered}
-    \par \vspace{5pt} \noindent
+    \par \vspace{1pt} \noindent
     \begin{tabularx} {\linewidth} {YYYYYY}
       \rule {0pt} {3.7mm} % adds space between hline and table
       \textbf {\strstatname} &
@@ -709,7 +708,7 @@
 
 % Inline header for monster actions - similar to a paragraph
 \NewDocumentCommand {\DndMonsterAction} {m}
-  { \par \vspace{ 4pt  plus 1pt minus 1pt } \noindent \textsl { \textbf {#1.} } }
+  { \unskip \vspace{ 2.5pt plus 1pt minus 1pt } \noindent \textsl { \textbf {#1.} } }
 
 % Inline header for monster sub actions - similar to a subparagraph
 \NewDocumentCommand {\DndMonsterSubAction} {m}
@@ -718,14 +717,15 @@
 % Monster subsection header style
 \NewDocumentCommand {\DndMonsterSection} {m}
   {
+    \addvspace{6pt plus 2pt minus 2pt} \noindent
     \group_begin:
-      \par \vspace{5pt} \noindent \color {titlered} \dnd@StatBlockSubtitleFont #1
+      \color {titlered} \dnd@StatBlockSubtitleFont #1
       % \rule is a horizontal command, so placing it under the title incurs extra
       % line spacing. Use \hrule (a vertical command) instead.
       \vspace {2pt}
       \hrule height 0.6pt
-      \par \vspace{5pt}
     \group_end:
+      \par \vspace{5pt}
     \noindent \ignorespaces
   }
 
@@ -733,11 +733,10 @@
 \newlist {DndMonsterSpells} {description} {1}
 \setlist [DndMonsterSpells]
   {
-    before   = {\medskip},
     font     = \normalfont \dnd@StatBlockBodyFont,
     labelsep = \l__dnd_space_dim,
     noitemsep,
-    nosep,
+    topsep   = 6pt plus 2pt minus 2pt,
   }
 
 \NewDocumentCommand {\DndEmphSpellString} {m}
@@ -938,11 +937,10 @@
 \newlist {DndMonsterLegendaryActions} {description} {1}
 \setlist [DndMonsterLegendaryActions]
   {
-    before   = {\medskip},
     font     = \dnd@StatBlockBodyFont,
     labelsep = \l__dnd_space_dim,
     noitemsep,
-    nosep,
+    topsep   = 6pt plus 2pt minus 2pt,
   }
 
 \NewDocumentCommand {\DndMonsterLegendaryAction} { m m }
