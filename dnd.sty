@@ -12,21 +12,21 @@
 \PassOptionsToPackage{table}{xcolor} % Helps prevent option clash with other packages that include xcolor
 
 \RequirePackage{array}
-\RequirePackage{calc}
 \RequirePackage{colortbl}
 \RequirePackage{enumitem}
 \RequirePackage{etoolbox}
-\RequirePackage{geometry}
-\RequirePackage{hang}
+\RequirePackage{textcomp,gensymb} % degree symbol for italian ordinals
+\RequirePackage{geometry} %page dimensions
+\RequirePackage{hang} % hanging paragraphs
 \RequirePackage{ifluatex}
 \RequirePackage{keycommand}
-\RequirePackage[autolanguage]{numprint}
-\RequirePackage{tabularx}
-\RequirePackage[breakable,skins,xparse]{tcolorbox}
-\RequirePackage{tikz}
+\RequirePackage[autolanguage]{numprint} % localization of thousands separator
+\RequirePackage{tabularx} % variable-width table columns
+\RequirePackage[breakable,skins,xparse]{tcolorbox} % styled text boxes
+\RequirePackage{tikz} % drawing ornaments and lines
 \RequirePackage{xcolor}
 \RequirePackage{xkeyval}
-\RequirePackage{xparse}
+\RequirePackage{xparse} % \NewDocumentCommand and expl3
 
 \ifluatex
   \RequirePackage{luacolor}
@@ -41,7 +41,6 @@
 %
 % Options
 %
-
 \newtoggle{bool-bg}
 \newtoggle{bool-footer-scroll}
 \DeclareOptionX{bg}[full]{%
@@ -103,20 +102,25 @@
 
 \RequirePackage{microtype}        % Improve ragged2e hyphenation and overfull boxes
 \RequirePackage{ragged2e}
+\RequirePackage[titles]{tocloft} % multi-column toc
+\RequirePackage{titlesec}	% Used to adjust (sub)section formatting
+
+\iftoggle{multitoc}{%
+  \RequirePackage[toc]{multitoc}
+}{}
 
 % Set page geometry.
 \geometry{%
-  bindingoffset=15pt, % .2in
-  hmargin=50pt,       % .7in
-  top=40pt,           % .55in
-  bottom=50pt,        % .7in
-  footskip=30pt,      % makes the footer text line up with the graphic
+  hmargin=.75in,   % Left and right margins
+  top=.46in,       % Top of text area to top of page
+  bottom=.8in,     % Bottom of text area to bottom of page
+  footskip=.32in,  % Bottom of text area to bottom of footer text
+  columnsep=.33in, % Space between columns
 }
 
 % Set paragraph and line spacing
-\linespread{1.1}%
 \setlength{\parindent}{1em}
-\setlength{\RaggedRightRightskip}{0pt plus 1cm}
+\setlength{\RaggedRightRightskip}{0pt plus 1em}
 \setlength{\RaggedRightParindent}{\parindent}
 \hyphenpenalty=1000  % Fewer hyphens
 
@@ -127,31 +131,12 @@
 % Style Parameters
 %
 
-% Disable space between paragraphs.
-\setlength{\parskip}{0pt}
-
-% Columns setup
-\setlength{\columnsep}{25pt}  % .35in
-
 % Customize itemize environment.
 \setlist{leftmargin=1em}
 \setitemize{noitemsep,topsep=0.5ex}
 \renewcommand{\labelitemi}{\raisebox{0.25ex}{\tiny{\( \bullet \)}}}
 
 \fi % \ifpkglayout
-
-% Fancy DnD 5e stat block rule
-\newcommand{\dndline}{%
-  \noindent
-  \begin{tikzpicture}[]
-    \draw [rulered, fill=rulered] (0, 0) --(0,0.1) -- (\textwidth, 0.05);
-  \end{tikzpicture}%
-  \par%
-}
-\renewcommand{\hline}{%
-  \dnd@deprecate{redefined \noexpand\hline}{0.8}[Use \noexpand\dndline for stat block rules.]%
-  \dndline%
-}
 
 % Either hilariously, or infuriatingly, the \ifcommandkey
 % implementation is buggy. Here is a re-implementation
@@ -170,16 +155,21 @@
   }
 
 % Load other modules of this package after all dependencies to avoid load order
-% conflicts (e.g., package options).
+% conflicts (e.g., package options). Low-level modules first.
 \RequirePackage{lib/compat}       % compatibility definitions
+\RequirePackage{lib/dndutility}   % utility functions
+\RequirePackage{lib/dndstrings}   % Load document strings
 \RequirePackage{lib/dndcolors}    % color definitions
 \RequirePackage{lib/dndfonts}     % font definitions
-\RequirePackage{lib/dndcomment}   % \commentbox definition
+
+% Main modules in alphabetical order
+\RequirePackage{lib/dndcomment}   % inline comment boxes
 \RequirePackage{lib/dndheader}    % fancy headers and footers
 \RequirePackage{lib/dndmonster}   % \monsterbox definition
 \RequirePackage{lib/dndpaperbox}  % \paperbox definition
 \RequirePackage{lib/dndquote}     % \quotebox definition
+\RequirePackage{lib/dndreadaloud} % read-aloud text
 \RequirePackage{lib/dndsections}  % section styling
+\RequirePackage{lib/dndsidebar}   % sidebars
 \RequirePackage{lib/dndspell}     % \spell definition
-\RequirePackage{lib/dndstrings}   % Load document strings
 \RequirePackage{lib/dndtable}     % \dndtable definition

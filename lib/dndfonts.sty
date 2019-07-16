@@ -1,9 +1,14 @@
 \ExplSyntaxOn
 
+\RequirePackage{lettrine}
+\RequirePackage{Royal}
+
 \ifpkglayout
   \RequirePackage{bookman}
+  \RequirePackage[type1]{gillius2}
+  \RequirePackage[notext,nomath,nott]{kpfonts}
   \RequirePackage[T1]{fontenc}
-  \renewcommand{\sfdefault}{lmss}
+  \renewcommand{\sfdefault}{jkpss}
 \fi
 
 \keys_define:nn { dnd / fonts }
@@ -14,21 +19,21 @@
     title .value_required:n = true,
     % Tables
     table-title .tl_set:N         = \l__dnd_font_table_title_tl,
-    table-title .initial:n        = \fontfamily{fosj} \selectfont \bfseries \scshape,
+    table-title .initial:n        = \sffamily \bfseries \scshape \large,
     table-title .value_required:n = true,
     table-body .tl_set:N         = \l__dnd_font_table_body_tl,
     table-body .initial:n        = \sffamily,
     table-body .value_required:n = true,
     % Comment box
     box-title .tl_set:N         = \l__dnd_font_box_title_tl,
-    box-title .initial:n        = \fontfamily{fosj} \selectfont \bfseries \scshape,
+    box-title .initial:n        = \sffamily \bfseries \scshape,
     box-title .value_required:n = true,
     box-body .tl_set:N         = \l__dnd_font_box_body_tl,
     box-body .initial:n        = \sffamily,
     box-body .value_required:n = true,
     % Stat blocks
     stat-block-title .tl_set:N         = \l__dnd_font_stat_block_title_tl,
-    stat-block-title .initial:n        = \normalfont \bfseries \scshape,
+    stat-block-title .initial:n        = \normalfont \bfseries \scshape \LARGE,
     stat-block-title .value_required:n = true,
     stat-block-section .tl_set:N         = \l__dnd_font_stat_block_section_tl,
     stat-block-section .initial:n        = \fontfamily{fosj} \selectfont \scshape,
@@ -38,31 +43,47 @@
     stat-block-body .value_required:n = true,
     % Footer
     footer .tl_set:N         = \l__dnd_font_footer_tl,
-    footer .initial:n        = \normalfont \scshape,
+    footer .initial:n        = \normalfont \scriptsize,
     footer .value_required:n = true,
+    % Page numbers
     page-number .tl_set:N         = \l__dnd_font_page_number_tl,
-    page-number .initial:n        = \normalfont,
+    page-number .initial:n        = \normalfont \scriptsize,
     page-number .value_required:n = true,
+    % Drop caps
+    drop-cap .tl_set:N         = \l__dnd_font_drop_cap_tl,
+    drop-cap .initial:n        = \Royal,
+    drop-cap .value_required:n = true,
   }
+
+\ifpkglayout
+  tl_set:Nn \l__dnd_font_table_body_tl      { \gilliustwo }
+  tl_set:Nn \l__dnd_font_box_body_tl        { \gilliustwo }
+  tl_set:Nn \l__dnd_font_stat_block_body_tl { \gilliustwo }
+\fi
 
 \NewDocumentCommand { \DndSetFonts } { o }
   {
     \keys_set:nn { dnd / fonts } { o }
   }
 
-% \newcommand{\dnd@TitleFont}{\normalfont\scshape}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Drop Caps
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\LettrineFontHook}{\l__dnd_font_drop_cap_tl}
 
-% \newcommand{\dnd@TableTitleFont}{\fontfamily{fosj}\selectfont\bfseries\scshape}
-% \newcommand{\dnd@TableBodyFont}{\sffamily}
-
-% \newcommand{\dnd@BoxTitleFont}{\fontfamily{fosj}\selectfont\bfseries\scshape}
-% \newcommand{\dnd@BoxBodyFont}{\sffamily}
-
-% \newcommand{\dnd@StatBlockTitleFont}{\normalfont\bfseries\scshape}
-% \newcommand{\dnd@StatBlockSubtitleFont}{\fontfamily{fosj}\selectfont\scshape}
-% \newcommand{\dnd@StatBlockBodyFont}{\sffamily}
-
-% \newcommand{\dnd@FooterFont}{\normalfont\scshape}
-% \newcommand{\dnd@PageNumberFont}{\normalfont}
-
-\ExplSyntaxOn
+% Usage: DndDropCapLine[<lettrine options>]{<first letter>}{<small caps line>}
+%    It takes trial and error to get the 2nd argument to align with
+%    the linebreak. Lettrine package will not play nicely with \FirstLine. See
+%    the lettrine package for options.
+\NewDocumentCommand{\DndDropCapLine}{ O{} m m }
+  {
+    \lettrine[
+        lines   = 4,
+        depth   = 0,
+        findent = 0.5em,
+        nindent = 0pt,
+        #1
+      ]
+      {#2}
+      {#3}
+  }

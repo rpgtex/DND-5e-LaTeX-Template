@@ -16,10 +16,14 @@
 
 % Define all strings as new macros instead of hardcoding them in the
 % TeX files. This then allows us to add captions for multilanguage support.
+
+%% Monster
+% Basics
 \newcommand\armorclassname{Armor~Class}
 \newcommand\hitpointsname{Hit~Points}
 \newcommand\speedname{Speed}
 
+% Ability Scores
 \newcommand\strstatname{STR}
 \newcommand\dexstatname{DEX}
 \newcommand\constatname{CON}
@@ -27,6 +31,7 @@
 \newcommand\wisstatname{WIS}
 \newcommand\chastatname{CHA}
 
+% Details
 \newcommand\skillsname{Skills}
 \newcommand\dimmname{Damage~Immunities}
 \newcommand\dvulname{Damage~Vulnerabilities}
@@ -34,14 +39,18 @@
 \newcommand\cimmname{Condition~Immunities}
 \newcommand\savesname{Saving~Throws}
 \newcommand\sensesname{Senses}
+\newcommand\defaultsensesname{passive~Perception~10}
 \newcommand\languagesname{Languages}
 \newcommand\challengename{Challenge}
 \newcommand\xpname{XP}
 
+% Attacks
 \newcommand\ftname{ft.}
-\newcommand\meleeattackname{Melee~Weapon~Attack}
-\newcommand\rangedattackname{Ranged~Weapon~Attack}
-\newcommand\meleeorrangedattackname{Melee~or~Ranged~Weapon~Attack}
+\newcommand\weaponname{Weapon}
+\newcommand\spellname{Spell}
+\newcommand\meleeattackname{Melee~|1|~Attack}
+\newcommand\rangedattackname{Ranged~|1|~Attack}
+\newcommand\meleeorrangedattackname{Melee~or~Ranged~|1|~Attack}
 \newcommand\orname{or}
 \newcommand\tohitname{to~hit}
 \newcommand\defaulttargetsname{one~target}
@@ -82,6 +91,7 @@
 \newcommand\spelldurationname{Duration}
 
 % Miscellaneous
+\newcommand\pageabbreviationname{pg.}
 \newcommand\dname{d}
 
 % Delay loading captions until after the user has imported a language package.
