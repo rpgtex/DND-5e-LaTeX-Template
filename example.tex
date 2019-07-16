@@ -137,114 +137,119 @@ The |DndTable| colors the even rows and is set to the width of a line by default
 \end{DndTable}
 
 \chapter{Monsters and NPCs}
-The |monsterbox| environment is used to typeset monster and NPC stat blocks. The module supplies many functions to easily typeset the contents of the stat block
 
-% You can optionally not include the background by saying
-% begin{monsterboxnobg}
-\begin{monsterbox}{Monster Foo}
-  \begin{hangingpar}
-    \textit{Medium metasyntactic variable (goblinoid), neutral evil}
-  \end{hangingpar}
+% Monster stat block
+\begin{DndMonster}[float*=b, width=\textwidth]{Monster Foo}
+  \begin{multicols}{2}
+    \DndMonsterType{Medium aberration (metasyntactic variable), neutral evil}
 
-  \dndline%
+    % If you want to use commas in the key values, enclose the values in braces.
+    \DndMonsterBasics[
+        armor-class = {9 (12 with \emph{mage armor})},
+        hit-points  = {\DndDice{3d8 + 3}},
+        speed       = {30 ft., fly 30 ft.},
+      ]
 
-  \basics[%
-  armorclass = 9 (12 with \emph{mage armor}),
-  hitpoints  = \dice{3d8+3},
-  speed      = {30 ft., fly 30 ft.},
-  ]
+    \DndMonsterAbilityScores[
+        str = 12,
+        dex = 8,
+        con = 13,
+        int = 10,
+        wis = 14,
+        cha = 15,
+      ]
 
-  \dndline%
-
-  \stats[
-    STR = \stat{12}, % This stat command will autocomplete the modifier for you
-    DEX = \stat{8},
-    CON = \stat{13},
-    INT = \stat{10},
-    WIS = \stat{14},
-    CHA = \stat{15},
-  ]
-
-  \dndline%
-
-  \details[% If you want to use commas in these sections, enclose the description in braces.
-    %savingthrows = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
-    %skills = {Acrobatics +0, Animal Handling +0, Arcana +0, Athletics +0, Deception +0, History +0, Insight +0, Intimidation +0, Investigation +0, Medicine +0, Nature +0, Perception +0, Performance +0, Persuasion +0, Religion +0, Sleight of Hand +0, Stealth +0, Survival +0},
-    %damagevulnerabilities = {},
-    %damageresistances = {},
-    %damageimmunities = {},
-    %conditionimmunities = {},
-    senses = {darkvision 60 ft., passive Perception 10},
-    languages = {Common, Goblin},
-    challenge = {1},
-  ]
-
-  \dndline%
-
-  % Traits
-
-  \begin{monsteraction}[Innate Spellcasting]
+    \DndMonsterDetails[
+        %saving-throws = {Str +0, Dex +0, Con +0, Int +0, Wis +0, Cha +0},
+        %skills = {Acrobatics +0, Animal Handling +0, Arcana +0, Athletics +0, Deception +0, History +0, Insight +0, Intimidation +0, Investigation +0, Medicine +0, Nature +0, Perception +0, Performance +0, Persuasion +0, Religion +0, Sleight of Hand +0, Stealth +0, Survival +0},
+        %damage-vulnerabilities = {cold},
+        %damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
+        %damage-immunities = {poison},
+        %condition-immunities = {poisoned},
+        senses = {darkvision 60 ft., passive Perception 10},
+        languages = {Common, Goblin, Undercommon},
+        challenge = 1,
+      ]
+    % Traits
+    \DndMonsterAction{Innate Spellcasting}
     Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
-    \medskip
-    \DndInnateSpellLevel{misty step}
-    \DndInnateSpellLevel[3]{fog cloud, rope trick}
-    \DndInnateSpellLevel[1]{identify}
-  \end{monsteraction}
+    \begin{DndMonsterSpells}
+      \DndInnateSpellLevel{misty step}
+      \DndInnateSpellLevel[3]{fog cloud, rope trick}
+      \DndInnateSpellLevel[1]{identify}
+    \end{DndMonsterSpells}
 
-  \begin{monsteraction}[Spellcasting]
-    Foo is a 3rd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has the following sorcerer spells prepared:
-    \medskip
-    \DndMonsterSpellLevel{blade ward, fire bolt, light, shocking grasp}
-    \DndMonsterSpellLevel[1][4]{burning hands, mage armor}
-    \DndMonsterSpellLevel[2][2]{scorching ray}
-  \end{monsteraction}
+    \DndMonsterAction{Spellcasting}
+    Foo is a 2nd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has the following sorcerer spells prepared:
+    \begin{DndMonsterSpells}
+      \DndMonsterSpellLevel{blade ward, fire bolt, light, shocking grasp}
+      \DndMonsterSpellLevel[1][3]{burning hands, mage armor, shield}
+    \end{DndMonsterSpells}
 
-  \monstersection{Actions}
-  \begin{monsteraction}[Multiattack]
+    \DndMonsterSection{Actions}
+    \DndMonsterAction{Multiattack}
     The foo makes two melee attacks.
-  \end{monsteraction}
 
-  %Default values are shown commented out
-  \monsterattack[
-    %name=Dagger,
-    %enum* type={both,melee,ranged},
-    mod=+3,%mod=+0,
-    %reach=5,
-    %range=20/60,
-    %targets=one target,
-    dmg=\dice{1d4+1},%dmg=\dice{1d4},
-    %dmgtype=piercing,
-    %plusdmg=,
-    %plusdmgtype=,
-    %ordmg=,
-    %ordmgwhen=,
-    %extra=,
-  ]
+    %Default values are shown commented out
+    \DndMonsterAttack[
+      name=Dagger,
+      %distance=both, % valid options are in the set {both,melee,ranged},
+      %type=weapon, %valid options are in the set {weapon,spell}
+      mod=+3,
+      %reach=5,
+      %range=20/60,
+      %targets=one target,
+      dmg=\DndDice{1d4+1},
+      dmg-type=piercing,
+      %plus-dmg=,
+      %plus-dmg-type=,
+      %or-dmg=,
+      %or-dmg-when=,
+      %extra=,
+    ]
 
-  %\monstermelee calls \monsterattack with the melee option
-  \monstermelee[
-    name=Flame Tongue Longsword,
-    mod=+3,%mod=+0,
-    %reach=5,
-    %targets=one target,
-    dmg=\dice{1d8+1},
-    dmgtype=slashing,
-    ordmg=\dice{1d10+1},
-    ordmgwhen=if used with two hands,
-    plusdmg=\dice{2d6},
-    plusdmgtype=fire
-  ]
+    %\DndMonsterMelee calls \DndMonsterAttack with the melee option
+    \DndMonsterMelee[
+      name=Flame Tongue Longsword,
+      mod=+3,
+      %reach=5,
+      %targets=one target,
+      dmg=\DndDice{1d8+1},
+      dmg-type=slashing,
+      plus-dmg=\DndDice{2d6},
+      plus-dmg-type=fire,
+      or-dmg=\DndDice{1d10+1},
+      or-dmg-when=if used with two hands,
+      %extra=,
+    ]
 
-  %\monsterranged calls \monsterattack with the ranged option
-  \monsterranged[
-    name=Assassin's Light Crossbow,
-    %mod=+0,
-    range=80/320,
-    dmg=\dice{1d8},
-    dmgtype=piercing,
-    extra={, and the target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one}
-  ]
-\end{monsterbox}
+    %\DndMonsterRanged calls \DndMonsterAttack with the ranged option
+    \DndMonsterRanged[
+      name=Assassin's Light Crossbow,
+      mod=+1,
+      range=80/320,
+      dmg=\DndDice{1d8},
+      dmg-type=piercing,
+      %plus-dmg=,
+      %plus-dmg-type=,
+      %or-dmg=,
+      %or-dmg-when=,
+      extra={, and the target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one}
+    ]
+
+    % Legendary Actions
+    \DndMonsterSection{Legendary Actions}
+    The foo can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The foo regains spent legendary actions at the start of its turn.
+
+    \begin{DndMonsterLegendaryActions}
+      \DndMonsterLegendaryAction{Move}{The foo moves up to its speed.}
+      \DndMonsterLegendaryAction{Dagger Attack}{The foo makes a dagger attack.}
+      \DndMonsterLegendaryAction{Create Contract (Costs 3 Actions)}{The foo presents a contract in a language it knows and waves it in the face of a creature within 10 feet. The creature must make a DC 10 Intelligence saving throw. On a failure, the creature is incapacitated until the start of the foo's next turn. A creature who cannot read the language in which the contract is written has advantage on this saving throw.}
+    \end{DndMonsterLegendaryActions}
+  \end{multicols}
+\end{DndMonster}
+
+The |DndMonster| environment is used to typeset monster and NPC stat blocks. The module supplies many functions to easily typeset the contents of the stat block
 
 \chapter{Colors}
 
