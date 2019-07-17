@@ -16,7 +16,7 @@
 
 % Chapter
 \titleformat {\chapter}
-  { \linespread{.9} \color{titlered} \l__dnd_font_title_tl \Huge } % format
+  { \__dnd_chapter_font: } % format
   { \chaptertitlename\ \thechapter : } % label
   { \wordsep } % sep
   {} % before-code
@@ -28,7 +28,7 @@
 
 % Section
 \titleformat {\section}
-  { \linespread{.9} \color{titlered} \l__dnd_font_title_tl \huge \RaggedRight } % format
+  { \__dnd_section_font: } % format
   { \thesection } % label
   { 1em } % sep
   { \nopagebreak } % before-code
@@ -40,7 +40,7 @@
 
 % Subsection
 \titleformat {\subsection}
-  { \linespread{.9} \color{titlered} \l__dnd_font_title_tl \Large \RaggedRight } % format
+  { \__dnd_subsection_font: } % format
   { \thesubsection } % label
   { 1em } % sep
   { \nopagebreak } % before-code
@@ -53,7 +53,7 @@
 
 % Subsubsection
 \titleformat {\subsubsection}
-  { \linespread{.9} \color{titlered} \l__dnd_font_title_tl \large \RaggedRight } % format
+  { \__dnd_subsubsection_font: } % format
   { \thesubsubsection } % label
   { 1em } % sep
   { \nopagebreak } % before-code
@@ -65,7 +65,7 @@
 
 % Paragraph
 \titleformat {\paragraph} [runin]
-  { \normalfont \normalsize \bfseries \slshape } % format
+  { \__dnd_paragraph_font: } % format
   { \theparagraph \quad } % label
   {0pt} % sep
   {}    % before-code
@@ -78,7 +78,7 @@
 
 % Subparagraph
 \titleformat {\subparagraph} [runin]
-  { \normalfont \normalsize \bfseries \slshape } % format
+  { \__dnd_subparagraph_font: } % format
   { \thesubparagraph \quad } % label
   {0pt} % sep
   {}    % before-code
