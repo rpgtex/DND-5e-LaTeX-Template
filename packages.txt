@@ -37,8 +37,8 @@ fp
 geometry
 gillius
 hang
-ifxetex
 ifluatex
+ifxetex
 initials
 keycommand
 kpfonts

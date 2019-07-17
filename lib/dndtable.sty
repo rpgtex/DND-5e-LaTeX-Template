@@ -69,3 +69,34 @@
 
     \group_end:
   }
+
+\NewDocumentEnvironment {DndTable} { o m }
+  {
+    \group_begin:
+
+    \tl_if_novalue:nF {#1}
+      { \keys_set:nn { dnd / table } {#1} }
+
+    \par \vspace { 9pt plus 3pt minus 3pt } \noindent
+
+    \tl_if_empty:NF \l__dnd_table_header_tl
+      {
+        \group_begin:
+          \__dnd_table_title_font: \l__dnd_table_header_tl
+          \par \vspace{ 5pt plus 2pt minus 2pt } \noindent
+        \group_end:
+      }
+
+    \__dnd_table_body_font:
+
+    \rowcolors {1} {} {\l__dnd_table_color_tl}
+
+    \tabularx {\l__dnd_table_width_dim} {#2}
+  }
+  {
+    \endtabularx \vspace { 12pt plus 4pt minus 4pt }
+
+    \group_end:
+  }
+
+\ExplSyntaxOff
