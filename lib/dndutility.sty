@@ -45,6 +45,13 @@
         { \msg_error:nnn { dnd } { dice / invalid_argument } { #1 }}
     \group_end:
   }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Gets the width of a space
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\box_new:N \l__dnd_space_box
+\hbox_set:Nn \l__dnd_space_box {~}
+\dim_new:N \l__dnd_space_dim
+\dim_set:Nn \l__dnd_space_dim { \box_wd:N \l__dnd_space_box }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Some keys are required for proper execution of macros.

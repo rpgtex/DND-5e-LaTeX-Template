@@ -152,7 +152,7 @@
     stat-block-section-style .initial:n        = \color{titlered} \scshape \large,
     stat-block-section-style .value_required:n = true,
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % Footers
+    % Miscellaneous
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Footer
     footer-family .tl_set:N         = \l__dnd_footer_family_tl,
@@ -252,7 +252,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Drop Caps
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\renewcommand{\LettrineFontHook}{\l__dnd_font_drop_cap_tl}
+\renewcommand{\LettrineFontHook}
+  { \l__dnd_drop_cap_family_tl \l__dnd_drop_cap_style_tl }
 
 % Usage: DndDropCapLine[<lettrine options>]{<first letter>}{<small caps line>}
 %    It takes trial and error to get the 2nd argument to align with
@@ -263,7 +264,7 @@
     \lettrine[
         lines   = 4,
         depth   = 0,
-        findent = 0.5em,
+        findent = \l__dnd_space_dim,
         nindent = 0pt,
         #1
       ]
