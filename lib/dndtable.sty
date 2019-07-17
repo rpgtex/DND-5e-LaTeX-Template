@@ -1,22 +1,71 @@
+\ExplSyntaxOn
+
+% Old interface
 % Table Header
-\newcommand{\header}[1]{{
-  \par\vspace*{8pt}
-  \noindent
-  \dnd@TableTitleFont
-  #1}}
+\newcommand{\header}[1]{%
+  \begingroup%
+  \par\vspace{10pt plus 3 pt minus 3pt}%
+  \noindent%
+  \__dnd_table_title_font:%
+  #1%
+  \endgroup%
+  }
 
 % Centered Column
-\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype { Y }
+  { > { \centering \arraybackslash } X }
 
 % Table Environment
 \NewDocumentEnvironment{dndtable}{O{XX} O{tablecolor}}{%
-    \par\vspace*{8pt}
-    \noindent
-    \dnd@TableBodyFont
-    \rowcolors{1}{}{#2}
-    \tabularx{\linewidth}{#1}
+    \par\vspace{2pt plus 1pt minus 1pt}%
+    \noindent%
+    \__dnd_table_body_font:%
+    \setlength{\extrarowheight}{3pt}%
+    \rowcolors{1}{}{#2}%
+    \tabularx{\linewidth}{#1}%
   }{%
-    \endtabularx
-    \vspace{8pt plus 1pt}
-    \noindent
+    \endtabularx%
+    \par\vspace{10pt plus 3 pt minus 3pt}%
+  }
+
+% New interface
+\keys_define:nn { dnd / table }
+  {
+    color .tl_set:N         = \l__dnd_table_color_tl,
+    color .initial:n        = tablecolor,
+    color .value_required:n = true,
+    header .tl_set:N         = \l__dnd_table_header_tl,
+    header .value_required:n = true,
+    width .dim_set:N        = \l__dnd_table_width_dim,
+    width .initial:n        = \linewidth,
+    width .value_required:n = true,
+  }
+
+\NewDocumentEnvironment {DndTable} { o m }
+  {
+    \group_begin:
+
+    \tl_if_novalue:nF {#1}
+      { \keys_set:nn { dnd / table } {#1} }
+
+    \par \vspace { 9pt plus 3pt minus 3pt } \noindent
+
+    \tl_if_empty:NF \l__dnd_table_header_tl
+      {
+        \group_begin:
+          \__dnd_table_title_font: \l__dnd_table_header_tl
+          \par \vspace{ 5pt plus 2pt minus 2pt } \noindent
+        \group_end:
+      }
+
+    \__dnd_table_body_font:
+
+    \rowcolors {1} {} {\l__dnd_table_color_tl}
+
+    \tabularx {\l__dnd_table_width_dim} {#2}
+  }
+  {
+    \endtabularx \vspace { 12pt plus 4pt minus 4pt }
+
+    \group_end:
   }

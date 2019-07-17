@@ -1,0 +1,80 @@
+\ExplSyntaxOn
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Environment for read-aloud text.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Standard for every read-aloud text
+\DeclareTColorBox {__dnd_read_aloud} {o}
+  {
+    before~upper    =
+      {
+        \bool_if:NT \l__dnd_layout_bool
+          {
+            \bool_if:NF \l__dnd_justified_bool
+              {\RaggedRight}
+          }
+      },
+    code            = {\linespread {1.1} },
+    enhanced~jigsaw,
+    frame~hidden,
+    boxrule         = 0pt,
+    breakable,
+    enhanced,
+    before~skip     = 13pt plus 4pt minus 4pt,
+    boxsep          = 8pt,
+    top             = 0pt,
+    left            = 0pt,
+    right           = 0pt,
+    bottom          = 0pt,
+    sharp~corners,
+    parbox          = false,
+    borderline~west = {1pt} {-0.5pt} {titlered},
+    borderline~east = {1pt} {-0.5pt} {titlered},
+    fontupper       = \__dnd_readaloud_font:,
+    fontlower       = \__dnd_readaloud_font:,
+    overlay         =
+      {
+        \foreach\n ~ in ~ { north~east, north~west, south~east, south~west }
+        {\draw [ titlered, fill = titlered ] ( frame.\n ) circle (1.5pt); };
+      },
+    after~skip      = 13pt plus 4pt minus 4pt,
+    #1,
+  }
+
+% Extra key for controlling the color of the title and the background
+\keys_define:nn { dnd / read_aloud }
+  {
+    color .tl_set:N         = \l__dnd_read_aloud_color_tl,
+    color .initial:n        = readaloudcolor,
+    color .value_required:n = true,
+  }
+
+% This function, through its variant, forces the expansion of the tcb keys
+% passed to the environment by the user before it invokes the tcolorbox
+\cs_new_protected:Nn \__dnd_start_read_aloud:nn
+  {
+    \begin {__dnd_read_aloud} [ #1, #2 ]
+  }
+
+\cs_generate_variant:Nn \__dnd_start_read_aloud:nn { nV }
+
+% The DndReadAloud environment
+% #1 - keys. We handle the custom color key before passing other keys on
+\NewDocumentEnvironment {DndReadAloud} {o}
+  {
+    \group_begin:
+    \keys_set_known:nnN { dnd / read_aloud } {#1} \l_tmpa_tl
+
+    \str_if_eq:VnT \l_tmpa_tl { -NoValue- }
+      { \tl_set_eq:NN \l_tmpa_tl \c_empty_tl }
+
+    \__dnd_start_read_aloud:nV
+      {
+          colback = \l__dnd_read_aloud_color_tl,
+      }
+      {\l_tmpa_tl}
+  }
+  {
+    \end {__dnd_read_aloud}
+    \group_end:
+  }

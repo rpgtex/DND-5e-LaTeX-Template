@@ -1,0 +1,89 @@
+\ExplSyntaxOn
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Environment for sidebars.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Standard for every sidebar
+\DeclareTColorBox {__dnd_sidebar} {o}
+  {
+    before~upper     =
+      {
+        \bool_if:NT \l__dnd_layout_bool
+          {
+            \bool_if:NF \l__dnd_justified_bool
+              {\RaggedRight}
+          }
+      },
+    code={\linespread{.9}},
+    frame~hidden,
+    boxrule          = 0pt,
+    enhanced,
+    before~skip      = 13pt plus 4pt minus 4pt,
+    toptitle         = 2pt,
+    boxsep           = 3pt,
+    left             = 6pt,
+    right            = 6pt,
+    top              = 0pt,
+    bottom           = 2pt,
+    fonttitle        = \__dnd_sidebar_title_font:,
+    fontupper        = \__dnd_sidebar_body_font:,
+    fontlower        = \__dnd_sidebar_body_font:,
+    sharp~corners,
+    parbox           = false,
+    borderline~north = {1pt} {-0.5pt} {black},
+    borderline~south = {1pt} {-0.5pt} {black},
+    coltitle         = black,
+    fuzzy~shadow     = {0mm} {-3.5pt} {-0.5pt} {0.4mm} {black!60!white},
+    overlay          =
+      {
+        \fill [black] ( frame.south~west ) -- ++ (  7pt, 0 ) -- ++ ( 0, -5pt ) -- cycle;
+        \fill [black] ( frame.north~west ) -- ++ (  7pt, 0 ) -- ++ ( 0,  5pt ) -- cycle;
+        \fill [black] ( frame.north~east ) -- ++ ( -7pt, 0 ) -- ++ ( 0,  5pt ) -- cycle;
+        \fill [black] ( frame.south~east ) -- ++ ( -7pt, 0 ) -- ++ ( 0, -5pt ) -- cycle;
+      },
+    after~skip       = 14pt plus 4pt minus 4pt,
+    #1,
+  }
+
+% Extra key for controlling the color of the title and the background
+\keys_define:nn { dnd / sidebar }
+  {
+    color .tl_set:N         = \l__dnd_sidebar_color_tl,
+    color .initial:n        = sidebarcolor,
+    color .value_required:n = true,
+  }
+
+% This function, through its variant, forces the expansion of the tcb keys
+% passed to the environment by the user before it invokes the tcolorbox
+\cs_new_protected:Nn \__dnd_start_sidebar:nn
+  {
+    \begin {__dnd_sidebar} [ #1, #2 ]
+  }
+
+\cs_generate_variant:Nn \__dnd_start_sidebar:nn { nV }
+
+% The DndSidebar environment
+% #1 - keys. We handle the custom color key before passing other keys on
+% #2 - title.
+\NewDocumentEnvironment {DndSidebar} { o m }
+  {
+    \group_begin:
+    \keys_set_known:nnN { dnd / sidebar } {#1} \l_tmpa_tl
+
+    \str_if_eq:VnT \l_tmpa_tl { -NoValue- }
+      { \tl_set_eq:NN \l_tmpa_tl \c_empty_tl }
+
+    \__dnd_start_sidebar:nV
+      {
+          colback      = \l__dnd_sidebar_color_tl,
+          colbacktitle = \l__dnd_sidebar_color_tl,
+          title        = {#2},
+      }
+      {\l_tmpa_tl}
+  }
+  {
+    \end {__dnd_sidebar}
+    \group_end:
+  }
+
+\ExplSyntaxOff
