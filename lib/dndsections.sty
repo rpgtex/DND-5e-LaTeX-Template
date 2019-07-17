@@ -16,7 +16,7 @@
 
 % Chapter
 \titleformat {\chapter}
-  { \linespread{.9} \color{titlered} \dnd@TitleFont \Huge } % format
+  { \__dnd_chapter_font: } % format
   { \chaptertitlename\ \thechapter : } % label
   { \wordsep } % sep
   {} % before-code
@@ -26,13 +26,9 @@
   { .3ex }  % before-sep
   { 2.8ex } % after-sep
 
-%\ifdef{\cftchapfont}{%
-%  \renewcommand \cftchapfont { \color { titlered } \dnd@TitleFont \bfseries }
-%}{}
-
 % Section
 \titleformat {\section}
-  { \linespread{.9} \color{titlered} \dnd@TitleFont \huge \RaggedRight } % format
+  { \__dnd_section_font: } % format
   { \thesection } % label
   { 1em } % sep
   { \nopagebreak } % before-code
@@ -44,7 +40,7 @@
 
 % Subsection
 \titleformat {\subsection}
-  { \linespread{.9} \color{titlered} \dnd@TitleFont \Large \RaggedRight } % format
+  { \__dnd_subsection_font: } % format
   { \thesubsection } % label
   { 1em } % sep
   { \nopagebreak } % before-code
@@ -57,7 +53,7 @@
 
 % Subsubsection
 \titleformat {\subsubsection}
-  { \linespread{.9} \color{titlered} \dnd@TitleFont \large \RaggedRight } % format
+  { \__dnd_subsubsection_font: } % format
   { \thesubsubsection } % label
   { 1em } % sep
   { \nopagebreak } % before-code
@@ -69,7 +65,7 @@
 
 % Paragraph
 \titleformat {\paragraph} [runin]
-  { \normalfont \normalsize \bfseries \slshape } % format
+  { \__dnd_paragraph_font: } % format
   { \theparagraph \quad } % label
   {0pt} % sep
   {}    % before-code
@@ -82,7 +78,7 @@
 
 % Subparagraph
 \titleformat {\subparagraph} [runin]
-  { \normalfont \normalsize \bfseries \slshape } % format
+  { \__dnd_subparagraph_font: } % format
   { \thesubparagraph \quad } % label
   {0pt} % sep
   {}    % before-code
@@ -95,6 +91,8 @@
 
 \fi % \ifpkglayout
 
+\ExplSyntaxOff
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Special command for magic items, traps, and the like.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,6 +101,9 @@
   \subsubsection{#1}%
   \textit{#2}
   \par\vspace{3pt plus 1pt minus 1pt}\noindent\ignorespaces}
+
+
+\ExplSyntaxOn
 
 % New interface
 \NewDocumentCommand {\DndItemHeader} { m m }
@@ -127,10 +128,9 @@
 
     \begin{description}
       [
-        noitemsep,
         nosep,
-        after      = \smallskip,
-        leftmargin = 1em
+        labelsep = \l__dnd_space_dim,
+        after    = { \vspace{4pt plus 1pt minus 1pt} },
       ]
       \item [ \spellcastingtimename : ] #3
       \item [ \spellrangename       : ] #4
@@ -148,11 +148,11 @@
 % Labelling helpers
 \newcommand{\AreaLabel@Prefix}{area}
 \newcommand{\SetAreaLabelPrefix}[1]{%
-  \renewcommand{\AreaLabel@Prefix}{#1}}
+\renewcommand{\AreaLabel@Prefix}{#1}}
 
 \newcounter{Area}
 \newcommand\ResetAreas{%
-  \setcounter{Area}{0}}
+\setcounter{Area}{0}}
 
 \NewDocumentCommand\area{mo}{%
   \refstepcounter{Area}%

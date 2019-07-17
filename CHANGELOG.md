@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 * Added `DndDropCapLine` command to create drop capital letters at chapter beginnings
-* Configured CI to compile example document under pdfTeX, LuaTeX, and XeTeX.
+* Configured CI to compile example document under pdfTeX, LuaTeX, and XeTeX
+* `\DndSetFonts` allows setting of font family and style throughout the document
 
 ### Changed
 

@@ -1,9 +1,11 @@
+\ExplSyntaxOn
+
 \ifpkglayout
 
-\RequirePackage{fancyhdr} 			    % Adaptation of the footers
+\RequirePackage {fancyhdr} % Adaptation of the footers
 
 % Setup for custom footer
-\pagestyle{fancy}
+\pagestyle {fancy}
 
 \ExplSyntaxOn
 
@@ -25,45 +27,48 @@
       }
   }
 
-  \ExplSyntaxOff
-
 \renewcommand*{\headrulewidth}{0pt} % no rule for header
 \renewcommand*{\footrulewidth}{0pt} % no rule for footer
 
-\fancyhf{} % clear all headers and footers
+\fancyhf {} % clear all headers and footers
 
+% Header is used to include the page background
 \fancyhead{
   \iftoggle{bool-bg}{
-    \begin{tikzpicture}[remember picture,overlay]
-      \node[inner sep=0pt] at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight]{img/paper}};
+    \begin{tikzpicture}[remember~picture,overlay]
+      \node[inner~sep=0pt] at (current~page.center) {\includegraphics[width=\paperwidth,height=\paperheight]{img/paper}};
     \end{tikzpicture}
   }{}
 }
 
+% Left-even page footer
 \fancyfoot[LE]{%
-    \dnd@FooterFont\textcolor{pagegold}\leftmark
-    \begin{tikzpicture}[remember picture,overlay]
+    \__dnd_footer_font: \leftmark
+    \begin{tikzpicture}[remember~picture,overlay]
       \iftoggle{bool-footer-scroll}{
-        \node[xscale=-1,inner sep=0pt,anchor=south,nearly opaque] at (current page.south) {\includegraphics[width=\paperwidth,height=.6in]{img/footerscroll}};
+        \node[xscale=-1,inner~sep=0pt,anchor=south,nearly~opaque] at (current~page.south) {\includegraphics[width=\paperwidth,height=.6in]{img/footerscroll}};
       }{}
-      \node[inner sep=0pt,anchor=south,xshift=.28in,yshift=.39in] at (current page.south west) {\dnd@PageNumberFont\textcolor{pagegold}\thepage};
+      \node[inner~sep=0pt,anchor=south,xshift=.28in,yshift=.39in] at (current~page.south~west) {\__dnd_page_number_font: \thepage};
     \end{tikzpicture}
-}
+  }
 
+% Right-odd page footer
 \fancyfoot[RO]{%
-    \dnd@FooterFont\textcolor{pagegold}\leftmark
-    \begin{tikzpicture}[remember picture,overlay]
+    \__dnd_footer_font: \leftmark
+    \begin{tikzpicture}[remember~picture,overlay]
       \iftoggle{bool-footer-scroll}{
-        \node[inner sep=0pt,anchor=south,nearly opaque] at (current page.south) {\includegraphics[width=\paperwidth,height=.6in]{img/footerscroll}};
+        \node[inner~sep=0pt,anchor=south,nearly~opaque] at (current~page.south) {\includegraphics[width=\paperwidth,height=.6in]{img/footerscroll}};
       }{}
-      \node[inner sep=0pt,anchor=south,xshift=-.28in,yshift=.39in] at (current page.south east) {\dnd@PageNumberFont\textcolor{pagegold}\thepage};
+      \node[inner~sep=0pt,anchor=south,xshift=-.28in,yshift=.39in] at (current~page.south~east) {\__dnd_page_number_font: \thepage};
     \end{tikzpicture}
-}
+  }
 
-\fancypagestyle{plain}{}
+\fancypagestyle {plain} {}
 
 \fancypagestyle{empty}{%
-    \fancyfoot{}
+  \fancyfoot{}
 }
 
 \fi % \ifpkglayout
+
+\ExplSyntaxOff

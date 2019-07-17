@@ -122,7 +122,12 @@
 \setlength{\parindent}{1em}
 \setlength{\RaggedRightRightskip}{0pt plus 1em}
 \setlength{\RaggedRightParindent}{\parindent}
-\hyphenpenalty=1000  % Fewer hyphens
+
+% Restrict hyphenation
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
 
 % Set left justification if not justified
 \nottoggle{justified}{\RaggedRight}
