@@ -46,13 +46,14 @@ LaTeX will find the package automatically.
     ```sh
     mkdir "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
     ```
+
 2. Download the [latest release](https://github.com/rpgtex/DND-5e-LaTeX-Template/releases/latest) and extract it in `$TEXMFHOME/tex/latex/`.
 
     ```sh
-    wget https://github.com/rpgtex/DND-5e-LaTeX-Template/archive/v0.7.0.zip
-    unzip -d "$(kpsewhich -var-value TEXMFHOME)/tex/latex/" v0.7.0.zip
+    wget https://github.com/rpgtex/DND-5e-LaTeX-Template/archive/v0.7.1.zip
+    unzip -d "$(kpsewhich -var-value TEXMFHOME)/tex/latex/" v0.7.1.zip
     cd "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
-    mv DND-5e-LaTeX-Template-0.7.0 dnd
+    mv DND-5e-LaTeX-Template-0.7.1 dnd
     ```
 
     Alternatively, clone the repo to the same location:
@@ -246,6 +247,7 @@ Install the appropriate plugin for your editor.
     ```sh
     ./bin/bumpversion <version>
     ```
+
 2. Compile the example PDF.
 3. Save the first page of the PDF as scrot.jpg.
 4. Update the change log for the new release; commit your changes.
@@ -254,6 +256,7 @@ Install the appropriate plugin for your editor.
     ```sh
     git push && git push --tags
     ```
+
 6. [Create a new release](https://help.github.com/articles/creating-releases/) and attach the PDF and scrot.
 
 ## Credits
