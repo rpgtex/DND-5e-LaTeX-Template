@@ -29,12 +29,12 @@
 % The color used in \DndSetThemeColor when a new color is not set
 \colorlet {themecolor} {PhbLightGreen} % Set the default theme to Part 1 of the PHB.
 
-% Element colors that change when \setthemecolor is used
+% Element colors that change when \DndSetThemeColor is used
 \colorlet {commentcolor} {themecolor} % DndComment background
 \colorlet {sidebarcolor} {themecolor} % DndSidebar background
-\colorlet {tablecolor}   {themecolor} % table even row background
+\colorlet {tablecolor}   {themecolor} % DndTable even row background
 
-% Element colors that do not respond to \setthemecolor
+% Element colors that do not respond to \DndSetThemeColor
 \colorlet {readaloudcolor} {bgtan} % DndReadAloud background
 \definecolor {statblockribbon} {HTML} {E69A28} % stat block top/bottom borders (gold)
 \definecolor {statblockbg}     {HTML} {FDF1DC} % stat block background (tan)
@@ -63,5 +63,3 @@
 \colorlet {itemtablepink} {DmgCoral}
 \colorlet {monstertan}    {statblockbg}
 \definecolor {monstertandark} {HTML} {F0DBB5}
-
-\ExplSyntaxOff

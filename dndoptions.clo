@@ -1,0 +1,133 @@
+\ExplSyntaxOn
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Class / Package options
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Provides class / package option processing of l3keys in LaTeX2e
+\RequirePackage {l3keys2e}
+
+% deprecate warning used in options and throughout the collection
+\msg_new:nnn {dnd} {deprecated} { #1 ~ is ~ deprecated ~ and ~ will ~ be ~ removed ~ in ~ version ~ #2. ~ #3 }
+
+\cs_new_protected:Npn { \__dnd_deprecated:nnn } #1#2#3
+  {
+    \msg_warning:nnnnn { dnd } { deprecated } {#1} {#2} {#3}
+  }
+
+\cs_new_protected:Npn { \__dnd_deprecated:nn } #1#2
+  {
+    \msg_warning:nnnnn { dnd } { deprecated } {#1} {#2} {}
+  }
+
+% Messages for unknown options
+\msg_new:nnn {dnd} { options / unknown_class } { Unknown ~ option ~ " #1 " ~ passed ~ to ~ book ~ class. }
+\msg_new:nnn {dnd} { options / unknown_package } { Unknown ~ option ~ " #1 ". }
+
+% These booleans are not set directly by an option (i.e. instead set by .code)
+\bool_new:N \l__dnd_show_background_bool
+\bool_new:N \l__dnd_show_footer_scroll_bool
+\bool_new:N \l__dnd_justified_bool
+\bool_new:N \l__dnd_multitoc_bool
+\bool_new:N \l__dnd_layout_bool
+
+\bool_set_true:N \l__dnd_multitoc_bool
+\bool_set_eq:NN \l__dnd_layout_bool \c__dnd_isclass_bool
+
+% BEGIN section to remove in version 1.0.0
+\bool_set_true:N \l__dnd_layout_bool
+\bool_new:N \l__dnd_layout_set_bool
+% END section to remove in version 1.0.0
+
+\keys_define:nn { dnd / options }
+  {
+    % Large-scale styling choice
+    bg .choice:,
+    bg / full .code:n =
+      {
+        \bool_set_true:N \l__dnd_show_background_bool
+        \bool_set_true:N \l__dnd_show_footer_scroll_bool
+      },
+    bg / print .code:n =
+      {
+        \bool_set_false:N \l__dnd_show_background_bool
+        \bool_set_true:N \l__dnd_show_footer_scroll_bool
+      },
+    bg / none .code:n =
+      {
+        \bool_set_false:N \l__dnd_show_background_bool
+        \bool_set_false:N \l__dnd_show_footer_scroll_bool
+      },
+    bg .initial:n = full,
+
+    % Justified text
+    justified .code:n =
+      {
+        \bool_set_true:N \l__dnd_justified_bool
+      },
+    justified .value_forbidden:n = true,
+
+    % Avoid multi-column toc
+    nomultitoc .code:n =
+      {
+        \bool_set_false:N \l__dnd_multitoc_bool
+      },
+    nomultitoc .value_forbidden:n = true,
+
+    % Apply layout formatting
+    %layout .bool_set:N       = \l__dnd_layout_bool,
+    layout .code:n =
+      {
+        \tl_if_eq:nnTF {true} {#1}
+          { \bool_set_true:N \l__dnd_layout_bool }
+          { \bool_set_false:N \l__dnd_layout_bool }
+        \bool_set_true:N \l__dnd_layout_set_bool
+      }, % Remove and replace with .bool_set:N in 1.0.0
+    layout .value_required:n = true,
+
+    % Unknown option handling
+    unknown .code:n =
+    {
+      \bool_if:NTF \c__dnd_isclass_bool
+        {
+          \msg_info:nnx { dnd } { options / unknown_class } {\l_keys_key_tl}
+          \PassOptionsToClass { \l_keys_key_tl } { book }
+        }
+        {
+          \msg_error:nnx { dnd } { options / unknown_package } {\l_keys_key_tl}
+        }
+    },
+
+    % Deprecated options
+    bg-full .code:n =
+      {
+        \__dnd_deprecated:nnn { Option ~ "bg-full" } {1.0} { Use ~ "bg = full" ~ instead. }
+        \bool_set_true:N \l__dnd_show_background_bool
+        \bool_set_true:N \l__dnd_show_footer_scroll_bool
+      },
+    bg-full .value_forbidden:n = true,
+    bg-none .code:n =
+      {
+        \__dnd_deprecated:nnn { Option ~ "bg-none" } {1.0} { Use ~ "bg = none" ~ instead. }
+      },
+    bg-none .value_forbidden:n = true,
+    bg-print .code:n =
+      {
+        \__dnd_deprecated:nnn { Option ~ "bg-print" } {1.0} { Use ~ "bg = print" ~ instead. }
+        \bool_set_true:N \l__dnd_show_footer_scroll_bool
+      },
+    bg-print .value_forbidden:n = true,
+  }
+
+\ProcessKeysOptions { dnd / options }
+
+% BEGIN section to remove in version 1.0.0
+\bool_if:NF \c__dnd_isclass_bool
+  {
+    \bool_if:NF \l__dnd_layout_set_bool
+      {
+        \msg_new:nnn {dnd} { options / layout_false } { Package ~ option ~ "layout" ~ will ~ default ~ to ~ false ~ in ~ 1.0.0. }
+        \msg_warning:nn {dnd} { options / layout_false }
+      }
+  }
+% END section to remove in version 1.0.0

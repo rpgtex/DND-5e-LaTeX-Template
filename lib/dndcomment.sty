@@ -1,24 +1,28 @@
+\ExplSyntaxOn
+
 % Old interface
 %Usage \begin{commentbox}[options]{title}[color]
 \DeclareTColorBox{commentbox}{O{} m O{commentboxcolor}}{%
-  before upper={%
-    \ifpkglayout%
-      \nottoggle{justified}{\RaggedRight}%
-    \fi%
+  before~upper={%
+    \bool_if:NT \l__dnd_layout_bool
+      {
+        \bool_if:NF \l__dnd_justified_bool
+          { \RaggedRight }
+      }
   },
   code={\linespread{.9}},
-  frame hidden,
+  frame~hidden,
   boxrule=0pt,
   breakable,
   enhanced,
-  before skip=13pt plus 4pt minus 4pt,
+  before~skip=13pt plus 4pt minus 4pt,
   toptitle=2pt,
   boxsep=3pt,
   left=6pt,
   right=6pt,
   top=0pt,
   bottom=2pt,
-  sharp corners,
+  sharp~corners,
   fonttitle=\__dnd_comment_title_font:,
   fontupper=\__dnd_comment_body_font:,
   fontlower=\__dnd_comment_body_font:,
@@ -27,13 +31,11 @@
   colback=#3,
   colbacktitle=#3,
   coltitle=black,
-  after skip=13pt plus 4pt minus 4pt,
+  after~skip=13pt plus 4pt minus 4pt,
   #1
 }
 
 % New interface
-\ExplSyntaxOn
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Environment for comments.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -42,9 +44,11 @@
   {
     before~upper =
       {
-        \ifpkglayout
-          \nottoggle {justified} {\RaggedRight}
-        \fi
+        \bool_if:NT \l__dnd_layout_bool
+          {
+            \bool_if:NF \l__dnd_justified_bool
+              { \RaggedRight }
+          }
       },
     code         = {\linespread{.9}},
     frame~hidden,
@@ -108,5 +112,3 @@
     \end {__dnd_comment}
     \group_end:
   }
-
-\ExplSyntaxOff

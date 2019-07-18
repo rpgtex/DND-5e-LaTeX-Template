@@ -1,13 +1,14 @@
 \ExplSyntaxOn
 
-\ifpkglayout
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Custom headers and footers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bool_if:NT \l__dnd_layout_bool
+  {
 \RequirePackage {fancyhdr} % Adaptation of the footers
 
 % Setup for custom footer
 \pagestyle {fancy}
-
-\ExplSyntaxOn
 
 \cs_if_free:NF \chaptermark
   {
@@ -34,20 +35,21 @@
 
 % Header is used to include the page background
 \fancyhead{
-  \iftoggle{bool-bg}{
+  \bool_if:NT \l__dnd_show_background_bool
+    {
     \begin{tikzpicture}[remember~picture,overlay]
       \node[inner~sep=0pt] at (current~page.center) {\includegraphics[width=\paperwidth,height=\paperheight]{img/paper}};
     \end{tikzpicture}
-  }{}
+    }
 }
 
 % Left-even page footer
 \fancyfoot[LE]{%
     \__dnd_footer_font: \leftmark
     \begin{tikzpicture}[remember~picture,overlay]
-      \iftoggle{bool-footer-scroll}{
+      \bool_if:NT \l__dnd_show_footer_scroll_bool {
         \node[xscale=-1,inner~sep=0pt,anchor=south,nearly~opaque] at (current~page.south) {\includegraphics[width=\paperwidth,height=.6in]{img/footerscroll}};
-      }{}
+      }
       \node[inner~sep=0pt,anchor=south,xshift=.28in,yshift=.39in] at (current~page.south~west) {\__dnd_page_number_font: \thepage};
     \end{tikzpicture}
   }
@@ -56,9 +58,9 @@
 \fancyfoot[RO]{%
     \__dnd_footer_font: \leftmark
     \begin{tikzpicture}[remember~picture,overlay]
-      \iftoggle{bool-footer-scroll}{
+      \bool_if:NT \l__dnd_show_footer_scroll_bool {
         \node[inner~sep=0pt,anchor=south,nearly~opaque] at (current~page.south) {\includegraphics[width=\paperwidth,height=.6in]{img/footerscroll}};
-      }{}
+      }
       \node[inner~sep=0pt,anchor=south,xshift=-.28in,yshift=.39in] at (current~page.south~east) {\__dnd_page_number_font: \thepage};
     \end{tikzpicture}
   }
@@ -69,6 +71,6 @@
   \fancyfoot{}
 }
 
-\fi % \ifpkglayout
+}
 
 \ExplSyntaxOff

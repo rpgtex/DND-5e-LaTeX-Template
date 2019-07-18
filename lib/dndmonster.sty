@@ -106,17 +106,17 @@
   #1
 }
 
+\bool_if:NTF \l__dnd_show_background_bool
+  {
+    \let\monsterbox\monsterboxbg%
+    \let\endmonsterbox\endmonsterboxbg%
+  }
+  {
+    \let\monsterbox\monsterboxnobg%
+    \let\endmonsterbox\endmonsterboxnobg%
+  }
+
 \ExplSyntaxOff
-
-\iftoggle{bool-bg}{
-  \let\monsterbox\monsterboxbg%
-  \let\endmonsterbox\endmonsterboxbg%
-}{
-  \let\monsterbox\monsterboxnobg%
-  \let\endmonsterbox\endmonsterboxnobg%
-}
-
-\ExplSyntaxOn
 
 % Define Monster subsection header style
 \newcommand{\monstersection}[1]{%
@@ -439,7 +439,7 @@
   }
 
 % Alias DndMonster to correct background type
-\iftoggle {bool-bg}
+\bool_if:NTF \l__dnd_show_background_bool
   {
     \let\DndMonster\DndMonsterBg
     \let\endDndMonster\endDndMonsterBg

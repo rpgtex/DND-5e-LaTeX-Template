@@ -1,23 +1,25 @@
 \ExplSyntaxOn
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Font definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{lettrine}
 \RequirePackage{Royal}
 
-\ifpkglayout
-  \RequirePackage{bookman}
-  \RequirePackage[type1]{gillius2}
-  \RequirePackage[notext,nomath,nott]{kpfonts}
-  \RequirePackage[T1]{fontenc}
-  \renewcommand{\sfdefault}{jkpss}
-\fi
+\bool_if:NT \l__dnd_layout_bool
+  {
+    \RequirePackage{bookman}
+    \RequirePackage[type1]{gillius2}
+    \RequirePackage[notext,nomath,nott]{kpfonts}
+    \RequirePackage[T1]{fontenc}
+    \renewcommand{\sfdefault}{jkpss}
+  }
 
 \cs_new_protected:Npn \__dnd_sf_initial_family:
   {
-\ifpkglayout
-    \gilliustwo
-\else
-    \sffamily
-\fi
+    \bool_if:NTF \l__dnd_layout_bool
+      { \gilliustwo }
+      { \sffamily }
   }
 
 \keys_define:nn { dnd / fonts }

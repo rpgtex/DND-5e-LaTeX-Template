@@ -8,9 +8,11 @@
   {
     before~upper     =
       {
-        \ifpkglayout
-          \nottoggle {justified} {\RaggedRight}
-        \fi
+        \bool_if:NT \l__dnd_layout_bool
+          {
+            \bool_if:NF \l__dnd_justified_bool
+              {\RaggedRight}
+          }
       },
     code={\linespread{.9}},
     frame~hidden,
@@ -83,5 +85,3 @@
     \end {__dnd_sidebar}
     \group_end:
   }
-
-\ExplSyntaxOff
