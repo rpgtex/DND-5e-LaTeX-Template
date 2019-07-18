@@ -34,7 +34,7 @@
 \title{The Dark \LaTeX{} \\
 \large An Example of the dndbook Class}
 \author{The rpgTeX Team}
-\date{2019/02/09}
+\date{2019/07/18}
 
 \begin{document}
 
@@ -48,7 +48,7 @@
 
 \chapter{Sections}
 
-\DndDropCapLine{T}{his package is designed to aid you in} writing beautifully typeset documents for the fifth edition of the world's greatest roleplaying game. It starts by adjusting the section formatting from the defaults in \LaTeX{} to something a bit more familiar to the reader. The chapter formatting is displayed above
+\DndDropCapLine{T}{his package is designed to aid you in} writing beautifully typeset documents for the fifth edition of the world's greatest roleplaying game. It starts by adjusting the section formatting from the defaults in \LaTeX{} to something a bit more familiar to the reader. The chapter formatting is displayed above.
 
 \section{Section}
 Sections break up chapters into large groups of associated text.
@@ -139,8 +139,8 @@ The |DndTable| colors the even rows and is set to the width of a line by default
 \chapter{Monsters and NPCs}
 
 % Monster stat block
-\begin{DndMonster}[float*=b, width=\textwidth]{Monster Foo}
-  \begin{multicols}{2}
+\begin{DndMonster}{Monster Foo}
+  %\begin{multicols}{2}
     \DndMonsterType{Medium aberration (metasyntactic variable), neutral evil}
 
     % If you want to use commas in the key values, enclose the values in braces.
@@ -246,7 +246,7 @@ The |DndTable| colors the even rows and is set to the width of a line by default
       \DndMonsterLegendaryAction{Dagger Attack}{The foo makes a dagger attack.}
       \DndMonsterLegendaryAction{Create Contract (Costs 3 Actions)}{The foo presents a contract in a language it knows and waves it in the face of a creature within 10 feet. The creature must make a DC 10 Intelligence saving throw. On a failure, the creature is incapacitated until the start of the foo's next turn. A creature who cannot read the language in which the contract is written has advantage on this saving throw.}
     \end{DndMonsterLegendaryActions}
-  \end{multicols}
+  %\end{multicols}
 \end{DndMonster}
 
 The |DndMonster| environment is used to typeset monster and NPC stat blocks. The module supplies many functions to easily typeset the contents of the stat block

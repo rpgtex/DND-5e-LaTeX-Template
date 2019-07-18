@@ -9,24 +9,33 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-* Added `DndDropCapLine` command to create drop capital letters at chapter beginnings
-* Configured CI to compile example document under pdfTeX, LuaTeX, and XeTeX
 * `\DndSetFonts` allows setting of font family and style throughout the document
 
 ### Changed
 
-* Sans serif title font now provided by kp-fonts
-* Sans serif body font now provided by gillius
-* Overhaul of whitespace and styling
-* DndTable Rewrite
+* Rewrite internals in LaTeX3
+* `dndtable` becomes `DndTable`
 * `commentbox`, `paperbox`, and `quotebox` become `DndComment`, `DndSidebar`, and `DndReadAloud`
 * `\subtitlesection`, `\spellheader`, `\area`, and `\subarea` become `\DndItemHeader`, `\DndSpellHeader`, `\DndArea`, and `\DndSubArea`
 * `monsterbox` becomes `DndMonster`
 
+## [0.7.1] - 2019-07-18
+
+### Added in 0.7.1
+
+* Added `DndDropCapLine` command to create drop capital letters at chapter beginnings
+* Configured CI to compile example document under pdfTeX, LuaTeX, and XeTeX.
+* Japanese translation
+
+### Changed in 0.7.1
+
+* Sans serif title font now provided by kp-fonts
+* Sans serif body font now provided by gillius
+* Overhaul of whitespace and styling
 
 ## [0.7.0] - 2019-02-09
 
-### Added
+### Added in 0.7.0
 
 * Added `bg` package option with `full`, `print`, and `none` as possible values.
 * Added boolean `layout` package option to control whether the package formats the document on load.
@@ -38,7 +47,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Added commands to generate titled sections for map areas and sub-areas, with associated counters and automatic reference labelling (as `area:<title>`).
 * Added commands to help generate spell lists.
 
-### Changed
+### Changed in 0.7.0
 
 * Made `monsterbox` text the width of the column and the background spills into margin and column separator.
 * Removed excess space before and after `monsterbox`.
@@ -51,7 +60,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Removed deprecated `bg-a4` and `bg-letter` package options.
 * Removed deprecated `lmss` environment.
 
-### Fixed
+### Fixed in 0.7.0
 
 * Display monster elements with hanging indents.
 * Allow `\monstersection` before sectioning command(s).
@@ -62,14 +71,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Added `\xpname` to localization support.
 * Added localization to XP number
 
-### Deprecated
+### Deprecated in 0.7.0
 
 * Deprecated `bg-full`, `bg-none`, and `bg-print` package options. Use `bg` package option instead.
 * Deprecated custom `\hline` in stat blocks. Use `\dndline` instead.
 
 ## [0.6.0] - 2017-10-12
 
-### Added
+### Added in 0.6.0
 
 * Added `bg-none` option to disable background image.
 * Defined coral-coloured `dnditemtable` environment.
@@ -88,7 +97,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Defined `spell` environment to format spells.
 * Added plain footer style for `bg-none` package option.
 
-### Changed
+### Changed in 0.6.0
 
 * Separate fancyhdr code into separate file.
 * Switch layout package from fullpage to geometry.
@@ -99,7 +108,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Enabled ragged alignment by default (disable with `justified` package option).
 * Separated the footer scroll from the background image.
 
-### Fixed
+### Fixed in 0.6.0
 
 * `\stats` tables have stable size inside stat block environments.
 * Fixed typos in example image.
@@ -108,7 +117,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Remove `breakable` parameter from `paperbox`.
 * Allow commas in newtcolorbox titles.
 
-### Deprecated
+### Deprecated in 0.6.0
 
 * Deprecated `dnditemtable`.
 * Deprecated `bg-a4` and `bg-letter` package options.
@@ -116,31 +125,31 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.5] - 2016-03-24
 
-### Added
+### Added in 0.5.0
 
 * Added print variants of background images (`bg-print` package option).
 * Added package option to control letter size background images (`bg-letter`).
 * Added A4 size background images (`bg-a4` package option).
 
-### Changed
+### Changed in 0.5.0
 
 * Licensed under MIT license.
 * Removed dependency on `multicols`; use `twocolumn` option for `book` class instead.
 
-### Fixed
+### Fixed in 0.5.0
 
 * Fixed footer positioning.
 * Fixed spacing inside and around boxes.
 * Disabled indentation after boxes.
 * Enabled indentation within boxes.
 
-### Removed
+### Removed in 0.5.0
 
 * Removed `monster` environment.
 
 ## [0.2] - 2016-03-07
 
-## Added
+## Added in 0.2.0
 
 * Added preview to README.
 * Defined `monster` and `monsterbox` environments for formatting monster stat blocks.
@@ -150,7 +159,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Added fancy page footers.
 * Defined `paperbox` environment to format sidebars.
 
-## Changed
+## Changed in 0.2.0
 
 * Reorganized package layout.
 * Matched colours against published PDFs.
@@ -159,12 +168,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## 0.1 - 2015-05-12
 
-### Added
+### Added in 0.1.0
 
 * Defined green `commentbox` environment.
 * Section and subsection titles.
 
-[Unreleased]: https://github.com/rpgtex/DND-5e-LaTeX-Template/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/rpgtex/DND-5e-LaTeX-Template/compare/v0.7.1...HEAD
+[0.7.1]: https://github.com/rpgtex/DND-5e-LaTeX-Template/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/rpgtex/DND-5e-LaTeX-Template/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/rpgtex/DND-5e-LaTeX-Template/compare/v0.5...v0.6.0
 [0.5]: https://github.com/rpgtex/DND-5e-LaTeX-Template/compare/v0.2...v0.5
