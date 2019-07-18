@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{dndbook}[2019/02/09 v0.7.0 Template for DnD 5e material]
+\ProvidesClass{dndbook}[2019/07/17 v0.7.1 Template for DnD 5e material]
 
 \RequirePackage{xkeyval}
 \RequirePackage{xstring}
