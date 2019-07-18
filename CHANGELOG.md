@@ -5,17 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-
 ## [0.7.1] - 2019-07-18
 
-### Added
+### Added in 0.7.1
 
 * Added `DndDropCapLine` command to create drop capital letters at chapter beginnings
 * Configured CI to compile example document under pdfTeX, LuaTeX, and XeTeX.
 * Japanese translation
 
-### Changed
+### Changed in 0.7.1
 
 * Sans serif title font now provided by kp-fonts
 * Sans serif body font now provided by gillius
