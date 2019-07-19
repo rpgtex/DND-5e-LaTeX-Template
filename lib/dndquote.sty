@@ -1,32 +1,36 @@
+\ExplSyntaxOn
+
 %Usage \begin{quotebox}[options][color]
 \DeclareTColorBox{quotebox}{O{} O{quoteboxcolor}}{%
-  before upper={%
-    \ifpkglayout%
-      \nottoggle{justified}{\RaggedRight}%
-    \fi%
+  before~upper={%
+    \bool_if:NT \l__dnd_layout_bool
+      {
+        \bool_if:NF \l__dnd_justified_bool
+          {\RaggedRight}
+      }
   },
   code={\linespread{1.1}},
-  enhanced jigsaw,
-  frame hidden,
+  enhanced~jigsaw,
+  frame~hidden,
   boxrule=0pt,
   breakable,
   enhanced,
-  before skip=13pt plus 4pt minus 4pt,
+  before~skip=13pt plus 4pt minus 4pt,
   boxsep=8pt,
   top=0pt,
   left=0pt,
   right=0pt,
   bottom=0pt,
   colback=#2,
-  sharp corners,
+  sharp~corners,
   parbox=false,
-  borderline west={1pt}{-0.5pt}{titlered},
-  borderline east={1pt}{-0.5pt}{titlered},
-  fontupper=\dnd@BoxBodyFont,
-  fontlower=\dnd@BoxBodyFont,
+  borderline~west={1pt}{-0.5pt}{titlered},
+  borderline~east={1pt}{-0.5pt}{titlered},
+  fontupper=\__dnd_readaloud_body_font:,
+  fontlower=\__dnd_readaloud_body_font:,
   overlay={%
-    \foreach\n in {north east,north west,south east,south west}
+    \foreach\n in {north~east,north~west,south~east,south~west}
     {\draw[titlered, fill=titlered] (frame.\n) circle (1.5pt); }; },
-  after skip=13pt plus 4pt minus 4pt,
+  after~skip=13pt plus 4pt minus 4pt,
   #1
 }

@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+* `\DndSetFonts` allows setting of font family and style throughout the document
+
+### Changed
+
+* Rewrite internals in LaTeX3
+* `dndtable` becomes `DndTable`
+* `commentbox`, `paperbox`, and `quotebox` become `DndComment`, `DndSidebar`, and `DndReadAloud`
+* `\subtitlesection`, `\spellheader`, `\area`, and `\subarea` become `\DndItemHeader`, `\DndSpellHeader`, `\DndArea`, and `\DndSubArea`
+* `monsterbox` becomes `DndMonster`
+* Separated language files
+
 ## [0.7.1] - 2019-07-18
 
 ### Added in 0.7.1

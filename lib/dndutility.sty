@@ -1,0 +1,71 @@
+\ExplSyntaxOn
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Dice macro
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Matches { # | #d# | #d# + # | #d# - # } while ignoring spaces
+\regex_const:Nn \c__valid_dice_regex { \A\s*(\d+)(?:[dD](\d+)\s*(?:([+\-])\s*(\d+))?)?\s*\Z }
+
+\seq_new:N \l__dice_args_seq
+\tl_new:N \l__dice_number_tl
+\tl_new:N \l__dice_sides_tl
+\tl_new:N \l__dice_mod_sign_tl
+\tl_new:N \l__dice_mod_tl
+
+\msg_new:nnn { dnd } { dice / invalid_argument } { Invalid~argument~``#1''~passed~to~\noexpand\DndDice. }
+
+\NewDocumentCommand { \DndDice } { m }
+  {
+    \group_begin:
+      \regex_extract_once:NnNTF { \c__valid_dice_regex } { #1 } \l__dice_args_seq
+        {
+          \seq_pop_left:NN \l__dice_args_seq \l_tmpa_str % Don't need the full match
+          \seq_pop_left:NN \l__dice_args_seq \l__dice_number_tl % # of dice
+          \seq_pop_left:NN \l__dice_args_seq \l__dice_sides_tl % # of sides
+          \seq_pop_left:NN \l__dice_args_seq \l__dice_mod_sign_tl % +/- for add/sub
+          \seq_pop_left:NN \l__dice_args_seq \l__dice_mod_tl % modifier
+
+          \str_if_empty:NTF { \l__dice_sides_tl } % are there dice ?
+            { \l__dice_number_tl } % No, just a number
+            { %Yes, break down the roll
+              \fp_eval:n { floor ( \l__dice_number_tl * ( \l__dice_sides_tl + 1 ) / 2 )\l__dice_mod_sign_tl \l__dice_mod_tl }~
+
+              (
+                \l__dice_number_tl d \l__dice_sides_tl
+
+                \str_case_e:nn { \l__dice_mod_sign_tl }
+                  {
+                    { + } { ~+~\l__dice_mod_tl }
+                    { - } { ~--~\l__dice_mod_tl }
+                  }
+              )
+            }
+        }
+        { \msg_error:nnn { dnd } { dice / invalid_argument } { #1 }}
+    \group_end:
+  }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Gets the width of a space
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\box_new:N \l__dnd_space_box
+\hbox_set:Nn \l__dnd_space_box {~}
+\dim_new:N \l__dnd_space_dim
+\dim_set:Nn \l__dnd_space_dim { \box_wd:N \l__dnd_space_box }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some keys are required for proper execution of macros.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\msg_new:nnn { dnd } { key_required } { #1~requires~key~``#2''~to~be~set. }
+
+% #1 - key value
+% #2 - macro name
+% #3 - key name
+\cs_new_protected:Npn \__dnd_check_for_key:Nnn #1#2#3
+  {
+    \group_begin:
+      \str_set:Nx \l_tmpa_str { #1 }
+
+      \str_if_empty:NT { \l_tmpa_str }
+        { \msg_error:nnnn { dnd } { key_required } { #2 } { #3 } }
+    \group_end:
+  }

@@ -1,39 +1,43 @@
+\ExplSyntaxOn
+
 %Usage \begin{paperbox}[options]{title}[color]
 \DeclareTColorBox{paperbox}{O{} m O{paperboxcolor}}{%
-  before upper={%
-    \ifpkglayout%
-      \nottoggle{justified}{\RaggedRight}%
-    \fi%
+  before~upper={%
+    \bool_if:NT \l__dnd_layout_bool
+      {
+        \bool_if:NF \l__dnd_justified_bool
+          {\RaggedRight}
+      }
   },
   code={\linespread{.9}},
-  frame hidden,
+  frame~hidden,
   boxrule=0pt,
   enhanced,
-  before skip=13pt plus 4pt minus 4pt,
+  before~skip=13pt plus 4pt minus 4pt,
   toptitle=2pt,
   boxsep=3pt,
   left=6pt,
   right=6pt,
   top=0pt,
   bottom=3pt,
-  fonttitle=\dnd@BoxTitleFont,
-  fontupper=\dnd@BoxBodyFont,
-  fontlower=\dnd@BoxBodyFont,
+  fonttitle=\__dnd_sidebar_title_font:,
+  fontupper=\__dnd_sidebar_body_font:,
+  fontlower=\__dnd_sidebar_body_font:,
   title={#2},
-  sharp corners,
+  sharp~corners,
   parbox=false,
-  borderline north={1pt}{-0.5pt}{black},
-  borderline south={1pt}{-0.5pt}{black},
+  borderline~north={1pt}{-0.5pt}{black},
+  borderline~south={1pt}{-0.5pt}{black},
   colback=#3,
   colbacktitle=#3,
   coltitle=black,
-  fuzzy shadow={0mm}{-3.5pt}{-0.5pt}{0.4mm}{black!60!white},
+  fuzzy~shadow={0mm}{-3.5pt}{-0.5pt}{0.4mm}{black!60!white},
   overlay={%
-    \fill[black] (frame.south west) -- ++ (7pt,0) -- ++ (0,-5pt) -- cycle;
-    \fill[black] (frame.north west) -- ++ (7pt,0) -- ++ (0,5pt) -- cycle;
-    \fill[black] (frame.north east) -- ++ (-7pt,0) -- ++ (0,5pt) -- cycle;
-    \fill[black] (frame.south east) -- ++ (-7pt,0) -- ++ (0,-5pt) -- cycle;
+    \fill[black] (frame.south~west) -- ++ (7pt,0) -- ++ (0,-5pt) -- cycle;
+    \fill[black] (frame.north~west) -- ++ (7pt,0) -- ++ (0,5pt) -- cycle;
+    \fill[black] (frame.north~east) -- ++ (-7pt,0) -- ++ (0,5pt) -- cycle;
+    \fill[black] (frame.south~east) -- ++ (-7pt,0) -- ++ (0,-5pt) -- cycle;
     },
-  after skip=14pt plus 4pt minus 4pt,
+  after~skip=14pt plus 4pt minus 4pt,
   #1
 }

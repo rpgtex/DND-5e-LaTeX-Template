@@ -1,25 +1,11 @@
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{dndbook}[2019/07/18 v0.7.1 Template for DnD 5e material]
+\RequirePackage {expl3}
+\ProvidesExplClass {dndbook} {2019/07/18} {0.7.1} { Template for DnD 5e material }
 
-\RequirePackage{xkeyval}
-\RequirePackage{xstring}
+\bool_new:N \c__dnd_isclass_bool
+\bool_set_true:N \c__dnd_isclass_bool
 
-% Pass these class options to the core dnd package.
-\newcommand{\dnd@packageoptions}{bg=,justified,nomultitoc}
+\input {dndoptions.clo}
 
-% Pass package options to dnd package; pass all other options to book class.
-\DeclareOptionX*{
-  \@for \option:=\dnd@packageoptions \do{
-    \IfBeginWith{\CurrentOption}{\option}{
-      \PassOptionsToPackage{\CurrentOption}{dnd}
-    }{
-      \PassOptionsToClass{\CurrentOption}{book}
-    }
-  }
-}
-\ProcessOptionsX*\relax
+\LoadClass {book}
 
-\LoadClass{book}
-
-\PassOptionsToPackage{layout=true}{dnd}
-\RequirePackage{dnd}
+\input {dndcore.def}

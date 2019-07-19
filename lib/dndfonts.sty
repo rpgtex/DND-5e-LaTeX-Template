@@ -1,43 +1,275 @@
-\ifpkglayout
-  \RequirePackage{bookman}
-  \RequirePackage[type1]{gillius2}
-  \RequirePackage[notext,nomath,nott]{kpfonts}
-  \RequirePackage[T1]{fontenc}
-  \renewcommand{\sfdefault}{jkpss}
-
-  \newcommand{\dnd@TableBodyFont}{\gilliustwo}
-  \newcommand{\dnd@BoxBodyFont}{\gilliustwo}
-  \newcommand{\dnd@StatBlockBodyFont}{\gilliustwo}
-\else
-  \newcommand{\dnd@TableBodyFont}{\sffamily}
-  \newcommand{\dnd@BoxBodyFont}{\sffamily}
-  \newcommand{\dnd@StatBlockBodyFont}{\sffamily}
-\fi
-
-\newcommand{\dnd@TitleFont}{\normalfont\scshape}
-
-\newcommand{\dnd@TableTitleFont}{\sffamily\bfseries\scshape\large}
-
-\newcommand{\dnd@BoxTitleFont}{\sffamily\bfseries\scshape}
-
-\newcommand{\dnd@StatBlockTitleFont}{\normalfont\bfseries\scshape\LARGE}
-\newcommand{\dnd@StatBlockSubtitleFont}{\sffamily\scshape\large}
-
-\newcommand{\dnd@FooterFont}{\normalfont\scriptsize}
-\newcommand{\dnd@PageNumberFont}{\normalfont\scriptsize}
+\ExplSyntaxOn
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Drop Caps
+% Font definitions
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{lettrine}
 \RequirePackage{Royal}
 
-\newcommand\dnd@DropCapFont{\Royal}
-\renewcommand{\LettrineFontHook}{\dnd@DropCapFont}
+\bool_if:NT \l__dnd_layout_bool
+  {
+    \RequirePackage{bookman}
+    \RequirePackage[type1]{gillius2}
+    \RequirePackage[notext,nomath,nott]{kpfonts}
+    \RequirePackage[T1]{fontenc}
+    \renewcommand{\sfdefault}{jkpss}
+  }
+
+\cs_new_protected:Npn \__dnd_sf_initial_family:
+  {
+    \bool_if:NTF \l__dnd_layout_bool
+      { \gilliustwo }
+      { \sffamily }
+  }
+
+\keys_define:nn { dnd / fonts }
+  {
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Sectioning commands
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Chapter
+    chapter-family .tl_set:N         = \l__dnd_chapter_family_tl,
+    chapter-family .initial:n        = \normalfont,
+    chapter-family .value_required:n = true,
+    chapter-style .tl_set:N         = \l__dnd_chapter_style_tl,
+    chapter-style .initial:n        = \linespread{.9} \color{titlered} \Huge \scshape,
+    chapter-style .value_required:n = true,
+    % Section
+    section-family .tl_set:N         = \l__dnd_section_family_tl,
+    section-family .initial:n        = \normalfont,
+    section-family .value_required:n = true,
+    section-style .tl_set:N         = \l__dnd_section_style_tl,
+    section-style .initial:n        = \linespread{.9} \color{titlered} \huge \scshape \RaggedRight,
+    section-style .value_required:n = true,
+    % Subsection
+    subsection-family .tl_set:N         = \l__dnd_subsection_family_tl,
+    subsection-family .initial:n        = \normalfont,
+    subsection-family .value_required:n = true,
+    subsection-style .tl_set:N         = \l__dnd_subsection_style_tl,
+    subsection-style .initial:n        = \linespread{.9} \color{titlered} \Large \scshape \RaggedRight,
+    subsection-style .value_required:n = true,
+    % subsubsection
+    subsubsection-family .tl_set:N         = \l__dnd_subsubsection_family_tl,
+    subsubsection-family .initial:n        = \normalfont,
+    subsubsection-family .value_required:n = true,
+    subsubsection-style .tl_set:N         = \l__dnd_subsubsection_style_tl,
+    subsubsection-style .initial:n        = \linespread{.9} \color{titlered} \large \scshape \RaggedRight,
+    subsubsection-style .value_required:n = true,
+    % paragraph
+    paragraph-family .tl_set:N         = \l__dnd_paragraph_family_tl,
+    paragraph-family .initial:n        = \normalfont,
+    paragraph-family .value_required:n = true,
+    paragraph-style .tl_set:N         = \l__dnd_paragraph_style_tl,
+    paragraph-style .initial:n        = \normalsize \bfseries \slshape,
+    paragraph-style .value_required:n = true,
+    % subparagraph
+    subparagraph-family .tl_set:N         = \l__dnd_subparagraph_family_tl,
+    subparagraph-family .initial:n        = \normalfont,
+    subparagraph-family .value_required:n = true,
+    subparagraph-style .tl_set:N         = \l__dnd_subparagraph_style_tl,
+    subparagraph-style .initial:n        = \normalsize \bfseries \slshape,
+    subparagraph-style .value_required:n = true,
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Tables
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Table title
+    table-title-family .tl_set:N         = \l__dnd_table_title_family_tl,
+    table-title-family .initial:n        = \sffamily,
+    table-title-family .value_required:n = true,
+    table-title-style .tl_set:N         = \l__dnd_table_title_style_tl,
+    table-title-style .initial:n        = \bfseries \scshape \large,
+    table-title-style .value_required:n = true,
+    % Table body
+    table-body-family .tl_set:N         = \l__dnd_table_body_family_tl,
+    table-body-family .initial:n        = \__dnd_sf_initial_family:,
+    table-body-family .value_required:n = true,
+    table-body-style .tl_set:N         = \l__dnd_table_body_style_tl,
+    table-body-style .initial:n        = \small,
+    table-body-style .value_required:n = true,
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Comment boxes
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Comment title
+    comment-title-family .tl_set:N         = \l__dnd_comment_title_family_tl,
+    comment-title-family .initial:n        = \sffamily,
+    comment-title-family .value_required:n = true,
+    comment-title-style .tl_set:N         = \l__dnd_comment_title_style_tl,
+    comment-title-style .initial:n        = \bfseries \scshape,
+    comment-title-style .value_required:n = true,
+    % Comment body
+    comment-body-family .tl_set:N         = \l__dnd_comment_body_family_tl,
+    comment-body-family .initial:n        = \__dnd_sf_initial_family:,
+    comment-body-family .value_required:n = true,
+    comment-body-style .tl_set:N         = \l__dnd_comment_body_style_tl,
+    comment-body-style .initial:n        = \small,
+    comment-body-style .value_required:n = true,
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Sidebars
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Sidebar title
+    sidebar-title-family .tl_set:N         = \l__dnd_sidebar_title_family_tl,
+    sidebar-title-family .initial:n        = \sffamily,
+    sidebar-title-family .value_required:n = true,
+    sidebar-title-style .tl_set:N         = \l__dnd_sidebar_title_style_tl,
+    sidebar-title-style .initial:n        = \bfseries \scshape,
+    sidebar-title-style .value_required:n = true,
+    % Sidebar body
+    sidebar-body-family .tl_set:N         = \l__dnd_sidebar_body_family_tl,
+    sidebar-body-family .initial:n        = \__dnd_sf_initial_family:,
+    sidebar-body-family .value_required:n = true,
+    sidebar-body-style .tl_set:N         = \l__dnd_sidebar_body_style_tl,
+    sidebar-body-style .initial:n        = \small,
+    sidebar-body-style .value_required:n = true,
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Read-aloud boxes
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    readaloud-family .tl_set:N         = \l__dnd_readaloud_family_tl,
+    readaloud-family .initial:n        = \__dnd_sf_initial_family:,
+    readaloud-family .value_required:n = true,
+    readaloud-style .tl_set:N         = \l__dnd_readaloud_style_tl,
+    readaloud-style .initial:n        = \small,
+    readaloud-style .value_required:n = true,
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Stat blocks
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Stat block title
+    stat-block-title-family .tl_set:N         = \l__dnd_stat_block_title_family_tl,
+    stat-block-title-family .initial:n        = \normalfont,
+    stat-block-title-family .value_required:n = true,
+    stat-block-title-style .tl_set:N         = \l__dnd_stat_block_title_style_tl,
+    stat-block-title-style .initial:n        = \bfseries \scshape \LARGE,
+    stat-block-title-style .value_required:n = true,
+    % Stat block body
+    stat-block-body-family .tl_set:N         = \l__dnd_stat_block_body_family_tl,
+    stat-block-body-family .initial:n        = \__dnd_sf_initial_family:,
+    stat-block-body-family .value_required:n = true,
+    stat-block-body-style .tl_set:N         = \l__dnd_stat_block_body_style_tl,
+    stat-block-body-style .initial:n        = \small,
+    stat-block-body-style .value_required:n = true,
+    % Stat block section
+    stat-block-section-family .tl_set:N         = \l__dnd_stat_block_section_family_tl,
+    stat-block-section-family .initial:n        = \sffamily,
+    stat-block-section-family .value_required:n = true,
+    stat-block-section-style .tl_set:N         = \l__dnd_stat_block_section_style_tl,
+    stat-block-section-style .initial:n        = \color{titlered} \scshape \large,
+    stat-block-section-style .value_required:n = true,
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Miscellaneous
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Footer
+    footer-family .tl_set:N         = \l__dnd_footer_family_tl,
+    footer-family .initial:n        = \normalfont,
+    footer-family .value_required:n = true,
+    footer-style .tl_set:N         = \l__dnd_footer_style_tl,
+    footer-style .initial:n        = \scriptsize \textcolor{pagegold},
+    footer-style .value_required:n = true,
+    % Page number
+    page-number-family .tl_set:N         = \l__dnd_page_number_family_tl,
+    page-number-family .initial:n        = \normalfont,
+    page-number-family .value_required:n = true,
+    page-number-style .tl_set:N         = \l__dnd_page_number_style_tl,
+    page-number-style .initial:n        = \scriptsize \textcolor{pagegold},
+    page-number-style .value_required:n = true,
+    % Drop caps
+    drop-cap-family .tl_set:N         = \l__dnd_drop_cap_family_tl,
+    drop-cap-family .initial:n        = \Royal,
+    drop-cap-family .value_required:n = true,
+    drop-cap-style .tl_set:N         = \l__dnd_drop_cap_style_tl,
+    drop-cap-style .value_required:n = true,
+  }
+
+\NewDocumentCommand { \DndSetFonts } { o }
+  {
+    \keys_set:nn { dnd / fonts } { o }
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Font access functions combine the selected family and style
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sectioning commands
+\cs_new_protected_nopar:Npn \__dnd_chapter_font:
+  { \l__dnd_chapter_family_tl \l__dnd_chapter_style_tl }
+
+\cs_new_protected_nopar:Npn \__dnd_section_font:
+  { \l__dnd_section_family_tl \l__dnd_section_style_tl }
+
+\cs_new_protected_nopar:Npn \__dnd_subsection_font:
+  { \l__dnd_subsection_family_tl \l__dnd_subsection_style_tl }
+
+\cs_new_protected_nopar:Npn \__dnd_subsubsection_font:
+  { \l__dnd_subsubsection_family_tl \l__dnd_subsubsection_style_tl }
+
+\cs_new_protected_nopar:Npn \__dnd_paragraph_font:
+  { \l__dnd_paragraph_family_tl \l__dnd_paragraph_style_tl }
+
+\cs_new_protected_nopar:Npn \__dnd_subparagraph_font:
+  { \l__dnd_subparagraph_family_tl \l__dnd_subparagraph_style_tl }
+
+% Tables
+\cs_new_protected_nopar:Npn \__dnd_table_title_font:
+  { \l__dnd_table_title_family_tl \l__dnd_table_title_style_tl }
+
+\cs_new_protected_nopar:Npn \__dnd_table_body_font:
+  { \l__dnd_table_body_family_tl \l__dnd_table_body_style_tl }
+
+% Comment boxes
+\cs_new_protected_nopar:Npn \__dnd_comment_title_font:
+  { \l__dnd_comment_title_family_tl \l__dnd_comment_title_style_tl }
+
+\cs_new_protected_nopar:Npn \__dnd_comment_body_font:
+  { \l__dnd_comment_body_family_tl \l__dnd_comment_body_style_tl }
+
+% Sidebars
+\cs_new_protected_nopar:Npn \__dnd_sidebar_title_font:
+  { \l__dnd_sidebar_title_family_tl \l__dnd_sidebar_title_style_tl }
+
+\cs_new_protected_nopar:Npn \__dnd_sidebar_body_font:
+  { \l__dnd_sidebar_body_family_tl \l__dnd_sidebar_body_style_tl }
+
+% Read-aloud boxes
+\cs_new_protected_nopar:Npn \__dnd_readaloud_font:
+  { \l__dnd_readaloud_family_tl \l__dnd_readaloud_style_tl }
+
+% Stat blocks
+\cs_new_protected_nopar:Npn \__dnd_stat_block_title_font:
+  { \l__dnd_stat_block_title_family_tl \l__dnd_stat_block_title_style_tl }
+
+\cs_new_protected_nopar:Npn \__dnd_stat_block_body_font:
+  { \l__dnd_stat_block_body_family_tl \l__dnd_stat_block_body_style_tl }
+
+\cs_new_protected_nopar:Npn \__dnd_stat_block_section_font:
+  { \l__dnd_stat_block_section_family_tl \l__dnd_stat_block_section_style_tl }
+
+% Footers
+\cs_new_protected_nopar:Npn \__dnd_footer_font:
+  { \l__dnd_footer_family_tl \l__dnd_footer_style_tl }
+
+\cs_new_protected_nopar:Npn \__dnd_page_number_font:
+  { \l__dnd_page_number_family_tl \l__dnd_page_number_style_tl }
+
+% Footers
+\cs_new_protected_nopar:Npn \__dnd_drop_cap_font:
+  { \l__dnd_drop_cap_family_tl \l__dnd_drop_cap_style_tl }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Drop Caps
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\LettrineFontHook}
+  { \l__dnd_drop_cap_family_tl \l__dnd_drop_cap_style_tl }
 
 % Usage: DndDropCapLine[<lettrine options>]{<first letter>}{<small caps line>}
 %    It takes trial and error to get the 2nd argument to align with
 %    the linebreak. Lettrine package will not play nicely with \FirstLine. See
 %    the lettrine package for options.
-\NewDocumentCommand{\DndDropCapLine}{ O{} m m }%
-{\lettrine[lines=4,depth=0,findent=0.5em,nindent=0pt,#1]{#2}{#3}}
+\NewDocumentCommand{\DndDropCapLine}{ O{} m m }
+  {
+    \lettrine[
+        lines   = 4,
+        depth   = 0,
+        findent = \l__dnd_space_dim,
+        nindent = 0pt,
+        #1
+      ]
+      {#2}
+      {#3}
+  }

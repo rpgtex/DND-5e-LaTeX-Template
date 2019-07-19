@@ -16,10 +16,17 @@
 
 % Define all strings as new macros instead of hardcoding them in the
 % TeX files. This then allows us to add captions for multilanguage support.
+
+% If you add or update a caption here, add it to languages/_template.sty
+% as well.
+
+%% Monster
+% Basics
 \newcommand\armorclassname{Armor~Class}
 \newcommand\hitpointsname{Hit~Points}
 \newcommand\speedname{Speed}
 
+% Ability Scores
 \newcommand\strstatname{STR}
 \newcommand\dexstatname{DEX}
 \newcommand\constatname{CON}
@@ -27,6 +34,7 @@
 \newcommand\wisstatname{WIS}
 \newcommand\chastatname{CHA}
 
+% Details
 \newcommand\skillsname{Skills}
 \newcommand\dimmname{Damage~Immunities}
 \newcommand\dvulname{Damage~Vulnerabilities}
@@ -34,14 +42,18 @@
 \newcommand\cimmname{Condition~Immunities}
 \newcommand\savesname{Saving~Throws}
 \newcommand\sensesname{Senses}
+\newcommand\defaultsensesname{passive~Perception~10}
 \newcommand\languagesname{Languages}
 \newcommand\challengename{Challenge}
 \newcommand\xpname{XP}
 
-\newcommand\ftname{ft.}
-\newcommand\meleeattackname{Melee~Weapon~Attack}
-\newcommand\rangedattackname{Ranged~Weapon~Attack}
-\newcommand\meleeorrangedattackname{Melee~or~Ranged~Weapon~Attack}
+% Attacks
+\newcommand\unitsname{ft.}
+\newcommand\weaponname{Weapon}
+\newcommand\spellname{Spell}
+\newcommand\meleeattackname{Melee~|1|~Attack}
+\newcommand\rangedattackname{Ranged~|1|~Attack}
+\newcommand\meleeorrangedattackname{Melee~or~Ranged~|1|~Attack}
 \newcommand\orname{or}
 \newcommand\tohitname{to~hit}
 \newcommand\defaulttargetsname{one~target}
@@ -82,7 +94,27 @@
 \newcommand\spelldurationname{Duration}
 
 % Miscellaneous
+\newcommand\pageabbreviationname{pg.}
 \newcommand\dname{d}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Adding languages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% To add captions for other languages:
+% 1. Copy and paste languages/_template.sty to languages/<language>.sty
+% 2. Substitute the <language> token in the file with the language name
+%    (i.e. \addto\captionsfrench).
+% 3. Replace the English strings with the translations and comment any captions
+%    that you do not translate. Please keep the captions in the same order.
+% 4. Add \RequirePackage{lib/languages/<language>} to the following function.
+\cs_new_protected_nopar:Npn \__dnd_input_languages:
+  {
+    \RequirePackage{lib/languages/italian}
+    \RequirePackage{lib/languages/japanese} % Requires LuaTeX or XeTeX
+    \RequirePackage{lib/languages/ngerman}
+    \RequirePackage{lib/languages/russian}
+}
 
 % Delay loading captions until after the user has imported a language package.
 % Enables using babel/polyglossia with the dndbook document class as well as the
@@ -94,11 +126,9 @@
   % Check if either babel or polyglossia have been loaded,
   % in which case load the string captions
   \@ifpackageloaded{babel}{
-    \RequirePackage{lib/dndstrings-captions}
+    \__dnd_input_languages:
   }{}
   \@ifpackageloaded{polyglossia}{
-    \RequirePackage{lib/dndstrings-captions}
+    \__dnd_input_languages:
   }{}
 }
-
-\ExplSyntaxOff
