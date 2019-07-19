@@ -108,13 +108,13 @@
 % 3. Replace the English strings with the translations and comment any captions
 %    that you do not translate. Please keep the captions in the same order.
 % 4. Add \RequirePackage{lib/languages/<language>} to the following function.
- \cs_new_protected_nopar:Npn \__dnd_input_languages:
-   {
-     \RequirePackage{lib/languages/italian}
-     \RequirePackage{lib/languages/japanese} % Requires LuaTeX or XeTeX
-     \RequirePackage{lib/languages/ngerman}
-     \RequirePackage{lib/languages/russian}
-  }
+\cs_new_protected_nopar:Npn \__dnd_input_languages:
+  {
+    \RequirePackage{lib/languages/italian}
+    \RequirePackage{lib/languages/japanese} % Requires LuaTeX or XeTeX
+    \RequirePackage{lib/languages/ngerman}
+    \RequirePackage{lib/languages/russian}
+}
 
 % Delay loading captions until after the user has imported a language package.
 % Enables using babel/polyglossia with the dndbook document class as well as the
