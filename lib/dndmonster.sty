@@ -322,9 +322,9 @@
   ]{%
   \begin{monsteraction}[\commandkey{name}]
     \IfStrEqCase{\commandkey{type}}{%
-      {melee}{\textit{\meleeattackname:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \ftname}%
-      {ranged}{\textit{\rangedattackname:} \dnd@hit{mod}, \rangename\ \commandkey{range} \ftname}%
-      {both}{\textit{\meleeorrangedattackname:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \ftname\ \orname\ \rangename\ \commandkey{range} \ftname}%
+      {melee}{\textit{\meleeattackname:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \unitsname}%
+      {ranged}{\textit{\rangedattackname:} \dnd@hit{mod}, \rangename\ \commandkey{range} \unitsname}%
+      {both}{\textit{\meleeorrangedattackname:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \unitsname\ \orname\ \rangename\ \commandkey{range} \unitsname}%
     }[]%
     , \commandkey{targets}.
     \textit{\hitname:} \dnd@damage{dmg}{dmgtype}%
@@ -495,7 +495,7 @@
     hit-points .value_required:n = true,
     hitpoints .meta:n = { hit-points = {#1} },
     speed .tl_set:N         = \l__speed_tl,
-    speed .initial:n        = 30 ~ \ftname,
+    speed .initial:n        = 30 ~ \unitsname,
     speed .value_required:n = true,
   }
 
@@ -852,12 +852,12 @@
 
 \cs_new_protected:Npn \__dnd_monster_reach:
   {
-    \reachname\ \l__reach_tl\ \ftname
+    \reachname\ \l__reach_tl\ \unitsname
   }
 
 \cs_new_protected:Npn \__dnd_monster_range:
   {
-    \rangename\ \l__range_tl\ \ftname
+    \rangename\ \l__range_tl\ \unitsname
   }
 
 \cs_new_protected:Npn \__dnd_if_plus_dmg:

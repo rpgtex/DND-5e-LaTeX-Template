@@ -37,7 +37,6 @@
     header .tl_set:N         = \l__dnd_table_header_tl,
     header .value_required:n = true,
     width .dim_set:N        = \l__dnd_table_width_dim,
-    width .initial:n        = \linewidth,
     width .value_required:n = true,
   }
 
@@ -45,6 +44,7 @@
   {
     \group_begin:
 
+    \dim_set:Nn \l__dnd_table_width_dim { \linewidth }
     \tl_if_novalue:nF {#1}
       { \keys_set:nn { dnd / table } {#1} }
 
