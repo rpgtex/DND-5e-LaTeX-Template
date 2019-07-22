@@ -67,9 +67,9 @@
   sharp~corners,
   opacityback=0,
   colframe=titlered,
-  fonttitle=\__dnd_stat_block_title_font:,
-  fontupper=\__dnd_stat_block_body_font:,
-  fontlower=\__dnd_stat_block_body_font:,
+  fonttitle=\DndFontStatBlockTitle,
+  fontupper=\DndFontStatBlockBody,
+  fontlower=\DndFontStatBlockBody,
   title=#2,
   coltitle=titlered,
   #1
@@ -98,10 +98,10 @@
   colback=statblockbg,
   colbacktitle=statblockbg,
   colframe=titlered,
-  fonttitle=\__dnd_stat_block_title_font:,
+  fonttitle=\DndFontStatBlockTitle,
   coltitle=titlered,
-  fontupper=\__dnd_stat_block_body_font:,
-  fontlower=\__dnd_stat_block_body_font:,
+  fontupper=\DndFontStatBlockBody,
+  fontlower=\DndFontStatBlockBody,
   title=#2,
   #1
 }
@@ -122,7 +122,7 @@
 \newcommand{\monstersection}[1]{%
   \begingroup
     \par\medskip\noindent
-    \__dnd_stat_block_section_font: #1
+    \DndFontStatBlockSection #1
     % \rule is a horizontal command, so placing it under the title incurs extra
     % line spacing. Use \hrule (a vertical command) instead.
     \vspace{3pt}
@@ -146,7 +146,7 @@
 
 \setlist[dnd@monsterattrs]{
   before=\color{titlered},
-  font=\__dnd_stat_block_body_font:,
+  font=\DndFontStatBlockBody,
   labelsep=\wordsep,
   noitemsep,
   nosep,
@@ -398,9 +398,9 @@
     sharp~corners,
     opacityback = 0,
     colframe    = titlered,
-    fonttitle   = \__dnd_stat_block_title_font:,
-    fontupper   = \__dnd_stat_block_body_font:,
-    fontlower   = \__dnd_stat_block_body_font:,
+    fonttitle   = \DndFontStatBlockTitle,
+    fontupper   = \DndFontStatBlockBody,
+    fontlower   = \DndFontStatBlockBody,
     title       = {#2},
     coltitle    = titlered,
     #1
@@ -430,10 +430,10 @@
     colback          = statblockbg,
     colbacktitle     = statblockbg,
     colframe         = titlered,
-    fonttitle        = \__dnd_stat_block_title_font:,
+    fonttitle        = \DndFontStatBlockTitle,
     coltitle         = titlered,
-    fontupper        = \__dnd_stat_block_body_font:,
-    fontlower        = \__dnd_stat_block_body_font:,
+    fontupper        = \DndFontStatBlockBody,
+    fontlower        = \DndFontStatBlockBody,
     title            = {#2},
     #1
   }
@@ -471,7 +471,7 @@
 \setlist [__dnd_monster_attributes]
   {
     before   = \color {titlered},
-    font     = \__dnd_stat_block_body_font:,
+    font     = \DndFontStatBlockBody,
     labelsep = \l__dnd_space_dim,
     nosep,
   }
@@ -725,7 +725,7 @@
   {
     \addvspace{6pt plus 2pt minus 2pt} \noindent
     \group_begin:
-      \__dnd_stat_block_section_font: #1
+      \DndFontStatBlockSection #1
       % \rule is a horizontal command, so placing it under the title incurs extra
       % line spacing. Use \hrule (a vertical command) instead.
       \vspace {2pt}
@@ -739,7 +739,7 @@
 \newlist {DndMonsterSpells} {description} {1}
 \setlist [DndMonsterSpells]
   {
-    font     = \normalfont \__dnd_stat_block_body_font:,
+    font     = \normalfont \DndFontStatBlockBody,
     labelsep = \l__dnd_space_dim,
     noitemsep,
     topsep   = 6pt plus 2pt minus 2pt,
@@ -943,7 +943,7 @@
 \newlist {DndMonsterLegendaryActions} {description} {1}
 \setlist [DndMonsterLegendaryActions]
   {
-    font     = \__dnd_stat_block_body_font:,
+    font     = \DndFontStatBlockBody,
     labelsep = \l__dnd_space_dim,
     noitemsep,
     topsep   = 6pt plus 2pt minus 2pt,

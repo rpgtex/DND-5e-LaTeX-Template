@@ -15,7 +15,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Chapter
 \titleformat {\chapter}
-  { \__dnd_chapter_font: } % format
+  { \DndFontChapter } % format
   { \chaptertitlename\ \thechapter : } % label
   { \wordsep } % sep
   {} % before-code
@@ -27,7 +27,7 @@
 
 % Section
 \titleformat {\section}
-  { \__dnd_section_font: } % format
+  { \DndFontSection } % format
   { \thesection } % label
   { 1em } % sep
   { \nopagebreak } % before-code
@@ -39,7 +39,7 @@
 
 % Subsection
 \titleformat {\subsection}
-  { \__dnd_subsection_font: } % format
+  { \DndFontSubsection } % format
   { \thesubsection } % label
   { 1em } % sep
   { \nopagebreak } % before-code
@@ -52,7 +52,7 @@
 
 % Subsubsection
 \titleformat {\subsubsection}
-  { \__dnd_subsubsection_font: } % format
+  { \DndFontSubsubsection } % format
   { \thesubsubsection } % label
   { 1em } % sep
   { \nopagebreak } % before-code
@@ -64,7 +64,7 @@
 
 % Paragraph
 \titleformat {\paragraph} [runin]
-  { \__dnd_paragraph_font: } % format
+  { \DndFontParagraph } % format
   { \theparagraph \quad } % label
   {0pt} % sep
   {}    % before-code
@@ -77,7 +77,7 @@
 
 % Subparagraph
 \titleformat {\subparagraph} [runin]
-  { \__dnd_subparagraph_font: } % format
+  { \DndFontSubaragraph } % format
   { \thesubparagraph \quad } % label
   {0pt} % sep
   {}    % before-code
@@ -181,6 +181,7 @@
       {#1--\arabic{DetailArea}\par\expandafter\ignorespaces\noindent}}
 
 \ExplSyntaxOn % New interface
+
 \tl_new:N \l__dnd_area_num_depth_tl
 
 % Options
