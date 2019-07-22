@@ -6,7 +6,7 @@
   \begingroup%
   \par\vspace{10pt plus 3 pt minus 3pt}%
   \noindent%
-  \__dnd_table_title_font:%
+  \DndFontTableTitle%
   #1%
   \endgroup%
   }
@@ -19,7 +19,7 @@
 \NewDocumentEnvironment{dndtable}{O{XX} O{tablecolor}}{%
     \par\vspace{2pt plus 1pt minus 1pt}%
     \noindent%
-    \__dnd_table_body_font:%
+    \DndFontTableBody%
     \setlength{\extrarowheight}{3pt}%
     \rowcolors{1}{}{#2}%
     \tabularx{\linewidth}{#1}%
@@ -53,12 +53,12 @@
     \tl_if_empty:NF \l__dnd_table_header_tl
       {
         \group_begin:
-          \__dnd_table_title_font: \l__dnd_table_header_tl
+          \DndFontTableTitle \l__dnd_table_header_tl
           \par \vspace{ 5pt plus 2pt minus 2pt } \noindent
         \group_end:
       }
 
-    \__dnd_table_body_font:
+    \DndFontTableBody
 
     \rowcolors {1} {} {\l__dnd_table_color_tl}
 

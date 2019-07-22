@@ -45,23 +45,23 @@
 
 % Left-even page footer
 \fancyfoot[LE]{%
-    \__dnd_footer_font: \leftmark
+    \DndFontFooter \leftmark
     \begin{tikzpicture}[remember~picture,overlay]
       \bool_if:NT \l__dnd_show_footer_scroll_bool {
         \node[xscale=-1,inner~sep=0pt,anchor=south,nearly~opaque] at (current~page.south) {\includegraphics[width=\paperwidth,height=.6in]{img/footerscroll}};
       }
-      \node[inner~sep=0pt,anchor=south,xshift=.28in,yshift=.39in] at (current~page.south~west) {\__dnd_page_number_font: \thepage};
+      \node[inner~sep=0pt,anchor=south,xshift=.28in,yshift=.39in] at (current~page.south~west) {\DndFontPageNumber \thepage};
     \end{tikzpicture}
   }
 
 % Right-odd page footer
 \fancyfoot[RO]{%
-    \__dnd_footer_font: \leftmark
+    \DndFontFooter \leftmark
     \begin{tikzpicture}[remember~picture,overlay]
       \bool_if:NT \l__dnd_show_footer_scroll_bool {
         \node[inner~sep=0pt,anchor=south,nearly~opaque] at (current~page.south) {\includegraphics[width=\paperwidth,height=.6in]{img/footerscroll}};
       }
-      \node[inner~sep=0pt,anchor=south,xshift=-.28in,yshift=.39in] at (current~page.south~east) {\__dnd_page_number_font: \thepage};
+      \node[inner~sep=0pt,anchor=south,xshift=-.28in,yshift=.39in] at (current~page.south~east) {\DndFontPageNumber \thepage};
     \end{tikzpicture}
   }
 
