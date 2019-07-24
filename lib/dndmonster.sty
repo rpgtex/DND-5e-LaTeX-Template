@@ -384,10 +384,17 @@
 % Monster environments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Stat block made to look like the Monster Manual NPC definitions
+\bool_new:N \g__dnd_topline_printed_bool
 \DeclareTColorBox {DndMonsterNoBg} { O{} m }
   {
     enhanced,
     frame~hidden,
+    before~upper={%
+      \bool_if:NT \l__dnd_layout_bool
+        {
+          \bool_gset_false:N \g__dnd_topline_printed_bool
+        }
+    },
     boxrule     = 0pt,
     breakable,
     parbox      = false,
@@ -411,6 +418,12 @@
   {
     enhanced,
     frame~hidden,
+    before~upper={%
+      \bool_if:NT \l__dnd_layout_bool
+        {
+          \bool_gset_false:N \g__dnd_topline_printed_bool
+        }
+    },
     before~skip      = 12pt plus 3pt minus 3pt,
     boxrule          = 0pt,
     breakable,
@@ -466,6 +479,15 @@
     \par
   }
 
+\NewDocumentCommand {\DndMonsterTopLine} {}
+  {
+    \bool_if:NF \g__dnd_topline_printed_bool
+      {
+        \DndMonsterLine
+        \bool_gset_true:N \g__dnd_topline_printed_bool
+      }
+  }
+
 % A description variant used to list creature attributes.
 \newlist {__dnd_monster_attributes} {description} {1}
 \setlist [__dnd_monster_attributes]
@@ -512,7 +534,7 @@
   {
     \group_begin:
       \keys_set:nn { dnd / monster / basics } {#1}
-      \DndMonsterLine
+      \DndMonsterTopLine
       \__dnd_monster_basics:
       \DndMonsterLine
     \group_end:
@@ -626,9 +648,9 @@
 {
   \group_begin:
     \keys_set:nn { dnd / monster / details } {#1}
-    \DndMonsterLine{}
+    \DndMonsterTopLine
     \__dnd_monster_details:
-    \DndMonsterLine{}
+    \DndMonsterLine
   \group_end:
 }
 
@@ -708,7 +730,9 @@
   {
     \group_begin:
       \keys_set:nn { dnd / monster / ability_scores } {#1}
+      \DndMonsterTopLine
       \__dnd_monster_ability_scores:
+      \DndMonsterLine
     \group_end:
   }
 
