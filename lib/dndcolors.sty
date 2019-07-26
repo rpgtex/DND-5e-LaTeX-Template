@@ -52,10 +52,10 @@
 % New interface
 \NewDocumentCommand {\DndSetThemeColor} { O {themecolor} }
   {
-    \colorlet {themecolor}      {#1}
+    \colorlet {themecolor}   {#1}
     \colorlet {commentcolor} {#1}
-    \colorlet {sidebarcolor}   {#1}
-    \colorlet {tablecolor}      {#1}
+    \colorlet {sidebarcolor} {#1}
+    \colorlet {tablecolor}   {#1}
   }
 
 % Backwards-compatible aliases and colours
@@ -63,3 +63,8 @@
 \colorlet {itemtablepink} {DmgCoral}
 \colorlet {monstertan}    {statblockbg}
 \definecolor {monstertandark} {HTML} {F0DBB5}
+
+% Old interface
+\colorlet {commentboxcolor} {commentcolor}
+\colorlet {paperboxcolor}   {sidebarcolor}
+\colorlet {quoteboxcolor}   {readaloudcolor}

@@ -131,8 +131,6 @@
   \endgroup%
 }
 
-\ExplSyntaxOff
-
 \NewDocumentEnvironment{monsteraction}{o}{%
   \IfValueTF{#1}{%
     \par\medskip\noindent\emph{\textbf{#1.}}%
@@ -147,7 +145,7 @@
 \setlist[dnd@monsterattrs]{
   before=\color{titlered},
   font=\DndFontStatBlockBody,
-  labelsep=\wordsep,
+  labelsep=\l__dnd_space_dim,
   noitemsep,
   nosep,
 }
@@ -334,6 +332,9 @@
   \end{monsteraction}
 }
 
+% New interface
+\ExplSyntaxOn
+
 \NewDocumentCommand {\DndCRExp} { m }
   {
     \str_case_e:nnF {#1}
@@ -376,9 +377,6 @@
       }
       {#1}
   }
-
-% New interface
-\ExplSyntaxOn
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Monster environments
