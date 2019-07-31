@@ -131,8 +131,6 @@
   \endgroup%
 }
 
-\ExplSyntaxOff
-
 \NewDocumentEnvironment{monsteraction}{o}{%
   \IfValueTF{#1}{%
     \par\medskip\noindent\emph{\textbf{#1.}}%
@@ -147,7 +145,7 @@
 \setlist[dnd@monsterattrs]{
   before=\color{titlered},
   font=\DndFontStatBlockBody,
-  labelsep=\wordsep,
+  labelsep=\l__dnd_space_dim,
   noitemsep,
   nosep,
 }
@@ -322,9 +320,9 @@
   ]{%
   \begin{monsteraction}[\commandkey{name}]
     \IfStrEqCase{\commandkey{type}}{%
-      {melee}{\textit{\meleeattackname:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \unitsname}%
-      {ranged}{\textit{\rangedattackname:} \dnd@hit{mod}, \rangename\ \commandkey{range} \unitsname}%
-      {both}{\textit{\meleeorrangedattackname:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \unitsname\ \orname\ \rangename\ \commandkey{range} \unitsname}%
+      {melee}{\textit{\DndCaption{\meleeattackname}{\weaponname}:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \unitsname}%
+      {ranged}{\textit{\DndCaption{\rangedattackname}{\weaponname}:} \dnd@hit{mod}, \rangename\ \commandkey{range} \unitsname}%
+      {both}{\textit{\DndCaption{\meleeorrangedattackname}{\weaponname}:} \dnd@hit{mod}, \reachname\ \commandkey{reach} \unitsname\ \orname\ \rangename\ \commandkey{range} \unitsname}%
     }[]%
     , \commandkey{targets}.
     \textit{\hitname:} \dnd@damage{dmg}{dmgtype}%
@@ -333,6 +331,9 @@
     \ifcommandkey{extra}{\commandkey{extra}}{}.
   \end{monsteraction}
 }
+
+% New interface
+\ExplSyntaxOn
 
 \NewDocumentCommand {\DndCRExp} { m }
   {
@@ -376,9 +377,6 @@
       }
       {#1}
   }
-
-% New interface
-\ExplSyntaxOn
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Monster environments
@@ -714,7 +712,7 @@
 
 % Inline header for monster actions - similar to a paragraph
 \NewDocumentCommand {\DndMonsterAction} {m}
-  { \unskip \vspace{ 2.5pt plus 1pt minus 1pt } \noindent \textsl { \textbf {#1.} } }
+  { \par \smallskip \noindent \textsl { \textbf {#1.} } }
 
 % Inline header for monster sub actions - similar to a subparagraph
 \NewDocumentCommand {\DndMonsterSubAction} {m}

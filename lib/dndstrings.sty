@@ -14,6 +14,10 @@
     \group_end:
   }
 
+% Document-level version for backwards compatibility
+\NewDocumentCommand{\DndCaption}{ m m }
+  { \__dnd_caption:nn {#1} {#2} }
+
 % Define all strings as new macros instead of hardcoding them in the
 % TeX files. This then allows us to add captions for multilanguage support.
 
