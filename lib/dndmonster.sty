@@ -231,8 +231,9 @@
 }
 
 \newcommand{\dnd@hit}[1]{%
-  \commandkey{#1}\ \tohitname%
+  \__dnd_caption:nn {\tohitname} {#1}
 }
+
 \newcommand{\dnd@damage}[2]{%
   \commandkey{#1}\ \commandkey{#2}\ \damagename%
 }
@@ -845,11 +846,6 @@
     extra .value_required:n = true,
   }
 
-\cs_new_protected:Npn \__dnd_monster_to_hit:
-  {
-    \l__mod_tl\ \tohitname
-  }
-
 \cs_new_protected:Npn \__dnd_monster_reach:
   {
     \reachname\ \l__reach_tl\ \unitsname
@@ -888,15 +884,15 @@
         {
           { melee }
             {
-              \textit{ \__dnd_caption:nn {\meleeattackname} {\l__dnd_attack_type_tl} : } ~ \__dnd_monster_to_hit:, ~ \__dnd_monster_reach:
+              \textit{ \__dnd_caption:nn {\meleeattackname} {\l__dnd_attack_type_tl} : } \__dnd_caption:nn {\tohitname} {\l__mod_tl}, ~ \__dnd_monster_reach:
             }
           { ranged }
             {
-              \textit{ \__dnd_caption:nn {\rangedattackname} {\l__dnd_attack_type_tl} : } ~ \__dnd_monster_to_hit:, ~ \__dnd_monster_range:
+              \textit{ \__dnd_caption:nn {\rangedattackname} {\l__dnd_attack_type_tl} : } \__dnd_caption:nn {\tohitname} {\l__mod_tl}, ~ \__dnd_monster_range:
             }
         }
         {% Melee and Ranged is the default
-          \textit{ \__dnd_caption:nn {\meleeorrangedattackname} {\l__dnd_attack_type_tl} : } ~ \__dnd_monster_to_hit:, ~ \__dnd_monster_reach:\ \orname\ \__dnd_monster_range:
+          \textit{ \__dnd_caption:nn {\meleeorrangedattackname} {\l__dnd_attack_type_tl} : } \__dnd_caption:nn {\tohitname} {\l__mod_tl}, ~ \__dnd_monster_reach:\ \orname\ \__dnd_monster_range:
         }
       , ~ \l__targets_tl. ~
       \textit { \hitname : } ~
