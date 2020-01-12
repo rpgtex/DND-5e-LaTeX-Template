@@ -60,7 +60,7 @@ Subsections further break down the information for the reader.
 Subsubsections are the furthest division of text that still have a block header. Below this level, headers are displayed inline.
 
 \paragraph{Paragraph}
-The paragraph format is seldom used in the core books, but is available if you prefer the other style.
+The paragraph format is seldom used in the core books, but is available if you prefer it to the ``normal'' style.
 
 \subparagraph{Subparagraph}
 The subparagraph format with the paragraph indent is likely going to be more familiar to the reader.
@@ -85,7 +85,7 @@ You are able to transform a written message of any length into a beautiful scrol
 While the creature is charmed by you, they cannot take their eyes off the scroll and cannot willingly move away from the scroll. Also, the targets can make a wisdom saving throw at the end of each of their turns. On a success, they are no longer charmed.
 
 \section{Map Regions}
-The map region functions |\area| and |\subarea| provide automatic numbering of areas.
+The map region functions |\DndArea| and |\DndSubArea| provide automatic numbering of areas.
 
 \DndArea{Village of Hommlet}
 This is the village of hommlet.
@@ -282,27 +282,27 @@ This package provides several global color variables to style |DndComment|, |Dnd
 They also accept an optional color argument to set the color for a single instance. See Table~\ref{tab:colors} for a list of core book accent colors.
 
 \begin{lstlisting}
-\begin{DndTable}[cX][PhbLightCyan]
+\begin{DndTable}[color=PhbLightCyan]{cX}
   \textbf{d8} & \textbf{Item} \\
-  1           & Small wooden button \\
-  2           & Red feather \\
-  3           & Human tooth \\
-  4           & Vial of green liquid \\
-  6           & Tasty biscuit \\
-  7           & Broken axe handle \\
-  8           & Tarnished silver locket \\
+  1 & Small wooden button \\
+  2 & Red feather \\
+  3 & Human tooth \\
+  4 & Vial of green liquid \\
+  6 & Tasty biscuit \\
+  7 & Broken axe handle \\
+  8 & Tarnished silver locket \\
 \end{DndTable}
 \end{lstlisting}
 
 \begin{DndTable}[color=PhbLightCyan]{cX}
   \textbf{d8} & \textbf{Item} \\
-  1           & Small wooden button \\
-  2           & Red feather \\
-  3           & Human tooth \\
-  4           & Vial of green liquid \\
-  6           & Tasty biscuit \\
-  7           & Broken axe handle \\
-  8           & Tarnished silver locket \\
+  1 & Small wooden button \\
+  2 & Red feather \\
+  3 & Human tooth \\
+  4 & Vial of green liquid \\
+  6 & Tasty biscuit \\
+  7 & Broken axe handle \\
+  8 & Tarnished silver locket \\
 \end{DndTable}
 
 \section{Themed Colors}
@@ -332,7 +332,6 @@ Use |\DndSetThemeColor[<color>]| to set |commentcolor|, |readaloudcolor|, |sideb
 \begin{DndSidebar}{This Sidebar Is Also Mauve}
   The sidebar is also using the new theme color.
 \end{DndSidebar}
-
 \endgroup
 
 \end{document}
