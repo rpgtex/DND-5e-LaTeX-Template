@@ -29,7 +29,7 @@ courier
 ec
 enumitem
 environ
-epstopdf-base
+epstopdf-pkg
 etex-pkg
 etoolbox
 fancyhdr
