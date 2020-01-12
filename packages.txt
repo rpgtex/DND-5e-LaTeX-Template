@@ -54,6 +54,7 @@ numprint
 oberdiek
 pgf
 psnfss
+ragged2e
 tcolorbox
 titlesec
 tocloft
