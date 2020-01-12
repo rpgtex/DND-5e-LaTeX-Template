@@ -66,6 +66,7 @@ tools
 trimspaces
 was
 xcolor
+xkeyval
 xstring
 
 # Document dependencies
