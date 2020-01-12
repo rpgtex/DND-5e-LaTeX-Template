@@ -19,6 +19,7 @@
 #
 
 amsfonts
+atbegshi
 babel
 babel-english
 bookman
