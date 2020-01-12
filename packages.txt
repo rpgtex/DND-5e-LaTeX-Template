@@ -29,6 +29,7 @@ courier
 ec
 enumitem
 environ
+epstopdf
 etex-pkg
 etoolbox
 fancyhdr
@@ -47,6 +48,7 @@ l3packages
 latex-fonts
 lettrine
 lm
+luacolor
 microtype
 minifp
 ms
