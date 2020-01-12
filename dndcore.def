@@ -13,7 +13,6 @@
 \RequirePackage {etoolbox}
 \RequirePackage {textcomp,gensymb} % degree symbol for italian ordinals
 \RequirePackage {hang} % hanging paragraphs
-\RequirePackage {ifluatex}
 \RequirePackage {keycommand}
 \RequirePackage [autolanguage] {numprint} % localization of thousands separator
 \RequirePackage {tabularx} % variable-width table columns

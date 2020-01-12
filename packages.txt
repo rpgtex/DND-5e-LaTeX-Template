@@ -19,6 +19,7 @@
 #
 
 amsfonts
+atbegshi
 babel
 babel-english
 bookman
@@ -29,6 +30,7 @@ courier
 ec
 enumitem
 environ
+epstopdf-pkg
 etex-pkg
 etoolbox
 fancyhdr
@@ -37,17 +39,18 @@ fp
 geometry
 gillius
 hang
-ifluatex
-ifxetex
 initials
 keycommand
 kpfonts
+kvsetkeys
 l3backend
 l3kernel
 l3packages
 latex-fonts
 lettrine
 lm
+ltxcmds
+luacolor
 microtype
 minifp
 ms
@@ -55,6 +58,7 @@ numprint
 oberdiek
 pgf
 psnfss
+ragged2e
 tcolorbox
 titlesec
 tocloft
