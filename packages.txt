@@ -48,6 +48,7 @@ l3packages
 latex-fonts
 lettrine
 lm
+ltxcmds
 luacolor
 microtype
 minifp
