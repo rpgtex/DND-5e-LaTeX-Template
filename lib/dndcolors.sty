@@ -41,15 +41,6 @@
 
 % Sets the themecolor and colors for all themed elements
 % If called without the optional color, resets the color of all themed elements to the current themecolor
-% Old interface
-\newcommand{\setthemecolor}[1][themecolor]{%
-  \colorlet{themecolor}{#1}
-  \colorlet{commentcolor}{#1}
-  \colorlet{sidebarcolor}{#1}
-  \colorlet{tablecolor}{#1}
-}
-
-% New interface
 \NewDocumentCommand {\DndSetThemeColor} { O {themecolor} }
   {
     \colorlet {themecolor}   {#1}
@@ -57,14 +48,3 @@
     \colorlet {sidebarcolor} {#1}
     \colorlet {tablecolor}   {#1}
   }
-
-% Backwards-compatible aliases and colours
-\colorlet {commentgreen}  {PhbLightGreen}
-\colorlet {itemtablepink} {DmgCoral}
-\colorlet {monstertan}    {statblockbg}
-\definecolor {monstertandark} {HTML} {F0DBB5}
-
-% Old interface
-\colorlet {commentboxcolor} {commentcolor}
-\colorlet {paperboxcolor}   {sidebarcolor}
-\colorlet {quoteboxcolor}   {readaloudcolor}

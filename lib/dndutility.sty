@@ -5,6 +5,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Matches { # | #d# | #d# + # | #d# - # } while ignoring spaces
 \regex_const:Nn \c__valid_dice_regex { \A\s*(\d+)(?:[dD](\d+)\s*(?:([+\-])\s*(\d+))?)?\s*\Z }
+\regex_const:Nn \c__int_regex { \A[+\-]?\d+\Z }
 
 \seq_new:N \l__dice_args_seq
 \tl_new:N \l__dice_number_tl

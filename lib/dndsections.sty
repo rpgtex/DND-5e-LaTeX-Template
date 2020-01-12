@@ -90,20 +90,9 @@
 
 }
 
-\ExplSyntaxOff
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Special command for magic items, traps, and the like.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Old interface
-\newcommand{\subtitlesection}[2]{%
-  \subsubsection{#1}%
-  \textit{#2}
-  \par\vspace{3pt plus 1pt minus 1pt}\noindent\ignorespaces}
-
-\ExplSyntaxOn
-
-% New interface
 \NewDocumentCommand {\DndItemHeader} { m m }
   {
     \subsubsection {#1}
@@ -140,47 +129,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Map Areas and their References
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\ExplSyntaxOff % Old interface
-
-% Labelling helpers
-\newcommand{\AreaLabel@Prefix}{area}
-\newcommand{\SetAreaLabelPrefix}[1]{%
-\renewcommand{\AreaLabel@Prefix}{#1}}
-
-\newcounter{Area}
-\newcommand\ResetAreas{%
-\setcounter{Area}{0}}
-
-\NewDocumentCommand\area{mo}{%
-  \refstepcounter{Area}%
-  \IfNoValueTF{#2}%
-    {\label{\AreaLabel@Prefix:#1}}%
-    {\label{\AreaLabel@Prefix:#2}}%
-  \subsection{\arabic{Area}. #1}%
-}
-
-% defines sub-areas, like '5a', '5b'
-\newcounter{SubArea}[Area]
-
-\NewDocumentCommand\subarea{mo}{%
-  \refstepcounter{SubArea}%
-  \IfNoValueTF{#2}%
-    {\label{\AreaLabel@Prefix:#1}}%
-    {\label{\AreaLabel@Prefix:#2}}%
-  \subsubsection{\arabic{Area}\alph{SubArea}. #1}%
-}
-
-% sub area references should be '5a', '5b', not '1', '2'
-\renewcommand\p@SubArea{\arabic{Area}}
-\renewcommand\theSubArea{\alph{SubArea}}
-
-\newcounter{DetailArea}[subsection]
-\newcommand{\DetailArea@Prefix}{}
-\newcommand{\SetDetailAreaPrefix}[1]{\renewcommand{\DetailArea@Prefix}
-      {#1--\arabic{DetailArea}\par\expandafter\ignorespaces\noindent}}
-
-\ExplSyntaxOn % New interface
 
 \tl_new:N \l__dnd_area_num_depth_tl
 
@@ -271,5 +219,3 @@
       #2 ~ ( \pageabbreviationname\ \pageref { \l__dnd_region_tl \l__dnd_sub_area_label_tl : #2 } )
     \group_end:
   }
-
-\ExplSyntaxOff
