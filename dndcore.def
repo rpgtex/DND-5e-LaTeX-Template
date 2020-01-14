@@ -18,7 +18,6 @@
 \RequirePackage [breakable,skins,xparse]{tcolorbox} % styled text boxes
 \RequirePackage {tikz} % drawing ornaments and lines
 \RequirePackage {xcolor}
-%\RequirePackage {xkeyval}
 \RequirePackage {xparse} % \NewDocumentCommand and expl3
 
 \sys_if_engine_luatex:T
