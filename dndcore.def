@@ -13,13 +13,11 @@
 \RequirePackage {etoolbox}
 \RequirePackage {textcomp,gensymb} % degree symbol for italian ordinals
 \RequirePackage {hang} % hanging paragraphs
-\RequirePackage {keycommand}
 \RequirePackage [autolanguage] {numprint} % localization of thousands separator
 \RequirePackage {tabularx} % variable-width table columns
 \RequirePackage [breakable,skins,xparse]{tcolorbox} % styled text boxes
 \RequirePackage {tikz} % drawing ornaments and lines
 \RequirePackage {xcolor}
-\RequirePackage {xkeyval}
 \RequirePackage {xparse} % \NewDocumentCommand and expl3
 
 \sys_if_engine_luatex:T
@@ -77,16 +75,16 @@
 \RequirePackage {lib/dndcolors}     % color definitions
 \RequirePackage {lib/dndfonts}      % font definitions
 \RequirePackage {lib/dndstrings}    % Load document strings
-\RequirePackage {lib/dnddeprecated} % Deprecated macros
+
+% Conditionally load deprecated code for backwards compatibility
+\bool_if:NF \l__dnd_no_deprecated_code_bool
+  { \RequirePackage {lib/dnddeprecated} }
 
 % Main modules in alphabetical order
 \RequirePackage {lib/dndcomment}    % inline comment boxes
 \RequirePackage {lib/dndheader}     % fancy headers and footers
-\RequirePackage {lib/dndmonster}    % \monsterbox definition
-\RequirePackage {lib/dndpaperbox}   % \paperbox definition
-\RequirePackage {lib/dndquote}      % \quotebox definition
+\RequirePackage {lib/dndmonster}    % stat blocks
 \RequirePackage {lib/dndreadaloud}  % read-aloud text
-\RequirePackage {lib/dndsections}   % section styling
+\RequirePackage {lib/dndsections}   % section styling and special section headers
 \RequirePackage {lib/dndsidebar}    % sidebars
-\RequirePackage {lib/dndspell}      % \spell definition
-\RequirePackage {lib/dndtable}      % \dndtable definition
+\RequirePackage {lib/dndtable}      % tables

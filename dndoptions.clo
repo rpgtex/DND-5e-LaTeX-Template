@@ -30,6 +30,7 @@
 \bool_new:N \l__dnd_justified_bool
 \bool_new:N \l__dnd_multitoc_bool
 \bool_new:N \l__dnd_layout_bool
+\bool_new:N \l__dnd_no_deprecated_code_bool
 
 \bool_set_true:N \l__dnd_multitoc_bool
 \bool_set_eq:NN \l__dnd_layout_bool \c__dnd_isclass_bool
@@ -66,6 +67,13 @@
         \bool_set_true:N \l__dnd_justified_bool
       },
     justified .value_forbidden:n = true,
+
+    % Suppress deprecated code
+    nodeprecatedcode .code:n =
+      {
+        \bool_set_true:N \l__dnd_no_deprecated_code_bool
+      },
+    nodeprecatedcode .value_forbidden:n = true,
 
     % Avoid multi-column toc
     nomultitoc .code:n =

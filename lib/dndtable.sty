@@ -1,34 +1,10 @@
 \ExplSyntaxOn
 
-% Old interface
-% Table Header
-\newcommand{\header}[1]{%
-  \begingroup%
-  \par\vspace{10pt plus 3 pt minus 3pt}%
-  \noindent%
-  \DndFontTableTitle%
-  #1%
-  \endgroup%
-  }
-
 % Centered Column
 \newcolumntype { Y }
   { > { \centering \arraybackslash } X }
 
-% Table Environment
-\NewDocumentEnvironment{dndtable}{O{XX} O{tablecolor}}{%
-    \par\vspace{2pt plus 1pt minus 1pt}%
-    \noindent%
-    \DndFontTableBody%
-    \setlength{\extrarowheight}{3pt}%
-    \rowcolors{1}{}{#2}%
-    \tabularx{\linewidth}{#1}%
-  }{%
-    \endtabularx%
-    \par\vspace{10pt plus 3 pt minus 3pt}%
-  }
-
-% New interface
+% Table options
 \keys_define:nn { dnd / table }
   {
     color .tl_set:N         = \l__dnd_table_color_tl,
@@ -40,6 +16,7 @@
     width .value_required:n = true,
   }
 
+  % Table Definition
   \NewDocumentEnvironment {DndTable} { o m }
   {
     \group_begin:
