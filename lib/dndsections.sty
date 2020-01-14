@@ -34,7 +34,7 @@
 
 \titlespacing* { \section }
   { 0pt } % left
-  { 1.3ex } % before-sep
+  { 1.3ex plus .43ex } % before-sep
   { 0pt } % after-sep
 
 % Subsection
@@ -47,7 +47,7 @@
 
 \titlespacing*{ \subsection }
   { 0pt } % left
-  { 1.4ex } % before-sep
+  { 1.4ex plus .47ex } % before-sep
   { 1.2ex } % after-sep
 
 % Subsubsection
@@ -59,7 +59,7 @@
 
 \titlespacing* { \subsubsection }
   { 0pt } % left
-  { 2ex } % before-sep
+  { 2ex plus .67ex } % before-sep
   { .2ex } % after-sep
 
 % Paragraph
@@ -93,11 +93,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Special command for magic items, traps, and the like.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NewDocumentCommand {\DndFeatHeader} { m o }
+  {
+    \subsection {#1}
+    \IfValueT{#2}
+      {
+        \textit {#2}
+        \par \vspace{3pt} \noindent \ignorespaces
+      }
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Special command for magic items, traps, and the like.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NewDocumentCommand {\DndItemHeader} { m m }
   {
     \subsubsection {#1}
     \textit {#2}
-    \par \vspace{ 3pt plus 1pt minus 1pt } \noindent \ignorespaces
+    \par \vspace{3pt} \noindent \ignorespaces
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
