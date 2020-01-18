@@ -300,19 +300,17 @@
 % e.g. \stat{12} prints "12 (+1)"
 \cs_new_protected_nopar:Npn \__dnd_ability_score_modifier:N #1
   {
-    \group_begin:
-      \regex_match:NnTF \c__int_regex {#1}
-        {
-          \int_set:Nn \l_tmpa_int { \fp_eval:n { floor ( ( #1 - 10 ) / 2 ) } }
+    \regex_match:NnTF \c__pos_int_regex {#1}
+      {
+        \int_set:Nn \l_tmpa_int { \fp_eval:n { floor ( ( #1 - 10 ) / 2 ) } }
 
-          #1 ~ (
-          \int_compare:nNnTF {\l_tmpa_int} < {0}
-          { -- }
-          {+}
-          \int_abs:n \l_tmpa_int )
-        }
-        {#1}
-    \group_end:
+        #1 ~ (
+        \int_compare:nNnTF {\l_tmpa_int} < {0}
+        { -- }
+        {+}
+        \int_abs:n \l_tmpa_int )
+      }
+      {#1}
   }
 
 \keys_define:nn { dnd / monster / ability_scores }
@@ -356,12 +354,12 @@
       \textbf {\intstatname} &
       \textbf {\wisstatname} &
       \textbf {\chastatname} \\
-      \__dnd_ability_score_modifier:N {\l__str_tl} &
-      \__dnd_ability_score_modifier:N {\l__dex_tl} &
-      \__dnd_ability_score_modifier:N {\l__con_tl} &
-      \__dnd_ability_score_modifier:N {\l__int_tl} &
-      \__dnd_ability_score_modifier:N {\l__wis_tl} &
-      \__dnd_ability_score_modifier:N {\l__cha_tl}
+      \exp_args:NV \__dnd_ability_score_modifier:N \l__str_tl &
+      \exp_args:NV \__dnd_ability_score_modifier:N \l__dex_tl &
+      \exp_args:NV \__dnd_ability_score_modifier:N \l__con_tl &
+      \exp_args:NV \__dnd_ability_score_modifier:N \l__int_tl &
+      \exp_args:NV \__dnd_ability_score_modifier:N \l__wis_tl &
+      \exp_args:NV \__dnd_ability_score_modifier:N \l__cha_tl
     \end{tabularx}
 
     \par \vspace{4pt}%
@@ -421,7 +419,7 @@
   {
     \item
       [
-        \regex_match:NnTF \c__int_regex {#1}
+        \regex_match:NnTF \c__pos_int_regex {#1}
         {
           \str_if_in:NnTF {#2} {,}
           { \__dnd_caption:nn {\numberperdayeachname} {#1} }
