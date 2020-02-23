@@ -1,8 +1,8 @@
 \ExplSyntaxOn % Use tilde (~) for spaces.
 
 % Korean captions
-\addto\captionskorean
-  {
+% \addto\captionskorean HACK: force Korean due to babel and polyglossia error on overleaf
+%   {
     % Monster basics
     \renewcommand\armorclassname{방어도}
     \renewcommand\hitpointsname{히트~포인트}
@@ -70,4 +70,4 @@
 %    % Miscellaneous
     \renewcommand\pageabbreviationname{p}
     \renewcommand\dname{d}
-  }
+%  }
