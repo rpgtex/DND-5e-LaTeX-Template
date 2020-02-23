@@ -5,6 +5,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{lettrine}
 \RequirePackage{Royal}
+\RequirePackage{fontspec}
 
 \bool_if:NT \l__dnd_layout_bool
   {
@@ -18,7 +19,8 @@
 \cs_new_protected:Npn \__dnd_sf_initial_family:
   {
     \bool_if:NTF \l__dnd_layout_bool
-      { \gilliustwo }
+      % { \gilliustwo } this font doesn't support Korean characters
+      { \sffamily }
       { \sffamily }
   }
 
@@ -32,28 +34,28 @@
     chapter-family .initial:n        = \normalfont,
     chapter-family .value_required:n = true,
     chapter-style .tl_set:N         = \l__dnd_chapter_style_tl,
-    chapter-style .initial:n        = \linespread{.9} \color{titlered} \Huge \scshape,
+    chapter-style .initial:n        = \linespread{.9} \color{titlered} \Huge \scshape \bfseries,
     chapter-style .value_required:n = true,
     % Section
     section-family .tl_set:N         = \l__dnd_section_family_tl,
     section-family .initial:n        = \normalfont,
     section-family .value_required:n = true,
     section-style .tl_set:N         = \l__dnd_section_style_tl,
-    section-style .initial:n        = \linespread{.9} \color{titlered} \huge \scshape \RaggedRight,
+    section-style .initial:n        = \linespread{.9} \color{titlered} \huge \scshape \RaggedRight \bfseries,
     section-style .value_required:n = true,
     % Subsection
     subsection-family .tl_set:N         = \l__dnd_subsection_family_tl,
     subsection-family .initial:n        = \normalfont,
     subsection-family .value_required:n = true,
     subsection-style .tl_set:N         = \l__dnd_subsection_style_tl,
-    subsection-style .initial:n        = \linespread{.9} \color{titlered} \Large \scshape \RaggedRight,
+    subsection-style .initial:n        = \linespread{.9} \color{titlered} \Large \scshape \RaggedRight \bfseries,
     subsection-style .value_required:n = true,
     % subsubsection
     subsubsection-family .tl_set:N         = \l__dnd_subsubsection_family_tl,
     subsubsection-family .initial:n        = \normalfont,
     subsubsection-family .value_required:n = true,
     subsubsection-style .tl_set:N         = \l__dnd_subsubsection_style_tl,
-    subsubsection-style .initial:n        = \linespread{.9} \color{titlered} \large \scshape \RaggedRight,
+    subsubsection-style .initial:n        = \linespread{.9} \color{titlered} \large \scshape \RaggedRight \bfseries,
     subsubsection-style .value_required:n = true,
     % paragraph
     paragraph-family .tl_set:N         = \l__dnd_paragraph_family_tl,
@@ -174,6 +176,13 @@
     drop-cap-family .value_required:n = true,
     drop-cap-style .tl_set:N         = \l__dnd_drop_cap_style_tl,
     drop-cap-style .value_required:n = true,
+    % Drop caps Korean
+    drop-cap-korean-family .tl_set:N         = \l__dnd_drop_cap_korean_family_tl,
+    drop-cap-korean-family .initial:n        = \fontspec{NanumMyeongjo},
+    drop-cap-korean-family .value_required:n = true,
+    drop-cap-korean-style .tl_set:N          = \l__dnd_drop_cap_korean_style_tl,
+    drop-cap-korean-style .initial:n         = \bfseries \color{dropkor},
+    drop-cap-korean-style .value_required:n  = true,
   }
 
 \NewDocumentCommand { \DndSetFonts } { o }
@@ -188,7 +197,7 @@
 \NewDocumentCommand{\DndFontChapter}{}
   { \l__dnd_chapter_family_tl \l__dnd_chapter_style_tl }
 
-  \NewDocumentCommand{\DndFontSection}{}
+\NewDocumentCommand{\DndFontSection}{}
   { \l__dnd_section_family_tl \l__dnd_section_style_tl }
 
 \NewDocumentCommand{\DndFontSubsection}{}
@@ -249,6 +258,9 @@
 \NewDocumentCommand{\DndFontDropCap}{}
   { \l__dnd_drop_cap_family_tl \l__dnd_drop_cap_style_tl }
 
+\NewDocumentCommand{\DndFontDropCapKorean}{}
+  { \l__dnd_drop_cap_korean_family_tl \l__dnd_drop_cap_korean_style_tl }
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Drop Caps
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -261,12 +273,35 @@
 %    the lettrine package for options.
 \NewDocumentCommand{\DndDropCapLine}{ O{} m m }
   {
+    \renewcommand{\LettrineFontHook}
+      { \l__dnd_drop_cap_family_tl \l__dnd_drop_cap_style_tl }
     \lettrine[
         lines   = 4,
         depth   = 0,
         findent = \l__dnd_space_dim,
         nindent = 0pt,
         #1
+      ]
+      {#2}
+      {#3}
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Drop Caps Korean
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Usage: DndDropCapLineKorean[<lettrine options>]{<first letter>}{<following letters>}
+%    It takes trial and error to get the 2nd argument to align with
+%    the linebreak. Lettrine package will not play nicely with \FirstLine. See
+%    the lettrine package for options.
+\NewDocumentCommand{\DndDropCapLineKorean}{ O{} m m }
+  {
+    \renewcommand{\LettrineFontHook}
+      { \l__dnd_drop_cap_korean_family_tl \l__dnd_drop_cap_korean_style_tl }
+    \lettrine[
+        lines   = 3,
+        depth   = 0,
+        findent = \l__dnd_space_dim,
+        nindent = 0pt,
       ]
       {#2}
       {#3}

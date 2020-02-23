@@ -1,19 +1,20 @@
 \documentclass[letterpaper,twocolumn,openany,nodeprecatedcode]{dndbook}
 
-% FIXME: babe, polyglossia 패키지에서 korean 사용 시 에러가 발생. issue #1 참고.
-% Use babel or polyglossia to automatically redefine macros for terms
-% Armor Class, Level, etc...
-% Default output is in English; captions are located in lib/dndstring-captions.sty.
-% If no captions exist for a language, English will be used.
-%1. To load a language with babel:
-%	\usepackage[<lang>]{babel}
-%2. To load a language with polyglossia:
-%	\usepackage{polyglossia}
-%	\setdefaultlanguage{<lang>}
-% \usepackage[english]{}
-%\usepackage[italian]{babel}
-% For further options (multilanguage documents, hypenations, language environments...)
-% please refer to babel/polyglossia's documentation.
+% FIXME: babel, polyglossia 패키지에서 korean 사용 시 에러가 발생. issue #1 참고.
+% 해당 이슈 해결 전까지 아래 기능은 사용하지 않음.
+% % Use babel or polyglossia to automatically redefine macros for terms
+% % Armor Class, Level, etc...
+% % Default output is in English; captions are located in lib/dndstring-captions.sty.
+% % If no captions exist for a language, English will be used.
+% %1. To load a language with babel:
+% %	\usepackage[<lang>]{babel}
+% %2. To load a language with polyglossia:
+% %	\usepackage{polyglossia}
+% %	\setdefaultlanguage{<lang>}
+% % \usepackage[english]{}
+% %\usepackage[italian]{babel}
+% % For further options (multilanguage documents, hypenations, language environments...)
+% % please refer to babel/polyglossia's documentation.
 
 % 자간 및 줄간격을 위해 kotex 사용 
 \usepackage[hangul]{kotex}
@@ -57,7 +58,8 @@
 
 \chapter{섹션에 관하여}
 
-\DndDropCapLine{T}{his package is designed to aid you in} writing beautifully typeset documents for the fifth edition of the world's greatest roleplaying game. It starts by adjusting the section formatting from the defaults in \LaTeX{} to something a bit more familiar to the reader. The chapter formatting is displayed above.
+\DndDropCapLineKorean{이}{패키지는} 세계에서 가장 뛰어난 롤플레잉 게임의 5번째 판본을 위한 문서를 아름답게 조판하는 것을 돕기 위해 만들어졌습니다. \LaTeX{} 의 기본 섹션 형식을 독자에게 좀 더 친숙한 형태로 조정하는 것으로 시작하겠습니다. 챕터 형식은 위에 보이는 바와 같습니다.
+
 
 \section{섹션}
 챕터는 관련 있는 글의 모임인 섹션으로 나뉩니다.
@@ -142,7 +144,7 @@
 \section{표}
 |DndTable| 는 짝수 열에 색을 칠하고 줄 길이만큼의 너비를 갖도록 기본 설정되어 있습니다.
 
-\begin{DndTable}[header=좋은 표]{XX}
+\begin{DndTable}[header=멋진 표]{XX}
     \textbf{제목}  & \textbf{제목} \\
     어떤 값  & 어떤 값 \\
     어떤 값  & 어떤 값 \\
@@ -270,7 +272,7 @@
   \caption{}\label{tab:colors}
 
   \begin{DndTable}[width=\linewidth,header=이 패키지가 지원하는 색상]{lX}
-    \textbf{Color}                  & \textbf{Description} \\
+    \textbf{색상}                  & \textbf{설명} \\
     |PhbLightGreen|                 & 플레이어즈 핸드북 1부에 쓰인 밝은 녹색(기본 설정) \\
     |PhbLightCyan|                  & 플레이어즈 핸드북 2부에 쓰인 밝은 청록색 \\
     |PhbMauve|                      & 플레이어즈 핸드북 3부에 쓰인 엷은 보라색 \\
@@ -285,7 +287,7 @@
 이 패키지는 |DndComment|, |DndReadAloud|, |DndSidebar|, 및 |DndTable| 환경에 사용할 수 있는 몇가지 전역 색상 변수를 제공합니다.
 
 \begin{DndTable}[header=Box Colors]{lX}
-  \textbf{Color}   & \textbf{Description} \\
+  \textbf{색상}   & \textbf{설명} \\
   |commentcolor|   & |DndComment| 의 배경색 \\
   |readaloudcolor| & |DndReadAloud| 의 배경색 \\
   |sidebarcolor|   & |DndSidebar| 의 배경색 \\
