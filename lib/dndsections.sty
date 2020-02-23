@@ -1,3 +1,5 @@
+\RequirePackage{fontspec}
+
 \ExplSyntaxOn
 
 \bool_if:NT \l__dnd_layout_bool
@@ -16,7 +18,7 @@
 % Chapter
 \titleformat {\chapter}
   { \DndFontChapter } % format
-  { \chaptertitlename\ \thechapter : } % label
+  { 제 \thechapter 장: } % label
   { \wordsep } % sep
   {} % before-code
 
@@ -204,7 +206,7 @@
     \refstepcounter {DndSubAreaCounter}
     \label { \l__dnd_region_tl \l__dnd_sub_area_label_tl : #1 }
 
-    \tl_set:Nn \l_tmpa_tl { \l__dnd_region_tl \arabic {DndAreaCounter} \alph {DndSubAreaCounter} . ~ #1 }
+    \tl_set:Nn \l_tmpa_tl { \l__dnd_region_tl \arabic {DndAreaCounter} \Alph {DndSubAreaCounter} . ~ #1 }
 
     \str_case_e:nn {\l__dnd_area_num_depth_tl}
       {
