@@ -1,5 +1,6 @@
 \documentclass[letterpaper,twocolumn,openany,nodeprecatedcode]{dndbook}
 
+% FIXME: babe, polyglossia 패키지에서 korean 사용 시 에러가 발생. issue #1 참고.
 % Use babel or polyglossia to automatically redefine macros for terms
 % Armor Class, Level, etc...
 % Default output is in English; captions are located in lib/dndstring-captions.sty.
@@ -9,10 +10,18 @@
 %2. To load a language with polyglossia:
 %	\usepackage{polyglossia}
 %	\setdefaultlanguage{<lang>}
-\usepackage[english]{babel}
+% \usepackage[english]{}
 %\usepackage[italian]{babel}
 % For further options (multilanguage documents, hypenations, language environments...)
 % please refer to babel/polyglossia's documentation.
+
+% 자간 및 줄간격을 위해 kotex 사용 
+\usepackage[hangul]{kotex}
+
+% 한글을 지원하는 폰트 설정
+\usepackage{fontspec}
+\setmainfont{Noto Serif CJK KR}   % 본문에 사용할 세리프 폰트
+\setsansfont{Noto Sans CJK KR}    % 스탯 블록 등에 사용할 산세리프 폰트
 
 \usepackage[utf8]{inputenc}
 \usepackage[singlelinecheck=false]{caption}
@@ -32,9 +41,9 @@
 }
 
 \title{The Dark \LaTeX{} \\
-\large An Example of the dndbook Class}
-\author{The rpgTeX Team}
-\date{2019/07/18}
+\large dndbook 클래스 사용 예제}
+\author{Shoyu Vanilla}
+\date{2020/02/23}
 
 \begin{document}
 
@@ -46,111 +55,112 @@
 
 \mainmatter%
 
-\chapter{Sections}
+\chapter{섹션에 관하여}
 
 \DndDropCapLine{T}{his package is designed to aid you in} writing beautifully typeset documents for the fifth edition of the world's greatest roleplaying game. It starts by adjusting the section formatting from the defaults in \LaTeX{} to something a bit more familiar to the reader. The chapter formatting is displayed above.
 
-\section{Section}
-Sections break up chapters into large groups of associated text.
+\section{섹션}
+챕터는 관련 있는 글의 모임인 섹션으로 나뉩니다.
 
-\subsection{Subsection}
-Subsections further break down the information for the reader.
+\subsection{서브 섹션}
+독자를 위해 정보를 서브 섹션으로 나눌 수 있습니다.
 
-\subsubsection{Subsubsection}
-Subsubsections are the furthest division of text that still have a block header. Below this level, headers are displayed inline.
+\subsubsection{서브 서브 섹션}
+서브 서브 섹션으로도 나눌 수 있습니다. 이 단계까지는 표제가 본문과 따로 표시됩니다. 하위 단계에서는 표제는 본문 안에 표시됩니다.
 
-\paragraph{Paragraph}
-The paragraph format is seldom used in the core books, but is available if you prefer it to the ``normal'' style.
+\paragraph{패러그래프}
+패러그래프는 코어 룰북에서는 거의 쓰이지 않지만 ''일반적인'' 스타일을 선호한다면 사용할 수 있습니다.
 
-\subparagraph{Subparagraph}
-The subparagraph format with the paragraph indent is likely going to be more familiar to the reader.
+\subparagraph{서브 패러그래프}
+들여쓰기가 있는 서브 패러그래프 형식은 독자에겐 더 익숙할 겁니다.
 
-\section{Special Sections}
-The module also includes functions to aid in the proper typesetting of multi-line section headers: |\DndFeatHeader| for feats, |\DndItemHeader| magic items and traps, and |\DndSpellHeader| for spells.
+\section{특수 섹션}
+이 모듈에는 여러 줄로 된 섹션 표제 조판에 도움이 될 만한 함수도 들어 있습니다. 재주(feat)를 위한 |\DndFeatHeader|, 마법 아이템과 함정을 위한 |\DndItemHeader|, 주문을 위한 |\DndSpellHeader| 가 있습니다.
 
-\DndFeatHeader{Typesetting Savant}[Prerequisite: \LaTeX{} distribution]
-You have acquired a package which aids in typesetting source material for one of your favorite games. You have advantage on Intelligence checks to typeset new content. On a failed check, you can ask questions online at the package's website.
+\DndFeatHeader{조판의 종복}[선결조건: \LaTeX{} 배포판]
+당신은 당신이 가장 좋아하는 게임 중 하나의 자료를 조판하는 것을 돕는 패키지를 획득했습니다. 당신은 새로운 컨텐츠를 조판할 때 지능 굴림에 이점을 얻습니다. 지능 굴림에 실패할 경우 패키지 웹사이트에 문의할 수 있습니다.
 
-\DndItemHeader{Foo's Quill}{Wondrous item, rare}
-This quill has 3 charges. While holding it, you can use an action to expend 1 of its charges. The quill leaps from your hand and writes a contract applicable to your situation.
+\DndItemHeader{철수의 깃펜}{기타 물건, 희귀 등급}
 
-The quill regains 1d3 expended charges daily at dawn.
+이 깃펜은 3회 충전되어 있습니다. 당신은 이 깃펜을 들고 행동을 사용해 이 깃펜의 충전 1회를 소모할 수 있습니다. 깃펜은 손에서 뛰어올라 당신이 처한 상황에 적용 가능한 계약서를 작성합니다.
+
+이 깃펜은 매일 새벽 1d3회의 힘을 재충전합니다.
 
 \DndSpellHeader%
-  {Beautiful Typesetting}
-  {4th-level illusion}
-  {1 action}
-  {5 feet}
-  {S, M (ink and parchment, which the spell consumes)}
-  {Until dispelled}
-You are able to transform a written message of any length into a beautiful scroll. All creatures within range that can see the scroll must make a wisdom saving throw or be charmed by you until the spell ends.
+  {아름다운 조판}
+  {4레벨 환영계}
+  {1 행동}
+  {5 ft}
+  {동작, 물질 (잉크, 양피지. 주문 시전시 소모됨.)}
+  {무효화될 때까지}
+당신은 얼마나 긴 문구든 아름다운 두루마리로 변환할 수 있습니다. 당신이 볼 수 있는 범위 안의 모든 크리쳐는 지혜 내성을 굴려야 하며 실패 시 주문의 효과가 종료될 때까지 당신에게 매혹당한 상태가 됩니다.
 
-While the creature is charmed by you, they cannot take their eyes off the scroll and cannot willingly move away from the scroll. Also, the targets can make a wisdom saving throw at the end of each of their turns. On a success, they are no longer charmed.
+당신에게 매혹된 동안 크리쳐는 두루마리에서 눈을 뗄 수 없고 자신의 의지로 두루마리로부터 떠날 수 없습니다. 크리쳐는 자신의 차례가 끝날 때마다 지혜 내성 굴림을 합니다. 내성 굴림에 성공할 경우 매혹은 풀리게 됩니다.
 
-\section{Map Regions}
-The map region functions |\DndArea| and |\DndSubArea| provide automatic numbering of areas.
+\section{지도 구역}
+지도 구역 함수 |\DndArea| 와 |\DndSubArea| 는 지역에 자동으로 번호를 붙입니다.
 
-\DndArea{Village of Hommlet}
-This is the village of hommlet.
+\DndArea{홈릿 마을}
+이곳은 홈릿 마을입니다.
 
-\DndSubArea{Inn of the Welcome Wench}
-Inside the village is the inn of the Welcome Wench.
+\DndSubArea{환영하는 여자 여관}
+마을에는 환영하는 여자 여관이 있습니다.
 
-\DndSubArea{Blacksmith's Forge}
-There's a blacksmith in town, too.
+\DndSubArea{대장장이의 대장간}
+마을에는 대장장이도 있습니다.
 
-\DndArea{Foo's Castle}
-This is foo's home, a hovel of mud and sticks.
+\DndArea{철수의 성}
+이곳은 철수의 집으로, 진흙과 나뭇가지로 된 오두막입니다.
 
-\DndSubArea{Moat}
-This ditch has a board spanning it.
+\DndSubArea{해자}
+이 도랑에는 널빤지가 가로놓여 있습니다.
 
-\DndSubArea{Entrance}
-A five-foot hole reveals the dirt floor illuminated by a hole in the roof.
+\DndSubArea{입구}
+5 피트 너비의 구멍으로 흙바닥이 보입니다. 바닥은 지붕에 난 구멍으로부터 빛을 받고 있습니다.
 
-\chapter{Text Boxes}
+\chapter{텍스트 박스}
 
-The module has three environments for setting text apart so that it is drawn to the reader's attention. |DndReadAloud| is used for text that a game master would read aloud.
+이 모듈은 독자의 주의를 끌기 위해 글을 따로 분리할 세 가지 환경을 제공합니다. |DndReadAloud| 는 마스터가 읽어줄 글에 사용합니다.
 
 \begin{DndReadAloud}
-  As you approach this module you get a sense that the blood and tears of many generations went into its making. A warm feeling welcomes you as you type your first words.
+  여러분이 이 모듈에 다가가자 모듈을 만들기 위해 수세대에 걸친 피와 눈물이 들어갔다는 느낌이 듭니다. 여러분이 첫 단어를 입력하자 따스한 기분이 여러분을 반깁니다. 
 \end{DndReadAloud}
 
-\section{As an Aside}
-The other two environments are the |DndComment| and the |DndSidebar|. The |DndComment| is breakable and can safely be used inline in the text.
+\section{그나저나}
+나머지 두 환경은 |DndComment| 와 |DndSidebar| 입니다. |DndComment| 는 분리 가능하며 본문 안에 들어가도 안전합니다.
 
-\begin{DndComment}{This Is a Comment Box!}
-  A |DndComment| is a box for minimal highlighting of text. It lacks the ornamentation of |DndSidebar|, but it can handle being broken over a column.
+\begin{DndComment}{이것은 코멘트 박스입니다!}
+  |DndComment| 는 글을 강조하는 간단한 박스입니다. |DndSidebar| 에 있는 장식은 없지만 단에 의한 분리를 처리할 수 있습니다.
 \end{DndComment}
 
-The |DndSidebar| is not breakable and is best used floated toward a page corner as it is below.
+|DndSidebar| 는 분리 불가능하고 아래와 같이 페이지 구석에 띄우는 것이 가장 좋습니다.
 
-\begin{DndSidebar}[float=!b]{Behold the DndSidebar!}
-  The |DndSidebar| is used as a sidebar. It does not break over columns and is best used with a figure environment to float it to one corner of the page where the surrounding text can then flow around it.
+\begin{DndSidebar}[float=!b]{DndSidebar를 보라!}
+  |DndSidebar| 는 사이드바로 쓰입니다. 단에 의해 나뉘지 않으며, 페이지 구석에서 그림 환경을 띄우고 주변 본문이 그 주위로 배치될 때 가장 좋습니다.
 \end{DndSidebar}
 
-\section{Tables}
-The |DndTable| colors the even rows and is set to the width of a line by default.
+\section{표}
+|DndTable| 는 짝수 열에 색을 칠하고 줄 길이만큼의 너비를 갖도록 기본 설정되어 있습니다.
 
-\begin{DndTable}[header=Nice Table]{XX}
-    \textbf{Table head}  & \textbf{Table head} \\
-    Some value  & Some value \\
-    Some value  & Some value \\
-    Some value  & Some value
+\begin{DndTable}[header=좋은 표]{XX}
+    \textbf{제목}  & \textbf{제목} \\
+    어떤 값  & 어떤 값 \\
+    어떤 값  & 어떤 값 \\
+    어떤 값  & 어떤 값
 \end{DndTable}
 
-\chapter{Monsters and NPCs}
+\chapter{몬스터와 NPC}
 
 % Monster stat block
-\begin{DndMonster}[float*=b,width=\textwidth + 8pt]{Monster Foo}
+\begin{DndMonster}[float*=b,width=\textwidth + 8pt]{몬스터 철수}
   \begin{multicols}{2}
-    \DndMonsterType{Medium aberration (metasyntactic variable), neutral evil}
+    \DndMonsterType{중형 기괴체 (메타 문법 변수), 중립 악}
 
     % If you want to use commas in the key values, enclose the values in braces.
     \DndMonsterBasics[
-        armor-class = {9 (12 with \emph{mage armor})},
+        armor-class = {9 (\emph{마법 갑주Mage Armor} 사용 시 12)},
         hit-points  = {\DndDice{3d8 + 3}},
-        speed       = {30 ft., fly 30 ft.},
+        speed       = {30ft, 비행 30ft},
       ]
 
     \DndMonsterAbilityScores[
@@ -169,33 +179,33 @@ The |DndTable| colors the even rows and is set to the width of a line by default
         %damage-resistances = {bludgeoning, piercing, and slashing from nonmagical attacks},
         %damage-immunities = {poison},
         %condition-immunities = {poisoned},
-        senses = {darkvision 60 ft., passive Perception 10},
-        languages = {Common, Goblin, Undercommon},
+        senses = {암시야 60ft, 상시 감지 10},
+        languages = {공용어, 고블린어, 지하 공용어},
         challenge = 1,
       ]
     % Traits
-    \DndMonsterAction{Innate Spellcasting}
-    Foo's spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It can innately cast the following spells, requiring no material components:
+    \DndMonsterAction{선천적 주문시전}
+    철수의 선천적 주문시전 능력치는 매력입니다.(주문 내성 DC 12, 주문 명중 +4) 철수는 어떤 구성요소도 사용하지 않고 아래 주문들을 선천적으로 시전할 수 있습니다.
     \begin{DndMonsterSpells}
-      \DndInnateSpellLevel{misty step}
-      \DndInnateSpellLevel[3]{fog cloud, rope trick}
-      \DndInnateSpellLevel[1]{identify}
+      \DndInnateSpellLevel{안개 걸음Misty Step}
+      \DndInnateSpellLevel[3]{안개 구름Fog Cloud, 로프 속임수Rope Trick}
+      \DndInnateSpellLevel[1]{식별Identify}
     \end{DndMonsterSpells}
 
-    \DndMonsterAction{Spellcasting}
-    Foo is a 2nd-level spellcaster. Its spellcasting ability is Charisma (spell save DC 12, +4 to hit with spell attacks). It has the following sorcerer spells prepared:
+    \DndMonsterAction{주문시전}
+    철수는 2레벨 주문시전자입니다. 철수의 주문시전 능력치는 매력입니다.(주문 내성 DC 12, 주문 명중 +4) 철수는 아래와 같은 소서러 주문들을 준비하고 있습니다.
     \begin{DndMonsterSpells}
-      \DndMonsterSpellLevel{blade ward, fire bolt, light, shocking grasp}
-      \DndMonsterSpellLevel[1][3]{burning hands, mage armor, shield}
+      \DndMonsterSpellLevel{도검 방비Blade Ward, 화염 화살Fire Bolt, 빛Light, 전격의 손아귀Shocking Grasp}
+      \DndMonsterSpellLevel[1][3]{타오르는 손길Burning Hands, 마법 갑주Mage Armor, 방패Shield}
     \end{DndMonsterSpells}
 
-    \DndMonsterSection{Actions}
-    \DndMonsterAction{Multiattack}
-    The foo makes two melee attacks.
+    \DndMonsterSection{행동}
+    \DndMonsterAction{다중공격}
+    철수는 근접 공격을 2회 가합니다.
 
     %Default values are shown commented out
     \DndMonsterAttack[
-      name=Dagger,
+      name=단검,
       %distance=both, % valid options are in the set {both,melee,ranged},
       %type=weapon, %valid options are in the set {weapon,spell}
       mod=+3,
@@ -203,7 +213,7 @@ The |DndTable| colors the even rows and is set to the width of a line by default
       %range=20/60,
       %targets=one target,
       dmg=\DndDice{1d4+1},
-      dmg-type=piercing,
+      dmg-type=관통,
       %plus-dmg=,
       %plus-dmg-type=,
       %or-dmg=,
@@ -213,76 +223,76 @@ The |DndTable| colors the even rows and is set to the width of a line by default
 
     %\DndMonsterMelee calls \DndMonsterAttack with the melee option
     \DndMonsterMelee[
-      name=Flame Tongue Longsword,
+      name=불꽃 혓바닥 장검,
       mod=+3,
       %reach=5,
       %targets=one target,
       dmg=\DndDice{1d8+1},
-      dmg-type=slashing,
+      dmg-type=참격,
       plus-dmg=\DndDice{2d6},
-      plus-dmg-type=fire,
+      plus-dmg-type=화염,
       or-dmg=\DndDice{1d10+1},
-      or-dmg-when=if used with two hands,
+      or-dmg-when=양 손으로 근접 공격을 했을 때는
       %extra=,
     ]
 
     %\DndMonsterRanged calls \DndMonsterAttack with the ranged option
     \DndMonsterRanged[
-      name=Assassin's Light Crossbow,
+      name=암살자의 경석궁,
       mod=+1,
       range=80/320,
       dmg=\DndDice{1d8},
-      dmg-type=piercing,
+      dmg-type=관통,
       %plus-dmg=,
       %plus-dmg-type=,
       %or-dmg=,
       %or-dmg-when=,
-      extra={, and the target must make a DC 15 Constitution saving throw, taking 24 (7d6) poison damage on a failed save, or half as much damage on a successful one}
+      extra={, 목표는 DC 15의 건강 내성 굴림에 실패할 시 24(7d6)점의 독성 피해를 받습니다. 내성에 실패하면 피해가 절반으로 줄어듭니다.}
     ]
 
     % Legendary Actions
-    \DndMonsterSection{Legendary Actions}
-    The foo can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The foo regains spent legendary actions at the start of its turn.
+    \DndMonsterSection{전설적 행동}
+    철수는 아래 선택지 중에서 3회의 전설적 행동을 취할 수 있습니다. 한번에 오직 하나의 전설적 행동만 할 수 있으며, 다른 크리쳐의 턴이 끝날 때만 전설적 행동을 취할 수 있습니다. 철소는 자기 턴이 시작할 때 소비한 모든 전설적 행동을 회복합니다.
 
     \begin{DndMonsterLegendaryActions}
-      \DndMonsterLegendaryAction{Move}{The foo moves up to its speed.}
-      \DndMonsterLegendaryAction{Dagger Attack}{The foo makes a dagger attack.}
-      \DndMonsterLegendaryAction{Create Contract (Costs 3 Actions)}{The foo presents a contract in a language it knows and waves it in the face of a creature within 10 feet. The creature must make a DC 10 Intelligence saving throw. On a failure, the creature is incapacitated until the start of the foo's next turn. A creature who cannot read the language in which the contract is written has advantage on this saving throw.}
+      \DndMonsterLegendaryAction{이동}{철수는 자신의 이동 속도만큼 이동합니다.}
+      \DndMonsterLegendaryAction{단검 공격}{철수는 단검으로 공격을 가합니다.}
+      \DndMonsterLegendaryAction{계약서 작성(행동 3회 소모)}{철수는 자신이 알고 있는 언어로 된 계약서를 10ft 이내의 크리쳐의 얼굴 앞에 내밀어 흔듭니다. 목표가 된 크리쳐는 DC 10의 지능 내성 굴림을 해야 합니다. 실패 시 크리쳐는 철수의 다음 턴이 시작할 때까지 행동불능 상태가 됩니다. 계약서에 적힌 언어를 읽지 못하는 크리쳐는 내성 굴림에 이점을 받습니다.}
     \end{DndMonsterLegendaryActions}
   \end{multicols}
 \end{DndMonster}
 
-The |DndMonster| environment is used to typeset monster and NPC stat blocks. The module supplies many functions to easily typeset the contents of the stat block
+|DndMonster| 환경은 몬스터와 NPC 스탯 블록을 조판하는 용도입니다. 이 모듈은 스탯 블록 컨텐츠를 쉽게 조판할 수 있는 여러 함수를 제공합니다.
 
-\chapter{Colors}
+\chapter{색상}
 
 \begin{table*}[b]%
   \caption{}\label{tab:colors}
 
-  \begin{DndTable}[width=\linewidth,header=Colors Supported by This Package]{lX}
+  \begin{DndTable}[width=\linewidth,header=이 패키지가 지원하는 색상]{lX}
     \textbf{Color}                  & \textbf{Description} \\
-    |PhbLightGreen|                 & Light green used in PHB Part 1 (Default) \\
-    |PhbLightCyan|                  & Light cyan used in PHB Part 2 \\
-    |PhbMauve|                      & Pale purple used in PHB Part 3 \\
-    |PhbTan|                        & Light brown used in PHB appendix \\
-    |DmgLavender|                   & Pale purple used in DMG Part 1 \\
-    |DmgCoral|                      & Orange-pink used in DMG Part 2 \\
-    |DmgSlateGray| (|DmgSlateGrey|) & Blue-gray used in PHB Part 3 \\
-    |DmgLilac|                      & Purple-gray used in DMG appendix \\
+    |PhbLightGreen|                 & 플레이어즈 핸드북 1부에 쓰인 밝은 녹색(기본 설정) \\
+    |PhbLightCyan|                  & 플레이어즈 핸드북 2부에 쓰인 밝은 청록색 \\
+    |PhbMauve|                      & 플레이어즈 핸드북 3부에 쓰인 엷은 보라색 \\
+    |PhbTan|                        & 플레이어즈 핸드북 부록에 쓰인 밝은 갈색 \\
+    |DmgLavender|                   & 던전 마스터즈 가이드 1부에 쓰인 엷은 보라색 \\
+    |DmgCoral|                      & 던전 마스터즈 가이드 2부에 쓰인 코럴색 \\
+    |DmgSlateGray| (|DmgSlateGrey|) & 던전 마스터즈 가이드 3부에 쓰인 청회색 \\
+    |DmgLilac|                      & 던전 마스터즈 가이드 부록에 쓰인 자회색 \\
   \end{DndTable}
 \end{table*}
 
-This package provides several global color variables to style |DndComment|, |DndReadAloud|, |DndSidebar|, and |DndTable| environments.
+이 패키지는 |DndComment|, |DndReadAloud|, |DndSidebar|, 및 |DndTable| 환경에 사용할 수 있는 몇가지 전역 색상 변수를 제공합니다.
 
 \begin{DndTable}[header=Box Colors]{lX}
   \textbf{Color}   & \textbf{Description} \\
-  |commentcolor|   & |DndComment| background \\
-  |readaloudcolor| & |DndReadAloud| background \\
-  |sidebarcolor|   & |DndSidebar| background \\
-  |tablecolor|     & background of even |DndTable| rows \\
+  |commentcolor|   & |DndComment| 의 배경색 \\
+  |readaloudcolor| & |DndReadAloud| 의 배경색 \\
+  |sidebarcolor|   & |DndSidebar| 의 배경색 \\
+  |tablecolor|     & |DndTable| 의 배경색 및 열 색상 \\
 \end{DndTable}
 
-They also accept an optional color argument to set the color for a single instance. See Table~\ref{tab:colors} for a list of core book accent colors.
+선택적 전달인자를 통해 한 곳에서만 색상을 설정하는 것도 가능합니다. 코어 룰북 강조 색상에 관해서는 표~\ref{tab:colors}를 참고하십시오.
 
 \begin{lstlisting}
 \begin{DndTable}[color=PhbLightCyan]{cX}
@@ -308,8 +318,8 @@ They also accept an optional color argument to set the color for a single instan
   8 & Tarnished silver locket \\
 \end{DndTable}
 
-\section{Themed Colors}
-Use |\DndSetThemeColor[<color>]| to set |commentcolor|, |readaloudcolor|, |sidebarcolor|, and |tablecolor| to a specific color. Calling |\DndSetThemeColor| without an argument sets those colors to the current |themecolor|. In the following example the group limits the change to just a few boxes; after the group finishes, the colors are reverted to what they were before the group started.
+\section{테마 색상}
+|commentcolor|, |readaloudcolor|, |sidebarcolor|, 및 |tablecolor| 를 특정한 색상으로 설정하려면 |\DndSetThemeColor[<color>]| 를 사용하십시오. 전달인자 없이 |\DndSetThemeColor| 를 호출하면 이 색상들이 현재 |themecolor| 가 되도록 설정합니다. 다음 예시에서는 그룹을 통해 몇 개의 박스에만 변경을 제한하는 방법을 소개합니다. 그룹이 끝나는 지점에서 색상은 그룹이 시작하기 전으로 복구됩니다.
 
 \begin{lstlisting}
 \begingroup
