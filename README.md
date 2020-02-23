@@ -3,6 +3,8 @@
 [DnD 5e Latex Template](https://github.com/rpgtex/DND-5e-LaTeX-Template)의 한국어 포크입니다.
 TRPG Club의 [D&D 5판 번역](https://www.dndkr.com/support)과 일관성을 맞추려 노력했습니다. 
 
+<img src="scrot.png" alt="preview" width="442">
+
 ## 왜 원본과 따로 배포하나요?
 
 여기서 작업한 것을 원본 프로젝트에 풀 리퀘스트를 통해 반영하는 것이 이상적이긴 합니다.
