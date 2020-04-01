@@ -88,4 +88,4 @@
 \RequirePackage {lib/dndsections}   % section styling and special section headers
 \RequirePackage {lib/dndsidebar}    % sidebars
 \RequirePackage {lib/dndtable}      % tables
-\RequirePackage {lib/dndtoc}
+\RequirePackage {lib/dndtoc}        % table of contents
