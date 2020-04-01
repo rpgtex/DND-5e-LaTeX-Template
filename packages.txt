@@ -61,6 +61,7 @@ psnfss
 ragged2e
 tcolorbox
 titlesec
+titletoc
 tocloft
 tools
 trimspaces
