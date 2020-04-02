@@ -1,7 +1,8 @@
 \RequirePackage{titletoc, xcolor}
+\RequirePackage[hidelinks, linktoc=all]{hyperref}
 \setcounter{tocdepth}{1}
 \renewcommand{\thechapter}{Ch.\arabic{chapter}:}
 \renewcommand{\thepart}{Part \arabic{part}:}
-\titlecontents{part}[0pt]{\fontsize{15}{5}\scshape\selectfont\color{titlered}}{}{}{\linebreak\textcolor{titlegold}{\titlerule[1pt]}}
-\dottedcontents{chapter}[0pt]{\large\scshape\color{titlered}}{6ex}{5pt}
+\titlecontents{part}[1pt]{\fontsize{15}{5}\scshape\selectfont\color{titlered}}{}{}{\linebreak\textcolor{titlegold}{\titlerule[1pt]}}
+\dottedcontents{chapter}[7ex]{\large\scshape\color{titlered}}{6ex}{5pt}
 \dottedcontents{section}[0pt]{}{0pt}{3pt}

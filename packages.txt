@@ -39,6 +39,7 @@ fp
 geometry
 gillius
 hang
+hyperref
 initials
 keycommand
 kpfonts
