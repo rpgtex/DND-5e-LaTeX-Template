@@ -1,5 +1,12 @@
 \ExplSyntaxOn
 
+\RequirePackage{contour}
+
+\contourlength{0.02em}
+
+% Change part numbering to Arabic numbers from Roman numerals
+\renewcommand{\thepart}{\arabic{part}}
+
 \bool_if:NT \l__dnd_layout_bool
 {
 % Set spacing around floats
@@ -13,6 +20,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Section formatting
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Part
+\titleformat {\part}
+  [block]
+  { \centering \DndFontPart } % format
+  { \contour{lightgray}{\partname\ \thepart}\break } % label
+  {2ex} % sep
+  {\contour{lightgray}} % before-code
+  
 % Chapter
 \titleformat {\chapter}
   { \DndFontChapter } % format
@@ -87,8 +102,8 @@
   {\parindent} % left
   {\parskip}   % before-sep
   {\wordsep}   % after-sep
-
-}
+  
+  }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Special command for magic items, traps, and the like.

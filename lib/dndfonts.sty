@@ -27,6 +27,13 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Sectioning commands
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Part
+    part-family .tl_set:N         = \l__dnd_part_family_tl,
+    part-family .initial:n        = \normalfont,
+    part-family .value_required:n = true,
+    part-style .tl_set:N         = \l__dnd_part_style_tl,
+    part-style .initial:n        = \color{titlered} \Huge \scshape,
+    part-style .value_required:n = true,
     % Chapter
     chapter-family .tl_set:N         = \l__dnd_chapter_family_tl,
     chapter-family .initial:n        = \normalfont,
@@ -128,6 +135,30 @@
     readaloud-style .initial:n        = \small,
     readaloud-style .value_required:n = true,
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Table of Contents
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Part
+    part-toc-family .tl_set:N         = \l__dnd_part_toc_family_tl,
+    part-toc-family .initial:n        = \normalfont,
+    part-toc-family .value_required:n = true,
+    part-toc-style .tl_set:N         = \l__dnd_part_toc_style_tl,
+    part-toc-style .initial:n        = \Large \scshape \color{titlered},
+    part-toc-style .value_required:n = true,
+    % Chapter
+    chapter-toc-family .tl_set:N         = \l__dnd_chapter_toc_family_tl,
+    chapter-toc-family .initial:n        = \normalfont,
+    chapter-toc-family .value_required:n = true,
+    chapter-toc-style .tl_set:N         = \l__dnd_chapter_toc_style_tl,
+    chapter-toc-style .initial:n        = \large \scshape \color{titlered},
+    chapter-toc-style .value_required:n = true,
+    % Section
+    section-toc-family .tl_set:N         = \l__dnd_section_toc_family_tl,
+    section-toc-family .initial:n        = \normalfont,
+    section-toc-family .value_required:n = true,
+    section-toc-style .tl_set:N         = \l__dnd_section_toc_style_tl,
+    section-toc-style .initial:n        = \normalsize,
+    section-toc-style .value_required:n = true,
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Stat blocks
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Stat block title
@@ -185,10 +216,13 @@
 % Font access functions combine the selected family and style
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Sectioning commands
+\NewDocumentCommand{\DndFontPart}{}
+  { \l__dnd_part_family_tl \l__dnd_part_style_tl}
+
 \NewDocumentCommand{\DndFontChapter}{}
   { \l__dnd_chapter_family_tl \l__dnd_chapter_style_tl }
 
-  \NewDocumentCommand{\DndFontSection}{}
+\NewDocumentCommand{\DndFontSection}{}
   { \l__dnd_section_family_tl \l__dnd_section_style_tl }
 
 \NewDocumentCommand{\DndFontSubsection}{}
@@ -214,7 +248,6 @@
 \NewDocumentCommand{\DndFontCommentTitle}{}
   { \l__dnd_comment_title_family_tl \l__dnd_comment_title_style_tl }
 
-
 \NewDocumentCommand{\DndFontCommentBody}{}
   { \l__dnd_comment_body_family_tl \l__dnd_comment_body_style_tl }
 
@@ -228,6 +261,16 @@
 % Read-aloud boxes
 \NewDocumentCommand{\DndFontReadAloud}{}
   { \l__dnd_readaloud_family_tl \l__dnd_readaloud_style_tl }
+  
+% Table of Contents
+\NewDocumentCommand{\DndFontTocPart}{}
+  { \l__dnd_part_toc_family_tl \l__dnd_part_toc_style_tl}
+  
+\NewDocumentCommand{\DndFontTocChapter}{}
+  { \l__dnd_chapter_toc_family_tl \l__dnd_chapter_toc_style_tl}
+  
+\NewDocumentCommand{\DndFontTocSection}{}
+  { \l__dnd_section_toc_family_tl \l__dnd_section_toc_style_tl}
 
 % Stat blocks
 \NewDocumentCommand{\DndFontStatBlockTitle}{}

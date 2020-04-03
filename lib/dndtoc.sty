@@ -1,7 +1,27 @@
+\ExplSyntaxOn
 \RequirePackage{titletoc}
-\RequirePackage[newparttoc]{}
+
+% Makes the TOC go to section depth
 \setcounter{tocdepth}{1}
-\renewcommand{\thepart}{\arabic{part}}
-\titlecontents{part}[0pt]{\hfill\break\hfill\break\fontsize{15}{5}\scshape\selectfont\color{titlered}}{}{Part }{\linebreak\textcolor{titlegold}{\titlerule[1pt]}}
-\dottedcontents{chapter}[0ex]{\large\scshape\color{titlered}Ch.\hspace{4ex}}{4ex}{5pt}
-\dottedcontents{section}[0pt]{}{0pt}{3pt}
+
+\titlecontents{part}
+  [0pt] % left
+  {\DndFontTocPart} % above-code
+  {\partname\ \thecontentslabel :~ } % numbered-entry-format
+  {} % numberless-entry-format
+  {} % filler-page-format
+  [ \vspace{-.3ex} \titleline{ \color{titlegold} \titlerule[1pt] }\vspace{.3ex} ] % below-code
+  
+\titlecontents{chapter}
+  [0pt] % left
+  {\DndFontTocChapter} % above-code
+  {Ch.\ \thecontentslabel :~ } % numbered-entry-format
+  {} % numberless-entry-format
+  {\titlerule*[5pt]{.}\contentspage} % filler-page-format
+  
+\titlecontents{section}
+  [0pt] % left
+  {\DndFontTocSection} % above-code
+  {\thecontentslabel :~ } % numbered-entry-format
+  {} % numberless-entry-format
+  {\titlerule*[3pt]{.}\contentspage} % filler-page-format
