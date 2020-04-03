@@ -138,26 +138,26 @@
     % Table of Contents
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Part
-    part-toc-family .tl_set:N         = \l__dnd_part_toc_family_tl,
-    part-toc-family .initial:n        = \normalfont,
-    part-toc-family .value_required:n = true,
-    part-toc-style .tl_set:N         = \l__dnd_part_toc_style_tl,
-    part-toc-style .initial:n        = \Large \scshape \color{titlered},
-    part-toc-style .value_required:n = true,
+    toc-part-family .tl_set:N         = \l__dnd_toc_part_family_tl,
+    toc-part-family .initial:n        = \normalfont,
+    toc-part-family .value_required:n = true,
+    toc-part-style .tl_set:N         = \l__dnd_toc_part_style_tl,
+    toc-part-style .initial:n        = \Large \scshape \color{titlered},
+    toc-part-style .value_required:n = true,
     % Chapter
-    chapter-toc-family .tl_set:N         = \l__dnd_chapter_toc_family_tl,
-    chapter-toc-family .initial:n        = \normalfont,
-    chapter-toc-family .value_required:n = true,
-    chapter-toc-style .tl_set:N         = \l__dnd_chapter_toc_style_tl,
-    chapter-toc-style .initial:n        = \large \scshape \color{titlered},
-    chapter-toc-style .value_required:n = true,
+    toc-chapter-family .tl_set:N         = \l__dnd_toc_chapter_family_tl,
+    toc-chapter-family .initial:n        = \normalfont,
+    toc-chapter-family .value_required:n = true,
+    toc-chapter-style .tl_set:N         = \l__dnd_toc_chapter_style_tl,
+    toc-chapter-style .initial:n        = \large \scshape \color{titlered},
+    toc-chapter-style .value_required:n = true,
     % Section
-    section-toc-family .tl_set:N         = \l__dnd_section_toc_family_tl,
-    section-toc-family .initial:n        = \normalfont,
-    section-toc-family .value_required:n = true,
-    section-toc-style .tl_set:N         = \l__dnd_section_toc_style_tl,
-    section-toc-style .initial:n        = \normalsize,
-    section-toc-style .value_required:n = true,
+    toc-section-family .tl_set:N         = \l__dnd_toc_section_family_tl,
+    toc-section-family .initial:n        = \normalfont,
+    toc-section-family .value_required:n = true,
+    toc-section-style .tl_set:N         = \l__dnd_toc_section_style_tl,
+    toc-section-style .initial:n        = \normalsize,
+    toc-section-style .value_required:n = true,
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Stat blocks
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -264,13 +264,13 @@
 
 % Table of Contents
 \NewDocumentCommand{\DndFontTocPart}{}
-  { \l__dnd_part_toc_family_tl \l__dnd_part_toc_style_tl}
+  { \l__dnd_toc_part_family_tl \l__dnd_toc_part_style_tl}
 
 \NewDocumentCommand{\DndFontTocChapter}{}
-  { \l__dnd_chapter_toc_family_tl \l__dnd_chapter_toc_style_tl}
+  { \l__dnd_toc_chapter_family_tl \l__dnd_toc_chapter_style_tl}
 
 \NewDocumentCommand{\DndFontTocSection}{}
-  { \l__dnd_section_toc_family_tl \l__dnd_section_toc_style_tl}
+  { \l__dnd_toc_section_family_tl \l__dnd_toc_section_style_tl}
 
 % Stat blocks
 \NewDocumentCommand{\DndFontStatBlockTitle}{}

@@ -1,14 +1,12 @@
 \ExplSyntaxOn
 
+\bool_if:NT \l__dnd_layout_bool
+{
 \RequirePackage{contour}
-
-\contourlength{0.02em}
 
 % Change part numbering to Arabic numbers from Roman numerals
 \renewcommand{\thepart}{\arabic{part}}
 
-\bool_if:NT \l__dnd_layout_bool
-{
 % Set spacing around floats
 \setlength{\textfloatsep}{11pt plus 4pt minus 4pt}
 \setlength{\intextsep}{11pt plus 4pt minus 4pt}
@@ -22,9 +20,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Part
 \titleformat {\part}
-  [block]
+  [display]
   { \centering \DndFontPart } % format
-  { \contour{lightgray}{\partname\ \thepart}\break } % label
+  { \contourlength{0.02em} \contour{lightgray}{\partname\ \thepart} } % label
   {2ex} % sep
   {\contour{lightgray}} % before-code
 
@@ -103,7 +101,7 @@
   {\parskip}   % before-sep
   {\wordsep}   % after-sep
 
-  }
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Special command for magic items, traps, and the like.
