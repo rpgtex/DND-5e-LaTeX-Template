@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 * `\DndSetFonts` allows setting of font family and style throughout the document
 * Added styling for the Table of Contents, using the `titletoc` package
-* Added styling for the `part`s
+* Added styling for `\part`
 
 ### Changed
 
