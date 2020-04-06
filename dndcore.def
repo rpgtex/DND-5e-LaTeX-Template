@@ -31,7 +31,7 @@
     \RequirePackage {microtype} % Improve ragged2e hyphenation and overfull boxes
     \RequirePackage {ragged2e}
     \RequirePackage [titles] {tocloft} % multi-column toc
-    \RequirePackage [newparttoc] {titlesec}  % Used to adjust (sub)section formatting
+    \RequirePackage [newparttoc] {titlesec}  % Used to adjust (sub)section, part, and table of contents formatting
 
     \bool_if:NT \l__dnd_multitoc_bool
       { \RequirePackage [toc] {multitoc} }
