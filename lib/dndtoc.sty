@@ -13,20 +13,20 @@
   {\partname\ \thecontentslabel :~ } % numbered-entry-format
   {} % numberless-entry-format
   {} % filler-page-format
-  [ \vspace{0.03in} \vspace{-.3ex} \titleline{ \color{titlegold} \titlerule[1pt] }\vspace{.3ex} ] % below-code
+  [ \vspace{-.3ex} \titleline{ \color{titlegold} \titlerule[1pt] \vspace{0.03in} }\vspace{.3ex} ] % below-code
 
 \titlecontents{chapter}
   [0pt] % left
   {\addvspace{0.09in}\DndFontTocChapter} % above-code
   {\tocchapterabbreviationname\ \thecontentslabel :~ } % numbered-entry-format
   {} % numberless-entry-format
-  {\titlerule*[5pt]{.}\contentspage} % filler-page-format
+  {\titlerule*{.}\contentspage} % filler-page-format
 
 \titlecontents{section}
   [0pt] % left
   {\DndFontTocSection} % above-code
   {\thecontentslabel :~ } % numbered-entry-format
   {} % numberless-entry-format
-  {\titlerule*[3pt]{.}\contentspage} % filler-page-format
+  {\titlerule*{.}\contentspage} % filler-page-format
 
 }
