@@ -4,6 +4,8 @@
 {
 \RequirePackage{contour}
 
+\contourlength{0.03em}
+
 % Change part numbering to Arabic numbers from Roman numerals
 \renewcommand{\thepart}{\arabic{part}}
 
@@ -22,16 +24,16 @@
 \titleformat {\part}
   [display]
   { \centering \DndFontPart } % format
-  { \contourlength{0.03em} \contour{partcontour}{\partname\ \thepart} } % label
+  { \contour{contourgray}{\partname\ \thepart} } % label
   {2ex} % sep
-  {\contour{partcontour}} % before-code
+  {\contour{contourgray}} % before-code
 
 % Chapter
 \titleformat {\chapter}
   { \DndFontChapter } % format
-  { \chaptertitlename\ \thechapter : } % label
+  { \contour{contourgray}{\chaptertitlename\ \thechapter :} } % label
   { \wordsep } % sep
-  {} % before-code
+  {\contour{contourgray}} % before-code
 
 \titlespacing* {\chapter}
   { 0pt }  % left
