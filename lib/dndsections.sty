@@ -2,92 +2,104 @@
 
 \bool_if:NT \l__dnd_layout_bool
 {
-% Set spacing around floats
-\setlength{\textfloatsep}{11pt plus 4pt minus 4pt}
-\setlength{\intextsep}{11pt plus 4pt minus 4pt}
-\setlength{\dbltextfloatsep}{11pt plus 4pt minus 4pt}
+  \RequirePackage{contour}
 
-% Remove Numbering (If you want Numbering set secnumdepth to the appropriate depth)
-\setcounter{secnumdepth}{0}
+  % Change part numbering to Arabic numbers from Roman numerals
+  \renewcommand{\thepart}{\arabic{part}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Section formatting
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Chapter
-\titleformat {\chapter}
-  { \DndFontChapter } % format
-  { \chaptertitlename\ \thechapter : } % label
-  { \wordsep } % sep
-  {} % before-code
+  % Set spacing around floats
+  \setlength{\textfloatsep}{11pt plus 4pt minus 4pt}
+  \setlength{\intextsep}{11pt plus 4pt minus 4pt}
+  \setlength{\dbltextfloatsep}{11pt plus 4pt minus 4pt}
 
-\titlespacing* {\chapter}
-  { 0pt }  % left
-  { .3ex }  % before-sep
-  { 2.8ex } % after-sep
+  % Remove Numbering (If you want Numbering set secnumdepth to the appropriate depth)
+  \setcounter{secnumdepth}{0}
 
-% Section
-\titleformat {\section}
-  { \DndFontSection } % format
-  { \thesection } % label
-  { 1em } % sep
-  { \nopagebreak } % before-code
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Section formatting
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Part
+  \titleformat {\part}
+    [display]
+    { \contourlength{0.03em} \centering \DndFontPart } % format
+    { \contour{contourgray}{\partname\ \thepart} } % label
+    {2ex} % sep
+    { \contour{contourgray} } % before-code
 
-\titlespacing* { \section }
-  { 0pt } % left
-  { 1.3ex plus .43ex } % before-sep
-  { 0pt } % after-sep
+  % Chapter
+  \titleformat {\chapter}
+    { \contourlength{0.03em} \DndFontChapter } % format
+    { \contour{contourgray}{\chaptertitlename\ \thechapter :} } % label
+    { \wordsep } % sep
+    {\contour{contourgray}} % before-code
 
-% Subsection
-\titleformat {\subsection}
-  { \DndFontSubsection } % format
-  { \thesubsection } % label
-  { 1em } % sep
-  { \nopagebreak } % before-code
-  [ \vspace{-.3ex} \titleline{ \color{titlegold} \titlerule[1pt] } ] % after-code
+  \titlespacing* {\chapter}
+    { 0pt }  % left
+    { .3ex }  % before-sep
+    { 2.8ex } % after-sep
 
-\titlespacing*{ \subsection }
-  { 0pt } % left
-  { 1.4ex plus .47ex } % before-sep
-  { 1.2ex } % after-sep
+  % Section
+  \titleformat {\section}
+    { \DndFontSection } % format
+    { \thesection } % label
+    { 1em } % sep
+    { \nopagebreak } % before-code
 
-% Subsubsection
-\titleformat {\subsubsection}
-  { \DndFontSubsubsection } % format
-  { \thesubsubsection } % label
-  { 1em } % sep
-  { \nopagebreak } % before-code
+  \titlespacing* { \section }
+    { 0pt } % left
+    { 1.3ex plus .43ex } % before-sep
+    { 0pt } % after-sep
 
-\titlespacing* { \subsubsection }
-  { 0pt } % left
-  { 2ex plus .67ex } % before-sep
-  { .2ex } % after-sep
+  % Subsection
+  \titleformat {\subsection}
+    { \DndFontSubsection } % format
+    { \thesubsection } % label
+    { 1em } % sep
+    { \nopagebreak } % before-code
+    [ \vspace{-.3ex} \titleline{ \color{titlegold} \titlerule[1pt] } ] % after-code
 
-% Paragraph
-\titleformat {\paragraph} [runin]
-  { \DndFontParagraph } % format
-  { \theparagraph \quad } % label
-  {0pt} % sep
-  {}    % before-code
-  [.]   % after-code
+  \titlespacing*{ \subsection }
+    { 0pt } % left
+    { 1.4ex plus .47ex } % before-sep
+    { 1.2ex } % after-sep
 
-\titlespacing* {\paragraph}
-  {0pt}      % left
-  {\parskip} % before-sep
-  {\wordsep} % after-sep
+  % Subsubsection
+  \titleformat {\subsubsection}
+    { \DndFontSubsubsection } % format
+    { \thesubsubsection } % label
+    { 1em } % sep
+    { \nopagebreak } % before-code
 
-% Subparagraph
-\titleformat {\subparagraph} [runin]
-  { \DndFontSubaragraph } % format
-  { \thesubparagraph \quad } % label
-  {0pt} % sep
-  {}    % before-code
-  [.]   % after-code
+  \titlespacing* { \subsubsection }
+    { 0pt } % left
+    { 2ex plus .67ex } % before-sep
+    { .2ex } % after-sep
 
-\titlespacing* {\subparagraph}
-  {\parindent} % left
-  {\parskip}   % before-sep
-  {\wordsep}   % after-sep
+  % Paragraph
+  \titleformat {\paragraph} [runin]
+    { \DndFontParagraph } % format
+    { \theparagraph \quad } % label
+    {0pt} % sep
+    {}    % before-code
+    [.]   % after-code
 
+  \titlespacing* {\paragraph}
+    {0pt}      % left
+    {\parskip} % before-sep
+    {\wordsep} % after-sep
+
+  % Subparagraph
+  \titleformat {\subparagraph} [runin]
+    { \DndFontSubaragraph } % format
+    { \thesubparagraph \quad } % label
+    {0pt} % sep
+    {}    % before-code
+    [.]   % after-code
+
+  \titlespacing* {\subparagraph}
+    {\parindent} % left
+    {\parskip}   % before-sep
+    {\wordsep}   % after-sep
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,31 @@
+\ExplSyntaxOn
+
+\bool_if:NT \l__dnd_layout_bool
+{
+  \RequirePackage{titletoc}
+
+  % Makes the TOC go to section depth
+  \setcounter{tocdepth}{1}
+
+  \titlecontents{part}
+    [0pt] % left
+    { \addvspace{.06in} \DndFontTocPart } % above-code
+    {\partname\ \thecontentslabel :~ } % numbered-entry-format
+    {} % numberless-entry-format
+    {} % filler-page-format
+    [ \addvspace{-.03in} \titleline{ \color{titlegold} \titlerule[1pt] } \addvspace{.05in } ] % below-code
+
+  \titlecontents{chapter}
+    [0pt] % left
+    { \addvspace{.1in} \DndFontTocChapter } % above-code
+    {\tocchapterabbreviationname\ \thecontentslabel :~ } % numbered-entry-format
+    {} % numberless-entry-format
+    {\titlerule*{.}\contentspage} % filler-page-format
+
+  \titlecontents{section}
+    [0pt] % left
+    {\DndFontTocSection} % above-code
+    {\thecontentslabel :~ } % numbered-entry-format
+    {} % numberless-entry-format
+    {\titlerule*{.}\contentspage} % filler-page-format
+}
