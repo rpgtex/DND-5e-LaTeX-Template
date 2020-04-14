@@ -33,4 +33,5 @@ tlmgr install \
   latex \
   latex-bin \
   latexmk \
+  luahbtex \
   xetex
