@@ -63,8 +63,7 @@
 
     % Customize itemize environment.
     \setlist{leftmargin=1em}
-    \setitemize{noitemsep,topsep=0.5ex}
-    \renewcommand{\labelitemi}{\raisebox{0.25ex}{\tiny{\( \bullet \)}}}
+    \setitemize{noitemsep,topsep=0.5ex,label=\footnotesize{\bullet}}
   }
 
 % Load other modules of this package after all dependencies to avoid load order
