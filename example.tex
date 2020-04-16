@@ -261,20 +261,30 @@ The |DndMonster| environment is used to typeset monster and NPC stat blocks. The
 \chapter{Colors}
 
 \begin{table*}[b]%
-  \caption{}\label{tab:colors}
+  \centering
+\caption{Colors Supported by this Package\label{tab:colors}}
 
-  \begin{DndTable}[width=\linewidth,header=Colors Supported by This Package]{lX}
+  \begin{tabularx}{\linewidth}{cX}
     \textbf{Color}                  & \textbf{Description} \\
+    \rowcolor{PhbLightGreen}
     |PhbLightGreen|                 & Light green used in PHB Part 1 (Default) \\
+    \rowcolor{PhbLightCyan}
     |PhbLightCyan|                  & Light cyan used in PHB Part 2 \\
+    \rowcolor{PhbMauve}
     |PhbMauve|                      & Pale purple used in PHB Part 3 \\
+    \rowcolor{PhbTan}
     |PhbTan|                        & Light brown used in PHB appendix \\
+    \rowcolor{DmgLavender}
     |DmgLavender|                   & Pale purple used in DMG Part 1 \\
+    \rowcolor{DmgCoral}
     |DmgCoral|                      & Orange-pink used in DMG Part 2 \\
+    \rowcolor{DmgSlateGray}
     |DmgSlateGray| (|DmgSlateGrey|) & Blue-gray used in PHB Part 3 \\
+    \rowcolor{DmgLilac}
     |DmgLilac|                      & Purple-gray used in DMG appendix \\
+    \rowcolor{BrGreen}
     |BrGreen|                       & Gray-green used for tables in Basic Rules\\
-  \end{DndTable}
+  \end{tabularx}
 \end{table*}
 
 This package provides several global color variables to style |DndComment|, |DndReadAloud|, |DndSidebar|, and |DndTable| environments.
