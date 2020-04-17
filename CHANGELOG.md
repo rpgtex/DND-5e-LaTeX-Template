@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Added Spanish captions
 * Added styling for the Table of Contents, using the `titletoc` package
 * Added styling for `\part`
+* Added colors from the 2018 Basic Rules
 
 ### Changed
 
