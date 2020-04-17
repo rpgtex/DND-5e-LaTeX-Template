@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 * `\DndSetFonts` allows setting of font family and style throughout the document
 * Added Spanish captions
+* Added styling for the Table of Contents, using the `titletoc` package
+* Added styling for `\part`
 
 ### Changed
 
@@ -20,6 +22,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * `\subtitlesection`, `\spellheader`, `\area`, and `\subarea` become `\DndItemHeader`, `\DndSpellHeader`, `\DndArea`, and `\DndSubArea`
 * `monsterbox` becomes `DndMonster`
 * Separated language files
+* Changed styling for `\chapter`
 
 ## [0.7.1] - 2019-07-18
 
