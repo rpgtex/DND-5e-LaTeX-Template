@@ -63,7 +63,7 @@
 
     % Customize itemize environment.
     \setlist{leftmargin=1em}
-    \setitemize{noitemsep,topsep=0.5ex,label=\footnotesize{\bullet}}
+    \setitemize{noitemsep,topsep=0.5ex,label=\footnotesize{\textbullet}}
   }
 
 % Load other modules of this package after all dependencies to avoid load order
