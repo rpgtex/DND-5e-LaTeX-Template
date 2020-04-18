@@ -26,7 +26,6 @@ bookman
 cfr-initials
 cm
 colortbl
-contour
 courier
 ec
 enumitem
@@ -57,6 +56,7 @@ minifp
 ms
 numprint
 oberdiek
+pdfrender
 pgf
 psnfss
 ragged2e
