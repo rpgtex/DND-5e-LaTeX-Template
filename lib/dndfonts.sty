@@ -23,17 +23,16 @@
   }
 
 % Add the outlines
-  \NewDocumentCommand{\DndContour}{m}
+  \NewDocumentCommand{\DndContour}{ o m }
   {
   \textpdfrender
     {
     TextRenderingMode = FillStroke,
     StrokeColor =       contourgray,
-    LineWidth =         0.06ex,
-    LineJoinStyle =     Bevel,
-    LineCapStyle =      Butt,
-    RenderingIntent =   RelativeColorimetric
-    }{#1}
+    LineWidth =         0.03ex,
+    RenderingIntent =   RelativeColorimetric,
+    #1
+    }{#2}
   }
 
 \keys_define:nn { dnd / fonts }
