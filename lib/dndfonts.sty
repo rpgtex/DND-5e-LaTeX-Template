@@ -21,6 +21,20 @@
       { \gilliustwo }
       { \sffamily }
   }
+  
+% Add the outlines
+  \NewDocumentCommand{\DndContour}{m}
+  {
+  \textpdfrender
+    {
+    TextRenderingMode = FillStroke,
+    StrokeColor =       contourgray,
+    LineWidth =         0.06ex,
+    LineJoinStyle =     Bevel,
+    LineCapStyle =      Butt,
+    RenderingIntent =   RelativeColorimetric
+    }{#1}
+  }
 
 \keys_define:nn { dnd / fonts }
   {

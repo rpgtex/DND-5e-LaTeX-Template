@@ -15,20 +15,6 @@
   % Remove Numbering (If you want Numbering set secnumdepth to the appropriate depth)
   \setcounter{secnumdepth}{0}
 
-  % Add the outlines
-  \NewDocumentCommand{\DndContour}{m}
-  {
-  \textpdfrender
-    {
-    TextRenderingMode = FillStroke,
-    FillColor =         titlered,
-    StrokeColor =       contourgray,
-    LineWidth =         0.06ex,
-    LineJoinStyle =     Bevel,
-    LineCapStyle =      Butt,
-    RenderingIntent =   RelativeColorimetric
-    }{#1}
-  }
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   % Section formatting
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
