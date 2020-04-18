@@ -22,6 +22,19 @@
       { \sffamily }
   }
 
+% Add the outlines
+  \NewDocumentCommand{\DndContour}{ O{} m }
+  {
+  \textpdfrender
+    {
+    TextRenderingMode = FillStroke,
+    StrokeColor =       contourgray,
+    LineWidth =         0.03ex,
+    RenderingIntent =   RelativeColorimetric,
+    #1
+    }{#2}
+  }
+
 \keys_define:nn { dnd / fonts }
   {
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

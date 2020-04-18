@@ -2,7 +2,7 @@
 
 \bool_if:NT \l__dnd_layout_bool
 {
-  \RequirePackage{contour}
+  \RequirePackage{pdfrender}
 
   % Change part numbering to Arabic numbers from Roman numerals
   \renewcommand{\thepart}{\arabic{part}}
@@ -21,17 +21,17 @@
   % Part
   \titleformat {\part}
     [display]
-    { \contourlength{0.03em} \centering \DndFontPart } % format
-    { \contour{contourgray}{\partname\ \thepart} } % label
+    { \centering \DndFontPart } % format
+    { \DndContour{\partname\ \thepart} } % label
     {2ex} % sep
-    { \contour{contourgray} } % before-code
+    { \DndContour } % before-code
 
   % Chapter
   \titleformat {\chapter}
-    { \contourlength{0.03em} \DndFontChapter } % format
-    { \contour{contourgray}{\chaptertitlename\ \thechapter :} } % label
+    { \DndFontChapter } % format
+    { \DndContour{\chaptertitlename\ \thechapter :} } % label
     { \wordsep } % sep
-    {\contour{contourgray}} % before-code
+    {\DndContour} % before-code
 
   \titlespacing* {\chapter}
     { 0pt }  % left
