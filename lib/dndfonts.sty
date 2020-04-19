@@ -5,6 +5,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{lettrine}
 \RequirePackage{Royal}
+\RequirePackage[auto]{contour}
 
 \bool_if:NT \l__dnd_layout_bool
   {
@@ -23,16 +24,21 @@
   }
 
 % Add the outlines
-  \NewDocumentCommand{\DndContour}{ O{} m }
+\cs_new_protected:Npn \__dnd_contour_preserve_newline:nn #1#2
   {
-  \textpdfrender
-    {
-    TextRenderingMode = FillStroke,
-    StrokeColor =       contourgray,
-    LineWidth =         0.03ex,
-    RenderingIntent =   RelativeColorimetric,
-    #1
-    }{#2}
+    \group_begin:
+    \seq_set_split:Nnn \l_tmpa_seq { \newline } { #2 }
+    \seq_set_map:NNn \l_tmpb_seq \l_tmpa_seq { \exp_not:n {\contour{#1}{##1}} }
+    \seq_use:Nn \l_tmpb_seq { \newline }
+    \group_end:
+  }
+
+\NewDocumentCommand{\DndContour}{ O{contourgray} m }
+  {
+    \group_begin:
+    \seq_set_split:Nnn \l_tmpa_seq { ~ } { #2 }
+    \seq_map_inline:Nn \l_tmpa_seq { \__dnd_contour_preserve_newline:nn{#1}{##1} ~ } \unskip
+    \group_end:
   }
 
 \keys_define:nn { dnd / fonts }
