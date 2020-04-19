@@ -26,6 +26,7 @@ bookman
 cfr-initials
 cm
 colortbl
+contour
 courier
 ec
 enumitem
