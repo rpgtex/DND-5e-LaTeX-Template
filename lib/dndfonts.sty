@@ -5,6 +5,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{lettrine}
 \RequirePackage{Royal}
+\RequirePackage[auto]{contour}
 
 \bool_if:NT \l__dnd_layout_bool
   {
@@ -20,19 +21,6 @@
     \bool_if:NTF \l__dnd_layout_bool
       { \gilliustwo }
       { \sffamily }
-  }
-
-% Add the outlines
-  \NewDocumentCommand{\DndContour}{ O{} m }
-  {
-  \textpdfrender
-    {
-    TextRenderingMode = FillStroke,
-    StrokeColor =       contourgray,
-    LineWidth =         0.03ex,
-    RenderingIntent =   RelativeColorimetric,
-    #1
-    }{#2}
   }
 
 \keys_define:nn { dnd / fonts }
@@ -326,4 +314,28 @@
       ]
       {#2}
       {#3}
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contour that can break across lines. Can accept \newline to force a break.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\regex_const:Nn \c__not_newlines_regex { (.+) }
+\seq_new:N \l__contour_sections_seq
+
+\cs_new_protected:Npn \__dnd_contour_preserve_space:nn #1#2
+  {
+    \group_begin:
+    \seq_set_split:Nnn \l_tmpa_seq { ~ } { #2 }
+    \seq_set_map:NNn \l_tmpb_seq \l_tmpa_seq { \exp_not:n {\contour{#1}{##1}} }
+    \seq_use:Nn \l_tmpb_seq { ~ }
+    \group_end:
+  }
+
+\NewDocumentCommand{\DndContour}{ O{contourgray} m }
+  {
+    \group_begin:
+    \seq_set_split:Nnn \l_tmpa_seq { \newline } { #2 }
+    \seq_set_map:NNn \l_tmpb_seq \l_tmpa_seq { \exp_not:n {\__dnd_contour_preserve_space:nn{#1}{##1}} }
+    \seq_use:Nn \l_tmpb_seq { \newline }
+    \group_end:
   }
