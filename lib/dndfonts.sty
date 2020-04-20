@@ -319,9 +319,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Contour that can break across lines. Can accept \newline to force a break.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\regex_const:Nn \c__not_newlines_regex { (.+) }
-\seq_new:N \l__contour_sections_seq
-
 \cs_new_protected:Npn \__dnd_contour_preserve_space:nn #1#2
   {
     \group_begin:
