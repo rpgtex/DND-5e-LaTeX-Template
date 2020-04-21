@@ -2,8 +2,6 @@
 
 \bool_if:NT \l__dnd_layout_bool
 {
-  \RequirePackage{pdfrender}
-
   % Change part numbering to Arabic numbers from Roman numerals
   \renewcommand{\thepart}{\arabic{part}}
 
@@ -23,7 +21,7 @@
     [display]
     { \centering \DndFontPart } % format
     { \DndContour{\partname\ \thepart} } % label
-    {2ex} % sep
+    { 2ex } % sep
     { \DndContour } % before-code
 
   % Chapter
@@ -31,7 +29,7 @@
     { \DndFontChapter } % format
     { \DndContour{\chaptertitlename\ \thechapter :} } % label
     { \wordsep } % sep
-    {\DndContour} % before-code
+    { \DndContour } % before-code
 
   \titlespacing* {\chapter}
     { 0pt }  % left
@@ -47,7 +45,7 @@
 
   \titlespacing* { \section }
     { 0pt } % left
-  { 1.3ex plus .43ex minus .43ex } % before-sep
+    { 1.3ex plus .43ex minus .43ex } % before-sep
     { 0pt } % after-sep
 
   % Subsection
@@ -60,7 +58,7 @@
 
   \titlespacing*{ \subsection }
     { 0pt } % left
-  { 1.4ex plus .47ex minus .47ex } % before-sep
+    { 1.4ex plus .47ex minus .47ex } % before-sep
     { 1.2ex } % after-sep
 
   % Subsubsection
