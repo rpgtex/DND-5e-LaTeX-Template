@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Added styling for `\part`
 * Added colors from the 2018 Basic Rules
 * Added `nodeprecatedcode` option to exclude deprecated code from building
+* Added `\DndFeatHeader`
 
 ### Changed in 0.8.0
 
