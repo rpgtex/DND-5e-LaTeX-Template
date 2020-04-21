@@ -7,7 +7,7 @@ This is a LaTeX template for typesetting documents in the style of the fifth edi
 
 ## Features
 
-* Color schemes and fonts are close to the core books.
+* Color schemes, fonts, and layout are close to the core books (but not exactly the same).
 * TeX Live includes the default fonts.
 * Works with pdfTeX, LuaTeX, and XeTeX.
 
@@ -17,19 +17,6 @@ This is a LaTeX template for typesetting documents in the style of the fifth edi
 
 There are three options for using this project; choose the one that's
 right for you.
-
-### Using Overleaf
-
-[Overleaf](https://overleaf.com) is an online TeX editor -- think
-about it like Google Docs for TeX documents.  This option does not
-require a local TeX installation and is an ideal approach for one-off
-projects.
-
-1. Download this GitHub repository as a ZIP archive using the *Clone
-   or download* link above.
-2. On Overleaf, click the *New Project* button and select *Upload
-   Project*.  Upload the ZIP archive you downloaded from this
-   repository.
 
 ### User install using `TEXMFHOME` (recommended)
 
@@ -50,10 +37,10 @@ LaTeX will find the package automatically.
 2. Download the [latest release](https://github.com/rpgtex/DND-5e-LaTeX-Template/releases/latest) and extract it in `$TEXMFHOME/tex/latex/`.
 
     ```sh
-    wget https://github.com/rpgtex/DND-5e-LaTeX-Template/archive/v0.7.1.zip
-    unzip -d "$(kpsewhich -var-value TEXMFHOME)/tex/latex/" v0.7.1.zip
+    wget https://github.com/rpgtex/DND-5e-LaTeX-Template/archive/master.zip
+    unzip -d "$(kpsewhich -var-value TEXMFHOME)/tex/latex/" master.zip
     cd "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
-    mv DND-5e-LaTeX-Template-0.7.1 dnd
+    mv DND-5e-LaTeX-Template-master dnd
     ```
 
     Alternatively, clone the repo to the same location:
@@ -61,6 +48,19 @@ LaTeX will find the package automatically.
     ```sh
     git clone https://github.com/rpgtex/DND-5e-LaTeX-Template.git "$(kpsewhich -var-value TEXMFHOME)/tex/latex/dnd"
     ```
+
+### Using Overleaf
+
+[Overleaf](https://overleaf.com) is an online TeX editor -- think
+about it like Google Docs for TeX documents.  This option does not
+require a local TeX installation and is an ideal approach for one-off
+projects.
+
+1. Download this GitHub repository as a ZIP archive using the *Clone
+   or download* link above.
+2. On Overleaf, click the *New Project* button and select *Upload
+   Project*.  Upload the ZIP archive you downloaded from this
+   repository.
 
 ### Project install using `TEXINPUTS`
 
@@ -84,7 +84,7 @@ TEXINPUTS=./lib//: pdflatex project.tex
 Load the `dndbook` class in your preamble:
 
 ```tex
-\documentclass[10pt,twoside,twocolumn,openany]{dndbook}
+\documentclass[10pt,twoside,twocolumn,openany,nodeprecatedcode]{dndbook}
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
@@ -118,6 +118,7 @@ Note that the package has only been tested with the `book` class.
 | `justified`    | ✓               | ✓                 |
 | `layout`       | ✓               |                   |
 | `nomultitoc`   | ✓               | ✓                 |
+| `nodeprecatedcode`   | ✓               | ✓                 |
 
 The `dndbook` class also supports all the options of the `book` class.
 
@@ -147,6 +148,10 @@ This will change in a future release.
 #### `nomultitoc`
 
 Disable multi-column table of contents.
+
+#### `nodeprecatedcode`
+
+Excludes all deprecated code from the build process.
 
 ## Dependencies
 

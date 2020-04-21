@@ -9,13 +9,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+### Changed
+
+## [0.8.0] - 2020-04-21
+
+### Added in 0.8.0
+
 * `\DndSetFonts` allows setting of font family and style throughout the document
 * Added Spanish captions
 * Added styling for the Table of Contents, using the `titletoc` package
 * Added styling for `\part`
 * Added colors from the 2018 Basic Rules
+* Added `nodeprecatedcode` option to exclude deprecated code from building
+* Added `\DndFeatHeader`
 
-### Changed
+### Changed in 0.8.0
 
 * Rewrite internals in LaTeX3
 * `dndtable` becomes `DndTable`
@@ -23,7 +31,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * `\subtitlesection`, `\spellheader`, `\area`, and `\subarea` become `\DndItemHeader`, `\DndSpellHeader`, `\DndArea`, and `\DndSubArea`
 * `monsterbox` becomes `DndMonster`
 * Separated language files
-* Changed styling for `\chapter`
+* Added contour to styling for `\chapter`
 
 ## [0.7.1] - 2019-07-18
 
@@ -179,7 +187,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Defined green `commentbox` environment.
 * Section and subsection titles.
 
-[Unreleased]: https://github.com/rpgtex/DND-5e-LaTeX-Template/compare/v0.7.1...HEAD
+[Unreleased]: https://github.com/rpgtex/DND-5e-LaTeX-Template/compare/v0.8.0...HEAD
+[0.7.1]: https://github.com/rpgtex/DND-5e-LaTeX-Template/compare/v0.7.1...v0.8.0
 [0.7.1]: https://github.com/rpgtex/DND-5e-LaTeX-Template/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/rpgtex/DND-5e-LaTeX-Template/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/rpgtex/DND-5e-LaTeX-Template/compare/v0.5...v0.6.0
