@@ -7,7 +7,7 @@ This is a LaTeX template for typesetting documents in the style of the fifth edi
 
 ## Features
 
-* Color schemes and fonts are close to the core books.
+* Color schemes, fonts, and layout are close to the core books (but not exactly the same).
 * TeX Live includes the default fonts.
 * Works with pdfTeX, LuaTeX, and XeTeX.
 
@@ -118,6 +118,7 @@ Note that the package has only been tested with the `book` class.
 | `justified`    | ✓               | ✓                 |
 | `layout`       | ✓               |                   |
 | `nomultitoc`   | ✓               | ✓                 |
+| `nodeprecatedcode`   | ✓               | ✓                 |
 
 The `dndbook` class also supports all the options of the `book` class.
 
@@ -147,6 +148,10 @@ This will change in a future release.
 #### `nomultitoc`
 
 Disable multi-column table of contents.
+
+#### `nodeprecatedcode`
+
+Excludes all deprecated code from the build process.
 
 ## Dependencies
 
