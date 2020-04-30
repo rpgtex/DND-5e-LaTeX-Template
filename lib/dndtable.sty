@@ -5,6 +5,9 @@
 \newcolumntype {`} { > {\global\let\currentrowstyle\relax } }
 \newcolumntype {^} { > {\currentrowstyle} }
 
+% Matches {, }, >,  , and any other character
+\regex_const:Nn \c__preamble_regex {>\s*{.*}\s*\S|\S}
+
 \newcommand{\rowstyle}[1]
   {
     \gdef\currentrowstyle{#1}#1\ignorespaces
@@ -45,10 +48,16 @@
 
   \rowcolors {1} {} {\l__dnd_table_color_tl}
 
-  \seq_set_split:Nnn \l_tmpa_seq {} {#2}
-  \tl_set:Nn \l_tmpa_tl {\seq_use:Nn \l_tmpa_seq {^}}
+  \regex_extract_all:NnNTF \c__preamble_regex {#2} \l_tmpa_seq
+  {
+    \tl_set:Nn \l_tmpa_tl {\seq_use:Nn \l_tmpa_seq {^}}
+    \use:x { \exp_not:n {\tabularx{\l__dnd_table_width_dim}}{`\l_tmpa_tl}}
+  }
+  {
+    \tl_set:Nn \l_tmpa_tl {\seq_use:Nn \l_tmpa_seq {}}
+    \use:x { \exp_not:n {\tabularx{\l__dnd_table_width_dim}}{\l_tmpa_tl}}
+  }
 
-  \use:x { \exp_not:n {\tabularx{\l__dnd_table_width_dim}}{`\l_tmpa_tl}}
   \rowstyle{\DndFontTableHeader}
 }
 {
