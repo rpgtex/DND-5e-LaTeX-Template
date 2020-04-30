@@ -52,13 +52,12 @@
   {
     \tl_set:Nn \l_tmpa_tl {\seq_use:Nn \l_tmpa_seq {^}}
     \use:x { \exp_not:n {\tabularx{\l__dnd_table_width_dim}}{`\l_tmpa_tl}}
+    \rowstyle{\DndFontTableHeader}
   }
   {
-    \tl_set:Nn \l_tmpa_tl {\seq_use:Nn \l_tmpa_seq {}}
-    \use:x { \exp_not:n {\tabularx{\l__dnd_table_width_dim}}{\l_tmpa_tl}}
+    \tabularx {\l__dnd_table_width_dim} {#2}
   }
 
-  \rowstyle{\DndFontTableHeader}
 }
 {
   \endtabularx \vspace { 9pt plus 3pt minus 3pt }
