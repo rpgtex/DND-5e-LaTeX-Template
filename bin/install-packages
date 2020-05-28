@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-IFS='$\n\t'
-
-export PATH=/srv/texlive/bin/x86_64-linux:$PATH
-
-sed -e '/^#/d' -e 's/[ ]\+#.*$//' "${1}" | xargs tlmgr install
