@@ -1,0 +1,62 @@
+---
+version: 2
+
+_job: &job
+  docker:
+    - image: debian:stretch
+  steps:
+    - checkout
+    - run:
+        name: Install system dependencies
+        command: apt update -y && apt install -y libfontconfig1 make perl-doc wget
+    - restore_cache:
+        key: v1-{{ checksum "packages.txt" }}
+    - run:
+        name: Install minimal TeXLive
+        command: ./bin/install-texlive
+    - run:
+        name: Install package dependencies
+        command: ./bin/install-packages packages.txt
+    - save_cache:
+        key: v1-{{ checksum "packages.txt" }}
+        paths:
+          - ~/.texlive
+          - /srv/texlive
+    - run:
+        name: Add TeXLive to PATH
+        command: echo 'export PATH="/srv/texlive/bin/x86_64-linux:${PATH}"' >>$BASH_ENV
+    - run:
+        name: Compile document
+        command: make
+
+jobs:
+  lint:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm ci
+      - run: make lint
+  pdflatex:
+    <<: *job
+    environment:
+      LATEX: pdflatex
+  lualatex:
+    <<: *job
+    environment:
+      LATEX: lualatex
+  xelatex:
+    <<: *job
+    environment:
+      LATEX: xelatex
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - lint
+      - pdflatex
+      - lualatex
+      - xelatex

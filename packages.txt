@@ -1,0 +1,77 @@
+# Package dependencies
+#
+#   cfr-initials: simplified drop cap font loading
+#   environ: required by tcolorbox
+#   etex-pkg: provides e-TeX, transitive dependency
+#   fontaxes: gillius dependency
+#   gillius: sans serif body font
+#   initials: drop caps
+#   kpfonts: sans serif title font
+#   l3backend: xparse dependency
+#   l3kernel: xparse dependency
+#   l3packages: xparse
+#   minifp: required by lettrine
+#   ms: multitoc, ragged2e
+#   oberdiek: luacolor
+#   pgf: tikz
+#   tools: array, calc, tabularx
+#   trimspaces: required by environ?
+#
+
+amsfonts
+atbegshi
+babel
+babel-english
+bookman
+cfr-initials
+cm
+colortbl
+contour
+courier
+ec
+enumitem
+environ
+epstopdf-pkg
+etex-pkg
+etoolbox
+fancyhdr
+fontaxes
+fp
+geometry
+gillius
+hang
+initials
+keycommand
+kpfonts
+kvsetkeys
+l3backend
+l3kernel
+l3packages
+latex-fonts
+lettrine
+lm
+ltxcmds
+luacolor
+microtype
+minifp
+ms
+numprint
+oberdiek
+pgf
+psnfss
+ragged2e
+tcolorbox
+titlesec
+tocloft
+tools
+trimspaces
+was
+xcolor
+xkeyval
+xstring
+
+# Document dependencies
+caption
+lipsum
+listings
+sttools
