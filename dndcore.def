@@ -69,7 +69,6 @@
 % Load other modules of this package after all dependencies to avoid load order
 % conflicts (e.g., package options).
 % Low-level modules first.
-\RequirePackage {lib/compat}        % compatibility definitions
 \RequirePackage {lib/dndutility}    % utility functions
 \RequirePackage {lib/dndcolors}     % color definitions
 \RequirePackage {lib/dndfonts}      % font definitions
