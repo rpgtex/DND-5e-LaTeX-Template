@@ -1,5 +1,9 @@
 \ExplSyntaxOn
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Monster environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \NewDocumentCommand {\DndCRExp} { m }
   {
     \str_case_e:nnF {#1}
@@ -43,9 +47,6 @@
       {#1}
   }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Monster environments
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Stat block made to look like the Monster Manual NPC definitions
 \DeclareTColorBox {DndMonsterNoBg} { O{} m }
   {
