@@ -31,9 +31,11 @@
 \bool_new:N \l__dnd_multitoc_bool
 \bool_new:N \l__dnd_layout_bool
 \bool_new:N \l__dnd_no_deprecated_code_bool
+\bool_new:N \l__dnd_metric_system_bool
 
 \bool_set_true:N \l__dnd_multitoc_bool
 \bool_set_eq:NN \l__dnd_layout_bool \c__dnd_isclass_bool
+\bool_set_false:N \l__dnd_metric_system_bool
 
 % BEGIN section to remove in version 1.0.0
 \bool_set_true:N \l__dnd_layout_bool
@@ -93,6 +95,16 @@
       }, % Remove and replace with .bool_set:N in 1.0.0
     layout .value_required:n = true,
 
+    units .choice:,
+    units / metric .code:n =
+      {
+        \bool_set_true:N \l__dnd_metric_system_bool
+      },
+    units / imperial .code:n =
+      {
+        \bool_set_false:N \l__dnd_metric_system_bool
+      },
+  
     % Unknown option handling
     unknown .code:n =
     {
