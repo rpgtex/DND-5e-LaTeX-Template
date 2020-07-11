@@ -25,7 +25,13 @@
     \renewcommand\challengename{Desafío}
     \renewcommand\xpname{PE}
     % Monster attack
-    \renewcommand\unitsname{pies}
+    \bool_if:NTF \l__dnd_metric_system_bool
+      {
+        \renewcommand\unitsname{m}
+      }
+      {
+        \renewcommand\unitsname{ft}
+      }
     \renewcommand\meleeattackname{Ataque~de~arma~cuerpo~a~cuerpo}
     \renewcommand\rangedattackname{Ataque~de~arma~a~distancia}
     \renewcommand\meleeorrangedattackname{Ataque~de~arma~cuerpo~a~cuerpo~o~a~distancia}
@@ -67,4 +73,3 @@
     \renewcommand\dname{d}
 %    \renewcommand\pageabbreviationname{pg.}
   }
-

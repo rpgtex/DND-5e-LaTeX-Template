@@ -52,7 +52,13 @@
 \newcommand\xpname{XP}
 
 % Attacks
-\newcommand\unitsname{ft.}
+\bool_if:NTF \l__dnd_metric_system_bool
+{
+  \renewcommand\unitsname{m.}
+}
+{
+  \renewcommand\unitsname{ft.}
+}
 \newcommand\weaponname{Weapon}
 \newcommand\spellname{Spell}
 \newcommand\meleeattackname{Melee~|1|~Attack}

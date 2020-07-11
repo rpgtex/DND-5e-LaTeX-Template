@@ -26,7 +26,13 @@
     \renewcommand\challengename{Challenge}
     \renewcommand\xpname{XP}
     % Monster attack
-    \renewcommand\unitsname{ft.}
+    \bool_if:NTF \l__dnd_metric_system_bool
+    {
+      \renewcommand\unitsname{m.}
+    }
+    {
+      \renewcommand\unitsname{ft.}
+    }
     \renewcommand\weaponname{Weapon}
     \renewcommand\spellname{Spell}
     \renewcommand\meleeattackname{Melee~|1|~Attack}
