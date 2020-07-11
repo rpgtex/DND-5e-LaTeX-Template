@@ -50,15 +50,13 @@
 \newcommand\languagesname{Languages}
 \newcommand\challengename{Challenge}
 \newcommand\xpname{XP}
-
+\newcommand\unitsname{ft.}
 % Attacks
-\bool_if:NTF \l__dnd_metric_system_bool
+\bool_if:NT \l__dnd_metric_system_bool
 {
   \renewcommand\unitsname{m.}
 }
-{
-  \renewcommand\unitsname{ft.}
-}
+
 \newcommand\weaponname{Weapon}
 \newcommand\spellname{Spell}
 \newcommand\meleeattackname{Melee~|1|~Attack}
