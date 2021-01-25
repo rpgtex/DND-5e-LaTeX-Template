@@ -2,6 +2,7 @@
 #
 #   cfr-initials: simplified drop cap font loading
 #   environ: required by tcolorbox
+#   everysel: legacy font change hooks required by ragged2e
 #   etex-pkg: provides e-TeX, transitive dependency
 #   fontaxes: gillius dependency
 #   gillius: sans serif body font
@@ -34,6 +35,7 @@ environ
 epstopdf-pkg
 etex-pkg
 etoolbox
+everysel
 fancyhdr
 fontaxes
 fp
