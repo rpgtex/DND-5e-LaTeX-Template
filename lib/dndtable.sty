@@ -1,48 +1,66 @@
 \ExplSyntaxOn
 
-% Centered Column
-\newcolumntype { Y }
-  { > { \centering \arraybackslash } X }
+% Special Columns
+\newcolumntype {Y} { > {\centering\arraybackslash } X }
+\newcolumntype {`} { > {\global\let\currentrowstyle\relax } }
+\newcolumntype {^} { > {\currentrowstyle} }
+
+% Matches {, }, >,  , and any other character
+\regex_const:Nn \c__preamble_regex {>\s*{.*}\s*\S|\S}
+
+\newcommand{\rowstyle}[1]
+  {
+    \gdef\currentrowstyle{#1}#1\ignorespaces
+  }
 
 % Table options
 \keys_define:nn { dnd / table }
   {
-    color .tl_set:N         = \l__dnd_table_color_tl,
-    color .initial:n        = tablecolor,
-    color .value_required:n = true,
-    header .tl_set:N         = \l__dnd_table_header_tl,
-    header .value_required:n = true,
-    width .dim_set:N        = \l__dnd_table_width_dim,
-    width .value_required:n = true,
+    color .tl_set:N            = \l__dnd_table_color_tl,
+    color .initial:n           = tablecolor,
+    color .value_required:n    = true,
+    header .tl_set:N           = \l__dnd_table_header_tl,
+    header .value_required:n   = true,
+    width .dim_set:N           = \l__dnd_table_width_dim,
+    width .value_required:n    = true,
   }
 
-  % Table Definition
-  \NewDocumentEnvironment {DndTable} { o m }
+% Table Definition
+\NewDocumentEnvironment {DndTable} { o m }
+{
+  \group_begin:
+
+  \dim_set:Nn \l__dnd_table_width_dim { \linewidth }
+  \tl_if_novalue:nF {#1}
+    { \keys_set:nn { dnd / table } {#1} }
+
+  \par \vspace { 9pt plus 3pt minus 3pt } \noindent
+
+  \tl_if_empty:NF \l__dnd_table_header_tl
+    {
+      \group_begin:
+        \DndFontTableTitle \l__dnd_table_header_tl \nopagebreak
+        \par \vspace{ 5pt plus 2pt minus 2pt } \noindent
+      \group_end:
+    }
+
+  \DndFontTableBody
+
+  \rowcolors {1} {} {\l__dnd_table_color_tl}
+
+  \regex_extract_all:NnNTF \c__preamble_regex {#2} \l_tmpa_seq
   {
-    \group_begin:
-
-    \dim_set:Nn \l__dnd_table_width_dim { \linewidth }
-    \tl_if_novalue:nF {#1}
-      { \keys_set:nn { dnd / table } {#1} }
-
-    \par \vspace { 9pt plus 3pt minus 3pt } \noindent
-
-    \tl_if_empty:NF \l__dnd_table_header_tl
-      {
-        \group_begin:
-          \DndFontTableTitle \l__dnd_table_header_tl \nopagebreak
-          \par \vspace{ 5pt plus 2pt minus 2pt } \noindent
-        \group_end:
-      }
-
-    \DndFontTableBody
-
-    \rowcolors {1} {} {\l__dnd_table_color_tl}
-
+    \tl_set:Nn \l_tmpa_tl {\seq_use:Nn \l_tmpa_seq {^}}
+    \use:x { \exp_not:n {\tabularx{\l__dnd_table_width_dim}}{`\l_tmpa_tl}}
+    \rowstyle{\DndFontTableHeader}
+  }
+  {
     \tabularx {\l__dnd_table_width_dim} {#2}
   }
-  {
-    \endtabularx \vspace { 9pt plus 3pt minus 3pt }
 
-    \group_end:
-  }
+}
+{
+  \endtabularx \vspace { 9pt plus 3pt minus 3pt }
+
+  \group_end:
+}
