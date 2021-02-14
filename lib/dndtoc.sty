@@ -18,7 +18,7 @@
   \titlecontents{chapter}
     [0pt] % left
     { \addvspace{.1in} \DndFontTocChapter } % above-code
-    {\tocchapterabbreviationname\ \thecontentslabel :~ } % numbered-entry-format
+    { \tocchapapp\ \thecontentslabel :~ } % numbered-entry-format
     {} % numberless-entry-format
     {\titlerule*{.}\contentspage} % filler-page-format
 
@@ -28,4 +28,10 @@
     {\thecontentslabel :~ } % numbered-entry-format
     {} % numberless-entry-format
     {\titlerule*{.}\contentspage} % filler-page-format
+
+  \newcommand\tocchapapp{\tocchapterabbreviationname}
+  \g@addto@macro\appendix{%
+    \addtocontents{toc}{\protect\renewcommand{\protect\@chapapp}{\appendixname}}%
+    \addtocontents{toc}{\protect\renewcommand{\protect\tocchapapp}{\appendixname}}%
+  }
 }
