@@ -266,7 +266,6 @@
   languages .initial:n        = ---,
   languages .value_required:n = true,
   challenge .tl_set:N         = \l__challenge_tl,
-  challenge .initial:n        = 1,
   challenge .value_required:n = true,
 }
 
@@ -281,7 +280,7 @@
       \__dnd_if_monster_attribute:nn {\l__condition_immunities_tl}   {\cimmname}
       \item [\sensesname]    \l__senses_tl
       \item [\languagesname] \l__languages_tl
-      \item [\challengename] \__dnd_cr_xp:N {\l__challenge_tl}
+      \__dnd_if_monster_attribute:nn {\__dnd_cr_xp:N \l__challenge_tl} {\challengename}
     \end {__dnd_monster_attributes}
 }
 
