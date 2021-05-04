@@ -37,8 +37,8 @@ LaTeX will find the package automatically.
 2. Download the [latest release](https://github.com/rpgtex/DND-5e-LaTeX-Template/releases/latest) and extract it in `$TEXMFHOME/tex/latex/`.
 
     ```sh
-    wget https://github.com/rpgtex/DND-5e-LaTeX-Template/archive/master.zip
-    unzip -d "$(kpsewhich -var-value TEXMFHOME)/tex/latex/" master.zip
+    wget https://github.com/rpgtex/DND-5e-LaTeX-Template/archive/refs/heads/dev.zip
+    unzip -d "$(kpsewhich -var-value TEXMFHOME)/tex/latex/" dev.zip
     cd "$(kpsewhich -var-value TEXMFHOME)/tex/latex/"
     mv DND-5e-LaTeX-Template-master dnd
     ```
