@@ -268,6 +268,9 @@
   challenge .tl_set:N         = \l__challenge_tl,
   challenge .initial:n        = 1,
   challenge .value_required:n = true,
+  proficiency-bonus .tl_set:N = \l__proficiency_tl,
+  proficiency-bonus .value_required:n = true,
+  proficiencybonus .meta:n    = { proficiency-bonus = {#1} },
 }
 
 \cs_new_protected_nopar:Npn \__dnd_monster_details:
@@ -282,6 +285,11 @@
       \item [\sensesname]    \l__senses_tl
       \item [\languagesname] \l__languages_tl
       \item [\challengename] \__dnd_cr_xp:N {\l__challenge_tl}
+      \tl_if_empty:NF {\l__proficiency_tl}
+        {
+          {\enit@svlabel{\enit@format{\pbonname}}}
+          \hskip \labelsep \l__proficiency_tl
+        }
     \end {__dnd_monster_attributes}
 }
 
