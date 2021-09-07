@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
+* Portuguese translation
+
 * French translation
 
 * Automatically bolds the first row of tables
