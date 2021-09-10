@@ -239,6 +239,53 @@
       { #1 }
 }
 
+%% Monster CR/PB helper
+% \l_tmpa_tl - CR
+% \l_tmpb_tl - PB
+\cs_new_protected_nopar:Npn \__dnd_cr_pb:N #1
+  {
+    \tl_set:Nn \l_tmpa_tl {#1}
+    \str_case_e:nnTF {#1}
+      {
+        {0}   { \tl_set:Nn \l_tmpb_tl {+2} }
+        {1/8} { \tl_set:Nn \l_tmpb_tl {+2} }
+        {1/4} { \tl_set:Nn \l_tmpb_tl {+2} }
+        {1/2} { \tl_set:Nn \l_tmpb_tl {+2} }
+        {1}   { \tl_set:Nn \l_tmpb_tl {+2} }
+        {2}   { \tl_set:Nn \l_tmpb_tl {+2} }
+        {3}   { \tl_set:Nn \l_tmpb_tl {+2} }
+        {4}   { \tl_set:Nn \l_tmpb_tl {+2} }
+        {5}   { \tl_set:Nn \l_tmpb_tl {+3} }
+        {6}   { \tl_set:Nn \l_tmpb_tl {+3} }
+        {7}   { \tl_set:Nn \l_tmpb_tl {+3} }
+        {8}   { \tl_set:Nn \l_tmpb_tl {+3} }
+        {9}   { \tl_set:Nn \l_tmpb_tl {+4} }
+        {10}  { \tl_set:Nn \l_tmpb_tl {+4} }
+        {11}  { \tl_set:Nn \l_tmpb_tl {+4} }
+        {12}  { \tl_set:Nn \l_tmpb_tl {+4} }
+        {13}  { \tl_set:Nn \l_tmpb_tl {+5} }
+        {14}  { \tl_set:Nn \l_tmpb_tl {+5} }
+        {15}  { \tl_set:Nn \l_tmpb_tl {+5} }
+        {16}  { \tl_set:Nn \l_tmpb_tl {+5} }
+        {17}  { \tl_set:Nn \l_tmpb_tl {+6} }
+        {18}  { \tl_set:Nn \l_tmpb_tl {+6} }
+        {19}  { \tl_set:Nn \l_tmpb_tl {+6} }
+        {20}  { \tl_set:Nn \l_tmpb_tl {+6} }
+        {21}  { \tl_set:Nn \l_tmpb_tl {+7} }
+        {22}  { \tl_set:Nn \l_tmpb_tl {+7} }
+        {23}  { \tl_set:Nn \l_tmpb_tl {+7} }
+        {24}  { \tl_set:Nn \l_tmpb_tl {+7} }
+        {25}  { \tl_set:Nn \l_tmpb_tl {+8} }
+        {26}  { \tl_set:Nn \l_tmpb_tl {+8} }
+        {27}  { \tl_set:Nn \l_tmpb_tl {+8} }
+        {28}  { \tl_set:Nn \l_tmpb_tl {+8} }
+        {29}  { \tl_set:Nn \l_tmpb_tl {+9} }
+        {30}  { \tl_set:Nn \l_tmpb_tl {+9} }
+      }
+      { \l_tmpb_tl }
+      { #1 }
+  }
+
 %% Monster details
 \keys_define:nn { dnd / monster / details }
 {
@@ -268,6 +315,10 @@
   challenge .tl_set:N         = \l__challenge_tl,
   challenge .initial:n        = 1,
   challenge .value_required:n = true,
+  proficiency-bonus .tl_set:N = \l__proficiency_tl,
+  proficiency-bonus .value_required:n = false,
+  proficiency-bonus .default:n = *,
+  proficiencybonus .meta:n    = { proficiency-bonus = {#1} },
 }
 
 \cs_new_protected_nopar:Npn \__dnd_monster_details:
@@ -282,6 +333,14 @@
       \item [\sensesname]    \l__senses_tl
       \item [\languagesname] \l__languages_tl
       \item [\challengename] \__dnd_cr_xp:N {\l__challenge_tl}
+      \tl_if_empty:NF {\l__proficiency_tl}
+        {
+          {\enit@svlabel{\enit@format{\pbonname}}}
+          \hskip \labelsep
+          \str_if_eq:VnTF \l__proficiency_tl *
+            {\__dnd_cr_pb:N {\l__challenge_tl}}
+            {\l__proficiency_tl}
+        }
     \end {__dnd_monster_attributes}
 }
 
