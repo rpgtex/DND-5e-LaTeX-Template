@@ -85,6 +85,13 @@
     table-title-style .tl_set:N         = \l__dnd_table_title_style_tl,
     table-title-style .initial:n        = \bfseries \scshape \large,
     table-title-style .value_required:n = true,
+    % Table header
+    table-header-family .tl_set:N         = \l__dnd_table_header_family_tl,
+    table-header-family .initial:n        = \sffamily,
+    table-header-family .value_required:n = true,
+    table-header-style .tl_set:N         = \l__dnd_table_header_style_tl,
+    table-header-style .initial:n        = \bfseries,
+    table-header-style .value_required:n = true,
     % Table body
     table-body-family .tl_set:N         = \l__dnd_table_body_family_tl,
     table-body-family .initial:n        = \__dnd_sf_initial_family:,
@@ -241,6 +248,9 @@
 % Tables
 \NewDocumentCommand{\DndFontTableTitle}{}
   { \l__dnd_table_title_family_tl \l__dnd_table_title_style_tl }
+
+\NewDocumentCommand{\DndFontTableHeader}{}
+  { \l__dnd_table_header_family_tl \l__dnd_table_header_style_tl }
 
 \NewDocumentCommand{\DndFontTableBody}{}
   { \l__dnd_table_body_family_tl \l__dnd_table_body_style_tl }
