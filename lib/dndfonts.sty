@@ -11,7 +11,11 @@
   {
     \RequirePackage{bookman}
     \RequirePackage[type1]{gillius2}
-    \RequirePackage[notext,nomath,nott]{kpfonts}
+    \ifpdftex
+      \RequirePackage[notext,nomath,nott]{kpfonts}
+    \else
+      \RequirePackage[notext,nomath,nott]{kpfonts-otf}
+    \fi
     \RequirePackage[T1]{fontenc}
     \renewcommand{\sfdefault}{jkpss}
   }
