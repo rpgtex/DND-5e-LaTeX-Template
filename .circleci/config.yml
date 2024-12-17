@@ -3,7 +3,7 @@ version: 2
 
 _job: &job
   docker:
-    - image: debian:stretch
+    - image: debian:bullseye
   steps:
     - checkout
     - run:
