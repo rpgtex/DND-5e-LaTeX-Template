@@ -3,7 +3,7 @@ version: 2
 
 _job: &job
   docker:
-    - image: debian:bullseye
+    - image: cimg/base
   steps:
     - checkout
     - run:
@@ -32,7 +32,7 @@ _job: &job
 jobs:
   lint:
     docker:
-      - image: circleci/node:latest
+      - image:  cimg/node
     steps:
       - checkout
       - run:
