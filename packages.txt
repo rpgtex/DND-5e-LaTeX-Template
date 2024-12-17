@@ -65,6 +65,7 @@ pgf
 psnfss
 ragged2e
 tcolorbox
+tikzfill
 titlesec
 tocloft
 tools
