@@ -16,7 +16,7 @@ commands:
           command: sudo ./bin/install-texlive
       - run:
           name: Install package dependencies
-          command: ./bin/install-packages packages.txt
+          command: sudo ./bin/install-packages packages.txt
       - save_cache:
           key: v1-{{ checksum "packages.txt" }}
           paths:
