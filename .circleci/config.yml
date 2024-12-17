@@ -12,7 +12,7 @@ commands:
       - checkout
       - run:
           name: Install system dependencies
-          command: apt update -y && apt install -y libfontconfig1 make perl-doc wget
+          command: sudo apt update -y && apt install -y libfontconfig1 make perl-doc wget
       - restore_cache:
           key: v1-{{ checksum "packages.txt" }}
       - run:
