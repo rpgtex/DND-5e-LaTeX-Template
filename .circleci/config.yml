@@ -2,32 +2,32 @@
 version: 2.1
 
 commands:
-  setup_latex:
-    description: "Set up LaTeX environment."
-    steps:
-      - checkout
-      - run:
-          name: Install system dependencies
-          command: sudo apt update -y && sudo apt install -y libfontconfig1 make perl-doc wget
-      - restore_cache:
-          key: v1-{{ checksum "packages.txt" }}
-      - run:
-          name: Install minimal TeXLive
-          command: sudo ./bin/install-texlive
-      - run:
-          name: Install package dependencies
-          command: sudo ./bin/install-packages packages.txt
-      - save_cache:
-          key: v1-{{ checksum "packages.txt" }}
-          paths:
-            - ~/.texlive
-            - /srv/texlive
-      - run:
-          name: Add TeXLive to PATH
-          command: echo 'export PATH="/srv/texlive/bin/x86_64-linux:${PATH}"' >>$BASH_ENV
-      - run:
-          name: Compile document
-          command: make
+  # setup_latex:
+    # description: "Set up LaTeX environment."
+    # steps:
+    #   - checkout
+    #   - run:
+    #       name: Install system dependencies
+    #       command: sudo apt update -y && sudo apt install -y libfontconfig1 make perl-doc wget
+    #   # - restore_cache:
+    #   #     key: v1-{{ checksum "packages.txt" }}
+    #   - run:
+    #       name: Install minimal TeXLive
+    #       command: sudo ./bin/install-texlive
+    #   - run:
+    #       name: Install package dependencies
+    #       command: sudo ./bin/install-packages packages.txt
+    #   # - save_cache:
+    #   #     key: v1-{{ checksum "packages.txt" }}
+    #   #     paths:
+    #   #       - ~/.texlive
+    #   #       - /srv/texlive
+    #   - run:
+    #       name: Add TeXLive to PATH
+    #       command: echo 'export PATH="/srv/texlive/bin/x86_64-linux:${PATH}"' >>$BASH_ENV
+    #   - run:
+    #       name: Compile document
+    #       command: make
 
 jobs:
   lint:
@@ -39,38 +39,82 @@ jobs:
           name: Install dependencies
           command: npm ci
       - run: make lint
-  pdflatex:
+  compile:
     docker:
       - image: cimg/base:current
+    description: "Set up LaTeX environment and build document against pdfLaTeX, luaLaTeX, and."
     steps:
-      - setup_latex
-    environment:
-      LATEX: pdflatex
-  lualatex:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - setup_latex
-    environment:
-      LATEX: lualatex
-  xelatex:
-    docker:
-      - image: cimg/base:current
-    steps:
-      - setup_latex
-    environment:
-      LATEX: xelatex
+      - checkout
+      - run:
+          name: Install system dependencies
+          command: sudo apt update -y && sudo apt install -y libfontconfig1 make perl-doc wget
+      - restore_cache:
+          key: v2-{{ checksum "packages.txt" }}
+      - run:
+          name: Install minimal TeXLive
+          command: sudo ./bin/install-texlive
+      - run:
+          name: Install package dependencies
+          command: sudo ./bin/install-packages packages.txt
+      - save_cache:
+          key: v2-{{ checksum "packages.txt" }}
+          paths:
+            - ~/.texlive
+            - /srv/texlive
+      - run:
+          name: Add TeXLive to PATH
+          command: echo 'export PATH="/srv/texlive/bin/x86_64-linux:${PATH}"' >>$BASH_ENV
+      - run:
+          name: Set pdfLaTeX
+          command: echo 'export LATEX="pdflatex"' >>$BASH_ENV
+      - run:
+          name: Compile pdfLaTeX
+          command: make
+          environment:
+            LATEX: pdflatex
+      - run:
+          name: Compile luaLaTeX
+          command: make
+          environment:
+            LATEX: lualatex
+      - run:
+          name: Compile XeTeX
+          command: make
+          environment:
+            LATEX: xelatex
+  # pdflatex:
+  #   docker:
+  #     - image: cimg/base:current
+  #   steps:
+  #     - setup_latex
+  #   environment:
+  #     LATEX: pdflatex
+  # lualatex:
+  #   docker:
+  #     - image: cimg/base:current
+  #   steps:
+  #     - setup_latex
+  #   environment:
+  #     LATEX: lualatex
+  # xelatex:
+  #   docker:
+  #     - image: cimg/base:current
+  #   steps:
+  #     - setup_latex
+  #   environment:
+  #     LATEX: xelatex
 
 workflows:
   check_pr:
     jobs:
       - lint
-      - pdflatex:
-          requires:
-            - lint
-      - lualatex:
-          requires:
-            - pdflatex
-      - xelatex:
-          requires:
-            - lualatex
+      - compile
+      # - pdflatex:
+      #     requires:
+      #       - lint
+      # - lualatex:
+      #     requires:
+      #       - pdflatex
+      # - xelatex:
+      #     requires:
+      #       - lualatex
