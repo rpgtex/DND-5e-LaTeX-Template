@@ -12,7 +12,7 @@ if ! command -v tex > /dev/null; then
   tar -xzf install-tl-unx.tar.gz
   (
     cd install-tl-20*
-    ./install-tl --profile="${DIR}/texlive.profile"
+    ./install-tl --repository ftp://tug.org/historic/systems/texlive/2023/tlnet-final/ --profile="${DIR}/texlive.profile"
   )
 fi
 
