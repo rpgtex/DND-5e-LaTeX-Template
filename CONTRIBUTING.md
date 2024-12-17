@@ -47,7 +47,7 @@ If you have a problem that is not strictly dndbook specific, there are some othe
 
 For small bug fixes, opening a Pull Request (PR) directly is okay, but larger changes and new functionality should be agreed on in an issue before development starts. Once it is time to get to work on a pull request:
 
-1. Fork the repo and create your branch from `develop` for new code or a version branch for bug fixes.
+1. Fork the repo and create your branch from `dev` for new code or a version branch for bug fixes.
 1. Write your code.
 1. If you've changed the interface, update the documentation (example.tex).
 1. If you add a new package dependency, add the LaTeX package that contains it to [packages.txt](packages.txt).

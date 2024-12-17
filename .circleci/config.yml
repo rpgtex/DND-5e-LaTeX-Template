@@ -1,62 +1,68 @@
----
-version: 2
+# CircleCI configuration file
+version: 2.1
 
-_job: &job
-  docker:
-    - image: debian:stretch
-  steps:
-    - checkout
-    - run:
-        name: Install system dependencies
-        command: apt update -y && apt install -y libfontconfig1 make perl-doc wget
-    - restore_cache:
-        key: v1-{{ checksum "packages.txt" }}
-    - run:
-        name: Install minimal TeXLive
-        command: ./bin/install-texlive
-    - run:
-        name: Install package dependencies
-        command: ./bin/install-packages packages.txt
-    - save_cache:
-        key: v1-{{ checksum "packages.txt" }}
-        paths:
-          - ~/.texlive
-          - /srv/texlive
-    - run:
-        name: Add TeXLive to PATH
-        command: echo 'export PATH="/srv/texlive/bin/x86_64-linux:${PATH}"' >>$BASH_ENV
-    - run:
-        name: Compile document
-        command: make
+commands:
+  clean_and_build:
+    description: "Clean and build example document."
+    parameters:
+      engine:
+        description: "Which engine to use for compilation."
+        default: "pdflatex"
+        type: string
+    steps:
+      - run:
+          name: clean build
+          command: make clean
+      - run:
+          name: build with << parameters.engine >>
+          command: make
+          environment:
+            LATEX: << parameters.engine >>
 
 jobs:
   lint:
     docker:
-      - image: circleci/node:latest
+      - image: cimg/node:current
     steps:
       - checkout
       - run:
           name: Install dependencies
           command: npm ci
       - run: make lint
-  pdflatex:
-    <<: *job
-    environment:
-      LATEX: pdflatex
-  lualatex:
-    <<: *job
-    environment:
-      LATEX: lualatex
-  xelatex:
-    <<: *job
-    environment:
-      LATEX: xelatex
+  check_build:
+    docker:
+      - image: cimg/base:current
+    description: "Set up LaTeX environment and build document against pdfLaTeX, luaLaTeX, and XeTeX."
+    steps:
+      - checkout
+      - run:
+          name: Install system dependencies
+          command: sudo apt update -y && sudo apt install -y libfontconfig1 make perl-doc wget
+      # - restore_cache:
+      #     key: v2-{{ checksum "packages.txt" }}
+      - run:
+          name: Install minimal TeXLive
+          command: sudo ./bin/install-texlive
+      - run:
+          name: Install package dependencies
+          command: sudo ./bin/install-packages packages.txt
+      # - save_cache:
+      #     key: v2-{{ checksum "packages.txt" }}
+      #     paths:
+      #       - ~/.texlive
+      #       - /srv/texlive
+      - run:
+          name: Add TeXLive to PATH
+          command: echo 'export PATH="/srv/texlive/bin/x86_64-linux:${PATH}"' >>$BASH_ENV
+      - clean_and_build:
+          engine: pdflatex
+      - clean_and_build:
+          engine: lualatex
+      - clean_and_build:
+          engine: xelatex
 
 workflows:
-  version: 2
-  build:
+  check_pr:
     jobs:
       - lint
-      - pdflatex
-      - lualatex
-      - xelatex
+      - check_build

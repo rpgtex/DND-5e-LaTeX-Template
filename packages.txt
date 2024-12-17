@@ -39,12 +39,14 @@ everysel
 fancyhdr
 fontaxes
 fp
+gensymb
 geometry
 gillius
 hang
 initials
 keycommand
 kpfonts
+kpfonts-otf
 kvsetkeys
 l3backend
 l3kernel
@@ -59,10 +61,12 @@ minifp
 ms
 numprint
 oberdiek
+pdfcol
 pgf
 psnfss
 ragged2e
 tcolorbox
+tikzfill
 titlesec
 tocloft
 tools

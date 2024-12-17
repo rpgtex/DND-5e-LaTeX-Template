@@ -8,11 +8,11 @@ export PATH=/srv/texlive/bin/x86_64-linux:$PATH
 
 # Download and install TeXLive if it is not installed.
 if ! command -v tex > /dev/null; then
-  wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+  wget ftp://tug.org/historic/systems/texlive/2023/install-tl-unx.tar.gz
   tar -xzf install-tl-unx.tar.gz
   (
     cd install-tl-20*
-    ./install-tl --profile="${DIR}/texlive.profile"
+    ./install-tl --repository ftp://tug.org/historic/systems/texlive/2023/tlnet-final/ --profile="${DIR}/texlive.profile"
   )
 fi
 
