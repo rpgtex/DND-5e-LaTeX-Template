@@ -13,7 +13,7 @@ commands:
           key: v1-{{ checksum "packages.txt" }}
       - run:
           name: Install minimal TeXLive
-          command: ./bin/install-texlive
+          command: sudo ./bin/install-texlive
       - run:
           name: Install package dependencies
           command: ./bin/install-packages packages.txt
