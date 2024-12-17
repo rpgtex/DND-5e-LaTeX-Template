@@ -39,6 +39,7 @@ everysel
 fancyhdr
 fontaxes
 fp
+gensymb
 geometry
 gillius
 hang
