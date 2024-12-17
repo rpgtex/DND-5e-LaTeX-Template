@@ -1,38 +1,42 @@
----
-version: 2
+# CircleCI configuration file
+version: 2.1
 
-_job: &job
-  docker:
-    - image: cimg/base
-  steps:
-    - checkout
-    - run:
-        name: Install system dependencies
-        command: apt update -y && apt install -y libfontconfig1 make perl-doc wget
-    - restore_cache:
-        key: v1-{{ checksum "packages.txt" }}
-    - run:
-        name: Install minimal TeXLive
-        command: ./bin/install-texlive
-    - run:
-        name: Install package dependencies
-        command: ./bin/install-packages packages.txt
-    - save_cache:
-        key: v1-{{ checksum "packages.txt" }}
-        paths:
-          - ~/.texlive
-          - /srv/texlive
-    - run:
-        name: Add TeXLive to PATH
-        command: echo 'export PATH="/srv/texlive/bin/x86_64-linux:${PATH}"' >>$BASH_ENV
-    - run:
-        name: Compile document
-        command: make
+commands:
+  setup_latex:
+    description: "Set up LaTeX environment."
+    # parameters:
+    #   to:
+    #     type: string
+    #     default: "Hello World"
+    steps:
+      - checkout
+      - run:
+          name: Install system dependencies
+          command: apt update -y && apt install -y libfontconfig1 make perl-doc wget
+      - restore_cache:
+          key: v1-{{ checksum "packages.txt" }}
+      - run:
+          name: Install minimal TeXLive
+          command: ./bin/install-texlive
+      - run:
+          name: Install package dependencies
+          command: ./bin/install-packages packages.txt
+      - save_cache:
+          key: v1-{{ checksum "packages.txt" }}
+          paths:
+            - ~/.texlive
+            - /srv/texlive
+      - run:
+          name: Add TeXLive to PATH
+          command: echo 'export PATH="/srv/texlive/bin/x86_64-linux:${PATH}"' >>$BASH_ENV
+      - run:
+          name: Compile document
+          command: make
 
 jobs:
   lint:
     docker:
-      - image:  cimg/node
+      - image: cimg/node:current
     steps:
       - checkout
       - run:
@@ -40,23 +44,37 @@ jobs:
           command: npm ci
       - run: make lint
   pdflatex:
-    <<: *job
+    docker:
+      - image: cimg/base:current
+    steps:
+      - setup_latex
     environment:
       LATEX: pdflatex
   lualatex:
-    <<: *job
+    docker:
+      - image: cimg/base:current
+    steps:
+      - setup_latex
     environment:
       LATEX: lualatex
   xelatex:
-    <<: *job
+    docker:
+      - image: cimg/base:current
+    steps:
+      - setup_latex
     environment:
       LATEX: xelatex
 
 workflows:
-  version: 2
-  build:
+  check_pr:
     jobs:
       - lint
-      - pdflatex
-      - lualatex
-      - xelatex
+      - pdflatex:
+          requires:
+            - lint
+      - lualatex:
+          requires:
+            - pdflatex
+      - xelatex:
+          requires:
+            - lualatex
