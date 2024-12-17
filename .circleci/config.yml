@@ -2,6 +2,22 @@
 version: 2.1
 
 commands:
+  clean_and_build:
+    description: "Clean and build example document."
+    parameters:
+      engine:
+        description: "Which engine to use for compilation."
+        default: "pdflatex"
+        type: string
+    steps:
+      - run:
+          name: clean build
+          command: make clean
+      - run:
+          name: build with << parameters.engine >>
+          command: make
+          environment:
+            LATEX: << parameters.engine >>
   # setup_latex:
     # description: "Set up LaTeX environment."
     # steps:
@@ -39,10 +55,10 @@ jobs:
           name: Install dependencies
           command: npm ci
       - run: make lint
-  compile:
+  check_build:
     docker:
       - image: cimg/base:current
-    description: "Set up LaTeX environment and build document against pdfLaTeX, luaLaTeX, and."
+    description: "Set up LaTeX environment and build document against pdfLaTeX, luaLaTeX, and XeTeX."
     steps:
       - checkout
       - run:
@@ -64,24 +80,12 @@ jobs:
       - run:
           name: Add TeXLive to PATH
           command: echo 'export PATH="/srv/texlive/bin/x86_64-linux:${PATH}"' >>$BASH_ENV
-      - run:
-          name: Set pdfLaTeX
-          command: echo 'export LATEX="pdflatex"' >>$BASH_ENV
-      - run:
-          name: Compile pdfLaTeX
-          command: make
-          environment:
-            LATEX: pdflatex
-      - run:
-          name: Compile luaLaTeX
-          command: make
-          environment:
-            LATEX: lualatex
-      - run:
-          name: Compile XeTeX
-          command: make
-          environment:
-            LATEX: xelatex
+      - clean_and_build:
+          engine: pdflatex
+      - clean_and_build:
+          engine: lualatex
+      - clean_and_build:
+          engine: xelatex
   # pdflatex:
   #   docker:
   #     - image: cimg/base:current
@@ -108,7 +112,7 @@ workflows:
   check_pr:
     jobs:
       - lint
-      - compile
+      - check_build
       # - pdflatex:
       #     requires:
       #       - lint
