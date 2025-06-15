@@ -129,6 +129,53 @@
     \par
   }
 
+%% Monster CR/PB helper
+% \l_tmpa_tl - CR
+% \l_tmpb_tl - PB
+\cs_new_protected_nopar:Npn \__dnd_cr_pb:N #1
+  {
+    \tl_set:Nn \l_tmpa_tl {#1}
+    \str_case_e:nnTF {#1}
+      {
+        {0}   { \tl_set:Nn \l_tmpb_tl {+2} }
+        {1/8} { \tl_set:Nn \l_tmpb_tl {+2} }
+        {1/4} { \tl_set:Nn \l_tmpb_tl {+2} }
+        {1/2} { \tl_set:Nn \l_tmpb_tl {+2} }
+        {1}   { \tl_set:Nn \l_tmpb_tl {+2} }
+        {2}   { \tl_set:Nn \l_tmpb_tl {+2} }
+        {3}   { \tl_set:Nn \l_tmpb_tl {+2} }
+        {4}   { \tl_set:Nn \l_tmpb_tl {+2} }
+        {5}   { \tl_set:Nn \l_tmpb_tl {+3} }
+        {6}   { \tl_set:Nn \l_tmpb_tl {+3} }
+        {7}   { \tl_set:Nn \l_tmpb_tl {+3} }
+        {8}   { \tl_set:Nn \l_tmpb_tl {+3} }
+        {9}   { \tl_set:Nn \l_tmpb_tl {+4} }
+        {10}  { \tl_set:Nn \l_tmpb_tl {+4} }
+        {11}  { \tl_set:Nn \l_tmpb_tl {+4} }
+        {12}  { \tl_set:Nn \l_tmpb_tl {+4} }
+        {13}  { \tl_set:Nn \l_tmpb_tl {+5} }
+        {14}  { \tl_set:Nn \l_tmpb_tl {+5} }
+        {15}  { \tl_set:Nn \l_tmpb_tl {+5} }
+        {16}  { \tl_set:Nn \l_tmpb_tl {+5} }
+        {17}  { \tl_set:Nn \l_tmpb_tl {+6} }
+        {18}  { \tl_set:Nn \l_tmpb_tl {+6} }
+        {19}  { \tl_set:Nn \l_tmpb_tl {+6} }
+        {20}  { \tl_set:Nn \l_tmpb_tl {+6} }
+        {21}  { \tl_set:Nn \l_tmpb_tl {+7} }
+        {22}  { \tl_set:Nn \l_tmpb_tl {+7} }
+        {23}  { \tl_set:Nn \l_tmpb_tl {+7} }
+        {24}  { \tl_set:Nn \l_tmpb_tl {+7} }
+        {25}  { \tl_set:Nn \l_tmpb_tl {+8} }
+        {26}  { \tl_set:Nn \l_tmpb_tl {+8} }
+        {27}  { \tl_set:Nn \l_tmpb_tl {+8} }
+        {28}  { \tl_set:Nn \l_tmpb_tl {+8} }
+        {29}  { \tl_set:Nn \l_tmpb_tl {+9} }
+        {30}  { \tl_set:Nn \l_tmpb_tl {+9} }
+      }
+      { \l_tmpb_tl }
+      { #1 }
+  }
+
 % A description variant used to list creature attributes.
 \newlist {__dnd_monster_attributes} {description} {1}
 \setlist [__dnd_monster_attributes]
@@ -144,41 +191,6 @@
   {
     \tl_if_empty:NF {#1}
       { \item [#2] #1 }
-  }
-
-%% Monster basics
-\keys_define:nn { dnd / monster / basics }
-  {
-    armor-class .tl_set:N          = \l__armor_class_tl,
-    armor-class .initial:n         = 10,
-    armor-class .value_required:n  = true,
-    armorclass .meta:n = { armor-class = {#1} },
-    hit-points .tl_set:N         = \l__hit_points_tl,
-    hit-points .initial:n        = \DndDice {1d8},
-    hit-points .value_required:n = true,
-    hitpoints .meta:n = { hit-points = {#1} },
-    speed .tl_set:N         = \l__speed_tl,
-    speed .initial:n        = 30 ~ \unitsname,
-    speed .value_required:n = true,
-  }
-
-\cs_new_protected_nopar:Npn \__dnd_monster_basics:
-  {
-      \begin {__dnd_monster_attributes}
-        \item [\armorclassname] \l__armor_class_tl
-        \item [\hitpointsname]  \l__hit_points_tl
-        \item [\speedname]      \l__speed_tl
-      \end {__dnd_monster_attributes}
-  }
-
-\NewDocumentCommand {\DndMonsterBasics} {o}
-  {
-    \group_begin:
-      \keys_set:nn { dnd / monster / basics } {#1}
-      \DndMonsterLine
-      \__dnd_monster_basics:
-      \DndMonsterLine
-    \group_end:
   }
 
 %% Monster CR/XP helper
@@ -239,53 +251,6 @@
       { #1 }
 }
 
-%% Monster CR/PB helper
-% \l_tmpa_tl - CR
-% \l_tmpb_tl - PB
-\cs_new_protected_nopar:Npn \__dnd_cr_pb:N #1
-  {
-    \tl_set:Nn \l_tmpa_tl {#1}
-    \str_case_e:nnTF {#1}
-      {
-        {0}   { \tl_set:Nn \l_tmpb_tl {+2} }
-        {1/8} { \tl_set:Nn \l_tmpb_tl {+2} }
-        {1/4} { \tl_set:Nn \l_tmpb_tl {+2} }
-        {1/2} { \tl_set:Nn \l_tmpb_tl {+2} }
-        {1}   { \tl_set:Nn \l_tmpb_tl {+2} }
-        {2}   { \tl_set:Nn \l_tmpb_tl {+2} }
-        {3}   { \tl_set:Nn \l_tmpb_tl {+2} }
-        {4}   { \tl_set:Nn \l_tmpb_tl {+2} }
-        {5}   { \tl_set:Nn \l_tmpb_tl {+3} }
-        {6}   { \tl_set:Nn \l_tmpb_tl {+3} }
-        {7}   { \tl_set:Nn \l_tmpb_tl {+3} }
-        {8}   { \tl_set:Nn \l_tmpb_tl {+3} }
-        {9}   { \tl_set:Nn \l_tmpb_tl {+4} }
-        {10}  { \tl_set:Nn \l_tmpb_tl {+4} }
-        {11}  { \tl_set:Nn \l_tmpb_tl {+4} }
-        {12}  { \tl_set:Nn \l_tmpb_tl {+4} }
-        {13}  { \tl_set:Nn \l_tmpb_tl {+5} }
-        {14}  { \tl_set:Nn \l_tmpb_tl {+5} }
-        {15}  { \tl_set:Nn \l_tmpb_tl {+5} }
-        {16}  { \tl_set:Nn \l_tmpb_tl {+5} }
-        {17}  { \tl_set:Nn \l_tmpb_tl {+6} }
-        {18}  { \tl_set:Nn \l_tmpb_tl {+6} }
-        {19}  { \tl_set:Nn \l_tmpb_tl {+6} }
-        {20}  { \tl_set:Nn \l_tmpb_tl {+6} }
-        {21}  { \tl_set:Nn \l_tmpb_tl {+7} }
-        {22}  { \tl_set:Nn \l_tmpb_tl {+7} }
-        {23}  { \tl_set:Nn \l_tmpb_tl {+7} }
-        {24}  { \tl_set:Nn \l_tmpb_tl {+7} }
-        {25}  { \tl_set:Nn \l_tmpb_tl {+8} }
-        {26}  { \tl_set:Nn \l_tmpb_tl {+8} }
-        {27}  { \tl_set:Nn \l_tmpb_tl {+8} }
-        {28}  { \tl_set:Nn \l_tmpb_tl {+8} }
-        {29}  { \tl_set:Nn \l_tmpb_tl {+9} }
-        {30}  { \tl_set:Nn \l_tmpb_tl {+9} }
-      }
-      { \l_tmpb_tl }
-      { #1 }
-  }
-
 %% Monster details
 \keys_define:nn { dnd / monster / details }
 {
@@ -306,6 +271,8 @@
   condition-immunities .tl_set:N         = \l__condition_immunities_tl,
   condition-immunities .value_required:n = true,
   conditionimmunities .meta:n = { condition-immunities = {#1} },
+  gear .tl_set:N         = \l__gear_tl,
+  gear .value_required:n = false,
   senses .tl_set:N         = \l__senses_tl,
   senses .initial:n        = \defaultsensesname,
   senses .value_required:n = true,
@@ -330,6 +297,7 @@
       \__dnd_if_monster_attribute:nn {\l__damage_resistances_tl}     {\dresname}
       \__dnd_if_monster_attribute:nn {\l__damage_immunities_tl}      {\dimmname}
       \__dnd_if_monster_attribute:nn {\l__condition_immunities_tl}   {\cimmname}
+      \__dnd_if_monster_attribute:nn {\l__gear_tl}                   {\gearname}
       \item [\sensesname]    \l__senses_tl
       \item [\languagesname] \l__languages_tl
       \item [\challengename] \__dnd_cr_xp:N {\l__challenge_tl}
@@ -353,6 +321,53 @@
     \DndMonsterLine{}
   \group_end:
 }
+
+%% Monster basics
+\keys_define:nn { dnd / monster / basics }
+  {
+    armor-class .tl_set:N          = \l__armor_class_tl,
+    armor-class .initial:n         = 10,
+    armor-class .value_required:n  = true,
+    armorclass .meta:n = { armor-class = {#1} },
+    hit-points .tl_set:N         = \l__hit_points_tl,
+    hit-points .initial:n        = \DndDice {1d8},
+    hit-points .value_required:n = true,
+    hitpoints .meta:n = { hit-points = {#1} },
+    speed .tl_set:N         = \l__speed_tl,
+    speed .initial:n        = 30 ~ \unitsname,
+    speed .value_required:n = true,
+    initiative-bonus .tl_set:N          = \l__initiative_tl,
+    initiative-bonus .initial:n         = {},
+    initiative-bonus .value_required:n  = false,
+    initiativebonus .meta:n    = { proficiency-bonus = {#1} },
+    proficiency-bonus .tl_set:N = \l__proficiency_tl,
+    proficiency-bonus .value_required:n = false,
+    proficiency-bonus .default:n = *,
+    proficiencybonus .meta:n    = { proficiency-bonus = {#1} },
+    challenge .tl_set:N         = \l__challenge_tl,
+    challenge .initial:n        = 1,
+    challenge .value_required:n = true,
+  }
+
+\cs_new_protected_nopar:Npn \__dnd_monster_basics:
+  {
+      \begin {__dnd_monster_attributes}
+        \item [\armorclassname] \l__armor_class_tl
+        \item [\hitpointsname]  \l__hit_points_tl
+        \item [\speedname]      \l__speed_tl
+        \item [\initiativename] \l__initiative_tl
+      \end {__dnd_monster_attributes}
+  }
+
+\NewDocumentCommand {\DndMonsterBasics} {o}
+  {
+    \group_begin:
+      \keys_set:nn { dnd / monster / basics } {#1}
+      \DndMonsterLine
+      \__dnd_monster_basics:
+      \DndMonsterLine
+    \group_end:
+  }
 
 %% Ability scores
 % Print ability score stats with auto-computed modifier
