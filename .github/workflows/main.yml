@@ -35,11 +35,11 @@ jobs:
       matrix:
         # defining the matrix to create the test cases
         engine: [pdflatex, xelatex, lualatex]
-    name: "Build PDF on TeXLive 2023, Engine ${{ matrix.engine }}"
+    name: "Build PDF on TeXLive 2023, ${{ matrix.engine }}"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      # Might find something useful to cache
+      # Might find something useful to cache later
       # - name: Cache TeX Live data
       #   uses: actions/cache@v4
       #   with:
@@ -54,4 +54,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: example-${{ matrix.engine }}
-          path: example-${{ matrix.engine }}.pdf
+          path: example.pdf
