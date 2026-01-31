@@ -50,3 +50,8 @@ jobs:
       #       ${{ runner.os }}-texlive-${{ matrix.engine }}-
       - name: "Build PDF with ${{ matrix.engine }}"
         run: latexmk -${{ matrix.engine }} -interaction=nonstopmode example.tex
+      - name: "Upload PDF artifact from ${{ matrix.engine }}"
+        uses: actions/upload-artifact@v4
+        with:
+          name: example-${{ matrix.engine_name }}
+          path: example-${{ matrix.engine_name }}.pdf
