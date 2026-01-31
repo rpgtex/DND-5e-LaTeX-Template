@@ -49,4 +49,4 @@ jobs:
       #     restore-keys: |
       #       ${{ runner.os }}-texlive-${{ matrix.engine }}-
       - name: "Build PDF with ${{ matrix.engine }}"
-        run: latexmk ${{ matrix.engine }} -interaction=nonstopmode example.tex
+        run: latexmk -${{ matrix.engine }} -interaction=nonstopmode example.tex
