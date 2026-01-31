@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * Added optional `proficiency-bonus` item to `\DnDMonsterDetails` that will be displayed next to the monster or NPC's challenge rating, as is the style in Candlekeep Mysteries and dndbeyond.
 
 ### Changed
+* Moved devops from CircleCI to GitHub Actions
 
 ## [0.8.0] - 2020-04-21
 
