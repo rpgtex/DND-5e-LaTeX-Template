@@ -35,7 +35,7 @@ jobs:
       matrix:
         # defining the matrix to create the test cases
         engine: [pdflatex, xelatex, lualatex]
-    name: "Build PDF on ${{ matrix.platform }}, TeXLive ${{ matrix.texlive }}, Engine ${{ matrix.engine }}"
+    name: "Build PDF on TeXLive 2023, Engine ${{ matrix.engine }}"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
