@@ -1,0 +1,52 @@
+name: Test document
+
+# Currently we run in two situations:
+on:
+  # 1) Whenever someone pushes to a branch
+  push:
+  # 2) Whenever a pull request is opened, reopened or gets new commits.
+  pull_request:
+  # This implies that for every push to a local branch in our repo for which a
+  # pull request is open this runs twice. But it's important to ensure that pull
+  # requests get tested, even if their branch comes from a fork.
+
+# Cancel running builds on push on the same branch or pull request
+concurrency:
+  group: "${{ github.workflow }}-${{ github.head_ref || github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  eclint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run eclint
+        uses: reviewdog/action-eclint@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review # Reports as PR comments
+          eclint_flags: '.' # Checks all files
+  check-build:
+    runs-on: ubuntu-latest
+    container:
+      # Run on 2023
+      image: texlive/texlive:TL2023-historic
+    strategy:
+      matrix:
+        # defining the matrix to create the test cases
+        engine: [pdflatex, xelatex, lualatex]
+    name: "Build PDF on ${{ matrix.platform }}, TeXLive ${{ matrix.texlive }}, Engine ${{ matrix.engine }}"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      # Might find something useful to cache
+      # - name: Cache TeX Live data
+      #   uses: actions/cache@v4
+      #   with:
+      #     # Caches the user-specific TeX Live directory (fonts, maps, etc.)
+      #     path: /root/.texlive2023
+      #     key: ${{ runner.os }}-texlive-${{ matrix.engine }}-${{ hashFiles('example.tex') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-texlive-${{ matrix.engine }}-
+      - name: "Build PDF with ${{ matrix.engine }}"
+        run: latexmk ${{ matrix.engine }} -interaction=nonstopmode example.tex
