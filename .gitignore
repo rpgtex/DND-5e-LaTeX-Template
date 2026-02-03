@@ -7,3 +7,4 @@
 *.pdf
 *.synctex.gz
 *.toc
+.DS_Store

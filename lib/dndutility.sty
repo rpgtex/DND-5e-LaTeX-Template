@@ -47,6 +47,129 @@
         { \msg_error:nnn { dnd } { dice / invalid_argument } { #1 }}
     \group_end:
   }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DC check/save macros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NewDocumentCommand { \DndSkillCheck } { mmm }
+  {
+    DC\nobreakspace #1~#2~(#3)
+  }
+\NewDocumentCommand { \DndAbilityCheck } { mm }
+  {
+    DC\nobreakspace #1~#2
+  }
+
+\NewDocumentCommand { \DndStrSave } { m }
+  {
+    \DndAbilityCheck{#1}{\strname}
+  }
+\NewDocumentCommand { \DndDexSave } { m }
+  {
+    \DndAbilityCheck{#1}{\dexname}
+  }
+\NewDocumentCommand { \DndConSave } { m }
+  {
+    \DndAbilityCheck{#1}{\conname}
+  }
+\NewDocumentCommand { \DndIntSave } { m }
+  {
+    \DndAbilityCheck{#1}{\intname}
+  }
+\NewDocumentCommand { \DndWisSave } { m }
+  {
+    \DndAbilityCheck{#1}{\wisname}
+  }
+\NewDocumentCommand { \DndChaSave } { m }
+  {
+    \DndAbilityCheck{#1}{\chaname}
+  }
+
+\NewDocumentCommand { \DndAcrobatics } { O{\dexname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\acrobaticsname}
+  }
+\NewDocumentCommand { \DndAnimalHandling } { O{\wisname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\animalhandlingname}
+  }
+\NewDocumentCommand { \DndArcana } { O{\intname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\arcananame}
+  }
+\NewDocumentCommand { \DndAthletics } { O{\strname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\athleticsname}
+  }
+\NewDocumentCommand { \DndDeception } { O{\chaname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\deceptionname}
+  }
+\NewDocumentCommand { \DndHistory } { O{\intname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\historyname}
+  }
+\NewDocumentCommand { \DndInsight } { O{\wisname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\insightname}
+  }
+\NewDocumentCommand { \DndIntimidation } { O{\chaname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\intimidationname}
+  }
+\NewDocumentCommand { \DndInvestigation } { O{\intname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\investigationname}
+  }
+\NewDocumentCommand { \DndMedicine } { O{\wisname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\medicinename}
+  }
+\NewDocumentCommand { \DndNature } { O{\intname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\naturename}
+  }
+\NewDocumentCommand { \DndPerception } { O{\wisname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\perceptionname}
+  }
+\NewDocumentCommand { \DndPerformance } { O{\chaname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\performancename}
+  }
+\NewDocumentCommand { \DndPersuasion } { O{\chaname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\persuasionname}
+  }
+\NewDocumentCommand { \DndReligion } { O{\intname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\religionname}
+  }
+\NewDocumentCommand { \DndSleightOfHand } { O{\dexname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\sleightname}
+  }
+\NewDocumentCommand { \DndStealth } { O{\dexname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\stealthname}
+  }
+\NewDocumentCommand { \DndSurvival } { O{\wisname} m }
+  {
+    \DndSkillCheck{#2}{#1}{\survivalname}
+  }
+
+% Because I always forget that lock-picking is straight Dexterity
+\NewDocumentCommand { \DndPickLock } { m }
+  {
+    \DndAbilityCheck{#1}{\dexname}
+  }
+
+% Thieves' Tools checks are fairly common.
+\NewDocumentCommand { \DndThievesTools } { m }
+  {
+    \DndSkillCheck{#1}{\dexname}{\thievestoolsname}
+  }
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Gets the width of a space
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -31,6 +31,15 @@
 \bool_new:N \l__dnd_multitoc_bool
 \bool_new:N \l__dnd_layout_bool
 \bool_new:N \l__dnd_no_deprecated_code_bool
+\bool_new:N \l__dnd_eberron_mode_bool
+\bool_new:N \l__dnd_img_draft_bool
+\bool_new:N \l__dnd_modern_stats_bool
+\tl_new:N \l__dnd_background_name_tl
+\tl_new:N \l__dnd_fontset_tl
+
+\tl_const:Nn \l__dnd_fontset_plain_tl {plain}
+\tl_const:Nn \l__dnd_fontset_wotc_tl {wotc}
+\tl_const:Nn \l__dnd_fontset_dmsguild_dl {dmsguild}
 
 \bool_set_true:N \l__dnd_multitoc_bool
 \bool_set_eq:NN \l__dnd_layout_bool \c__dnd_isclass_bool
@@ -48,18 +57,67 @@
       {
         \bool_set_true:N \l__dnd_show_background_bool
         \bool_set_true:N \l__dnd_show_footer_scroll_bool
+        \bool_set_false:N \l__dnd_eberron_mode_bool
+      },
+    bg / eberron .code:n =
+      {
+        \bool_set_true:N \l__dnd_show_background_bool
+        \bool_set_false:N \l__dnd_show_footer_scroll_bool
+        \bool_set_true:N \l__dnd_eberron_mode_bool
       },
     bg / print .code:n =
       {
         \bool_set_false:N \l__dnd_show_background_bool
         \bool_set_true:N \l__dnd_show_footer_scroll_bool
+        \bool_set_false:N \l__dnd_eberron_mode_bool
       },
     bg / none .code:n =
       {
         \bool_set_false:N \l__dnd_show_background_bool
         \bool_set_false:N \l__dnd_show_footer_scroll_bool
+        \bool_set_false:N \l__dnd_eberron_mode_bool
       },
     bg .initial:n = full,
+
+    % Font choice: use wotc to use the official DnD fonts
+    fonts .choice:,
+    fonts / wotc .code:n =
+      {
+        \tl_set_eq:NN \l__dnd_fontset_tl \l__dnd_fontset_wotc_tl
+      },
+    fonts / dmsguild .code:n =
+      {
+        \tl_set_eq:NN \l__dnd_fontset_tl \l__dnd_fontset_dmsguild_tl
+      },
+    fonts / plain .code:n =
+      {
+        \tl_set_eq:NN \l__dnd_fontset_tl \l__dnd_fontset_plain_tl
+      },
+    fonts .initial:n = plain,
+
+    % Draft-mode DndImage
+    img .choice:,
+    img / draft .code:n =
+      {
+        \bool_set_true:N \l__dnd_img_draft_bool
+      },
+    img / final .code:n =
+      {
+        \bool_set_false:N \l__dnd_img_draft_bool
+      },
+    img .initial:n = final,
+
+    % Use modern (2024) stat block styling
+    stats .choice:,
+    stats / classic .code:n =
+      {
+        \bool_set_false:N \l__dnd_modern_stats_bool
+      },
+    stats / modern .code:n =
+      {
+        \bool_set_true:N \l__dnd_modern_stats_bool
+      },
+    stats .initial:n = classic,
 
     % Justified text
     justified .code:n =
@@ -128,6 +186,14 @@
   }
 
 \ProcessKeysOptions { dnd / options }
+
+\bool_if:NTF \l__dnd_eberron_mode_bool
+  {
+    \tl_set:Nn \l__dnd_background_name_tl {img/eberron}
+  }
+  {
+    \tl_set:Nn \l__dnd_background_name_tl {img/paper}
+  }
 
 % BEGIN section to remove in version 1.0.0
 \bool_if:NF \c__dnd_isclass_bool

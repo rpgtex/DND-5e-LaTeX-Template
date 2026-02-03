@@ -1,0 +1,14 @@
+\ExplSyntaxOn
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Compatibility with external packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cs_if_free:NT \str_case_e:nnF
+  {
+    % \str_case_x was renamed \str_case_e mid-2018. \str_case_x will be removed
+    % at the end of 2019:
+    %
+    %   https://github.com/latex3/latex3/blob/8fcb571ddda61c01773d9746d32cecdbe63afb26/l3kernel/l3obsolete.txt#L65
+    \cs_new_eq:NN \str_case_e:nnF \str_case_x:nnF
+  }

@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+
+### Added
+
+* Theming class options:
+  - Eberron-style header/footers on request
+  - Font set options:
+    * `fonts=dmsguild` for DMs Guild fonts (freely available).
+    * `fonts=wotc` for canonical WotC (paid, fairly expensive) font sets.
+    * Leave off the option to get current default fonts.
+* Image floats, captioned and standalone, based on `tcolorbox`.
+* Stat blocks: small inline ones for sentient weapons, and fully-fledged blocks for vehicles.
+* Quotation and aside environments: on a slightly rotated sticky note, with an attribution (quotation) or not (aside).
+* Area references:
+  - Define ranges (e.g. `Area 10-12: Small prison cells`).
+  - Better ways to reach outside the current top-level area to reference things from elsewhere (e.g. reference 'Area A5' from within 'Area C2').
+  - `\DndAreaRef` now prints 'C5' instead of 'p. 32'.  Use `\DndAreaPageRef` to get 'p. 32' now.
+* Several utility macros:
+  - `\DndAbilityCheck` (DC 11 Strength) and `\DndSkillCheck` (DC 11 Strength (Athletics))
+  - Ability check macros built on those, e.g. `\DndStrSave{12}` gets 'DC 12 Strength'
+  - Skill check macros also built on those, e.g. `\DndAthletics{12}` gets 'DC 12 Strength (Athletics)', or `\DndAthletics[\conname]{12}` gets 'DC 12 Constitution (Athletics)'.
+
 ### Added
 * Portuguese translation
 

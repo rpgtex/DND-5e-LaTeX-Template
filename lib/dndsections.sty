@@ -193,12 +193,12 @@
 \renewcommand \theDndSubAreaCounter { \alph {DndSubAreaCounter} }
 
 % Functions to create an area including text and label
-\NewDocumentCommand {\DndArea} {m}
+\NewDocumentCommand {\DndArea} { o m }
   {
     \refstepcounter {DndAreaCounter}
-    \label { \l__dnd_region_tl \l__dnd_area_label_tl :#1 }
+    \label { \l__dnd_region_tl \l__dnd_area_label_tl :\tl_if_novalue:nTF{#1}{#2}{#1} }
 
-    \tl_set:Nn \l_tmpa_tl { \l__dnd_region_tl \arabic {DndAreaCounter} . ~ #1 }
+    \tl_set:Nn \l_tmpa_tl { \l__dnd_region_tl \arabic {DndAreaCounter} . ~ #2 }
 
     \str_case_e:nn {\l__dnd_area_num_depth_tl}
       {
@@ -209,12 +209,32 @@
       }
   }
 
-\NewDocumentCommand {\DndSubArea} {m}
+\NewDocumentCommand {\DndAreaRange} { o m m }
+  {
+    \refstepcounter {DndAreaCounter}
+    \tl_set:Nx \l_from_tl { \arabic {DndAreaCounter} }
+    \addtocounter{DndAreaCounter}{#2}
+    \tl_set:Nn \l_to_tl { \arabic {DndAreaCounter} }
+
+    \label { \l__dnd_region_tl \l__dnd_area_label_tl : \tl_if_novalue:nTF{#1}{#3}{#1} }
+
+    \tl_set:Nn \l_tmpa_tl { \l__dnd_region_tl \l_from_tl -- \l_to_tl. ~ #3 }
+
+    \str_case_e:nn {\l__dnd_area_num_depth_tl}
+      {
+        {1} { \section       {\l_tmpa_tl} }
+        {2} { \subsection    {\l_tmpa_tl} }
+        {3} { \subsubsection {\l_tmpa_tl} }
+        {4} { \paragraph     {\l_tmpa_tl} }
+      }
+  }
+
+\NewDocumentCommand {\DndSubArea} {om}
   {
     \refstepcounter {DndSubAreaCounter}
-    \label { \l__dnd_region_tl \l__dnd_sub_area_label_tl : #1 }
+    \label { \l__dnd_region_tl \l__dnd_sub_area_label_tl : \tl_if_novalue:nTF{#1}{#2}{#1} }
 
-    \tl_set:Nn \l_tmpa_tl { \l__dnd_region_tl \arabic {DndAreaCounter} \alph {DndSubAreaCounter} . ~ #1 }
+    \tl_set:Nn \l_tmpa_tl { \l__dnd_region_tl \arabic {DndAreaCounter} \alph {DndSubAreaCounter} . ~ #2 }
 
     \str_case_e:nn {\l__dnd_area_num_depth_tl}
       {
@@ -227,18 +247,36 @@
   }
 
 % Functions to reference a label
-\NewDocumentCommand {\DndAreaRef} { o m }
+\NewDocumentCommand {\DndAreaRef} { s o m }
   {
     \group_begin:
-      \keys_set:nn { dnd / areas } {#1} % Temp set keys to reference other regions
-      #2 ~ ( \pageabbreviationname\ \pageref { \l__dnd_region_tl \l__dnd_area_label_tl : #2 } )
+      \IfNoValueTF {#2}
+        {}
+        { \keys_set:nn { dnd / areas } {#2} } % Temp set keys to reference other regions
+      \IfBooleanTF {#1}
+        { \l__dnd_region_tl \ref { \l__dnd_region_tl \l__dnd_area_label_tl : #3 } }
+        { \l__dnd_region_tl \ref { \l__dnd_region_tl \l__dnd_area_label_tl : #3 } : ~ #3 }
     \group_end:
   }
 
-\NewDocumentCommand {\DndSubAreaRef} { o m }
+\NewDocumentCommand {\DndAreaPageRef} { o m }
   {
     \group_begin:
-      \keys_set:nn { dnd / areas } { #1 } % Temp set keys to reference other regions
-      #2 ~ ( \pageabbreviationname\ \pageref { \l__dnd_region_tl \l__dnd_sub_area_label_tl : #2 } )
+      \IfNoValueTF {#1}
+        {}
+        { \keys_set:nn { dnd / areas } {#1} } % Temp set keys to reference other regions
+        { #2 ~ ( \pageabbreviationname\ \pageref { \l__dnd_region_tl \l__dnd_area_label_tl : #2 } ) }
+    \group_end:
+  }
+
+\NewDocumentCommand {\DndSubAreaRef} { s o m }
+  {
+    \group_begin:
+      \IfNoValueTF {#2}
+        {}
+        { \keys_set:nn { dnd / areas } { #2 } } % Temp set keys to reference other regions
+      \IfBooleanTF {#1}
+        { \l__dnd_region_tl \ref { \l__dnd_region_tl \l__dnd_sub_area_label_tl : #3 } }
+        { #3 ~ ( \pageabbreviationname\ \pageref { \l__dnd_region_tl \l__dnd_sub_area_label_tl : #3 } ) }
     \group_end:
   }

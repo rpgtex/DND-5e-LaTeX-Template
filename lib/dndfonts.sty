@@ -7,20 +7,104 @@
 \RequirePackage{Royal}
 \RequirePackage[auto]{contour}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Official WotC Fonts:
+%   Serif/Body Text: Bookmania
+%         <https://fonts.adobe.com/fonts/bookmania>
+%         <https://www.myfonts.com/fonts/marksimonson/bookmania/>
+%   Chapter, Section Titles: Mrs Eaves Small Caps
+%         <https://www.myfonts.com/fonts/emigre/mrs-eaves-ot/small-caps-ot/>
+%         <https://fonts.adobe.com/fonts/mrs-eaves>
+%   Smaller titles: Mrs Eaves All Small Caps
+%         <https://www.myfonts.com/fonts/emigre/mrs-eaves-ot/all-small-caps-ot/>
+%         <https://fonts.adobe.com/fonts/mrs-eaves>
+%   Sans Serif: FF Scala Sans
+%         <https://www.myfonts.com/fonts/fontfont/ff-scala-sans/>
+%         <https://fonts.adobe.com/fonts/ff-scala-sans>
+%   Book Title: Modesto Bold Condensed
+%         <https://www.myfonts.com/fonts/parkinson/modesto/condensed/>
+%         <https://fonts.adobe.com/fonts/modesto>
+%
+% DM's Guild Fonts
+%   Serif/Body Text: TeX Gyre Bonum
+%         <http://www.1001fonts.com/tex-gyre-bonum-font.html>
+%   Chapter/Section Titles: Andada Small Caps
+%         <http://www.1001fonts.com/andada-font.html>
+%   Sans Serif: Junction
+%         <http://www.1001fonts.com/junction-font.html>
+%   Alternatives to Junction, which has no small caps:
+%         Geraldton: <https://www.myfonts.com/fonts/pepper-type/geraldton>
+%                    US$30 per face, US$149 family of 16
+%         Daikon: <https://www.myfonts.com/fonts/pepper-type/daikon/>
+%                 US$30 per face, US$139 family of 16.
+%                 Currently 80% off (6/30/20), US$6 / US$27.80
+
 \bool_if:NT \l__dnd_layout_bool
   {
-    \RequirePackage{bookman}
-    \RequirePackage[type1]{gillius2}
-    \RequirePackage[notext,nomath,nott]{kpfonts}
-    \RequirePackage[T1]{fontenc}
-    \renewcommand{\sfdefault}{jkpss}
+    \tl_case:NnF \l__dnd_fontset_tl
+      {
+        \l__dnd_fontset_wotc_tl
+          {
+            \RequirePackage{fontspec}
+            \RequirePackage{xltxtra}
+            \RequirePackage{xunicode}
+            \setromanfont[Mapping=tex-text]{Bookmania}
+            \setsansfont[Scale=MatchLowercase,Mapping=tex-text,Numbers=Lining]{Scala~Sans~OT}
+            \newfontfamily{\sctitlefont}[Mapping=tex-text,Scale=MatchLowercase]{Mrs~Eaves~Small~Caps~OT}
+            \newfontfamily{\booktitlefont}[Mapping=tex-text]{Nodesto~Caps~Condensed}
+            \newfontfamily{\quotefont}[Mapping=tex-text]{DaiVernon Misdirect}
+          }
+        \l__dnd_fontset_dmsguild_tl
+          {
+            \RequirePackage{fontspec}
+            \RequirePackage{xltxtra}
+            \RequirePackage{xunicode}
+            \setromanfont[Mapping=tex-text]{TeX~Gyre~Bonum}
+            \setsansfont[Scale=MatchLowercase,Mapping=tex-text,Numbers=Lining,AutoFakeSlant=0.2]{Junction}
+            \newfontfamily{\sctitlefont}[Mapping=tex-text,Scale=MatchLowercase]{Andada~SC}
+            \newcommand{\booktitlefont}{\sctitlefont}
+            \newfontfamily{\quotefont}[Mapping=tex-text]{Zatanna Misdirection}
+          }
+      }
+      {
+        \RequirePackage{bookman}
+        \RequirePackage[type1]{gillius2}
+        \RequirePackage[notext,nomath,nott]{kpfonts}
+        \RequirePackage[T1]{fontenc}
+        \renewcommand{\sfdefault}{jkpss}
+        \newcommand{\booktitlefont}{\normalfont}
+        \newcommand{\sctitlefont}{\normalfont}
+        \newcommand{\quotefont}{\sffamily}
+      }
   }
 
 \cs_new_protected:Npn \__dnd_sf_initial_family:
   {
     \bool_if:NTF \l__dnd_layout_bool
-      { \gilliustwo }
+      {
+        \tl_case:NnTF \l__dnd_fontset_tl
+          {
+            \l__dnd_fontset_wotc_tl {}
+            \l__dnd_fontset_dmsguild_tl {}
+          }
+          { \sffamily }
+          { \gilliustwo }
+      }
       { \sffamily }
+  }
+
+\cs_new_protected:Npn \__dnd_page_num_style:
+  {
+    \bool_if:NTF \l__dnd_eberron_mode_bool
+      {\large \textcolor{titlered}}
+      {\scriptsize \textcolor{pagegold}}
+  }
+
+\cs_new_protected:Npn \__dnd_footer_style:
+  {
+    \bool_if:NTF \l__dnd_eberron_mode_bool
+      {\scriptsize \textcolor{titlered}}
+      {\scriptsize \textcolor{pagegold}}
   }
 
 \keys_define:nn { dnd / fonts }
@@ -30,35 +114,35 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Part
     part-family .tl_set:N         = \l__dnd_part_family_tl,
-    part-family .initial:n        = \normalfont,
+    part-family .initial:n        = \booktitlefont,
     part-family .value_required:n = true,
     part-style .tl_set:N         = \l__dnd_part_style_tl,
     part-style .initial:n        = \color{titlered} \Huge \scshape,
     part-style .value_required:n = true,
     % Chapter
     chapter-family .tl_set:N         = \l__dnd_chapter_family_tl,
-    chapter-family .initial:n        = \normalfont,
+    chapter-family .initial:n        = \sctitlefont,
     chapter-family .value_required:n = true,
     chapter-style .tl_set:N         = \l__dnd_chapter_style_tl,
     chapter-style .initial:n        = \linespread{.9} \color{titlered} \Huge \scshape,
     chapter-style .value_required:n = true,
     % Section
     section-family .tl_set:N         = \l__dnd_section_family_tl,
-    section-family .initial:n        = \normalfont,
+    section-family .initial:n        = \sctitlefont,
     section-family .value_required:n = true,
     section-style .tl_set:N         = \l__dnd_section_style_tl,
     section-style .initial:n        = \linespread{.9} \color{titlered} \huge \scshape \RaggedRight,
     section-style .value_required:n = true,
     % Subsection
     subsection-family .tl_set:N         = \l__dnd_subsection_family_tl,
-    subsection-family .initial:n        = \normalfont,
+    subsection-family .initial:n        = \sctitlefont,
     subsection-family .value_required:n = true,
     subsection-style .tl_set:N         = \l__dnd_subsection_style_tl,
     subsection-style .initial:n        = \linespread{.9} \color{titlered} \Large \scshape \RaggedRight,
     subsection-style .value_required:n = true,
     % subsubsection
     subsubsection-family .tl_set:N         = \l__dnd_subsubsection_family_tl,
-    subsubsection-family .initial:n        = \normalfont,
+    subsubsection-family .initial:n        = \sctitlefont,
     subsubsection-family .value_required:n = true,
     subsubsection-style .tl_set:N         = \l__dnd_subsubsection_style_tl,
     subsubsection-style .initial:n        = \linespread{.9} \color{titlered} \large \scshape \RaggedRight,
@@ -143,18 +227,35 @@
     readaloud-style .initial:n        = \small,
     readaloud-style .value_required:n = true,
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Quotation boxes
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Attribution
+    quotation-attribution-family .tl_set:N         = \l__dnd_quote_attr_family_tl,
+    quotation-attribution-family .initial:n        = \quotefont,
+    quotation-attribution-family .value_required:n = true,
+    quotation-attribution-style .tl_set:N         = \l__dnd_quote_attr_style_tl,
+    quotation-attribution-style .initial:n        = \small,
+    quotation-attribution-style .value_required:n = true,
+    % Body
+    quotation-body-family .tl_set:N         = \l__dnd_quotation_family_tl,
+    quotation-body-family .initial:n        = \quotefont,
+    quotation-body-family .value_required:n = true,
+    quotation-body-style .tl_set:N         = \l__dnd_quotation_style_tl,
+    quotation-body-style .initial:n        = \small,
+    quotation-body-style .value_required:n = true,
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Table of Contents
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Part
     toc-part-family .tl_set:N         = \l__dnd_toc_part_family_tl,
-    toc-part-family .initial:n        = \normalfont,
+    toc-part-family .initial:n        = \sctitlefont,
     toc-part-family .value_required:n = true,
     toc-part-style .tl_set:N         = \l__dnd_toc_part_style_tl,
     toc-part-style .initial:n        = \Large \scshape \color{titlered},
     toc-part-style .value_required:n = true,
     % Chapter
     toc-chapter-family .tl_set:N         = \l__dnd_toc_chapter_family_tl,
-    toc-chapter-family .initial:n        = \normalfont,
+    toc-chapter-family .initial:n        = \sctitlefont,
     toc-chapter-family .value_required:n = true,
     toc-chapter-style .tl_set:N         = \l__dnd_toc_chapter_style_tl,
     toc-chapter-style .initial:n        = \large \scshape \color{titlered},
@@ -171,7 +272,7 @@
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Stat block title
     stat-block-title-family .tl_set:N         = \l__dnd_stat_block_title_family_tl,
-    stat-block-title-family .initial:n        = \normalfont,
+    stat-block-title-family .initial:n        = \sctitlefont,
     stat-block-title-family .value_required:n = true,
     stat-block-title-style .tl_set:N         = \l__dnd_stat_block_title_style_tl,
     stat-block-title-style .initial:n        = \bfseries \scshape \LARGE,
@@ -190,6 +291,13 @@
     stat-block-section-style .tl_set:N         = \l__dnd_stat_block_section_style_tl,
     stat-block-section-style .initial:n        = \color{titlered} \scshape \large,
     stat-block-section-style .value_required:n = true,
+    % Stat block 'mod'/'sav' ability headers
+    stat-block-mod-sav-family .tl_set:N         = \l__dnd_stat_block_mod_sav_family_tl,
+    stat-block-mod-sav-family .initial:n        = \sffamily,
+    stat-block-mod-sav-family .value_required:n = true,
+    stat-block-mod-sav-style .tl_set:N         = \l__dnd_stat_block_mod_sav_style_tl,
+    stat-block-mod-sav-style .initial:n        = \color{modsavtitle} \scshape \scriptsize,
+    stat-block-mod-sav-style .value_required:n = true,
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % Miscellaneous
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -198,14 +306,14 @@
     footer-family .initial:n        = \normalfont,
     footer-family .value_required:n = true,
     footer-style .tl_set:N         = \l__dnd_footer_style_tl,
-    footer-style .initial:n        = \scriptsize \textcolor{pagegold},
+    footer-style .initial:n        = \__dnd_footer_style:,
     footer-style .value_required:n = true,
     % Page number
     page-number-family .tl_set:N         = \l__dnd_page_number_family_tl,
     page-number-family .initial:n        = \normalfont,
     page-number-family .value_required:n = true,
     page-number-style .tl_set:N         = \l__dnd_page_number_style_tl,
-    page-number-style .initial:n        = \scriptsize \textcolor{pagegold},
+    page-number-style .initial:n        = \__dnd_page_num_style:,
     page-number-style .value_required:n = true,
     % Drop caps
     drop-cap-family .tl_set:N         = \l__dnd_drop_cap_family_tl,
@@ -273,6 +381,13 @@
 \NewDocumentCommand{\DndFontReadAloud}{}
   { \l__dnd_readaloud_family_tl \l__dnd_readaloud_style_tl }
 
+% Quotation boxes
+\NewDocumentCommand{\DndFontQuotation}{}
+  { \l__dnd_quotation_family_tl \l__dnd_quotation_style_tl }
+
+\NewDocumentCommand{\DndFontQuoteAttribution}{}
+  { \l__dnd_quote_attr_family_tl \l__dnd_quote_attr_style_tl }
+
 % Table of Contents
 \NewDocumentCommand{\DndFontTocPart}{}
   { \l__dnd_toc_part_family_tl \l__dnd_toc_part_style_tl}
@@ -292,6 +407,9 @@
 
 \NewDocumentCommand{\DndFontStatBlockSection}{}
   { \l__dnd_stat_block_section_family_tl \l__dnd_stat_block_section_style_tl }
+
+\NewDocumentCommand{\DndFontAbilityModHeader}{}
+  { \l__dnd_stat_block_mod_sav_family_tl \l__dnd_stat_block_mod_sav_style_tl }
 
 % Miscellaneous
 \NewDocumentCommand{\DndFontFooter}{}

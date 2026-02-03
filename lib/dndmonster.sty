@@ -47,7 +47,7 @@
 % Monster environments
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Stat block made to look like the Monster Manual NPC definitions
-\DeclareTColorBox {DndMonsterNoBg} { O{} m }
+\DeclareTColorBox {DndMonsterClassicNoBg} { O{} m }
   {
     enhanced,
     frame~hidden,
@@ -70,7 +70,7 @@
   }
 
 % Stat block made to look like stat blocks in the PHB.
-\DeclareTColorBox {DndMonsterBg} { O{} m }
+\DeclareTColorBox {DndMonsterClassicBg} { O{} m }
   {
     enhanced,
     frame~hidden,
@@ -90,8 +90,8 @@
     borderline~north = {2pt} {0.5pt} {statblockribbon},
     borderline~south = {3pt} {0pt}   {titlered},
     borderline~south = {2pt} {0.5pt} {statblockribbon},
-    colback          = statblockbg,
-    colbacktitle     = statblockbg,
+    colback          = statblockbg14,
+    colbacktitle     = statblockbg14,
     colframe         = titlered,
     fonttitle        = \DndFontStatBlockTitle,
     coltitle         = titlered,
@@ -101,14 +101,82 @@
     #1
   }
 
+% Stat block made to look like the PHB (2024) NPC definitions
+\DeclareTColorBox {DndMonsterModernNoBg} { O{} m }
+{
+    enhanced,
+    frame~hidden,
+    boxrule     = 0pt,
+    breakable,
+    parbox      = false,
+    boxsep      = 0pt,
+    toptitle    = 3mm,
+    left        = 0pt,
+    right       = 0pt,
+    sharp~corners,
+    opacityback = 0,
+    colframe    = stattitle24,
+    fonttitle   = \DndFontStatBlockTitle,
+    fontupper   = \DndFontStatBlockBody,
+    fontlower   = \DndFontStatBlockBody,
+    title       = {#2},
+    coltitle    = stattitle24,
+    #1
+}
+
+% Stat block made to look like stat blocks in the PHB.
+\DeclareTColorBox {DndMonsterModernBg} { O{} m }
+{
+    enhanced,
+    before~skip      = 12pt plus 3pt minus 3pt,
+    borderline       = {0.5pt}{0pt}{statborder24},
+    borderline       = {0.5pt}{2pt}{statborder24},
+    boxrule          = 2pt,
+    breakable,
+    parbox           = false,
+    boxsep           = 2pt,
+    toptitle         = 8pt,
+    top              = 0pt,
+    left             = 2pt,
+    right            = 2pt,
+    bottom           = 7pt,
+    oversize         = 0pt,
+    colback          = statblockbg24,
+    colbacktitle     = statblockbg24,
+    colframe         = statblockbg24,
+    fonttitle        = \DndFontStatBlockTitle,
+    coltitle         = stattitle24,
+    fontupper        = \DndFontStatBlockBody,
+    fontlower        = \DndFontStatBlockBody,
+    fuzzy~shadow     = {0pt}{-3pt}{0pt}{1.5pt}{white!63!black},
+    title            = {#2},
+    before~upper*    = \textcolor{stattitle24}{\rule{\linewidth}{0.75pt}}\vspace{-2pt},
+    #1
+}
+
 % Alias DndMonster to correct background type
 \bool_if:NTF \l__dnd_show_background_bool
   {
-    \let\DndMonster\DndMonsterBg
-    \let\endDndMonster\endDndMonsterBg
-  }{
-    \let\DndMonster\DndMonsterNoBg
-    \let\endDndMonster\endDndMonsterNoBg
+    \bool_if:NTF \l__dnd_modern_stats_bool
+      {
+        \let\DndMonster\DndMonsterModernBg
+        \let\endDndMonster\endDndMonsterModernBg
+      }
+      {
+        \let\DndMonster\DndMonsterClassicBg
+        \let\endDndMonster\endDndMonsterClassicBg
+      }
+  }
+  {
+    \bool_if:NTF \l__dnd_modern_stats_bool
+      {
+        \let\DndMonster\DndMonsterModernNoBg
+        \let\endDndMonster\endDndMonsterModernNoBg
+      }
+      {
+        \let\DndMonster\DndMonsterClassicNoBg
+        \let\endDndMonster\endDndMonsterClassicNoBg
+      }
   }
 
 % Italicized text appearing immediately after monster's name
@@ -122,11 +190,17 @@
 % Fancy DnD 5e stat block rule
 \NewDocumentCommand {\DndMonsterLine} {}
   {
-    \par \vspace{-2pt} \noindent
-    \begin {tikzpicture}
-      \draw [ rulered, fill = rulered ] ( 0, 0 ) -- ( 0, 0.1 ) -- ( \linewidth, 0.05 );
-    \end {tikzpicture}
-    \par
+    \bool_if:NTF \l__dnd_modern_stats_bool
+      {
+        \par \noindent
+      }
+      {
+        \par \vspace{-2pt} \noindent
+        \begin {tikzpicture}
+        \draw [ rulered, fill = rulered ] ( 0, 0 ) -- ( 0, 0.1 ) -- ( \linewidth, 0.05 );
+        \end {tikzpicture}
+        \par
+      }
   }
 
 % A description variant used to list creature attributes.
@@ -160,15 +234,35 @@
     speed .tl_set:N         = \l__speed_tl,
     speed .initial:n        = 30 ~ \unitsname,
     speed .value_required:n = true,
+    initiative .tl_set:N          = \l__initiative_tl,
+    initiative .initial:n         = {+0},
+    initiative .value_required:n  = true,
   }
 
 \cs_new_protected_nopar:Npn \__dnd_monster_basics:
   {
-      \begin {__dnd_monster_attributes}
-        \item [\armorclassname] \l__armor_class_tl
-        \item [\hitpointsname]  \l__hit_points_tl
-        \item [\speedname]      \l__speed_tl
-      \end {__dnd_monster_attributes}
+    \bool_if:NTF \l__dnd_modern_stats_bool
+      {
+        \begin{tabularx} {\linewidth} {@{}X@{}X@{}}
+          \begin {__dnd_monster_attributes}
+            \item [\armorclassname] \l__armor_class_tl
+            \item [\hitpointsname]  \l__hit_points_tl
+            \item [\speedname]      \l__speed_tl
+          \end {__dnd_monster_attributes}
+          &
+          \begin {__dnd_monster_attributes}
+            \item [\initiativename] \l__initiative_tl
+          \end {__dnd_monster_attributes}
+          \\
+        \end{tabularx}
+      }
+      {
+        \begin {__dnd_monster_attributes}
+          \item [\armorclassname] \l__armor_class_tl
+          \item [\hitpointsname]  \l__hit_points_tl
+          \item [\speedname]      \l__speed_tl
+        \end {__dnd_monster_attributes}
+      }
   }
 
 \NewDocumentCommand {\DndMonsterBasics} {o}
@@ -372,6 +466,21 @@
       {#1}
   }
 
+%% Modern ability scores
+% Print auto-calculated modifier/save
+\cs_new_protected_nopar:Npn \__dnd_ability_mod:N #1
+  {
+    \regex_match:NnTF \c__pos_int_regex {#1}
+      {
+        \int_set:Nn \l_tmpa_int { \fp_eval:n { floor ( ( #1 - 10 ) / 2 ) } }
+        \int_compare:nNnTF {\l_tmpa_int} < {0}
+          { -- }
+          {+}
+        \int_abs:n \l_tmpa_int
+      }
+      {bb}
+  }
+
 \keys_define:nn { dnd / monster / ability_scores }
   {
     str .tl_set:N         = \l__str_tl,
@@ -398,10 +507,30 @@
     cha .initial:n        = 10,
     cha .value_required:n = true,
     CHA .meta:n = { cha = #1 },
+
+    % New things for modern layout, where saves are part of the ability block
+    str~save .tl_set:N          = \l__str_save_tl,
+    str~save .initial:n         = {},
+    str~save .value_required:n  = true,
+    dex~save .tl_set:N          = \l__dex_save_tl,
+    dex~save .initial:n         = {},
+    dex~save .value_required:n  = true,
+    con~save .tl_set:N          = \l__con_save_tl,
+    con~save .initial:n         = {},
+    con~save .value_required:n  = true,
+    int~save .tl_set:N          = \l__int_save_tl,
+    int~save .initial:n         = {},
+    int~save .value_required:n  = true,
+    wis~save .tl_set:N          = \l__wis_save_tl,
+    wis~save .initial:n         = {},
+    wis~save .value_required:n  = true,
+    cha~save .tl_set:N          = \l__cha_save_tl,
+    cha~save .initial:n         = {},
+    cha~save .value_required:n  = true,
   }
 
 % Ability scores in a table
-\cs_new_protected_nopar:Npn \__dnd_monster_ability_scores:
+\cs_new_protected_nopar:Npn \__dnd_monster_ability_scores_classic:
   {
     \color {titlered}
     \par \vspace{1pt} \noindent
@@ -424,11 +553,83 @@
     \par \vspace{4pt}%
   }
 
+% Modern-style ability scores (two rows, three columns, each stat lists modifiers)
+\cs_new_protected_nopar:Npn \__dnd_monster_ability_scores_modern:
+  {
+    \color {titlered}
+    \par \vspace{-16pt} \noindent
+    \setlength{\tabcolsep}{2pt}
+    \begin{tabularx} {\linewidth} {YYYYcYYYYcYYYY}
+      ~ & ~ & {\DndFontAbilityModHeader\modtitle} & {\DndFontAbilityModHeader\savetitle} & ~ &
+      ~ & ~ & {\DndFontAbilityModHeader\modtitle} & {\DndFontAbilityModHeader\savetitle} & ~ &
+      ~ & ~ & {\DndFontAbilityModHeader\modtitle} & {\DndFontAbilityModHeader\savetitle} \\
+      \__dnd_physical_ability_slot:nnn \strstatnamec \l__str_tl \l__str_save_tl & ~ &
+      \__dnd_physical_ability_slot:nnn \dexstatnamec \l__dex_tl \l__dex_save_tl & ~ &
+      \__dnd_physical_ability_slot:nnn \constatnamec \l__con_tl \l__con_save_tl \\
+      \__dnd_mental_ability_slot:nnn \intstatnamec \l__int_tl \l__int_save_tl & ~ &
+      \__dnd_mental_ability_slot:nnn \wisstatnamec \l__wis_tl \l__wis_save_tl & ~ &
+      \__dnd_mental_ability_slot:nnn \chastatnamec \l__cha_tl \l__cha_save_tl \\
+    \end{tabularx}
+  }
+
+\cs_new_protected_nopar:Npn \__dnd_save_modifier:nn #1#2
+  {
+    \tl_if_empty:NTF {#1}
+      { \exp_args:NV \__dnd_ability_mod:N #2 }
+      { #1 }
+  }
+
+\cs_new_protected_nopar:Npn \__dnd_physical_ability_slot:nnn #1#2#3
+  {
+    \cellcolor{physicalattrscore} {\bfseries \scshape #1} &
+    \cellcolor{physicalattrscore} #2 &
+    \cellcolor{physicalattrmod} \exp_args:NV \__dnd_ability_mod:N #2 &
+    \cellcolor{physicalattrmod} \__dnd_save_modifier:nn #3 #2
+  }
+
+\cs_new_protected_nopar:Npn \__dnd_mental_ability_slot:nnn #1#2#3
+  {
+    \cellcolor{mentalattrscore} {\bfseries \scshape #1} &
+    \cellcolor{mentalattrscore} #2 &
+    \cellcolor{mentalattrmod} \exp_args:NV \__dnd_ability_mod:N #2 &
+    \cellcolor{mentalattrmod} \__dnd_save_modifier:nn #3 #2
+  }
+
+% Sentient items use ability scores and alignment in a table
+\cs_new_protected_nopar:Npn \__dnd_sentient_item_ability_scores:N #1
+  {
+    \color {titlered}
+    \par \vspace{1pt} \noindent
+    \begin{tabularx} {\linewidth} {YYYY}
+      \rule {0pt} {3.7mm} % adds space between hline and table
+      \textbf {\intstatname} &
+      \textbf {\wisstatname} &
+      \textbf {\chastatname} &
+      \textbf {Alignment} \\
+      \exp_args:NV \__dnd_ability_score_modifier:N \l__int_tl &
+      \exp_args:NV \__dnd_ability_score_modifier:N \l__wis_tl &
+      \exp_args:NV \__dnd_ability_score_modifier:N \l__cha_tl &
+      {#1} \\
+    \end{tabularx}
+
+    \par \vspace{4pt}%
+  }
+
 \NewDocumentCommand {\DndMonsterAbilityScores} {o}
   {
     \group_begin:
       \keys_set:nn { dnd / monster / ability_scores } {#1}
-      \__dnd_monster_ability_scores:
+      \bool_if:NTF \l__dnd_modern_stats_bool
+        { \__dnd_monster_ability_scores_modern: }
+        { \__dnd_monster_ability_scores_classic: }
+    \group_end:
+  }
+
+\NewDocumentCommand {\DndSentientItemAbilityScores} {om}
+  {
+    \group_begin:
+      \keys_set:nn { dnd / monster / ability_scores } {#1}
+      \__dnd_sentient_item_ability_scores:N {#2}
     \group_end:
   }
 
@@ -451,7 +652,7 @@
       \vspace {2pt}\nopagebreak[4]
       \hrule height 0.6pt
     \group_end:
-      \par \vspace{5pt}
+      \par\nopagebreak[4] \vspace{5pt}\nopagebreak[4]
     \noindent \ignorespaces
   }
 
@@ -537,6 +738,7 @@
     type .choice:,
     type / weapon .code:n = { \tl_set:Nn \l__dnd_attack_type_tl {\weaponname} },
     type / spell .code:n = { \tl_set:Nn \l__dnd_attack_type_tl {\spellname} },
+    type / psionic .code:n = { \tl_set:Nn \l__dnd_attack_type_tl {\psionicname} },
     type .initial:n  = weapon,
     mod .tl_set:N         = \l__mod_tl,
     mod .value_required:n = true,
@@ -592,40 +794,44 @@
     }
   }
 
+\cs_new_protected:Npn \__dnd_monster_attack_info:
+  {
+    \str_case_e:nnF {\l__dnd_attack_distance_tl}
+      {
+        { melee }
+          {
+            \textit{ \__dnd_caption:nn {\meleeattackname} {\l__dnd_attack_type_tl} : } ~ \__dnd_caption:nn {\tohitname} {\l__mod_tl}, ~ \__dnd_monster_reach:
+          }
+        { ranged }
+          {
+            \textit{ \__dnd_caption:nn {\rangedattackname} {\l__dnd_attack_type_tl} : } ~ \__dnd_caption:nn {\tohitname} {\l__mod_tl}, ~ \__dnd_monster_range:
+          }
+      }
+      {% Melee and Ranged is the default
+        \textit{ \__dnd_caption:nn {\meleeorrangedattackname} {\l__dnd_attack_type_tl} : } ~ \__dnd_caption:nn {\tohitname} {\l__mod_tl}, ~ \__dnd_monster_reach:\ \orname\ \__dnd_monster_range:
+      }
+    , ~ \l__targets_tl. ~
+    \textit { \hitname : } ~
+
+    \str_if_empty:NF {\l__dmg_tl} % Don't show any damage if `dmg' is not set.
+      {
+        \l__dmg_tl\ \l__dmg_type_tl\ \damagename
+        \__dnd_if_or_dmg:
+        \__dnd_if_plus_dmg:
+      }
+
+    % `extra' is any special text that goes after the final damage; do not
+    % include the final full stop.
+    \l__extra_tl .
+  }
+
 \cs_new_protected:Npn \__dnd_monster_attack:
   {
     \__dnd_check_for_key:Nnn \l__name_tl {\DndMonsterAttack} {name}
     \__dnd_check_for_key:Nnn \l__mod_tl {\DndMonsterAttack} {mod}
 
     \begin{DndMonsterAction} {\l__name_tl}~
-
-      \str_case_e:nnF {\l__dnd_attack_distance_tl}
-        {
-          { melee }
-            {
-              \textit{ \__dnd_caption:nn {\meleeattackname} {\l__dnd_attack_type_tl} : } ~ \__dnd_caption:nn {\tohitname} {\l__mod_tl}, ~ \__dnd_monster_reach:
-            }
-          { ranged }
-            {
-              \textit{ \__dnd_caption:nn {\rangedattackname} {\l__dnd_attack_type_tl} : } ~ \__dnd_caption:nn {\tohitname} {\l__mod_tl}, ~ \__dnd_monster_range:
-            }
-        }
-        {% Melee and Ranged is the default
-          \textit{ \__dnd_caption:nn {\meleeorrangedattackname} {\l__dnd_attack_type_tl} : } ~ \__dnd_caption:nn {\tohitname} {\l__mod_tl}, ~ \__dnd_monster_reach:\ \orname\ \__dnd_monster_range:
-        }
-      , ~ \l__targets_tl. ~
-      \textit { \hitname : } ~
-
-      \str_if_empty:NF {\l__dmg_tl} % Don't show any damage if `dmg' is not set.
-        {
-          \l__dmg_tl\ \l__dmg_type_tl\ \damagename
-          \__dnd_if_or_dmg:
-          \__dnd_if_plus_dmg:
-        }
-
-      % `extra' is any special text that goes after the final damage; do not
-      % include the final full stop.
-      \l__extra_tl .
+      \__dnd_monster_attack_info:
     \end{DndMonsterAction}
   }
 
@@ -668,4 +874,3 @@
   {
     \item [ #1 . ] #2
   }
-

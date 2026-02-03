@@ -1,0 +1,240 @@
+\ExplSyntaxOn
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Monster environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Stat block made to look like the Monster Manual NPC definitions
+\DeclareTColorBox {DndVehicleNoBg} { O{} m }
+  {
+    enhanced,
+    frame~hidden,
+    boxrule     = 0pt,
+    breakable,
+    parbox      = false,
+    boxsep      = 0pt,
+    toptitle    = 3mm,
+    left        = 0pt,
+    right       = 0pt,
+    sharp~corners,
+    opacityback = 0,
+    colframe    = titlered,
+    fonttitle   = \DndFontStatBlockTitle,
+    fontupper   = \DndFontStatBlockBody,
+    fontlower   = \DndFontStatBlockBody,
+    title       = {#2},
+    coltitle    = titlered,
+    #1
+  }
+
+% Stat block made to look like stat blocks in the PHB.
+\DeclareTColorBox {DndVehicleBg} { O{} m }
+  {
+    enhanced,
+    frame~hidden,
+    before~skip      = 12pt plus 3pt minus 3pt,
+    boxrule          = 0pt,
+    breakable,
+    parbox           = false,
+    boxsep           = 2pt,
+    toptitle         = 8pt,
+    top              = 0pt,
+    left             = 2pt,
+    right            = 2pt,
+    bottom           = 7pt,
+    sharp~corners,
+    oversize         = 0pt,
+    borderline~north = {3pt} {0pt}   {titlered},
+    borderline~north = {2pt} {0.5pt} {vehiclestatribbon},
+    borderline~south = {3pt} {0pt}   {titlered},
+    borderline~south = {2pt} {0.5pt} {vehiclestatribbon},
+    colback          = vehiclestatbg,
+    colbacktitle     = vehiclestatbg,
+    colframe         = titlered,
+    fonttitle        = \DndFontStatBlockTitle,
+    coltitle         = titlered,
+    fontupper        = \DndFontStatBlockBody,
+    fontlower        = \DndFontStatBlockBody,
+    title            = {#2},
+    #1
+  }
+
+% Alias DndMonster to correct background type
+\bool_if:NTF \l__dnd_show_background_bool
+  {
+    \let\DndVehicle\DndVehicleBg
+    \let\endDndVehicle\endDndVehicleBg
+  }{
+    \let\DndVehicle\DndVehicleNoBg
+    \let\endDndVehicle\endDndVehicleNoBg
+  }
+
+% Italicized text appearing immediately after monster's name
+\NewDocumentCommand {\DndVehicleType} {m}
+  {
+    \begin {hangingpar}
+      \textit {#1}
+    \end {hangingpar}
+  }
+
+%% Vehicle basics
+\keys_define:nn { dnd / vehicle / basics }
+  {
+    creature-capacity .tl_set:N          = \l__creature_capacity_tl,
+    creature-capacity .initial:n         = {30 ~ crew, ~ 20 ~ passengers},
+    creature-capacity .value_required:n  = true,
+    cargo-capacity .tl_set:N         = \l__cargo_capacity_tl,
+    cargo-capacity .initial:n        = {100 ~ tons},
+    cargo-capacity .value_required:n = true,
+    travel-pace .tl_set:N         = \l__travel_pace_tl,
+    travel-pace .initial:n        = {5 ~ \mphname ~ ( 120 ~ \mpdname )},
+    travel-pace .value_required:n = true,
+  }
+
+\cs_new_protected_nopar:Npn \__dnd_vehicle_basics:
+  {
+      \begin {__dnd_monster_attributes}
+        \item [\creaturecapacityname] \l__creature_capacity_tl
+        \item [\cargocapacityname]    \l__cargo_capacity_tl
+        \item [\travelpacename]       \l__travel_pace_tl
+      \end {__dnd_monster_attributes}
+  }
+
+\NewDocumentCommand {\DndVehicleBasics} {o}
+  {
+    \group_begin:
+      \keys_set:nn { dnd / vehicle / basics } {#1}
+      \DndMonsterLine
+      \__dnd_vehicle_basics:
+      \DndMonsterLine
+    \group_end:
+  }
+
+%% Monster details
+\keys_define:nn { dnd / vehicle / details }
+{
+  damage-vulnerabilities .tl_set:N         = \l__damage_vulnerabilities_tl,
+  damage-vulnerabilities .value_required:n = true,
+  damagevulnerabilities .meta:n = { damage-vulnerabilities = {#1} },
+  damage-resistances .tl_set:N         = \l__damage_resistances_tl,
+  damage-resistances .value_required:n = true,
+  damageresistances .meta:n = { damage-resistances = {#1} },
+  damage-immunities .tl_set:N         = \l__damage_immunities_tl,
+  damage-immunities .value_required:n = true,
+  damageimmunities .meta:n = { damage-immunities = {#1} },
+  condition-immunities .tl_set:N         = \l__condition_immunities_tl,
+  condition-immunities .value_required:n = true,
+  conditionimmunities .meta:n = { condition-immunities = {#1} },
+}
+
+\cs_new_protected_nopar:Npn \__dnd_vehicle_details:
+{
+    \begin {__dnd_monster_attributes}
+      \__dnd_if_monster_attribute:nn {\l__damage_vulnerabilities_tl} {\dvulname}
+      \__dnd_if_monster_attribute:nn {\l__damage_resistances_tl}     {\dresname}
+      \__dnd_if_monster_attribute:nn {\l__damage_immunities_tl}      {\dimmname}
+      \__dnd_if_monster_attribute:nn {\l__condition_immunities_tl}   {\cimmname}
+    \end {__dnd_monster_attributes}
+}
+
+\NewDocumentCommand {\DndVehicleDetails} {o}
+{
+  \group_begin:
+    \keys_set:nn { dnd / vehicle / details } {#1}
+    \DndMonsterLine{}
+    \__dnd_vehicle_details:
+    \DndMonsterLine{}
+  \group_end:
+}
+
+\NewDocumentCommand {\DndVehicleAbilityScores} {o}
+  {
+    \DndMonsterAbilityScores[#1,int=0,wis=0,cha=0]
+  }
+
+% Inline header for vehicle actions - similar to a paragraph
+\NewDocumentCommand {\DndVehicleAction} {m}
+  { \DndMonsterAction{#1} }
+
+\NewDocumentCommand {\DndVehicleSection} {m}
+  { \DndMonsterSection{#1} }
+
+\keys_define:nn { dnd / vehicle / component }
+  {
+    prefix .tl_set:N       = \l__prefix_tl,
+    prefix .value_required:n = true,
+    name .tl_set:N         = \l__name_tl,
+    name .initial:n        = {Hull},
+    name .value_required:n = true,
+    armor-class .tl_set:N         = \l__armor_class_tl,
+    armor-class .initial:n        = 10,
+    armor-class .value_required:n = true,
+    hit-points .tl_set:N         = \l__hit_points_tl,
+    hit-points .initial:n        = 100,
+    hit-points .value_required:n = true,
+    speed .tl_set:N         = \l__speed_tl,
+    speed .value_required:n = true,
+  }
+
+\cs_new_protected:Npn \__dnd_prefix_name:
+  {
+    \tl_if_empty:NTF {\l__prefix_tl}
+      { \l__name_tl }
+      { \l__prefix_tl : ~ \l__name_tl }
+  }
+
+\cs_new_protected_nopar:Npn \__dnd_vehicle_component:
+  {
+      \DndMonsterSection {\__dnd_prefix_name:}
+      \begin {__dnd_monster_attributes}
+        \item [\armorclassname] \l__armor_class_tl
+        \item [\hitpointsname]  \l__hit_points_tl
+        \__dnd_if_monster_attribute:nn {\l__speed_tl} {\waterspeedname}
+      \end {__dnd_monster_attributes}
+  }
+
+\NewDocumentCommand {\DndWaterSpeed} { m m m }
+  {
+    #1 ~ \unitsname; ~ #2 ~ \unitsname ~ \intowindname; ~ #3 ~ \unitsname ~ \withwindname
+  }
+
+\NewDocumentCommand {\DndVehicleComponent} { o }
+  {
+    \group_begin:
+      \keys_set:nn { dnd / vehicle / component } {#1}
+      \__dnd_vehicle_component:
+    \group_end:
+  }
+
+\NewDocumentCommand {\DndVehicleControl} { o }
+  {
+    \group_begin:
+      \keys_set:nn { dnd / vehicle / component } { #1, prefix = Control }
+      \__dnd_vehicle_component:
+    \group_end:
+  }
+
+\NewDocumentCommand {\DndVehicleMovement} { o }
+  {
+    \group_begin:
+      \keys_set:nn { dnd / vehicle / component } { #1, prefix = Movement }
+      \__dnd_vehicle_component:
+    \group_end:
+  }
+
+\NewDocumentCommand {\DndVehicleWeapon} { o }
+  {
+    \group_begin:
+      \keys_set:nn { dnd / vehicle / component } {#1, prefix = Weapon, speed = {}}
+      \__dnd_vehicle_component:
+    \group_end:
+  }
+
+\NewDocumentCommand {\DndVehicleAttack} {o}
+  {
+    \group_begin:
+      \keys_set:nn { dnd / monster / attack } { #1, distance = ranged }
+      \__dnd_check_for_key:Nnn \l__mod_tl {\DndVehicleAttack} {mod}
+      \noindent
+      \__dnd_monster_attack_info:
+    \group_end:
+  }

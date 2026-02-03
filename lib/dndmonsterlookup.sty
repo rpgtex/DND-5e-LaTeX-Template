@@ -1,0 +1,4580 @@
+\ExplSyntaxOn
+
+\tl_const:Nn \l__dnd_abbr_monster_manual {MM}
+\tl_const:Nn \l__dnd_abbr_volos_guide {VGtM}
+\tl_const:Nn \l__dnd_abbr_xanathars_guide {XGtE}
+\tl_const:Nn \l__dnd_abbr_eberron_rising {ERftLW}
+\tl_const:Nn \l__dnd_abbr_exploring_eberron {EE}
+\tl_const:Nn \l__dnd_abbr_mordenkainens_tome {MToF}
+
+% Eberron: Rising from the Last War
+
+\NewDocumentCommand { \Belashyrra } { s O{belashyrra} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Belashyrra} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{ERftLW} , ~ \pageabbreviationname \nobreakspace 286 )
+}
+
+% Monster Manual, Volo, and Mordenkainen
+
+\NewDocumentCommand { \Aarakocra } { s O{aarakocra} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Aarakocra} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 12 )
+}
+\NewDocumentCommand { \Aboleth } { s O{aboleth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Aboleth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 13 )
+}
+\NewDocumentCommand { \AbominableYeti } { s O{abominable~yeti} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Abominable~yeti} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 306 )
+}
+\NewDocumentCommand { \AbyssalWretch } { s O{abyssal~wretch} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Abyssal~wretch} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 136 )
+}
+\NewDocumentCommand { \AdultBlackDragon } { s O{adult~black~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Adult~black~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 88 )
+}
+\NewDocumentCommand { \AdultBlueDracolich } { s O{adult~blue~dracolich} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Adult~blue~dracolich} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 84 )
+}
+\NewDocumentCommand { \AdultBlueDragon } { s O{adult~blue~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Adult~blue~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 91 )
+}
+\NewDocumentCommand { \AdultBrassDragon } { s O{adult~brass~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Adult~brass~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 105 )
+}
+\NewDocumentCommand { \AdultBronzeDragon } { s O{adult~bronze~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Adult~bronze~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 108 )
+}
+\NewDocumentCommand { \AdultCopperDragon } { s O{adult~copper~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Adult~copper~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 111 )
+}
+\NewDocumentCommand { \AdultFaerieDragon } { s O{adult~faerie~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Adult~faerie~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 133 )
+}
+\NewDocumentCommand { \AdultGoldDragon } { s O{adult~gold~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Adult~gold~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 114 )
+}
+\NewDocumentCommand { \AdultGreenDragon } { s O{adult~green~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Adult~green~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 94 )
+}
+\NewDocumentCommand { \AdultKruthik } { s O{adult~kruthik} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Adult~kruthik} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 212 )
+}
+\NewDocumentCommand { \AdultOblex } { s O{adult~oblex} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Adult~oblex} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 218 )
+}
+\NewDocumentCommand { \AdultRedDragon } { s O{adult~red~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Adult~red~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 98 )
+}
+\NewDocumentCommand { \AdultSilverDragon } { s O{adult~silver~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Adult~silver~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 117 )
+}
+\NewDocumentCommand { \AdultWhiteDragon } { s O{adult~white~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Adult~white~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 101 )
+}
+\NewDocumentCommand { \AirElemental } { s O{air~elemental} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Air~elemental} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 124 )
+}
+\NewDocumentCommand { \AirElementalMyrmidon } { s O{air~elemental~myrmidon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Air~elemental~myrmidon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 202 )
+}
+\NewDocumentCommand { \Alhoon } { s O{alhoon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Alhoon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 172 )
+}
+\NewDocumentCommand { \Alkilith } { s O{alkilith} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Alkilith} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 130 )
+}
+\NewDocumentCommand { \Allip } { s O{allip} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Allip} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 116 )
+}
+\NewDocumentCommand { \Allosaurus } { s O{allosaurus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Allosaurus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 79 )
+}
+\NewDocumentCommand { \Amnizu } { s O{amnizu} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Amnizu} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 164 )
+}
+\NewDocumentCommand { \AncientBlackDragon } { s O{ancient~black~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ancient~black~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 87 )
+}
+\NewDocumentCommand { \AncientBlueDragon } { s O{ancient~blue~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ancient~blue~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 90 )
+}
+\NewDocumentCommand { \AncientBrassDragon } { s O{ancient~brass~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ancient~brass~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 104 )
+}
+\NewDocumentCommand { \AncientBronzeDragon } { s O{ancient~bronze~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ancient~bronze~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 107 )
+}
+\NewDocumentCommand { \AncientCopperDragon } { s O{ancient~copper~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ancient~copper~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 110 )
+}
+\NewDocumentCommand { \AncientGoldDragon } { s O{ancient~gold~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ancient~gold~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 113 )
+}
+\NewDocumentCommand { \AncientGreenDragon } { s O{ancient~green~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ancient~green~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 93 )
+}
+\NewDocumentCommand { \AncientRedDragon } { s O{ancient~red~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ancient~red~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 97 )
+}
+\NewDocumentCommand { \AncientSilverDragon } { s O{ancient~silver~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ancient~silver~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 116 )
+}
+\NewDocumentCommand { \AncientWhiteDragon } { s O{ancient~white~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ancient~white~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 100 )
+}
+\NewDocumentCommand { \Androsphinx } { s O{androsphinx} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Androsphinx} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 281 )
+}
+\NewDocumentCommand { \AngrySorrowsworn } { s O{angry~sorrowsworn} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Angry~sorrowsworn} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 231 )
+}
+\NewDocumentCommand { \AnimatedArmor } { s O{animated~armor} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Animated~armor} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 19 )
+}
+\NewDocumentCommand { \Ankheg } { s O{ankheg} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ankheg} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 21 )
+}
+\NewDocumentCommand { \Ankylosaurus } { s O{ankylosaurus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ankylosaurus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 79 )
+}
+\NewDocumentCommand { \AnnisHag } { s O{annis~hag} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Annis~hag} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 159 )
+}
+\NewDocumentCommand { \Ape } { s O{ape} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ape} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 317 )
+}
+\NewDocumentCommand { \Arcanaloth } { s O{arcanaloth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Arcanaloth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 313 )
+}
+\NewDocumentCommand { \Armanite } { s O{armanite} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Armanite} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 131 )
+}
+\NewDocumentCommand { \AstralDreadnought } { s O{astral~dreadnought} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Astral~dreadnought} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 117 )
+}
+\NewDocumentCommand { \Aurochs } { s O{aurochs} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Aurochs} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 207 )
+}
+\NewDocumentCommand { \AutumnEladrin } { s O{autumn~eladrin} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Autumn~eladrin} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 195 )
+}
+\NewDocumentCommand { \AwakenedShrub } { s O{awakened~shrub} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Awakened~shrub} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 317 )
+}
+\NewDocumentCommand { \AwakenedTree } { s O{awakened~tree} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Awakened~tree} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 317 )
+}
+\NewDocumentCommand { \AxeBeak } { s O{axe~beak} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Axe~beak} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 317 )
+}
+\NewDocumentCommand { \Azer } { s O{azer} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Azer} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 22 )
+}
+\NewDocumentCommand { \Babau } { s O{babau} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Babau} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 136 )
+}
+\NewDocumentCommand { \Baboon } { s O{baboon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Baboon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 318 )
+}
+\NewDocumentCommand { \Badger } { s O{badger} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Badger} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 318 )
+}
+\NewDocumentCommand { \Balhannoth } { s O{balhannoth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Balhannoth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 118 )
+}
+\NewDocumentCommand { \Balor } { s O{balor} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Balor} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 55 )
+}
+\NewDocumentCommand { \Banderhobb } { s O{banderhobb} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Banderhobb} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 122 )
+}
+\NewDocumentCommand { \Banshee } { s O{banshee} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Banshee} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 23 )
+}
+\NewDocumentCommand { \BarbedDevil } { s O{barbed~devil} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Barbed~devil} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 70 )
+}
+\NewDocumentCommand { \Barghest } { s O{barghest} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Barghest} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 123 )
+}
+\NewDocumentCommand { \Barlgura } { s O{barlgura} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Barlgura} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 56 )
+}
+\NewDocumentCommand { \Basilisk } { s O{basilisk} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Basilisk} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 24 )
+}
+\NewDocumentCommand { \Bat } { s O{bat} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Bat} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 318 )
+}
+\NewDocumentCommand { \BeardedDevil } { s O{bearded~devil} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Bearded~devil} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 70 )
+}
+\NewDocumentCommand { \Behir } { s O{behir} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Behir} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 25 )
+}
+\NewDocumentCommand { \Beholder } { s O{beholder} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Beholder} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 28 )
+}
+\NewDocumentCommand { \Beholderinlair } { s O{beholder~(in~lair)} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Beholder~(in~lair)} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 28 )
+}
+\NewDocumentCommand { \BeholderZombie } { s O{beholder~zombie} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Beholder~zombie} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 316 )
+}
+\NewDocumentCommand { \Berbalang } { s O{berbalang} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Berbalang} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 120 )
+}
+\NewDocumentCommand { \BheurHag } { s O{bheur~hag} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Bheur~hag} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 160 )
+}
+\NewDocumentCommand { \BlackAbishai } { s O{black~abishai} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Black~abishai} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 160 )
+}
+\NewDocumentCommand { \BlackBear } { s O{black~bear} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Black~bear} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 318 )
+}
+\NewDocumentCommand { \BlackDragonWyrmling } { s O{black~dragon~wyrmling} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Black~dragon~wyrmling} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 88 )
+}
+\NewDocumentCommand { \BlackPudding } { s O{black~pudding} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Black~pudding} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 241 )
+}
+\NewDocumentCommand { \BlinkDog } { s O{blink~dog} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Blink~dog} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 318 )
+}
+\NewDocumentCommand { \BloodHawk } { s O{blood~hawk} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Blood~hawk} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 319 )
+}
+\NewDocumentCommand { \BlueAbishai } { s O{blue~abishai} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Blue~abishai} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 161 )
+}
+\NewDocumentCommand { \BlueDragonWyrmling } { s O{blue~dragon~wyrmling} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Blue~dragon~wyrmling} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 91 )
+}
+\NewDocumentCommand { \BlueSlaad } { s O{blue~slaad} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Blue~slaad} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 276 )
+}
+\NewDocumentCommand { \Boar } { s O{boar} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Boar} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 319 )
+}
+\NewDocumentCommand { \Bodak } { s O{bodak} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Bodak} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 127 )
+}
+\NewDocumentCommand { \Boggle } { s O{boggle} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Boggle} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 128 )
+}
+\NewDocumentCommand { \BoneDevil } { s O{bone~devil} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Bone~devil} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 71 )
+}
+\NewDocumentCommand { \BoneNaga } { s O{bone~naga} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Bone~naga} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 233 )
+}
+\NewDocumentCommand { \Boneclaw } { s O{boneclaw} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Boneclaw} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 121 )
+}
+\NewDocumentCommand { \BrassDragonWyrmling } { s O{brass~dragon~wyrmling} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Brass~dragon~wyrmling} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 106 )
+}
+\NewDocumentCommand { \Brontosaurus } { s O{brontosaurus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Brontosaurus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 139 )
+}
+\NewDocumentCommand { \BronzeDragonWyrmling } { s O{bronze~dragon~wyrmling} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Bronze~dragon~wyrmling} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 109 )
+}
+\NewDocumentCommand { \BronzeScout } { s O{bronze~scout} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Bronze~scout} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 125 )
+}
+\NewDocumentCommand { \BrownBear } { s O{brown~bear} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Brown~bear} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 319 )
+}
+\NewDocumentCommand { \Bugbear } { s O{bugbear} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Bugbear} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 33 )
+}
+\NewDocumentCommand { \BugbearChief } { s O{bugbear~chief} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Bugbear~chief} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 33 )
+}
+\NewDocumentCommand { \Bulette } { s O{bulette} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Bulette} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 34 )
+}
+\NewDocumentCommand { \Bulezau } { s O{bulezau} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Bulezau} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 131 )
+}
+\NewDocumentCommand { \Bullywug } { s O{bullywug} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Bullywug} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 35 )
+}
+\NewDocumentCommand { \CadaverCollector } { s O{cadaver~collector} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Cadaver~collector} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 122 )
+}
+\NewDocumentCommand { \Cambion } { s O{cambion} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Cambion} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 36 )
+}
+\NewDocumentCommand { \Camel } { s O{camel} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Camel} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 320 )
+}
+\NewDocumentCommand { \Canoloth } { s O{canoloth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Canoloth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 247 )
+}
+\NewDocumentCommand { \CarrionCrawler } { s O{carrion~crawler} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Carrion~crawler} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 37 )
+}
+\NewDocumentCommand { \Cat } { s O{cat} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Cat} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 320 )
+}
+\NewDocumentCommand { \Catoblepas } { s O{catoblepas} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Catoblepas} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 129 )
+}
+\NewDocumentCommand { \CaveBear } { s O{cave~bear} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Cave~bear} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 334 )
+}
+\NewDocumentCommand { \CaveFisher } { s O{cave~fisher} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Cave~fisher} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 130 )
+}
+\NewDocumentCommand { \Centaur } { s O{centaur} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Centaur} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 38 )
+}
+\NewDocumentCommand { \ChainDevil } { s O{chain~devil} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Chain~devil} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 72 )
+}
+\NewDocumentCommand { \Chasme } { s O{chasme} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Chasme} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 57 )
+}
+\NewDocumentCommand { \Chimera } { s O{chimera} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Chimera} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 39 )
+}
+\NewDocumentCommand { \Chitine } { s O{chitine} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Chitine} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 131 )
+}
+\NewDocumentCommand { \Choker } { s O{choker} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Choker} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 123 )
+}
+\NewDocumentCommand { \Choldrith } { s O{choldrith} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Choldrith} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 132 )
+}
+\NewDocumentCommand { \Chuul } { s O{chuul} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Chuul} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 40 )
+}
+\NewDocumentCommand { \ClayGolem } { s O{clay~golem} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Clay~golem} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 168 )
+}
+\NewDocumentCommand { \Cloaker } { s O{cloaker} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Cloaker} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 41 )
+}
+\NewDocumentCommand { \CloudGiant } { s O{cloud~giant} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Cloud~giant} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 154 )
+}
+\NewDocumentCommand { \CloudGiantSmilingOne } { s O{cloud~giant~smiling~one} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Cloud~giant~smiling~one} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 146 )
+}
+\NewDocumentCommand { \Cockatrice } { s O{cockatrice} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Cockatrice} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 42 )
+}
+\NewDocumentCommand { \ConstrictorSnake } { s O{constrictor~snake} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Constrictor~snake} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 320 )
+}
+\NewDocumentCommand { \CopperDragonWyrmling } { s O{copper~dragon~wyrmling} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Copper~dragon~wyrmling} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 112 )
+}
+\NewDocumentCommand { \CorpseFlower } { s O{corpse~flower} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Corpse~flower} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 127 )
+}
+\NewDocumentCommand { \Couatl } { s O{couatl} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Couatl} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 43 )
+}
+\NewDocumentCommand { \Cow } { s O{cow} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Cow} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 207 )
+}
+\NewDocumentCommand { \Crab } { s O{crab} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Crab} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 320 )
+}
+\NewDocumentCommand { \CraniumRat } { s O{cranium~rat} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Cranium~rat} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 133 )
+}
+\NewDocumentCommand { \CrawlingClaw } { s O{crawling~claw} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Crawling~claw} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 44 )
+}
+\NewDocumentCommand { \Crocodile } { s O{crocodile} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Crocodile} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 320 )
+}
+\NewDocumentCommand { \Cyclops } { s O{cyclops} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Cyclops} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 45 )
+}
+\NewDocumentCommand { \Dao } { s O{dao} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Dao} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 143 )
+}
+\NewDocumentCommand { \Darkling } { s O{darkling} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Darkling} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 134 )
+}
+\NewDocumentCommand { \DarklingElder } { s O{darkling~elder} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Darkling~elder} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 134 )
+}
+\NewDocumentCommand { \Darkmantle } { s O{darkmantle} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Darkmantle} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 46 )
+}
+\NewDocumentCommand { \DeathDog } { s O{death~dog} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Death~dog} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 321 )
+}
+\NewDocumentCommand { \DeathKiss } { s O{death~kiss} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Death~kiss} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 124 )
+}
+\NewDocumentCommand { \DeathKnight } { s O{death~knight} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Death~knight} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 47 )
+}
+\NewDocumentCommand { \DeathSlaad } { s O{death~slaad} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Death~slaad} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 278 )
+}
+\NewDocumentCommand { \DeathTyrant } { s O{death~tyrant} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Death~tyrant} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 29 )
+}
+\NewDocumentCommand { \DeathTyrantinlair } { s O{death~tyrant~(in~lair)} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Death~tyrant~(in~lair)} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 29 )
+}
+\NewDocumentCommand { \Deathlock } { s O{deathlock} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Deathlock} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 128 )
+}
+\NewDocumentCommand { \DeathlockMastermind } { s O{deathlock~mastermind} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Deathlock~mastermind} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 129 )
+}
+\NewDocumentCommand { \DeathlockWight } { s O{deathlock~wight} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Deathlock~wight} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 129 )
+}
+\NewDocumentCommand { \DeepRothe } { s O{deep~rothe} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Deep~rothe} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 207 )
+}
+\NewDocumentCommand { \DeepScion } { s O{deep~scion} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Deep~scion} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 135 )
+}
+\NewDocumentCommand { \Deer } { s O{deer} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Deer} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 321 )
+}
+\NewDocumentCommand { \Deinonychus } { s O{deinonychus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Deinonychus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 139 )
+}
+\NewDocumentCommand { \Demilich } { s O{demilich} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Demilich} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 48 )
+}
+\NewDocumentCommand { \Demilichinlair } { s O{demilich~(in~lair)} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Demilich~(in~lair)} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 48 )
+}
+\NewDocumentCommand { \Derro } { s O{derro} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Derro} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 158 )
+}
+\NewDocumentCommand { \DerroSavant } { s O{derro~savant} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Derro~savant} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 159 )
+}
+\NewDocumentCommand { \Deva } { s O{deva} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Deva} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 16 )
+}
+\NewDocumentCommand { \Devourer } { s O{devourer} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Devourer} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 138 )
+}
+\NewDocumentCommand { \Dhergoloth } { s O{dhergoloth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Dhergoloth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 248 )
+}
+\NewDocumentCommand { \Dimetrodon } { s O{dimetrodon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Dimetrodon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 139 )
+}
+\NewDocumentCommand { \DireTroll } { s O{dire~troll} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Dire~troll} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 243 )
+}
+\NewDocumentCommand { \DireWolf } { s O{dire~wolf} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Dire~wolf} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 321 )
+}
+\NewDocumentCommand { \DisplacerBeast } { s O{displacer~beast} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Displacer~beast} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 81 )
+}
+\NewDocumentCommand { \Djinni } { s O{djinni} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Djinni} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 144 )
+}
+\NewDocumentCommand { \Dolphin } { s O{dolphin} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Dolphin} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 208 )
+}
+\NewDocumentCommand { \Doppelganger } { s O{doppelganger} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Doppelganger} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 82 )
+}
+\NewDocumentCommand { \Draegloth } { s O{draegloth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Draegloth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 141 )
+}
+\NewDocumentCommand { \DraftHorse } { s O{draft~horse} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Draft~horse} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 321 )
+}
+\NewDocumentCommand { \DragonTurtle } { s O{dragon~turtle} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Dragon~turtle} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 119 )
+}
+\NewDocumentCommand { \Dretch } { s O{dretch} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Dretch} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 57 )
+}
+\NewDocumentCommand { \Drider } { s O{drider} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Drider} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 120 )
+}
+\NewDocumentCommand { \Drow } { s O{drow} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Drow} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 128 )
+}
+\NewDocumentCommand { \DrowArachnomancer } { s O{drow~arachnomancer} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Drow~arachnomancer} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 182 )
+}
+\NewDocumentCommand { \DrowEliteWarrior } { s O{drow~elite~warrior} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Drow~elite~warrior} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 128 )
+}
+\NewDocumentCommand { \DrowFavoredConsort } { s O{drow~favored~consort} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Drow~favored~consort} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 183 )
+}
+\NewDocumentCommand { \DrowHouseCaptain } { s O{drow~house~captain} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Drow~house~captain} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 184 )
+}
+\NewDocumentCommand { \DrowInquisitor } { s O{drow~inquisitor} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Drow~inquisitor} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 184 )
+}
+\NewDocumentCommand { \DrowMage } { s O{drow~mage} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Drow~mage} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 129 )
+}
+\NewDocumentCommand { \DrowMatronMother } { s O{drow~matron~mother} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Drow~matron~mother} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 186 )
+}
+\NewDocumentCommand { \DrowPriestessofLolth } { s O{drow~priestess~of~lolth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Drow~priestess~of~lolth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 129 )
+}
+\NewDocumentCommand { \DrowShadowblade } { s O{drow~shadowblade} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Drow~shadowblade} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 187 )
+}
+\NewDocumentCommand { \Dryad } { s O{dryad} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Dryad} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 121 )
+}
+\NewDocumentCommand { \Duergar } { s O{duergar} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Duergar} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 122 )
+}
+\NewDocumentCommand { \DuergarDespot } { s O{duergar~despot} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Duergar~despot} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 188 )
+}
+\NewDocumentCommand { \DuergarHammerer } { s O{duergar~hammerer} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Duergar~hammerer} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 188 )
+}
+\NewDocumentCommand { \DuergarKavalrachni } { s O{duergar~kavalrachni} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Duergar~kavalrachni} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 189 )
+}
+\NewDocumentCommand { \DuergarMindMaster } { s O{duergar~mind~master} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Duergar~mind~master} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 189 )
+}
+\NewDocumentCommand { \DuergarScreamer } { s O{duergar~screamer} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Duergar~screamer} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 190 )
+}
+\NewDocumentCommand { \DuergarSoulblade } { s O{duergar~soulblade} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Duergar~soulblade} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 190 )
+}
+\NewDocumentCommand { \DuergarStoneGuard } { s O{duergar~stone~guard} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Duergar~stone~guard} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 191 )
+}
+\NewDocumentCommand { \DuergarWarlord } { s O{duergar~warlord} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Duergar~warlord} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 192 )
+}
+\NewDocumentCommand { \DuergarXarrorn } { s O{duergar~xarrorn} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Duergar~xarrorn} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 193 )
+}
+\NewDocumentCommand { \Duodrone } { s O{duodrone} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Duodrone} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 225 )
+}
+\NewDocumentCommand { \DustMephit } { s O{dust~mephit} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Dust~mephit} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 215 )
+}
+\NewDocumentCommand { \Dybbuk } { s O{dybbuk} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Dybbuk} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 132 )
+}
+\NewDocumentCommand { \Eagle } { s O{eagle} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Eagle} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 322 )
+}
+\NewDocumentCommand { \EarthElemental } { s O{earth~elemental} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Earth~elemental} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 124 )
+}
+\NewDocumentCommand { \EarthElementalMyrmidon } { s O{earth~elemental~myrmidon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Earth~elemental~myrmidon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 202 )
+}
+\NewDocumentCommand { \Efreeti } { s O{efreeti} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Efreeti} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 145 )
+}
+\NewDocumentCommand { \Eidolon } { s O{eidolon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Eidolon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 194 )
+}
+\NewDocumentCommand { \ElderBrain } { s O{elder~brain} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Elder~brain} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 174 )
+}
+\NewDocumentCommand { \ElderOblex } { s O{elder~oblex} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Elder~oblex} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 219 )
+}
+\NewDocumentCommand { \ElderTempest } { s O{elder~tempest} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Elder~tempest} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 200 )
+}
+\NewDocumentCommand { \Elephant } { s O{elephant} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Elephant} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 322 )
+}
+\NewDocumentCommand { \Elk } { s O{elk} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Elk} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 322 )
+}
+\NewDocumentCommand { \Empyrean } { s O{empyrean} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Empyrean} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 130 )
+}
+\NewDocumentCommand { \Erinyes } { s O{erinyes} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Erinyes} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 73 )
+}
+\NewDocumentCommand { \Ettercap } { s O{ettercap} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ettercap} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 131 )
+}
+\NewDocumentCommand { \Ettin } { s O{ettin} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ettin} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 132 )
+}
+\NewDocumentCommand { \FemaleSteeder } { s O{female~steeder} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Female~steeder} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 238 )
+}
+\NewDocumentCommand { \FireElemental } { s O{fire~elemental} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Fire~elemental} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 125 )
+}
+\NewDocumentCommand { \FireElementalMyrmidon } { s O{fire~elemental~myrmidon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Fire~elemental~myrmidon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 203 )
+}
+\NewDocumentCommand { \FireGiant } { s O{fire~giant} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Fire~giant} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 154 )
+}
+\NewDocumentCommand { \FireGiantDreadnought } { s O{fire~giant~dreadnought} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Fire~giant~dreadnought} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 147 )
+}
+\NewDocumentCommand { \FireSnake } { s O{fire~snake} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Fire~snake} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 265 )
+}
+\NewDocumentCommand { \FirenewtWarlockofImix } { s O{firenewt~warlock~of~imix} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Firenewt~warlock~of~imix} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 143 )
+}
+\NewDocumentCommand { \FirenewtWarrior } { s O{firenewt~warrior} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Firenewt~warrior} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 142 )
+}
+\NewDocumentCommand { \FlailSnail } { s O{flail~snail} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Flail~snail} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 144 )
+}
+\NewDocumentCommand { \Flameskull } { s O{flameskull} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Flameskull} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 134 )
+}
+\NewDocumentCommand { \FleshGolem } { s O{flesh~golem} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Flesh~golem} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 169 )
+}
+\NewDocumentCommand { \Flind } { s O{flind} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Flind} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 153 )
+}
+\NewDocumentCommand { \Flumph } { s O{flumph} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Flumph} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 135 )
+}
+\NewDocumentCommand { \FlyingSnake } { s O{flying~snake} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Flying~snake} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 322 )
+}
+\NewDocumentCommand { \FlyingSword } { s O{flying~sword} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Flying~sword} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 20 )
+}
+\NewDocumentCommand { \Fomorian } { s O{fomorian} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Fomorian} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 136 )
+}
+\NewDocumentCommand { \Frog } { s O{frog} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Frog} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 322 )
+}
+\NewDocumentCommand { \Froghemoth } { s O{froghemoth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Froghemoth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 145 )
+}
+\NewDocumentCommand { \FrostGiant } { s O{frost~giant} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Frost~giant} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 155 )
+}
+\NewDocumentCommand { \FrostGiantEverlastingOne } { s O{frost~giant~everlasting~one} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Frost~giant~everlasting~one} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 148 )
+}
+\NewDocumentCommand { \FrostSalamander } { s O{frost~salamander} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Frost~salamander} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 223 )
+}
+\NewDocumentCommand { \GalebDuhr } { s O{galeb~duhr} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Galeb~duhr} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 139 )
+}
+\NewDocumentCommand { \Gargoyle } { s O{gargoyle} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gargoyle} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 140 )
+}
+\NewDocumentCommand { \GasSpore } { s O{gas~spore} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gas~spore} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 138 )
+}
+\NewDocumentCommand { \Gauth } { s O{gauth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gauth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 125 )
+}
+\NewDocumentCommand { \Gazer } { s O{gazer} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gazer} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 126 )
+}
+\NewDocumentCommand { \GelatinousCube } { s O{gelatinous~cube} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gelatinous~cube} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 242 )
+}
+\NewDocumentCommand { \Ghast } { s O{ghast} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ghast} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 148 )
+}
+\NewDocumentCommand { \Ghost } { s O{ghost} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ghost} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 147 )
+}
+\NewDocumentCommand { \Ghoul } { s O{ghoul} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ghoul} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 148 )
+}
+\NewDocumentCommand { \GiantApe } { s O{giant~ape} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~ape} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 323 )
+}
+\NewDocumentCommand { \GiantBadger } { s O{giant~badger} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~badger} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 323 )
+}
+\NewDocumentCommand { \GiantBat } { s O{giant~bat} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~bat} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 323 )
+}
+\NewDocumentCommand { \GiantBoar } { s O{giant~boar} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~boar} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 323 )
+}
+\NewDocumentCommand { \GiantCentipede } { s O{giant~centipede} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~centipede} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 323 )
+}
+\NewDocumentCommand { \GiantConstrictorSnake } { s O{giant~constrictor~snake} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~constrictor~snake} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 324 )
+}
+\NewDocumentCommand { \GiantCrab } { s O{giant~crab} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~crab} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 324 )
+}
+\NewDocumentCommand { \GiantCrocodile } { s O{giant~crocodile} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~crocodile} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 324 )
+}
+\NewDocumentCommand { \GiantEagle } { s O{giant~eagle} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~eagle} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 324 )
+}
+\NewDocumentCommand { \GiantElk } { s O{giant~elk} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~elk} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 325 )
+}
+\NewDocumentCommand { \GiantFireBeetle } { s O{giant~fire~beetle} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~fire~beetle} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 325 )
+}
+\NewDocumentCommand { \GiantFrog } { s O{giant~frog} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~frog} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 325 )
+}
+\NewDocumentCommand { \GiantGoat } { s O{giant~goat} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~goat} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 326 )
+}
+\NewDocumentCommand { \GiantHyena } { s O{giant~hyena} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~hyena} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 326 )
+}
+\NewDocumentCommand { \GiantLizard } { s O{giant~lizard} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~lizard} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 326 )
+}
+\NewDocumentCommand { \GiantOctopus } { s O{giant~octopus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~octopus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 326 )
+}
+\NewDocumentCommand { \GiantOwl } { s O{giant~owl} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~owl} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 327 )
+}
+\NewDocumentCommand { \GiantPoisonousSnake } { s O{giant~poisonous~snake} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~poisonous~snake} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 327 )
+}
+\NewDocumentCommand { \GiantRat } { s O{giant~rat} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~rat} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 327 )
+}
+\NewDocumentCommand { \GiantScorpion } { s O{giant~scorpion} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~scorpion} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 327 )
+}
+\NewDocumentCommand { \GiantSeaHorse } { s O{giant~sea~horse} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~sea~horse} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 328 )
+}
+\NewDocumentCommand { \GiantShark } { s O{giant~shark} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~shark} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 328 )
+}
+\NewDocumentCommand { \GiantSpider } { s O{giant~spider} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~spider} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 328 )
+}
+\NewDocumentCommand { \GiantStrider } { s O{giant~strider} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~strider} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 143 )
+}
+\NewDocumentCommand { \GiantToad } { s O{giant~toad} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~toad} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 329 )
+}
+\NewDocumentCommand { \GiantVulture } { s O{giant~vulture} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~vulture} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 329 )
+}
+\NewDocumentCommand { \GiantWasp } { s O{giant~wasp} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~wasp} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 329 )
+}
+\NewDocumentCommand { \GiantWeasel } { s O{giant~weasel} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~weasel} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 329 )
+}
+\NewDocumentCommand { \GiantWolfSpider } { s O{giant~wolf~spider} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giant~wolf~spider} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 330 )
+}
+\NewDocumentCommand { \GibberingMouther } { s O{gibbering~mouther} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gibbering~mouther} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 157 )
+}
+\NewDocumentCommand { \Giff } { s O{giff} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Giff} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 204 )
+}
+\NewDocumentCommand { \Girallon } { s O{girallon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Girallon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 152 )
+}
+\NewDocumentCommand { \GithyankiGish } { s O{githyanki~gish} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Githyanki~gish} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 205 )
+}
+\NewDocumentCommand { \GithyankiKithrak } { s O{githyanki~kith'rak} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Githyanki~kith'rak} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 205 )
+}
+\NewDocumentCommand { \GithyankiKnight } { s O{githyanki~knight} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Githyanki~knight} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 160 )
+}
+\NewDocumentCommand { \GithyankiSupremeCommander } { s O{githyanki~supreme~commander} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Githyanki~supreme~commander} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 206 )
+}
+\NewDocumentCommand { \GithyankiWarrior } { s O{githyanki~warrior} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Githyanki~warrior} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 160 )
+}
+\NewDocumentCommand { \GithzeraiAnarch } { s O{githzerai~anarch} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Githzerai~anarch} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 207 )
+}
+\NewDocumentCommand { \GithzeraiEnlightened } { s O{githzerai~enlightened} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Githzerai~enlightened} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 208 )
+}
+\NewDocumentCommand { \GithzeraiMonk } { s O{githzerai~monk} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Githzerai~monk} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 161 )
+}
+\NewDocumentCommand { \GithzeraiZerth } { s O{githzerai~zerth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Githzerai~zerth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 161 )
+}
+\NewDocumentCommand { \Glabrezu } { s O{glabrezu} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Glabrezu} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 58 )
+}
+\NewDocumentCommand { \GloomWeaver } { s O{gloom~weaver} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gloom~weaver} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 224 )
+}
+\NewDocumentCommand { \Gnoll } { s O{gnoll} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gnoll} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 163 )
+}
+\NewDocumentCommand { \GnollFangofYeenoghu } { s O{gnoll~fang~of~yeenoghu} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gnoll~fang~of~yeenoghu} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 163 )
+}
+\NewDocumentCommand { \GnollFleshGnawer } { s O{gnoll~flesh~gnawer} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gnoll~flesh~gnawer} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 154 )
+}
+\NewDocumentCommand { \GnollHunter } { s O{gnoll~hunter} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gnoll~hunter} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 154 )
+}
+\NewDocumentCommand { \GnollPackLord } { s O{gnoll~pack~lord} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gnoll~pack~lord} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 163 )
+}
+\NewDocumentCommand { \GnollWitherling } { s O{gnoll~witherling} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gnoll~witherling} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 155 )
+}
+\NewDocumentCommand { \Goat } { s O{goat} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Goat} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 330 )
+}
+\NewDocumentCommand { \Goblin } { s O{goblin} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Goblin} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 166 )
+}
+\NewDocumentCommand { \GoblinBoss } { s O{goblin~boss} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Goblin~boss} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 166 )
+}
+\NewDocumentCommand { \GoldDragonWyrmling } { s O{gold~dragon~wyrmling} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gold~dragon~wyrmling} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 115 )
+}
+\NewDocumentCommand { \Gorgon } { s O{gorgon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gorgon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 171 )
+}
+\NewDocumentCommand { \Goristro } { s O{goristro} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Goristro} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 59 )
+}
+\NewDocumentCommand { \GrayOoze } { s O{gray~ooze} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gray~ooze} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 243 )
+}
+\NewDocumentCommand { \GrayRender } { s O{gray~render} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gray~render} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 209 )
+}
+\NewDocumentCommand { \GraySlaad } { s O{gray~slaad} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gray~slaad} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 277 )
+}
+\NewDocumentCommand { \GreenAbishai } { s O{green~abishai} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Green~abishai} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 162 )
+}
+\NewDocumentCommand { \GreenDragonWyrmling } { s O{green~dragon~wyrmling} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Green~dragon~wyrmling} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 95 )
+}
+\NewDocumentCommand { \GreenHag } { s O{green~hag} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Green~hag} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 177 )
+}
+\NewDocumentCommand { \GreenSlaad } { s O{green~slaad} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Green~slaad} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 277 )
+}
+\NewDocumentCommand { \Grell } { s O{grell} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Grell} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 172 )
+}
+\NewDocumentCommand { \Grick } { s O{grick} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Grick} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 173 )
+}
+\NewDocumentCommand { \GrickAlpha } { s O{grick~alpha} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Grick~alpha} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 173 )
+}
+\NewDocumentCommand { \Griffon } { s O{griffon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Griffon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 174 )
+}
+\NewDocumentCommand { \Grimlock } { s O{grimlock} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Grimlock} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 175 )
+}
+\NewDocumentCommand { \Grung } { s O{grung} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Grung} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 156 )
+}
+\NewDocumentCommand { \GrungEliteWarrior } { s O{grung~elite~warrior} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Grung~elite~warrior} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 157 )
+}
+\NewDocumentCommand { \GrungWildling } { s O{grung~wildling} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Grung~wildling} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 157 )
+}
+\NewDocumentCommand { \GuardDrake } { s O{guard~drake} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Guard~drake} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 158 )
+}
+\NewDocumentCommand { \GuardianNaga } { s O{guardian~naga} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Guardian~naga} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 234 )
+}
+\NewDocumentCommand { \Gynosphinx } { s O{gynosphinx} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Gynosphinx} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 282 )
+}
+\NewDocumentCommand { \Hadrosaurus } { s O{hadrosaurus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hadrosaurus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 140 )
+}
+\NewDocumentCommand { \HalfRedDragonVeteran } { s O{half-red~dragon~veteran} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Half-red~dragon~veteran} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 180 )
+}
+\NewDocumentCommand { \Halfogre } { s O{half-ogre} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Half-ogre} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 238 )
+}
+\NewDocumentCommand { \Harpy } { s O{harpy} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Harpy} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 181 )
+}
+\NewDocumentCommand { \Hawk } { s O{hawk} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hawk} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 330 )
+}
+\NewDocumentCommand { \HellHound } { s O{hell~hound} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hell~hound} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 182 )
+}
+\NewDocumentCommand { \HellfireEngine } { s O{hellfire~engine} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hellfire~engine} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 165 )
+}
+\NewDocumentCommand { \HelmedHorror } { s O{helmed~horror} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Helmed~horror} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 183 )
+}
+\NewDocumentCommand { \Hezrou } { s O{hezrou} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hezrou} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 60 )
+}
+\NewDocumentCommand { \HillGiant } { s O{hill~giant} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hill~giant} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 155 )
+}
+\NewDocumentCommand { \Hippogriff } { s O{hippogriff} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hippogriff} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 184 )
+}
+\NewDocumentCommand { \Hobgoblin } { s O{hobgoblin} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hobgoblin} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 186 )
+}
+\NewDocumentCommand { \HobgoblinCaptain } { s O{hobgoblin~captain} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hobgoblin~captain} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 186 )
+}
+\NewDocumentCommand { \HobgoblinDevastator } { s O{hobgoblin~devastator} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hobgoblin~devastator} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 161 )
+}
+\NewDocumentCommand { \HobgoblinIronShadow } { s O{hobgoblin~iron~shadow} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hobgoblin~iron~shadow} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 162 )
+}
+\NewDocumentCommand { \HobgoblinWarlord } { s O{hobgoblin~warlord} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hobgoblin~warlord} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 187 )
+}
+\NewDocumentCommand { \Homunculus } { s O{homunculus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Homunculus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 188 )
+}
+\NewDocumentCommand { \HookHorror } { s O{hook~horror} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hook~horror} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 189 )
+}
+\NewDocumentCommand { \HornedDevil } { s O{horned~devil} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Horned~devil} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 74 )
+}
+\NewDocumentCommand { \Howler } { s O{howler} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Howler} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 210 )
+}
+\NewDocumentCommand { \HungrySorrowsworn } { s O{hungry~sorrowsworn} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hungry~sorrowsworn} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 232 )
+}
+\NewDocumentCommand { \HunterShark } { s O{hunter~shark} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hunter~shark} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 330 )
+}
+\NewDocumentCommand { \Hydra } { s O{hydra} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hydra} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 190 )
+}
+\NewDocumentCommand { \Hydroloth } { s O{hydroloth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hydroloth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 249 )
+}
+\NewDocumentCommand { \Hyena } { s O{hyena} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Hyena} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 331 )
+}
+\NewDocumentCommand { \IceDevil } { s O{ice~devil} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ice~devil} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 75 )
+}
+\NewDocumentCommand { \IceMephit } { s O{ice~mephit} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ice~mephit} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 215 )
+}
+\NewDocumentCommand { \Imp } { s O{imp} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Imp} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 76 )
+}
+\NewDocumentCommand { \Incubus } { s O{incubus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Incubus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 285 )
+}
+\NewDocumentCommand { \IntellectDevourer } { s O{intellect~devourer} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Intellect~devourer} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 191 )
+}
+\NewDocumentCommand { \InvisibleStalker } { s O{invisible~stalker} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Invisible~stalker} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 192 )
+}
+\NewDocumentCommand { \IronCobra } { s O{iron~cobra} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Iron~cobra} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 125 )
+}
+\NewDocumentCommand { \IronGolem } { s O{iron~golem} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Iron~golem} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 170 )
+}
+\NewDocumentCommand { \Jackal } { s O{jackal} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Jackal} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 331 )
+}
+\NewDocumentCommand { \Jackalwere } { s O{jackalwere} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Jackalwere} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 193 )
+}
+\NewDocumentCommand { \Kenku } { s O{kenku} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Kenku} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 194 )
+}
+\NewDocumentCommand { \Kirin } { s O{ki-rin} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ki-rin} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 163 )
+}
+\NewDocumentCommand { \KillerWhale } { s O{killer~whale} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Killer~whale} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 331 )
+}
+\NewDocumentCommand { \Kobold } { s O{kobold} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Kobold} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 195 )
+}
+\NewDocumentCommand { \KoboldDragonshield } { s O{kobold~dragonshield} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Kobold~dragonshield} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 165 )
+}
+\NewDocumentCommand { \KoboldInventor } { s O{kobold~inventor} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Kobold~inventor} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 166 )
+}
+\NewDocumentCommand { \KoboldScaleSorcerer } { s O{kobold~scale~sorcerer} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Kobold~scale~sorcerer} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 167 )
+}
+\NewDocumentCommand { \Korred } { s O{korred} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Korred} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 168 )
+}
+\NewDocumentCommand { \Kraken } { s O{kraken} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Kraken} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 197 )
+}
+\NewDocumentCommand { \KruthikHiveLord } { s O{kruthik~hive~lord} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Kruthik~hive~lord} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 212 )
+}
+\NewDocumentCommand { \Kuotoa } { s O{kuo-toa} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Kuo-toa} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 199 )
+}
+\NewDocumentCommand { \KuotoaArchpriest } { s O{kuo-toa~archpriest} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Kuo-toa~archpriest} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 200 )
+}
+\NewDocumentCommand { \KuotoaWhip } { s O{kuo-toa~whip} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Kuo-toa~whip} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 200 )
+}
+\NewDocumentCommand { \Lamia } { s O{lamia} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Lamia} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 201 )
+}
+\NewDocumentCommand { \Lemure } { s O{lemure} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Lemure} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 76 )
+}
+\NewDocumentCommand { \Leucrotta } { s O{leucrotta} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Leucrotta} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 169 )
+}
+\NewDocumentCommand { \Leviathan } { s O{leviathan} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Leviathan} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 198 )
+}
+\NewDocumentCommand { \Lich } { s O{lich} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Lich} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 202 )
+}
+\NewDocumentCommand { \Lichinlair } { s O{lich~(in~lair)} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Lich~(in~lair)} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 202 )
+}
+\NewDocumentCommand { \Lion } { s O{lion} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Lion} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 331 )
+}
+\NewDocumentCommand { \Lizard } { s O{lizard} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Lizard} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 332 )
+}
+\NewDocumentCommand { \LizardKingQueen } { s O{lizard~king/queen} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Lizard~king/queen} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 205 )
+}
+\NewDocumentCommand { \Lizardfolk } { s O{lizardfolk} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Lizardfolk} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 204 )
+}
+\NewDocumentCommand { \LizardfolkShaman } { s O{lizardfolk~shaman} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Lizardfolk~shaman} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 205 )
+}
+\NewDocumentCommand { \LonelySorrowsworn } { s O{lonely~sorrowsworn} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Lonely~sorrowsworn} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 232 )
+}
+\NewDocumentCommand { \LostSorrowsworn } { s O{lost~sorrowsworn} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Lost~sorrowsworn} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 233 )
+}
+\NewDocumentCommand { \MagmaMephit } { s O{magma~mephit} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Magma~mephit} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 216 )
+}
+\NewDocumentCommand { \Magmin } { s O{magmin} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Magmin} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 212 )
+}
+\NewDocumentCommand { \MaleSteeder } { s O{male~steeder} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Male~steeder} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 238 )
+}
+\NewDocumentCommand { \Mammoth } { s O{mammoth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Mammoth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 332 )
+}
+\NewDocumentCommand { \Manes } { s O{manes} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Manes} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 60 )
+}
+\NewDocumentCommand { \Manticore } { s O{manticore} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Manticore} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 213 )
+}
+\NewDocumentCommand { \Marid } { s O{marid} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Marid} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 146 )
+}
+\NewDocumentCommand { \Marilith } { s O{marilith} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Marilith} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 61 )
+}
+\NewDocumentCommand { \Marut } { s O{marut} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Marut} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 213 )
+}
+\NewDocumentCommand { \Mastiff } { s O{mastiff} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Mastiff} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 332 )
+}
+\NewDocumentCommand { \Maurezhi } { s O{maurezhi} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Maurezhi} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 133 )
+}
+\NewDocumentCommand { \MawDemon } { s O{maw~demon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Maw~demon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 137 )
+}
+\NewDocumentCommand { \Meazel } { s O{meazel} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Meazel} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 214 )
+}
+\NewDocumentCommand { \Medusa } { s O{medusa} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Medusa} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 214 )
+}
+\NewDocumentCommand { \Meenlock } { s O{meenlock} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Meenlock} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 170 )
+}
+\NewDocumentCommand { \Merfolk } { s O{merfolk} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Merfolk} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 218 )
+}
+\NewDocumentCommand { \Merregon } { s O{merregon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Merregon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 166 )
+}
+\NewDocumentCommand { \Merrenoloth } { s O{merrenoloth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Merrenoloth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 250 )
+}
+\NewDocumentCommand { \Merrow } { s O{merrow} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Merrow} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 219 )
+}
+\NewDocumentCommand { \Mezzoloth } { s O{mezzoloth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Mezzoloth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 313 )
+}
+\NewDocumentCommand { \Mimic } { s O{mimic} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Mimic} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 220 )
+}
+\NewDocumentCommand { \MindFlayer } { s O{mind~flayer} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Mind~flayer} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 222 )
+}
+\NewDocumentCommand { \MindFlayerArcanist } { s O{mind~flayer~arcanist} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Mind~flayer~arcanist} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 222 )
+}
+\NewDocumentCommand { \MindFlayerLich } { s O{mind~flayer~lich} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Mind~flayer~lich} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 172 )
+}
+\NewDocumentCommand { \Mindwitness } { s O{mindwitness} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Mindwitness} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 176 )
+}
+\NewDocumentCommand { \Minotaur } { s O{minotaur} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Minotaur} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 223 )
+}
+\NewDocumentCommand { \MinotaurSkeleton } { s O{minotaur~skeleton} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Minotaur~skeleton} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 273 )
+}
+\NewDocumentCommand { \Molydeus } { s O{molydeus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Molydeus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 134 )
+}
+\NewDocumentCommand { \Monodrone } { s O{monodrone} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Monodrone} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 224 )
+}
+\NewDocumentCommand { \Morkoth } { s O{morkoth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Morkoth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 178 )
+}
+\NewDocumentCommand { \Morkothinlair } { s O{morkoth~(in~lair)} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Morkoth~(in~lair)} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 178 )
+}
+\NewDocumentCommand { \MouthofGrolantor } { s O{mouth~of~grolantor} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Mouth~of~grolantor} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 149 )
+}
+\NewDocumentCommand { \MudMephit } { s O{mud~mephit} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Mud~mephit} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 216 )
+}
+\NewDocumentCommand { \Mule } { s O{mule} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Mule} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 333 )
+}
+\NewDocumentCommand { \Mummy } { s O{mummy} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Mummy} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 228 )
+}
+\NewDocumentCommand { \MummyLord } { s O{mummy~lord} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Mummy~lord} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 229 )
+}
+\NewDocumentCommand { \MummyLordinlair } { s O{mummy~lord~(in~lair)} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Mummy~lord~(in~lair)} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 229 )
+}
+\NewDocumentCommand { \MyconidAdult } { s O{myconid~adult} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Myconid~adult} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 232 )
+}
+\NewDocumentCommand { \MyconidSovereign } { s O{myconid~sovereign} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Myconid~sovereign} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 232 )
+}
+\NewDocumentCommand { \MyconidSprout } { s O{myconid~sprout} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Myconid~sprout} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 230 )
+}
+\NewDocumentCommand { \Nabassu } { s O{nabassu} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Nabassu} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 135 )
+}
+\NewDocumentCommand { \Nagpa } { s O{nagpa} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Nagpa} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 215 )
+}
+\NewDocumentCommand { \Nalfeshnee } { s O{nalfeshnee} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Nalfeshnee} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 62 )
+}
+\NewDocumentCommand { \Narzugon } { s O{narzugon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Narzugon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 167 )
+}
+\NewDocumentCommand { \NeedleBlight } { s O{needle~blight} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Needle~blight} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 32 )
+}
+\NewDocumentCommand { \Neogi } { s O{neogi} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Neogi} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 180 )
+}
+\NewDocumentCommand { \NeogiHatchling } { s O{neogi~hatchling} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Neogi~hatchling} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 179 )
+}
+\NewDocumentCommand { \NeogiMaster } { s O{neogi~master} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Neogi~master} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 180 )
+}
+\NewDocumentCommand { \Neothelid } { s O{neothelid} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Neothelid} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 181 )
+}
+\NewDocumentCommand { \NightHag } { s O{night~hag} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Night~hag} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 178 )
+}
+\NewDocumentCommand { \Nightmare } { s O{nightmare} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Nightmare} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 235 )
+}
+\NewDocumentCommand { \Nightwalker } { s O{nightwalker} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Nightwalker} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 216 )
+}
+\NewDocumentCommand { \Nilbog } { s O{nilbog} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Nilbog} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 182 )
+}
+\NewDocumentCommand { \Nothic } { s O{nothic} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Nothic} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 236 )
+}
+\NewDocumentCommand { \Nupperibo } { s O{nupperibo} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Nupperibo} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 168 )
+}
+\NewDocumentCommand { \Nycaloth } { s O{nycaloth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Nycaloth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 314 )
+}
+\NewDocumentCommand { \OakenBolter } { s O{oaken~bolter} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Oaken~bolter} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 126 )
+}
+\NewDocumentCommand { \OblexSpawn } { s O{oblex~spawn} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Oblex~spawn} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 217 )
+}
+\NewDocumentCommand { \OchreJelly } { s O{ochre~jelly} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ochre~jelly} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 243 )
+}
+\NewDocumentCommand { \Octopus } { s O{octopus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Octopus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 333 )
+}
+\NewDocumentCommand { \Ogre } { s O{ogre} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ogre} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 237 )
+}
+\NewDocumentCommand { \OgreBatteringRam } { s O{ogre~battering~ram} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ogre~battering~ram} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 220 )
+}
+\NewDocumentCommand { \OgreBoltLauncher } { s O{ogre~bolt~launcher} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ogre~bolt~launcher} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 220 )
+}
+\NewDocumentCommand { \OgreChainBrute } { s O{ogre~chain~brute} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ogre~chain~brute} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 221 )
+}
+\NewDocumentCommand { \OgreHowdah } { s O{ogre~howdah} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ogre~howdah} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 221 )
+}
+\NewDocumentCommand { \OgreZombie } { s O{ogre~zombie} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ogre~zombie} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 316 )
+}
+\NewDocumentCommand { \Oinoloth } { s O{oinoloth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Oinoloth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 251 )
+}
+\NewDocumentCommand { \Oni } { s O{oni} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Oni} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 239 )
+}
+\NewDocumentCommand { \Orc } { s O{orc} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Orc} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 246 )
+}
+\NewDocumentCommand { \OrcBladeofIlneval } { s O{orc~blade~of~ilneval} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Orc~blade~of~ilneval} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 183 )
+}
+\NewDocumentCommand { \OrcClawofLuthic } { s O{orc~claw~of~luthic} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Orc~claw~of~luthic} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 183 )
+}
+\NewDocumentCommand { \OrcEyeofGruumsh } { s O{orc~eye~of~gruumsh} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Orc~eye~of~gruumsh} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 247 )
+}
+\NewDocumentCommand { \OrcHandofYurtrus } { s O{orc~hand~of~yurtrus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Orc~hand~of~yurtrus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 184 )
+}
+\NewDocumentCommand { \OrcNurturedOneofYurtrus } { s O{orc~nurtured~one~of~yurtrus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Orc~nurtured~one~of~yurtrus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 184 )
+}
+\NewDocumentCommand { \OrcRedFangofShargaas } { s O{orc~red~fang~of~shargaas} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Orc~red~fang~of~shargaas} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 185 )
+}
+\NewDocumentCommand { \OrcWarChief } { s O{orc~war~chief} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Orc~war~chief} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 246 )
+}
+\NewDocumentCommand { \Orog } { s O{orog} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Orog} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 247 )
+}
+\NewDocumentCommand { \Orthon } { s O{orthon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Orthon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 169 )
+}
+\NewDocumentCommand { \Otyugh } { s O{otyugh} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Otyugh} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 248 )
+}
+\NewDocumentCommand { \Owl } { s O{owl} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Owl} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 333 )
+}
+\NewDocumentCommand { \Owlbear } { s O{owlbear} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Owlbear} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 249 )
+}
+\NewDocumentCommand { \Ox } { s O{ox} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ox} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 207 )
+}
+\NewDocumentCommand { \Panther } { s O{panther} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Panther} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 333 )
+}
+\NewDocumentCommand { \Pegasus } { s O{pegasus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Pegasus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 250 )
+}
+\NewDocumentCommand { \Pentadrone } { s O{pentadrone} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Pentadrone} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 226 )
+}
+\NewDocumentCommand { \Peryton } { s O{peryton} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Peryton} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 251 )
+}
+\NewDocumentCommand { \PhaseSpider } { s O{phase~spider} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Phase~spider} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 334 )
+}
+\NewDocumentCommand { \Phoenix } { s O{phoenix} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Phoenix} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 199 )
+}
+\NewDocumentCommand { \Piercer } { s O{piercer} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Piercer} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 252 )
+}
+\NewDocumentCommand { \PitFiend } { s O{pit~fiend} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Pit~fiend} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 77 )
+}
+\NewDocumentCommand { \Pixie } { s O{pixie} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Pixie} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 253 )
+}
+\NewDocumentCommand { \Planetar } { s O{planetar} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Planetar} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 17 )
+}
+\NewDocumentCommand { \Plesiosaurus } { s O{plesiosaurus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Plesiosaurus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 80 )
+}
+\NewDocumentCommand { \PoisonousSnake } { s O{poisonous~snake} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Poisonous~snake} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 334 )
+}
+\NewDocumentCommand { \PolarBear } { s O{polar~bear} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Polar~bear} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 334 )
+}
+\NewDocumentCommand { \Pony } { s O{pony} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Pony} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 335 )
+}
+\NewDocumentCommand { \Pseudodragon } { s O{pseudodragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Pseudodragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 254 )
+}
+\NewDocumentCommand { \Pteranodon } { s O{pteranodon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Pteranodon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 80 )
+}
+\NewDocumentCommand { \PurpleWorm } { s O{purple~worm} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Purple~worm} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 255 )
+}
+\NewDocumentCommand { \Quadrone } { s O{quadrone} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Quadrone} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 226 )
+}
+\NewDocumentCommand { \Quaggoth } { s O{quaggoth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Quaggoth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 256 )
+}
+\NewDocumentCommand { \QuaggothSporeServant } { s O{quaggoth~spore~servant} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Quaggoth~spore~servant} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 230 )
+}
+\NewDocumentCommand { \QuaggothThonot } { s O{quaggoth~thonot} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Quaggoth~thonot} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 256 )
+}
+\NewDocumentCommand { \Quasit } { s O{quasit} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Quasit} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 63 )
+}
+\NewDocumentCommand { \Quetzalcoatlus } { s O{quetzalcoatlus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Quetzalcoatlus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 140 )
+}
+\NewDocumentCommand { \Quickling } { s O{quickling} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Quickling} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 187 )
+}
+\NewDocumentCommand { \Quipper } { s O{quipper} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Quipper} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 335 )
+}
+\NewDocumentCommand { \Rakshasa } { s O{rakshasa} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Rakshasa} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 257 )
+}
+\NewDocumentCommand { \Rat } { s O{rat} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Rat} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 335 )
+}
+\NewDocumentCommand { \Raven } { s O{raven} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Raven} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 335 )
+}
+\NewDocumentCommand { \RedAbishai } { s O{red~abishai} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Red~abishai} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 162 )
+}
+\NewDocumentCommand { \RedDragonWyrmling } { s O{red~dragon~wyrmling} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Red~dragon~wyrmling} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 98 )
+}
+\NewDocumentCommand { \RedSlaad } { s O{red~slaad} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Red~slaad} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 276 )
+}
+\NewDocumentCommand { \Redcap } { s O{redcap} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Redcap} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 188 )
+}
+\NewDocumentCommand { \ReefShark } { s O{reef~shark} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Reef~shark} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 336 )
+}
+\NewDocumentCommand { \Remorhaz } { s O{remorhaz} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Remorhaz} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 258 )
+}
+\NewDocumentCommand { \Retriever } { s O{retriever} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Retriever} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 222 )
+}
+\NewDocumentCommand { \Revenant } { s O{revenant} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Revenant} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 259 )
+}
+\NewDocumentCommand { \Rhinoceros } { s O{rhinoceros} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Rhinoceros} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 336 )
+}
+\NewDocumentCommand { \RidingHorse } { s O{riding~horse} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Riding~horse} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 336 )
+}
+\NewDocumentCommand { \Roc } { s O{roc} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Roc} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 260 )
+}
+\NewDocumentCommand { \Roper } { s O{roper} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Roper} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 261 )
+}
+\NewDocumentCommand { \RotTroll } { s O{rot~troll} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Rot~troll} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 244 )
+}
+\NewDocumentCommand { \Rothe } { s O{rothe} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Rothe} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 207 )
+}
+\NewDocumentCommand { \RugofSmothering } { s O{rug~of~smothering} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Rug~of~smothering} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 20 )
+}
+\NewDocumentCommand { \RustMonster } { s O{rust~monster} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Rust~monster} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 262 )
+}
+\NewDocumentCommand { \Rutterkin } { s O{rutterkin} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Rutterkin} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 136 )
+}
+\NewDocumentCommand { \SabertoothedTiger } { s O{saber-toothed~tiger} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Saber-toothed~tiger} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 336 )
+}
+\NewDocumentCommand { \Sahuagin } { s O{sahuagin} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Sahuagin} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 263 )
+}
+\NewDocumentCommand { \SahuaginBaron } { s O{sahuagin~baron} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Sahuagin~baron} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 264 )
+}
+\NewDocumentCommand { \SahuaginPriestess } { s O{sahuagin~priestess} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Sahuagin~priestess} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 264 )
+}
+\NewDocumentCommand { \Salamander } { s O{salamander} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Salamander} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 266 )
+}
+\NewDocumentCommand { \Satyr } { s O{satyr} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Satyr} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 267 )
+}
+\NewDocumentCommand { \Scarecrow } { s O{scarecrow} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Scarecrow} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 268 )
+}
+\NewDocumentCommand { \Scorpion } { s O{scorpion} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Scorpion} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 337 )
+}
+\NewDocumentCommand { \SeaHag } { s O{sea~hag} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Sea~hag} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 179 )
+}
+\NewDocumentCommand { \SeaHorse } { s O{sea~horse} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Sea~horse} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 337 )
+}
+\NewDocumentCommand { \SeaSpawn } { s O{sea~spawn} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Sea~spawn} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 189 )
+}
+\NewDocumentCommand { \Shadow } { s O{shadow} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Shadow} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 269 )
+}
+\NewDocumentCommand { \ShadowDancer } { s O{shadow~dancer} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Shadow~dancer} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 225 )
+}
+\NewDocumentCommand { \ShadowDemon } { s O{shadow~demon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Shadow~demon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 64 )
+}
+\NewDocumentCommand { \ShadowMastiff } { s O{shadow~mastiff} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Shadow~mastiff} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 190 )
+}
+\NewDocumentCommand { \ShamblingMound } { s O{shambling~mound} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Shambling~mound} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 270 )
+}
+\NewDocumentCommand { \ShieldGuardian } { s O{shield~guardian} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Shield~guardian} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 271 )
+}
+\NewDocumentCommand { \Shoosuva } { s O{shoosuva} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Shoosuva} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 137 )
+}
+\NewDocumentCommand { \Shrieker } { s O{shrieker} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Shrieker} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 138 )
+}
+\NewDocumentCommand { \Sibriex } { s O{sibriex} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Sibriex} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 137 )
+}
+\NewDocumentCommand { \SilverDragonWyrmling } { s O{silver~dragon~wyrmling} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Silver~dragon~wyrmling} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 118 )
+}
+\NewDocumentCommand { \Skeleton } { s O{skeleton} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Skeleton} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 272 )
+}
+\NewDocumentCommand { \Skulk } { s O{skulk} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Skulk} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 227 )
+}
+\NewDocumentCommand { \SkullLord } { s O{skull~lord} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Skull~lord} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 230 )
+}
+\NewDocumentCommand { \SlaadTadpole } { s O{slaad~tadpole} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Slaad~tadpole} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 276 )
+}
+\NewDocumentCommand { \SlitheringTracker } { s O{slithering~tracker} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Slithering~tracker} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 191 )
+}
+\NewDocumentCommand { \SmokeMephit } { s O{smoke~mephit} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Smoke~mephit} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 217 )
+}
+\NewDocumentCommand { \Solar } { s O{solar} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Solar} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 18 )
+}
+\NewDocumentCommand { \SoulMonger } { s O{soul~monger} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Soul~monger} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 226 )
+}
+\NewDocumentCommand { \SpawnofKyuss } { s O{spawn~of~kyuss} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Spawn~of~kyuss} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 192 )
+}
+\NewDocumentCommand { \Spectator } { s O{spectator} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Spectator} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 30 )
+}
+\NewDocumentCommand { \Specter } { s O{specter} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Specter} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 279 )
+}
+\NewDocumentCommand { \Specterpoltergeist } { s O{specter~(poltergeist)} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Specter~(poltergeist)} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 279 )
+}
+\NewDocumentCommand { \Spider } { s O{spider} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Spider} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 337 )
+}
+\NewDocumentCommand { \SpinedDevil } { s O{spined~devil} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Spined~devil} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 78 )
+}
+\NewDocumentCommand { \SpiritNaga } { s O{spirit~naga} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Spirit~naga} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 234 )
+}
+\NewDocumentCommand { \SpiritTroll } { s O{spirit~troll} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Spirit~troll} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 244 )
+}
+\NewDocumentCommand { \SpringEladrin } { s O{spring~eladrin} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Spring~eladrin} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 196 )
+}
+\NewDocumentCommand { \Sprite } { s O{sprite} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Sprite} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 283 )
+}
+\NewDocumentCommand { \StarSpawnGrue } { s O{star~spawn~grue} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Star~spawn~grue} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 234 )
+}
+\NewDocumentCommand { \StarSpawnHulk } { s O{star~spawn~hulk} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Star~spawn~hulk} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 234 )
+}
+\NewDocumentCommand { \StarSpawnLarvaMage } { s O{star~spawn~larva~mage} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Star~spawn~larva~mage} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 235 )
+}
+\NewDocumentCommand { \StarSpawnMangler } { s O{star~spawn~mangler} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Star~spawn~mangler} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 236 )
+}
+\NewDocumentCommand { \StarSpawnSeer } { s O{star~spawn~seer} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Star~spawn~seer} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 236 )
+}
+\NewDocumentCommand { \SteamMephit } { s O{steam~mephit} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Steam~mephit} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 217 )
+}
+\NewDocumentCommand { \SteelPredator } { s O{steel~predator} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Steel~predator} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 239 )
+}
+\NewDocumentCommand { \Stegosaurus } { s O{stegosaurus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Stegosaurus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 140 )
+}
+\NewDocumentCommand { \StenchKow } { s O{stench~kow} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Stench~kow} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 207 )
+}
+\NewDocumentCommand { \Stirge } { s O{stirge} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Stirge} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 284 )
+}
+\NewDocumentCommand { \StoneCursed } { s O{stone~cursed} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Stone~cursed} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 240 )
+}
+\NewDocumentCommand { \StoneDefender } { s O{stone~defender} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Stone~defender} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 126 )
+}
+\NewDocumentCommand { \StoneGiant } { s O{stone~giant} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Stone~giant} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 156 )
+}
+\NewDocumentCommand { \StoneGiantDreamwalker } { s O{stone~giant~dreamwalker} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Stone~giant~dreamwalker} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 150 )
+}
+\NewDocumentCommand { \StoneGolem } { s O{stone~golem} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Stone~golem} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 170 )
+}
+\NewDocumentCommand { \StormGiant } { s O{storm~giant} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Storm~giant} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 156 )
+}
+\NewDocumentCommand { \StormGiantQuintessent } { s O{storm~giant~quintessent} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Storm~giant~quintessent} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 151 )
+}
+\NewDocumentCommand { \Succubus } { s O{succubus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Succubus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 285 )
+}
+\NewDocumentCommand { \SummerEladrin } { s O{summer~eladrin} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Summer~eladrin} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 196 )
+}
+\NewDocumentCommand { \Svirfneblin } { s O{svirfneblin} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Svirfneblin} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 164 )
+}
+\NewDocumentCommand { \SwarmofBats } { s O{swarm~of~bats} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Swarm~of~bats} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 337 )
+}
+\NewDocumentCommand { \SwarmofCraniumRats } { s O{swarm~of~cranium~rats} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Swarm~of~cranium~rats} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 133 )
+}
+\NewDocumentCommand { \SwarmofInsects } { s O{swarm~of~insects} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Swarm~of~insects} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 338 )
+}
+\NewDocumentCommand { \SwarmofPoisonousSnakes } { s O{swarm~of~poisonous~snakes} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Swarm~of~poisonous~snakes} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 338 )
+}
+\NewDocumentCommand { \SwarmofQuippers } { s O{swarm~of~quippers} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Swarm~of~quippers} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 338 )
+}
+\NewDocumentCommand { \SwarmofRats } { s O{swarm~of~rats} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Swarm~of~rats} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 339 )
+}
+\NewDocumentCommand { \SwarmofRavens } { s O{swarm~of~ravens} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Swarm~of~ravens} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 339 )
+}
+\NewDocumentCommand { \SwarmofRotGrubs } { s O{swarm~of~rot~grubs} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Swarm~of~rot~grubs} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 208 )
+}
+\NewDocumentCommand { \SwordWraithCommander } { s O{sword~wraith~commander} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Sword~wraith~commander} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 241 )
+}
+\NewDocumentCommand { \SwordWraithWarrior } { s O{sword~wraith~warrior} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Sword~wraith~warrior} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 241 )
+}
+\NewDocumentCommand { \Tanarukk } { s O{tanarukk} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Tanarukk} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 186 )
+}
+\NewDocumentCommand { \Tarrasque } { s O{tarrasque} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Tarrasque} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 286 )
+}
+\NewDocumentCommand { \Thorny } { s O{thorny} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Thorny} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 197 )
+}
+\NewDocumentCommand { \Thrikreen } { s O{thri-kreen} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Thri-kreen} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 288 )
+}
+\NewDocumentCommand { \Tiger } { s O{tiger} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Tiger} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 339 )
+}
+\NewDocumentCommand { \Tlincalli } { s O{tlincalli} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Tlincalli} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 193 )
+}
+\NewDocumentCommand { \Tortle } { s O{tortle} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Tortle} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 242 )
+}
+\NewDocumentCommand { \TortleDruid } { s O{tortle~druid} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Tortle~druid} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 242 )
+}
+\NewDocumentCommand { \Trapper } { s O{trapper} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Trapper} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 194 )
+}
+\NewDocumentCommand { \Treant } { s O{treant} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Treant} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 289 )
+}
+\NewDocumentCommand { \Triceratops } { s O{triceratops} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Triceratops} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 80 )
+}
+\NewDocumentCommand { \Tridrone } { s O{tridrone} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Tridrone} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 225 )
+}
+\NewDocumentCommand { \Troglodyte } { s O{troglodyte} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Troglodyte} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 290 )
+}
+\NewDocumentCommand { \Troll } { s O{troll} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Troll} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 291 )
+}
+\NewDocumentCommand { \TwigBlight } { s O{twig~blight} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Twig~blight} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 32 )
+}
+\NewDocumentCommand { \TyrannosaurusRex } { s O{tyrannosaurus~rex} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Tyrannosaurus~rex} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 80 )
+}
+\NewDocumentCommand { \Ulitharid } { s O{ulitharid} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ulitharid} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 175 )
+}
+\NewDocumentCommand { \Ultroloth } { s O{ultroloth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Ultroloth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 314 )
+}
+\NewDocumentCommand { \UmberHulk } { s O{umber~hulk} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Umber~hulk} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 292 )
+}
+\NewDocumentCommand { \Unicorn } { s O{unicorn} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Unicorn} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 294 )
+}
+\NewDocumentCommand { \Vampire } { s O{vampire} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Vampire} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 297 )
+}
+\NewDocumentCommand { \Vampirespellcaster } { s O{vampire~(spellcaster)} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Vampire~(spellcaster)} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 297 )
+}
+\NewDocumentCommand { \Vampirewarrior } { s O{vampire~(warrior)} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Vampire~(warrior)} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 297 )
+}
+\NewDocumentCommand { \VampireSpawn } { s O{vampire~spawn} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Vampire~spawn} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 298 )
+}
+\NewDocumentCommand { \VampiricMist } { s O{vampiric~mist} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Vampiric~mist} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 246 )
+}
+\NewDocumentCommand { \Vargouille } { s O{vargouille} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Vargouille} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 195 )
+}
+\NewDocumentCommand { \Vegepygmy } { s O{vegepygmy} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Vegepygmy} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 196 )
+}
+\NewDocumentCommand { \VegepygmyChief } { s O{vegepygmy~chief} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Vegepygmy~chief} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 197 )
+}
+\NewDocumentCommand { \Velociraptor } { s O{velociraptor} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Velociraptor} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 140 )
+}
+\NewDocumentCommand { \VenomTroll } { s O{venom~troll} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Venom~troll} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 245 )
+}
+\NewDocumentCommand { \VineBlight } { s O{vine~blight} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Vine~blight} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 32 )
+}
+\NewDocumentCommand { \VioletFungus } { s O{violet~fungus} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Violet~fungus} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 138 )
+}
+\NewDocumentCommand { \Vrock } { s O{vrock} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Vrock} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 64 )
+}
+\NewDocumentCommand { \Vulture } { s O{vulture} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Vulture} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 339 )
+}
+\NewDocumentCommand { \Warhorse } { s O{warhorse} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Warhorse} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 340 )
+}
+\NewDocumentCommand { \WarhorseSkeleton } { s O{warhorse~skeleton} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Warhorse~skeleton} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 273 )
+}
+\NewDocumentCommand { \Wastrilith } { s O{wastrilith} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Wastrilith} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 139 )
+}
+\NewDocumentCommand { \WaterElemental } { s O{water~elemental} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Water~elemental} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 125 )
+}
+\NewDocumentCommand { \WaterElementalMyrmidon } { s O{water~elemental~myrmidon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Water~elemental~myrmidon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 203 )
+}
+\NewDocumentCommand { \WaterWeird } { s O{water~weird} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Water~weird} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 299 )
+}
+\NewDocumentCommand { \Weasel } { s O{weasel} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Weasel} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 340 )
+}
+\NewDocumentCommand { \Werebear } { s O{werebear} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Werebear} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 208 )
+}
+\NewDocumentCommand { \Wereboar } { s O{wereboar} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Wereboar} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 209 )
+}
+\NewDocumentCommand { \Wererat } { s O{wererat} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Wererat} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 209 )
+}
+\NewDocumentCommand { \Weretiger } { s O{weretiger} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Weretiger} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 210 )
+}
+\NewDocumentCommand { \Werewolf } { s O{werewolf} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Werewolf} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 211 )
+}
+\NewDocumentCommand { \WhiteAbishai } { s O{white~abishai} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{White~abishai} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 163 )
+}
+\NewDocumentCommand { \WhiteDragonWyrmling } { s O{white~dragon~wyrmling} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{White~dragon~wyrmling} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 102 )
+}
+\NewDocumentCommand { \Wight } { s O{wight} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Wight} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 300 )
+}
+\NewDocumentCommand { \Willowisp } { s O{will-o-wisp} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Will-o-wisp} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 301 )
+}
+\NewDocumentCommand { \WingedKobold } { s O{winged~kobold} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Winged~kobold} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 195 )
+}
+\NewDocumentCommand { \WinterEladrin } { s O{winter~eladrin} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Winter~eladrin} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 197 )
+}
+\NewDocumentCommand { \WinterWolf } { s O{winter~wolf} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Winter~wolf} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 340 )
+}
+\NewDocumentCommand { \Wolf } { s O{wolf} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Wolf} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 341 )
+}
+\NewDocumentCommand { \WoodWoad } { s O{wood~woad} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Wood~woad} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 198 )
+}
+\NewDocumentCommand { \Worg } { s O{worg} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Worg} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 341 )
+}
+\NewDocumentCommand { \Wraith } { s O{wraith} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Wraith} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 302 )
+}
+\NewDocumentCommand { \WretchedSorrowsworn } { s O{wretched~sorrowsworn} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Wretched~sorrowsworn} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 233 )
+}
+\NewDocumentCommand { \Wyvern } { s O{wyvern} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Wyvern} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 303 )
+}
+\NewDocumentCommand { \Xorn } { s O{xorn} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Xorn} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 304 )
+}
+\NewDocumentCommand { \Xvart } { s O{xvart} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Xvart} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 200 )
+}
+\NewDocumentCommand { \XvartWarlockofRaxivort } { s O{xvart~warlock~of~raxivort} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Xvart~warlock~of~raxivort} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 200 )
+}
+\NewDocumentCommand { \Yagnoloth } { s O{yagnoloth} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Yagnoloth} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 252 )
+}
+\NewDocumentCommand { \YethHound } { s O{yeth~hound} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Yeth~hound} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 201 )
+}
+\NewDocumentCommand { \Yeti } { s O{yeti} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Yeti} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 305 )
+}
+\NewDocumentCommand { \Yochlol } { s O{yochlol} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Yochlol} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 65 )
+}
+\NewDocumentCommand { \YoungBlackDragon } { s O{young~black~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Young~black~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 88 )
+}
+\NewDocumentCommand { \YoungBlueDragon } { s O{young~blue~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Young~blue~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 91 )
+}
+\NewDocumentCommand { \YoungBrassDragon } { s O{young~brass~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Young~brass~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 105 )
+}
+\NewDocumentCommand { \YoungBronzeDragon } { s O{young~bronze~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Young~bronze~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 108 )
+}
+\NewDocumentCommand { \YoungCopperDragon } { s O{young~copper~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Young~copper~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 111 )
+}
+\NewDocumentCommand { \YoungFaerieDragon } { s O{young~faerie~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Young~faerie~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 133 )
+}
+\NewDocumentCommand { \YoungGoldDragon } { s O{young~gold~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Young~gold~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 115 )
+}
+\NewDocumentCommand { \YoungGreenDragon } { s O{young~green~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Young~green~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 94 )
+}
+\NewDocumentCommand { \YoungKruthik } { s O{young~kruthik} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Young~kruthik} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 211 )
+}
+\NewDocumentCommand { \YoungRedDragon } { s O{young~red~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Young~red~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 98 )
+}
+\NewDocumentCommand { \YoungRedShadowDragon } { s O{young~red~shadow~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Young~red~shadow~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 85 )
+}
+\NewDocumentCommand { \YoungRemorhaz } { s O{young~remorhaz} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Young~remorhaz} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 258 )
+}
+\NewDocumentCommand { \YoungSilverDragon } { s O{young~silver~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Young~silver~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 118 )
+}
+\NewDocumentCommand { \YoungWhiteDragon } { s O{young~white~dragon} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Young~white~dragon} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 101 )
+}
+\NewDocumentCommand { \YuantiAbomination } { s O{yuan-ti~abomination} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Yuan-ti~abomination} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 308 )
+}
+\NewDocumentCommand { \YuantiAnathema } { s O{yuan-ti~anathema} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Yuan-ti~anathema} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 202 )
+}
+\NewDocumentCommand { \YuantiBroodguard } { s O{yuan-ti~broodguard} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Yuan-ti~broodguard} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 203 )
+}
+\NewDocumentCommand { \YuantiMalison } { s O{yuan-ti~malison} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Yuan-ti~malison} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 309 )
+}
+\NewDocumentCommand { \YuantiMindWhisperer } { s O{yuan-ti~mind~whisperer} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Yuan-ti~mind~whisperer} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 204 )
+}
+\NewDocumentCommand { \YuantiNightmareSpeaker } { s O{yuan-ti~nightmare~speaker} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Yuan-ti~nightmare~speaker} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 205 )
+}
+\NewDocumentCommand { \YuantiPitMaster } { s O{yuan-ti~pit~master} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Yuan-ti~pit~master} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{VGtM} , ~ \pageabbreviationname \nobreakspace 206 )
+}
+\NewDocumentCommand { \YuantiPureblood } { s O{yuan-ti~pureblood} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Yuan-ti~pureblood} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 310 )
+}
+\NewDocumentCommand { \Zaratan } { s O{zaratan} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Zaratan} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MToF} , ~ \pageabbreviationname \nobreakspace 201 )
+}
+\NewDocumentCommand { \Zombie } { s O{zombie} }
+{
+  \IfBooleanTF {#1}
+    { \textbf{Zombie} ~ }
+    { \textbf{#2} ~ }
+  ( \textit{MM} , ~ \pageabbreviationname \nobreakspace 316 )
+}
+
+

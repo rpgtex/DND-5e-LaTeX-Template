@@ -1,0 +1,56 @@
+\ExplSyntaxOn
+
+\DeclareTotalTColorBox {\DndImage} { s O{} m }
+  {
+    enhanced,
+    frame~hidden,
+    boxrule         = 0pt,
+    parbox          = false,
+    boxsep          = 0pt,
+    left            = 0pt,
+    right           = 0pt,
+    top             = 0pt,
+    bottom          = 0pt,
+    sharp~corners,
+    opacityback     = 0,
+    toptitle        = 0pt,
+    IfBooleanTF     = {#1}{width=\textwidth}{width=\hsize},
+    #2
+  }
+  {
+    \bool_if:NTF \l__dnd_img_draft_bool
+      {
+        \includegraphics[width=\hsize,keepaspectratio,draft]{#3}
+      }
+      {
+        \includegraphics[width=\hsize,keepaspectratio]{#3}
+      }
+  }
+
+\DeclareTotalTColorBox {\DndCaptionedImage} { s O{} m m }
+  {
+    enhanced,
+    frame~hidden,
+    boxrule         = 0pt,
+    parbox          = false,
+    boxsep          = 0pt,
+    left            = 0pt,
+    right           = 0pt,
+    top             = 0pt,
+    bottom          = 0pt,
+    sharp~corners,
+    opacityback     = 0,
+    toptitle        = 0pt,
+    IfBooleanTF     = {#1}{width=\textwidth}{width=\hsize},
+    overlay         = {\node[align=center,text=white]~([yshift=1cm]frame.south) {#3};},
+    #2
+  }
+  {
+    \bool_if:NTF \l__dnd_img_draft_bool
+      {
+        \includegraphics[width=\hsize,keepaspectratio,draft]{#4}
+      }
+      {
+        \includegraphics[width=\hsize,keepaspectratio]{#4}
+      }
+  }

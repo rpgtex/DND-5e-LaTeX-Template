@@ -19,6 +19,8 @@
 \RequirePackage {tikz} % drawing ornaments and lines
 \RequirePackage {xcolor}
 \RequirePackage {xparse} % \NewDocumentCommand and expl3
+\RequirePackage {graphicx}
+\RequirePackage {changepage}
 
 \sys_if_engine_luatex:T
   {
@@ -82,9 +84,13 @@
 % Main modules in alphabetical order
 \RequirePackage {lib/dndcomment}    % inline comment boxes
 \RequirePackage {lib/dndheader}     % fancy headers and footers
+\RequirePackage {lib/dndimage}      % image display
 \RequirePackage {lib/dndmonster}    % stat blocks
+\RequirePackage {lib/dndquote}      % quotation/aside blocks
 \RequirePackage {lib/dndreadaloud}  % read-aloud text
 \RequirePackage {lib/dndsections}   % section styling and special section headers
 \RequirePackage {lib/dndsidebar}    % sidebars
 \RequirePackage {lib/dndtable}      % tables
 \RequirePackage {lib/dndtoc}        % table of contents styling
+\RequirePackage {lib/dndvehicle}    % vehicle/ship stat blocks
+% \RequirePackage {lib/dndmonsterlookup} % monster stat references

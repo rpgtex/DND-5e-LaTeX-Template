@@ -1,0 +1,109 @@
+\ExplSyntaxOn
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Environment for quoted notes from the in-world 'author'.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Standard for every quoted text.
+\DeclareTColorBox {__dnd_quote_aside} { o }
+  {
+    before~upper     =
+      {
+        \bool_if:NT \l__dnd_layout_bool
+          {
+            \bool_if:NF \l__dnd_justified_bool
+              {\RaggedRight}
+          }
+      },
+    code             = {\linespread {1.1} },
+    enhanced,
+    frame~hidden,
+    boxrule          = 0pt,
+    breakable,
+    enhanced,
+    before~skip      = 22pt plus 4pt minus 4pt,
+    boxsep           = 3pt,
+    top              = 18pt,
+    left             = 18pt,
+    right            = 8pt,
+    bottom           = 8pt,
+    sharpish~corners,
+    parbox           = false,
+    fonttitle        = \DndFontQuoteAttribution,
+    fontupper        = \DndFontQuotation,
+    fontlower        = \DndFontQuotation,
+    colupper         = black!90,
+    after~skip       = 22pt plus 4pt minus 4pt,
+    lifted~shadow    = {1.6mm} {-1.8mm} {3mm} {0.1mm} {black!50!white},
+    coltitle=black,
+    lower~separated  = false,
+    detach~title,
+    after~lower      = {\begin{flushright}\tcbtitle\end{flushright}},
+    before~upper*    = \begin{adjustwidth}{0pt}{14pt},
+    after~upper*     = \end{adjustwidth},
+    #1,
+  }
+
+% Extra key for controlling the color and rotation of the background
+\keys_define:nn { dnd / quotation }
+  {
+    color .tl_set:N         = \l__dnd_quotation_color_tl,
+    color .initial:n        = quotecolor,
+    color .value_required:n = true,
+    rotation .tl_set:N         = \l__dnd_quotation_rotation_tl,
+    rotation .initial:n        = 2,
+    rotation .value_required:n = true,
+  }
+
+% This function, through its variant, forces the expansion of the tcb keys
+% passed to the environment by the user before it invokes the tcolorbox
+\cs_new_protected:Nn \__dnd_start_quote_aside:nn
+  {
+    \begin {__dnd_quote_aside} [ #1, #2 ]
+  }
+
+\cs_generate_variant:Nn \__dnd_start_quote_aside:nn { nV }
+
+% The DndQuotation environment
+% #1 - keys. We handle the custom color key before passing other keys on
+% #2 - attribution.
+\NewDocumentEnvironment {DndQuotation} { o m }
+  {
+    \group_begin:
+    \keys_set_known:nnN { dnd / quotation } {#1} \l_tmpa_tl
+
+    \str_if_eq:VnT \l_tmpa_tl { -NoValue- }
+      { \tl_set_eq:NN \l_tmpa_tl \c_empty_tl }
+
+    \__dnd_start_quote_aside:nV
+      {
+        colback = \l__dnd_quotation_color_tl,
+        tikz = {rotate=\l__dnd_quotation_rotation_tl},
+        % boxed~title~style = {frame~hidden,opacityback =0},
+        title = {#2},
+      }
+      {\l_tmpa_tl}
+  }
+  {
+    \tcblower
+    \end{__dnd_quote_aside}
+    \group_end:
+  }
+
+% The DndAside environment; a DndQuotation with no title
+% #1 - keys. We handle the custom color key before passing other keys on
+\NewDocumentEnvironment {DndAside} {o}
+  {
+    \group_begin:
+    \keys_set_known:nnN { dnd / quotation } {#1} \l_tmpa_tl
+
+    \str_if_eq:VnT \l_tmpa_tl { -NoValue- }
+      { \tl_set_eq:NN \l_tmpa_tl \c_empty_tl }
+
+    \__dnd_start_quote_aside:nV
+      {colback = \l__dnd_quotation_color_tl}
+      {\l_tmpa_tl}
+  }
+  {
+    \end{__dnd_quote_aside}
+    \group_end:
+  }
