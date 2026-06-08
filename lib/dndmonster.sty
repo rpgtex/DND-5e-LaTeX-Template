@@ -319,6 +319,9 @@
   proficiency-bonus .value_required:n = false,
   proficiency-bonus .default:n = *,
   proficiencybonus .meta:n    = { proficiency-bonus = {#1} },
+  gear .tl_set:N          = \l__gear_tl,
+  gear .value_required:n  = true,
+  gears .meta:n = { gear = {#1} },
 }
 
 \cs_new_protected_nopar:Npn \__dnd_monster_details:
@@ -330,6 +333,7 @@
       \__dnd_if_monster_attribute:nn {\l__damage_resistances_tl}     {\dresname}
       \__dnd_if_monster_attribute:nn {\l__damage_immunities_tl}      {\dimmname}
       \__dnd_if_monster_attribute:nn {\l__condition_immunities_tl}   {\cimmname}
+      \__dnd_if_monster_attribute:nn {\l__gear_tl}                   {\gearname}
       \item [\sensesname]    \l__senses_tl
       \item [\languagesname] \l__languages_tl
       \item [\challengename] \__dnd_cr_xp:N {\l__challenge_tl}
